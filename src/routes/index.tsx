@@ -7,11 +7,13 @@ import heroImg from "@/assets/hero-study.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ToeicPath — Modern TOEIC Test Preparation" },
-      { name: "description", content: "Structured guides, interactive practice, and a smart vocabulary builder for the TOEIC L&R and S&W tests." },
-      { property: "og:title", content: "ToeicPath — Modern TOEIC Test Preparation" },
-      { property: "og:description", content: "Structured guides, interactive practice, and a smart vocabulary builder for the TOEIC L&R and S&W tests." },
+      { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
+      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
@@ -25,13 +27,13 @@ function Index() {
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.05fr_1fr] md:py-20 lg:gap-16">
           <div className="flex flex-col justify-center">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> Built for serious learners
+              <Sparkles className="h-3.5 w-3.5" /> Master the Business English Standard
             </span>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-              Score higher on the <span className="bg-gradient-hero bg-clip-text text-transparent">TOEIC</span>, the calm way.
+              Master the <span className="bg-gradient-hero bg-clip-text text-transparent">Business English</span> Standard.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              ToeicPath gives you a clear map of every section, hundreds of bite-size practice items, and a vocabulary builder that fits in your pocket — so you walk into test day prepared, not panicked.
+              Your complete guide to the TOEIC® Listening, Reading, Speaking, and Writing tests. Aligned with official ETS standards to help you achieve your career goals.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -50,8 +52,8 @@ function Index() {
             <ul className="mt-7 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
               {[
                 "All 7 L&R parts explained",
-                "Speaking & Writing prompts",
-                "Business vocabulary flashcards",
+                "Aligned with official ETS standards",
+                "400+ business vocabulary terms",
                 "No account required",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
@@ -91,18 +93,19 @@ function Index() {
           <TrackCard
             to="/listening-reading"
             icon={<Headphones className="h-5 w-5" />}
-            badge="Most popular"
+            badge="L&R Mastery"
             title="Listening & Reading"
-            duration="2h 30m · 200 questions · 10–990"
-            description="Multiple-choice test of business English comprehension. Seven parts across audio and text."
+            duration="2h total · 200 questions · 10–990"
+            description="200 questions covering workplace communication — 100 Listening (45 min) and 100 Reading (75 min)."
             tags={["Photographs", "Conversations", "Reading comp."]}
           />
           <TrackCard
             to="/speaking-writing"
             icon={<Mic className="h-5 w-5" />}
+            badge="S&W Excellence"
             title="Speaking & Writing"
             duration="80m · 19 tasks · 0–400"
-            description="Performance-based test recorded online. Read aloud, describe a picture, write emails and essays."
+            description="Real-world scenarios for active production: read aloud, describe a picture, write emails, and craft opinion essays."
             tags={["Describe a picture", "Email response", "Opinion essay"]}
           />
         </div>
@@ -111,12 +114,11 @@ function Index() {
       {/* Features */}
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 py-16">
-          <h2 className="font-display text-3xl font-semibold sm:text-4xl">Everything you need, nothing you don't.</h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <Feature icon={<BookOpen className="h-5 w-5" />} title="Clear part guides" body="Format, timing, and what examiners reward — for every part." />
-            <Feature icon={<Sparkles className="h-5 w-5" />} title="Interactive practice" body="Tap an answer, see the explanation instantly. No grading screens." />
-            <Feature icon={<PenLine className="h-5 w-5" />} title="Writing prompts" body="Sample tasks for emails and opinion essays with model responses." />
-            <Feature icon={<Headphones className="h-5 w-5" />} title="Vocabulary builder" body="Business-themed flashcards with spaced reveal — perfect for commutes." />
+          <h2 className="font-display text-3xl font-semibold sm:text-4xl">Three pillars of TOEIC success.</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <Feature icon={<BookOpen className="h-5 w-5" />} title="L&R Mastery" body="200 questions covering workplace communication, from photographs to long-form reading comprehension." />
+            <Feature icon={<Mic className="h-5 w-5" />} title="S&W Excellence" body="Real-world scenarios for active production — speak with confidence and write with clarity." />
+            <Feature icon={<Sparkles className="h-5 w-5" />} title="Business Lexicon" body="400+ essential terms across 4 key industries: management, travel, finance, and technical." />
           </div>
         </div>
       </section>

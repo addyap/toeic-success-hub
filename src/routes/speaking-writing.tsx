@@ -6,11 +6,13 @@ import { SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/speaking-writing")({
   head: () => ({
     meta: [
-      { title: "TOEIC Speaking & Writing — Format & Practice | ToeicPath" },
-      { name: "description", content: "Master the TOEIC S&W test: all 11 speaking and 8 writing tasks explained, with practice prompts and model responses." },
-      { property: "og:title", content: "TOEIC Speaking & Writing — Format & Practice" },
-      { property: "og:description", content: "All speaking and writing tasks explained, with practice prompts and model responses." },
+      { title: "Speaking & Writing | ToeicPath - Official TOEIC Prep Guide" },
+      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:title", content: "Speaking & Writing | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:url", content: "/speaking-writing" },
     ],
+    links: [{ rel: "canonical", href: "/speaking-writing" }],
   }),
   component: Page,
 });
@@ -32,12 +34,17 @@ const writingTasks = [
 
 const speakingPrompts = [
   {
-    title: "Describe a picture",
-    prompt: "You will see a photo of a busy coffee shop. Describe in 45 seconds: where it is, who is there, what they are doing, and the overall atmosphere.",
-    model: "This is a busy coffee shop, probably during the morning rush. In the foreground, a barista wearing a brown apron is preparing a drink behind the counter. To the right, several customers are sitting at small wooden tables — one is working on a laptop while another is reading a newspaper. The lighting is warm and the place looks cozy and welcoming.",
+    title: "Task 1 · Read a text aloud",
+    prompt: "Read the following announcement aloud. You have 45 seconds to prepare and 45 seconds to read. Focus on clear pronunciation, natural pace, and pauses at commas and periods.",
+    model: "Thank you for calling the City Transit helpline. Please stay on the line for the next available representative. For schedule updates, press one.",
   },
   {
-    title: "Express an opinion",
+    title: "Task 2 · Describe a picture",
+    prompt: "Describe a picture of three people in a boardroom looking at a chart on a screen. You have 30 seconds to prepare and 45 seconds to speak.",
+    model: "This picture appears to be taken inside a modern corporate boardroom during a business presentation. Three colleagues are seated around a long conference table, all facing a large screen mounted on the wall. The screen shows what looks like a bar chart, possibly displaying quarterly sales figures. On the left, a woman in a navy blazer is pointing at the chart, while the two others — a man in a white shirt and another woman with glasses — are taking notes. The atmosphere looks focused and professional.",
+  },
+  {
+    title: "Speaking Task 11 · Express an opinion",
     prompt: "Some people prefer to work for a large company, while others prefer to work for a small company. Which do you prefer, and why? Give specific reasons and examples.",
     model: "I prefer working for a small company. First, communication is faster because teams are close, so decisions don't get stuck in long approval chains. Second, employees usually take on a wider range of tasks, which helps them grow new skills quickly. For example, in my previous internship at a five-person startup, I handled both marketing and customer support, and that experience was more valuable to my career than a single-focus role would have been.",
   },
@@ -63,8 +70,8 @@ function Page() {
       {/* Speaking */}
       <section className="mx-auto w-full max-w-6xl px-5 py-14">
         <div className="grid gap-4 sm:grid-cols-3">
-          <Stat icon={<Mic className="h-4 w-4" />} label="Speaking" value="11 questions" />
-          <Stat icon={<Clock className="h-4 w-4" />} label="Time" value="≈ 20 minutes" />
+          <Stat icon={<Mic className="h-4 w-4" />} label="Speaking" value="11 Questions" />
+          <Stat icon={<Clock className="h-4 w-4" />} label="Time" value="20 Minutes" />
           <Stat icon={<Target className="h-4 w-4" />} label="Score" value="0 – 200" />
         </div>
 
@@ -78,8 +85,8 @@ function Page() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 py-14">
           <div className="grid gap-4 sm:grid-cols-3">
-            <Stat icon={<PenLine className="h-4 w-4" />} label="Writing" value="8 questions" />
-            <Stat icon={<Clock className="h-4 w-4" />} label="Time" value="≈ 60 minutes" />
+            <Stat icon={<PenLine className="h-4 w-4" />} label="Writing" value="8 Questions" />
+            <Stat icon={<Clock className="h-4 w-4" />} label="Time" value="60 Minutes" />
             <Stat icon={<Target className="h-4 w-4" />} label="Score" value="0 – 200" />
           </div>
 
