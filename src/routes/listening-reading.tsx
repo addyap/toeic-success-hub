@@ -6,11 +6,13 @@ import { PracticeQuestion, type PracticeQuestionData } from "@/components/Practi
 export const Route = createFileRoute("/listening-reading")({
   head: () => ({
     meta: [
-      { title: "TOEIC Listening & Reading — Format & Practice | ToeicPath" },
-      { name: "description", content: "Complete guide to the TOEIC L&R test: all 7 parts explained with interactive practice questions and answer explanations." },
-      { property: "og:title", content: "TOEIC Listening & Reading — Format & Practice" },
-      { property: "og:description", content: "All 7 parts explained with interactive practice questions." },
+      { title: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
+      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:title", content: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:url", content: "/listening-reading" },
     ],
+    links: [{ rel: "canonical", href: "/listening-reading" }],
   }),
   component: Page,
 });
@@ -29,41 +31,55 @@ const readingParts = [
 ];
 
 const part1: PracticeQuestionData = {
-  prompt: "Part 1 · Look at the description of the scene and choose the sentence that best matches.",
-  context: "Scene: A woman is sitting at a desk. Her hands are on a laptop keyboard. A coffee cup is next to the laptop.",
+  prompt: "Part 1 · Look at the image of a construction site and choose the sentence that best describes it.",
+  context: "Scene: A construction site at midday. Several workers in high-visibility vests are walking near steel beams. All of them are wearing yellow hard hats. A large crane is operating in the background, lifting materials.",
   options: [
-    { label: "A", text: "She is writing on a whiteboard." },
-    { label: "B", text: "She is typing on a keyboard." },
-    { label: "C", text: "She is talking on the phone." },
-    { label: "D", text: "She is reading a book." },
+    { label: "A", text: "Workers are wearing safety helmets." },
+    { label: "B", text: "The crane is being dismantled." },
+    { label: "C", text: "A building is being demolished." },
+    { label: "D", text: "The site is empty of equipment." },
   ],
-  correct: "B",
-  explanation: "The scene specifies her hands are on a laptop keyboard, which matches 'typing on a keyboard'. The other options describe actions not present in the image.",
+  correct: "A",
+  explanation: "The scene clearly states all workers are wearing yellow hard hats — that matches 'safety helmets'. (B) is wrong because the crane is operating, not being taken apart. (C) is wrong because construction is happening, not demolition. (D) contradicts the visible crane and steel beams.",
 };
 
 const part2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
-  context: "Question: \"When is the marketing report due?\"",
+  context: "Question: \"When is the quarterly report due?\"",
   options: [
-    { label: "A", text: "In the meeting room." },
-    { label: "B", text: "By Friday afternoon." },
-    { label: "C", text: "Yes, she wrote it." },
+    { label: "A", text: "In the conference room." },
+    { label: "B", text: "By the end of the week." },
+    { label: "C", text: "Yes, I reported it." },
   ],
   correct: "B",
-  explanation: "'When' asks for a time. 'By Friday afternoon' answers the time question. (A) answers 'where' and (C) answers a yes/no question.",
+  explanation: "'When' asks for a time. 'By the end of the week' answers a time question. (A) answers 'where' and (C) is a yes/no answer that also plays on the word 'report' — a classic Part 2 distractor.",
 };
 
 const part5: PracticeQuestionData = {
   prompt: "Part 5 · Choose the word that best completes the sentence.",
-  context: "All employees must ______ the new safety guidelines before entering the warehouse.",
+  context: "The CEO ______ announced the merger during the press conference.",
   options: [
-    { label: "A", text: "review" },
-    { label: "B", text: "reviewing" },
-    { label: "C", text: "reviewed" },
-    { label: "D", text: "reviews" },
+    { label: "A", text: "formal" },
+    { label: "B", text: "formally" },
+    { label: "C", text: "formality" },
+    { label: "D", text: "formalize" },
+  ],
+  correct: "B",
+  explanation: "The blank modifies the verb 'announced', so an adverb is needed: 'formally'. (A) is an adjective, (C) is a noun, and (D) is a verb — none can modify 'announced' grammatically.",
+};
+
+const part6: PracticeQuestionData = {
+  prompt: "Part 6 · Read the email and choose the best word for each blank in turn.",
+  context:
+    "From: it-support@northwind.co\nTo: all-staff@northwind.co\nSubject: System Upgrade — This Weekend\n\nDear team,\n\nPlease be advised that a company-wide system upgrade has been (1) ______ for Saturday, June 20, from 10:00 PM to 2:00 AM. During this window, email and file servers will be unavailable. We apologize for any (2) ______ this may cause and thank you for your patience.\n\nIf you have urgent work, please complete it before 9:30 PM Saturday. Thank you for your (3) ______ and cooperation as we improve our infrastructure.\n\n— IT Support\n\nFor blank (1):",
+  options: [
+    { label: "A", text: "scheduled" },
+    { label: "B", text: "schedule" },
+    { label: "C", text: "scheduling" },
+    { label: "D", text: "schedules" },
   ],
   correct: "A",
-  explanation: "After the modal verb 'must', the base form of the verb is required: 'must review'.",
+  explanation: "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. Blank (2) is 'interruption' (the noun that fits 'any ______ this may cause') and blank (3) is 'convenience' — together a fixed business phrase: 'Thank you for your convenience and cooperation.'",
 };
 
 const part7: PracticeQuestionData = {
@@ -125,7 +141,8 @@ function Page() {
             <PracticeQuestion data={part1} index={0} />
             <PracticeQuestion data={part2} index={1} />
             <PracticeQuestion data={part5} index={2} />
-            <PracticeQuestion data={part7} index={3} />
+            <PracticeQuestion data={part6} index={3} />
+            <PracticeQuestion data={part7} index={4} />
           </div>
         </div>
       </section>

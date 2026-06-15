@@ -5,11 +5,13 @@ import { SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/study-tips")({
   head: () => ({
     meta: [
-      { title: "TOEIC Study Tips & Test Strategy | ToeicPath" },
-      { name: "description", content: "Practical time-management, listening, reading, speaking and writing strategies to lift your TOEIC score." },
-      { property: "og:title", content: "TOEIC Study Tips & Test Strategy" },
-      { property: "og:description", content: "Practical strategies to lift your TOEIC score." },
+      { title: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
+      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:title", content: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      { property: "og:url", content: "/study-tips" },
     ],
+    links: [{ rel: "canonical", href: "/study-tips" }],
   }),
   component: Page,
 });
@@ -27,8 +29,9 @@ const sections = [
     title: "Listening",
     timing: "Average 12 seconds per question — there is no time to re-listen.",
     tips: [
+      "Pro-Path Tip — The 'Three-Finger Rule': Keep three fingers on your answer sheet for A, B, and C as you listen, so you can eliminate wrong choices the instant you hear them.",
       "Read Part 1 photo choices BEFORE the audio starts.",
-      "In Part 2, focus on the first 2 words — they reveal question type (who/when/where).",
+      "In Part 2, focus on the first 2 words — they reveal question type (who / when / where).",
       "For Parts 3 & 4, preview the questions during the directions.",
       "Train with podcasts at 1.0x then 1.25x — the test speaks fast.",
     ],
@@ -38,9 +41,9 @@ const sections = [
     title: "Reading",
     timing: "75 minutes for 100 questions: ~30s for Part 5, ~1 min per Part 7 item.",
     tips: [
+      "Pro-Path Tip — Skim the questions BEFORE reading the long passages in Part 7. This tells you exactly what information to hunt for.",
       "Do Part 7 first if you struggle with timing — it carries the most points.",
       "For Part 5, look at the blank and the words around it before reading the full sentence.",
-      "Skim passages for the gist before reading each question stem.",
       "Never leave a blank — there is no penalty for wrong answers.",
     ],
   },
@@ -49,10 +52,10 @@ const sections = [
     title: "Speaking",
     timing: "Most tasks give 15–45 seconds prep and 30–60 seconds to respond.",
     tips: [
+      "Pro-Path Tip — Focus on intonation and stress. In the 'Read Aloud' section, pauses at commas and periods are as important as pronunciation.",
       "Record yourself daily — the test microphone shows every hesitation.",
       "Use a clear structure: opinion → reason 1 with example → reason 2 with example.",
       "Don't fix small mistakes; keep flow. Hesitation hurts more than slips.",
-      "Pronounce final consonants (-ed, -s, -t). They affect comprehensibility scores.",
     ],
   },
   {
@@ -60,6 +63,7 @@ const sections = [
     title: "Writing",
     timing: "Aim for 8 min on the email, 30 min on the opinion essay.",
     tips: [
+      "Pro-Path Tip — In the opinion essay, quality beats quantity. A well-structured 300-word essay scores higher than a repetitive 500-word one.",
       "Email task: greet, address every point asked, close politely. Three short paragraphs.",
       "Opinion essay: 4–5 paragraphs — intro, two body paragraphs with examples, conclusion.",
       "Vary sentence length and connectors (however, in addition, for instance).",
