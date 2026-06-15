@@ -4,6 +4,35 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-success: var(--success);
+  --color-primary-glow: var(--primary-glow);
+}
+
+@utility bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-gradient-soft {
+  background-image: var(--gradient-soft);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.02em;
+}
+
 /*
  * Design system definition.
  *
