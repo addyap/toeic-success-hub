@@ -57,6 +57,7 @@ const part2: PracticeQuestionData = {
 
 const part3: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  audio: { label: "Conversation 1 — Print shop brochures", durationSec: 38 },
   context:
     "(W) Hi, David. I just got back from the print shop. The brochures for tomorrow's trade show are ready, but they spelled our company name wrong on the back cover.\n(M) You're kidding. We hand those out in less than 18 hours. Can they reprint?\n(W) They said yes, but only if we approve a new proof by 5 PM today. Otherwise we'll have to use what we have.\n(M) Okay — forward me the proof as soon as it arrives and I'll sign off immediately.\n\nQuestion: What problem does the woman mention?",
   options: [
@@ -71,6 +72,7 @@ const part3: PracticeQuestionData = {
 
 const part3b: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  audio: { label: "Conversation 2 — Hotel shuttle inquiry", durationSec: 42 },
   context:
     "(M) Front desk, how may I help you?\n(W) Hi, this is Sarah Chen from room 412. I have a quick question about the airport shuttle — I saw the sign in the lobby says it runs every thirty minutes, but the brochure in my room says hourly.\n(M) Oh, I'm sorry for the confusion. We updated the schedule last month; the shuttle now departs on the hour and at half past. The next one leaves at 7:30 AM.\n(W) Great, and does it go directly to Terminal 2?\n(M) Yes, ma'am. It makes one brief stop at Terminal 1 first, then proceeds directly to Terminal 2.\n\nQuestion: Why does the woman call the front desk?",
   options: [
@@ -85,6 +87,7 @@ const part3b: PracticeQuestionData = {
 
 const part3c: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  audio: { label: "Conversation 3 — Conference room booking", durationSec: 40 },
   context:
     "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a projector and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
   options: [
