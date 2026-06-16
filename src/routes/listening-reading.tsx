@@ -197,10 +197,12 @@ function Page() {
             <PracticeQuestion data={part1} index={0} />
             <PracticeQuestion data={part2} index={1} />
             <PracticeQuestion data={part3} index={2} />
-            <PracticeQuestion data={part4} index={3} />
-            <PracticeQuestion data={part5} index={4} />
-            <PracticeQuestion data={part6} index={5} />
-            <PracticeQuestion data={part7} index={6} />
+            <PracticeQuestion data={part3b} index={3} />
+            <PracticeQuestion data={part3c} index={4} />
+            <PracticeQuestion data={part4} index={5} />
+            <PracticeQuestion data={part5} index={6} />
+            <PracticeQuestion data={part6} index={7} />
+            <PracticeQuestion data={part7} index={8} />
           </div>
         </div>
       </section>
