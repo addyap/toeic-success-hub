@@ -69,6 +69,34 @@ const part3: PracticeQuestionData = {
   explanation: "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
 };
 
+const part3b: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  context:
+    "(M) Front desk, how may I help you?\n(W) Hi, this is Sarah Chen from room 412. I have a quick question about the airport shuttle — I saw the sign in the lobby says it runs every thirty minutes, but the brochure in my room says hourly.\n(M) Oh, I'm sorry for the confusion. We updated the schedule last month; the shuttle now departs on the hour and at half past. The next one leaves at 7:30 AM.\n(W) Great, and does it go directly to Terminal 2?\n(M) Yes, ma'am. It makes one brief stop at Terminal 1 first, then proceeds directly to Terminal 2.\n\nQuestion: Why does the woman call the front desk?",
+  options: [
+    { label: "A", text: "To extend her stay by one night." },
+    { label: "B", text: "To report a problem with her room." },
+    { label: "C", text: "To ask about conflicting shuttle information." },
+    { label: "D", text: "To request a wake-up call for 7:00 AM." },
+  ],
+  correct: "C",
+  explanation: "The woman mentions she saw two different shuttle schedules — one in the lobby ('every thirty minutes') and one in her room brochure ('hourly'). She calls to resolve this conflicting information. (A), (B), and (D) are never mentioned; they are common hotel-related distractors.",
+};
+
+const part3c: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  context:
+    "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a projector and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
+  options: [
+    { label: "A", text: "Cancel an existing meeting with a client." },
+    { label: "B", text: "Find an available room for a presentation." },
+    { label: "C", text: "Repair a broken projector in the Rose Room." },
+    { label: "D", text: "Schedule a training session for new staff." },
+  ],
+  correct: "B",
+  explanation: "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative. The core action is finding an available room. (A), (C), and (D) are not discussed — the projector works fine, and the meeting is a client presentation, not a training session.",
+};
+
 const part4: PracticeQuestionData = {
   prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
   context:
@@ -169,10 +197,12 @@ function Page() {
             <PracticeQuestion data={part1} index={0} />
             <PracticeQuestion data={part2} index={1} />
             <PracticeQuestion data={part3} index={2} />
-            <PracticeQuestion data={part4} index={3} />
-            <PracticeQuestion data={part5} index={4} />
-            <PracticeQuestion data={part6} index={5} />
-            <PracticeQuestion data={part7} index={6} />
+            <PracticeQuestion data={part3b} index={3} />
+            <PracticeQuestion data={part3c} index={4} />
+            <PracticeQuestion data={part4} index={5} />
+            <PracticeQuestion data={part5} index={6} />
+            <PracticeQuestion data={part6} index={7} />
+            <PracticeQuestion data={part7} index={8} />
           </div>
         </div>
       </section>
