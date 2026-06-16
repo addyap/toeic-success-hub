@@ -55,6 +55,34 @@ const part2: PracticeQuestionData = {
   explanation: "'When' asks for a time. 'By the end of the week' answers a time question. (A) answers 'where' and (C) is a yes/no answer that also plays on the word 'report' — a classic Part 2 distractor.",
 };
 
+const part3: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  context:
+    "(W) Hi, David. I just got back from the print shop. The brochures for tomorrow's trade show are ready, but they spelled our company name wrong on the back cover.\n(M) You're kidding. We hand those out in less than 18 hours. Can they reprint?\n(W) They said yes, but only if we approve a new proof by 5 PM today. Otherwise we'll have to use what we have.\n(M) Okay — forward me the proof as soon as it arrives and I'll sign off immediately.\n\nQuestion: What problem does the woman mention?",
+  options: [
+    { label: "A", text: "The trade show has been postponed." },
+    { label: "B", text: "The print shop is closed for the day." },
+    { label: "C", text: "The company name is misspelled on the brochures." },
+    { label: "D", text: "The brochures were delivered to the wrong address." },
+  ],
+  correct: "C",
+  explanation: "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
+};
+
+const part4: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
+  context:
+    "Good morning, passengers, and welcome aboard Skyline Rail service 402 to Central Station. Please be advised that due to scheduled track maintenance between Riverside and Oak Park, we will be operating on a single track for approximately twenty minutes. You can expect a delay of about fifteen minutes into Central Station. Complimentary coffee and tea are available in the café car for the duration of the delay. We appreciate your patience this morning.\n\nQuestion: What does the speaker offer the passengers?",
+  options: [
+    { label: "A", text: "A full refund for their tickets." },
+    { label: "B", text: "Free drinks in the café car." },
+    { label: "C", text: "A transfer to an express train." },
+    { label: "D", text: "A discount on their next trip." },
+  ],
+  correct: "B",
+  explanation: "The announcement states 'Complimentary coffee and tea are available in the café car' — 'complimentary' means free. (A), (C), and (D) are common compensation offers but are never mentioned in the talk.",
+};
+
 const part5: PracticeQuestionData = {
   prompt: "Part 5 · Choose the word that best completes the sentence.",
   context: "The CEO ______ announced the merger during the press conference.",
@@ -140,9 +168,11 @@ function Page() {
           <div className="mt-8 space-y-5">
             <PracticeQuestion data={part1} index={0} />
             <PracticeQuestion data={part2} index={1} />
-            <PracticeQuestion data={part5} index={2} />
-            <PracticeQuestion data={part6} index={3} />
-            <PracticeQuestion data={part7} index={4} />
+            <PracticeQuestion data={part3} index={2} />
+            <PracticeQuestion data={part4} index={3} />
+            <PracticeQuestion data={part5} index={4} />
+            <PracticeQuestion data={part6} index={5} />
+            <PracticeQuestion data={part7} index={6} />
           </div>
         </div>
       </section>
