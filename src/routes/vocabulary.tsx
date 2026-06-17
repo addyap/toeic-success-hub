@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { Sparkles, RefreshCw, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Sparkles, RefreshCw, ChevronLeft, ChevronRight, Check, X, BookOpen, Brain } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn } from "@/lib/utils";
+import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
 
 export const Route = createFileRoute("/vocabulary")({
   head: () => ({
     meta: [
-      { title: "Vocabulary Builder | ToeicPath - Official TOEIC Prep Guide" },
+      { title: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
       { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:title", content: "Vocabulary Builder | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:title", content: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
       { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
       { property: "og:url", content: "/vocabulary" },
     ],
@@ -18,69 +19,19 @@ export const Route = createFileRoute("/vocabulary")({
   component: Page,
 });
 
-type Card = { word: string; pos: string; meaning: string; example: string };
-type Deck = { id: string; name: string; emoji: string; cards: Card[] };
+type Filter = "All" | VocabCategory;
+type Mode = "flashcards" | "quiz";
 
-const decks: Deck[] = [
-  {
-    id: "office",
-    name: "Office & Management",
-    emoji: "💼",
-    cards: [
-      { word: "agenda", pos: "noun", meaning: "A list of items to be discussed at a meeting.", example: "Please review the agenda before tomorrow's meeting." },
-      { word: "appraisal", pos: "noun", meaning: "A formal evaluation of an employee's performance.", example: "Her annual appraisal is scheduled for next Monday." },
-      { word: "briefing", pos: "noun", meaning: "A short meeting to give essential information.", example: "The morning briefing covered all key project updates." },
-      { word: "delegate", pos: "verb", meaning: "To assign a task or responsibility to another person.", example: "Good managers delegate work to develop their team." },
-      { word: "minutes", pos: "noun", meaning: "The written record of what was said at a meeting.", example: "Could you send out the minutes by end of day?" },
-      { word: "quorum", pos: "noun", meaning: "The minimum number of members needed for a meeting to be valid.", example: "We can't vote on the proposal without a quorum present." },
-      { word: "resignation", pos: "noun", meaning: "A formal statement that you are leaving a job.", example: "She submitted her resignation effective at the end of the month." },
-      { word: "supervise", pos: "verb", meaning: "To watch over and direct the work of others.", example: "He supervises a team of twelve engineers." },
-    ],
-  },
-  {
-    id: "travel",
-    name: "Travel & Entertainment",
-    emoji: "✈️",
-    cards: [
-      { word: "itinerary", pos: "noun", meaning: "A planned route or schedule of a journey.", example: "Your itinerary has been emailed to you." },
-      { word: "layover", pos: "noun", meaning: "A short stop between flights on a longer trip.", example: "We have a three-hour layover in Singapore." },
-      { word: "concierge", pos: "noun", meaning: "A hotel employee who assists guests with services and information.", example: "The concierge can recommend a good restaurant nearby." },
-      { word: "fully booked", pos: "phrase", meaning: "Having no available rooms, seats, or reservations.", example: "I'm sorry, the hotel is fully booked this weekend." },
-      { word: "voucher", pos: "noun", meaning: "A document that can be exchanged for goods, services, or a discount.", example: "Use this voucher for a free breakfast during your stay." },
-      { word: "excursion", pos: "noun", meaning: "A short trip or outing, often organized for a group.", example: "The conference includes an optional excursion to the old city." },
-      { word: "boarding pass", pos: "noun", meaning: "A document allowing you to board a flight.", example: "Please have your boarding pass ready at the gate." },
-    ],
-  },
-  {
-    id: "finance",
-    name: "Finance & Budgeting",
-    emoji: "💳",
-    cards: [
-      { word: "audit", pos: "noun/verb", meaning: "An official inspection of an organization's accounts.", example: "The annual audit found no significant issues." },
-      { word: "deficit", pos: "noun", meaning: "The amount by which spending is greater than income.", example: "The company reported a deficit for the second quarter." },
-      { word: "dividend", pos: "noun", meaning: "A share of a company's profits paid to shareholders.", example: "The board declared a quarterly dividend of $0.50 per share." },
-      { word: "fiscal", pos: "adjective", meaning: "Relating to financial matters, especially of a government or company.", example: "Our fiscal year ends in March." },
-      { word: "liability", pos: "noun", meaning: "A financial obligation or debt owed by a company.", example: "Long-term liabilities are listed on the balance sheet." },
-      { word: "revenue", pos: "noun", meaning: "Income generated from business activities.", example: "Revenue grew 12% year over year." },
-      { word: "yield", pos: "noun/verb", meaning: "The return or profit generated by an investment.", example: "The bond offers a yield of 4.2% annually." },
-      { word: "overhead", pos: "noun", meaning: "Ongoing business costs not directly tied to a product or service.", example: "Moving to a smaller office helped reduce overhead." },
-    ],
-  },
-  {
-    id: "health",
-    name: "Health & Technical",
-    emoji: "🩺",
-    cards: [
-      { word: "diagnosis", pos: "noun", meaning: "The identification of an illness or problem.", example: "The diagnosis confirmed a mild case of the flu." },
-      { word: "prescription", pos: "noun", meaning: "A written instruction from a doctor for medication.", example: "Please pick up your prescription from the pharmacy." },
-      { word: "preventive", pos: "adjective", meaning: "Designed to keep something undesirable from happening.", example: "Preventive maintenance reduces equipment downtime." },
-      { word: "specification", pos: "noun", meaning: "A detailed description of design, materials, or requirements.", example: "The product specifications are listed on page two." },
-      { word: "troubleshooting", pos: "noun", meaning: "The process of identifying and solving problems in a system.", example: "Troubleshooting the network outage took most of the morning." },
-      { word: "maintenance", pos: "noun", meaning: "The process of keeping equipment in good working condition.", example: "The server will be offline for scheduled maintenance." },
-      { word: "upgrade", pos: "noun/verb", meaning: "An improvement or newer version of something.", example: "We rolled out a software upgrade across all departments." },
-    ],
-  },
+const FILTERS: { id: Filter; emoji: string }[] = [
+  { id: "All", emoji: "✨" },
+  { id: "Management", emoji: "💼" },
+  { id: "Travel", emoji: "✈️" },
+  { id: "Finance", emoji: "💳" },
+  { id: "Technical", emoji: "🛠️" },
 ];
+
+const LS_FILTER = "toeicpath:vocab:filter";
+const LS_SCORE = "toeicpath:vocab:score";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -92,114 +43,304 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function Page() {
-  const [deckId, setDeckId] = useState(decks[0].id);
-  const deck = decks.find((d) => d.id === deckId)!;
-  const [order, setOrder] = useState<number[]>(() => deck.cards.map((_, i) => i));
-  const [idx, setIdx] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  const [filter, setFilter] = useState<Filter>("All");
+  const [mode, setMode] = useState<Mode>("flashcards");
+  const [score, setScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+  const [hydrated, setHydrated] = useState(false);
 
-  function selectDeck(id: string) {
-    const d = decks.find((x) => x.id === id)!;
-    setDeckId(id);
-    setOrder(d.cards.map((_, i) => i));
-    setIdx(0);
-    setFlipped(false);
-  }
+  // Hydrate from localStorage
+  useEffect(() => {
+    try {
+      const f = localStorage.getItem(LS_FILTER) as Filter | null;
+      if (f && FILTERS.some((x) => x.id === f)) setFilter(f);
+      const s = localStorage.getItem(LS_SCORE);
+      if (s) {
+        const parsed = JSON.parse(s);
+        if (typeof parsed?.correct === "number" && typeof parsed?.total === "number") setScore(parsed);
+      }
+    } catch {}
+    setHydrated(true);
+  }, []);
 
-  const card = useMemo(() => deck.cards[order[idx]], [deck, order, idx]);
+  useEffect(() => {
+    if (hydrated) try { localStorage.setItem(LS_FILTER, filter); } catch {}
+  }, [filter, hydrated]);
 
-  function next() { setFlipped(false); setIdx((i) => (i + 1) % order.length); }
-  function prev() { setFlipped(false); setIdx((i) => (i - 1 + order.length) % order.length); }
-  function reshuffle() { setOrder(shuffle(deck.cards.map((_, i) => i))); setIdx(0); setFlipped(false); }
+  useEffect(() => {
+    if (hydrated) try { localStorage.setItem(LS_SCORE, JSON.stringify(score)); } catch {}
+  }, [score, hydrated]);
+
+  const terms = useMemo(
+    () => (filter === "All" ? vocabulary : vocabulary.filter((t) => t.category === filter)),
+    [filter],
+  );
 
   return (
     <SiteLayout>
       <section className="bg-gradient-soft">
         <div className="mx-auto w-full max-w-6xl px-5 py-12 md:py-16">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> Vocabulary Builder
+            <Sparkles className="h-3.5 w-3.5" /> Business Lexicon
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            High-frequency TOEIC words, ready to memorize.
+            High-frequency TOEIC vocabulary, built for business.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Tap a card to flip it. Words are grouped by the business contexts most common in the test.
+            Study with flashcards, then test recall with a quick quiz. Your category and score are saved on this device.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-3xl px-5 py-12">
+      <section className="mx-auto w-full max-w-3xl px-5 py-10">
+        {/* Category filter */}
         <div className="flex flex-wrap gap-2">
-          {decks.map((d) => (
+          {FILTERS.map((f) => (
             <button
-              key={d.id}
-              onClick={() => selectDeck(d.id)}
+              key={f.id}
+              onClick={() => setFilter(f.id)}
               className={cn(
                 "rounded-full border px-4 py-2 text-sm font-medium transition",
-                d.id === deckId
+                f.id === filter
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-foreground hover:bg-muted",
               )}
             >
-              <span className="mr-1">{d.emoji}</span> {d.name}
+              <span className="mr-1">{f.emoji}</span> {f.id}
             </button>
           ))}
         </div>
 
-        <div className="mt-8">
+        {/* Mode toggle */}
+        <div className="mt-6 inline-flex rounded-full border border-border bg-card p-1">
           <button
-            onClick={() => setFlipped((f) => !f)}
-            className="block w-full text-left"
-            aria-label="Flip flashcard"
+            onClick={() => setMode("flashcards")}
+            className={cn(
+              "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
+              mode === "flashcards" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+            )}
           >
-            <div className="relative min-h-[280px] overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-elegant transition hover:-translate-y-0.5 sm:min-h-[320px]">
-              <div className="absolute right-5 top-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {idx + 1} / {order.length}
-              </div>
-              {!flipped ? (
-                <div className="flex h-full min-h-[220px] flex-col items-center justify-center text-center">
-                  <div className="text-xs uppercase tracking-wider text-primary">{card.pos}</div>
-                  <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">{card.word}</div>
-                  <div className="mt-6 text-xs text-muted-foreground">Tap to reveal meaning</div>
-                </div>
-              ) : (
-                <div className="flex h-full min-h-[220px] flex-col justify-center">
-                  <div className="font-display text-2xl font-semibold sm:text-3xl">{card.word}</div>
-                  <p className="mt-3 text-base leading-relaxed text-foreground">{card.meaning}</p>
-                  <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">"{card.example}"</p>
-                </div>
-              )}
-            </div>
+            <BookOpen className="h-4 w-4" /> Flashcards
           </button>
-
-          <div className="mt-5 flex items-center justify-between gap-3">
-            <button onClick={prev} className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
-              <ChevronLeft className="h-4 w-4" /> Prev
-            </button>
-            <button onClick={reshuffle} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
-              <RefreshCw className="h-4 w-4" /> Shuffle
-            </button>
-            <button onClick={next} className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-95">
-              Next <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+          <button
+            onClick={() => setMode("quiz")}
+            className={cn(
+              "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
+              mode === "quiz" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            <Brain className="h-4 w-4" /> Quiz
+          </button>
         </div>
 
-        <div className="mt-12">
-          <h2 className="font-display text-2xl font-semibold">All words in this deck</h2>
-          <div className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card">
-            {deck.cards.map((c) => (
-              <div key={c.word} className="grid grid-cols-[minmax(0,1fr)_auto] gap-3 p-4 sm:grid-cols-[160px_minmax(0,1fr)]">
-                <div>
-                  <div className="font-semibold">{c.word}</div>
-                  <div className="text-xs text-muted-foreground">{c.pos}</div>
-                </div>
-                <div className="min-w-0 text-sm text-muted-foreground">{c.meaning}</div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-8">
+          {mode === "flashcards" ? (
+            <Flashcards terms={terms} key={`fc-${filter}`} />
+          ) : (
+            <Quiz
+              terms={terms}
+              pool={vocabulary}
+              score={score}
+              setScore={setScore}
+              key={`qz-${filter}`}
+            />
+          )}
         </div>
       </section>
     </SiteLayout>
+  );
+}
+
+function Flashcards({ terms }: { terms: VocabTerm[] }) {
+  const [order, setOrder] = useState<number[]>(() => terms.map((_, i) => i));
+  const [idx, setIdx] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+
+  useEffect(() => {
+    setOrder(terms.map((_, i) => i));
+    setIdx(0);
+    setFlipped(false);
+  }, [terms]);
+
+  if (terms.length === 0) {
+    return <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">No terms in this category yet.</div>;
+  }
+
+  const card = terms[order[idx] ?? 0];
+
+  const next = () => { setFlipped(false); setIdx((i) => (i + 1) % order.length); };
+  const prev = () => { setFlipped(false); setIdx((i) => (i - 1 + order.length) % order.length); };
+  const reshuffle = () => { setOrder(shuffle(terms.map((_, i) => i))); setIdx(0); setFlipped(false); };
+
+  return (
+    <div>
+      <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        Card {idx + 1} of {order.length}
+      </div>
+      <button
+        onClick={() => setFlipped((f) => !f)}
+        className="block w-full text-left"
+        aria-label="Flip flashcard"
+      >
+        <div className="relative min-h-[280px] overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-elegant transition hover:-translate-y-0.5 sm:min-h-[320px]">
+          <div className="absolute right-5 top-5 text-xs font-semibold uppercase tracking-wider text-primary">
+            {card.category}
+          </div>
+          {!flipped ? (
+            <div className="flex h-full min-h-[220px] flex-col items-center justify-center text-center">
+              <div className="text-xs uppercase tracking-wider text-primary">{card.pos}</div>
+              <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">{card.term}</div>
+              <div className="mt-6 text-xs text-muted-foreground">Tap to reveal meaning</div>
+            </div>
+          ) : (
+            <div className="flex h-full min-h-[220px] flex-col justify-center">
+              <div className="font-display text-2xl font-semibold sm:text-3xl">{card.term}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{card.pos}</div>
+              <p className="mt-3 text-base leading-relaxed text-foreground">{card.definition}</p>
+              <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">"{card.example}"</p>
+            </div>
+          )}
+        </div>
+      </button>
+
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <button onClick={prev} className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
+          <ChevronLeft className="h-4 w-4" /> Prev
+        </button>
+        <button onClick={reshuffle} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
+          <RefreshCw className="h-4 w-4" /> Shuffle
+        </button>
+        <button onClick={next} className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-95">
+          Next <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+interface QuizQuestion {
+  answer: VocabTerm;
+  options: VocabTerm[];
+}
+
+function buildQuestion(terms: VocabTerm[], pool: VocabTerm[]): QuizQuestion {
+  const answer = terms[Math.floor(Math.random() * terms.length)];
+  // Distractors prefer same category, fall back to full pool
+  const sameCat = pool.filter((t) => t.term !== answer.term && t.category === answer.category);
+  const others = pool.filter((t) => t.term !== answer.term);
+  const distractorPool = sameCat.length >= 3 ? sameCat : others;
+  const distractors = shuffle(distractorPool).slice(0, 3);
+  const options = shuffle([answer, ...distractors]);
+  return { answer, options };
+}
+
+function Quiz({
+  terms,
+  pool,
+  score,
+  setScore,
+}: {
+  terms: VocabTerm[];
+  pool: VocabTerm[];
+  score: { correct: number; total: number };
+  setScore: React.Dispatch<React.SetStateAction<{ correct: number; total: number }>>;
+}) {
+  const [q, setQ] = useState<QuizQuestion | null>(null);
+  const [picked, setPicked] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (terms.length >= 1) setQ(buildQuestion(terms, pool));
+    else setQ(null);
+    setPicked(null);
+  }, [terms, pool]);
+
+  if (!q) {
+    return <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">Not enough terms to quiz in this category.</div>;
+  }
+
+  const revealed = picked !== null;
+
+  const choose = (term: string) => {
+    if (revealed) return;
+    setPicked(term);
+    setScore((s) => ({
+      correct: s.correct + (term === q.answer.term ? 1 : 0),
+      total: s.total + 1,
+    }));
+  };
+
+  const nextQuestion = () => {
+    setPicked(null);
+    setQ(buildQuestion(terms, pool));
+  };
+
+  const resetScore = () => setScore({ correct: 0, total: 0 });
+
+  const pct = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0;
+
+  return (
+    <div>
+      <div className="mb-3 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <span>Score: <span className="text-foreground">{score.correct} / {score.total}</span> {score.total > 0 && <span className="text-primary">({pct}%)</span>}</span>
+        <button onClick={resetScore} className="text-primary hover:underline">Reset</button>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+        <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+          {q.answer.category} · {q.answer.pos}
+        </div>
+        <p className="mt-2 text-base font-medium text-foreground sm:text-lg">
+          Which term matches this definition?
+        </p>
+        <p className="mt-2 rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+          {q.answer.definition}
+        </p>
+
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          {q.options.map((opt) => {
+            const isCorrect = opt.term === q.answer.term;
+            const isPicked = picked === opt.term;
+            return (
+              <button
+                key={opt.term}
+                onClick={() => choose(opt.term)}
+                disabled={revealed}
+                className={cn(
+                  "flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
+                  !revealed && "border-border hover:border-primary/60 hover:bg-muted",
+                  revealed && isCorrect && "border-success/60 bg-success/10",
+                  revealed && isPicked && !isCorrect && "border-destructive/60 bg-destructive/10",
+                  revealed && !isPicked && !isCorrect && "opacity-60",
+                )}
+              >
+                <span
+                  className={cn(
+                    "grid h-7 w-7 shrink-0 place-items-center rounded-full border text-xs font-bold",
+                    !revealed && "border-border text-muted-foreground",
+                    revealed && isCorrect && "border-success bg-success text-primary-foreground",
+                    revealed && isPicked && !isCorrect && "border-destructive bg-destructive text-destructive-foreground",
+                  )}
+                >
+                  {revealed && isCorrect ? <Check className="h-4 w-4" /> : revealed && isPicked ? <X className="h-4 w-4" /> : "•"}
+                </span>
+                <span className="font-medium">{opt.term}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {revealed && (
+          <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Example</div>
+            <p className="mt-1 text-sm italic leading-relaxed text-foreground">"{q.answer.example}"</p>
+            <button
+              onClick={nextQuestion}
+              className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:opacity-95"
+            >
+              Next question <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
