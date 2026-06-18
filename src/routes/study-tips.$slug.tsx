@@ -52,7 +52,7 @@ export const Route = createFileRoute("/study-tips/$slug")({
 });
 
 function ArticlePage() {
-  const { tip } = Route.useLoaderData();
+  const { tip } = Route.useLoaderData() as { tip: StudyTip };
   return (
     <SiteLayout>
       <article className="mx-auto w-full max-w-3xl px-5 py-12 md:py-16">
