@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Headphones, MessageSquare, Target, Lightbulb } from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { studyTips, type TipCategory } from "@/data/studyTips";
+import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
@@ -11,7 +11,7 @@ const categoryIcon: Record<TipCategory, ReactNode> = {
 };
 
 export const Route = createFileRoute("/study-tips/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { tip: StudyTip } => {
     const tip = studyTips.find((t) => t.slug === params.slug);
     if (!tip) throw notFound();
     return { tip };
