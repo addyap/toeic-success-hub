@@ -10,20 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VocabularyRouteImport } from './routes/vocabulary'
-import { Route as StudyTipsRouteImport } from './routes/study-tips'
 import { Route as SpeakingWritingRouteImport } from './routes/speaking-writing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudyTipsIndexRouteImport } from './routes/study-tips.index'
+import { Route as StudyTipsSlugRouteImport } from './routes/study-tips.$slug'
 
 const VocabularyRoute = VocabularyRouteImport.update({
   id: '/vocabulary',
   path: '/vocabulary',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyTipsRoute = StudyTipsRouteImport.update({
-  id: '/study-tips',
-  path: '/study-tips',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SpeakingWritingRoute = SpeakingWritingRouteImport.update({
@@ -46,22 +42,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudyTipsIndexRoute = StudyTipsIndexRouteImport.update({
+  id: '/study-tips/',
+  path: '/study-tips/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyTipsSlugRoute = StudyTipsSlugRouteImport.update({
+  id: '/study-tips/$slug',
+  path: '/study-tips/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
-  '/study-tips': typeof StudyTipsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/study-tips/$slug': typeof StudyTipsSlugRoute
+  '/study-tips/': typeof StudyTipsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
-  '/study-tips': typeof StudyTipsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/study-tips/$slug': typeof StudyTipsSlugRoute
+  '/study-tips': typeof StudyTipsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +77,9 @@ export interface FileRoutesById {
   '/listening-reading': typeof ListeningReadingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
-  '/study-tips': typeof StudyTipsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/study-tips/$slug': typeof StudyTipsSlugRoute
+  '/study-tips/': typeof StudyTipsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,24 +88,27 @@ export interface FileRouteTypes {
     | '/listening-reading'
     | '/sitemap.xml'
     | '/speaking-writing'
-    | '/study-tips'
     | '/vocabulary'
+    | '/study-tips/$slug'
+    | '/study-tips/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/listening-reading'
     | '/sitemap.xml'
     | '/speaking-writing'
-    | '/study-tips'
     | '/vocabulary'
+    | '/study-tips/$slug'
+    | '/study-tips'
   id:
     | '__root__'
     | '/'
     | '/listening-reading'
     | '/sitemap.xml'
     | '/speaking-writing'
-    | '/study-tips'
     | '/vocabulary'
+    | '/study-tips/$slug'
+    | '/study-tips/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,8 +116,9 @@ export interface RootRouteChildren {
   ListeningReadingRoute: typeof ListeningReadingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpeakingWritingRoute: typeof SpeakingWritingRoute
-  StudyTipsRoute: typeof StudyTipsRoute
   VocabularyRoute: typeof VocabularyRoute
+  StudyTipsSlugRoute: typeof StudyTipsSlugRoute
+  StudyTipsIndexRoute: typeof StudyTipsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,13 +128,6 @@ declare module '@tanstack/react-router' {
       path: '/vocabulary'
       fullPath: '/vocabulary'
       preLoaderRoute: typeof VocabularyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-tips': {
-      id: '/study-tips'
-      path: '/study-tips'
-      fullPath: '/study-tips'
-      preLoaderRoute: typeof StudyTipsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/speaking-writing': {
@@ -152,6 +158,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/study-tips/': {
+      id: '/study-tips/'
+      path: '/study-tips'
+      fullPath: '/study-tips/'
+      preLoaderRoute: typeof StudyTipsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-tips/$slug': {
+      id: '/study-tips/$slug'
+      path: '/study-tips/$slug'
+      fullPath: '/study-tips/$slug'
+      preLoaderRoute: typeof StudyTipsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -160,8 +180,9 @@ const rootRouteChildren: RootRouteChildren = {
   ListeningReadingRoute: ListeningReadingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpeakingWritingRoute: SpeakingWritingRoute,
-  StudyTipsRoute: StudyTipsRoute,
   VocabularyRoute: VocabularyRoute,
+  StudyTipsSlugRoute: StudyTipsSlugRoute,
+  StudyTipsIndexRoute: StudyTipsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
