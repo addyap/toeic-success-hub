@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { Lightbulb, Clock, ArrowRight, Headphones, BookOpen, MessageSquare, Target } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory } from "@/data/studyTips";
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/study-tips/")({
 
 const categoryOrder: TipCategory[] = ["Listening & Reading", "Speaking & Writing", "Strategy"];
 
-const categoryIcon: Record<TipCategory, JSX.Element> = {
+const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
   "Speaking & Writing": <MessageSquare className="h-4 w-4" />,
   Strategy: <Target className="h-4 w-4" />,
