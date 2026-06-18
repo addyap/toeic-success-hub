@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Headphones, BookOpen, Clock, ListChecks } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
 
@@ -32,6 +33,8 @@ const readingParts = [
 
 const part1: PracticeQuestionData = {
   prompt: "Part 1 · Look at the image of a construction site and choose the sentence that best describes it.",
+  listening: true,
+  audio: { label: "Photograph description", durationSec: 0 },
   context: "Scene: A construction site at midday. Several workers in high-visibility vests are walking near steel beams. All of them are wearing yellow hard hats. A large crane is operating in the background, lifting materials.",
   options: [
     { label: "A", text: "Workers are wearing safety helmets." },
@@ -45,6 +48,8 @@ const part1: PracticeQuestionData = {
 
 const part2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
   context: "Question: \"When is the quarterly report due?\"",
   options: [
     { label: "A", text: "In the conference room." },
@@ -57,6 +62,7 @@ const part2: PracticeQuestionData = {
 
 const part3: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
   audio: { label: "Conversation 1 — Print shop brochures", durationSec: 38 },
   context:
     "(W) Hi, David. I just got back from the print shop. The brochures for tomorrow's trade show are ready, but they spelled our company name wrong on the back cover.\n(M) You're kidding. We hand those out in less than 18 hours. Can they reprint?\n(W) They said yes, but only if we approve a new proof by 5 PM today. Otherwise we'll have to use what we have.\n(M) Okay — forward me the proof as soon as it arrives and I'll sign off immediately.\n\nQuestion: What problem does the woman mention?",
@@ -72,6 +78,7 @@ const part3: PracticeQuestionData = {
 
 const part3b: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
   audio: { label: "Conversation 2 — Hotel shuttle inquiry", durationSec: 42 },
   context:
     "(M) Front desk, how may I help you?\n(W) Hi, this is Sarah Chen from room 412. I have a quick question about the airport shuttle — I saw the sign in the lobby says it runs every thirty minutes, but the brochure in my room says hourly.\n(M) Oh, I'm sorry for the confusion. We updated the schedule last month; the shuttle now departs on the hour and at half past. The next one leaves at 7:30 AM.\n(W) Great, and does it go directly to Terminal 2?\n(M) Yes, ma'am. It makes one brief stop at Terminal 1 first, then proceeds directly to Terminal 2.\n\nQuestion: Why does the woman call the front desk?",
@@ -87,6 +94,7 @@ const part3b: PracticeQuestionData = {
 
 const part3c: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
   audio: { label: "Conversation 3 — Conference room booking", durationSec: 40 },
   context:
     "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a projector and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
@@ -102,6 +110,8 @@ const part3c: PracticeQuestionData = {
 
 const part4: PracticeQuestionData = {
   prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Train announcement", durationSec: 0 },
   context:
     "Good morning, passengers, and welcome aboard Skyline Rail service 402 to Central Station. Please be advised that due to scheduled track maintenance between Riverside and Oak Park, we will be operating on a single track for approximately twenty minutes. You can expect a delay of about fifteen minutes into Central Station. Complimentary coffee and tea are available in the café car for the duration of the delay. We appreciate your patience this morning.\n\nQuestion: What does the speaker offer the passengers?",
   options: [
@@ -194,22 +204,139 @@ function Page() {
 
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
-          <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
-          <p className="mt-2 text-muted-foreground">Try one question from each main part. Tap an answer to reveal the explanation.</p>
-          <div className="mt-8 space-y-5">
-            <PracticeQuestion data={part1} index={0} />
-            <PracticeQuestion data={part2} index={1} />
-            <PracticeQuestion data={part3} index={2} />
-            <PracticeQuestion data={part3b} index={3} />
-            <PracticeQuestion data={part3c} index={4} />
-            <PracticeQuestion data={part4} index={5} />
-            <PracticeQuestion data={part5} index={6} />
-            <PracticeQuestion data={part6} index={7} />
-            <PracticeQuestion data={part7} index={8} />
-          </div>
+          <PracticeSession
+            questions={[part1, part2, part3, part3b, part3c, part4, part5, part6, part7]}
+          />
         </div>
       </section>
     </SiteLayout>
+  );
+}
+
+const BEST_KEY = "toeicpath:lr-practice:best";
+
+function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
+  const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
+  const [resetKey, setResetKey] = useState(0);
+  const [best, setBest] = useState<number | null>(null);
+  const [bestLoaded, setBestLoaded] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(BEST_KEY);
+      if (raw) setBest(parseInt(raw, 10));
+    } catch {}
+    setBestLoaded(true);
+  }, []);
+
+  const score = useMemo(
+    () => answers.reduce((acc, a, i) => acc + (a && a === questions[i].correct ? 1 : 0), 0),
+    [answers, questions],
+  );
+  const answeredCount = answers.filter((a) => a !== null).length;
+  const total = questions.length;
+  const complete = answeredCount === total;
+  const pct = (answeredCount / total) * 100;
+
+  useEffect(() => {
+    if (!bestLoaded || !complete) return;
+    if (best === null || score > best) {
+      setBest(score);
+      try {
+        localStorage.setItem(BEST_KEY, String(score));
+      } catch {}
+    }
+  }, [complete, score, best, bestLoaded]);
+
+  const handleAnswer = (idx: number, label: string) => {
+    setAnswers((prev) => {
+      if (prev[idx] !== null) return prev;
+      const next = [...prev];
+      next[idx] = label;
+      return next;
+    });
+  };
+
+  const reset = () => {
+    setAnswers(questions.map(() => null));
+    setResetKey((k) => k + 1);
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: window.scrollY, behavior: "auto" });
+    }
+  };
+
+  return (
+    <div>
+      <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
+      <p className="mt-2 text-muted-foreground">
+        One question from each main part. Pick an answer to lock it in and reveal the explanation.
+      </p>
+
+      <div className="sticky top-2 z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Your session</div>
+            <div className="mt-0.5 font-display text-2xl font-semibold">
+              {score} <span className="text-muted-foreground">/ {total} correct</span>
+            </div>
+            <div className="text-xs text-muted-foreground">
+              Answered {answeredCount} of {total}
+              {best !== null && (
+                <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary">
+                  <Trophy className="h-3 w-3" /> Best {best}/{total}
+                </span>
+              )}
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={reset}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary"
+          >
+            <RotateCcw className="h-4 w-4" /> Reset
+          </button>
+        </div>
+        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted">
+          <div
+            className="h-full rounded-full bg-primary transition-all"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+      </div>
+
+      <div className="mt-6 space-y-5">
+        {questions.map((q, i) => (
+          <PracticeQuestion
+            key={i}
+            data={q}
+            index={i}
+            picked={answers[i]}
+            resetKey={resetKey}
+            onAnswer={(label) => handleAnswer(i, label)}
+          />
+        ))}
+      </div>
+
+      {complete && (
+        <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-5 text-center">
+          <div className="font-display text-xl font-semibold">
+            Session complete — {score}/{total}
+          </div>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {best !== null && score >= best
+              ? "New best score saved!"
+              : `Best so far: ${best}/${total}.`}
+          </p>
+          <button
+            type="button"
+            onClick={reset}
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+          >
+            <RotateCcw className="h-4 w-4" /> Try again
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
