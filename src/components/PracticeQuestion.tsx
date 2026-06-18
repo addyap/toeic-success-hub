@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Check, X, Play, Pause, RotateCcw, Headphones } from "lucide-react";
+import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface PracticeQuestionData {
@@ -12,11 +12,35 @@ export interface PracticeQuestionData {
     label: string;
     durationSec: number;
   };
+  /** When true, hide the context (transcript) until the user answers and
+   *  use SpeechSynthesis to read the context aloud instead of the fake player. */
+  listening?: boolean;
 }
 
-export function PracticeQuestion({ data, index }: { data: PracticeQuestionData; index?: number }) {
-  const [picked, setPicked] = useState<string | null>(null);
+export interface PracticeQuestionProps {
+  data: PracticeQuestionData;
+  index?: number;
+  picked?: string | null;
+  onAnswer?: (label: string, correct: boolean) => void;
+  resetKey?: number;
+}
+
+export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, resetKey }: PracticeQuestionProps) {
+  const [internalPicked, setInternalPicked] = useState<string | null>(null);
+  const controlled = pickedProp !== undefined;
+  const picked = controlled ? pickedProp ?? null : internalPicked;
   const revealed = picked !== null;
+
+  useEffect(() => {
+    if (!controlled) setInternalPicked(null);
+  }, [resetKey, controlled]);
+
+  const handlePick = (label: string) => {
+    if (revealed) return;
+    const isCorrect = label === data.correct;
+    if (!controlled) setInternalPicked(label);
+    onAnswer?.(label, isCorrect);
+  };
 
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
@@ -28,11 +52,27 @@ export function PracticeQuestion({ data, index }: { data: PracticeQuestionData; 
             </div>
           )}
           <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{data.prompt}</p>
-          {data.audio && <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />}
-          {data.context && (
-            <p className="mt-3 whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
-              {data.context}
-            </p>
+          {data.listening && data.context && (
+            <SpeechPlayer
+              label={data.audio?.label ?? "Listening audio"}
+              text={data.context}
+              resetKey={resetKey}
+            />
+          )}
+          {!data.listening && data.audio && (
+            <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />
+          )}
+          {data.context && (!data.listening || revealed) && (
+            <div className="mt-3">
+              {data.listening && (
+                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Transcript
+                </div>
+              )}
+              <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                {data.context}
+              </p>
+            </div>
           )}
         </div>
       </div>
@@ -44,7 +84,7 @@ export function PracticeQuestion({ data, index }: { data: PracticeQuestionData; 
           return (
             <button
               key={opt.label}
-              onClick={() => !revealed && setPicked(opt.label)}
+              onClick={() => handlePick(opt.label)}
               disabled={revealed}
               className={cn(
                 "flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
@@ -74,14 +114,76 @@ export function PracticeQuestion({ data, index }: { data: PracticeQuestionData; 
         <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
           <div className="text-xs font-semibold uppercase tracking-wider text-primary">Explanation</div>
           <p className="mt-1 text-sm leading-relaxed text-foreground">{data.explanation}</p>
-          <button
-            onClick={() => setPicked(null)}
-            className="mt-3 text-xs font-semibold text-primary hover:underline"
-          >
-            Try again
-          </button>
         </div>
       )}
+    </div>
+  );
+}
+
+function SpeechPlayer({ label, text, resetKey }: { label: string; text: string; resetKey?: number }) {
+  const [speaking, setSpeaking] = useState(false);
+  const [supported, setSupported] = useState(true);
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      setSupported(false);
+    }
+  }, []);
+
+  const stop = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    setSpeaking(false);
+  };
+
+  useEffect(() => () => stop(), []);
+  useEffect(() => { stop(); }, [resetKey]);
+
+  const toggle = () => {
+    if (!supported) return;
+    if (speaking) {
+      stop();
+      return;
+    }
+    // Strip speaker labels like "(M)" / "(W)" for cleaner TTS.
+    const cleaned = text.replace(/\((M|W|M\d|W\d)\)/g, "").replace(/\s+/g, " ").trim();
+    const u = new SpeechSynthesisUtterance(cleaned);
+    u.rate = 0.85;
+    u.pitch = 1;
+    u.onend = () => setSpeaking(false);
+    u.onerror = () => setSpeaking(false);
+    utterRef.current = u;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+    setSpeaking(true);
+  };
+
+  return (
+    <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-3">
+      <button
+        type="button"
+        onClick={toggle}
+        disabled={!supported}
+        aria-label={speaking ? "Stop audio" : "Play audio"}
+        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition hover:opacity-90 active:scale-95 disabled:opacity-50"
+      >
+        {speaking ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
+      </button>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2 text-xs font-semibold text-primary">
+          <Volume2 className="h-3.5 w-3.5" />
+          <span className="truncate">{label}</span>
+        </div>
+        <p className="mt-1 text-xs text-muted-foreground">
+          {supported
+            ? speaking
+              ? "Playing… listen carefully, then answer below."
+              : "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer."
+            : "Your browser does not support speech playback. Answer to reveal the transcript."}
+        </p>
+      </div>
     </div>
   );
 }
