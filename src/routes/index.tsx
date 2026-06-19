@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Headphones, BookOpen, Mic, PenLine, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
+import { vocabulary } from "@/data/vocabulary";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,7 +54,7 @@ function Index() {
               {[
                 "All 7 L&R parts explained",
                 "Aligned with official ETS standards",
-                "400+ business vocabulary terms",
+                `${vocabulary.length} business vocabulary terms`,
                 "No account required",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
@@ -116,10 +117,27 @@ function Index() {
         <div className="mx-auto w-full max-w-6xl px-5 py-16">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Three pillars of TOEIC success.</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <Feature icon={<BookOpen className="h-5 w-5" />} title="L&R Mastery" body="200 questions covering workplace communication, from photographs to long-form reading comprehension." />
+            <Feature to="/listening-reading" icon={<BookOpen className="h-5 w-5" />} title="L&R Mastery" body="200 questions covering workplace communication, from photographs to long-form reading comprehension." />
             <Feature icon={<Mic className="h-5 w-5" />} title="S&W Excellence" body="Real-world scenarios for active production — speak with confidence and write with clarity." />
-            <Feature icon={<Sparkles className="h-5 w-5" />} title="Business Lexicon" body="400+ essential terms across 4 key industries: management, travel, finance, and technical." />
+            <Feature to="/vocabulary" icon={<Sparkles className="h-5 w-5" />} title="Business Lexicon" body={`${vocabulary.length} essential terms across 4 key industries: management, travel, finance, and technical.`} />
           </div>
+        </div>
+      </section>
+
+      {/* Study smarter teaser */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-4">
+        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Study smarter</div>
+            <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">Score higher with proven strategies.</h3>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">Pacing plans, part-by-part tactics, and the traps to avoid on test day.</p>
+          </div>
+          <Link
+            to="/study-tips"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
+          >
+            Read study tips <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
@@ -169,7 +187,19 @@ function TrackCard({
   );
 }
 
-function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
+function Feature({ icon, title, body, to }: { icon: React.ReactNode; title: string; body: string; to?: "/listening-reading" | "/vocabulary" | "/speaking-writing" | "/study-tips" }) {
+  if (to) {
+    return (
+      <Link to={to} className="group block rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
+        <h3 className="mt-4 font-semibold">{title}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+        <div className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+          Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+        </div>
+      </Link>
+    );
+  }
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
       <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
