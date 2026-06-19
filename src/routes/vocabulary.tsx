@@ -86,7 +86,7 @@ function Page() {
             High-frequency TOEIC vocabulary, built for business.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Study with flashcards, then test recall with a quick quiz. Your category and score are saved on this device.
+            {vocabulary.length} curated terms across 4 industries. Study with flashcards, then test recall with a quick quiz. Your category and score are saved on this device.
           </p>
         </div>
       </section>
