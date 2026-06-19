@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Clock, Headphones, MessageSquare, Target, Lightbulb } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Headphones, MessageSquare, Mic, Sparkles, Target, Lightbulb } from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
@@ -106,6 +106,35 @@ function ArticlePage() {
             <ArrowLeft className="h-4 w-4" /> All study tips
           </Link>
         </div>
+
+        <aside className="mt-10 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">Keep practicing</div>
+          <h2 className="mt-1 font-display text-xl font-semibold sm:text-2xl">Put this into practice.</h2>
+          <p className="mt-1 text-sm text-muted-foreground sm:text-base">Apply what you just read with hands-on practice.</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {tip.category === "Speaking & Writing" ? (
+              <Link
+                to="/speaking-writing"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
+              >
+                <Mic className="h-4 w-4" /> Go to Speaking &amp; Writing <ArrowRight className="h-4 w-4" />
+              </Link>
+            ) : (
+              <Link
+                to="/listening-reading"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
+              >
+                <Headphones className="h-4 w-4" /> Try L&amp;R practice <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
+            <Link
+              to="/vocabulary"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
+            >
+              <Sparkles className="h-4 w-4" /> Build vocabulary
+            </Link>
+          </div>
+        </aside>
       </article>
     </SiteLayout>
   );
