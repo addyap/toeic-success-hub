@@ -118,7 +118,7 @@ function Index() {
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Three pillars of TOEIC success.</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             <Feature to="/listening-reading" icon={<BookOpen className="h-5 w-5" />} title="L&R Mastery" body="200 questions covering workplace communication, from photographs to long-form reading comprehension." />
-            <Feature icon={<Mic className="h-5 w-5" />} title="S&W Excellence" body="Real-world scenarios for active production — speak with confidence and write with clarity." />
+            <Feature to="/speaking-writing" icon={<Mic className="h-5 w-5" />} title="S&W Excellence" body="Real-world scenarios for active production — speak with confidence and write with clarity." />
             <Feature to="/vocabulary" icon={<Sparkles className="h-5 w-5" />} title="Business Lexicon" body={`${vocabulary.length} essential terms across 4 key industries: management, travel, finance, and technical.`} />
           </div>
         </div>
