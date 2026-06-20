@@ -288,7 +288,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
     <div>
       <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
       <p className="mt-2 text-muted-foreground">
-        Lock in an answer to each question to build your 9-question score. Your best score is saved on this device.
+        Lock in an answer to each question to build your {questions.length}-question score. Your best score is saved on this device.
       </p>
 
       <div className="sticky top-2 z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
