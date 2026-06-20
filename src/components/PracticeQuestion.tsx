@@ -15,6 +15,10 @@ export interface PracticeQuestionData {
   /** When true, hide the context (transcript) until the user answers and
    *  use SpeechSynthesis to read the context aloud instead of the fake player. */
   listening?: boolean;
+  /** Part 1 style: scene is always visible (stand-in for the photo) and the
+   *  audio reads the four answer statements aloud. Option text is hidden
+   *  until the user answers. */
+  photo?: boolean;
 }
 
 export interface PracticeQuestionProps {
@@ -52,7 +56,25 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
             </div>
           )}
           <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{data.prompt}</p>
-          {data.listening && data.context && (
+          {data.photo && data.context && (
+            <div className="mt-3">
+              <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Scene
+              </div>
+              <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                {data.context}
+              </p>
+            </div>
+          )}
+          {data.photo && (
+            <SpeechPlayer
+              label={data.audio?.label ?? "Photograph statements"}
+              text={data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ")}
+              resetKey={resetKey}
+              hint="Tap play to hear statements A–D. Pick the one that best describes the scene."
+            />
+          )}
+          {data.listening && !data.photo && data.context && (
             <SpeechPlayer
               label={data.audio?.label ?? "Listening audio"}
               text={data.context}
@@ -62,7 +84,7 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
           {!data.listening && data.audio && (
             <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />
           )}
-          {data.context && (!data.listening || revealed) && (
+          {data.context && !data.photo && (!data.listening || revealed) && (
             <div className="mt-3">
               {data.listening && (
                 <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -104,7 +126,13 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
               >
                 {revealed && isCorrect ? <Check className="h-4 w-4" /> : revealed && isPicked ? <X className="h-4 w-4" /> : opt.label}
               </span>
-              <span className="pt-0.5">{opt.text}</span>
+              <span className="pt-0.5">
+                {data.photo && !revealed ? (
+                  <span className="italic text-muted-foreground">Statement {opt.label} (listen to the audio)</span>
+                ) : (
+                  opt.text
+                )}
+              </span>
             </button>
           );
         })}
@@ -120,7 +148,7 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
   );
 }
 
-function SpeechPlayer({ label, text, resetKey }: { label: string; text: string; resetKey?: number }) {
+function SpeechPlayer({ label, text, resetKey, hint }: { label: string; text: string; resetKey?: number; hint?: string }) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(true);
   const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -180,7 +208,7 @@ function SpeechPlayer({ label, text, resetKey }: { label: string; text: string; 
           {supported
             ? speaking
               ? "Playing… listen carefully, then answer below."
-              : "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer."
+              : hint ?? "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer."
             : "Your browser does not support speech playback. Answer to reveal the transcript."}
         </p>
       </div>

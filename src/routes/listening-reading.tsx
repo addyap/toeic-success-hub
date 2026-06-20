@@ -31,19 +31,38 @@ const readingParts = [
   { n: 7, name: "Reading Comprehension", count: "54 questions", what: "Read single and multiple passages and answer detail / inference questions." },
 ];
 
-const part1: PracticeQuestionData = {
-  prompt: "Part 1 · Look at the image of a construction site and choose the sentence that best describes it.",
-  listening: true,
-  audio: { label: "Photograph description", durationSec: 0 },
-  context: "Scene: A construction site at midday. Several workers in high-visibility vests are walking near steel beams. All of them are wearing yellow hard hats. A large crane is operating in the background, lifting materials.",
+const part1a: PracticeQuestionData = {
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A woman wearing an apron stands behind a café counter, holding a cup. Shelves of mugs line the wall behind her.",
   options: [
-    { label: "A", text: "Workers are wearing safety helmets." },
-    { label: "B", text: "The crane is being dismantled." },
-    { label: "C", text: "A building is being demolished." },
-    { label: "D", text: "The site is empty of equipment." },
+    { label: "A", text: "She's wiping down the counter." },
+    { label: "B", text: "She's holding a cup." },
+    { label: "C", text: "She's stocking the shelves." },
+    { label: "D", text: "She's pouring coffee for a customer." },
   ],
-  correct: "A",
-  explanation: "The scene clearly states all workers are wearing yellow hard hats — that matches 'safety helmets'. (B) is wrong because the crane is operating, not being taken apart. (C) is wrong because construction is happening, not demolition. (D) contradicts the visible crane and steel beams.",
+  correct: "B",
+  explanation:
+    "B matches the action actually shown — she's holding a cup. A, C, and D describe plausible café actions that aren't happening in the scene. Part 1 rewards what is visibly true, not what could be true.",
+};
+
+const part1b: PracticeQuestionData = {
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "Several passengers sit in an airport waiting area. One man is reading a newspaper, and a suitcase stands on the floor beside him.",
+  options: [
+    { label: "A", text: "The passengers are boarding the plane." },
+    { label: "B", text: "A man is folding his newspaper." },
+    { label: "C", text: "A suitcase has been placed on the floor." },
+    { label: "D", text: "The seats are being cleaned." },
+  ],
+  correct: "C",
+  explanation:
+    "C correctly describes the state of the scene — note the passive 'has been placed.' A and D name actions no one is performing, and B swaps the man's real action (reading) for a similar-sounding one (folding) — a classic Part 1 trap.",
 };
 
 const part2: PracticeQuestionData = {
@@ -205,7 +224,7 @@ function Page() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
           <PracticeSession
-            questions={[part1, part2, part3, part3b, part3c, part4, part5, part6, part7]}
+            questions={[part1a, part1b, part2, part3, part3b, part3c, part4, part5, part6, part7]}
           />
         </div>
       </section>
@@ -269,7 +288,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
     <div>
       <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
       <p className="mt-2 text-muted-foreground">
-        One question from each main part. Pick an answer to lock it in and reveal the explanation.
+        Lock in an answer to each question to build your 9-question score. Your best score is saved on this device.
       </p>
 
       <div className="sticky top-2 z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
