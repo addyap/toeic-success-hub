@@ -110,8 +110,9 @@
   --accent-foreground: oklch(0.22 0.03 200);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.015 200);
-  --input: oklch(0.92 0.015 200);
+  /* Darkened from oklch(0.9/0.92 ...) — those failed the 3:1 WCAG 1.4.11 non-text contrast minimum against background/card (~1.3:1). */
+  --border: oklch(0.64 0.015 200);
+  --input: oklch(0.64 0.015 200);
   --ring: oklch(0.55 0.1 195);
   --success: oklch(0.62 0.14 155);
   /* Darker than --success — meets 4.5:1 text contrast on background/card; --success itself is for badge/border fills, not text. */

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -192,6 +192,7 @@ function SpeechPlayer({
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(true);
   const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const warningId = useId();
 
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -240,10 +241,15 @@ function SpeechPlayer({
         onClick={toggle}
         disabled={!supported}
         aria-label={speaking ? "Stop audio" : "Play audio"}
+        aria-describedby={warningId}
         className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition hover:opacity-90 active:scale-95 disabled:opacity-50"
       >
         {speaking ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
       </button>
+      <span id={warningId} className="sr-only">
+        Uses your device's built-in text-to-speech, which may interrupt a screen reader's own voice
+        while playing.
+      </span>
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2 text-xs font-semibold text-primary">
           <Volume2 className="h-3.5 w-3.5" />
