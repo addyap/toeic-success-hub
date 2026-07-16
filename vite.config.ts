@@ -34,7 +34,7 @@ export default defineConfig(async ({ command }) => {
   return {
     // Vite uses PostCSS in dev and Lightning CSS at build by default; forcing
     // Lightning CSS in both keeps dev and build CSS output consistent.
-    css: { transformer: "lightningcss" },
+    css: { transformer: "lightningcss" as const },
     resolve: {
       dedupe: [
         "react",

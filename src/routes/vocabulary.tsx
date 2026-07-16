@@ -1,20 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Sparkles, RefreshCw, ChevronLeft, ChevronRight, Check, X, BookOpen, Brain } from "lucide-react";
+import {
+  Sparkles,
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
+  Check,
+  X,
+  BookOpen,
+  Brain,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/vocabulary")({
   head: () => ({
     meta: [
       { title: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
-      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      {
+        name: "description",
+        content:
+          "Learn 92 high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, and technical categories.",
+      },
       { property: "og:title", content: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
-      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:url", content: "/vocabulary" },
+      {
+        property: "og:description",
+        content:
+          "Learn 92 high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, and technical categories.",
+      },
+      { property: "og:url", content: absoluteUrl("/vocabulary") },
     ],
-    links: [{ rel: "canonical", href: "/vocabulary" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/vocabulary") }],
   }),
   component: Page,
 });
@@ -56,18 +74,31 @@ function Page() {
       const s = localStorage.getItem(LS_SCORE);
       if (s) {
         const parsed = JSON.parse(s);
-        if (typeof parsed?.correct === "number" && typeof parsed?.total === "number") setScore(parsed);
+        if (typeof parsed?.correct === "number" && typeof parsed?.total === "number")
+          setScore(parsed);
       }
-    } catch {}
+    } catch {
+      // localStorage unavailable (private mode / disabled) — filter/score just won't persist
+    }
     setHydrated(true);
   }, []);
 
   useEffect(() => {
-    if (hydrated) try { localStorage.setItem(LS_FILTER, filter); } catch {}
+    if (hydrated)
+      try {
+        localStorage.setItem(LS_FILTER, filter);
+      } catch {
+        // localStorage unavailable — filter just won't persist
+      }
   }, [filter, hydrated]);
 
   useEffect(() => {
-    if (hydrated) try { localStorage.setItem(LS_SCORE, JSON.stringify(score)); } catch {}
+    if (hydrated)
+      try {
+        localStorage.setItem(LS_SCORE, JSON.stringify(score));
+      } catch {
+        // localStorage unavailable — score just won't persist
+      }
   }, [score, hydrated]);
 
   const terms = useMemo(
@@ -86,7 +117,8 @@ function Page() {
             High-frequency TOEIC vocabulary, built for business.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            {vocabulary.length} curated terms across 4 industries. Study with flashcards, then test recall with a quick quiz. Your category and score are saved on this device.
+            {vocabulary.length} curated terms across 4 industries. Study with flashcards, then test
+            recall with a quick quiz. Your category and score are saved on this device.
           </p>
         </div>
       </section>
@@ -116,7 +148,9 @@ function Page() {
             onClick={() => setMode("flashcards")}
             className={cn(
               "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
-              mode === "flashcards" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+              mode === "flashcards"
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             <BookOpen className="h-4 w-4" /> Flashcards
@@ -125,7 +159,9 @@ function Page() {
             onClick={() => setMode("quiz")}
             className={cn(
               "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
-              mode === "quiz" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+              mode === "quiz"
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             <Brain className="h-4 w-4" /> Quiz
@@ -162,14 +198,28 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
   }, [terms]);
 
   if (terms.length === 0) {
-    return <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">No terms in this category yet.</div>;
+    return (
+      <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">
+        No terms in this category yet.
+      </div>
+    );
   }
 
   const card = terms[order[idx] ?? 0];
 
-  const next = () => { setFlipped(false); setIdx((i) => (i + 1) % order.length); };
-  const prev = () => { setFlipped(false); setIdx((i) => (i - 1 + order.length) % order.length); };
-  const reshuffle = () => { setOrder(shuffle(terms.map((_, i) => i))); setIdx(0); setFlipped(false); };
+  const next = () => {
+    setFlipped(false);
+    setIdx((i) => (i + 1) % order.length);
+  };
+  const prev = () => {
+    setFlipped(false);
+    setIdx((i) => (i - 1 + order.length) % order.length);
+  };
+  const reshuffle = () => {
+    setOrder(shuffle(terms.map((_, i) => i)));
+    setIdx(0);
+    setFlipped(false);
+  };
 
   return (
     <div>
@@ -188,28 +238,43 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
           {!flipped ? (
             <div className="flex h-full min-h-[220px] flex-col items-center justify-center text-center">
               <div className="text-xs uppercase tracking-wider text-primary">{card.pos}</div>
-              <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">{card.term}</div>
+              <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+                {card.term}
+              </div>
               <div className="mt-6 text-xs text-muted-foreground">Tap to reveal meaning</div>
             </div>
           ) : (
             <div className="flex h-full min-h-[220px] flex-col justify-center">
               <div className="font-display text-2xl font-semibold sm:text-3xl">{card.term}</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{card.pos}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+                {card.pos}
+              </div>
               <p className="mt-3 text-base leading-relaxed text-foreground">{card.definition}</p>
-              <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">"{card.example}"</p>
+              <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">
+                "{card.example}"
+              </p>
             </div>
           )}
         </div>
       </button>
 
       <div className="mt-5 flex items-center justify-between gap-3">
-        <button onClick={prev} className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
+        <button
+          onClick={prev}
+          className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted"
+        >
           <ChevronLeft className="h-4 w-4" /> Prev
         </button>
-        <button onClick={reshuffle} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted">
+        <button
+          onClick={reshuffle}
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted"
+        >
           <RefreshCw className="h-4 w-4" /> Shuffle
         </button>
-        <button onClick={next} className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-95">
+        <button
+          onClick={next}
+          className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-95"
+        >
           Next <ChevronRight className="h-4 w-4" />
         </button>
       </div>
@@ -254,7 +319,11 @@ function Quiz({
   }, [terms, pool]);
 
   if (!q) {
-    return <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">Not enough terms to quiz in this category.</div>;
+    return (
+      <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">
+        Not enough terms to quiz in this category.
+      </div>
+    );
   }
 
   const revealed = picked !== null;
@@ -280,8 +349,16 @@ function Quiz({
   return (
     <div>
       <div className="mb-3 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-        <span>Score: <span className="text-foreground">{score.correct} / {score.total}</span> {score.total > 0 && <span className="text-primary">({pct}%)</span>}</span>
-        <button onClick={resetScore} className="text-primary hover:underline">Reset</button>
+        <span>
+          Score:{" "}
+          <span className="text-foreground">
+            {score.correct} / {score.total}
+          </span>{" "}
+          {score.total > 0 && <span className="text-primary">({pct}%)</span>}
+        </span>
+        <button onClick={resetScore} className="text-primary hover:underline">
+          Reset
+        </button>
       </div>
 
       <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
@@ -317,10 +394,19 @@ function Quiz({
                     "grid h-7 w-7 shrink-0 place-items-center rounded-full border text-xs font-bold",
                     !revealed && "border-border text-muted-foreground",
                     revealed && isCorrect && "border-success bg-success text-primary-foreground",
-                    revealed && isPicked && !isCorrect && "border-destructive bg-destructive text-destructive-foreground",
+                    revealed &&
+                      isPicked &&
+                      !isCorrect &&
+                      "border-destructive bg-destructive text-destructive-foreground",
                   )}
                 >
-                  {revealed && isCorrect ? <Check className="h-4 w-4" /> : revealed && isPicked ? <X className="h-4 w-4" /> : "•"}
+                  {revealed && isCorrect ? (
+                    <Check className="h-4 w-4" />
+                  ) : revealed && isPicked ? (
+                    <X className="h-4 w-4" />
+                  ) : (
+                    "•"
+                  )}
                 </span>
                 <span className="font-medium">{opt.term}</span>
               </button>
@@ -330,8 +416,12 @@ function Quiz({
 
         {revealed && (
           <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Example</div>
-            <p className="mt-1 text-sm italic leading-relaxed text-foreground">"{q.answer.example}"</p>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Example
+            </div>
+            <p className="mt-1 text-sm italic leading-relaxed text-foreground">
+              "{q.answer.example}"
+            </p>
             <button
               onClick={nextQuestion}
               className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:opacity-95"

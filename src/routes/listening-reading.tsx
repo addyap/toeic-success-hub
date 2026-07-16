@@ -3,32 +3,79 @@ import { useEffect, useMemo, useState } from "react";
 import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/listening-reading")({
   head: () => ({
     meta: [
       { title: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
-      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:title", content: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
-      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:url", content: "/listening-reading" },
+      {
+        name: "description",
+        content:
+          "Practice all 7 TOEIC Listening & Reading parts with realistic questions and instant, detailed explanations for every answer.",
+      },
+      {
+        property: "og:title",
+        content: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide",
+      },
+      {
+        property: "og:description",
+        content:
+          "Practice all 7 TOEIC Listening & Reading parts with realistic questions and instant, detailed explanations for every answer.",
+      },
+      { property: "og:url", content: absoluteUrl("/listening-reading") },
     ],
-    links: [{ rel: "canonical", href: "/listening-reading" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/listening-reading") }],
   }),
   component: Page,
 });
 
 const listeningParts = [
-  { n: 1, name: "Photographs", count: "6 questions", what: "Choose the statement that best describes a photo." },
-  { n: 2, name: "Question–Response", count: "25 questions", what: "Hear a question and pick the best of three spoken replies." },
-  { n: 3, name: "Conversations", count: "39 questions", what: "Listen to short dialogues, then answer 3 questions per conversation." },
-  { n: 4, name: "Short Talks", count: "30 questions", what: "Hear announcements, voicemails, or speeches and answer 3 questions each." },
+  {
+    n: 1,
+    name: "Photographs",
+    count: "6 questions",
+    what: "Choose the statement that best describes a photo.",
+  },
+  {
+    n: 2,
+    name: "Question–Response",
+    count: "25 questions",
+    what: "Hear a question and pick the best of three spoken replies.",
+  },
+  {
+    n: 3,
+    name: "Conversations",
+    count: "39 questions",
+    what: "Listen to short dialogues, then answer 3 questions per conversation.",
+  },
+  {
+    n: 4,
+    name: "Short Talks",
+    count: "30 questions",
+    what: "Hear announcements, voicemails, or speeches and answer 3 questions each.",
+  },
 ];
 
 const readingParts = [
-  { n: 5, name: "Incomplete Sentences", count: "30 questions", what: "Choose the word or phrase that best completes the sentence." },
-  { n: 6, name: "Text Completion", count: "16 questions", what: "Fill in blanks within short texts (emails, notices, articles)." },
-  { n: 7, name: "Reading Comprehension", count: "54 questions", what: "Read single and multiple passages and answer detail / inference questions." },
+  {
+    n: 5,
+    name: "Incomplete Sentences",
+    count: "30 questions",
+    what: "Choose the word or phrase that best completes the sentence.",
+  },
+  {
+    n: 6,
+    name: "Text Completion",
+    count: "16 questions",
+    what: "Fill in blanks within short texts (emails, notices, articles).",
+  },
+  {
+    n: 7,
+    name: "Reading Comprehension",
+    count: "54 questions",
+    what: "Read single and multiple passages and answer detail / inference questions.",
+  },
 ];
 
 const part1a: PracticeQuestionData = {
@@ -69,14 +116,15 @@ const part2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
   audio: { label: "Spoken question", durationSec: 0 },
-  context: "Question: \"When is the quarterly report due?\"",
+  context: 'Question: "When is the quarterly report due?"',
   options: [
     { label: "A", text: "In the conference room." },
     { label: "B", text: "By the end of the week." },
     { label: "C", text: "Yes, I reported it." },
   ],
   correct: "B",
-  explanation: "'When' asks for a time. 'By the end of the week' answers a time question. (A) answers 'where' and (C) is a yes/no answer that also plays on the word 'report' — a classic Part 2 distractor.",
+  explanation:
+    "'When' asks for a time. 'By the end of the week' answers a time question. (A) answers 'where' and (C) is a yes/no answer that also plays on the word 'report' — a classic Part 2 distractor.",
 };
 
 const part3: PracticeQuestionData = {
@@ -92,7 +140,8 @@ const part3: PracticeQuestionData = {
     { label: "D", text: "The brochures were delivered to the wrong address." },
   ],
   correct: "C",
-  explanation: "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
+  explanation:
+    "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
 };
 
 const part3b: PracticeQuestionData = {
@@ -108,7 +157,8 @@ const part3b: PracticeQuestionData = {
     { label: "D", text: "To request a wake-up call for 7:00 AM." },
   ],
   correct: "C",
-  explanation: "The woman mentions she saw two different shuttle schedules — one in the lobby ('every thirty minutes') and one in her room brochure ('hourly'). She calls to resolve this conflicting information. (A), (B), and (D) are never mentioned; they are common hotel-related distractors.",
+  explanation:
+    "The woman mentions she saw two different shuttle schedules — one in the lobby ('every thirty minutes') and one in her room brochure ('hourly'). She calls to resolve this conflicting information. (A), (B), and (D) are never mentioned; they are common hotel-related distractors.",
 };
 
 const part3c: PracticeQuestionData = {
@@ -124,7 +174,8 @@ const part3c: PracticeQuestionData = {
     { label: "D", text: "Schedule a training session for new staff." },
   ],
   correct: "B",
-  explanation: "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative. The core action is finding an available room. (A), (C), and (D) are not discussed — the projector works fine, and the meeting is a client presentation, not a training session.",
+  explanation:
+    "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative. The core action is finding an available room. (A), (C), and (D) are not discussed — the projector works fine, and the meeting is a client presentation, not a training session.",
 };
 
 const part4: PracticeQuestionData = {
@@ -140,7 +191,8 @@ const part4: PracticeQuestionData = {
     { label: "D", text: "A discount on their next trip." },
   ],
   correct: "B",
-  explanation: "The announcement states 'Complimentary coffee and tea are available in the café car' — 'complimentary' means free. (A), (C), and (D) are common compensation offers but are never mentioned in the talk.",
+  explanation:
+    "The announcement states 'Complimentary coffee and tea are available in the café car' — 'complimentary' means free. (A), (C), and (D) are common compensation offers but are never mentioned in the talk.",
 };
 
 const part5: PracticeQuestionData = {
@@ -153,7 +205,8 @@ const part5: PracticeQuestionData = {
     { label: "D", text: "formalize" },
   ],
   correct: "B",
-  explanation: "The blank modifies the verb 'announced', so an adverb is needed: 'formally'. (A) is an adjective, (C) is a noun, and (D) is a verb — none can modify 'announced' grammatically.",
+  explanation:
+    "The blank modifies the verb 'announced', so an adverb is needed: 'formally'. (A) is an adjective, (C) is a noun, and (D) is a verb — none can modify 'announced' grammatically.",
 };
 
 const part6: PracticeQuestionData = {
@@ -167,7 +220,8 @@ const part6: PracticeQuestionData = {
     { label: "D", text: "schedules" },
   ],
   correct: "A",
-  explanation: "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. Blank (2) is 'interruption' (the noun that fits 'any ______ this may cause') and blank (3) is 'convenience' — together a fixed business phrase: 'Thank you for your convenience and cooperation.'",
+  explanation:
+    "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. Blank (2) is 'interruption' (the noun that fits 'any ______ this may cause') and blank (3) is 'convenience' — together a fixed business phrase: 'Thank you for your convenience and cooperation.'",
 };
 
 const part7: PracticeQuestionData = {
@@ -181,7 +235,8 @@ const part7: PracticeQuestionData = {
     { label: "D", text: "For an office relocation." },
   ],
   correct: "B",
-  explanation: "The email states the closure is 'for routine electrical maintenance', so (B) is correct.",
+  explanation:
+    "The email states the closure is 'for routine electrical maintenance', so (B) is correct.",
 };
 
 function Page() {
@@ -196,27 +251,44 @@ function Page() {
             The format, the timing, and how to practice it.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            The L&R test measures everyday business English comprehension through 200 multiple-choice questions across seven parts. Scores range from 10 to 990.
+            The L&R test measures everyday business English comprehension through 200
+            multiple-choice questions across seven parts. Scores range from 10 to 990.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <Stat icon={<Clock className="h-4 w-4" />} label="Listening" value="45 minutes" />
             <Stat icon={<Clock className="h-4 w-4" />} label="Reading" value="75 minutes" />
-            <Stat icon={<ListChecks className="h-4 w-4" />} label="Biographical" value="+30 minutes" />
+            <Stat
+              icon={<ListChecks className="h-4 w-4" />}
+              label="Biographical"
+              value="+30 minutes"
+            />
           </div>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 py-14">
-        <SectionHeader icon={<Headphones className="h-5 w-5" />} title="Listening section" subtitle="100 questions · 45 minutes" />
+        <SectionHeader
+          icon={<Headphones className="h-5 w-5" />}
+          title="Listening section"
+          subtitle="100 questions · 45 minutes"
+        />
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {listeningParts.map((p) => <PartCard key={p.n} {...p} />)}
+          {listeningParts.map((p) => (
+            <PartCard key={p.n} {...p} />
+          ))}
         </div>
 
         <div className="mt-14">
-          <SectionHeader icon={<BookOpen className="h-5 w-5" />} title="Reading section" subtitle="100 questions · 75 minutes" />
+          <SectionHeader
+            icon={<BookOpen className="h-5 w-5" />}
+            title="Reading section"
+            subtitle="100 questions · 75 minutes"
+          />
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {readingParts.map((p) => <PartCard key={p.n} {...p} />)}
+            {readingParts.map((p) => (
+              <PartCard key={p.n} {...p} />
+            ))}
           </div>
         </div>
       </section>
@@ -243,8 +315,11 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(BEST_KEY);
-      if (raw) setBest(parseInt(raw, 10));
-    } catch {}
+      const parsed = raw ? parseInt(raw, 10) : NaN;
+      if (!Number.isNaN(parsed)) setBest(parsed);
+    } catch {
+      // localStorage unavailable (private mode / disabled) — best score just won't persist
+    }
     setBestLoaded(true);
   }, []);
 
@@ -263,7 +338,9 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
       setBest(score);
       try {
         localStorage.setItem(BEST_KEY, String(score));
-      } catch {}
+      } catch {
+        // localStorage unavailable (private mode / disabled) — best score just won't persist
+      }
     }
   }, [complete, score, best, bestLoaded]);
 
@@ -288,13 +365,16 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
     <div>
       <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
       <p className="mt-2 text-muted-foreground">
-        Lock in an answer to each question to build your {questions.length}-question score. Your best score is saved on this device.
+        Lock in an answer to each question to build your {questions.length}-question score. Your
+        best score is saved on this device.
       </p>
 
       <div className="sticky top-2 z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Your session</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Your session
+            </div>
             <div className="mt-0.5 font-display text-2xl font-semibold">
               {score} <span className="text-muted-foreground">/ {total} correct</span>
             </div>
@@ -362,16 +442,28 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
 function Stat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-4">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">{icon} {label}</div>
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+        {icon} {label}
+      </div>
       <div className="mt-1 font-display text-2xl font-semibold">{value}</div>
     </div>
   );
 }
 
-function SectionHeader({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+function SectionHeader({
+  icon,
+  title,
+  subtitle,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+}) {
   return (
     <div className="flex items-center gap-3">
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
+      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+        {icon}
+      </span>
       <div>
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">{title}</h2>
         <div className="text-sm text-muted-foreground">{subtitle}</div>
@@ -380,13 +472,27 @@ function SectionHeader({ icon, title, subtitle }: { icon: React.ReactNode; title
   );
 }
 
-function PartCard({ n, name, count, what }: { n: number; name: string; count: string; what: string }) {
+function PartCard({
+  n,
+  name,
+  count,
+  what,
+}: {
+  n: number;
+  name: string;
+  count: string;
+  what: string;
+}) {
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-hero font-display text-base font-semibold text-primary-foreground">{n}</span>
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-hero font-display text-base font-semibold text-primary-foreground">
+          {n}
+        </span>
         <div>
-          <h3 className="font-semibold">Part {n}: {name}</h3>
+          <h3 className="font-semibold">
+            Part {n}: {name}
+          </h3>
           <div className="text-xs text-muted-foreground">{count}</div>
         </div>
       </div>

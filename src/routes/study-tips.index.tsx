@@ -1,19 +1,36 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Lightbulb, Clock, ArrowRight, Headphones, BookOpen, MessageSquare, Target } from "lucide-react";
+import {
+  Lightbulb,
+  Clock,
+  ArrowRight,
+  Headphones,
+  BookOpen,
+  MessageSquare,
+  Target,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory } from "@/data/studyTips";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/study-tips/")({
   head: () => ({
     meta: [
       { title: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
-      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      {
+        name: "description",
+        content:
+          "Seven expert TOEIC study guides covering listening, reading, speaking, writing, timing, scoring, and a four-week study plan.",
+      },
       { property: "og:title", content: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
-      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:url", content: "/study-tips" },
+      {
+        property: "og:description",
+        content:
+          "Seven expert TOEIC study guides covering listening, reading, speaking, writing, timing, scoring, and a four-week study plan.",
+      },
+      { property: "og:url", content: absoluteUrl("/study-tips") },
     ],
-    links: [{ rel: "canonical", href: "/study-tips" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/study-tips") }],
   }),
   component: Page,
 });
@@ -38,7 +55,9 @@ function Page() {
             Expert strategies for every part of the test.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Short, focused articles on pacing, listening tactics, reading shortcuts, and the speaking and writing templates that earn the most points. Pick a section and start with the part you're losing points on.
+            Short, focused articles on pacing, listening tactics, reading shortcuts, and the
+            speaking and writing templates that earn the most points. Pick a section and start with
+            the part you're losing points on.
           </p>
         </div>
       </section>

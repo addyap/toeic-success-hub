@@ -1,20 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { Headphones, BookOpen, Mic, PenLine, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  Headphones,
+  BookOpen,
+  Mic,
+  PenLine,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
 import { vocabulary } from "@/data/vocabulary";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
-      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
+      {
+        name: "description",
+        content:
+          "Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a 92-term business vocabulary builder, and expert study guides. No account required.",
+      },
       { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
-      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:url", content: "/" },
+      {
+        property: "og:description",
+        content:
+          "Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a 92-term business vocabulary builder, and expert study guides. No account required.",
+      },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
   component: Index,
 });
@@ -31,10 +48,15 @@ function Index() {
               <Sparkles className="h-3.5 w-3.5" /> Master the Business English Standard
             </span>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-              Master the <span className="bg-gradient-hero bg-clip-text text-transparent">Business English</span> Standard.
+              Master the{" "}
+              <span className="bg-gradient-hero bg-clip-text text-transparent">
+                Business English
+              </span>{" "}
+              Standard.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Your complete guide to the TOEIC® Listening, Reading, Speaking, and Writing tests. Aligned with official ETS standards to help you achieve your career goals.
+              Your complete guide to the TOEIC® Listening, Reading, Speaking, and Writing tests.
+              Aligned with official ETS standards to help you achieve your career goals.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -74,8 +96,12 @@ function Index() {
               className="aspect-[4/3] w-full rounded-3xl object-cover shadow-elegant"
             />
             <div className="absolute -bottom-5 -left-3 hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:block">
-              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Target score</div>
-              <div className="mt-1 font-display text-2xl font-semibold">900<span className="text-muted-foreground">/990</span></div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Target score
+              </div>
+              <div className="mt-1 font-display text-2xl font-semibold">
+                900<span className="text-muted-foreground">/990</span>
+              </div>
             </div>
           </div>
         </div>
@@ -85,8 +111,12 @@ function Index() {
       <section className="mx-auto w-full max-w-6xl px-5 py-16">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Pick a track</div>
-            <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">Two tests. One clear path.</h2>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Pick a track
+            </div>
+            <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
+              Two tests. One clear path.
+            </h2>
           </div>
         </div>
 
@@ -115,11 +145,28 @@ function Index() {
       {/* Features */}
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 py-16">
-          <h2 className="font-display text-3xl font-semibold sm:text-4xl">Three pillars of TOEIC success.</h2>
+          <h2 className="font-display text-3xl font-semibold sm:text-4xl">
+            Three pillars of TOEIC success.
+          </h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <Feature to="/listening-reading" icon={<BookOpen className="h-5 w-5" />} title="L&R Mastery" body="200 questions covering workplace communication, from photographs to long-form reading comprehension." />
-            <Feature to="/speaking-writing" icon={<Mic className="h-5 w-5" />} title="S&W Excellence" body="Real-world scenarios for active production — speak with confidence and write with clarity." />
-            <Feature to="/vocabulary" icon={<Sparkles className="h-5 w-5" />} title="Business Lexicon" body={`${vocabulary.length} essential terms across 4 key industries: management, travel, finance, and technical.`} />
+            <Feature
+              to="/listening-reading"
+              icon={<BookOpen className="h-5 w-5" />}
+              title="L&R Mastery"
+              body="200 questions covering workplace communication, from photographs to long-form reading comprehension."
+            />
+            <Feature
+              to="/speaking-writing"
+              icon={<Mic className="h-5 w-5" />}
+              title="S&W Excellence"
+              body="Real-world scenarios for active production — speak with confidence and write with clarity."
+            />
+            <Feature
+              to="/vocabulary"
+              icon={<Sparkles className="h-5 w-5" />}
+              title="Business Lexicon"
+              body={`${vocabulary.length} essential terms across 4 key industries: management, travel, finance, and technical.`}
+            />
           </div>
         </div>
       </section>
@@ -128,9 +175,15 @@ function Index() {
       <section className="mx-auto w-full max-w-6xl px-5 pt-4">
         <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft sm:flex-row sm:items-center sm:p-8">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">Study smarter</div>
-            <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">Score higher with proven strategies.</h3>
-            <p className="mt-1 text-sm text-muted-foreground sm:text-base">Pacing plans, part-by-part tactics, and the traps to avoid on test day.</p>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Study smarter
+            </div>
+            <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
+              Score higher with proven strategies.
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              Pacing plans, part-by-part tactics, and the traps to avoid on test day.
+            </p>
           </div>
           <Link
             to="/study-tips"
@@ -144,8 +197,12 @@ function Index() {
       {/* CTA */}
       <section className="mx-auto w-full max-w-6xl px-5 py-16">
         <div className="overflow-hidden rounded-3xl bg-gradient-hero p-8 text-primary-foreground shadow-elegant sm:p-12">
-          <h2 className="max-w-2xl font-display text-3xl font-semibold sm:text-4xl">Ready when you are.</h2>
-          <p className="mt-3 max-w-xl text-primary-foreground/85">Jump into a practice question right now — no sign-up, no paywall.</p>
+          <h2 className="max-w-2xl font-display text-3xl font-semibold sm:text-4xl">
+            Ready when you are.
+          </h2>
+          <p className="mt-3 max-w-xl text-primary-foreground/85">
+            Jump into a practice question right now — no sign-up, no paywall.
+          </p>
           <Link
             to="/listening-reading"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground hover:bg-background/90"
@@ -159,8 +216,22 @@ function Index() {
 }
 
 function TrackCard({
-  to, icon, title, duration, description, tags, badge,
-}: { to: "/listening-reading" | "/speaking-writing"; icon: React.ReactNode; title: string; duration: string; description: string; tags: string[]; badge?: string }) {
+  to,
+  icon,
+  title,
+  duration,
+  description,
+  tags,
+  badge,
+}: {
+  to: "/listening-reading" | "/speaking-writing";
+  icon: React.ReactNode;
+  title: string;
+  duration: string;
+  description: string;
+  tags: string[];
+  badge?: string;
+}) {
   return (
     <Link
       to={to}
@@ -171,13 +242,20 @@ function TrackCard({
           {badge}
         </span>
       )}
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
+      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+        {icon}
+      </span>
       <h3 className="mt-4 font-display text-2xl font-semibold">{title}</h3>
       <div className="mt-1 text-sm text-muted-foreground">{duration}</div>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {tags.map((t) => (
-          <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">{t}</span>
+          <span
+            key={t}
+            className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
+          >
+            {t}
+          </span>
         ))}
       </div>
       <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
@@ -187,11 +265,26 @@ function TrackCard({
   );
 }
 
-function Feature({ icon, title, body, to }: { icon: React.ReactNode; title: string; body: string; to?: "/listening-reading" | "/vocabulary" | "/speaking-writing" | "/study-tips" }) {
+function Feature({
+  icon,
+  title,
+  body,
+  to,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+  to?: "/listening-reading" | "/vocabulary" | "/speaking-writing" | "/study-tips";
+}) {
   if (to) {
     return (
-      <Link to={to} className="group block rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
+      <Link
+        to={to}
+        className="group block rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant"
+      >
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+          {icon}
+        </span>
         <h3 className="mt-4 font-semibold">{title}</h3>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
         <div className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
@@ -202,7 +295,9 @@ function Feature({ icon, title, body, to }: { icon: React.ReactNode; title: stri
   }
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
-      <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">{icon}</span>
+      <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+        {icon}
+      </span>
       <h3 className="mt-4 font-semibold">{title}</h3>
       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </div>

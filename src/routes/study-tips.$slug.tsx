@@ -1,8 +1,19 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Clock, Headphones, MessageSquare, Mic, Sparkles, Target, Lightbulb } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Clock,
+  Headphones,
+  MessageSquare,
+  Mic,
+  Sparkles,
+  Target,
+  Lightbulb,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
+import { absoluteUrl } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
@@ -21,9 +32,10 @@ export const Route = createFileRoute("/study-tips/$slug")({
     const title = tip
       ? `${tip.title} | ToeicPath - Official TOEIC Prep Guide`
       : "Study Tips | ToeicPath - Official TOEIC Prep Guide";
-    const description = tip?.summary ??
+    const description =
+      tip?.summary ??
       "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score.";
-    const url = tip ? `/study-tips/${tip.slug}` : "/study-tips";
+    const url = absoluteUrl(tip ? `/study-tips/${tip.slug}` : "/study-tips");
     return {
       meta: [
         { title },
@@ -42,7 +54,10 @@ export const Route = createFileRoute("/study-tips/$slug")({
       <div className="mx-auto w-full max-w-3xl px-5 py-20 text-center">
         <h1 className="font-display text-3xl font-semibold">Something went wrong</h1>
         <p className="mt-2 text-muted-foreground">{error.message}</p>
-        <button onClick={reset} className="mt-6 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+        <button
+          onClick={reset}
+          className="mt-6 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+        >
           Try again
         </button>
       </div>
@@ -79,15 +94,23 @@ function ArticlePage() {
 
         <div className="mt-10 space-y-8">
           {tip.sections.map((section, i) => (
-            <section key={i} className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+            <section
+              key={i}
+              className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6"
+            >
               <h2 className="font-display text-xl font-semibold sm:text-2xl">{section.heading}</h2>
               {section.body && (
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{section.body}</p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {section.body}
+                </p>
               )}
               {section.points && (
                 <ul className="mt-3 space-y-2">
                   {section.points.map((p, j) => (
-                    <li key={j} className="flex gap-3 text-sm leading-relaxed text-foreground sm:text-base">
+                    <li
+                      key={j}
+                      className="flex gap-3 text-sm leading-relaxed text-foreground sm:text-base"
+                    >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                       <span>{p}</span>
                     </li>
@@ -108,23 +131,31 @@ function ArticlePage() {
         </div>
 
         <aside className="mt-10 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
-          <div className="text-xs font-semibold uppercase tracking-wider text-primary">Keep practicing</div>
-          <h2 className="mt-1 font-display text-xl font-semibold sm:text-2xl">Put this into practice.</h2>
-          <p className="mt-1 text-sm text-muted-foreground sm:text-base">Apply what you just read with hands-on practice.</p>
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Keep practicing
+          </div>
+          <h2 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
+            Put this into practice.
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+            Apply what you just read with hands-on practice.
+          </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {tip.category === "Speaking & Writing" ? (
               <Link
                 to="/speaking-writing"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
               >
-                <Mic className="h-4 w-4" /> Go to Speaking &amp; Writing <ArrowRight className="h-4 w-4" />
+                <Mic className="h-4 w-4" /> Go to Speaking &amp; Writing{" "}
+                <ArrowRight className="h-4 w-4" />
               </Link>
             ) : (
               <Link
                 to="/listening-reading"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
               >
-                <Headphones className="h-4 w-4" /> Try L&amp;R practice <ArrowRight className="h-4 w-4" />
+                <Headphones className="h-4 w-4" /> Try L&amp;R practice{" "}
+                <ArrowRight className="h-4 w-4" />
               </Link>
             )}
             <Link
@@ -146,7 +177,9 @@ function NotFound() {
       <div className="mx-auto w-full max-w-3xl px-5 py-20 text-center">
         <Lightbulb className="mx-auto h-10 w-10 text-primary" />
         <h1 className="mt-4 font-display text-3xl font-semibold">Article not found</h1>
-        <p className="mt-2 text-muted-foreground">That study tip doesn't exist — it may have been moved or renamed.</p>
+        <p className="mt-2 text-muted-foreground">
+          That study tip doesn't exist — it may have been moved or renamed.
+        </p>
         <Link
           to="/study-tips"
           className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"

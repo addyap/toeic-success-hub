@@ -68,7 +68,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "rounded-lg px-3 py-3 text-base font-medium",
-                      active ? "bg-secondary text-secondary-foreground" : "text-foreground hover:bg-muted",
+                      active
+                        ? "bg-secondary text-secondary-foreground"
+                        : "text-foreground hover:bg-muted",
                     )}
                   >
                     {item.label}
@@ -92,26 +94,44 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <span className="font-display text-lg font-semibold">ToeicPath</span>
             </div>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-              A modern, mobile-first study platform for TOEIC Listening, Reading, Speaking & Writing.
+              A modern, mobile-first study platform for TOEIC Listening, Reading, Speaking &
+              Writing.
             </p>
           </div>
           <div>
             <h4 className="text-sm font-semibold">Test prep</h4>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/listening-reading" className="hover:text-foreground">Listening & Reading</Link></li>
-              <li><Link to="/speaking-writing" className="hover:text-foreground">Speaking & Writing</Link></li>
+              <li>
+                <Link to="/listening-reading" className="hover:text-foreground">
+                  Listening & Reading
+                </Link>
+              </li>
+              <li>
+                <Link to="/speaking-writing" className="hover:text-foreground">
+                  Speaking & Writing
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold">Resources</h4>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/vocabulary" className="hover:text-foreground">Vocabulary Builder</Link></li>
-              <li><Link to="/study-tips" className="hover:text-foreground">Study Tips</Link></li>
+              <li>
+                <Link to="/vocabulary" className="hover:text-foreground">
+                  Vocabulary Builder
+                </Link>
+              </li>
+              <li>
+                <Link to="/study-tips" className="hover:text-foreground">
+                  Study Tips
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} ToeicPath. TOEIC is a registered trademark of ETS. This site is not affiliated with ETS.
+          © {new Date().getFullYear()} ToeicPath. TOEIC is a registered trademark of ETS. This site
+          is not affiliated with ETS.
         </div>
       </footer>
     </div>

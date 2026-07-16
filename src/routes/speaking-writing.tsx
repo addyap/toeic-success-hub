@@ -2,34 +2,82 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mic, PenLine, Clock, Target } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/speaking-writing")({
   head: () => ({
     meta: [
       { title: "Speaking & Writing | ToeicPath - Official TOEIC Prep Guide" },
-      { name: "description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:title", content: "Speaking & Writing | ToeicPath - Official TOEIC Prep Guide" },
-      { property: "og:description", content: "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score." },
-      { property: "og:url", content: "/speaking-writing" },
+      {
+        name: "description",
+        content:
+          "Practice TOEIC Speaking & Writing tasks with timed prompts, model responses, and scoring checklists aligned to the official rubrics.",
+      },
+      {
+        property: "og:title",
+        content: "Speaking & Writing | ToeicPath - Official TOEIC Prep Guide",
+      },
+      {
+        property: "og:description",
+        content:
+          "Practice TOEIC Speaking & Writing tasks with timed prompts, model responses, and scoring checklists aligned to the official rubrics.",
+      },
+      { property: "og:url", content: absoluteUrl("/speaking-writing") },
     ],
-    links: [{ rel: "canonical", href: "/speaking-writing" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/speaking-writing") }],
   }),
   component: Page,
 });
 
 const speakingTasks = [
-  { n: "1–2", name: "Read a text aloud", what: "Read a short announcement clearly with natural rhythm and pronunciation." },
-  { n: "3", name: "Describe a picture", what: "Describe what you see in 45 seconds — people, place, actions, mood." },
-  { n: "4–6", name: "Respond to questions", what: "Answer three related questions on a familiar topic without preparation." },
-  { n: "7–9", name: "Respond using information", what: "Use a schedule, agenda or document to answer a caller's questions." },
-  { n: "10", name: "Propose a solution", what: "Listen to a voicemail describing a problem and propose a solution." },
-  { n: "11", name: "Express an opinion", what: "Give a one-minute opinion on a workplace or general issue, with reasons." },
+  {
+    n: "1–2",
+    name: "Read a text aloud",
+    what: "Read a short announcement clearly with natural rhythm and pronunciation.",
+  },
+  {
+    n: "3",
+    name: "Describe a picture",
+    what: "Describe what you see in 45 seconds — people, place, actions, mood.",
+  },
+  {
+    n: "4–6",
+    name: "Respond to questions",
+    what: "Answer three related questions on a familiar topic without preparation.",
+  },
+  {
+    n: "7–9",
+    name: "Respond using information",
+    what: "Use a schedule, agenda or document to answer a caller's questions.",
+  },
+  {
+    n: "10",
+    name: "Propose a solution",
+    what: "Listen to a voicemail describing a problem and propose a solution.",
+  },
+  {
+    n: "11",
+    name: "Express an opinion",
+    what: "Give a one-minute opinion on a workplace or general issue, with reasons.",
+  },
 ];
 
 const writingTasks = [
-  { n: "1–5", name: "Write a sentence based on a picture", what: "Write one sentence using two given words to describe an image." },
-  { n: "6–7", name: "Respond to a written request", what: "Reply to a customer or colleague email addressing all asked questions." },
-  { n: "8", name: "Write an opinion essay", what: "Write a 300-word essay supporting an opinion with examples and reasons." },
+  {
+    n: "1–5",
+    name: "Write a sentence based on a picture",
+    what: "Write one sentence using two given words to describe an image.",
+  },
+  {
+    n: "6–7",
+    name: "Respond to a written request",
+    what: "Reply to a customer or colleague email addressing all asked questions.",
+  },
+  {
+    n: "8",
+    name: "Write an opinion essay",
+    what: "Write a 300-word essay supporting an opinion with examples and reasons.",
+  },
 ];
 
 type RubricKey = "describe-picture" | "opinion-speaking" | "email" | "essay";
@@ -89,8 +137,10 @@ const speakingPrompts: {
   {
     id: "read-aloud",
     title: "Task 1 · Read a text aloud",
-    prompt: "Read the following announcement aloud. You have 45 seconds to prepare and 45 seconds to read. Focus on clear pronunciation, natural pace, and pauses at commas and periods.",
-    model: "Thank you for calling the City Transit helpline. Please stay on the line for the next available representative. For schedule updates, press one.",
+    prompt:
+      "Read the following announcement aloud. You have 45 seconds to prepare and 45 seconds to read. Focus on clear pronunciation, natural pace, and pauses at commas and periods.",
+    model:
+      "Thank you for calling the City Transit helpline. Please stay on the line for the next available representative. For schedule updates, press one.",
     prepSec: 45,
     respSec: 45,
     rubric: "describe-picture",
@@ -98,8 +148,10 @@ const speakingPrompts: {
   {
     id: "describe-picture",
     title: "Task 2 · Describe a picture",
-    prompt: "Describe a picture of three people in a boardroom looking at a chart on a screen. You have 30 seconds to prepare and 45 seconds to speak.",
-    model: "This picture appears to be taken inside a modern corporate boardroom during a business presentation. Three colleagues are seated around a long conference table, all facing a large screen mounted on the wall. The screen shows what looks like a bar chart, possibly displaying quarterly sales figures. On the left, a woman in a navy blazer is pointing at the chart, while the two others — a man in a white shirt and another woman with glasses — are taking notes. The atmosphere looks focused and professional.",
+    prompt:
+      "Describe a picture of three people in a boardroom looking at a chart on a screen. You have 30 seconds to prepare and 45 seconds to speak.",
+    model:
+      "This picture appears to be taken inside a modern corporate boardroom during a business presentation. Three colleagues are seated around a long conference table, all facing a large screen mounted on the wall. The screen shows what looks like a bar chart, possibly displaying quarterly sales figures. On the left, a woman in a navy blazer is pointing at the chart, while the two others — a man in a white shirt and another woman with glasses — are taking notes. The atmosphere looks focused and professional.",
     prepSec: 30,
     respSec: 45,
     rubric: "describe-picture",
@@ -107,8 +159,10 @@ const speakingPrompts: {
   {
     id: "opinion",
     title: "Speaking Task 11 · Express an opinion",
-    prompt: "Some people prefer to work for a large company, while others prefer to work for a small company. Which do you prefer, and why? Give specific reasons and examples.",
-    model: "I prefer working for a small company. First, communication is faster because teams are close, so decisions don't get stuck in long approval chains. Second, employees usually take on a wider range of tasks, which helps them grow new skills quickly. For example, in my previous internship at a five-person startup, I handled both marketing and customer support, and that experience was more valuable to my career than a single-focus role would have been.",
+    prompt:
+      "Some people prefer to work for a large company, while others prefer to work for a small company. Which do you prefer, and why? Give specific reasons and examples.",
+    model:
+      "I prefer working for a small company. First, communication is faster because teams are close, so decisions don't get stuck in long approval chains. Second, employees usually take on a wider range of tasks, which helps them grow new skills quickly. For example, in my previous internship at a five-person startup, I handled both marketing and customer support, and that experience was more valuable to my career than a single-focus role would have been.",
     prepSec: 15,
     respSec: 60,
     rubric: "opinion-speaking",
@@ -127,7 +181,8 @@ function Page() {
             Show what you can produce — not just recognise.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            The S&W test is delivered online and measures your ability to communicate in real workplace situations. Each section is scored from 0 to 200.
+            The S&W test is delivered online and measures your ability to communicate in real
+            workplace situations. Each section is scored from 0 to 200.
           </p>
         </div>
       </section>
@@ -142,7 +197,9 @@ function Page() {
 
         <h2 className="mt-10 font-display text-3xl font-semibold">Speaking tasks</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {speakingTasks.map((t) => <TaskCard key={t.n} {...t} />)}
+          {speakingTasks.map((t) => (
+            <TaskCard key={t.n} {...t} />
+          ))}
         </div>
       </section>
 
@@ -157,7 +214,9 @@ function Page() {
 
           <h2 className="mt-10 font-display text-3xl font-semibold">Writing tasks</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {writingTasks.map((t) => <TaskCard key={t.n} {...t} />)}
+            {writingTasks.map((t) => (
+              <TaskCard key={t.n} {...t} />
+            ))}
           </div>
         </div>
       </section>
@@ -165,9 +224,14 @@ function Page() {
       {/* Practice */}
       <section className="mx-auto w-full max-w-3xl px-5 py-14">
         <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
-        <p className="mt-2 text-muted-foreground">Read each prompt, draft your answer aloud or in writing, then compare with the model response.</p>
+        <p className="mt-2 text-muted-foreground">
+          Read each prompt, draft your answer aloud or in writing, then compare with the model
+          response.
+        </p>
         <div className="mt-8 space-y-5">
-          {speakingPrompts.map((p) => <PromptCard key={p.id} {...p} />)}
+          {speakingPrompts.map((p) => (
+            <PromptCard key={p.id} {...p} />
+          ))}
           <WritingExercise
             id="email"
             title="Writing Task 6–7 · Respond to a written request"
@@ -194,7 +258,9 @@ function Page() {
 function Stat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-4">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">{icon} {label}</div>
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+        {icon} {label}
+      </div>
       <div className="mt-1 font-display text-2xl font-semibold">{value}</div>
     </div>
   );
@@ -204,7 +270,9 @@ function TaskCard({ n, name, what }: { n: string; name: string; what: string }) 
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center gap-3">
-        <span className="grid h-10 min-w-10 place-items-center rounded-xl bg-gradient-hero px-2 font-display text-sm font-semibold text-primary-foreground">{n}</span>
+        <span className="grid h-10 min-w-10 place-items-center rounded-xl bg-gradient-hero px-2 font-display text-sm font-semibold text-primary-foreground">
+          {n}
+        </span>
         <h3 className="font-semibold">{name}</h3>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{what}</p>
@@ -241,7 +309,9 @@ function PromptCard({
       </button>
       {show && (
         <>
-          <p className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed">{model}</p>
+          <p className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed">
+            {model}
+          </p>
           <Checklist rubric={rubric} />
         </>
       )}
@@ -275,7 +345,9 @@ function WritingExercise({
     try {
       const raw = localStorage.getItem(storageKey);
       if (raw) setText(raw);
-    } catch {}
+    } catch {
+      // localStorage unavailable (private mode / disabled) — draft just won't persist
+    }
     setLoaded(true);
   }, [storageKey]);
 
@@ -284,7 +356,9 @@ function WritingExercise({
     try {
       if (text) localStorage.setItem(storageKey, text);
       else localStorage.removeItem(storageKey);
-    } catch {}
+    } catch {
+      // localStorage unavailable — draft just won't persist
+    }
   }, [text, loaded, storageKey]);
 
   const words = text.trim().split(/\s+/).filter(Boolean).length;
@@ -309,7 +383,9 @@ function WritingExercise({
         <span className="text-muted-foreground">
           Words: <strong className="text-foreground">{words}</strong> / {minWords}+
         </span>
-        <span className={words >= minWords ? "font-semibold text-success" : "text-muted-foreground"}>
+        <span
+          className={words >= minWords ? "font-semibold text-success" : "text-muted-foreground"}
+        >
           {words >= minWords
             ? "Great — solid length for this task."
             : `Add about ${Math.max(0, minWords - words)} more words to hit the target.`}
@@ -345,7 +421,9 @@ function Checklist({ rubric }: { rubric: RubricKey }) {
     <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
       <div className="flex items-center justify-between gap-2">
         <div className="text-xs font-semibold uppercase tracking-wider text-primary">{r.title}</div>
-        <div className="text-xs font-semibold text-primary">{done}/{r.items.length}</div>
+        <div className="text-xs font-semibold text-primary">
+          {done}/{r.items.length}
+        </div>
       </div>
       <ul className="mt-3 space-y-2">
         {r.items.map((item, i) => (
@@ -359,7 +437,9 @@ function Checklist({ rubric }: { rubric: RubricKey }) {
                 }
                 className="mt-1 h-4 w-4 shrink-0 accent-primary"
               />
-              <span className={checked[i] ? "text-muted-foreground line-through" : "text-foreground"}>
+              <span
+                className={checked[i] ? "text-muted-foreground line-through" : "text-foreground"}
+              >
                 {item}
               </span>
             </label>
@@ -468,7 +548,11 @@ function PrepRespTimer({ prepSec, respSec }: { prepSec: number; respSec: number 
           <div
             className={
               "h-full rounded-full transition-all " +
-              (phase === "response" ? "bg-primary" : phase === "done" ? "bg-success" : "bg-muted-foreground/60")
+              (phase === "response"
+                ? "bg-primary"
+                : phase === "done"
+                  ? "bg-success"
+                  : "bg-muted-foreground/60")
             }
             style={{ width: `${pct}%` }}
           />
@@ -563,10 +647,7 @@ function CountdownTimer({ durationSec, label }: { durationSec: number; label: st
       </div>
       <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-background">
         <div
-          className={
-            "h-full rounded-full transition-all " +
-            (done ? "bg-success" : "bg-primary")
-          }
+          className={"h-full rounded-full transition-all " + (done ? "bg-success" : "bg-primary")}
           style={{ width: `${pct}%` }}
         />
       </div>

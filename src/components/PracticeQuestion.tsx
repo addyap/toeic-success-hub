@@ -29,10 +29,16 @@ export interface PracticeQuestionProps {
   resetKey?: number;
 }
 
-export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, resetKey }: PracticeQuestionProps) {
+export function PracticeQuestion({
+  data,
+  index,
+  picked: pickedProp,
+  onAnswer,
+  resetKey,
+}: PracticeQuestionProps) {
   const [internalPicked, setInternalPicked] = useState<string | null>(null);
   const controlled = pickedProp !== undefined;
-  const picked = controlled ? pickedProp ?? null : internalPicked;
+  const picked = controlled ? (pickedProp ?? null) : internalPicked;
   const revealed = picked !== null;
 
   useEffect(() => {
@@ -121,14 +127,25 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
                   "grid h-7 w-7 shrink-0 place-items-center rounded-full border text-xs font-bold",
                   !revealed && "border-border text-muted-foreground",
                   revealed && isCorrect && "border-success bg-success text-primary-foreground",
-                  revealed && isPicked && !isCorrect && "border-destructive bg-destructive text-destructive-foreground",
+                  revealed &&
+                    isPicked &&
+                    !isCorrect &&
+                    "border-destructive bg-destructive text-destructive-foreground",
                 )}
               >
-                {revealed && isCorrect ? <Check className="h-4 w-4" /> : revealed && isPicked ? <X className="h-4 w-4" /> : opt.label}
+                {revealed && isCorrect ? (
+                  <Check className="h-4 w-4" />
+                ) : revealed && isPicked ? (
+                  <X className="h-4 w-4" />
+                ) : (
+                  opt.label
+                )}
               </span>
               <span className="pt-0.5">
                 {data.photo && !revealed ? (
-                  <span className="italic text-muted-foreground">Statement {opt.label} (listen to the audio)</span>
+                  <span className="italic text-muted-foreground">
+                    Statement {opt.label} (listen to the audio)
+                  </span>
                 ) : (
                   opt.text
                 )}
@@ -140,7 +157,9 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
 
       {revealed && (
         <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
-          <div className="text-xs font-semibold uppercase tracking-wider text-primary">Explanation</div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Explanation
+          </div>
           <p className="mt-1 text-sm leading-relaxed text-foreground">{data.explanation}</p>
         </div>
       )}
@@ -148,7 +167,17 @@ export function PracticeQuestion({ data, index, picked: pickedProp, onAnswer, re
   );
 }
 
-function SpeechPlayer({ label, text, resetKey, hint }: { label: string; text: string; resetKey?: number; hint?: string }) {
+function SpeechPlayer({
+  label,
+  text,
+  resetKey,
+  hint,
+}: {
+  label: string;
+  text: string;
+  resetKey?: number;
+  hint?: string;
+}) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(true);
   const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
@@ -167,7 +196,9 @@ function SpeechPlayer({ label, text, resetKey, hint }: { label: string; text: st
   };
 
   useEffect(() => () => stop(), []);
-  useEffect(() => { stop(); }, [resetKey]);
+  useEffect(() => {
+    stop();
+  }, [resetKey]);
 
   const toggle = () => {
     if (!supported) return;
@@ -176,7 +207,10 @@ function SpeechPlayer({ label, text, resetKey, hint }: { label: string; text: st
       return;
     }
     // Strip speaker labels like "(M)" / "(W)" for cleaner TTS.
-    const cleaned = text.replace(/\((M|W|M\d|W\d)\)/g, "").replace(/\s+/g, " ").trim();
+    const cleaned = text
+      .replace(/\((M|W|M\d|W\d)\)/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
     const u = new SpeechSynthesisUtterance(cleaned);
     u.rate = 0.85;
     u.pitch = 1;
@@ -208,7 +242,8 @@ function SpeechPlayer({ label, text, resetKey, hint }: { label: string; text: st
           {supported
             ? speaking
               ? "Playing… listen carefully, then answer below."
-              : hint ?? "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer."
+              : (hint ??
+                "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer.")
             : "Your browser does not support speech playback. Answer to reveal the transcript."}
         </p>
       </div>

@@ -10,6 +10,19 @@ import {
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import heroImg from "../assets/hero-study.jpg";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "../lib/site";
+
+const ogImage = absoluteUrl(heroImg);
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "Master the TOEIC Listening, Reading, Speaking & Writing tests with structured guides, interactive practice questions, and a smart vocabulary builder.",
+};
 
 function NotFoundComponent() {
   return (
@@ -74,17 +87,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ToeicPath — Modern TOEIC Test Preparation" },
-      { name: "description", content: "Master the TOEIC Listening, Reading, Speaking & Writing tests with structured guides, interactive practice questions, and a smart vocabulary builder." },
+      {
+        name: "description",
+        content:
+          "Master the TOEIC Listening, Reading, Speaking & Writing tests with structured guides, interactive practice questions, and a smart vocabulary builder.",
+      },
       { name: "author", content: "ToeicPath" },
       { property: "og:title", content: "ToeicPath — Modern TOEIC Test Preparation" },
-      { property: "og:description", content: "Structured guides, interactive practice, and vocabulary tools to boost your TOEIC score." },
+      {
+        property: "og:description",
+        content:
+          "Structured guides, interactive practice, and vocabulary tools to boost your TOEIC score.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:image", content: ogImage },
+      { property: "og:image:width", content: "1280" },
+      { property: "og:image:height", content: "960" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -102,6 +133,11 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          // Static, hardcoded JSON — no user input, so this is not an XSS vector.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body>
         {children}
