@@ -87,7 +87,7 @@ export function PracticeQuestion({
               resetKey={resetKey}
             />
           )}
-          {!data.listening && data.audio && (
+          {!data.listening && !data.photo && data.audio && (
             <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />
           )}
           {data.context && !data.photo && (!data.listening || revealed) && (
@@ -113,10 +113,11 @@ export function PracticeQuestion({
             <button
               key={opt.label}
               onClick={() => handlePick(opt.label)}
-              disabled={revealed}
+              aria-disabled={revealed}
               className={cn(
                 "flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
                 !revealed && "border-border hover:border-primary/60 hover:bg-muted",
+                revealed && "pointer-events-none",
                 revealed && isCorrect && "border-success/60 bg-success/10",
                 revealed && isPicked && !isCorrect && "border-destructive/60 bg-destructive/10",
                 revealed && !isPicked && !isCorrect && "opacity-60",
@@ -150,9 +151,19 @@ export function PracticeQuestion({
                   opt.text
                 )}
               </span>
+              {revealed && (isCorrect || isPicked) && (
+                <span className="sr-only">{isCorrect ? "Correct answer" : "Incorrect"}</span>
+              )}
             </button>
           );
         })}
+      </div>
+
+      <div aria-live="polite" className="sr-only">
+        {revealed &&
+          (picked === data.correct
+            ? "Correct!"
+            : `Incorrect. The correct answer is ${data.correct}.`)}
       </div>
 
       {revealed && (

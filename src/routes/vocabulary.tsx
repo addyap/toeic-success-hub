@@ -117,7 +117,7 @@ function Page() {
             High-frequency TOEIC vocabulary, built for business.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            {vocabulary.length} curated terms across 4 industries. Study with flashcards, then test
+            {vocabulary.length} curated terms across 4 categories. Study with flashcards, then test
             recall with a quick quiz. Your category and score are saved on this device.
           </p>
         </div>
@@ -226,11 +226,7 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
       <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         Card {idx + 1} of {order.length}
       </div>
-      <button
-        onClick={() => setFlipped((f) => !f)}
-        className="block w-full text-left"
-        aria-label="Flip flashcard"
-      >
+      <button onClick={() => setFlipped((f) => !f)} className="block w-full text-left">
         <div className="relative min-h-[280px] overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-elegant transition hover:-translate-y-0.5 sm:min-h-[320px]">
           <div className="absolute right-5 top-5 text-xs font-semibold uppercase tracking-wider text-primary">
             {card.category}
@@ -380,10 +376,11 @@ function Quiz({
               <button
                 key={opt.term}
                 onClick={() => choose(opt.term)}
-                disabled={revealed}
+                aria-disabled={revealed}
                 className={cn(
                   "flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
                   !revealed && "border-border hover:border-primary/60 hover:bg-muted",
+                  revealed && "pointer-events-none",
                   revealed && isCorrect && "border-success/60 bg-success/10",
                   revealed && isPicked && !isCorrect && "border-destructive/60 bg-destructive/10",
                   revealed && !isPicked && !isCorrect && "opacity-60",
@@ -409,9 +406,19 @@ function Quiz({
                   )}
                 </span>
                 <span className="font-medium">{opt.term}</span>
+                {revealed && (isCorrect || isPicked) && (
+                  <span className="sr-only">{isCorrect ? "Correct answer" : "Incorrect"}</span>
+                )}
               </button>
             );
           })}
+        </div>
+
+        <div aria-live="polite" className="sr-only">
+          {revealed &&
+            (picked === q.answer.term
+              ? "Correct!"
+              : `Incorrect. The correct answer is ${q.answer.term}.`)}
         </div>
 
         {revealed && (

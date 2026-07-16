@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
-import { vocabulary } from "@/data/vocabulary";
+import { VOCAB_COUNT } from "@/data/vocabulary";
 import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -56,7 +56,7 @@ function Index() {
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               Your complete guide to the TOEIC® Listening, Reading, Speaking, and Writing tests.
-              Aligned with official ETS standards to help you achieve your career goals.
+              Aligned with the official test format to help you achieve your career goals.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -75,8 +75,8 @@ function Index() {
             <ul className="mt-7 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
               {[
                 "All 7 L&R parts explained",
-                "Aligned with official ETS standards",
-                `${vocabulary.length} business vocabulary terms`,
+                "Aligned with the official test format",
+                `${VOCAB_COUNT} business vocabulary terms`,
                 "No account required",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
@@ -93,6 +93,7 @@ function Index() {
               alt="A learner studying for the TOEIC at her desk"
               width={1280}
               height={960}
+              fetchPriority="high"
               className="aspect-[4/3] w-full rounded-3xl object-cover shadow-elegant"
             />
             <div className="absolute -bottom-5 -left-3 hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:block">
@@ -165,7 +166,7 @@ function Index() {
               to="/vocabulary"
               icon={<Sparkles className="h-5 w-5" />}
               title="Business Lexicon"
-              body={`${vocabulary.length} essential terms across 4 key industries: management, travel, finance, and technical.`}
+              body={`${VOCAB_COUNT} essential terms across 4 key categories: management, travel, finance, and technical.`}
             />
           </div>
         </div>

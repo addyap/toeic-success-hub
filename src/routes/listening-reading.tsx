@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
@@ -166,7 +166,7 @@ const part3c: PracticeQuestionData = {
   listening: true,
   audio: { label: "Conversation 3 — Conference room booking", durationSec: 40 },
   context:
-    "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a projector and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
+    "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a screen and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
   options: [
     { label: "A", text: "Cancel an existing meeting with a client." },
     { label: "B", text: "Find an available room for a presentation." },
@@ -175,7 +175,7 @@ const part3c: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative. The core action is finding an available room. (A), (C), and (D) are not discussed — the projector works fine, and the meeting is a client presentation, not a training session.",
+    "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative, which has the display screen and seating the VP asked for. The core action is finding an available room. (A), (C), and (D) are never mentioned — no meeting is cancelled, no projector is broken, and the meeting is a client presentation, not a training session.",
 };
 
 const part4: PracticeQuestionData = {
@@ -221,7 +221,7 @@ const part6: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. Blank (2) is 'interruption' (the noun that fits 'any ______ this may cause') and blank (3) is 'convenience' — together a fixed business phrase: 'Thank you for your convenience and cooperation.'",
+    "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. Blank (2) is 'interruption' (the noun that fits 'any ______ this may cause') and blank (3) is 'understanding' — together a fixed business phrase: 'Thank you for your understanding and cooperation.'",
 };
 
 const part7: PracticeQuestionData = {
@@ -258,11 +258,7 @@ function Page() {
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <Stat icon={<Clock className="h-4 w-4" />} label="Listening" value="45 minutes" />
             <Stat icon={<Clock className="h-4 w-4" />} label="Reading" value="75 minutes" />
-            <Stat
-              icon={<ListChecks className="h-4 w-4" />}
-              label="Biographical"
-              value="+30 minutes"
-            />
+            <Stat icon={<ListChecks className="h-4 w-4" />} label="Total time" value="2h 0min" />
           </div>
         </div>
       </section>
@@ -311,6 +307,8 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
   const [resetKey, setResetKey] = useState(0);
   const [best, setBest] = useState<number | null>(null);
   const [bestLoaded, setBestLoaded] = useState(false);
+  const [justImprovedBest, setJustImprovedBest] = useState(false);
+  const bestRef = useRef<number | null>(null);
 
   useEffect(() => {
     try {
@@ -333,8 +331,18 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
   const pct = (answeredCount / total) * 100;
 
   useEffect(() => {
+    bestRef.current = best;
+  }, [best]);
+
+  // useLayoutEffect (not useEffect) so `best`/`justImprovedBest` are settled
+  // before the browser paints — avoids a one-frame flash of stale/null values
+  // in the completion message below.
+  useLayoutEffect(() => {
     if (!bestLoaded || !complete) return;
-    if (best === null || score > best) {
+    const prevBest = bestRef.current;
+    const improved = prevBest === null || score > prevBest;
+    setJustImprovedBest(improved);
+    if (improved) {
       setBest(score);
       try {
         localStorage.setItem(BEST_KEY, String(score));
@@ -342,7 +350,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
         // localStorage unavailable (private mode / disabled) — best score just won't persist
       }
     }
-  }, [complete, score, best, bestLoaded]);
+  }, [complete, score, bestLoaded]);
 
   const handleAnswer = (idx: number, label: string) => {
     setAnswers((prev) => {
@@ -356,6 +364,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
   const reset = () => {
     setAnswers(questions.map(() => null));
     setResetKey((k) => k + 1);
+    setJustImprovedBest(false);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: window.scrollY, behavior: "auto" });
     }
@@ -369,7 +378,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
         best score is saved on this device.
       </p>
 
-      <div className="sticky top-2 z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
+      <div className="sticky top-[5.5rem] z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -422,9 +431,7 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
             Session complete — {score}/{total}
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            {best !== null && score >= best
-              ? "New best score saved!"
-              : `Best so far: ${best}/${total}.`}
+            {justImprovedBest ? "New best score saved!" : `Best so far: ${best}/${total}.`}
           </p>
           <button
             type="button"

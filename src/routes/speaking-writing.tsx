@@ -80,9 +80,19 @@ const writingTasks = [
   },
 ];
 
-type RubricKey = "describe-picture" | "opinion-speaking" | "email" | "essay";
+type RubricKey = "read-aloud" | "describe-picture" | "opinion-speaking" | "email" | "essay";
 
 const RUBRICS: Record<RubricKey, { title: string; items: string[] }> = {
+  "read-aloud": {
+    title: "Self-check — Read a text aloud",
+    items: [
+      "I paused briefly at every comma and period.",
+      "I stressed the key words in each sentence, not every word equally.",
+      "I kept a natural, steady pace — not rushed, not word-by-word.",
+      "I pronounced numbers, names, and abbreviations clearly.",
+      "I read with intonation, not a flat monotone.",
+    ],
+  },
   "describe-picture": {
     title: "Self-check — Describe a picture",
     items: [
@@ -143,7 +153,7 @@ const speakingPrompts: {
       "Thank you for calling the City Transit helpline. Please stay on the line for the next available representative. For schedule updates, press one.",
     prepSec: 45,
     respSec: 45,
-    rubric: "describe-picture",
+    rubric: "read-aloud",
   },
   {
     id: "describe-picture",
@@ -365,7 +375,9 @@ function WritingExercise({
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
       <div className="text-xs font-semibold uppercase tracking-wider text-primary">{title}</div>
-      <p className="mt-2 text-base font-medium">{prompt}</p>
+      <p className="mt-2 text-base font-medium" id={`writing-prompt-${id}`}>
+        {prompt}
+      </p>
       {email && (
         <p className="mt-3 whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm text-muted-foreground">
           {email}
@@ -377,6 +389,7 @@ function WritingExercise({
         onChange={(e) => setText(e.target.value)}
         rows={8}
         placeholder="Type your reply here..."
+        aria-labelledby={`writing-prompt-${id}`}
         className="mt-4 w-full resize-y rounded-xl border border-border bg-background p-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40"
       />
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm">
@@ -384,7 +397,9 @@ function WritingExercise({
           Words: <strong className="text-foreground">{words}</strong> / {minWords}+
         </span>
         <span
-          className={words >= minWords ? "font-semibold text-success" : "text-muted-foreground"}
+          className={
+            words >= minWords ? "font-semibold text-success-text" : "text-muted-foreground"
+          }
         >
           {words >= minWords
             ? "Great — solid length for this task."
@@ -517,11 +532,16 @@ function PrepRespTimer({ prepSec, respSec }: { prepSec: number; respSec: number 
             (phase === "response"
               ? "text-primary"
               : phase === "done"
-                ? "text-success"
+                ? "text-success-text"
                 : "text-muted-foreground")
           }
         >
           {label}
+        </div>
+        <div aria-live="polite" className="sr-only">
+          {phase === "prep" && "Preparation time started."}
+          {phase === "response" && "Speak now."}
+          {phase === "done" && "Time's up."}
         </div>
         <div className="flex items-center gap-2">
           {phase === "idle" || phase === "done" ? (
@@ -610,10 +630,13 @@ function CountdownTimer({ durationSec, label }: { durationSec: number; label: st
         <div
           className={
             "text-xs font-semibold uppercase tracking-wider " +
-            (done ? "text-success" : running ? "text-primary" : "text-muted-foreground")
+            (done ? "text-success-text" : running ? "text-primary" : "text-muted-foreground")
           }
         >
           {done ? "Time's up — review against the checklist." : `${label} · ${format(remaining)}`}
+        </div>
+        <div aria-live="polite" className="sr-only">
+          {done && "Time's up."}
         </div>
         <div className="flex items-center gap-2 text-xs">
           {!running && !done && (

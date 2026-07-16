@@ -26,13 +26,14 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <span className="font-display text-xl font-semibold tracking-tight">ToeicPath</span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => {
               const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
               return (
                 <Link
                   key={item.to}
                   to={item.to}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
                     "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                     active
@@ -48,7 +49,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
           <button
             onClick={() => setOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-border lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
           >
@@ -57,7 +58,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
 
         {open && (
-          <nav className="border-t border-border bg-background md:hidden">
+          <nav className="border-t border-border bg-background lg:hidden">
             <div className="mx-auto flex w-full max-w-6xl flex-col px-5 py-3">
               {navItems.map((item) => {
                 const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
@@ -66,6 +67,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
                       "rounded-lg px-3 py-3 text-base font-medium",
                       active

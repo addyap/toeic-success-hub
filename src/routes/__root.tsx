@@ -104,6 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: ogImage },
       { property: "og:image:width", content: "1280" },
       { property: "og:image:height", content: "960" },
+      { property: "og:image:alt", content: "A learner studying for the TOEIC at her desk" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: ogImage },
     ],
