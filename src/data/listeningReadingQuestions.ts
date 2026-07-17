@@ -629,6 +629,96 @@ const part2ab: PracticeQuestionData = {
     "This statement about declining sales calls for a suggested response. (A) proposes an appropriate action. (B) is an unrelated fact about the book's length, and (C) mentions a different edition's shipping process rather than addressing the sales drop.",
 };
 
+const part2ac: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "Why was the 6:45 departure to Chicago delayed?"',
+  options: [
+    { label: "A", text: "A mechanical issue turned up during the pre-flight inspection." },
+    { label: "B", text: "About forty passengers checked in at the gate." },
+    { label: "C", text: "It departs from gate twelve." },
+  ],
+  correct: "A",
+  explanation:
+    "'Why' asks for a reason for the delay. (A) gives the cause. (B) mentions the gate but answers an unrelated question about passenger numbers, and (C) states the departure gate, which answers 'where,' not 'why.'",
+};
+
+const part2ad: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "Who\'s directing the reshoots next week?"',
+  options: [
+    { label: "A", text: "The same director who shot the original scenes." },
+    { label: "B", text: "We reshot that scene twice yesterday." },
+    { label: "C", text: "Next week works fine for me." },
+  ],
+  correct: "A",
+  explanation:
+    "'Who' asks for a person. (A) names the director. (B) reuses 'reshot' but describes a past event rather than naming a person, and (C) mistakenly answers a 'when' question about availability.",
+};
+
+const part2ae: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "Should I file the claim online or call the claims office?"',
+  options: [
+    { label: "A", text: "Online would be quicker since the phone lines are backed up." },
+    { label: "B", text: "The claim was approved last Tuesday." },
+    { label: "C", text: "I always file my taxes online in April." },
+  ],
+  correct: "A",
+  explanation:
+    "This is an or-choice question asking which filing method to use. (A) picks 'online' and justifies it. (B) refers to an unrelated past approval, and (C) reuses 'file... online' but talks about taxes, not the insurance claim.",
+};
+
+const part2af: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "Is the pool open for lap swimming this morning?"',
+  options: [
+    { label: "A", text: "Yes, but only until nine because of a swim class." },
+    { label: "B", text: "The gym opens at six on weekdays." },
+    { label: "C", text: "We're planning to build a second pool next year." },
+  ],
+  correct: "A",
+  explanation:
+    "This is a yes/no question about the pool's morning hours. (A) confirms availability with a time limit. (B) describes a different facility, the gym, and (C) reuses 'pool' but refers to a future construction plan, not today's hours.",
+};
+
+const part2ag: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "When does the recycling truck usually come by?"',
+  options: [
+    { label: "A", text: "Every other Thursday, early in the morning." },
+    { label: "B", text: "It collects paper, glass, and plastic." },
+    { label: "C", text: "The truck was repainted last month." },
+  ],
+  correct: "A",
+  explanation:
+    "'When' asks for a time. (A) gives the collection schedule. (B) describes what the truck collects, answering 'what,' not 'when,' and (C) reuses 'truck' but describes an unrelated repainting job.",
+};
+
+const part2ah: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: "Question: \"The vet said the dog's stitches should come out by Friday, didn't she?\"",
+  options: [
+    { label: "A", text: "Yes, that's exactly what she told us at the last visit." },
+    { label: "B", text: "The dog is due for a rabies booster soon." },
+    { label: "C", text: "She stitched up a tear in the couch cushion." },
+  ],
+  correct: "A",
+  explanation:
+    "This is a tag question seeking confirmation of what the vet said. (A) confirms it directly. (B) is an unrelated fact about vaccinations, and (C) reuses 'stitched' but describes mending furniture, not the dog's medical care.",
+};
+
 // ── Part 3 · Conversations ──
 const part3: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
@@ -1106,6 +1196,210 @@ const part3ab: PracticeQuestionData = {
     "The man says the training 'conflicts with a client visit I can't reschedule.' (B), (C), and (D) are never mentioned.",
 };
 
+const part3ac: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 29 — Company credit card fraud alert", durationSec: 30 },
+  context:
+    "(W) Hi, this is Karen from the finance department. I'm calling about a suspicious charge on your company credit card — a purchase of about $2,000 from an electronics store overseas.\n(M) That wasn't me. I still have my card right here with me.\n(W) I thought so. I've already frozen the card, and a replacement will be mailed to you within five business days.\n(M) Thank you for catching that so quickly.\n\nQuestion: What did the woman do about the suspicious charge?",
+  options: [
+    { label: "A", text: "She froze the card." },
+    { label: "B", text: "She reported it to the police." },
+    { label: "C", text: "She refunded the charge to the man." },
+    { label: "D", text: "She canceled the man's business trip." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says, 'I've already frozen the card, and a replacement will be mailed to you within five business days.' (B), (C), and (D) are never mentioned — they are typical distractors involving other responses to fraud.",
+};
+
+const part3ad: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 30 — Conference speaker cancellation", durationSec: 28 },
+  context:
+    "(M) I just got an email from Dr. Patel — she says she can't make it to the conference next week due to a family emergency.\n(W) Oh no, she was our keynote speaker. Do we have anyone who could step in on short notice?\n(M) Actually, yes. Professor Lin already agreed to fill in if we asked her.\n(W) Great, let's confirm with her today.\n\nQuestion: Why can Dr. Patel no longer speak at the conference?",
+  options: [
+    { label: "A", text: "She has a family emergency." },
+    { label: "B", text: "Her flight was canceled." },
+    { label: "C", text: "She is ill." },
+    { label: "D", text: "She has a scheduling conflict with another event." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says Dr. Patel 'can't make it to the conference next week due to a family emergency.' (B), (C), and (D) are never mentioned — they are typical distractors involving other reasons for canceling.",
+};
+
+const part3ae: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 31 — Product photography shoot scheduling", durationSec: 29 },
+  context:
+    "(W) The photographer just called — he can't make it to tomorrow's product shoot because his equipment was damaged in transit.\n(M) That's a problem, we need those photos for the catalog by Friday.\n(W) He said he can reschedule for Thursday morning instead, if that works for us.\n(M) Thursday morning is fine. Let's confirm that with him right away.\n\nQuestion: Why is the photographer unable to attend tomorrow's shoot?",
+  options: [
+    { label: "A", text: "His equipment was damaged in transit." },
+    { label: "B", text: "He is sick." },
+    { label: "C", text: "He double-booked the appointment." },
+    { label: "D", text: "The studio is unavailable." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman explains he can't attend 'because his equipment was damaged in transit.' (B), (C), and (D) are never mentioned — they are typical distractors involving other scheduling problems.",
+};
+
+const part3af: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 32 — Office lease renewal negotiation", durationSec: 32 },
+  context:
+    "(M) I spoke with the landlord about renewing our office lease, and he's offering the same rent as last year if we sign a three-year term.\n(W) That's a good deal, but can we ask for a shorter term instead? A lot could change in three years.\n(M) I did ask — he said he'd only offer that rate for a term of three years or longer.\n(W) Alright, let's go ahead and sign for three years then.\n\nQuestion: What condition did the landlord set for keeping the same rent?",
+  options: [
+    { label: "A", text: "The company must sign a three-year lease." },
+    { label: "B", text: "The company must pay a deposit." },
+    { label: "C", text: "The company must renovate the space." },
+    { label: "D", text: "The company must pay rent in advance." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the landlord 'said he'd only offer that rate for a term of three years or longer.' (B), (C), and (D) are never mentioned — they are typical distractors involving other lease conditions.",
+};
+
+const part3ag: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 33 — Data migration timeline", durationSec: 27 },
+  context:
+    "(W) How's the migration to the new database going?\n(M) We're on track — the IT team says all customer records will be transferred by next Wednesday.\n(W) That's earlier than I expected. Will the system be down during the transfer?\n(M) Only for two hours on Tuesday night, so it shouldn't affect business hours.\n\nQuestion: When does the IT team expect the data migration to be complete?",
+  options: [
+    { label: "A", text: "By next Wednesday." },
+    { label: "B", text: "By the end of the month." },
+    { label: "C", text: "By next Friday." },
+    { label: "D", text: "By next Monday." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says 'the IT team says all customer records will be transferred by next Wednesday.' (B), (C), and (D) are never mentioned — they are typical distractors involving other dates.",
+};
+
+const part3ah: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 34 — New supplier price quote comparison", durationSec: 31 },
+  context:
+    "(M) I got the quotes back from the two new suppliers. Riverside Textiles is offering a lower unit price than our current supplier.\n(W) That sounds promising. How does their delivery time compare?\n(M) That's the catch — their delivery time is two weeks longer than what we have now.\n(W) Then let's ask if they can match our current supplier's delivery schedule before we switch.\n\nQuestion: What disadvantage does Riverside Textiles have compared to the current supplier?",
+  options: [
+    { label: "A", text: "A longer delivery time." },
+    { label: "B", text: "A higher unit price." },
+    { label: "C", text: "A smaller product selection." },
+    { label: "D", text: "Poor customer service." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says 'their delivery time is two weeks longer than what we have now.' (B), (C), and (D) are never mentioned — they are typical distractors involving other supplier drawbacks.",
+};
+
+const part3ai: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 35 — Company car fleet insurance renewal", durationSec: 30 },
+  context:
+    "(W) The insurance company just sent the renewal quote for our delivery fleet, and the premium has gone up by 15 percent.\n(M) That's a big jump. Did they say why?\n(W) Yes, they said it's because of the two accidents we had last year.\n(M) Let's get quotes from other insurers before we renew with them.\n\nQuestion: Why did the insurance premium increase?",
+  options: [
+    { label: "A", text: "Because of accidents the company had last year." },
+    { label: "B", text: "Because the fleet added more vehicles." },
+    { label: "C", text: "Because of a change in government regulations." },
+    { label: "D", text: "Because the company missed a payment." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says the increase is 'because of the two accidents we had last year.' (B), (C), and (D) are never mentioned — they are typical distractors involving other reasons for a premium increase.",
+};
+
+const part3aj: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 36 — Trade publication advertising placement", durationSec: 29 },
+  context:
+    "(M) I confirmed our ad placement with Industry Weekly — it'll run in their September issue on the inside back cover.\n(W) Perfect, that's a high-visibility spot. Did you send them the final artwork?\n(M) Not yet, they need it by next Monday to make the print deadline.\n(W) I'll have the design team finish it by Friday so we have a buffer.\n\nQuestion: When does the publication need the final artwork?",
+  options: [
+    { label: "A", text: "By next Monday." },
+    { label: "B", text: "By the end of September." },
+    { label: "C", text: "By the end of the year." },
+    { label: "D", text: "By the following Monday." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the publication 'need[s] it by next Monday to make the print deadline.' (B), (C), and (D) are never mentioned — they are typical distractors involving other dates.",
+};
+
+const part3ak: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 37 — Employee parking permit issue", durationSec: 28 },
+  context:
+    "(W) Security just told me my parking permit expired at the end of last month, and I need to renew it before I can park in the garage.\n(M) You can renew it online through the facilities portal — it only takes a few minutes.\n(W) Good, I'll do that this afternoon so I don't get towed.\n(M) Just make sure to print the confirmation and leave it on your dashboard.\n\nQuestion: What does the man tell the woman to do after renewing her permit online?",
+  options: [
+    { label: "A", text: "Print the confirmation and leave it on her dashboard." },
+    { label: "B", text: "Pay a late fee at the security office." },
+    { label: "C", text: "Pick up a new physical permit from the front desk." },
+    { label: "D", text: "Email the confirmation to security." },
+  ],
+  correct: "A",
+  explanation:
+    "The man tells her to 'print the confirmation and leave it on your dashboard.' (B), (C), and (D) are never mentioned — they are typical distractors involving other permit procedures.",
+};
+
+const part3al: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 38 — Facilities cleaning schedule change", durationSec: 27 },
+  context:
+    "(M) Did you see the notice from facilities? They're moving the office cleaning from evenings to early mornings starting next week.\n(W) Why the change?\n(M) They said it's because the evening cleaning crew was disturbing employees who work late.\n(W) That makes sense. I'll let my team know so they're not surprised.\n\nQuestion: Why is the cleaning schedule being changed?",
+  options: [
+    { label: "A", text: "The evening crew was disturbing employees working late." },
+    { label: "B", text: "The evening crew requested different hours." },
+    { label: "C", text: "The building's evening security was reduced." },
+    { label: "D", text: "The cleaning company changed ownership." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the change is 'because the evening cleaning crew was disturbing employees who work late.' (B), (C), and (D) are never mentioned — they are typical distractors involving other reasons for the change.",
+};
+
+const part3am: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 39 — Conference gift order delay", durationSec: 30 },
+  context:
+    "(W) Have the branded tote bags for the conference arrived yet?\n(M) Not yet — the supplier said there's a delay because they ran out of the blue fabric we chose.\n(W) Can they use a different color instead so we still get them on time?\n(M) I already asked, and they said gray is available and can ship by Friday.\n\nQuestion: Why is the delivery of the tote bags delayed?",
+  options: [
+    { label: "A", text: "The supplier ran out of the blue fabric." },
+    { label: "B", text: "The order was placed too late." },
+    { label: "C", text: "The shipping company lost the package." },
+    { label: "D", text: "The design needed final approval." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the delay is 'because they ran out of the blue fabric we chose.' (B), (C), and (D) are never mentioned — they are typical distractors involving other causes of delay.",
+};
+
+const part3an: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 40 — Marketing brochure translation deadline", durationSec: 31 },
+  context:
+    "(M) The translation agency says the French and German versions of the brochure will be ready by Wednesday, but the Spanish version needs an extra two days.\n(W) Why is the Spanish version taking longer?\n(M) They said the translator originally assigned to it is out sick, so someone else had to take over.\n(W) Okay, let's plan the print run around the Spanish version then.\n\nQuestion: Why is the Spanish translation taking longer than the others?",
+  options: [
+    { label: "A", text: "The original translator is out sick." },
+    { label: "B", text: "The Spanish market requires extra legal review." },
+    { label: "C", text: "The brochure content changed." },
+    { label: "D", text: "The agency is short-staffed overall." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says 'the translator originally assigned to it is out sick, so someone else had to take over.' (B), (C), and (D) are never mentioned — they are typical distractors involving other causes of delay.",
+};
+
 // ── Part 4 · Short Talks ──
 const part4: PracticeQuestionData = {
   prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
@@ -1446,6 +1740,115 @@ const part4t: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The update attributes the disruption to 'a misconfigured server update pushed at approximately two a.m. Eastern Time' by the company's own engineering team, indicating an internal error. A cyberattack (A), hardware failure (C), and high traffic (D) are never mentioned.",
+};
+
+const part4u: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the real estate agent's open-house announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Real estate open-house announcement", durationSec: 0 },
+  context:
+    "Welcome to the open house at 214 Birchwood Lane. This four-bedroom home was fully renovated last year, including a new kitchen with granite countertops and stainless steel appliances. Feel free to walk through at your own pace, and I'll be here in the living room if you have any questions. Please sign the guest book by the front door before you leave, as the seller has asked us to keep a record of all visitors today. The property has already received two offers, so anyone interested is encouraged to submit paperwork by Friday at five p.m. Parking is available on the street, but please avoid blocking the neighbor's driveway.\n\nQuestion: According to the agent, why should visitors sign the guest book?",
+  options: [
+    { label: "A", text: "To enter a raffle for a prize" },
+    { label: "B", text: "Because the seller wants a record of all visitors" },
+    { label: "C", text: "To receive a copy of the listing" },
+    { label: "D", text: "Because parking passes are being distributed" },
+  ],
+  correct: "B",
+  explanation:
+    "The agent explains that 'the seller has asked us to keep a record of all visitors today.' A raffle (A), a copy of the listing (C), and parking passes (D) are never mentioned.",
+};
+
+const part4v: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the corporate training video introduction and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Corporate onboarding training video introduction", durationSec: 0 },
+  context:
+    "Welcome to Module One of our new employee onboarding series. My name is Denise Okafor, and I'll be your guide through this training video, which covers company policies, workplace safety, and how to use our internal software systems. This module is approximately twenty minutes long, and you'll be asked to complete a short quiz at the end before moving on to Module Two. If you need to pause the video, your progress will be saved automatically, so there's no need to rewatch anything you've already completed. All new hires must finish the full onboarding series within their first two weeks of employment. If you run into any technical issues, please contact the IT help desk rather than your manager.\n\nQuestion: What must new hires do before proceeding to Module Two?",
+  options: [
+    { label: "A", text: "Meet with their manager" },
+    { label: "B", text: "Submit a signed policy form" },
+    { label: "C", text: "Complete a short quiz" },
+    { label: "D", text: "Watch the video a second time" },
+  ],
+  correct: "C",
+  explanation:
+    "Denise states that new hires 'will be asked to complete a short quiz at the end before moving on to Module Two.' A manager meeting (A), a signed form (B), and rewatching (D) are never mentioned.",
+};
+
+const part4w: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the stadium PA announcement and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Sports stadium pre-game safety and parking announcement",
+    durationSec: 0,
+  },
+  context:
+    "Good afternoon, and welcome to Cardinal Stadium. Before today's game begins, we'd like to remind all fans that bags larger than the size of a standard sheet of paper are not permitted inside the venue and must be returned to your vehicle. Lot C, located behind the north entrance, is now full, so any fans still arriving should proceed directly to the overflow lot on Grant Street. In case of severe weather, stadium staff will direct fans to designated shelter areas beneath the main concourse, and updates will also be posted on the stadium's mobile app. Please have your tickets ready for scanning at the gate to help keep lines moving quickly. Enjoy the game, and thank you for your cooperation.\n\nQuestion: Where does the announcer direct fans to park once Lot C is full?",
+  options: [
+    { label: "A", text: "In a nearby parking garage" },
+    { label: "B", text: "On the street near the north entrance" },
+    { label: "C", text: "In the overflow lot on Grant Street" },
+    { label: "D", text: "In the shelter area beneath the concourse" },
+  ],
+  correct: "C",
+  explanation:
+    "The announcer says fans still arriving 'should proceed directly to the overflow lot on Grant Street.' A parking garage (A), on-street parking (B), and the shelter area (D) are never mentioned as parking options.",
+};
+
+const part4x: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the supermarket in-store PA announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Supermarket in-store promotional PA announcement", durationSec: 0 },
+  context:
+    "Attention shoppers, welcome to Fresh Harvest Market. For the next fifteen minutes only, all bakery items are marked down by twenty-five percent, so head over to aisle two to take advantage of these savings. We'd also like to remind everyone that our deli counter will close at eight p.m. tonight, one hour earlier than usual, due to a staff training session. If you're a Fresh Harvest Rewards member, don't forget to scan your card at checkout to earn double points on all produce purchases today. Samples of our new organic granola are available near the front entrance for anyone who'd like to try before they buy. Thank you for shopping with us, and enjoy the rest of your visit.\n\nQuestion: Why will the deli counter close early tonight?",
+  options: [
+    { label: "A", text: "The store is closing for a holiday" },
+    { label: "B", text: "Staff will be attending a training session" },
+    { label: "C", text: "The deli is out of inventory" },
+    { label: "D", text: "A refrigeration unit is being repaired" },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states the deli will close early 'due to a staff training session.' A holiday closing (A), lack of inventory (C), and equipment repair (D) are never mentioned.",
+};
+
+const part4y: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the call-center hold message and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Call-center hold-music informational message", durationSec: 0 },
+  context:
+    "Thank you for calling Summit Bank customer support. Your call is important to us, and a representative will be with you as soon as possible. Current wait times are longer than usual due to a high volume of calls regarding recent updates to our mobile banking app. While you wait, you can visit our website to reset your password or check your account balance without speaking to an agent. If your call is regarding a lost or stolen card, please stay on the line, as this is treated as a priority and will be transferred immediately. Please note that this call may be recorded for quality assurance and training purposes. We appreciate your patience and will connect you shortly.\n\nQuestion: What can be inferred about callers who report a lost or stolen card?",
+  options: [
+    { label: "A", text: "They will receive a new card by mail within 24 hours" },
+    { label: "B", text: "They will be connected to a representative without further wait" },
+    { label: "C", text: "They must call back during business hours" },
+    { label: "D", text: "They will need to visit a branch in person" },
+  ],
+  correct: "B",
+  explanation:
+    "Although wait times are 'longer than usual,' the message says lost-or-stolen-card calls are 'treated as a priority and will be transferred immediately,' meaning these callers skip the wait. A mailed card (A), calling back later (C), and an in-person visit (D) are never mentioned.",
+};
+
+const part4z: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the CEO's earnings-call opening remarks and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Company earnings-call opening remarks excerpt", durationSec: 0 },
+  context:
+    "Good morning, everyone, and thank you for joining Vantix Corporation's second-quarter earnings call. I'm pleased to report that revenue this quarter reached three hundred twenty million dollars, an increase of eighteen percent compared to the same period last year, driven largely by strong demand in our cloud services division. Our operating margin also improved, thanks to cost efficiencies achieved through the automation initiatives we discussed on last quarter's call. We did see softer results in our hardware segment, which we attribute to ongoing supply chain constraints, and we expect that trend to continue into the third quarter. Later in this call, our Chief Financial Officer will walk you through the detailed financial statements, and I'll return afterward to take your questions. Before we move forward, I want to thank our employees for their continued dedication during a challenging global environment.\n\nQuestion: What can be inferred about the company's cloud services division?",
+  options: [
+    { label: "A", text: "It is the company's newest business segment" },
+    { label: "B", text: "It contributed significantly to this quarter's revenue growth" },
+    { label: "C", text: "It will be sold off next quarter" },
+    { label: "D", text: "It generated less revenue than the hardware segment" },
+  ],
+  correct: "B",
+  explanation:
+    "The CEO attributes the quarter's 'increase of eighteen percent' in revenue to 'strong demand in our cloud services division,' making its significant contribution to growth a logical conclusion. Being the newest segment (A), being sold off (C), and underperforming hardware (D) are never mentioned.",
 };
 
 // ── Part 5 · Incomplete Sentences ──
@@ -1898,6 +2301,156 @@ const part5ad: PracticeQuestionData = {
     "'Information' is an uncountable noun, so it must be modified by a quantifier for uncountable nouns such as 'a little'. (A) 'a few' is used only with countable plural nouns (e.g., 'a few documents'), not with uncountable 'information'. (C) 'many' likewise modifies countable plural nouns and cannot combine with 'information'. (D) 'several' also requires a countable plural noun and is ungrammatical before 'information'.",
 };
 
+const part5ae: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "If the insurance company ______ the claim more carefully, it would have detected the fraud before issuing payment.",
+  options: [
+    { label: "A", text: "had reviewed" },
+    { label: "B", text: "reviewed" },
+    { label: "C", text: "would review" },
+    { label: "D", text: "has reviewed" },
+  ],
+  correct: "A",
+  explanation:
+    "This is a third conditional sentence describing a hypothetical situation in the past: the if-clause uses the past perfect ('had reviewed') while the main clause uses 'would have' + past participle ('would have detected'). (B) 'reviewed' (simple past) belongs to the second conditional pattern and would require 'would detect', not 'would have detected'. (C) 'would review' is a conditional form and cannot appear in the if-clause of a conditional sentence. (D) 'has reviewed' (present perfect) does not combine with 'would have detected' to form a valid conditional structure.",
+};
+
+const part5af: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The publishing house ______ three award-winning novels in 2019, the year it launched its new literary imprint.",
+  options: [
+    { label: "A", text: "has released" },
+    { label: "B", text: "released" },
+    { label: "C", text: "releases" },
+    { label: "D", text: "had been releasing" },
+  ],
+  correct: "B",
+  explanation:
+    "The time marker 'in 2019' refers to a specific, completed point in the past, so the simple past tense 'released' is required. (A) 'has released' (present perfect) is used for actions with no definite finished time or that connect to the present, and cannot be used with a specific past-time expression like 'in 2019'. (C) 'releases' (present simple) does not describe a completed past action. (D) 'had been releasing' (past perfect continuous) incorrectly suggests an ongoing action before another past event, which does not match the single completed action described here.",
+};
+
+const part5ag: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The hotel chain is renovating the properties ______ received the lowest guest satisfaction scores last year.",
+  options: [
+    { label: "A", text: "that" },
+    { label: "B", text: "who" },
+    { label: "C", text: "whom" },
+    { label: "D", text: "whose" },
+  ],
+  correct: "A",
+  explanation:
+    "'Properties' refers to things, not people, so the relative pronoun 'that' is required to introduce this restrictive clause (no comma), acting as the subject of 'received'. (B) 'who' is used only for people, not places or things. (C) 'whom' is also reserved for people and functions as an object pronoun, not a subject. (D) 'whose' is a possessive relative pronoun and would need to be followed by a noun (e.g., 'whose scores'), but here the pronoun itself must act as the subject of the verb 'received'.",
+};
+
+const part5ah: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "______ the utility company raised electricity rates twice last year, customer complaints decreased significantly.",
+  options: [
+    { label: "A", text: "Despite" },
+    { label: "B", text: "Even though" },
+    { label: "C", text: "Because of" },
+    { label: "D", text: "Due to" },
+  ],
+  correct: "B",
+  explanation:
+    "'Even though' is a subordinating conjunction that introduces a full clause with a subject and verb ('the utility company raised electricity rates'), expressing a contrast. (A) 'Despite' is a preposition and must be followed by a noun phrase or gerund, not a full clause with a conjugated verb. (C) 'Because of' and (D) 'Due to' are also prepositions, but more importantly they express cause rather than contrast, which contradicts the logic of the sentence: rate increases would be expected to raise complaints, not lower them, so a contrast word is needed.",
+};
+
+const part5ai: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The transit authority chose diesel-electric buses because they are more ______ to operate than traditional diesel models, despite the higher upfront cost.",
+  options: [
+    { label: "A", text: "economy" },
+    { label: "B", text: "economic" },
+    { label: "C", text: "economical" },
+    { label: "D", text: "economics" },
+  ],
+  correct: "C",
+  explanation:
+    "'Economical' means cost-efficient or thrifty, which fits the meaning of buses that are cheaper to run. (B) 'Economic' means relating to the economy or the study of economics (e.g., 'economic policy') and does not mean cost-saving. (A) 'Economy' is a noun referring to a system of trade and production, not an adjective. (D) 'Economics' is the noun naming the academic subject, and neither noun can grammatically follow 'more' in this comparative adjective slot.",
+};
+
+const part5aj: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The nonprofit organization plans to ______ its outdated database system upgraded before the annual fundraising campaign begins.",
+  options: [
+    { label: "A", text: "get" },
+    { label: "B", text: "make" },
+    { label: "C", text: "do" },
+    { label: "D", text: "let" },
+  ],
+  correct: "A",
+  explanation:
+    "The passive causative structure 'get + object + past participle' shows that the organization will arrange for someone else to perform the action (upgrading the database) rather than doing it personally. (B) 'Make' as a causative verb requires a bare infinitive with an active meaning ('make someone upgrade it'), not a past participle. (C) 'Do' is not used in this causative pattern. (D) 'Let' as a causative verb takes a bare infinitive ('let it happen'), not a past participle, and would also change the meaning to permission rather than arrangement.",
+};
+
+const part5ak: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "Not only ______ the stadium expand its seating capacity, but it also added a new digital scoreboard.",
+  options: [
+    { label: "A", text: "did" },
+    { label: "B", text: "does" },
+    { label: "C", text: "has" },
+    { label: "D", text: "it did" },
+  ],
+  correct: "A",
+  explanation:
+    "When a negative adverbial expression like 'Not only' opens a sentence, the subject and auxiliary verb must invert. Since the second clause uses the past-tense verb 'added', the first clause needs the past auxiliary 'did' followed by the base verb: 'Not only did the stadium expand...'. (B) 'does' is present tense and does not match the past-tense 'added'. (C) 'has' would create the present perfect 'has expanded', which is inconsistent with the simple past 'added'. (D) 'it did' fails to invert the subject and auxiliary, which is required after a fronted negative adverbial.",
+};
+
+const part5al: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The regional airline had to ______ two aircraft from a partner carrier to cover the holiday travel surge.",
+  options: [
+    { label: "A", text: "borrow" },
+    { label: "B", text: "lend" },
+    { label: "C", text: "borrowed" },
+    { label: "D", text: "lent" },
+  ],
+  correct: "A",
+  explanation:
+    "'Borrow' means to take something temporarily from another party, and the preposition 'from' confirms that the airline is receiving the aircraft, so 'borrow' is correct. (B) 'Lend' means to give something to another party temporarily, which is the opposite direction of meaning and does not fit with 'from a partner carrier'. (C) 'Borrowed' is the wrong verb form; after the construction 'had to', a base form of the verb is required. (D) 'Lent' is both the wrong verb form after 'had to' and the wrong direction of meaning.",
+};
+
+const part5am: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The insurance adjuster promised to ______ the unresolved complaint by the end of the week.",
+  options: [
+    { label: "A", text: "follow up on" },
+    { label: "B", text: "look up" },
+    { label: "C", text: "come across" },
+    { label: "D", text: "catch up on" },
+  ],
+  correct: "A",
+  explanation:
+    "'Follow up on' means to pursue further or check on the progress of something, which matches the meaning of continuing to address an unresolved complaint. (B) 'Look up' means to search for information, such as in a reference source, which does not fit an ongoing complaint. (C) 'Come across' means to find something unexpectedly, which does not match a deliberate, promised action. (D) 'Catch up on' means to complete tasks that have been neglected, such as work or reading, but is not idiomatically used with a single complaint that needs a resolution.",
+};
+
+const part5an: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "Before the technicians could restore power, the utility company had to purchase ______ to replace the damaged transformers.",
+  options: [
+    { label: "A", text: "a few pieces of equipment" },
+    { label: "B", text: "a few equipments" },
+    { label: "C", text: "many equipment" },
+    { label: "D", text: "an equipment" },
+  ],
+  correct: "A",
+  explanation:
+    "'Equipment' is an uncountable noun, so it must be quantified with a counter phrase like 'a few pieces of'. (B) 'Equipments' is incorrect because uncountable nouns do not take a plural '-s' ending. (C) 'Many' is a quantifier reserved for countable plural nouns, not uncountable nouns like 'equipment', which would require 'much' or 'a lot of'. (D) 'An equipment' is incorrect because uncountable nouns cannot take the indefinite article 'an'.",
+};
+
 // ── Part 6 · Text Completion ──
 const part6: PracticeQuestionData = {
   prompt: "Part 6 · Read the email and choose the best word for the blank.",
@@ -2137,6 +2690,96 @@ const part6p: PracticeQuestionData = {
   correct: "C",
   explanation:
     "'A' is the correct indefinite article because 'new recycling program' is being introduced for the first time in the announcement, and 'new' begins with a consonant sound, ruling out 'an'. (A) 'the' would incorrectly imply the program has already been mentioned or is already known to the reader; (B) 'that' is a demonstrative that would also incorrectly suggest the program was referenced earlier; (D) 'an' is reserved for words beginning with a vowel sound, but 'new' begins with the consonant sound /n/, so 'an' is grammatically incorrect here.",
+};
+
+const part6q: PracticeQuestionData = {
+  prompt: "Part 6 · Read the announcement and choose the best word for the blank.",
+  context:
+    "From: events@brightwaycorp.com\nTo: all-staff@brightwaycorp.com\nSubject: 20th Anniversary Celebration – Save the Date\n\nDear team,\n\nBrightway Corporation ______ its twentieth anniversary on September 15, and we invite everyone to join the celebration in the main atrium. The event will include a catered lunch, a brief speech from the CEO, and a slideshow highlighting milestones from the past two decades. Employees are encouraged to wear company colors for the occasion. More details, including the schedule, will be shared next week.\n\nEvents Team",
+  options: [
+    { label: "A", text: "celebrated" },
+    { label: "B", text: "has celebrated" },
+    { label: "C", text: "will celebrate" },
+    { label: "D", text: "was celebrating" },
+  ],
+  correct: "C",
+  explanation:
+    "The event is scheduled for a specific future date (September 15), so the future tense 'will celebrate' is required, as in 'Brightway Corporation will celebrate its twentieth anniversary on September 15.' (A) 'celebrated' is simple past, describing a completed action, which does not fit a future date; (B) 'has celebrated' is present perfect, used for actions completed at an unspecified past time, not a scheduled future event; (D) 'was celebrating' is past continuous, describing an ongoing past action, which also does not match the future date.",
+};
+
+const part6r: PracticeQuestionData = {
+  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+  context:
+    "From: hr@parklanesolutions.com\nTo: all-staff@parklanesolutions.com\nSubject: New Employee Referral Bonus Program\n\nDear colleagues,\n\nWe are pleased to announce a new referral bonus program that rewards staff for recommending qualified candidates for open positions. Employees who refer a candidate who is successfully hired will receive a ______ bonus of $500 after the new hire completes ninety days of employment. To submit a referral, simply forward the candidate's resume to hr@parklanesolutions.com along with a short note explaining why you recommend them. We look forward to welcoming great new talent through your network.\n\nHuman Resources",
+  options: [
+    { label: "A", text: "generous" },
+    { label: "B", text: "generosity" },
+    { label: "C", text: "generously" },
+    { label: "D", text: "generate" },
+  ],
+  correct: "A",
+  explanation:
+    "The blank modifies the noun 'bonus,' so an adjective is required, making 'generous' correct, as in 'will receive a generous bonus of $500.' (B) 'generosity' is a noun and cannot modify another noun in this position; (C) 'generously' is an adverb, which would need to modify a verb rather than a noun; (D) 'generate' is a verb and does not fit the sentence structure at all.",
+};
+
+const part6s: PracticeQuestionData = {
+  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+  context:
+    "From: onboarding@cedarfinancialgroup.com\nTo: newclient@example.com\nSubject: Welcome to Cedar Financial Group\n\nDear Ms. Alvarez,\n\nWelcome to Cedar Financial Group. We are delighted that you have chosen us to manage your investment portfolio. Over the next two weeks, your dedicated account manager, Mr. Chen, will contact you ______ phone to schedule an initial consultation and review your financial goals in detail. In the meantime, please complete the attached client information form and return it at your earliest convenience. We look forward to building a long-term partnership with you.\n\nCedar Financial Group",
+  options: [
+    { label: "A", text: "by" },
+    { label: "B", text: "in" },
+    { label: "C", text: "at" },
+    { label: "D", text: "on" },
+  ],
+  correct: "A",
+  explanation:
+    "The fixed expression 'by phone' (without an article) is the standard way to describe contacting someone using a telephone, as in 'will contact you by phone to schedule an initial consultation.' (B) 'in phone' is not an idiomatic English expression; (C) 'at phone' is also not used in this context; (D) 'on phone' is incorrect without an article — the correct form would be 'on the phone,' not simply 'on phone.'",
+};
+
+const part6t: PracticeQuestionData = {
+  prompt: "Part 6 · Read the announcement and choose the best word for the blank.",
+  context:
+    "From: wellness@summitlogistics.com\nTo: all-staff@summitlogistics.com\nSubject: Launching Our New Workplace Wellness Program\n\nDear team,\n\nWe are excited to launch a new workplace wellness program designed to support employees' physical and mental health. The program will ______ free yoga classes, on-site health screenings, and a subsidized gym membership, all beginning next month. Employees who complete at least three wellness activities per quarter will also be eligible for a small reward. We encourage everyone to take advantage of these new resources and prioritize their well-being.\n\nWellness Committee",
+  options: [
+    { label: "A", text: "offer" },
+    { label: "B", text: "attend" },
+    { label: "C", text: "afford" },
+    { label: "D", text: "reach" },
+  ],
+  correct: "A",
+  explanation:
+    "The verb 'offer' correctly describes a program providing services or benefits to employees, as in 'The program will offer free yoga classes, on-site health screenings, and a subsidized gym membership.' (B) 'attend' means to be present at an event, which employees do, not something the program itself does; (C) 'afford' means to have enough money for something, which does not fit the meaning of a program providing benefits; (D) 'reach' typically refers to arriving at a place or level, not providing services, so it does not fit here.",
+};
+
+const part6u: PracticeQuestionData = {
+  prompt: "Part 6 · Read the notice and choose the best word for the blank.",
+  context:
+    "From: it-procurement@vantagepointe.com\nTo: department-heads@vantagepointe.com\nSubject: Annual Software License Renewal Notice\n\nDear Department Heads,\n\nOur company-wide licenses for the project management and design software suites are due for renewal on October 1. ______ the renewal proceeds automatically, each department must confirm its current number of active users by September 20 so that billing remains accurate. Departments that fail to submit updated user counts by the deadline will be billed based on last year's figures. Please send confirmations directly to IT Procurement.\n\nIT Procurement",
+  options: [
+    { label: "A", text: "Although" },
+    { label: "B", text: "Because" },
+    { label: "C", text: "Unless" },
+    { label: "D", text: "Since" },
+  ],
+  correct: "A",
+  explanation:
+    "The conjunction 'Although' correctly introduces a contrast between the automatic nature of the renewal and the fact that departments must still take action, as in 'Although the renewal proceeds automatically, each department must confirm its current number of active users.' (B) 'Because' would incorrectly suggest the confirmation is required as a result of the automatic renewal, which does not match the sentence's logic; (C) 'Unless' would mean the confirmation is only needed if the renewal does not proceed automatically, which contradicts the intended meaning; (D) 'Since,' used causally, would create the same illogical cause-and-effect relationship as 'Because.'",
+};
+
+const part6v: PracticeQuestionData = {
+  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+  context:
+    "From: facilities@oakridgebusinesspark.com\nTo: all-tenants@oakridgebusinesspark.com\nSubject: New Noise Complaint Procedure\n\nDear Tenants,\n\nTo address the recent increase in noise-related concerns, Oak Ridge Business Park is introducing ______ formal procedure for reporting excessive noise between suites. Beginning next Monday, tenants may submit complaints through the online tenant portal, and Facilities Management will respond within two business days. Repeated violations may result in a formal warning to the tenant responsible. We appreciate your cooperation in maintaining a comfortable work environment for all.\n\nFacilities Management",
+  options: [
+    { label: "A", text: "a" },
+    { label: "B", text: "an" },
+    { label: "C", text: "the" },
+    { label: "D", text: "one" },
+  ],
+  correct: "A",
+  explanation:
+    "The indefinite article 'a' is required before 'formal procedure' because this is introducing a new, non-specific procedure for the first time, and 'formal' begins with a consonant sound, requiring 'a' rather than 'an,' as in 'introducing a formal procedure.' (B) 'an' is used before words beginning with a vowel sound, not the consonant sound in 'formal'; (C) 'the' would incorrectly imply that the procedure has already been mentioned or is already known to the reader; (D) 'one' would emphasize a numerical quantity rather than simply introducing a new procedure, which does not fit naturally here.",
 };
 
 // ── Part 7 · Reading Comprehension ──
@@ -2512,6 +3155,186 @@ const part7x: PracticeQuestionData = {
     "The notice states 'Items not returned or renewed within 21 days of the due date will be marked as lost, and the patron will be billed the full replacement cost of $65', so (B) is correct.",
 };
 
+const part7y: PracticeQuestionData = {
+  prompt: "Part 7 · Read the museum notice and answer the question.",
+  context:
+    'MEMBERSHIP RENEWAL NOTICE\nFairview City Museum of Art\n\nDear Ms. Delgado,\n\nYour Dual Membership (two adults, unlimited free admission) is due to expire on August 15. Renewing before that date keeps your current rate of $95 per year; after August 15, the Dual Membership rate rises to $110. Members also receive a 10% discount at the museum shop and early entry to special exhibitions, including the upcoming Modern Sculpture exhibit opening September 3.\n\nTo renew online, log in to your account at fairviewmuseum.org/members and select "Renew Now." Members who renew by mail should allow up to two weeks for processing.\n\nQuestion: What will happen if Ms. Delgado renews her membership after August 15?',
+  options: [
+    { label: "A", text: "She will lose access to the museum shop discount" },
+    { label: "B", text: "She will be charged the new $110 rate" },
+    { label: "C", text: "Her membership will be automatically canceled" },
+    { label: "D", text: "She will no longer receive early exhibition entry" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states that 'after August 15, the Dual Membership rate rises to $110', so (B) is correct.",
+};
+
+const part7z: PracticeQuestionData = {
+  prompt: "Part 7 · Read the booking confirmation and answer the question.",
+  context:
+    "BOOKING CONFIRMATION\nHearth & Desk Co-working Space\n\nHi Marcus,\n\nThis confirms your reservation of Meeting Room B for Thursday, June 12, from 1:00 P.M. to 3:00 P.M. Your booking includes a projector, whiteboard, and complimentary coffee service for up to 6 guests. Please note that Meeting Room B is located on the third floor and requires a keycard, which you can pick up from the front desk starting at 12:45 P.M.\n\nIf you need to cancel or reschedule, please do so at least 24 hours in advance to avoid a $25 cancellation fee.\n\nQuestion: What must Marcus do before he can enter Meeting Room B on June 12?",
+  options: [
+    { label: "A", text: "Pay a $25 access fee at the front desk" },
+    { label: "B", text: "Pick up a keycard from the front desk" },
+    { label: "C", text: "Submit a list of attendee names in advance" },
+    { label: "D", text: "Confirm the booking with building security" },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation notes the room 'requires a keycard, which you can pick up from the front desk starting at 12:45 P.M.', so (B) is correct.",
+};
+
+const part7aa: PracticeQuestionData = {
+  prompt: "Part 7 · Read the warranty approval letter and answer the question.",
+  context:
+    "WARRANTY CLAIM APPROVAL\nBrightHome Appliances\n\nDear Mr. Kowalski,\n\nWe have reviewed your warranty claim (Claim #WC-4471) for your BrightHome Model X200 refrigerator and confirmed that the compressor failure is covered under your 5-year extended warranty. A replacement compressor will be shipped to your registered address within 5 business days, and a certified technician will contact you within 2 business days to schedule the installation at no charge.\n\nPlease keep your original proof-of-purchase receipt on file, as it may be required for any future claims. If the technician determines that additional parts are needed, those will also be covered under the same warranty terms.\n\nQuestion: What will happen within 2 business days of this letter?",
+  options: [
+    { label: "A", text: "The replacement compressor will arrive at Mr. Kowalski's address" },
+    { label: "B", text: "A technician will contact Mr. Kowalski to schedule installation" },
+    { label: "C", text: "Mr. Kowalski will receive a refund for the appliance" },
+    { label: "D", text: "The warranty claim will be officially closed" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'a certified technician will contact you within 2 business days to schedule the installation', so (B) is correct.",
+};
+
+const part7ab: PracticeQuestionData = {
+  prompt: "Part 7 · Read the certification notice and answer the question.",
+  context:
+    "CERTIFICATION NOTICE\nGlobal Compliance Institute\n\nDear Ms. Efe,\n\nCongratulations — you have successfully completed the Workplace Safety Certification course and passed the final assessment with a score of 88%. Your certificate is valid for 3 years from the date of this notice and will be sent to your employer's HR department automatically, since your enrollment was submitted through your company's corporate training account.\n\nTo maintain your certification, you must complete a renewal course before the 3-year expiration date. A reminder will be sent to your registered email 60 days before expiration.\n\nQuestion: What can be inferred about Ms. Efe's certification if she does not complete a renewal course before the expiration date?",
+  options: [
+    { label: "A", text: "It will remain valid indefinitely" },
+    { label: "B", text: "It will need to be renewed through a different institute" },
+    { label: "C", text: "It will no longer be valid" },
+    { label: "D", text: "It will be downgraded to a temporary certificate" },
+  ],
+  correct: "C",
+  explanation:
+    "Since the certificate 'is valid for 3 years' and Ms. Efe 'must complete a renewal course before the 3-year expiration date' to maintain it, it can be inferred that the certification would no longer be valid if she fails to renew it, making (C) correct.",
+};
+
+const part7ac: PracticeQuestionData = {
+  prompt: "Part 7 · Read the open house invitation and answer the question.",
+  context:
+    "OPEN HOUSE INVITATION\nRiverside Realty Group\n\nYou're Invited: Open House at 214 Maple Grove Lane\n\nJoin us this Saturday, July 25, from 11:00 A.M. to 2:00 P.M. for an open house at this newly renovated 3-bedroom, 2-bathroom home featuring an updated kitchen, hardwood floors throughout, and a fenced backyard. Light refreshments will be served, and our agent, Priya Nair, will be on-site to answer questions and provide a printed information packet.\n\nParking is limited on Maple Grove Lane, so visitors are encouraged to park in the community lot on Birchwood Avenue and walk the short block to the property.\n\nQuestion: Where should visitors to the open house park their cars?",
+  options: [
+    { label: "A", text: "In the driveway of 214 Maple Grove Lane" },
+    { label: "B", text: "In the community lot on Birchwood Avenue" },
+    { label: "C", text: "In a lot reserved by Riverside Realty Group" },
+    { label: "D", text: "On the street directly in front of the house" },
+  ],
+  correct: "B",
+  explanation:
+    "The invitation states visitors 'are encouraged to park in the community lot on Birchwood Avenue', so (B) is correct.",
+};
+
+const part7ad: PracticeQuestionData = {
+  prompt: "Part 7 · Read the subscription cancellation confirmation and answer the question.",
+  context:
+    "SUBSCRIPTION CANCELLATION CONFIRMATION\nHorizon Monthly Magazine\n\nDear Mr. Takahashi,\n\nThis confirms that your subscription to Horizon Monthly has been canceled as requested. You will continue to receive the 2 remaining issues already paid for under your current billing cycle, and no further charges will be applied to your card on file. Because you canceled more than 30 days before your renewal date, you are not eligible for a prorated refund, as our refund policy only applies to cancellations made after an automatic renewal charge has occurred.\n\nIf you change your mind, you may resubscribe at any time at horizonmonthly.com/subscribe.\n\nQuestion: What can be inferred about customers who cancel their subscription after an automatic renewal charge has occurred?",
+  options: [
+    { label: "A", text: "They are eligible for a prorated refund" },
+    { label: "B", text: "They must pay an early cancellation fee" },
+    { label: "C", text: "They lose access to remaining issues immediately" },
+    { label: "D", text: "They cannot resubscribe in the future" },
+  ],
+  correct: "A",
+  explanation:
+    "Mr. Takahashi, who canceled before a renewal charge occurred, is told he is 'not eligible for a prorated refund' because the 'refund policy only applies to cancellations made after an automatic renewal charge has occurred', so it can be inferred that customers who cancel after a renewal charge are eligible for a refund, making (A) correct.",
+};
+
+const part7ae: PracticeQuestionData = {
+  prompt: "Part 7 · Read the internal memo and answer the question.",
+  context:
+    "OFFICE RELOCATION ANNOUNCEMENT\nVantek Solutions — Internal Memo\n\nTo: All Staff\nFrom: Facilities Department\n\nWe are pleased to announce that Vantek Solutions will relocate its headquarters from 88 Industrial Parkway to 500 Commerce Center Drive, effective Monday, October 6. The new office offers additional meeting space, a larger break room, and covered parking for all employees. Moving crews will pack and transport desk items the weekend of October 3–4, so employees must clear personal belongings from desks by end of day Friday, October 2.\n\nIT will handle the relocation of computer equipment separately; employees do not need to disconnect their own monitors or docking stations.\n\nQuestion: What are employees required to do by end of day Friday, October 2?",
+  options: [
+    { label: "A", text: "Disconnect their computer monitors" },
+    { label: "B", text: "Submit a change-of-address form" },
+    { label: "C", text: "Clear personal belongings from their desks" },
+    { label: "D", text: "Return their building access badges" },
+  ],
+  correct: "C",
+  explanation:
+    "The memo states 'employees must clear personal belongings from desks by end of day Friday, October 2', so (C) is correct.",
+};
+
+const part7af: PracticeQuestionData = {
+  prompt: "Part 7 · Read the award notification letter and answer the question.",
+  context:
+    "SCHOLARSHIP AWARD NOTIFICATION\nDelacroix Foundation for the Arts\n\nDear Ms. Osei,\n\nCongratulations! The Delacroix Foundation is pleased to inform you that you have been selected to receive the 2026 Emerging Artist Grant in the amount of $4,000. This award is intended to support the completion of your proposed ceramics project and must be used within 12 months of the award date. Half of the grant ($2,000) will be disbursed within 2 weeks, with the remaining balance issued upon submission of a progress report at the 6-month mark.\n\nPlease sign and return the enclosed award agreement by August 1 to accept the grant.\n\nQuestion: When will Ms. Osei receive the remaining $2,000 of her grant?",
+  options: [
+    { label: "A", text: "Immediately after signing the award agreement" },
+    { label: "B", text: "Upon submission of a progress report at the 6-month mark" },
+    { label: "C", text: "At the end of the 12-month project period" },
+    { label: "D", text: "Only if she requests it in writing" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'the remaining balance issued upon submission of a progress report at the 6-month mark', so (B) is correct.",
+};
+
+const part7ag: PracticeQuestionData = {
+  prompt: "Part 7 · Read the promotional email and answer the question.",
+  context:
+    "SPECIAL OFFER\nQuickBite Delivery\n\nHi Daniel,\n\nIt's been a while! Enjoy 30% off your next order (up to a maximum discount of $10) with code COMEBACK30. This offer is valid on orders of $20 or more and expires July 31. Simply enter the code at checkout — the discount cannot be combined with other promotions or applied to previous orders.\n\nWe've missed having you as a customer. Order now at quickbite.com or through the app.\n\nQuestion: What can be inferred about a customer who places a $50 order using code COMEBACK30?",
+  options: [
+    { label: "A", text: "The full 30% discount of $15 will be applied" },
+    { label: "B", text: "The discount will be capped at $10" },
+    { label: "C", text: "The order will not qualify because it exceeds the limit" },
+    { label: "D", text: "The customer will receive free delivery instead" },
+  ],
+  correct: "B",
+  explanation:
+    "Thirty percent of a $50 order would be $15, but the email specifies the discount is 'up to a maximum discount of $10', so it can be inferred the discount would be capped at $10, making (B) correct.",
+};
+
+const part7ah: PracticeQuestionData = {
+  prompt: "Part 7 · Read the meeting minutes summary and answer the question.",
+  context:
+    "MEETING MINUTES SUMMARY\nWillowbrook Cooperative — Board of Directors\n\nThe Board met on May 14 and approved the proposed roof replacement project for Building C, with work scheduled to begin June 2 and take approximately 3 weeks. The project will be funded through the reserve fund, so no special assessment will be charged to residents. Residents of Building C were asked to move any items stored on balconies to a secure location before June 2 to prevent damage during construction.\n\nThe Board also tabled a discussion on updated parking regulations until the next meeting, scheduled for June 18.\n\nQuestion: How will the roof replacement project for Building C be funded?",
+  options: [
+    { label: "A", text: "Through a special assessment charged to all residents" },
+    { label: "B", text: "Through the cooperative's reserve fund" },
+    { label: "C", text: "Through a loan from the co-op's bank" },
+    { label: "D", text: "Through an increase in monthly maintenance fees" },
+  ],
+  correct: "B",
+  explanation:
+    "The minutes state the project 'will be funded through the reserve fund, so no special assessment will be charged to residents', so (B) is correct.",
+};
+
+const part7ai: PracticeQuestionData = {
+  prompt: "Part 7 · Read the reservation confirmation and answer the question.",
+  context:
+    "RESERVATION CONFIRMATION\nPawsitive Stay Pet Boarding\n\nDear Mrs. Alvarez,\n\nThis confirms your boarding reservation for your dog, Biscuit, from August 8 to August 15. Check-in is available between 8:00 A.M. and 6:00 P.M. on August 8; please bring Biscuit's vaccination records and any medications with clear dosage instructions. Biscuit is enrolled in our Standard package, which includes 2 daily walks and access to the outdoor play yard.\n\nIf you would like to add the Deluxe package (includes grooming and one-on-one playtime), please contact us at least 48 hours before check-in, as it cannot be added on the day of arrival.\n\nQuestion: What must Mrs. Alvarez do if she wants to add the Deluxe package for Biscuit?",
+  options: [
+    { label: "A", text: "Pay an additional fee at check-in on August 8" },
+    { label: "B", text: "Contact the facility at least 48 hours before check-in" },
+    { label: "C", text: "Bring extra medication for Biscuit" },
+    { label: "D", text: "Wait until Biscuit's next boarding stay" },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation states to 'contact us at least 48 hours before check-in, as it cannot be added on the day of arrival', so (B) is correct.",
+};
+
+const part7aj: PracticeQuestionData = {
+  prompt: "Part 7 · Read the installation proposal and answer the question.",
+  context:
+    "SOLAR INSTALLATION PROPOSAL\nSunPeak Energy Solutions\n\nDear Mr. Bianchi,\n\nThank you for requesting a quote. Based on our site assessment of your roof, we recommend a 16-panel system with an estimated output of 6.4 kW, sufficient to cover approximately 90% of your household's average annual electricity usage. The total installation cost is $18,500 before incentives; after applying the available federal tax credit, your net cost would be approximately $12,950.\n\nThis quote is valid for 60 days. Installation typically takes 1–2 days once permits are approved, and permit approval in your area generally takes 3–4 weeks.\n\nQuestion: What can be inferred about Mr. Bianchi's electricity needs after the solar system is installed?",
+  options: [
+    { label: "A", text: "He will no longer need any electricity from the grid" },
+    { label: "B", text: "He may still need to draw some electricity from the grid" },
+    { label: "C", text: "He will produce more electricity than he uses" },
+    { label: "D", text: "His electricity usage will decrease by 90%" },
+  ],
+  correct: "B",
+  explanation:
+    "The proposal states the system would cover 'approximately 90% of your household's average annual electricity usage', implying the remaining portion would still need to come from another source such as the grid, so (B) is correct.",
+};
+
 export const part1Questions: PracticeQuestionData[] = [
   part1a,
   part1b,
@@ -2555,6 +3378,12 @@ export const part2Questions: PracticeQuestionData[] = [
   part2z,
   part2aa,
   part2ab,
+  part2ac,
+  part2ad,
+  part2ae,
+  part2af,
+  part2ag,
+  part2ah,
 ];
 export const part3Questions: PracticeQuestionData[] = [
   part3,
@@ -2585,6 +3414,18 @@ export const part3Questions: PracticeQuestionData[] = [
   part3z,
   part3aa,
   part3ab,
+  part3ac,
+  part3ad,
+  part3ae,
+  part3af,
+  part3ag,
+  part3ah,
+  part3ai,
+  part3aj,
+  part3ak,
+  part3al,
+  part3am,
+  part3an,
 ];
 export const part4Questions: PracticeQuestionData[] = [
   part4,
@@ -2607,6 +3448,12 @@ export const part4Questions: PracticeQuestionData[] = [
   part4r,
   part4s,
   part4t,
+  part4u,
+  part4v,
+  part4w,
+  part4x,
+  part4y,
+  part4z,
 ];
 export const part5Questions: PracticeQuestionData[] = [
   part5,
@@ -2639,6 +3486,16 @@ export const part5Questions: PracticeQuestionData[] = [
   part5ab,
   part5ac,
   part5ad,
+  part5ae,
+  part5af,
+  part5ag,
+  part5ah,
+  part5ai,
+  part5aj,
+  part5ak,
+  part5al,
+  part5am,
+  part5an,
 ];
 export const part6Questions: PracticeQuestionData[] = [
   part6,
@@ -2657,6 +3514,12 @@ export const part6Questions: PracticeQuestionData[] = [
   part6n,
   part6o,
   part6p,
+  part6q,
+  part6r,
+  part6s,
+  part6t,
+  part6u,
+  part6v,
 ];
 export const part7Questions: PracticeQuestionData[] = [
   part7,
@@ -2683,6 +3546,18 @@ export const part7Questions: PracticeQuestionData[] = [
   part7v,
   part7w,
   part7x,
+  part7y,
+  part7z,
+  part7aa,
+  part7ab,
+  part7ac,
+  part7ad,
+  part7ae,
+  part7af,
+  part7ag,
+  part7ah,
+  part7ai,
+  part7aj,
 ];
 
 export const listeningReadingQuestions: PracticeQuestionData[] = [
