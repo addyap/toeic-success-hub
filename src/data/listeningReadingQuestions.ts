@@ -1669,6 +1669,142 @@ const part3az: PracticeQuestionData = {
     "The man says he 'found a section that's not up to code — it could be a fire hazard.' (B), (C), and (D) are never mentioned — they are typical home-inspection-related distractors.",
 };
 
+const part3ba: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 53 — Dry cleaner stain complaint", durationSec: 36 },
+  context:
+    "(W) Hi, I'm picking up the navy blazer I dropped off Tuesday, but there's still a coffee stain on the left sleeve.\n(M) I'm so sorry about that — let me check our log... it looks like the stain treatment was only applied once. I can run it through a second treatment at no charge.\n(W) How long will that take?\n(M) About twenty minutes if you don't mind waiting, or I can have it ready by six this evening.\n\nQuestion: What problem does the woman report about her blazer?",
+  options: [
+    { label: "A", text: "A stain is still visible after cleaning." },
+    { label: "B", text: "A button is missing from the sleeve." },
+    { label: "C", text: "The wrong garment was returned to her." },
+    { label: "D", text: "The blazer was torn during cleaning." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says the blazer still has 'a coffee stain on the left sleeve,' and the man confirms 'the stain treatment was only applied once.' (B), (C), and (D) are never mentioned — they are typical dry-cleaning-related distractors.",
+};
+
+const part3bb: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 54 — Optical shop lens error", durationSec: 38 },
+  context:
+    "(M) Hi, I picked up my new glasses yesterday, but everything looks blurry whenever I try to read up close.\n(W) I'm sorry to hear that. Let me check your prescription... it looks like the lab used the wrong reading power for your right lens.\n(M) Is there any way to get that corrected quickly?\n(W) Yes, I can order a replacement lens today, and it should be ready by Thursday.\n\nQuestion: Why does the man contact the optical shop?",
+  options: [
+    { label: "A", text: "His new glasses cause blurry close-up vision because of a lens error." },
+    { label: "B", text: "He lost his glasses and needs a replacement pair." },
+    { label: "C", text: "He wants a refund for his glasses." },
+    { label: "D", text: "He needs to schedule a new eye exam." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says his new glasses leave things 'blurry whenever I try to read up close,' and the woman finds 'the lab used the wrong reading power for your right lens.' (B), (C), and (D) are never mentioned — they are typical optical-shop-related distractors.",
+};
+
+const part3bc: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 55 — Moving day doorway problem", durationSec: 40 },
+  context:
+    "(M) Hi, we got the couch to the building, but it won't fit through the stairwell door — it's a few inches too wide.\n(W) Can you try tilting it or taking the legs off?\n(M) We already tried both; it's just not going to clear that doorway.\n(W) Then let's bring it up through the service elevator on the other side of the building instead.\n\nQuestion: What will the movers most likely do next?",
+  options: [
+    { label: "A", text: "Bring the couch up using the service elevator." },
+    { label: "B", text: "Return the couch to the furniture store." },
+    { label: "C", text: "Cut the couch apart to fit it through the door." },
+    { label: "D", text: "Wait until a wider door is installed." },
+  ],
+  correct: "A",
+  explanation:
+    "After the couch fails to fit through the stairwell door even tilted and with the legs off, the woman says, 'let's bring it up through the service elevator on the other side of the building instead.' (B), (C), and (D) are never mentioned — they are typical moving-day distractors.",
+};
+
+const part3bd: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 56 — Car rental vehicle upgrade", durationSec: 37 },
+  context:
+    "(W) Hi, I reserved a compact car, but I just remembered I'll have three large suitcases and two passengers with me.\n(M) I understand. We do have a midsize SUV available for the same reservation dates.\n(W) Would that cost more than my original reservation?\n(M) There's usually a daily upgrade fee, but I can waive it since our compact cars are limited today.\n\nQuestion: What does the woman ask for?",
+  options: [
+    { label: "A", text: "A larger vehicle to fit her luggage and passengers." },
+    { label: "B", text: "A refund for her existing reservation." },
+    { label: "C", text: "An extension of her rental period." },
+    { label: "D", text: "A pickup at a different rental location." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman explains she'll have 'three large suitcases and two passengers' and needs something bigger than the compact car she reserved; the man offers a midsize SUV. (B), (C), and (D) are never mentioned — they are typical car-rental-related distractors.",
+};
+
+const part3be: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 57 — Picture framing pickup", durationSec: 39 },
+  context:
+    "(M) Hi, I'm here to pick up the frame for my diploma — the order was supposed to be ready last week.\n(W) Let me check... yes, it's ready. Would you like glass or the acrylic covering we recommend for shipping?\n(M) I'll take the glass, since I'm just hanging it at home.\n(W) Great, that comes to forty-five dollars. Let me wrap it carefully for you before you go.\n\nQuestion: Where does this conversation most likely take place?",
+  options: [
+    { label: "A", text: "At a picture framing shop." },
+    { label: "B", text: "At a photography studio." },
+    { label: "C", text: "At an art gallery." },
+    { label: "D", text: "At a print shop." },
+  ],
+  correct: "A",
+  explanation:
+    "The talk of picking up 'the frame for my diploma' and choosing between 'glass or the acrylic covering' points specifically to a picture framing shop. (B), (C), and (D) are never mentioned — they are other plausible settings that involve pictures or printing.",
+};
+
+const part3bf: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 58 — Charity auction venue setup", durationSec: 41 },
+  context:
+    "(W) Hi, this is Priya from the downtown community center. I'm calling to confirm the room setup for Saturday's charity auction.\n(M) Of course. I'm the facilities manager here, so I'll personally oversee the chair and table setup that morning.\n(W) Perfect. Will you also be handling the sound system, or should I bring my own microphone?\n(M) I'll have our AV staff test the sound system tomorrow, so you won't need to bring anything.\n\nQuestion: What is the man's job?",
+  options: [
+    { label: "A", text: "He is the facilities manager at the venue." },
+    { label: "B", text: "He is a professional auctioneer." },
+    { label: "C", text: "He is an AV technician." },
+    { label: "D", text: "He is the charity's fundraising director." },
+  ],
+  correct: "A",
+  explanation:
+    "The man states directly, 'I'm the facilities manager here, so I'll personally oversee the chair and table setup.' (B), (C), and (D) are never mentioned — the AV staff are referenced as separate people he will send, not his own role.",
+};
+
+const part3bg: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 59 — Home internet service call", durationSec: 43 },
+  context:
+    "(W) Hi, thanks for coming — my internet has been cutting out every few minutes since yesterday.\n(M) Let me check the modem... I see the signal strength is very low. It might be the cable connection outside.\n(W) Is that something you can fix today?\n(M) Yes, I'll check the line outside first, and if that's the issue, I can replace the connector right now.\n\nQuestion: What problem does the woman report?",
+  options: [
+    { label: "A", text: "Her internet connection keeps cutting out." },
+    { label: "B", text: "Her modem will not turn on at all." },
+    { label: "C", text: "She was overcharged on her latest bill." },
+    { label: "D", text: "Her Wi-Fi password stopped working." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says, 'my internet has been cutting out every few minutes since yesterday.' (B), (C), and (D) are never mentioned — they are typical home-internet-related distractors.",
+};
+
+const part3bh: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 60 — City tour booking conflict", durationSec: 42 },
+  context:
+    "(W) Hi, I booked the afternoon city tour for tomorrow, but a work meeting just got moved and now runs until 2 PM, so I'll miss the 1 PM departure.\n(M) No problem, we also run a tour at 4 PM that covers the same route.\n(W) That would work much better for me.\n(M) Great, I'll move your booking to the 4 PM tour and email you the updated ticket.\n\nQuestion: Why does the woman contact the tour company?",
+  options: [
+    { label: "A", text: "Her meeting schedule now conflicts with her booked tour time." },
+    { label: "B", text: "She wants a refund for her tour booking." },
+    { label: "C", text: "She lost her tour tickets." },
+    { label: "D", text: "She wants to add more people to her booking." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman explains her 'work meeting just got moved and now runs until 2 PM,' which makes her miss the 1 PM tour she booked. (B), (C), and (D) are never mentioned — they are typical tour-booking-related distractors.",
+};
+
 // ── Part 4 · Short Talks ──
 const part4: PracticeQuestionData = {
   prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
@@ -2290,6 +2426,230 @@ const part4aj: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The announcement warns that vehicles not removed by nine forty-five 'will be relocated at the owner's expense.' Towing to an impound lot (A), fines (C), and leaving vehicles in place (D) are never mentioned.",
+};
+
+const part4ak: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the market vendor's announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Farmers market vendor closing announcement", durationSec: 0 },
+  context:
+    "Attention shoppers, this is Ellen from Sunridge Orchards here at the Saturday farmers market. We'll be closing our stand in thirty minutes, so if you'd like any of our remaining peaches or plums, they're now half off for the rest of the morning. We've also got a fresh batch of apple cider that just arrived, available while supplies last. Stop by our stand near the fountain before we pack up at noon. Thanks so much for supporting local growers today!\n\nQuestion: What does Ellen say about the peaches and plums?",
+  options: [
+    { label: "A", text: "They are sold out for the day." },
+    { label: "B", text: "They are now half off." },
+    { label: "C", text: "They will be donated to a food bank." },
+    { label: "D", text: "They were grown at a different farm this week." },
+  ],
+  correct: "B",
+  explanation:
+    "Ellen states the remaining peaches and plums 'are now half off for the rest of the morning.' Being sold out (A), donated (C), and grown elsewhere (D) are never mentioned.",
+};
+
+const part4al: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the hotel concierge desk recorded message and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Hotel concierge desk recorded information line", durationSec: 0 },
+  context:
+    "Thank you for calling the concierge desk at the Windermere Hotel. Our concierge team is currently assisting other guests, but here is some information that may help. For dinner reservations at any of our three on-site restaurants, please press one to be connected directly to the reservations line. If you'd like to book a spa treatment, note that all appointments must be scheduled at least four hours in advance. For local sightseeing recommendations, brochures are available at the concierge desk in the main lobby. If you'd like to leave a message for a concierge to call you back, please stay on the line after the tone.\n\nQuestion: What should a guest do to make a dinner reservation at one of the hotel's restaurants?",
+  options: [
+    { label: "A", text: "Visit the concierge desk in person." },
+    { label: "B", text: "Press one to be connected to the reservations line." },
+    { label: "C", text: "Leave a message after the tone." },
+    { label: "D", text: "Book online through the hotel's website." },
+  ],
+  correct: "B",
+  explanation:
+    "The recording says, 'For dinner reservations at any of our three on-site restaurants, please press one to be connected directly to the reservations line.' Visiting in person (A) is only described for sightseeing brochures, leaving a message (C) is for reaching a concierge, and a website (D) is never mentioned.",
+};
+
+const part4am: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the university lecture introduction and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — University lecture-hall course introduction", durationSec: 0 },
+  context:
+    "Good morning, everyone, and welcome to Introduction to Cognitive Psychology. I'm Professor Alan Whitfield, and I'll be leading this course through the end of the semester. Before we start today's lecture, please note that the full syllabus, along with the reading schedule, has been posted to the course website under the 'Materials' tab. Your first written assignment, a two-page reflection on chapter one, is due next Monday by midnight, submitted through the online portal. If you have questions about the assignment, my office hours are Wednesdays from two to four in Room 118. Let's go ahead and get started with today's material.\n\nQuestion: Where can students find the course syllabus?",
+  options: [
+    { label: "A", text: "In a printed handout distributed today." },
+    { label: "B", text: "On the course website under the Materials tab." },
+    { label: "C", text: "By emailing Professor Whitfield directly." },
+    { label: "D", text: "At the campus bookstore." },
+  ],
+  correct: "B",
+  explanation:
+    "Professor Whitfield states the syllabus 'has been posted to the course website under the Materials tab.' A printed handout (A), emailing him (C), and the bookstore (D) are never mentioned.",
+};
+
+const part4an: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the co-working space orientation talk and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Co-working space new-member orientation talk", durationSec: 0 },
+  context:
+    "Welcome to Nexus Workspace, and congratulations on your new membership! Let me walk you through a few essentials before you get settled. The Wi-Fi network name and password are printed on the card in your welcome packet, and they're also posted on a sign near the coffee station. If you need to reserve one of our private meeting rooms, you can do so through the Nexus app, where availability updates in real time. Any packages or mail addressed to you will be held at the front desk, and our staff will send you an email notification when something arrives. Feel free to explore the lounge and rooftop deck, both of which are open to all members. If you have any questions today, just flag down anyone wearing a Nexus staff badge.\n\nQuestion: How can a member reserve a private meeting room?",
+  options: [
+    { label: "A", text: "By signing a sheet at the front desk." },
+    { label: "B", text: "Through the Nexus app." },
+    { label: "C", text: "By emailing the building manager." },
+    { label: "D", text: "By asking a staff member to book it for them." },
+  ],
+  correct: "B",
+  explanation:
+    "The speaker explains, 'If you need to reserve one of our private meeting rooms, you can do so through the Nexus app.' A sign-up sheet (A), emailing the manager (C), and asking staff to book (D) are never mentioned.",
+};
+
+const part4ao: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the ferry boarding announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Ferry terminal boarding announcement", durationSec: 0 },
+  context:
+    "Attention passengers waiting for the ten forty-five ferry to Pine Island, boarding will begin in fifteen minutes at gate three. Foot passengers should have their tickets ready for scanning, while drivers should remain with their vehicles until directed onto the car deck by our loading crew. Please note that the outdoor observation deck will be closed for the first thirty minutes of the crossing due to high winds, though it's expected to reopen once we're further out in the channel. The onboard café will begin serving right after departure. We appreciate your patience and look forward to having you aboard.\n\nQuestion: Why will the outdoor observation deck be closed at the start of the crossing?",
+  options: [
+    { label: "A", text: "It is being cleaned by the crew." },
+    { label: "B", text: "High winds make it unsafe." },
+    { label: "C", text: "It is reserved for a private event." },
+    { label: "D", text: "Repairs are being completed on the railing." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states the deck will be closed 'for the first thirty minutes of the crossing due to high winds.' Cleaning (A), a private event (C), and railing repairs (D) are never mentioned.",
+};
+
+const part4ap: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the bowling alley announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Bowling alley league night announcement", durationSec: 0 },
+  context:
+    "Good evening, bowlers, and welcome to Thunder Lanes league night. Tonight's matches will begin promptly at seven, so please make sure your team has checked in at the front counter and picked up your lane assignment by six forty-five. Rental shoes are available at no charge for league members this evening only, so don't forget to trade in your own shoes at the counter. Our snack bar will remain open until nine thirty, offering a special discount on nachos and soft drinks for anyone wearing a league jersey. Good luck to all our teams tonight, and let's have a great match!\n\nQuestion: What is being offered to league members tonight only?",
+  options: [
+    { label: "A", text: "Free rental shoes." },
+    { label: "B", text: "A discount on lane fees." },
+    { label: "C", text: "Free entry for guests." },
+    { label: "D", text: "A raffle ticket for a prize." },
+  ],
+  correct: "A",
+  explanation:
+    "The announcer states, 'Rental shoes are available at no charge for league members this evening only.' A lane-fee discount (B), free guest entry (C), and a raffle (D) are never mentioned — the nacho and drink discount applies to anyone wearing a league jersey, not specifically to being a member.",
+};
+
+const part4aq: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the spa appointment reminder voicemail and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Spa appointment reminder voicemail", durationSec: 0 },
+  context:
+    "Hi, this is Tara calling from Willow Creek Spa to remind you of your ninety-minute deep-tissue massage appointment tomorrow at two p.m. with our therapist, Noah. We ask that you arrive fifteen minutes early to fill out a brief health questionnaire if this is your first visit with us. Please note that cancellations made less than twenty-four hours in advance are subject to a fifty percent charge. If you need to reschedule, just give us a call back at the number on file. We look forward to seeing you tomorrow!\n\nQuestion: Why are guests asked to arrive fifteen minutes early?",
+  options: [
+    { label: "A", text: "To pay for their appointment in advance." },
+    { label: "B", text: "To fill out a health questionnaire." },
+    { label: "C", text: "To select their preferred massage oil." },
+    { label: "D", text: "To meet with the spa manager." },
+  ],
+  correct: "B",
+  explanation:
+    "Tara explains guests should arrive early 'to fill out a brief health questionnaire if this is your first visit.' Paying in advance (A), choosing oil (C), and meeting the manager (D) are never mentioned.",
+};
+
+const part4ar: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the home-improvement store announcement and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Home-improvement store weekend workshop announcement",
+    durationSec: 0,
+  },
+  context:
+    "Attention shoppers, Builder's Depot is hosting a free tile-installation workshop this Saturday at ten a.m. in our garden center area. Our flooring expert, Renata, will walk you through measuring, cutting, and setting tile for a bathroom or kitchen project. Space is limited to twenty participants, so please sign up at the customer service desk before Friday evening to reserve your spot. Everyone who attends will receive a ten percent discount coupon good on tile and grout purchases that day. We hope to see you there!\n\nQuestion: What must customers do before Friday evening to attend the workshop?",
+  options: [
+    { label: "A", text: "Purchase tile and grout in advance." },
+    { label: "B", text: "Sign up at the customer service desk." },
+    { label: "C", text: "Bring their own tools." },
+    { label: "D", text: "Watch an online tutorial." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement instructs interested customers to 'sign up at the customer service desk before Friday evening to reserve your spot.' Purchasing supplies in advance (A), bringing tools (C), and an online tutorial (D) are never mentioned.",
+};
+
+const part4as: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the subway station announcement and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Subway station weekend service-change announcement",
+    durationSec: 0,
+  },
+  context:
+    "Attention riders, due to scheduled track work this weekend, the Blue Line will not be running between Kendall Station and Riverside Station. Free shuttle buses will replace train service along this stretch, picking up passengers just outside the main entrance every ten minutes. Riders traveling beyond Riverside Station should continue to expect normal Blue Line service in both directions. Please allow extra travel time, as the shuttle buses may take longer than the usual train ride. We apologize for the inconvenience and thank you for your patience during this improvement work.\n\nQuestion: How will riders travel between Kendall and Riverside Stations this weekend?",
+  options: [
+    { label: "A", text: "By transferring to the Red Line." },
+    { label: "B", text: "By free shuttle bus." },
+    { label: "C", text: "By a reduced train schedule." },
+    { label: "D", text: "By walking a marked pedestrian route." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states, 'Free shuttle buses will replace train service along this stretch.' Transferring to another line (A), a reduced train schedule (C), and a walking route (D) are never mentioned.",
+};
+
+const part4at: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the corporate all-hands Q&A introduction and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Corporate all-hands live Q&A session introduction",
+    durationSec: 0,
+  },
+  context:
+    "Thanks again for sticking with us through that presentation. Before we open things up, I want to explain how today's question and answer session will work. Rather than lining up at a microphone, please submit your questions through the town hall app using the Q&A tab, and our moderators will read the most upvoted questions aloud to the leadership panel. We'll spend about twenty minutes on this, and any questions we don't get to today will be answered in a follow-up email next week. Go ahead and start submitting your questions now, and we'll get started in just a moment.\n\nQuestion: How should employees submit their questions during the session?",
+  options: [
+    { label: "A", text: "By lining up at a microphone." },
+    { label: "B", text: "Through the Q&A tab in the town hall app." },
+    { label: "C", text: "By emailing the leadership panel directly." },
+    { label: "D", text: "By writing them on cards collected by staff." },
+  ],
+  correct: "B",
+  explanation:
+    "The speaker instructs employees to 'submit your questions through the town hall app using the Q&A tab.' Lining up at a microphone (A) is explicitly said not to be used this time, and emailing the panel (C) and note cards (D) are never mentioned — email is only described as the method for answering leftover questions afterward.",
+};
+
+const part4au: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the summer camp pickup announcement and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Summer camp end-of-day parent pickup announcement",
+    durationSec: 0,
+  },
+  context:
+    "Good afternoon, parents and guardians. Pickup for Camp Meadowbrook will begin at four p.m. today at the main pavilion, not the usual side gate, since we're hosting a barbecue for the counselors this evening. When you arrive, please have your pickup authorization card ready, as our staff will be checking photo identification against each camper's approved list before releasing any child. If someone other than a listed guardian will be picking up your camper today, please call the camp office before three thirty to add them to the list. Campers not picked up by four thirty will be brought to the front office to wait with a counselor. Thank you for your cooperation, and we'll see you this afternoon.\n\nQuestion: Where will pickup take place today?",
+  options: [
+    { label: "A", text: "At the side gate, as usual." },
+    { label: "B", text: "At the main pavilion." },
+    { label: "C", text: "At the camp office." },
+    { label: "D", text: "In the parking lot." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states pickup 'will begin at four p.m. today at the main pavilion, not the usual side gate.' The side gate (A) is explicitly not being used today, the camp office (C) is only mentioned for campers not picked up on time, and the parking lot (D) is never mentioned.",
+};
+
+const part4av: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the car dealership service reminder and answer the question.",
+  listening: true,
+  audio: {
+    label: "Short talk — Car dealership service-appointment reminder voicemail",
+    durationSec: 0,
+  },
+  context:
+    "Hello, this is Greg calling from Milestone Auto Service to remind you about your scheduled oil change and tire rotation tomorrow at nine a.m. Please plan to leave your vehicle with us for about two hours, and if you'd like, our shuttle driver can take you to and from your home or office while you wait. We recommend arriving a few minutes early to complete a quick check-in at the service desk. If you need to reschedule, please call us back at least a day in advance so we can offer your slot to another customer. We'll see you tomorrow morning!\n\nQuestion: What service does Greg offer while the customer's vehicle is being serviced?",
+  options: [
+    { label: "A", text: "A complimentary car wash." },
+    { label: "B", text: "A shuttle ride to and from home or office." },
+    { label: "C", text: "A rental car for the day." },
+    { label: "D", text: "A discount on future maintenance." },
+  ],
+  correct: "B",
+  explanation:
+    "Greg says, 'our shuttle driver can take you to and from your home or office while you wait.' A car wash (A), a rental car (C), and a maintenance discount (D) are never mentioned.",
 };
 
 // ── Part 5 · Incomplete Sentences ──
@@ -4198,6 +4558,459 @@ const part7bb: PracticeQuestionData = {
     "The estimate states that if a location 'has stairs beyond one flight, an additional $15 per hour will apply for the extra time required', and two flights of stairs is beyond one flight, so it can be inferred the move may take longer and cost more than the standard estimate, making (B) correct.",
 };
 
+const part7bc: PracticeQuestionData = {
+  prompt: "Part 7 · Read the dividend notice and answer the question.",
+  context:
+    "ANNUAL MEMBER DIVIDEND NOTICE\nRiverbend Community Co-op\n\nDear Member,\n\nBased on your household's purchases between January 1 and December 31, you have earned a patronage dividend of $86.40. Consistent with co-op policy, dividends are issued automatically as store credit to your membership account within 10 business days of this notice.\n\nIf you would prefer to receive your dividend as a mailed check instead, you must submit a request through the member portal at riverbendcoop.org/account by March 1. Requests submitted after this date will be applied to next year's dividend distribution instead.\n\nQuestion: How will a member's dividend be issued if they take no action?",
+  options: [
+    { label: "A", text: "As a mailed check within 10 business days" },
+    { label: "B", text: "As store credit to their membership account" },
+    { label: "C", text: "As a discount on next year's membership fee" },
+    { label: "D", text: "As cash at the register on their next visit" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states that dividends 'are issued automatically as store credit to your membership account within 10 business days', so (B) is correct.",
+};
+
+const part7bd: PracticeQuestionData = {
+  prompt: "Part 7 · Read the appointment reminder and answer the question.",
+  context:
+    "APPOINTMENT REMINDER\nBrightsmile Dental Group\n\nDear Mr. Okafor,\n\nThis is a reminder of your upcoming cleaning and checkup appointment on Thursday, August 6, at 10:30 A.M. with Dr. Reyes. Please arrive 10 minutes early to complete an updated medical history form.\n\nOur office requires at least 24 hours' notice for any cancellation or rescheduling. Appointments canceled with less than 24 hours' notice, or missed entirely, will be charged a $50 late-cancellation fee, which must be paid before any future appointment can be scheduled.\n\nQuestion: What will happen if Mr. Okafor cancels his appointment with less than 24 hours' notice?",
+  options: [
+    { label: "A", text: "He will be charged a $50 late-cancellation fee" },
+    { label: "B", text: "He will lose his place with Dr. Reyes permanently" },
+    { label: "C", text: "He will be automatically rebooked for the same time next week" },
+    { label: "D", text: "He will be required to find a new dental provider" },
+  ],
+  correct: "A",
+  explanation:
+    "The reminder states appointments 'canceled with less than 24 hours' notice ... will be charged a $50 late-cancellation fee', so (A) is correct.",
+};
+
+const part7be: PracticeQuestionData = {
+  prompt: "Part 7 · Read the account tier change notice and answer the question.",
+  context:
+    "ACCOUNT TIER CHANGE NOTICE\nPixelDraft Software\n\nDear Ms. Lindqvist,\n\nBecause payment could not be processed for your Pro plan, your account has been moved to the free Basic tier, effective immediately. Basic tier accounts are limited to 5 GB of cloud storage, down from the 500 GB included with Pro.\n\nAny files you have stored beyond the new 5 GB limit remain safely archived, but they are now read-only and cannot be edited, downloaded, or shared until you upgrade back to Pro and bring your storage usage within the paid limit.\n\nQuestion: What can be inferred about a Basic tier account holder whose stored files exceed 5 GB?",
+  options: [
+    { label: "A", text: "Their excess files will be permanently deleted after 30 days" },
+    { label: "B", text: "They cannot edit their excess files unless they upgrade back to Pro" },
+    { label: "C", text: "They will be charged a storage overage fee automatically" },
+    { label: "D", text: "Their account will be suspended entirely until they pay" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states that files beyond the 5 GB limit 'are now read-only and cannot be edited, downloaded, or shared until you upgrade back to Pro', so it can be inferred that such a user cannot edit their excess files without upgrading, making (B) correct.",
+};
+
+const part7bf: PracticeQuestionData = {
+  prompt: "Part 7 · Read the lien sale notice and answer the question.",
+  context:
+    "NOTICE OF LIEN SALE\nSecure Stack Storage — Unit #214\n\nDear Mr. Bianchi,\n\nOur records show that Unit #214 has an outstanding balance of $410 in unpaid rent, dating back 3 months. In accordance with the terms of your rental agreement, the contents of this unit will be sold at public auction on September 12 to satisfy the lien unless the full balance is paid before that date.\n\nPayment may be made online, by phone, or in person at the facility office. Partial payments will not stop the scheduled auction; the entire $410 balance must be received in full before September 12.\n\nQuestion: What must Mr. Bianchi do to prevent the auction of his unit's contents?",
+  options: [
+    { label: "A", text: "Submit a partial payment before September 12" },
+    { label: "B", text: "Pay the full $410 balance before September 12" },
+    { label: "C", text: "Sign a new rental agreement for a smaller unit" },
+    { label: "D", text: "Request an extension from the facility manager" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states the contents will be sold 'unless the full balance is paid before that date' and clarifies 'the entire $410 balance must be received in full before September 12', so (B) is correct.",
+};
+
+const part7bg: PracticeQuestionData = {
+  prompt: "Part 7 · Read the pricing update and answer the question.",
+  context:
+    "PRICING UPDATE\nCityCycle Bike Share\n\nDear Rider,\n\nEffective October 1, the monthly membership fee for CityCycle will increase from $15 to $19. Members will continue to receive unlimited 30-minute rides at no extra charge; however, the per-minute overage rate for rides exceeding 30 minutes will rise from $0.10 to $0.15 per minute.\n\nAnnual members are not affected by this change until their next renewal date, at which point the new rates will apply to their renewed membership.\n\nQuestion: When will the new overage rate take effect for a monthly member?",
+  options: [
+    { label: "A", text: "Only after their current 30-minute ride ends" },
+    { label: "B", text: "Starting October 1" },
+    { label: "C", text: "At their next annual renewal date" },
+    { label: "D", text: "Only if they exceed the ride limit twice in one month" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states the changes, including the new overage rate, are 'effective October 1' for monthly members, so (B) is correct.",
+};
+
+const part7bh: PracticeQuestionData = {
+  prompt: "Part 7 · Read the landlord's response letter and answer the question.",
+  context:
+    "Re: Maintenance Request #M-2291 — Leaking Kitchen Faucet\n\nDear Ms. Whitfield,\n\nThank you for submitting your maintenance request regarding the leaking kitchen faucet in Unit 6. A plumber has been scheduled to visit within 3 business days to complete the repair. Someone will need to be present to provide access, or you may leave a key with the building office.\n\nPlease note that this request has been classified as non-emergency, since it does not affect the unit's habitability. Emergency requests, such as a complete loss of heat or active flooding, are handled within 24 hours rather than the standard 3-business-day window.\n\nQuestion: What can be inferred about maintenance requests classified as emergencies?",
+  options: [
+    { label: "A", text: "They are handled more quickly than non-emergency requests" },
+    { label: "B", text: "They require the tenant to be present at all times" },
+    { label: "C", text: "They are only accepted during business hours" },
+    { label: "D", text: "They result in a rent reduction for the tenant" },
+  ],
+  correct: "A",
+  explanation:
+    "The letter states this non-emergency request will be addressed 'within 3 business days', while 'emergency requests ... are handled within 24 hours rather than the standard 3-business-day window', so it can be inferred emergencies are handled more quickly, making (A) correct.",
+};
+
+const part7bi: PracticeQuestionData = {
+  prompt: "Part 7 · Read the speaker confirmation letter and answer the question.",
+  context:
+    "SPEAKER CONFIRMATION\nTechForward Summit 2026\n\nDear Dr. Anand,\n\nWe are pleased to confirm your speaking slot at TechForward Summit, scheduled for 2:00-2:45 P.M. on November 12 in the Grand Ballroom. Your honorarium of $500 will be paid by check within 30 days after the event concludes.\n\nTo allow time for printed program materials, please submit your final presentation slides no later than November 1. Travel expenses will be reimbursed up to $300 upon submission of itemized receipts after the event.\n\nQuestion: What must Dr. Anand do before November 1?",
+  options: [
+    { label: "A", text: "Submit itemized travel receipts" },
+    { label: "B", text: "Submit her final presentation slides" },
+    { label: "C", text: "Confirm her hotel reservation" },
+    { label: "D", text: "Deposit her honorarium check" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'please submit your final presentation slides no later than November 1', so (B) is correct.",
+};
+
+const part7bj: PracticeQuestionData = {
+  prompt: "Part 7 · Read the delivery schedule change and answer the question.",
+  context:
+    "CSA DELIVERY SCHEDULE CHANGE\nGreen Valley Farm Share\n\nDear Member,\n\nStarting the week of July 6, your weekly produce box delivery day will change from Wednesday to Friday due to a new distribution route. Box contents and pricing remain unchanged.\n\nBoxes are left at your designated pickup site and must be collected within 24 hours of drop-off. Boxes not picked up within this window will be donated to the Green Valley Food Bank, and members will not be eligible for a replacement or refund for that week.\n\nQuestion: What will happen if a member does not pick up their box within 24 hours of drop-off?",
+  options: [
+    { label: "A", text: "The box will be redelivered the following day" },
+    { label: "B", text: "The box will be donated to the food bank" },
+    { label: "C", text: "The member will be charged a storage fee" },
+    { label: "D", text: "The member's membership will be paused" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states boxes 'not picked up within this window will be donated to the Green Valley Food Bank', so (B) is correct.",
+};
+
+const part7bk: PracticeQuestionData = {
+  prompt: "Part 7 · Read the cancellation policy update and answer the question.",
+  context:
+    "MEMBERSHIP CANCELLATION POLICY UPDATE\nIronclad Fitness\n\nDear Member,\n\nTo cancel your membership, you must submit written notice at least 30 days in advance. Members who cancel in the middle of a billing cycle are not entitled to a prorated refund for the remaining days of that cycle.\n\nThe one exception applies to medical cancellations: members who submit a doctor's note confirming they are unable to continue exercising will receive a prorated refund for the unused portion of their current billing cycle, in addition to being released from the 30-day notice requirement.\n\nQuestion: What can be inferred about a member who cancels for a documented medical reason?",
+  options: [
+    { label: "A", text: "They may receive a prorated refund unlike other canceling members" },
+    { label: "B", text: "They must still provide 30 days' written notice" },
+    { label: "C", text: "They are required to pay a medical cancellation fee" },
+    { label: "D", text: "They are ineligible to rejoin the gym in the future" },
+  ],
+  correct: "A",
+  explanation:
+    "The update states medical cancellations 'will receive a prorated refund for the unused portion of their current billing cycle', unlike standard cancellations which 'are not entitled to a prorated refund', so (A) is correct.",
+};
+
+const part7bl: PracticeQuestionData = {
+  prompt: "Part 7 · Read the invoice and answer the question.",
+  context:
+    'INVOICE #INV-3348\nClara Voss Graphic Design\n\nBill To: Marlowe & Finch Publishing\nAmount Due: $1,200\nDue Date: Net 15 days from invoice date\n\nServices: Book cover design and 2 rounds of revisions for "The Quiet Harbor"\n\nPayment must be received within 15 days of this invoice. Late payments will accrue interest at a rate of 1.5% per month on the outstanding balance. Please note that full usage rights and the final design files will not transfer to the client until payment is received in full.\n\nQuestion: What happens to the design files if payment is not received in full?',
+  options: [
+    { label: "A", text: "They are automatically deleted after 15 days" },
+    { label: "B", text: "Usage rights and final files do not transfer to the client" },
+    { label: "C", text: "They are sold to a different publisher" },
+    { label: "D", text: "They are released at half resolution" },
+  ],
+  correct: "B",
+  explanation:
+    "The invoice states 'full usage rights and the final design files will not transfer to the client until payment is received in full', so (B) is correct.",
+};
+
+const part7bm: PracticeQuestionData = {
+  prompt: "Part 7 · Read the inspection report summary and answer the question.",
+  context:
+    "HOME INSPECTION REPORT SUMMARY\n42 Willow Lane\n\nOverall Condition: Good\n\nRoof: Asphalt shingles show normal wear; estimated 5 years of useful life remaining. No active leaks observed.\n\nWater Heater: Unit is 11 years old and showing signs of corrosion at the base. Replacement is recommended within the next 12 months to avoid the risk of sudden failure.\n\nElectrical Panel: Panel is up to current code and shows no signs of overloading.\n\nQuestion: What does the report recommend regarding the water heater?",
+  options: [
+    { label: "A", text: "It should be replaced within the next 12 months" },
+    { label: "B", text: "It should be inspected again in 5 years" },
+    { label: "C", text: "It needs to be relocated away from the electrical panel" },
+    { label: "D", text: "It should be repaired immediately due to an active leak" },
+  ],
+  correct: "A",
+  explanation:
+    "The report states 'Replacement is recommended within the next 12 months to avoid the risk of sudden failure', so (A) is correct.",
+};
+
+const part7bn: PracticeQuestionData = {
+  prompt: "Part 7 · Read the scholarship renewal requirements and answer the question.",
+  context:
+    "SCHOLARSHIP RENEWAL REQUIREMENTS\nHartwell Merit Scholarship\n\nDear Recipient,\n\nTo renew your Hartwell Merit Scholarship each year, you must maintain a cumulative GPA of at least 3.0 and complete a minimum of 12 credit hours per semester. Students whose GPA falls below 3.0 for one semester are placed on probation and given one additional semester to raise their GPA before the scholarship is withdrawn.\n\nHowever, students who complete fewer than 12 credit hours in a semester lose the scholarship immediately, with no probation period offered, since full-time enrollment is considered a non-negotiable condition of the award.\n\nQuestion: What can be inferred about a student who completes only 9 credit hours in a semester?",
+  options: [
+    { label: "A", text: "They will be placed on probation for one semester" },
+    { label: "B", text: "They will lose the scholarship immediately, without probation" },
+    { label: "C", text: "They will keep the scholarship if their GPA is above 3.0" },
+    { label: "D", text: "They will be given an extra semester to reach 12 credit hours" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states students who complete fewer than 12 credit hours 'lose the scholarship immediately, with no probation period offered', so (B) is correct.",
+};
+
+const part7bo: PracticeQuestionData = {
+  prompt: "Part 7 · Read the driver account update and answer the question.",
+  context:
+    "DRIVER ACCOUNT UPDATE\nSwiftRide\n\nDear Driver,\n\nAs part of our annual safety review, your driver account has been temporarily suspended pending completion of your required background check renewal. This is a routine process applied to all drivers on their account anniversary.\n\nTo restore your ability to accept rides, please submit the enclosed consent form through the SwiftRide driver app within 10 days. Accounts that remain incomplete after 10 days will be deactivated and will require a new driver application to reapply.\n\nQuestion: What must the driver do within 10 days to avoid deactivation?",
+  options: [
+    { label: "A", text: "Complete a new driver application" },
+    { label: "B", text: "Submit the consent form through the driver app" },
+    { label: "C", text: "Pay a reactivation fee" },
+    { label: "D", text: "Attend an in-person safety training session" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states drivers should 'submit the enclosed consent form through the SwiftRide driver app within 10 days' to restore their account, so (B) is correct.",
+};
+
+const part7bp: PracticeQuestionData = {
+  prompt: "Part 7 · Read the gift membership confirmation and answer the question.",
+  context:
+    "GIFT MEMBERSHIP CONFIRMATION\nBellmont Science Museum\n\nDear Ms. Ferreira,\n\nThank you for purchasing a Family Gift Membership for Mr. and Mrs. Delgado. The membership provides unlimited free admission for two adults and up to three children for 12 months, beginning on the date the recipient activates it online, not the purchase date.\n\nThe recipient must activate the membership at bellmontmuseum.org/activate within 6 months of the purchase date, or the gift will be forfeited and no refund will be issued.\n\nQuestion: What must the recipient do within 6 months of the purchase date?",
+  options: [
+    { label: "A", text: "Visit the museum in person to receive membership cards" },
+    { label: "B", text: "Activate the membership online" },
+    { label: "C", text: "Pay a renewal fee to keep the membership active" },
+    { label: "D", text: "Register all children who will be included" },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation states the recipient 'must activate the membership at bellmontmuseum.org/activate within 6 months of the purchase date, or the gift will be forfeited', so (B) is correct.",
+};
+
+const part7bq: PracticeQuestionData = {
+  prompt: "Part 7 · Read the bulk order pricing notice and answer the question.",
+  context:
+    "BULK ORDER PRICING\nQuickPress Print Shop\n\nOur bulk discount tiers apply as follows: 100-499 copies receive 10% off, 500-999 copies receive 15% off, and orders of 1,000 copies or more receive 20% off. Discounts are calculated per invoice.\n\nPlease note that bulk pricing applies only to orders of a single design printed in one run. Quantities of different designs submitted together in the same order are billed separately at standard pricing and are not combined to reach a higher discount tier.\n\nQuestion: What can be inferred about a customer who orders 200 copies each of three different flyer designs in one order?",
+  options: [
+    { label: "A", text: "The combined 600 copies will qualify for the 15% discount tier" },
+    { label: "B", text: "Each design will be billed separately at standard pricing" },
+    { label: "C", text: "The order will automatically qualify for the highest discount tier" },
+    { label: "D", text: "The customer must reduce the order to a single design to be printed" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states bulk pricing 'applies only to orders of a single design' and that quantities of different designs 'are not combined to reach a higher discount tier', so each of the three 200-copy designs would be billed separately at standard pricing, making (B) correct.",
+};
+
+const part7br: PracticeQuestionData = {
+  prompt: "Part 7 · Read the follow-up letter and answer the question.",
+  context:
+    "POST-ADOPTION FOLLOW-UP\nSecond Chance Animal Rescue\n\nDear Mr. and Mrs. Park,\n\nWe hope Max is settling in well with your family! As part of your adoption package, Max is enrolled in 30 days of free pet insurance, effective from his adoption date.\n\nPlease schedule a wellness checkup with a veterinarian within 14 days of adoption to ensure Max's vaccinations remain up to date; this appointment can be booked at any clinic of your choosing. If you would like a free behavior training session, simply request one within 60 days of adoption by replying to this email.\n\nQuestion: What must the Parks do within 14 days of Max's adoption?",
+  options: [
+    { label: "A", text: "Request a free behavior training session" },
+    { label: "B", text: "Schedule a wellness checkup with a veterinarian" },
+    { label: "C", text: "Renew Max's pet insurance policy" },
+    { label: "D", text: "Return a signed adoption agreement" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'Please schedule a wellness checkup with a veterinarian within 14 days of adoption', so (B) is correct.",
+};
+
+const part7bs: PracticeQuestionData = {
+  prompt: "Part 7 · Read the special assessment notice and answer the question.",
+  context:
+    "SPECIAL ASSESSMENT NOTICE\nLakeshore Towers Condominium Association\n\nDear Owner,\n\nThe Board has approved a special assessment of $2,400 per unit to fund the replacement of both building elevators, which are original to the 1998 construction. The full assessment is due by November 1.\n\nOwners who are unable to pay the full amount at once may instead choose a 6-month installment plan of $400 per month; however, owners who select the installment plan will have a 5% financing fee added to their total assessment amount.\n\nQuestion: What will happen to owners who choose the installment plan?",
+  options: [
+    { label: "A", text: "They will pay a lower total amount than the lump-sum payment" },
+    { label: "B", text: "A 5% financing fee will be added to their total assessment" },
+    { label: "C", text: "Their monthly condo fees will be waived during the repayment period" },
+    { label: "D", text: "They will be required to attend a special board meeting" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states owners who select the installment plan 'will have a 5% financing fee added to their total assessment amount', so (B) is correct.",
+};
+
+const part7bt: PracticeQuestionData = {
+  prompt: "Part 7 · Read the placement test results letter and answer the question.",
+  context:
+    "PLACEMENT TEST RESULTS\nGlobal Bridge Language Academy\n\nDear Ms. Kowalczyk,\n\nBased on your written and oral placement test scores, you have been placed at the Intermediate level and enrolled in Level 3: Intermediate Grammar and Conversation, beginning September 8.\n\nStudents who score at the Advanced level on the placement test are placed directly into Level 5 and are not required to complete Level 4: Conversation Intensive, which is designed specifically for students transitioning from Intermediate to Advanced proficiency.\n\nQuestion: What can be inferred about students who score at the Advanced level on the placement test?",
+  options: [
+    { label: "A", text: "They must still complete Level 4: Conversation Intensive" },
+    { label: "B", text: "They are placed directly into Level 5 without taking Level 4" },
+    { label: "C", text: "They are required to retake the placement test" },
+    { label: "D", text: "They are exempt from all further coursework" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states Advanced-level students 'are placed directly into Level 5 and are not required to complete Level 4', so (B) is correct.",
+};
+
+const part7bu: PracticeQuestionData = {
+  prompt: "Part 7 · Read the warranty extension offer and answer the question.",
+  context:
+    "EXTENDED WARRANTY OFFER\nAutoGuard Protection Plans\n\nDear Mr. Nowak,\n\nYour vehicle's original manufacturer warranty (3 years or 36,000 miles) is nearing its expiration. We are pleased to offer you the opportunity to extend your coverage an additional 2 years or 24,000 miles, whichever comes first, for a one-time fee of $895.\n\nThis extended plan covers the engine, transmission, and drivetrain (powertrain components) but does not include electronics, such as the infotainment system or sensors. This offer must be purchased before your original warranty expires; it cannot be added afterward.\n\nQuestion: What is NOT covered under the extended warranty plan?",
+  options: [
+    { label: "A", text: "The engine" },
+    { label: "B", text: "The transmission" },
+    { label: "C", text: "The infotainment system" },
+    { label: "D", text: "The drivetrain" },
+  ],
+  correct: "C",
+  explanation:
+    "The offer states the plan 'does not include electronics, such as the infotainment system or sensors', so (C) is correct.",
+};
+
+const part7bv: PracticeQuestionData = {
+  prompt: "Part 7 · Read the customization notice and answer the question.",
+  context:
+    'CUSTOMIZE YOUR BOX\nTasteCrate Snack Subscription\n\nHi Amara,\n\nYour next TasteCrate box ships on the 15th of each month. You may customize your box by swapping up to 3 items through your online account, but the customization window closes 5 days before the ship date.\n\nIf you do not customize by the deadline, your box will ship using your default preferences from the previous month. Please note that after 3 consecutive months without customization, your account will be flagged as "auto default," and monthly customization reminder emails will stop being sent.\n\nQuestion: What will happen if Amara does not customize her box by the deadline this month?',
+  options: [
+    { label: "A", text: "Her box will ship with items chosen at random" },
+    { label: "B", text: "Her box will ship based on her previous month's default preferences" },
+    { label: "C", text: "Her subscription will be automatically canceled" },
+    { label: "D", text: "She will be charged an additional customization fee" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'If you do not customize by the deadline, your box will ship using your default preferences from the previous month', so (B) is correct.",
+};
+
+const part7bw: PracticeQuestionData = {
+  prompt: "Part 7 · Read the donation receipt and answer the question.",
+  context:
+    "DONATION RECEIPT\nHopewell Community Foundation\n\nDear Ms. Fontaine,\n\nThank you for your generous contribution of $250, received on June 10. No goods or services were provided in exchange for this donation, so the full amount is tax-deductible in accordance with IRS guidelines.\n\nPlease note that for donors who receive a gift valued over $75 in connection with a donation, such as a tote bag or event ticket, the value of that gift must be subtracted from the donation amount when calculating the tax-deductible portion.\n\nQuestion: What can be inferred about a donor who receives a $100 gift in connection with a $250 donation?",
+  options: [
+    { label: "A", text: "The full $250 would be tax-deductible, the same as Ms. Fontaine's" },
+    {
+      label: "B",
+      text: "The value of the gift would need to be subtracted from the deductible amount",
+    },
+    { label: "C", text: "The donation would not be eligible for a receipt" },
+    { label: "D", text: "The donor would be required to return the gift" },
+  ],
+  correct: "B",
+  explanation:
+    "The receipt states that for donors receiving 'a gift valued over $75 ... the value of that gift must be subtracted from the donation amount when calculating the tax-deductible portion', so a donor receiving a $100 gift would need that value subtracted, unlike Ms. Fontaine who received no goods or services, making (B) correct.",
+};
+
+const part7bx: PracticeQuestionData = {
+  prompt: "Part 7 · Read the season pass notice and answer the question.",
+  context:
+    "SEASON PASS BLACKOUT DATES\nAlpine Ridge Resort\n\nDear Passholder,\n\nYour 2026-27 season pass provides unlimited lift access on all operating days, with the exception of designated blackout dates: December 26-31 and January 1. Passholders will need a separate lift ticket to ski on these dates.\n\nAs a courtesy, passholders may purchase a single-day lift ticket for blackout dates at 50% off the regular window price, which is not available to non-passholders.\n\nQuestion: What option is available to passholders who want to ski on a blackout date?",
+  options: [
+    { label: "A", text: "They may use their season pass as usual" },
+    { label: "B", text: "They may purchase a discounted single-day lift ticket" },
+    { label: "C", text: "They may upgrade to a premium pass at no cost" },
+    { label: "D", text: "They may ski for free at a partner resort instead" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states passholders 'may purchase a single-day lift ticket for blackout dates at 50% off the regular window price', so (B) is correct.",
+};
+
+const part7by: PracticeQuestionData = {
+  prompt: "Part 7 · Read the insurance coverage notice and answer the question.",
+  context:
+    "MOVING INSURANCE COVERAGE\nTrueMove Relocation Services\n\nDear Ms. Castellano,\n\nYour move includes basic released value protection at no additional cost, which covers your belongings at $0.60 per pound per item in the event of loss or damage. For most households, this provides only partial reimbursement of an item's actual value.\n\nFull-value protection, which covers the replacement cost of damaged or lost items, is available for an additional fee based on your shipment's total weight. This option must be elected in writing before moving day; if no election is made, your shipment will default to basic released value protection.\n\nQuestion: What will happen if Ms. Castellano does not elect full-value protection in writing before moving day?",
+  options: [
+    { label: "A", text: "Her shipment will not be covered by any insurance" },
+    { label: "B", text: "Her shipment will default to basic released value protection" },
+    { label: "C", text: "Her move will be automatically postponed" },
+    { label: "D", text: "She will be charged for full-value protection regardless" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states full-value protection 'must be elected in writing before moving day; if no election is made, your shipment will default to basic released value protection', so (B) is correct.",
+};
+
+const part7bz: PracticeQuestionData = {
+  prompt: "Part 7 · Read the deposit refund policy and answer the question.",
+  context:
+    "HOUSING DEPOSIT REFUND POLICY\nFairmont University Residential Life\n\nDear Student,\n\nYour $500 housing deposit is refundable within 45 days after move-out, less any deductions for damages beyond normal wear and tear. Students who cancel their housing contract before June 1 receive a full refund of their deposit.\n\nStudents who cancel their housing contract on or after June 1 will have a $200 cancellation fee deducted from their deposit, since housing assignments become final and rooms are no longer released to the waitlist after that date.\n\nQuestion: What can be inferred about a student who cancels their housing contract on May 20?",
+  options: [
+    { label: "A", text: "They would receive a full refund of their $500 deposit" },
+    { label: "B", text: "They would have a $200 cancellation fee deducted" },
+    { label: "C", text: "They would forfeit the entire deposit" },
+    { label: "D", text: "They would need to remain on the waitlist" },
+  ],
+  correct: "A",
+  explanation:
+    "The policy states 'Students who cancel their housing contract before June 1 receive a full refund of their deposit', and May 20 falls before June 1, so (A) is correct.",
+};
+
+const part7ca: PracticeQuestionData = {
+  prompt: "Part 7 · Read the baggage fee policy update and answer the question.",
+  context:
+    "BAGGAGE FEE POLICY UPDATE\nAeroLink Airlines\n\nDear Traveler,\n\nEffective for tickets purchased on or after September 1, the fee for a first checked bag will increase from $30 to $35, and the fee for a second checked bag will increase from $45 to $50. These fees apply per direction of travel.\n\nPassengers holding the AeroLink co-branded credit card will continue to receive their first checked bag free of charge, unaffected by this fee increase, as outlined in their card's existing travel benefits.\n\nQuestion: What is stated about passengers who hold the AeroLink co-branded credit card?",
+  options: [
+    { label: "A", text: "They will pay the new $35 fee for their first checked bag" },
+    { label: "B", text: "They will continue to receive their first checked bag free of charge" },
+    { label: "C", text: "They will receive a discount on their second checked bag only" },
+    { label: "D", text: "They must reapply for the benefit under the new policy" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states cardholders 'will continue to receive their first checked bag free of charge, unaffected by this fee increase', so (B) is correct.",
+};
+
+const part7cb: PracticeQuestionData = {
+  prompt: "Part 7 · Read the rescheduling policy and answer the question.",
+  context:
+    "SESSION RESCHEDULING POLICY\nLumière Portrait Studio\n\nDear Client,\n\nWe understand that plans change. Each booked session may be rescheduled once at no charge, provided you notify us at least 48 hours in advance. A second rescheduling request for the same session will incur a $40 rebooking fee.\n\nClients who fail to appear for their scheduled session without any prior notice will forfeit their deposit entirely, and a new deposit will be required to book a future session.\n\nQuestion: What will happen if a client requests to reschedule the same session for a second time?",
+  options: [
+    { label: "A", text: "The request will be denied automatically" },
+    { label: "B", text: "The client will be charged a $40 rebooking fee" },
+    { label: "C", text: "The client will forfeit their entire deposit" },
+    { label: "D", text: "The session will be rescheduled at no additional cost" },
+  ],
+  correct: "B",
+  explanation:
+    "The policy states 'A second rescheduling request for the same session will incur a $40 rebooking fee', so (B) is correct.",
+};
+
+const part7cc: PracticeQuestionData = {
+  prompt: "Part 7 · Read the maintenance plan renewal notice and answer the question.",
+  context:
+    "MAINTENANCE PLAN RENEWAL NOTICE\nClearSky Solar Services\n\nDear Mr. Adeyemi,\n\nYour annual solar panel maintenance plan, which includes panel cleaning and a full system inspection, is due for renewal at $150 for the coming year. As a loyalty benefit, customers who renew in each consecutive year earn an additional 5% discount on their renewal fee, up to a maximum of 20%.\n\nPlease note that if a renewal year is skipped, any accumulated loyalty discount is lost, and the customer must begin accumulating the discount again from 0% the next time they renew.\n\nQuestion: What can be inferred about a customer who has renewed for 3 consecutive years and then skips year 4?",
+  options: [
+    { label: "A", text: "They will keep their accumulated 15% discount when they renew again" },
+    { label: "B", text: "They will restart their loyalty discount at 0% when they renew again" },
+    { label: "C", text: "They will be permanently barred from the maintenance plan" },
+    { label: "D", text: "They will receive the maximum 20% discount automatically" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'if a renewal year is skipped, any accumulated loyalty discount is lost, and the customer must begin accumulating the discount again from 0%', so (B) is correct.",
+};
+
+const part7cd: PracticeQuestionData = {
+  prompt: "Part 7 · Read the turnaround time notice and answer the question.",
+  context:
+    "TURNAROUND TIME NOTICE\nLingua Bridge Translation Services\n\nDear Client,\n\nOur standard turnaround time for documents under 10 pages is 5 business days from the date payment is received. Rush service is available for documents under 10 pages at a 50% surcharge, reducing turnaround to 2 business days.\n\nDocuments exceeding 10 pages are not eligible for our standard 5-day guarantee and instead require a custom quote and timeline, which will be provided after our team reviews the document's length and complexity.\n\nQuestion: What is required for documents exceeding 10 pages?",
+  options: [
+    { label: "A", text: "A custom quote and timeline" },
+    { label: "B", text: "An automatic rush service surcharge" },
+    { label: "C", text: "Submission in a specific file format" },
+    { label: "D", text: "Payment in two separate installments" },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states documents exceeding 10 pages 'instead require a custom quote and timeline', so (A) is correct.",
+};
+
+const part7ce: PracticeQuestionData = {
+  prompt: "Part 7 · Read the prescription refill policy and answer the question.",
+  context:
+    "PRESCRIPTION REFILL POLICY\nMeadowbrook Veterinary Clinic\n\nDear Client,\n\nRefill requests for your pet's ongoing medications are typically processed within 48 hours. To ensure medications remain appropriate for your pet's current health, any pet that has not been seen for a wellness exam within the past 12 months must complete a new exam before a refill will be approved.\n\nThe required exam may be scheduled for the same week as your refill request, so there is no need to delay your request while waiting for an appointment slot.\n\nQuestion: What is required before a refill will be approved for a pet not examined in the past 12 months?",
+  options: [
+    { label: "A", text: "A new wellness exam" },
+    { label: "B", text: "A referral from a specialist" },
+    { label: "C", text: "Full payment for the prior visit" },
+    { label: "D", text: "A written statement from the owner" },
+  ],
+  correct: "A",
+  explanation:
+    "The policy states a pet 'not been seen for a wellness exam within the past 12 months must complete a new exam before a refill will be approved', so (A) is correct.",
+};
+
+const part7cf: PracticeQuestionData = {
+  prompt: "Part 7 · Read the ticket exchange policy and answer the question.",
+  context:
+    "SEASON TICKET EXCHANGE POLICY\nRiverside Community Playhouse\n\nDear Season Ticket Holder,\n\nIf your schedule changes, you may exchange your tickets for a different performance date of the same show at no charge, provided the request is made at least 24 hours before curtain. Exchanges for a different show entirely are also permitted but incur a $5 per ticket processing fee.\n\nExchange requests made less than 24 hours before curtain cannot be accommodated under any circumstance, regardless of the reason for the request.\n\nQuestion: What can be inferred about a season ticket holder who requests an exchange 12 hours before curtain?",
+  options: [
+    { label: "A", text: "Their exchange will be processed for a $5 fee" },
+    { label: "B", text: "Their exchange request will not be accommodated" },
+    { label: "C", text: "Their exchange will be free if it is the same show" },
+    { label: "D", text: "Their tickets will be automatically refunded instead" },
+  ],
+  correct: "B",
+  explanation:
+    "The policy states 'Exchange requests made less than 24 hours before curtain cannot be accommodated under any circumstance, regardless of the reason for the request', and 12 hours falls within that window, so (B) is correct.",
+};
+
 export const part1Questions: PracticeQuestionData[] = [
   part1a,
   part1b,
@@ -4305,6 +5118,14 @@ export const part3Questions: PracticeQuestionData[] = [
   part3ax,
   part3ay,
   part3az,
+  part3ba,
+  part3bb,
+  part3bc,
+  part3bd,
+  part3be,
+  part3bf,
+  part3bg,
+  part3bh,
 ];
 export const part4Questions: PracticeQuestionData[] = [
   part4,
@@ -4343,6 +5164,18 @@ export const part4Questions: PracticeQuestionData[] = [
   part4ah,
   part4ai,
   part4aj,
+  part4ak,
+  part4al,
+  part4am,
+  part4an,
+  part4ao,
+  part4ap,
+  part4aq,
+  part4ar,
+  part4as,
+  part4at,
+  part4au,
+  part4av,
 ];
 export const part5Questions: PracticeQuestionData[] = [
   part5,
@@ -4475,6 +5308,36 @@ export const part7Questions: PracticeQuestionData[] = [
   part7az,
   part7ba,
   part7bb,
+  part7bc,
+  part7bd,
+  part7be,
+  part7bf,
+  part7bg,
+  part7bh,
+  part7bi,
+  part7bj,
+  part7bk,
+  part7bl,
+  part7bm,
+  part7bn,
+  part7bo,
+  part7bp,
+  part7bq,
+  part7br,
+  part7bs,
+  part7bt,
+  part7bu,
+  part7bv,
+  part7bw,
+  part7bx,
+  part7by,
+  part7bz,
+  part7ca,
+  part7cb,
+  part7cc,
+  part7cd,
+  part7ce,
+  part7cf,
 ];
 
 export const listeningReadingQuestions: PracticeQuestionData[] = [
