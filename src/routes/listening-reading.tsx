@@ -4,7 +4,8 @@ import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "luci
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
-import { listeningReadingQuestions } from "@/data/listeningReadingQuestions";
+import { cn } from "@/lib/utils";
+import { listeningReadingQuestions, questionsByPart } from "@/data/listeningReadingQuestions";
 
 export const Route = createFileRoute("/listening-reading")({
   head: () => ({
@@ -80,6 +81,15 @@ const readingParts = [
 ];
 
 function Page() {
+  const [selectedPart, setSelectedPart] = useState<number | "all">("all");
+  const activePart =
+    selectedPart === "all" ? null : questionsByPart.find((p) => p.part === selectedPart);
+  const activeQuestions = activePart ? activePart.questions : listeningReadingQuestions;
+  const storageKey =
+    selectedPart === "all"
+      ? "toeicpath:lr-practice:best"
+      : `toeicpath:lr-practice:best:part${selectedPart}`;
+
   return (
     <SiteLayout>
       <section className="bg-gradient-soft">
@@ -131,16 +141,61 @@ function Page() {
 
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
-          <PracticeSession questions={listeningReadingQuestions} />
+          <PartFilter selectedPart={selectedPart} onSelect={setSelectedPart} />
+          <PracticeSession key={storageKey} questions={activeQuestions} storageKey={storageKey} />
         </div>
       </section>
     </SiteLayout>
   );
 }
 
-const BEST_KEY = "toeicpath:lr-practice:best";
+function PartFilter({
+  selectedPart,
+  onSelect,
+}: {
+  selectedPart: number | "all";
+  onSelect: (part: number | "all") => void;
+}) {
+  return (
+    <div className="mb-6 flex flex-wrap gap-2">
+      <button
+        type="button"
+        onClick={() => onSelect("all")}
+        className={cn(
+          "rounded-full border px-4 py-2 text-sm font-medium transition",
+          selectedPart === "all"
+            ? "border-primary bg-primary text-primary-foreground"
+            : "border-border bg-card text-foreground hover:bg-muted",
+        )}
+      >
+        All parts
+      </button>
+      {questionsByPart.map((p) => (
+        <button
+          key={p.part}
+          type="button"
+          onClick={() => onSelect(p.part)}
+          className={cn(
+            "rounded-full border px-4 py-2 text-sm font-medium transition",
+            selectedPart === p.part
+              ? "border-primary bg-primary text-primary-foreground"
+              : "border-border bg-card text-foreground hover:bg-muted",
+          )}
+        >
+          Part {p.part}
+        </button>
+      ))}
+    </div>
+  );
+}
 
-function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
+function PracticeSession({
+  questions,
+  storageKey,
+}: {
+  questions: PracticeQuestionData[];
+  storageKey: string;
+}) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
   const [best, setBest] = useState<number | null>(null);
@@ -150,14 +205,14 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(BEST_KEY);
+      const raw = localStorage.getItem(storageKey);
       const parsed = raw ? parseInt(raw, 10) : NaN;
       if (!Number.isNaN(parsed)) setBest(parsed);
     } catch {
       // localStorage unavailable (private mode / disabled) — best score just won't persist
     }
     setBestLoaded(true);
-  }, []);
+  }, [storageKey]);
 
   const score = useMemo(
     () => answers.reduce((acc, a, i) => acc + (a && a === questions[i].correct ? 1 : 0), 0),
@@ -183,12 +238,12 @@ function PracticeSession({ questions }: { questions: PracticeQuestionData[] }) {
     if (improved) {
       setBest(score);
       try {
-        localStorage.setItem(BEST_KEY, String(score));
+        localStorage.setItem(storageKey, String(score));
       } catch {
         // localStorage unavailable (private mode / disabled) — best score just won't persist
       }
     }
-  }, [complete, score, bestLoaded]);
+  }, [complete, score, bestLoaded, storageKey]);
 
   const handleAnswer = (idx: number, label: string) => {
     setAnswers((prev) => {
