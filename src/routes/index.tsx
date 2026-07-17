@@ -20,14 +20,12 @@ export const Route = createFileRoute("/")({
       { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         name: "description",
-        content:
-          "Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a 92-term business vocabulary builder, and expert study guides. No account required.",
+        content: `Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
       },
       { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
-        content:
-          "Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a 92-term business vocabulary builder, and expert study guides. No account required.",
+        content: `Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
       },
       { property: "og:url", content: absoluteUrl("/") },
     ],
@@ -166,7 +164,7 @@ function Index() {
               to="/vocabulary"
               icon={<Sparkles className="h-5 w-5" />}
               title="Business Lexicon"
-              body={`${VOCAB_COUNT} essential terms across 4 key categories: management, travel, finance, and technical.`}
+              body={`${VOCAB_COUNT} essential terms across 6 key categories: management, travel, finance, technical, marketing & sales, and HR.`}
             />
           </div>
         </div>

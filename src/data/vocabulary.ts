@@ -1,4 +1,5 @@
-export type VocabCategory = "Management" | "Travel" | "Finance" | "Technical";
+export type VocabCategory =
+  "Management" | "Travel" | "Finance" | "Technical" | "Marketing & Sales" | "Human Resources";
 
 export interface VocabTerm {
   term: string;
@@ -667,6 +668,770 @@ export const vocabulary: VocabTerm[] = [
     category: "Technical",
     definition: "The process of verifying someone's identity.",
     example: "Two-factor authentication adds a layer of security.",
+  },
+
+  // ── Management (batch 3) ──
+  {
+    term: "hierarchy",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "The system of ranking people or positions by level of authority within an organization.",
+    example: "New hires are given an org chart to understand the company's hierarchy.",
+  },
+  {
+    term: "compliance",
+    pos: "noun",
+    category: "Management",
+    definition: "The act of following official rules, laws, or company policies.",
+    example:
+      "All staff must complete annual training to ensure compliance with safety regulations.",
+  },
+  {
+    term: "initiative",
+    pos: "noun",
+    category: "Management",
+    definition: "A new plan or project intended to solve a problem or achieve a goal.",
+    example: "The department launched an initiative to cut printing costs by half.",
+  },
+  {
+    term: "feedback",
+    pos: "noun",
+    category: "Management",
+    definition: "Comments or information about someone's performance, given to help them improve.",
+    example: "Her manager gave her detailed feedback after the client presentation.",
+  },
+  {
+    term: "escalate",
+    pos: "verb",
+    category: "Management",
+    definition: "To refer a problem or decision to someone with greater authority.",
+    example: "If the issue isn't resolved by Friday, escalate it to the regional director.",
+  },
+  {
+    term: "streamline",
+    pos: "verb",
+    category: "Management",
+    definition: "To make a process simpler and more efficient by removing unnecessary steps.",
+    example: "The team streamlined the approval process from five steps to two.",
+  },
+  {
+    term: "proactive",
+    pos: "adjective",
+    category: "Management",
+    definition: "Acting in advance to deal with a problem before it happens.",
+    example: "A proactive manager schedules extra staff before the busy season starts.",
+  },
+  {
+    term: "benchmark",
+    pos: "noun",
+    category: "Management",
+    definition: "A standard used to measure or compare the quality of something.",
+    example: "The team set last quarter's results as the benchmark for this year's performance.",
+  },
+  {
+    term: "autonomy",
+    pos: "noun",
+    category: "Management",
+    definition: "The freedom to make decisions independently, without close supervision.",
+    example: "Team leaders are granted autonomy to set their own project deadlines.",
+  },
+  {
+    term: "conflict of interest",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "A situation in which someone's personal interests could improperly affect their professional judgment.",
+    example: "She disclosed a conflict of interest and stepped back from the hiring decision.",
+  },
+  {
+    term: "micromanage",
+    pos: "verb",
+    category: "Management",
+    definition:
+      "To control every small detail of a task instead of trusting others to complete it.",
+    example:
+      "Employees felt discouraged when their supervisor started to micromanage every email they sent.",
+  },
+  {
+    term: "succession",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "The process by which someone takes over an important position or role from another person.",
+    example: "The retiring CEO's succession was carefully planned two years in advance.",
+  },
+  {
+    term: "task force",
+    pos: "noun",
+    category: "Management",
+    definition: "A team assembled temporarily to address a specific problem or project.",
+    example:
+      "Senior management formed a task force to investigate the drop in customer satisfaction.",
+  },
+  {
+    term: "compromise",
+    pos: "verb",
+    category: "Management",
+    definition: "To settle a disagreement by having each side give up part of what it wants.",
+    example: "The two managers compromised on a shared budget for the joint project.",
+  },
+  {
+    term: "veto",
+    pos: "verb",
+    category: "Management",
+    definition: "To use one's authority to reject a decision or proposal.",
+    example: "The board can veto any proposal that exceeds the approved budget.",
+  },
+
+  // ── Travel (batch 3) ──
+  {
+    term: "connecting flight",
+    pos: "noun",
+    category: "Travel",
+    definition: "A flight that continues a journey after a layover at an intermediate airport.",
+    example: "Our connecting flight to Tokyo boards in twenty minutes.",
+  },
+  {
+    term: "per diem",
+    pos: "noun",
+    category: "Travel",
+    definition: "A fixed daily allowance paid to cover a traveler's meals and incidental expenses.",
+    example: "The company provides a per diem of fifty euros for each day abroad.",
+  },
+  {
+    term: "expense claim",
+    pos: "noun",
+    category: "Travel",
+    definition: "A formal request submitted to recover money spent on business travel.",
+    example: "Submit your expense claim within two weeks of returning from the conference.",
+  },
+  {
+    term: "jet lag",
+    pos: "noun",
+    category: "Travel",
+    definition: "Fatigue and disorientation caused by crossing multiple time zones quickly.",
+    example: "She struggled with jet lag after the overnight flight to Singapore.",
+  },
+  {
+    term: "carry-on",
+    pos: "noun",
+    category: "Travel",
+    definition: "A small piece of luggage a passenger is permitted to bring into the cabin.",
+    example: "Make sure your carry-on fits under the seat in front of you.",
+  },
+  {
+    term: "duty-free",
+    pos: "adjective",
+    category: "Travel",
+    definition: "Exempt from local taxes on goods sold to travelers, typically at airports.",
+    example: "He bought a bottle of whisky at the duty-free shop before boarding.",
+  },
+  {
+    term: "non-refundable",
+    pos: "adjective",
+    category: "Travel",
+    definition: "Not eligible to be repaid if cancelled.",
+    example: "The airline reminded her that economy fares are non-refundable.",
+  },
+  {
+    term: "overbooked",
+    pos: "adjective",
+    category: "Travel",
+    definition: "Having accepted more reservations than there is capacity to accommodate.",
+    example:
+      "The flight was overbooked, so the airline asked for volunteers to take a later departure.",
+  },
+  {
+    term: "reroute",
+    pos: "verb",
+    category: "Travel",
+    definition: "To direct someone or something along a different path than originally planned.",
+    example: "Heavy snow forced the airline to reroute all flights through Frankfurt.",
+  },
+  {
+    term: "itemize",
+    pos: "verb",
+    category: "Travel",
+    definition: "To list expenses individually and in detail.",
+    example: "Please itemize each meal and taxi fare on your travel expense form.",
+  },
+  {
+    term: "reschedule",
+    pos: "verb",
+    category: "Travel",
+    definition: "To arrange for an event or appointment to take place at a different time.",
+    example: "The client asked to reschedule the meeting because her flight was delayed.",
+  },
+  {
+    term: "visa waiver",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "An official exemption allowing travelers from certain countries to enter without applying for a visa.",
+    example: "Business travelers from eligible countries can enter under the visa waiver program.",
+  },
+  {
+    term: "keynote",
+    pos: "noun",
+    category: "Travel",
+    definition: "The main address at a conference, usually setting the tone for the event.",
+    example: "The CEO delivered the keynote on the first morning of the conference.",
+  },
+  {
+    term: "registration fee",
+    pos: "noun",
+    category: "Travel",
+    definition: "The amount charged to enroll as a participant in an event such as a conference.",
+    example: "The registration fee includes admission to all conference sessions and materials.",
+  },
+  {
+    term: "round-trip",
+    pos: "adjective",
+    category: "Travel",
+    definition: "Describing travel that includes both an outbound and a return journey.",
+    example: "She booked a round-trip ticket to Chicago for the sales conference.",
+  },
+
+  // ── Finance (batch 3) ──
+  {
+    term: "collateral",
+    pos: "noun",
+    category: "Finance",
+    definition: "Property or an asset pledged as security for the repayment of a loan.",
+    example: "The bank required collateral before approving the business loan.",
+  },
+  {
+    term: "amortize",
+    pos: "verb",
+    category: "Finance",
+    definition: "To gradually pay off a debt or spread the cost of an asset over a period of time.",
+    example: "The firm amortizes the cost of its patents over fifteen years.",
+  },
+  {
+    term: "equity",
+    pos: "noun",
+    category: "Finance",
+    definition: "Ownership interest in a company, represented by shares of stock.",
+    example: "Investors received equity in the startup in exchange for funding.",
+  },
+  {
+    term: "default",
+    pos: "verb",
+    category: "Finance",
+    definition: "To fail to repay a loan or fulfill a financial obligation.",
+    example: "The borrower defaulted on the loan after missing three payments.",
+  },
+  {
+    term: "underwrite",
+    pos: "verb",
+    category: "Finance",
+    definition:
+      "To assume financial risk by guaranteeing payment or the sale of newly issued securities.",
+    example: "The investment bank agreed to underwrite the company's bond issue.",
+  },
+  {
+    term: "portfolio",
+    pos: "noun",
+    category: "Finance",
+    definition: "A collection of financial investments held by an individual or institution.",
+    example: "She diversified her portfolio by adding foreign stocks and bonds.",
+  },
+  {
+    term: "hedge",
+    pos: "verb",
+    category: "Finance",
+    definition: "To protect against financial loss by taking an offsetting investment position.",
+    example: "The airline hedged against rising fuel prices by locking in a fixed rate.",
+  },
+  {
+    term: "leveraged",
+    pos: "adjective",
+    category: "Finance",
+    definition: "Financed with a significant amount of borrowed money relative to equity.",
+    example: "The heavily leveraged firm struggled to meet its debt payments during the downturn.",
+  },
+  {
+    term: "capital gain",
+    pos: "noun",
+    category: "Finance",
+    definition: "Profit realized from selling an asset for more than its purchase price.",
+    example: "She reported a capital gain after selling her shares at a higher price.",
+  },
+  {
+    term: "accrue",
+    pos: "verb",
+    category: "Finance",
+    definition: "To accumulate or increase over time, especially interest or income.",
+    example: "Interest accrues daily on the outstanding credit card balance.",
+  },
+  {
+    term: "write-off",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "The cancellation of an uncollectible debt or the reduction of an asset's recorded value to zero.",
+    example: "The company recorded a write-off for the unpaid invoice from the bankrupt client.",
+  },
+  {
+    term: "appreciation",
+    pos: "noun",
+    category: "Finance",
+    definition: "An increase in the value of an asset over time.",
+    example: "The property's appreciation allowed the owners to sell it at a substantial profit.",
+  },
+  {
+    term: "escrow",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "Money or documents held by a neutral third party until the conditions of an agreement are met.",
+    example: "The buyer's deposit was held in escrow until the sale was finalized.",
+  },
+  {
+    term: "outstanding",
+    pos: "adjective",
+    category: "Finance",
+    definition: "Not yet paid or settled; still owed.",
+    example: "The client still has an outstanding balance from last month's invoice.",
+  },
+  {
+    term: "yield",
+    pos: "noun",
+    category: "Finance",
+    definition: "The income return on an investment, usually expressed as a percentage.",
+    example: "The bond offers a yield of four percent annually.",
+  },
+
+  // ── Technical (batch 3) ──
+  {
+    term: "firewall",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "A security system that monitors and controls incoming and outgoing network traffic to block unauthorized access.",
+    example: "The firewall blocked several suspicious connection attempts overnight.",
+  },
+  {
+    term: "algorithm",
+    pos: "noun",
+    category: "Technical",
+    definition: "A defined sequence of steps used to perform a calculation or solve a problem.",
+    example: "The new algorithm sorts customer data twice as fast as before.",
+  },
+  {
+    term: "cybersecurity",
+    pos: "noun",
+    category: "Technical",
+    definition: "The practice of protecting computer systems and networks from digital attacks.",
+    example: "The company invested heavily in cybersecurity to protect client data.",
+  },
+  {
+    term: "cloud computing",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "The delivery of computing services, such as storage and processing power, over the internet.",
+    example: "Cloud computing allows employees to access files from any location.",
+  },
+  {
+    term: "plug-in",
+    pos: "noun",
+    category: "Technical",
+    definition: "A software component that adds a specific feature to an existing program.",
+    example: "She installed a plug-in to translate the website automatically.",
+  },
+  {
+    term: "malware",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "Software specifically designed to damage or gain unauthorized access to a computer system.",
+    example: "The email attachment contained malware that infected three workstations.",
+  },
+  {
+    term: "debug",
+    pos: "verb",
+    category: "Technical",
+    definition: "To locate and remove errors from computer software.",
+    example: "The developers spent the morning debugging the checkout module.",
+  },
+  {
+    term: "compress",
+    pos: "verb",
+    category: "Technical",
+    definition: "To reduce the size of a computer file so that it takes up less storage space.",
+    example: "Compress the video files before emailing them to the client.",
+  },
+  {
+    term: "synchronize",
+    pos: "verb",
+    category: "Technical",
+    definition: "To update data across multiple devices or systems so that it matches everywhere.",
+    example: "The app synchronizes your contacts across your phone and laptop automatically.",
+  },
+  {
+    term: "hardware",
+    pos: "noun",
+    category: "Technical",
+    definition: "The physical components of a computer or electronic system.",
+    example: "The technician replaced the faulty hardware inside the server.",
+  },
+  {
+    term: "software",
+    pos: "noun",
+    category: "Technical",
+    definition: "The programs and applications that run on a computer or device.",
+    example: "The company switched to accounting software with better reporting tools.",
+  },
+  {
+    term: "crash",
+    pos: "verb",
+    category: "Technical",
+    definition:
+      "To stop working suddenly and unexpectedly, especially referring to computer systems.",
+    example: "The server crashed twice during the product launch.",
+  },
+  {
+    term: "wireless",
+    pos: "adjective",
+    category: "Technical",
+    definition: "Operating without connecting cables, typically by using radio signals.",
+    example: "All meeting rooms are equipped with wireless printers.",
+  },
+  {
+    term: "proprietary",
+    pos: "adjective",
+    category: "Technical",
+    definition:
+      "Owned exclusively by one company and protected from being copied or used without permission.",
+    example: "The system relies on proprietary software developed in-house.",
+  },
+  {
+    term: "throughput",
+    pos: "noun",
+    category: "Technical",
+    definition: "The amount of data or work a system processes within a given period of time.",
+    example: "Upgrading the servers doubled the network's throughput.",
+  },
+
+  // ── Marketing & Sales ──
+  {
+    term: "target audience",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The specific group of consumers a product, service, or advertisement is designed to reach.",
+    example:
+      "The campaign's messaging was tailored to appeal to a target audience of young professionals.",
+  },
+  {
+    term: "brand awareness",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The extent to which consumers are familiar with and can recognize a particular brand.",
+    example:
+      "The company launched a series of billboard ads to boost brand awareness in the region.",
+  },
+  {
+    term: "endorse",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition:
+      "To publicly express approval or support of a product, often in exchange for payment.",
+    example: "The athlete agreed to endorse the sportswear brand in its new television commercial.",
+  },
+  {
+    term: "market share",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The percentage of total sales in an industry that is captured by a particular company.",
+    example:
+      "The firm's new product line helped it capture a larger market share than its competitors.",
+  },
+  {
+    term: "markdown",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "A reduction in the original selling price of a product.",
+    example:
+      "The store applied a thirty percent markdown on winter coats at the end of the season.",
+  },
+  {
+    term: "clientele",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "The customers of a business, considered collectively.",
+    example: "The boutique has built a loyal clientele through personalized service.",
+  },
+  {
+    term: "loyalty program",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A marketing strategy that rewards repeat customers with points, discounts, or exclusive offers.",
+    example:
+      "Members of the loyalty program earn points toward free merchandise with every purchase.",
+  },
+  {
+    term: "cold call",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition:
+      "To contact a potential customer who has had no prior interaction with the company, without a scheduled appointment.",
+    example: "Sales representatives cold call prospects every morning to generate new leads.",
+  },
+  {
+    term: "upsell",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition:
+      "To persuade a customer to purchase a more expensive item, upgrade, or additional product.",
+    example: "The waiter upsold the couple on a bottle of wine to go with their meal.",
+  },
+  {
+    term: "niche market",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A narrowly defined segment of a market with specific needs not served by mainstream offerings.",
+    example: "The company found success by targeting a niche market of eco-conscious pet owners.",
+  },
+  {
+    term: "promotional",
+    pos: "adjective",
+    category: "Marketing & Sales",
+    definition: "Relating to activities intended to advertise or increase sales of a product.",
+    example:
+      "The retailer ran a promotional offer that included a free gift with every purchase over fifty euros.",
+  },
+  {
+    term: "demographic",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A section of a population defined by characteristics such as age, income, or gender, often used to define a target market.",
+    example: "Marketers analyzed the demographic most likely to purchase the new smartphone.",
+  },
+  {
+    term: "word of mouth",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The informal spread of information about a product or service from person to person.",
+    example:
+      "Word of mouth remains one of the most effective forms of advertising for small businesses.",
+  },
+  {
+    term: "bulk order",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "A large quantity purchase, typically made at a discounted rate.",
+    example:
+      "The distributor offered a reduced unit price for any bulk order over five hundred units.",
+  },
+  {
+    term: "wholesale",
+    pos: "adjective",
+    category: "Marketing & Sales",
+    definition:
+      "Relating to the sale of goods in large quantities, typically to retailers rather than individual consumers.",
+    example:
+      "The manufacturer sells its products at wholesale prices to retailers across the country.",
+  },
+  {
+    term: "campaign",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A series of coordinated activities designed to promote a product, service, or cause.",
+    example:
+      "The marketing team launched a digital campaign to introduce the product to a wider audience.",
+  },
+  {
+    term: "testimonial",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A statement from a satisfied customer used to promote the credibility of a product or service.",
+    example:
+      "The company featured a customer testimonial on its homepage to build trust with new visitors.",
+  },
+  {
+    term: "negotiate",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition:
+      "To discuss something with another party in order to reach a mutually acceptable agreement, such as on price or terms.",
+    example:
+      "The sales manager negotiated a lower price with the supplier before signing the contract.",
+  },
+  {
+    term: "lucrative",
+    pos: "adjective",
+    category: "Marketing & Sales",
+    definition: "Producing a great deal of profit.",
+    example: "Expanding into the Asian market proved to be a lucrative decision for the company.",
+  },
+  {
+    term: "slogan",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "A short, memorable phrase used in advertising to promote a brand or product.",
+    example: "The company's new slogan appeared on billboards throughout the city.",
+  },
+
+  // ── Human Resources ──
+  {
+    term: "candidate",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "A person being considered for a job or position.",
+    example: "Only three candidates were invited back for a second interview.",
+  },
+  {
+    term: "shortlist",
+    pos: "verb",
+    category: "Human Resources",
+    definition:
+      "To select a limited number of applicants from a larger pool for further consideration.",
+    example: "The hiring committee shortlisted five applicants for the final round.",
+  },
+  {
+    term: "background check",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A screening process that verifies an applicant's employment history, education, and criminal record.",
+    example: "The offer is contingent on a clean background check.",
+  },
+  {
+    term: "job posting",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "A public announcement that a position is open and accepting applications.",
+    example: "The job posting for the marketing role received over two hundred applications.",
+  },
+  {
+    term: "probationary",
+    pos: "adjective",
+    category: "Human Resources",
+    definition:
+      "Relating to a trial period during which a new employee's performance is evaluated.",
+    example:
+      "New hires must complete a three-month probationary period before their contract is confirmed.",
+  },
+  {
+    term: "severance package",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "The pay and benefits offered to an employee upon involuntary termination.",
+    example: "Her severance package included two months' salary and continued health coverage.",
+  },
+  {
+    term: "pension plan",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "A retirement savings program funded by an employer, an employee, or both.",
+    example: "The company matches employee contributions to the pension plan up to five percent.",
+  },
+  {
+    term: "parental leave",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "Authorized time off granted to an employee following the birth or adoption of a child.",
+    example: "He requested twelve weeks of parental leave after his daughter was born.",
+  },
+  {
+    term: "perk",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "An additional benefit provided to employees beyond their regular salary.",
+    example: "Free gym membership is one of the perks of working here.",
+  },
+  {
+    term: "flextime",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A work arrangement that allows employees to choose their own starting and finishing hours within limits.",
+    example: "Flextime lets staff start anytime between seven and ten in the morning.",
+  },
+  {
+    term: "grievance",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "A formal complaint filed by an employee about workplace treatment or conditions.",
+    example: "She filed a grievance after being passed over for promotion.",
+  },
+  {
+    term: "disciplinary action",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "A formal response taken by management to address an employee's misconduct.",
+    example: "Repeated lateness resulted in disciplinary action against the employee.",
+  },
+  {
+    term: "harassment",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "Unwanted behavior in the workplace that creates an intimidating or hostile environment.",
+    example: "The company has a zero-tolerance policy toward harassment of any kind.",
+  },
+  {
+    term: "union",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "An organization of workers formed to negotiate with employers over wages and conditions.",
+    example: "The union negotiated a pay increase for all factory staff.",
+  },
+  {
+    term: "seniority",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "Priority or status given based on length of service with a company.",
+    example: "Vacation time is allocated according to seniority.",
+  },
+  {
+    term: "payroll",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "The total amount a company pays its employees, or the system used to calculate and distribute it.",
+    example: "The payroll department processes salaries on the last day of each month.",
+  },
+  {
+    term: "salaried",
+    pos: "adjective",
+    category: "Human Resources",
+    definition: "Paid a fixed regular amount rather than an hourly wage.",
+    example: "Salaried employees are not paid overtime for extra hours worked.",
+  },
+  {
+    term: "underperform",
+    pos: "verb",
+    category: "Human Resources",
+    definition: "To perform below an expected standard.",
+    example: "Employees who consistently underperform are placed on an improvement plan.",
+  },
+  {
+    term: "tenure",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "The length of time a person has held a job or position.",
+    example: "During his ten-year tenure, sales tripled.",
+  },
+  {
+    term: "dismissal",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "The act of formally removing an employee from their position.",
+    example: "His dismissal followed a lengthy investigation into misconduct.",
   },
 ];
 

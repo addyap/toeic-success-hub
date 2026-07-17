@@ -21,14 +21,12 @@ export const Route = createFileRoute("/vocabulary")({
       { title: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
       {
         name: "description",
-        content:
-          "Learn 92 high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, and technical categories.",
+        content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
       },
       { property: "og:title", content: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
-        content:
-          "Learn 92 high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, and technical categories.",
+        content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
       },
       { property: "og:url", content: absoluteUrl("/vocabulary") },
     ],
@@ -46,6 +44,8 @@ const FILTERS: { id: Filter; emoji: string }[] = [
   { id: "Travel", emoji: "✈️" },
   { id: "Finance", emoji: "💳" },
   { id: "Technical", emoji: "🛠️" },
+  { id: "Marketing & Sales", emoji: "📈" },
+  { id: "Human Resources", emoji: "🧑‍💼" },
 ];
 
 const LS_FILTER = "toeicpath:vocab:filter";
@@ -117,8 +117,9 @@ function Page() {
             High-frequency TOEIC vocabulary, built for business.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            {vocabulary.length} curated terms across 4 categories. Study with flashcards, then test
-            recall with a quick quiz. Your category and score are saved on this device.
+            {vocabulary.length} curated terms across {FILTERS.length - 1} categories. Study with
+            flashcards, then test recall with a quick quiz. Your category and score are saved on
+            this device.
           </p>
         </div>
       </section>
