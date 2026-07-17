@@ -4,8 +4,20 @@ import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "luci
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { cn, shuffle } from "@/lib/utils";
 import { listeningReadingQuestions, questionsByPart } from "@/data/listeningReadingQuestions";
+
+const OPTION_LABELS = ["A", "B", "C", "D"];
+
+/** Returns a copy of `data` with its options shuffled into a new random order
+ *  and relabeled A/B/C/D to match, so the correct answer isn't always in the
+ *  same position as authored in the source data. */
+function shuffleQuestionOptions(data: PracticeQuestionData): PracticeQuestionData {
+  const shuffled = shuffle(data.options);
+  const correctIndex = shuffled.findIndex((opt) => opt.label === data.correct);
+  const options = shuffled.map((opt, i) => ({ ...opt, label: OPTION_LABELS[i] }));
+  return { ...data, options, correct: OPTION_LABELS[correctIndex] };
+}
 
 export const Route = createFileRoute("/listening-reading")({
   head: () => ({
@@ -198,6 +210,14 @@ function PracticeSession({
 }) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
+  // SSR renders `questions` as-authored so client hydration matches the server
+  // markup, then this fires client-side before paint to randomize each
+  // question's option order — avoids both a hydration mismatch and a visible
+  // flash of the unshuffled order.
+  const [displayQuestions, setDisplayQuestions] = useState<PracticeQuestionData[]>(questions);
+  useLayoutEffect(() => {
+    setDisplayQuestions(questions.map(shuffleQuestionOptions));
+  }, [questions]);
   const [best, setBest] = useState<number | null>(null);
   const [bestLoaded, setBestLoaded] = useState(false);
   const [justImprovedBest, setJustImprovedBest] = useState(false);
@@ -215,8 +235,8 @@ function PracticeSession({
   }, [storageKey]);
 
   const score = useMemo(
-    () => answers.reduce((acc, a, i) => acc + (a && a === questions[i].correct ? 1 : 0), 0),
-    [answers, questions],
+    () => answers.reduce((acc, a, i) => acc + (a && a === displayQuestions[i].correct ? 1 : 0), 0),
+    [answers, displayQuestions],
   );
   const answeredCount = answers.filter((a) => a !== null).length;
   const total = questions.length;
@@ -256,6 +276,7 @@ function PracticeSession({
 
   const reset = () => {
     setAnswers(questions.map(() => null));
+    setDisplayQuestions(questions.map(shuffleQuestionOptions));
     setResetKey((k) => k + 1);
     setJustImprovedBest(false);
     if (typeof window !== "undefined") {
@@ -306,7 +327,7 @@ function PracticeSession({
       </div>
 
       <div className="mt-6 space-y-5">
-        {questions.map((q, i) => (
+        {displayQuestions.map((q, i) => (
           <PracticeQuestion
             key={i}
             data={q}
