@@ -719,6 +719,71 @@ const part2ah: PracticeQuestionData = {
     "This is a tag question seeking confirmation of what the vet said. (A) confirms it directly. (B) is an unrelated fact about vaccinations, and (C) reuses 'stitched' but describes mending furniture, not the dog's medical care.",
 };
 
+const part2ai: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "Do you happen to know where the spare projector bulb is kept?"',
+  options: [
+    { label: "A", text: "It's in the supply closet next to the printer." },
+    { label: "B", text: "Yes, I've changed one before." },
+    { label: "C", text: "The projector needs a new bulb every eight months." },
+  ],
+  correct: "A",
+  explanation:
+    "This is an embedded question — the real question is 'where is the spare bulb kept?' (A) states the location. (B) mistakes 'Do you know' for a literal yes/no question and confirms familiarity without giving a location, and (C) is an unrelated fact about replacement frequency rather than where the bulb is stored.",
+};
+
+const part2aj: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
+  listening: true,
+  audio: { label: "Spoken statement", durationSec: 0 },
+  context:
+    'Statement: "Our biggest wholesale client is renegotiating their contract terms this week."',
+  options: [
+    {
+      label: "A",
+      text: "I'll pull together the account history so we're prepared for the discussion.",
+    },
+    { label: "B", text: "The client placed their first order two years ago." },
+    { label: "C", text: "Wholesale prices tend to rise in the summer." },
+  ],
+  correct: "A",
+  explanation:
+    "This statement about an upcoming negotiation calls for an appropriate reaction. (A) proposes a useful next step. (B) is an unrelated fact about the client's history rather than a response to the renegotiation, and (C) reuses 'wholesale' but makes a general seasonal claim that doesn't address this week's contract talks.",
+};
+
+const part2ak: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context: 'Question: "How long will the road resurfacing project take?"',
+  options: [
+    { label: "A", text: "About three weeks, weather permitting." },
+    { label: "B", text: "It starts on Monday morning." },
+    { label: "C", text: "The crew resurfaced two miles last month." },
+  ],
+  correct: "A",
+  explanation:
+    "'How long' asks for a duration. (A) gives one. (B) answers 'when' the project begins, not how long it lasts, and (C) reuses 'resurfaced' but describes a separate, already-completed job rather than stating the current project's length.",
+};
+
+const part2al: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  audio: { label: "Spoken question", durationSec: 0 },
+  context:
+    'Question: "Would you rather present the findings yourself, or have someone from the research team do it?"',
+  options: [
+    { label: "A", text: "I'd prefer to present it myself, since I know the data best." },
+    { label: "B", text: "Yes, the findings were quite surprising." },
+    { label: "C", text: "The research team meets every Tuesday." },
+  ],
+  correct: "A",
+  explanation:
+    "This is an or-choice question offering two options for who presents. (A) clearly selects one. (B) answers with a plain yes/no, which doesn't fit an 'or' question, and (C) reuses 'research team' but states a meeting schedule instead of choosing who will present.",
+};
+
 // ── Part 3 · Conversations ──
 const part3: PracticeQuestionData = {
   prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
@@ -1400,6 +1465,210 @@ const part3an: PracticeQuestionData = {
     "The man says 'the translator originally assigned to it is out sick, so someone else had to take over.' (B), (C), and (D) are never mentioned — they are typical distractors involving other causes of delay.",
 };
 
+const part3ao: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 41 — Recording studio microphone malfunction", durationSec: 38 },
+  context:
+    "(M) Hi, we're supposed to start the podcast recording in ten minutes, but the microphone in booth two isn't picking up any sound.\n(W) Let me check the cable connection... it looks like the XLR cable came loose from the mixer. I'll plug it back in.\n(M) Great, could you also test the sound levels once it's reconnected?\n(W) Of course, give me two minutes and I'll confirm everything is working before you start.\n\nQuestion: What problem does the man report about booth two?",
+  options: [
+    { label: "A", text: "The microphone isn't picking up any sound." },
+    { label: "B", text: "The recording software crashed." },
+    { label: "C", text: "The booth's soundproofing is damaged." },
+    { label: "D", text: "The lighting in the booth failed." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the microphone in booth two 'isn't picking up any sound.' (B), (C), and (D) are never mentioned — they are typical studio-related distractors that reuse vocabulary ('booth', 'recording') from the conversation.",
+};
+
+const part3ap: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 42 — Pharmacy prescription refill delay", durationSec: 40 },
+  context:
+    "(W) Hi, this is Melissa, I'm calling about my blood pressure prescription — I was told it would be ready today, but the pharmacist said it's still pending.\n(M) Let me check... it looks like your insurance requires prior authorization for this particular medication, and we're waiting on approval from your doctor's office.\n(W) How long does that usually take?\n(M) Typically one to two business days, but I can call your doctor's office directly to speed things up.\n\nQuestion: Why is the woman's prescription still pending?",
+  options: [
+    { label: "A", text: "Her insurance requires prior authorization for the medication." },
+    { label: "B", text: "The pharmacy is out of stock of the medication." },
+    { label: "C", text: "Her doctor has not signed the prescription." },
+    { label: "D", text: "Her insurance card has expired." },
+  ],
+  correct: "A",
+  explanation:
+    "The man explains, 'your insurance requires prior authorization for this particular medication, and we're waiting on approval from your doctor's office.' (B), (C), and (D) are never mentioned — they are typical pharmacy-related distractors.",
+};
+
+const part3aq: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 43 — Art gallery loan extension request", durationSec: 37 },
+  context:
+    "(M) Hi, this is Daniel from the Whitfield Gallery. I'm calling about the painting we borrowed for our exhibit — it's due back next Friday.\n(W) Yes, I have that on file.\n(M) The exhibit has been so popular that we'd like to keep it on display for two more weeks, if that's possible.\n(W) I'll need to check with the owner, but I don't think that will be a problem. I'll call you back by tomorrow.\n\nQuestion: What does the man request?",
+  options: [
+    { label: "A", text: "A two-week extension on the painting's loan period." },
+    { label: "B", text: "A replacement for a damaged painting." },
+    { label: "C", text: "A discount on the loan fee." },
+    { label: "D", text: "Permission to sell the painting." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says, 'we'd like to keep it on display for two more weeks, if that's possible.' (B), (C), and (D) are never mentioned — they are typical gallery-related distractors.",
+};
+
+const part3ar: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 44 — Airport flight cancellation rebooking", durationSec: 36 },
+  context:
+    "(W) I'm sorry to tell you that your flight to Chicago has been canceled due to the storm.\n(M) Oh no, I have a meeting there tomorrow morning. What are my options?\n(W) I can rebook you on the 6 AM flight tomorrow, which should still get you there in time.\n(M) That works. Please go ahead and book that for me.\n\nQuestion: What will the woman most likely do next?",
+  options: [
+    { label: "A", text: "Book the man on the 6 AM flight tomorrow." },
+    { label: "B", text: "Refund the cost of his ticket." },
+    { label: "C", text: "Upgrade him to first class." },
+    { label: "D", text: "Cancel his hotel reservation." },
+  ],
+  correct: "A",
+  explanation:
+    "The man asks her to 'go ahead and book that for me,' referring to the 6 AM flight she just offered. (B), (C), and (D) are never mentioned — they are typical airline-related distractors.",
+};
+
+const part3as: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 45 — Gym membership freeze request", durationSec: 39 },
+  context:
+    "(M) Hi, I'm going to be traveling for work for the next three months, and I was wondering if I could freeze my gym membership instead of canceling it.\n(W) Yes, we do offer that. There's a small five-dollar monthly fee to keep your account on hold.\n(M) That's fine. Can you start the freeze from next Monday?\n(W) Sure, I'll set that up right now at the front desk.\n\nQuestion: Where does this conversation most likely take place?",
+  options: [
+    { label: "A", text: "At a fitness center." },
+    { label: "B", text: "At a travel agency." },
+    { label: "C", text: "At a bank." },
+    { label: "D", text: "At a hotel." },
+  ],
+  correct: "A",
+  explanation:
+    "The conversation centers on freezing a 'gym membership' and the woman refers to 'the front desk,' both of which point to a fitness center. (B), (C), and (D) are never mentioned — travel is only the man's reason for the request, not the setting.",
+};
+
+const part3at: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 46 — Construction site permit inspection", durationSec: 41 },
+  context:
+    "(M) Good morning, I'm here from the city building department to check on the permit status for this site.\n(W) Thanks for coming. We submitted the electrical permit application two weeks ago but haven't heard back.\n(M) I looked into it — the application is missing the certified electrician's signature, so it's been on hold.\n(W) I'll get that signature today and resubmit it this afternoon.\n\nQuestion: What is the man's role?",
+  options: [
+    { label: "A", text: "A city building department inspector." },
+    { label: "B", text: "A certified electrician." },
+    { label: "C", text: "The site's project manager." },
+    { label: "D", text: "A permit application clerk at the woman's company." },
+  ],
+  correct: "A",
+  explanation:
+    "The man states he is 'here from the city building department to check on the permit status for this site.' (B), (C), and (D) are never mentioned — the certified electrician is referenced only as the person whose signature is missing.",
+};
+
+const part3au: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 47 — Bakery oven breakdown before wedding order", durationSec: 40 },
+  context:
+    "(W) We have a huge problem — the main oven just stopped heating, and we have forty wedding cake tiers to bake by tomorrow morning.\n(M) Let's check the circuit breaker first... no, that's not it. It might be the heating element.\n(W) I don't think we have time to fix it ourselves. Can we call the repair technician now?\n(M) Yes, I'll call him immediately and ask if he can come within the hour.\n\nQuestion: What problem does the woman describe?",
+  options: [
+    { label: "A", text: "The main oven has stopped heating." },
+    { label: "B", text: "The wedding has been postponed." },
+    { label: "C", text: "They ran out of baking ingredients." },
+    { label: "D", text: "The delivery truck broke down." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says, 'the main oven just stopped heating, and we have forty wedding cake tiers to bake by tomorrow morning.' (B), (C), and (D) are never mentioned — they are typical bakery-related distractors.",
+};
+
+const part3av: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 48 — Library lost card replacement", durationSec: 36 },
+  context:
+    "(M) Hi, I think I lost my library card somewhere between here and the parking lot. Can you help me get a new one?\n(W) No problem, I can issue a replacement right now. There's a two-dollar fee for a new card.\n(M) That's fine. Will my checked-out books still be linked to the new card?\n(W) Yes, everything on your account will transfer automatically once I print the new card.\n\nQuestion: Why does the man visit the library desk?",
+  options: [
+    { label: "A", text: "To request a replacement for his lost library card." },
+    { label: "B", text: "To pay an overdue book fine." },
+    { label: "C", text: "To renew his library membership." },
+    { label: "D", text: "To report a damaged book." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says he 'lost my library card' and asks, 'Can you help me get a new one?' (B), (C), and (D) are never mentioned — they are typical library-related distractors.",
+};
+
+const part3aw: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 49 — Real estate apartment viewing reschedule", durationSec: 37 },
+  context:
+    "(W) Hi, this is Naomi. I was scheduled to view the apartment on Elm Street tomorrow at 3 PM, but something came up at work.\n(M) No problem, would another time this week work better for you?\n(W) Could we do Thursday at 5 PM instead?\n(M) Thursday at 5 works for me. I'll update the appointment and send you a confirmation email.\n\nQuestion: What does the woman ask the man to do?",
+  options: [
+    { label: "A", text: "Reschedule her apartment viewing to a different time." },
+    { label: "B", text: "Lower the rent on the apartment." },
+    { label: "C", text: "Extend her lease application deadline." },
+    { label: "D", text: "Cancel the apartment viewing entirely." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman explains something came up and asks, 'Could we do Thursday at 5 PM instead?' — she is rescheduling, not canceling. (B), (C), and (D) are never mentioned — they are typical real-estate-related distractors.",
+};
+
+const part3ax: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 50 — Software server outage response", durationSec: 42 },
+  context:
+    "(M) Our main server just went down, and customers are reporting they can't log into the app.\n(W) I see it too. Let's check the error logs first... it looks like it crashed after last night's update.\n(M) Should we roll back to the previous version?\n(W) Yes, I'll start the rollback now — it should restore access within fifteen minutes.\n\nQuestion: What will the woman most likely do next?",
+  options: [
+    { label: "A", text: "Roll back the server to the previous version." },
+    { label: "B", text: "Contact customers individually to apologize." },
+    { label: "C", text: "Shut down the app permanently." },
+    { label: "D", text: "Install a new update immediately." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman agrees to the man's suggestion and says, 'I'll start the rollback now — it should restore access within fifteen minutes.' (B), (C), and (D) are never mentioned — they are typical outage-related distractors.",
+};
+
+const part3ay: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 51 — Veterinary clinic appointment reschedule", durationSec: 36 },
+  context:
+    "(W) Hi, I need to reschedule my dog's checkup that was booked for Saturday morning — I have to be out of town.\n(M) That's fine. We have an opening this Wednesday at 2 PM, or next Saturday at the same time.\n(W) Wednesday at 2 works better for me.\n(M) Great, I've moved Max's appointment to Wednesday at 2 PM. We'll see you then.\n\nQuestion: Where does this conversation most likely take place?",
+  options: [
+    { label: "A", text: "At a veterinary clinic." },
+    { label: "B", text: "At a pet grooming salon." },
+    { label: "C", text: "At a boarding kennel." },
+    { label: "D", text: "At a pet supply store." },
+  ],
+  correct: "A",
+  explanation:
+    "The conversation refers to 'my dog's checkup' and 'Max's appointment,' which point to a veterinary clinic. (B), (C), and (D) are never mentioned — they are other plausible pet-related settings.",
+};
+
+const part3az: PracticeQuestionData = {
+  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
+  listening: true,
+  audio: { label: "Conversation 52 — Home electrical wiring inspection", durationSec: 38 },
+  context:
+    "(M) I finished inspecting the wiring in your basement, and I found a section that's not up to code — it could be a fire hazard.\n(W) That's concerning. How soon can it be fixed?\n(M) I can replace that section tomorrow morning, it should only take about two hours.\n(W) Please go ahead and schedule that as soon as possible.\n\nQuestion: What problem does the man report?",
+  options: [
+    { label: "A", text: "A section of wiring is not up to code and poses a fire hazard." },
+    { label: "B", text: "The circuit breaker panel needs replacement." },
+    { label: "C", text: "The basement has a water leak." },
+    { label: "D", text: "The home's electricity bill is unusually high." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says he 'found a section that's not up to code — it could be a fire hazard.' (B), (C), and (D) are never mentioned — they are typical home-inspection-related distractors.",
+};
+
 // ── Part 4 · Short Talks ──
 const part4: PracticeQuestionData = {
   prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
@@ -1849,6 +2118,178 @@ const part4z: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The CEO attributes the quarter's 'increase of eighteen percent' in revenue to 'strong demand in our cloud services division,' making its significant contribution to growth a logical conclusion. Being the newest segment (A), being sold off (C), and underperforming hardware (D) are never mentioned.",
+};
+
+const part4aa: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the radio traffic and weather update and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Radio traffic and weather update", durationSec: 0 },
+  context:
+    "Good morning, this is your six-forty traffic and weather update on WKRD Radio. If you're heading downtown this morning, expect heavy delays on Interstate 95 northbound near exit 12, where a multi-vehicle accident has traffic backed up for nearly three miles. Drivers are advised to take the Route 9 bypass instead until the scene is cleared, which authorities estimate will take at least another hour. On the weather side, expect sunny skies through midday, with rain moving in after four p.m., so grab an umbrella if you're heading out this evening. We'll have another update in twenty minutes.\n\nQuestion: Why is traffic backed up on Interstate 95 northbound?",
+  options: [
+    { label: "A", text: "Road construction near exit 12." },
+    { label: "B", text: "A multi-vehicle accident." },
+    { label: "C", text: "Heavy rain flooding the roadway." },
+    { label: "D", text: "A stalled vehicle blocking a lane." },
+  ],
+  correct: "B",
+  explanation:
+    "The reporter states that 'a multi-vehicle accident has traffic backed up for nearly three miles.' Construction (A), rain (C), and a stalled vehicle (D) are never mentioned — the rain is forecast for later in the day, not the current cause of delays.",
+};
+
+const part4ab: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the product recall announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Children's toy product recall announcement", durationSec: 0 },
+  context:
+    "This is an important safety announcement from Brightstar Toys. We are voluntarily recalling our Rainbow Stacker toy, model number RS-204, sold nationwide between January and May of this year, after discovering that a small plastic piece can detach and pose a choking hazard to young children. If you own this product, please stop using it immediately and keep it away from children. Customers can return the toy to any Brightstar retailer for a full refund, no receipt required. For more information, visit our website or call our customer hotline listed on the recall notice.\n\nQuestion: What are customers asked to do if they own the recalled toy?",
+  options: [
+    { label: "A", text: "Repair it using a kit mailed to them." },
+    { label: "B", text: "Stop using it and return it for a refund." },
+    { label: "C", text: "Exchange it for a different toy model." },
+    { label: "D", text: "Register it online for a replacement part." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement instructs owners to 'stop using it immediately and keep it away from children' and states they 'can return the toy to any Brightstar retailer for a full refund.' A repair kit (A), an exchange (C), and online registration (D) are never mentioned.",
+};
+
+const part4ac: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the library event announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Public library author-talk announcement", durationSec: 0 },
+  context:
+    "Good afternoon, and welcome to the Fairview Public Library. We'd like to remind everyone that tonight's author talk with novelist Grace Bennett has been moved from the main reading room to the second-floor community hall to accommodate the number of people who have registered. The event begins at seven p.m. sharp, and doors will open thirty minutes early for seating. Copies of Ms. Bennett's latest novel will be available for purchase at the door, and she will be happy to sign books following the discussion. Please silence your phones once the program begins.\n\nQuestion: Why was tonight's author talk relocated?",
+  options: [
+    { label: "A", text: "The main reading room is being renovated." },
+    { label: "B", text: "To accommodate a larger number of registered attendees." },
+    { label: "C", text: "The author requested a bigger venue." },
+    { label: "D", text: "There was a scheduling conflict with another event." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement says the talk was moved 'to accommodate the number of people who have registered.' Renovation (A), an author request (C), and a scheduling conflict (D) are never mentioned.",
+};
+
+const part4ad: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the city council meeting update and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — City council meeting recorded update", durationSec: 0 },
+  context:
+    "This is a recorded update from the Millbrook City Council regarding last night's meeting. Council members voted five to two in favor of a new ordinance that will add protected bike lanes along Sycamore Boulevard, with construction expected to begin next spring. Residents who wish to comment on the project's design can attend a public forum scheduled for the third Tuesday of next month at City Hall. The council also postponed a vote on the proposed dog park until further budget review, so that item will return at a future meeting. Meeting minutes and the full ordinance text are posted on the city website.\n\nQuestion: What did the council decide about the dog park?",
+  options: [
+    { label: "A", text: "It approved funding for construction to begin immediately." },
+    { label: "B", text: "It voted to cancel the project entirely." },
+    { label: "C", text: "It postponed the vote pending further budget review." },
+    { label: "D", text: "It transferred responsibility for the project to a private developer." },
+  ],
+  correct: "C",
+  explanation:
+    "The update states the council 'postponed a vote on the proposed dog park until further budget review, so that item will return at a future meeting.' Approval (A), cancellation (B), and transferring the project (D) are never mentioned.",
+};
+
+const part4ae: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the conference keynote introduction and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Tech conference keynote speaker introduction", durationSec: 0 },
+  context:
+    "Good morning, and welcome to the third annual Horizon Tech Summit. Before we get started, I have a quick announcement: the workshop on data privacy originally scheduled for room 204 has been moved to room 310 due to higher-than-expected registration. Now, it is my great pleasure to introduce our opening keynote speaker, Dr. Elena Vasquez, whose research in renewable battery technology has been cited in over two hundred academic papers. Please join me in welcoming Dr. Vasquez to the stage.\n\nQuestion: Why was the data privacy workshop moved to a different room?",
+  options: [
+    { label: "A", text: "The original room lost power." },
+    { label: "B", text: "More people registered than expected." },
+    { label: "C", text: "Dr. Vasquez requested the change." },
+    { label: "D", text: "The room needed to be cleaned." },
+  ],
+  correct: "B",
+  explanation:
+    "The speaker explains the workshop was moved 'due to higher-than-expected registration.' A power loss (A), a request from Dr. Vasquez (C), and cleaning (D) are never mentioned.",
+};
+
+const part4af: PracticeQuestionData = {
+  prompt:
+    "Part 4 · Short Talks. Read the movie theater pre-show announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Movie theater pre-show announcement", durationSec: 0 },
+  context:
+    "Welcome to Lakeview Cinemas. Before today's feature begins, please take a moment to locate the nearest exit in case of emergency. As a reminder, outside food and drinks are not permitted inside the auditorium, though exceptions are made for baby formula and medically necessary items. Today's showing will include approximately twelve minutes of previews before the main feature starts. If you experience any issues with the picture or sound quality, please alert a staff member in the lobby right away so we can assist you. Enjoy the show!\n\nQuestion: What should a moviegoer do if there is a problem with the picture quality?",
+  options: [
+    { label: "A", text: "Wait until the movie ends to report it." },
+    { label: "B", text: "Call the theater's customer service line." },
+    { label: "C", text: "Alert a staff member in the lobby." },
+    { label: "D", text: "Ask for a refund at the concession stand." },
+  ],
+  correct: "C",
+  explanation:
+    "The announcement instructs viewers to 'alert a staff member in the lobby right away' if there are picture or sound issues. Waiting until the end (A), calling a customer service line (B), and asking for a refund at the concession stand (D) are never mentioned.",
+};
+
+const part4ag: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the in-flight announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Airline in-flight cabin service announcement", durationSec: 0 },
+  context:
+    "Ladies and gentlemen, this is your flight attendant speaking. We've reached our cruising altitude, so the captain has turned off the seatbelt sign, and you're now free to move about the cabin. However, we do recommend keeping your seatbelt fastened while seated in case of unexpected turbulence. Our beverage service will begin shortly, starting from the back of the aircraft, and complimentary snacks will be available for all passengers. We also remind you that the restrooms located at the front of the cabin are reserved for our first-class passengers. Thank you for flying with us today.\n\nQuestion: According to the flight attendant, in what order will beverage service proceed?",
+  options: [
+    { label: "A", text: "From the front of the aircraft to the back." },
+    { label: "B", text: "From the back of the aircraft toward the front." },
+    { label: "C", text: "First-class passengers only, then economy." },
+    { label: "D", text: "Randomly, based on flight attendant availability." },
+  ],
+  correct: "B",
+  explanation:
+    "The flight attendant says beverage service 'will begin shortly, starting from the back of the aircraft.' Front-to-back order (A), first-class-only service (C), and random order (D) are never mentioned — the first-class detail applies only to restroom use.",
+};
+
+const part4ah: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the cruise ship announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Cruise ship mandatory safety drill announcement", durationSec: 0 },
+  context:
+    "Good afternoon, passengers, this is the cruise director speaking. In approximately one hour, all guests are required to attend the mandatory safety muster drill at their designated assembly station, listed on the back of your cabin door key card. Please bring your life jacket, located in your stateroom closet, and wear comfortable shoes for the drill. The ship's dining rooms will reopen for dinner service immediately following the drill, at six thirty this evening. Attendance is required by international maritime law, so we ask that all guests report promptly when the announcement sounds.\n\nQuestion: What are guests required to bring to the safety muster drill?",
+  options: [
+    { label: "A", text: "Their passport and boarding pass." },
+    { label: "B", text: "A life jacket." },
+    { label: "C", text: "Sunscreen and a hat." },
+    { label: "D", text: "Their cabin key card only." },
+  ],
+  correct: "B",
+  explanation:
+    "The cruise director asks guests to 'bring your life jacket, located in your stateroom closet.' Passports (A), sunscreen (C), and bringing only the key card (D) are never mentioned — the key card is only referenced as showing the assembly station location.",
+};
+
+const part4ai: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the career fair announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Regional career fair welcome announcement", durationSec: 0 },
+  context:
+    "Welcome to the Riverside Regional Career Expo, held today at the downtown convention center. Over sixty employers are here today looking to fill positions in technology, healthcare, and skilled trades. If you haven't already, please stop by the registration table near the main entrance to receive your visitor badge and a floor map of employer booths. We strongly encourage bringing several printed copies of your resume, as many employers will conduct brief on-the-spot interviews. A free resume review session will also run continuously in Room B throughout the day. The expo concludes at four p.m. sharp.\n\nQuestion: What are attendees encouraged to bring with them?",
+  options: [
+    { label: "A", text: "A laptop for submitting online applications." },
+    { label: "B", text: "Several printed copies of their resume." },
+    { label: "C", text: "A professional reference letter." },
+    { label: "D", text: "A completed job application form." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement says attendees are 'strongly encouraged' to bring 'several printed copies of your resume' because employers will conduct on-the-spot interviews. A laptop (A), a reference letter (C), and a completed application (D) are never mentioned.",
+};
+
+const part4aj: PracticeQuestionData = {
+  prompt: "Part 4 · Short Talks. Read the parking garage announcement and answer the question.",
+  listening: true,
+  audio: { label: "Short talk — Mall parking garage closure announcement", durationSec: 0 },
+  context:
+    "Attention, shoppers. This is a reminder from Westfield Mall parking services that the third floor of the north parking garage will be closed for repaving beginning tonight at ten p.m. and continuing through tomorrow. Vehicles currently parked on that level must be removed by nine forty-five p.m., or they will be relocated at the owner's expense. In the meantime, the south garage remains open twenty-four hours and offers validated parking for up to three hours with any mall purchase. We apologize for the inconvenience and thank you for shopping with us.\n\nQuestion: What will happen to vehicles still on the third floor after nine forty-five p.m.?",
+  options: [
+    { label: "A", text: "They will be towed to an impound lot outside the mall." },
+    { label: "B", text: "They will be relocated at the owner's expense." },
+    { label: "C", text: "Their owners will be fined by mall security." },
+    { label: "D", text: "They will be left in place until repaving is finished." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement warns that vehicles not removed by nine forty-five 'will be relocated at the owner's expense.' Towing to an impound lot (A), fines (C), and leaving vehicles in place (D) are never mentioned.",
 };
 
 // ── Part 5 · Incomplete Sentences ──
@@ -2451,6 +2892,95 @@ const part5an: PracticeQuestionData = {
     "'Equipment' is an uncountable noun, so it must be quantified with a counter phrase like 'a few pieces of'. (B) 'Equipments' is incorrect because uncountable nouns do not take a plural '-s' ending. (C) 'Many' is a quantifier reserved for countable plural nouns, not uncountable nouns like 'equipment', which would require 'much' or 'a lot of'. (D) 'An equipment' is incorrect because uncountable nouns cannot take the indefinite article 'an'.",
 };
 
+const part5ao: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The safety inspector recommended ______ the fire extinguishers annually to ensure they remain functional.",
+  options: [
+    { label: "A", text: "replace" },
+    { label: "B", text: "replacing" },
+    { label: "C", text: "replaced" },
+    { label: "D", text: "to replace" },
+  ],
+  correct: "B",
+  explanation:
+    "'Recommend' takes a gerund complement ('recommend doing something'), so 'replacing' is correct: 'recommended replacing the fire extinguishers'. (A) 'replace' is a bare base form and cannot follow 'recommended' directly without 'to' or '-ing'. (C) 'replaced' is a past tense/participle form and does not fit the verb-complement slot. (D) 'to replace' is ungrammatical here, since unlike verbs such as 'decide' or 'plan', 'recommend' does not take a to-infinitive complement.",
+};
+
+const part5ap: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The maintenance committee ______ scheduled to meet every second Tuesday of the month to review facility repair requests.",
+  options: [
+    { label: "A", text: "is" },
+    { label: "B", text: "are" },
+    { label: "C", text: "were" },
+    { label: "D", text: "have been" },
+  ],
+  correct: "A",
+  explanation:
+    "A collective noun like 'committee' referring to a single unit takes a singular verb, so 'is' is correct: 'The maintenance committee is scheduled to meet...'. (B) 'are' and (D) 'have been' are plural forms that do not agree with the collective subject treated as one unit. (C) 'were' is also plural and additionally shifts the sentence into the wrong tense for this recurring, ongoing schedule.",
+};
+
+const part5aq: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "Documents ______ without proper authorization will be immediately flagged by the security system.",
+  options: [
+    { label: "A", text: "submit" },
+    { label: "B", text: "submitting" },
+    { label: "C", text: "submitted" },
+    { label: "D", text: "having submitted" },
+  ],
+  correct: "C",
+  explanation:
+    "This is a reduced relative clause standing in for 'Documents that are submitted without proper authorization'; since the documents receive the action of submitting, the past participle 'submitted' is required. (A) 'submit' is a bare verb and cannot postmodify a noun this way. (B) 'submitting' is an active participle, which would wrongly imply the documents themselves perform the submitting. (D) 'having submitted' is a perfect active participle showing the subject completed an action before another past event, which contradicts the passive meaning needed here.",
+};
+
+const part5ar: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "If the board had approved the budget increase last quarter, the new manufacturing line ______ operational by now.",
+  options: [
+    { label: "A", text: "would be" },
+    { label: "B", text: "would have been" },
+    { label: "C", text: "will be" },
+    { label: "D", text: "was" },
+  ],
+  correct: "A",
+  explanation:
+    "This is a mixed conditional: the past perfect if-clause ('had approved') expresses an unreal past condition, while 'by now' signals a present result, which requires 'would' + base verb: 'would be operational'. (B) 'would have been' is the pure third-conditional form for a past result, but 'by now' points to the present, not the past. (C) 'will be' is a real future form and cannot combine with the hypothetical past perfect if-clause. (D) 'was' is a plain past indicative and does not express the necessary hypothetical meaning.",
+};
+
+const part5as: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The airline added extra check-in counters ______ reduce passenger wait times during the holiday season.",
+  options: [
+    { label: "A", text: "to" },
+    { label: "B", text: "for" },
+    { label: "C", text: "so as" },
+    { label: "D", text: "in order" },
+  ],
+  correct: "A",
+  explanation:
+    "To express purpose directly before a base-form verb, the simple infinitive marker 'to' is used: 'added counters to reduce wait times'. (B) 'for' can express purpose but must be followed by a noun or gerund ('for reducing'), not a bare verb. (C) 'so as' and (D) 'in order' are purpose expressions that require 'to' immediately after them ('so as to reduce', 'in order to reduce'); used alone before a bare verb, they are incomplete and ungrammatical.",
+};
+
+const part5at: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context: "The new customer support software is ______ user-friendly as the version it replaced.",
+  options: [
+    { label: "A", text: "as" },
+    { label: "B", text: "so" },
+    { label: "C", text: "such" },
+    { label: "D", text: "too" },
+  ],
+  correct: "A",
+  explanation:
+    "An affirmative equal comparison uses the correlative pair 'as...as': 'is as user-friendly as the version it replaced'. (B) 'so' can substitute for the first 'as' only in negative equal comparisons ('is not so user-friendly as...'), not in an affirmative sentence like this one. (C) 'such' does not form this comparative structure with 'as'. (D) 'too' expresses excess and does not fit the equal-comparison pattern 'as + adjective + as'.",
+};
+
 // ── Part 6 · Text Completion ──
 const part6: PracticeQuestionData = {
   prompt: "Part 6 · Read the email and choose the best word for the blank.",
@@ -2780,6 +3310,66 @@ const part6v: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The indefinite article 'a' is required before 'formal procedure' because this is introducing a new, non-specific procedure for the first time, and 'formal' begins with a consonant sound, requiring 'a' rather than 'an,' as in 'introducing a formal procedure.' (B) 'an' is used before words beginning with a vowel sound, not the consonant sound in 'formal'; (C) 'the' would incorrectly imply that the procedure has already been mentioned or is already known to the reader; (D) 'one' would emphasize a numerical quantity rather than simply introducing a new procedure, which does not fit naturally here.",
+};
+
+const part6w: PracticeQuestionData = {
+  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+  context:
+    "From: projects@delacroix-engineering.com\nTo: team@delacroix-engineering.com\nSubject: Bridge Inspection Project – Status Update\n\nDear team,\n\nBy the time the inspection crew arrived on site Tuesday morning, the survey team had already ______ the preliminary structural assessment, which saved us nearly two days on the overall timeline. The final report is now being compiled and should be ready for client review by Friday. Please let me know if you need access to the raw survey data before then.\n\nProject Management Office",
+  options: [
+    { label: "A", text: "completed" },
+    { label: "B", text: "complete" },
+    { label: "C", text: "completing" },
+    { label: "D", text: "completes" },
+  ],
+  correct: "A",
+  explanation:
+    "The past perfect tense 'had already ______' requires a past participle to pair with the auxiliary 'had', making 'completed' correct: 'the survey team had already completed the preliminary structural assessment'. (B) 'complete' is a base verb/adjective and cannot follow 'had' directly, (C) 'completing' is a present participle/gerund that would need a different auxiliary such as 'was', and (D) 'completes' is a third-person-singular present-tense form that does not combine with 'had' to form the past perfect.",
+};
+
+const part6x: PracticeQuestionData = {
+  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+  context:
+    "From: operations@fairview-distribution.com\nTo: warehouse-staff@fairview-distribution.com\nSubject: New Conveyor Belt System Now Operational\n\nDear team,\n\nFollowing last month's upgrade, the new conveyor belt system is now moving packages far more ______ than the outdated equipment it replaced, cutting average sorting time by nearly 40 percent. Supervisors have reported noticeably fewer jams and delays during peak shipping hours. We will continue monitoring performance over the next quarter and welcome any feedback on the transition.\n\nOperations Department",
+  options: [
+    { label: "A", text: "efficiently" },
+    { label: "B", text: "efficient" },
+    { label: "C", text: "efficiency" },
+    { label: "D", text: "efficiencies" },
+  ],
+  correct: "A",
+  explanation:
+    "The comparative structure 'more ______ than' modifies the verb 'moving', so an adverb is required, making 'efficiently' correct: 'moving packages far more efficiently than the outdated equipment'. (B) 'efficient' is an adjective and can only modify a noun, not a verb, (C) 'efficiency' is a singular noun, and (D) 'efficiencies' is a plural noun — neither noun form can describe how the system is moving packages.",
+};
+
+const part6y: PracticeQuestionData = {
+  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+  context:
+    "From: training@caldera-systems.com\nTo: new-hires@caldera-systems.com\nSubject: Mandatory Orientation Session Reminder\n\nDear new team members,\n\nThis is a reminder that the orientation session, ______ will cover company policies, benefits enrollment, and workplace safety procedures, is scheduled for this Thursday at 9:00 AM in the main training room. Attendance is mandatory for all employees hired within the last thirty days. Please bring a valid photo ID, as building security will verify your identity at check-in.\n\nTraining Department",
+  options: [
+    { label: "A", text: "which" },
+    { label: "B", text: "who" },
+    { label: "C", text: "whom" },
+    { label: "D", text: "whose" },
+  ],
+  correct: "A",
+  explanation:
+    "The relative pronoun 'which' correctly introduces a non-restrictive clause referring back to a thing — 'the orientation session' — and functions as the subject of 'will cover'. (B) 'who' is reserved for people, not events, (C) 'whom' is an object relative pronoun for people and cannot serve as the subject of 'will cover', and (D) 'whose' is possessive and would need to be followed by a noun (e.g., 'whose agenda'), not directly by a verb.",
+};
+
+const part6z: PracticeQuestionData = {
+  prompt: "Part 6 · Read the notice and choose the best word for the blank.",
+  context:
+    "From: safety@brennan-manufacturing.com\nTo: production-floor@brennan-manufacturing.com\nSubject: Updated Guidelines for Reporting Equipment Malfunctions\n\nDear team,\n\nAll employees are responsible for ______ any equipment malfunction to their shift supervisor immediately, rather than attempting a repair without authorization. This procedure is designed to prevent injuries and reduce unplanned downtime on the production floor. A new incident log has been placed near each workstation for quick reference. Thank you for helping us maintain a safe working environment.\n\nSafety Committee",
+  options: [
+    { label: "A", text: "reporting" },
+    { label: "B", text: "report" },
+    { label: "C", text: "reports" },
+    { label: "D", text: "reported" },
+  ],
+  correct: "A",
+  explanation:
+    "The preposition 'for' must be followed by a gerund functioning as a noun, making 'reporting' correct: 'responsible for reporting any equipment malfunction'. (B) 'report' is a base verb form and cannot directly follow a preposition, (C) 'reports' is a third-person-singular verb form, and (D) 'reported' is a past tense/participle form — neither can serve as the object of the preposition 'for' in this position.",
 };
 
 // ── Part 7 · Reading Comprehension ──
@@ -3335,6 +3925,279 @@ const part7aj: PracticeQuestionData = {
     "The proposal states the system would cover 'approximately 90% of your household's average annual electricity usage', implying the remaining portion would still need to come from another source such as the grid, so (B) is correct.",
 };
 
+const part7ak: PracticeQuestionData = {
+  prompt: "Part 7 · Read the lease renewal notice and answer the question.",
+  context:
+    "LEASE RENEWAL NOTICE\nWillow Creek Apartments\n\nDear Ms. Farrow,\n\nYour current lease for Unit 14B is set to expire on September 30. We are pleased to offer you a renewal for a 12-month term at a monthly rent of $1,275, an increase of $50 from your current rate. This offer is valid only if you submit the signed renewal agreement by August 20.\n\nIf we do not receive your signed agreement by that date, your unit will be listed for new applicants, and you will be required to vacate by the lease expiration date. Tenants who renew are not required to submit a new security deposit.\n\nQuestion: What will happen if Ms. Farrow does not submit the signed renewal agreement by August 20?",
+  options: [
+    { label: "A", text: "Her rent will increase to a higher rate than $1,275" },
+    { label: "B", text: "Her unit will be listed for new applicants" },
+    { label: "C", text: "She will be charged a new security deposit" },
+    { label: "D", text: "Her lease will automatically renew at the current rate" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'If we do not receive your signed agreement by that date, your unit will be listed for new applicants', so (B) is correct.",
+};
+
+const part7al: PracticeQuestionData = {
+  prompt: "Part 7 · Read the loyalty program update and answer the question.",
+  context:
+    "LOYALTY PROGRAM UPDATE\nCedar & Vine Home Goods\n\nDear Rewards Member,\n\nStarting September 1, our Rewards program is changing how points are earned. Gold tier members will earn 3 points per dollar spent, up from 2 points, while Silver tier members will continue to earn 1 point per dollar, unchanged from the current program. Gold tier status requires $1,500 in annual purchases, while Silver tier requires no minimum spending.\n\nPoints earned before September 1 will not be affected and may still be redeemed at the current rate of 100 points per $5 reward. Members will be notified by email once their accumulated points are eligible for redemption.\n\nQuestion: What can be inferred about Silver tier members after September 1?",
+  options: [
+    { label: "A", text: "They will earn points at the same rate as before the change" },
+    { label: "B", text: "They will be upgraded automatically to Gold tier" },
+    { label: "C", text: "They will lose any points earned before September 1" },
+    { label: "D", text: "They will need to spend $1,500 annually to keep their status" },
+  ],
+  correct: "A",
+  explanation:
+    "The update states that Silver tier members 'will continue to earn 1 point per dollar, unchanged from the current program', so it can be inferred they will earn points at the same rate as before, making (A) correct.",
+};
+
+const part7am: PracticeQuestionData = {
+  prompt: "Part 7 · Read the guest policy update and answer the question.",
+  context:
+    "GUEST POLICY UPDATE\nHarborlight Coworking\n\nDear Member,\n\nEffective August 1, all members will be limited to 4 guest visits per month, included at no charge with any membership plan. Previously, guest visits were unlimited but required a $10 day-pass fee per guest. Guests beyond the 4-visit monthly limit will still be permitted but will now be charged a $15 day-pass fee, payable by the guest at check-in.\n\nMembers must register each guest online at least 2 hours before arrival so that front-desk staff can prepare a visitor badge. Guests who arrive without prior registration will not be admitted.\n\nQuestion: What must a member do before bringing a guest to Harborlight Coworking?",
+  options: [
+    { label: "A", text: "Pay the $15 day-pass fee on the guest's behalf" },
+    { label: "B", text: "Register the guest online at least 2 hours before arrival" },
+    { label: "C", text: "Request written approval from building management" },
+    { label: "D", text: "Upgrade to a higher-tier membership plan" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states 'Members must register each guest online at least 2 hours before arrival', and that guests who arrive without registration 'will not be admitted', so (B) is correct.",
+};
+
+const part7an: PracticeQuestionData = {
+  prompt: "Part 7 · Read the contract addendum and answer the question.",
+  context:
+    "CONTRACT ADDENDUM\nBetween: Larkspur Design Studio and Contractor: Owen Bryce\n\nThis addendum modifies Section 4 (Compensation) of the freelance services agreement dated January 10. Effective for all work performed after July 1, the hourly rate for design services will increase from $45 to $55. All other terms of the original agreement, including the 15-day invoice payment period, remain unchanged.\n\nThis addendum must be signed by both parties before it takes effect. Work completed before July 1 will be billed at the original rate of $45 per hour, regardless of when the invoice is submitted.\n\nQuestion: At what rate will work completed on June 28 be billed?",
+  options: [
+    { label: "A", text: "$45 per hour" },
+    { label: "B", text: "$55 per hour" },
+    { label: "C", text: "A prorated rate between $45 and $55" },
+    { label: "D", text: "The rate in effect when the invoice is submitted" },
+  ],
+  correct: "A",
+  explanation:
+    "The addendum states 'Work completed before July 1 will be billed at the original rate of $45 per hour, regardless of when the invoice is submitted', so (A) is correct.",
+};
+
+const part7ao: PracticeQuestionData = {
+  prompt: "Part 7 · Read the utility rate change notice and answer the question.",
+  context:
+    "NOTICE OF ELECTRICITY RATE CHANGE\nCascade Power & Light\n\nDear Customer,\n\nEffective with your October billing cycle, the per-kilowatt-hour rate for residential customers will increase from $0.14 to $0.16. This adjustment reflects rising costs of infrastructure maintenance and does not apply to customers enrolled in the Fixed-Rate Protection Plan, whose rate of $0.13 per kilowatt-hour is locked in through the end of their current 24-month agreement.\n\nCustomers not enrolled in the Fixed-Rate Protection Plan may apply for the plan at any time, though new enrollments will be subject to the rate in effect at the time of enrollment, not the current $0.13 rate.\n\nQuestion: What can be inferred about a customer who enrolls in the Fixed-Rate Protection Plan in November?",
+  options: [
+    { label: "A", text: "They will pay $0.13 per kilowatt-hour for 24 months" },
+    { label: "B", text: "They will not pay the new $0.16 rate" },
+    { label: "C", text: "They will pay a rate other than $0.13 per kilowatt-hour" },
+    { label: "D", text: "They will receive a refund for October charges" },
+  ],
+  correct: "C",
+  explanation:
+    "The notice states that 'new enrollments will be subject to the rate in effect at the time of enrollment, not the current $0.13 rate', so it can be inferred a November enrollee will pay a rate other than $0.13, making (C) correct.",
+};
+
+const part7ap: PracticeQuestionData = {
+  prompt: "Part 7 · Read the expense reimbursement policy update and answer the question.",
+  context:
+    "EXPENSE REIMBURSEMENT POLICY UPDATE\nNorthgate Consulting — Finance Department\n\nEffective July 1, employees must submit expense reports through the new digital portal, ExpenseTrack, rather than the paper forms previously used. Reports must be submitted within 21 days of the expense date; reports submitted after this window will not be reimbursed except in cases of documented travel delays.\n\nThe daily meal per diem for business travel will also increase from $55 to $65. Employees are reminded to attach itemized receipts for any single expense over $25; expenses without receipts above this amount will be reimbursed at half value.\n\nQuestion: What will happen to an expense report submitted 25 days after the expense date, with no documented travel delay?",
+  options: [
+    { label: "A", text: "It will be reimbursed at half value" },
+    { label: "B", text: "It will not be reimbursed" },
+    { label: "C", text: "It will be reimbursed at the new $65 per diem rate" },
+    { label: "D", text: "It will require additional manager approval" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states 'reports submitted after this window will not be reimbursed except in cases of documented travel delays', and a report submitted 25 days later with no documented delay falls outside the 21-day window, so (B) is correct.",
+};
+
+const part7aq: PracticeQuestionData = {
+  prompt: "Part 7 · Read the community newsletter excerpt and answer the question.",
+  context:
+    "MAPLEWOOD NEIGHBORHOOD ASSOCIATION NEWSLETTER — July Edition\n\nStreet Resurfacing Update: The city has confirmed that resurfacing of Elmwood Drive and Birchwood Court will begin August 4 and is expected to take 10 days. Residents on these streets should move vehicles to the temporary parking area at Maplewood Community Center during work hours, 7:00 A.M. to 5:00 P.M., to avoid having vehicles towed.\n\nAlso in this issue: the annual block party has been moved from its usual August date to September 12 due to the resurfacing schedule, and volunteer sign-ups for the event are now open on the association website.\n\nQuestion: Why should residents move their vehicles during work hours?",
+  options: [
+    { label: "A", text: "To make room for the annual block party setup" },
+    { label: "B", text: "To avoid having their vehicles towed" },
+    { label: "C", text: "To allow volunteers to park closer to the community center" },
+    { label: "D", text: "Because street parking will be permanently removed" },
+  ],
+  correct: "B",
+  explanation:
+    "The newsletter states residents should move their vehicles 'to avoid having vehicles towed', so (B) is correct.",
+};
+
+const part7ar: PracticeQuestionData = {
+  prompt: "Part 7 · Read the job offer letter and answer the question.",
+  context:
+    "Dear Ms. Whitfield,\n\nWe are delighted to offer you the position of Marketing Coordinator at Fernbrook Media, reporting to Director of Marketing, Alan Cho. Your starting annual salary will be $58,000, with eligibility for a performance bonus after your first full year. This offer includes 15 days of paid vacation and health insurance coverage beginning on your first day of employment.\n\nThis offer is contingent upon successful completion of a background check. Please sign and return the enclosed offer letter by July 24 to confirm your acceptance; if we do not receive your response by that date, we will assume you are not accepting the position and will consider other candidates.\n\nQuestion: What is required for the job offer to become final?",
+  options: [
+    { label: "A", text: "Completion of a 90-day probationary period" },
+    { label: "B", text: "Successful completion of a background check" },
+    { label: "C", text: "A signed recommendation letter from a previous employer" },
+    { label: "D", text: "An in-person meeting with Alan Cho" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'This offer is contingent upon successful completion of a background check', so (B) is correct.",
+};
+
+const part7as: PracticeQuestionData = {
+  prompt: "Part 7 · Read the return and exchange policy update and answer the question.",
+  context:
+    "RETURN & EXCHANGE POLICY UPDATE\nCastle & Co. Clothing\n\nDear Customer,\n\nStarting August 1, our return window will extend from 30 days to 60 days for all regular-priced merchandise, provided the item is unworn and includes the original tags. Sale items will continue to be final sale and are not eligible for return or exchange, consistent with our current policy.\n\nRefunds will be issued to the original form of payment for regular-priced returns; exchanges for a different size or color remain available at any store location regardless of where the item was purchased.\n\nQuestion: What can be inferred about a customer who wants to return a sale item purchased on August 5?",
+  options: [
+    { label: "A", text: "They will have 60 days to return the item" },
+    { label: "B", text: "They will not be able to return or exchange the item" },
+    { label: "C", text: "They will receive store credit instead of a refund" },
+    { label: "D", text: "They must return the item to the original purchase location" },
+  ],
+  correct: "B",
+  explanation:
+    "The update states 'Sale items will continue to be final sale and are not eligible for return or exchange', so it can be inferred the customer will not be able to return or exchange the item, making (B) correct.",
+};
+
+const part7at: PracticeQuestionData = {
+  prompt: "Part 7 · Read the class schedule change notice and answer the question.",
+  context:
+    "CLASS SCHEDULE CHANGE NOTICE\nPulse Cycling Studio\n\nDear Members,\n\nStarting Monday, the 6:00 A.M. Tuesday and Thursday cycling classes will move to 6:30 A.M. to accommodate our new instructor's schedule. All other class times remain unchanged. Members who booked the 6:00 A.M. slot for the next two weeks have already been automatically transferred to the new 6:30 A.M. time; no action is required on your part.\n\nIf the new time does not work for your schedule, you may cancel your booking through the app up to 4 hours before class without penalty.\n\nQuestion: What has already happened to members who had booked the 6:00 A.M. class for the next two weeks?",
+  options: [
+    { label: "A", text: "Their bookings were canceled and must be rebooked" },
+    { label: "B", text: "They were automatically transferred to the 6:30 A.M. class" },
+    { label: "C", text: "They were given priority booking for future classes" },
+    { label: "D", text: "They were refunded the cost of their class package" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states that affected members 'have already been automatically transferred to the new 6:30 A.M. time; no action is required on your part', so (B) is correct.",
+};
+
+const part7au: PracticeQuestionData = {
+  prompt: "Part 7 · Read the booking confirmation and answer the question.",
+  context:
+    "BOOKING CONFIRMATION\nOakhaven Manor Wedding Venue\n\nDear Ms. Delacroix and Mr. Reyes,\n\nThis confirms your booking of the Garden Pavilion for your wedding on May 16, from 4:00 P.M. to 11:00 P.M. Your package includes venue access, on-site parking for 80 vehicles, and use of the bridal suite starting at 12:00 P.M. on the day of the event. A deposit of $1,500 has been received; the remaining balance of $4,200 is due no later than 30 days before the event date.\n\nPlease note that outside catering is not permitted; all food and beverage service must be arranged through Oakhaven's in-house catering team, whom you may contact directly to schedule a menu tasting.\n\nQuestion: When is the remaining balance of $4,200 due?",
+  options: [
+    { label: "A", text: "On the day of the wedding" },
+    { label: "B", text: "No later than 30 days before the event date" },
+    { label: "C", text: "Immediately upon signing the booking confirmation" },
+    { label: "D", text: "Within 30 days after the wedding" },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation states 'the remaining balance of $4,200 is due no later than 30 days before the event date', so (B) is correct.",
+};
+
+const part7av: PracticeQuestionData = {
+  prompt: "Part 7 · Read the board election notice and answer the question.",
+  context:
+    "NOTICE OF BOARD ELECTION\nSummit Ridge Cooperative\n\nDear Shareholder,\n\nThe annual election for two open seats on the Board of Directors will be held at the shareholder meeting on October 9. Shareholders interested in running must submit a candidacy statement to the co-op office by September 18. Ballots will be mailed to all shareholders of record by September 25 and must be returned, either in person or by mail, no later than October 9.\n\nOnly shareholders in good standing, meaning no outstanding maintenance fee balance, are eligible to vote or run for a seat.\n\nQuestion: What is required for a shareholder to be eligible to vote in the election?",
+  options: [
+    { label: "A", text: "Attendance at the September 18 candidacy deadline" },
+    { label: "B", text: "Having no outstanding maintenance fee balance" },
+    { label: "C", text: "Owning a unit for at least five years" },
+    { label: "D", text: "Submitting a written endorsement from another shareholder" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Only shareholders in good standing, meaning no outstanding maintenance fee balance, are eligible to vote or run for a seat', so (B) is correct.",
+};
+
+const part7aw: PracticeQuestionData = {
+  prompt: "Part 7 · Read the shipment delay notice and answer the question.",
+  context:
+    "SHIPMENT DELAY NOTICE\nTrailblazer Freight\n\nDear Customer,\n\nYour shipment (Tracking #TF-77302), originally scheduled to arrive on July 20, has been delayed due to severe weather conditions along its transport route. We now expect delivery on or before July 24. Shipments delayed due to weather are not eligible for the on-time delivery refund that applies to delays caused by carrier error.\n\nWe apologize for the inconvenience and will send an updated tracking notification once your shipment resumes transit.\n\nQuestion: What can be inferred about shipments delayed because of carrier error?",
+  options: [
+    { label: "A", text: "They are eligible for the on-time delivery refund" },
+    { label: "B", text: "They are rerouted through a different carrier" },
+    { label: "C", text: "They receive priority handling once resumed" },
+    { label: "D", text: "They are not eligible for any compensation" },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states weather-related delays 'are not eligible for the on-time delivery refund that applies to delays caused by carrier error', which indicates that delays caused by carrier error are eligible for that refund, so (A) is correct.",
+};
+
+const part7ax: PracticeQuestionData = {
+  prompt: "Part 7 · Read the package update notice and answer the question.",
+  context:
+    "PACKAGE UPDATE NOTICE\nBrightPath Tutoring\n\nDear Parent,\n\nStarting with the fall term, our 10-session package will now include one complimentary progress assessment, previously offered only with the 20-session package. The 10-session package price remains $450, unchanged from the current term. Families currently enrolled in a 10-session package for the summer term will not receive the complimentary assessment, as this benefit applies only to packages purchased for the fall term onward.\n\nSessions may still be rescheduled up to 24 hours in advance at no charge.\n\nQuestion: What is now included with the fall term 10-session package?",
+  options: [
+    { label: "A", text: "A complimentary progress assessment" },
+    { label: "B", text: "Two additional free sessions" },
+    { label: "C", text: "Access to online practice materials" },
+    { label: "D", text: "A discount on the 20-session package" },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states 'our 10-session package will now include one complimentary progress assessment', so (A) is correct.",
+};
+
+const part7ay: PracticeQuestionData = {
+  prompt: "Part 7 · Read the policy renewal notice and answer the question.",
+  context:
+    "POLICY RENEWAL NOTICE\nGuardian Trust Insurance\n\nDear Ms. Okoro,\n\nYour homeowner's insurance policy (Policy #HO-58821) is set to renew on September 15 at an annual premium of $1,240, an increase of $95 from your current premium. This increase reflects updated regional risk assessments and does not apply to policyholders who have installed a monitored security system verified by our partner providers, who instead qualify for a 10% discount on their renewal premium.\n\nTo apply for the security system discount, submit verification documents through your online account at least 10 days before your renewal date.\n\nQuestion: What can be inferred about a policyholder with a verified monitored security system?",
+  options: [
+    { label: "A", text: "Their premium will not increase by $95 like Ms. Okoro's" },
+    { label: "B", text: "Their policy will not renew automatically" },
+    { label: "C", text: "They are exempt from all future rate increases" },
+    { label: "D", text: "They must switch to a different provider" },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states the $95 increase 'does not apply to policyholders who have installed a monitored security system ... who instead qualify for a 10% discount on their renewal premium', so it can be inferred their premium will not increase by $95 like Ms. Okoro's, making (A) correct.",
+};
+
+const part7az: PracticeQuestionData = {
+  prompt: "Part 7 · Read the parking permit renewal notice and answer the question.",
+  context:
+    "RESIDENTIAL PARKING PERMIT RENEWAL\nCity of Brookhaven — Parking Services\n\nDear Resident,\n\nYour residential parking permit for Zone 4 expires on August 31. Renewal applications submitted online at brookhaven.gov/parking before August 15 will retain the current annual fee of $35. Applications submitted between August 15 and the expiration date will be charged a $10 late processing fee in addition to the annual fee.\n\nPermits not renewed by August 31 will be deactivated, and vehicles parked in Zone 4 without a valid permit will be subject to ticketing beginning September 1.\n\nQuestion: What will happen to a resident who submits a renewal application on August 20?",
+  options: [
+    { label: "A", text: "Their application will be automatically rejected" },
+    {
+      label: "B",
+      text: "They will be charged a $10 late processing fee in addition to the annual fee",
+    },
+    { label: "C", text: "Their permit will be immediately deactivated" },
+    { label: "D", text: "They will be moved to a different parking zone" },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Applications submitted between August 15 and the expiration date will be charged a $10 late processing fee in addition to the annual fee', and August 20 falls within that window, so (B) is correct.",
+};
+
+const part7ba: PracticeQuestionData = {
+  prompt: "Part 7 · Read the reunion invitation letter and answer the question.",
+  context:
+    "Dear Alumna,\n\nWestbridge University's Alumni Association warmly invites you to the 2026 Homecoming Reunion Weekend, taking place October 16-18 on campus. Early-bird registration, priced at $75 per person, is available through August 30; after that date, registration increases to $95 per person. Your registration fee includes access to the Friday evening welcome reception, Saturday's campus tours, and the alumni dinner banquet.\n\nHotel accommodations are not included in the registration fee, but the Association has secured a discounted room block at the Westbridge Inn for attendees who book by September 15, after which the discounted rate is no longer guaranteed.\n\nQuestion: What must an alumna do to receive the discounted hotel rate at the Westbridge Inn?",
+  options: [
+    { label: "A", text: "Register for the reunion before August 30" },
+    { label: "B", text: "Book a room at the Westbridge Inn by September 15" },
+    { label: "C", text: "Attend the Friday evening welcome reception" },
+    { label: "D", text: "Pay the full $95 registration fee" },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states the Association 'has secured a discounted room block at the Westbridge Inn for attendees who book by September 15, after which the discounted rate is no longer guaranteed', so (B) is correct.",
+};
+
+const part7bb: PracticeQuestionData = {
+  prompt: "Part 7 · Read the moving estimate and answer the question.",
+  context:
+    "MOVING ESTIMATE\nSteadyHands Moving Co.\n\nDear Mr. Castellano,\n\nBased on the inventory list you submitted, we estimate your move from your 2-bedroom apartment to your new home will take 6 hours and cost $720, calculated at our hourly rate of $120 for a 2-person crew. This estimate assumes standard access at both locations; if either location requires use of a freight elevator reservation or has stairs beyond one flight, an additional $15 per hour will apply for the extra time required.\n\nThis estimate is valid for 30 days from the date of this letter. A 20% deposit is due at the time of booking to reserve your moving date.\n\nQuestion: What can be inferred about a move that requires navigating two flights of stairs at the new home?",
+  options: [
+    { label: "A", text: "It will cost less than the original estimate" },
+    { label: "B", text: "It may take longer and cost more than the standard estimate" },
+    { label: "C", text: "It will require a larger moving crew" },
+    { label: "D", text: "It will not be covered by the estimate at all" },
+  ],
+  correct: "B",
+  explanation:
+    "The estimate states that if a location 'has stairs beyond one flight, an additional $15 per hour will apply for the extra time required', and two flights of stairs is beyond one flight, so it can be inferred the move may take longer and cost more than the standard estimate, making (B) correct.",
+};
+
 export const part1Questions: PracticeQuestionData[] = [
   part1a,
   part1b,
@@ -3384,6 +4247,10 @@ export const part2Questions: PracticeQuestionData[] = [
   part2af,
   part2ag,
   part2ah,
+  part2ai,
+  part2aj,
+  part2ak,
+  part2al,
 ];
 export const part3Questions: PracticeQuestionData[] = [
   part3,
@@ -3426,6 +4293,18 @@ export const part3Questions: PracticeQuestionData[] = [
   part3al,
   part3am,
   part3an,
+  part3ao,
+  part3ap,
+  part3aq,
+  part3ar,
+  part3as,
+  part3at,
+  part3au,
+  part3av,
+  part3aw,
+  part3ax,
+  part3ay,
+  part3az,
 ];
 export const part4Questions: PracticeQuestionData[] = [
   part4,
@@ -3454,6 +4333,16 @@ export const part4Questions: PracticeQuestionData[] = [
   part4x,
   part4y,
   part4z,
+  part4aa,
+  part4ab,
+  part4ac,
+  part4ad,
+  part4ae,
+  part4af,
+  part4ag,
+  part4ah,
+  part4ai,
+  part4aj,
 ];
 export const part5Questions: PracticeQuestionData[] = [
   part5,
@@ -3496,6 +4385,12 @@ export const part5Questions: PracticeQuestionData[] = [
   part5al,
   part5am,
   part5an,
+  part5ao,
+  part5ap,
+  part5aq,
+  part5ar,
+  part5as,
+  part5at,
 ];
 export const part6Questions: PracticeQuestionData[] = [
   part6,
@@ -3520,6 +4415,10 @@ export const part6Questions: PracticeQuestionData[] = [
   part6t,
   part6u,
   part6v,
+  part6w,
+  part6x,
+  part6y,
+  part6z,
 ];
 export const part7Questions: PracticeQuestionData[] = [
   part7,
@@ -3558,6 +4457,24 @@ export const part7Questions: PracticeQuestionData[] = [
   part7ah,
   part7ai,
   part7aj,
+  part7ak,
+  part7al,
+  part7am,
+  part7an,
+  part7ao,
+  part7ap,
+  part7aq,
+  part7ar,
+  part7as,
+  part7at,
+  part7au,
+  part7av,
+  part7aw,
+  part7ax,
+  part7ay,
+  part7az,
+  part7ba,
+  part7bb,
 ];
 
 export const listeningReadingQuestions: PracticeQuestionData[] = [
