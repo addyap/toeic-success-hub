@@ -22,6 +22,9 @@ export interface PracticeQuestionData {
    *  audio reads the four answer statements aloud. Option text is hidden
    *  until the user answers. */
   photo?: boolean;
+  /** Real photo shown for Part 1 (photo) questions, sourced under a
+   *  commercial-use-permissive license (Wikimedia Commons). */
+  image?: { src: string; credit: string };
 }
 
 export interface PracticeQuestionProps {
@@ -65,6 +68,17 @@ export function PracticeQuestion({
             </div>
           )}
           <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{data.prompt}</p>
+          {data.photo && data.image && (
+            <div className="mt-3">
+              <img
+                src={data.image.src}
+                alt={data.context ?? "Scene"}
+                loading="lazy"
+                className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
+              />
+              <p className="mt-1 text-[11px] text-muted-foreground/70">{data.image.credit}</p>
+            </div>
+          )}
           {data.photo && data.context && (
             <div className="mt-3">
               <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
