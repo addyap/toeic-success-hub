@@ -18,7 +18,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import OpenAI from "openai";
 import { listeningReadingQuestions } from "../src/data/listeningReadingQuestions";
-import { getAudioTurns, audioKeyForTurns, type AudioTurn } from "../src/lib/audioSource";
+import { getAudioTurns, audioKeyForTurns, audioKey, type AudioTurn } from "../src/lib/audioSource";
 import type { PracticeQuestionData } from "../src/components/PracticeQuestion";
 
 const MODEL = "gpt-4o-mini-tts";
@@ -80,6 +80,23 @@ async function processItem(data: PracticeQuestionData) {
   if (!data.photo && !data.listening) return;
   const turns = getAudioTurns(data);
   if (turns.length === 0) return;
+
+  if (data.photo) {
+    // Each option's statement gets its own independently-keyed clip — never
+    // one combined key for all four — so playback stays correct regardless
+    // of the client-side answer shuffle, which reorders and relabels
+    // options every session. The pre-recorded audio must match by content
+    // (the statement's own text), not by position.
+    for (const turn of turns) {
+      const key = audioKey(turn.text);
+      if (manifest[key]) continue;
+      const voice = ALL_VOICES[singleVoiceIndex++ % ALL_VOICES.length];
+      const file = `${key}-0.mp3`;
+      await synth(turn.text, voice, file);
+      manifest[key] = { model: MODEL, segments: [{ voice, file }] };
+    }
+    return;
+  }
 
   const key = audioKeyForTurns(turns);
   if (manifest[key]) return; // identical content already processed this run

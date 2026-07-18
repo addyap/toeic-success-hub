@@ -17,19 +17,22 @@ export interface AudioTurn {
 
 const TRAILING_QUESTION_RE = /\n\nQuestion:\s*(.*)$/s;
 
-/** Splits a question's spoken content into per-speaker turns: Part 3
- *  dialogues split by (M)/(W) tag, Part 1 photo statements and Part 2/4
- *  single-speaker text as one narrator turn, and (for Part 3/4) the trailing
- *  "Question: ...?" line pulled out as its own turn — otherwise it would be
- *  read aloud as if it were part of the last speaker's dialogue. */
+/** Splits a question's spoken content into per-speaker turns: Part 1 photo
+ *  statements as one turn per option (see note below), Part 3 dialogues
+ *  split by (M)/(W) tag, Part 2/4 single-speaker text as one narrator turn,
+ *  and (for Part 3/4) the trailing "Question: ...?" line pulled out as its
+ *  own turn — otherwise it would be read aloud as if it were part of the
+ *  last speaker's dialogue.
+ *
+ *  Part 1 turns are keyed and looked up individually (by each turn's own
+ *  text, via `audioKey`), never as a combined block — the client shuffles
+ *  option order/labels every session to avoid a gameable answer position,
+ *  so a single fixed recording of "A. ... B. ... C. ... D." would drift out
+ *  of sync with whatever the current shuffle displays. Keying per-statement
+ *  keeps each clip matched to its content regardless of on-screen position. */
 export function getAudioTurns(data: AudioSourceInput): AudioTurn[] {
   if (data.photo) {
-    return [
-      {
-        speaker: "narrator",
-        text: data.options.map((o) => `${o.label}. ${o.text}`).join(" ... "),
-      },
-    ];
+    return data.options.map((o) => ({ speaker: "narrator", text: o.text }));
   }
   if (!data.listening || !data.context) return [];
 

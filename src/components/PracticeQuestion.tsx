@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getAudioTurns, audioKeyForTurns } from "@/lib/audioSource";
+import { getAudioTurns, audioKeyForTurns, audioKey } from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 
 export interface PracticeQuestionData {
@@ -197,7 +197,29 @@ function AudioClipPlayer({
   hint?: string;
 }) {
   const turns = useMemo(() => getAudioTurns(data), [data]);
-  const key = useMemo(() => audioKeyForTurns(turns), [turns]);
+
+  // Part 1 (photo): each currently-displayed option is looked up by its own
+  // content hash — never a combined key — since the client shuffles option
+  // order/labels every session and a single fixed "A./B./C./D." recording
+  // would drift out of sync with whatever order is currently on screen.
+  if (data.photo) {
+    const entries = turns.map((t) => audioManifest[audioKey(t.text)]);
+    const fallbackText = data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ");
+    if (!entries.every((e): e is AudioManifestEntry => !!e)) {
+      return (
+        <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />
+      );
+    }
+    const combinedEntry: AudioManifestEntry = {
+      model: entries[0].model,
+      segments: entries.flatMap((e) => e.segments),
+    };
+    return (
+      <GeneratedAudioPlayer entry={combinedEntry} label={label} resetKey={resetKey} hint={hint} />
+    );
+  }
+
+  const key = audioKeyForTurns(turns);
   const manifestEntry = audioManifest[key];
 
   if (!manifestEntry) {
