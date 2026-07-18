@@ -201,6 +201,13 @@ function PartFilter({
   );
 }
 
+// Practice lists can run to several hundred questions (the "All parts" view
+// currently spans 365). Mounting every PracticeQuestion card up front — each
+// with its own hooks, audio element, and option-shuffle state — bloats the
+// initial DOM and script cost, which hits mobile hardest. Render an initial
+// batch and let the user pull in more, instead of paying that cost upfront.
+const PAGE_SIZE = 15;
+
 function PracticeSession({
   questions,
   storageKey,
@@ -210,6 +217,7 @@ function PracticeSession({
 }) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(() => Math.min(PAGE_SIZE, questions.length));
   // SSR renders `questions` as-authored so client hydration matches the server
   // markup, then this fires client-side before paint to randomize each
   // question's option order — avoids both a hydration mismatch and a visible
@@ -327,7 +335,7 @@ function PracticeSession({
       </div>
 
       <div className="mt-6 space-y-5">
-        {displayQuestions.map((q, i) => (
+        {displayQuestions.slice(0, visibleCount).map((q, i) => (
           <PracticeQuestion
             key={i}
             data={q}
@@ -338,6 +346,17 @@ function PracticeSession({
           />
         ))}
       </div>
+
+      {visibleCount < total && (
+        <button
+          type="button"
+          onClick={() => setVisibleCount((c) => Math.min(c + PAGE_SIZE, total))}
+          className="mt-6 w-full rounded-2xl border border-dashed border-border bg-card px-5 py-4 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary"
+        >
+          Load {Math.min(PAGE_SIZE, total - visibleCount)} more questions ({visibleCount}/{total}{" "}
+          shown)
+        </button>
+      )}
 
       {complete && (
         <div className="mt-6 rounded-2xl border border-primary/30 bg-primary/5 p-5 text-center">
