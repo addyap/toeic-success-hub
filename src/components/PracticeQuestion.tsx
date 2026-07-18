@@ -1,6 +1,8 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getAudioTurns, audioKeyForTurns } from "@/lib/audioSource";
+import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 
 export interface PracticeQuestionData {
   prompt: string;
@@ -13,7 +15,8 @@ export interface PracticeQuestionData {
     durationSec: number;
   };
   /** When true, hide the context (transcript) until the user answers and
-   *  use SpeechSynthesis to read the context aloud instead of the fake player. */
+   *  play spoken audio (generated, or browser speech synthesis as a
+   *  fallback) instead of the fake player. */
   listening?: boolean;
   /** Part 1 style: scene is always visible (stand-in for the photo) and the
    *  audio reads the four answer statements aloud. Option text is hidden
@@ -73,17 +76,17 @@ export function PracticeQuestion({
             </div>
           )}
           {data.photo && (
-            <SpeechPlayer
+            <AudioClipPlayer
+              data={data}
               label={data.audio?.label ?? "Photograph statements"}
-              text={data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ")}
               resetKey={resetKey}
               hint="Tap play to hear statements A–D. Pick the one that best describes the scene."
             />
           )}
           {data.listening && !data.photo && data.context && (
-            <SpeechPlayer
+            <AudioClipPlayer
+              data={data}
               label={data.audio?.label ?? "Listening audio"}
-              text={data.context}
               resetKey={resetKey}
             />
           )}
@@ -178,7 +181,126 @@ export function PracticeQuestion({
   );
 }
 
-function SpeechPlayer({
+/** Plays a question's spoken audio: real OpenAI-generated speech when the
+ *  audio manifest has an entry for this question's content, falling back to
+ *  the browser's built-in speech synthesis otherwise (e.g. brand-new content
+ *  from a round the audio generator hasn't been re-run for yet). */
+function AudioClipPlayer({
+  data,
+  label,
+  resetKey,
+  hint,
+}: {
+  data: Pick<PracticeQuestionData, "photo" | "listening" | "context" | "options">;
+  label: string;
+  resetKey?: number;
+  hint?: string;
+}) {
+  const turns = useMemo(() => getAudioTurns(data), [data]);
+  const key = useMemo(() => audioKeyForTurns(turns), [turns]);
+  const manifestEntry = audioManifest[key];
+
+  if (!manifestEntry) {
+    return (
+      <SpeechFallbackPlayer
+        label={label}
+        text={turns.map((t) => t.text).join(" ")}
+        resetKey={resetKey}
+        hint={hint}
+      />
+    );
+  }
+
+  return (
+    <GeneratedAudioPlayer entry={manifestEntry} label={label} resetKey={resetKey} hint={hint} />
+  );
+}
+
+function GeneratedAudioPlayer({
+  entry,
+  label,
+  resetKey,
+  hint,
+}: {
+  entry: AudioManifestEntry;
+  label: string;
+  resetKey?: number;
+  hint?: string;
+}) {
+  const [playing, setPlaying] = useState(false);
+  const [segIdx, setSegIdx] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const stop = () => {
+    audioRef.current?.pause();
+    setPlaying(false);
+    setSegIdx(0);
+  };
+
+  useEffect(() => stop, []);
+  useEffect(() => {
+    stop();
+  }, [resetKey]);
+
+  useEffect(() => {
+    if (!playing || !audioRef.current) return;
+    const src = `/audio/${entry.segments[segIdx].file}`;
+    if (!audioRef.current.src.endsWith(src)) {
+      audioRef.current.src = src;
+    }
+    audioRef.current.play().catch(() => setPlaying(false));
+  }, [playing, segIdx, entry]);
+
+  const handleEnded = () => {
+    if (segIdx < entry.segments.length - 1) {
+      setSegIdx((i) => i + 1);
+    } else {
+      setPlaying(false);
+      setSegIdx(0);
+    }
+  };
+
+  const toggle = () => {
+    if (playing) {
+      stop();
+    } else {
+      setSegIdx(0);
+      setPlaying(true);
+    }
+  };
+
+  return (
+    <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-3">
+      <audio
+        ref={audioRef}
+        onEnded={handleEnded}
+        onError={() => setPlaying(false)}
+        className="hidden"
+      />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={playing ? "Stop audio" : "Play audio"}
+        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition hover:opacity-90 active:scale-95"
+      >
+        {playing ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
+      </button>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2 text-xs font-semibold text-primary">
+          <Volume2 className="h-3.5 w-3.5" />
+          <span className="truncate">{label}</span>
+        </div>
+        <p className="mt-1 text-xs text-muted-foreground">
+          {playing
+            ? "Playing… listen carefully, then answer below."
+            : (hint ?? "Tap play to hear the audio. Transcript appears after you answer.")}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SpeechFallbackPlayer({
   label,
   text,
   resetKey,
