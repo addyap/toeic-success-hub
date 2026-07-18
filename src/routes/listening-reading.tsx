@@ -5,7 +5,14 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
 import { cn, shuffle } from "@/lib/utils";
-import { listeningReadingQuestions, questionsByPart } from "@/data/listeningReadingQuestions";
+import type { QuestionPart } from "@/data/listeningReadingQuestions";
+
+// The question bank (500+ items, growing every content round) is loaded via
+// a dynamic import instead of a static one so its ~170KB (gzipped) doesn't
+// block this route's initial JS parse/execute — it's fetched as a separate
+// chunk right after mount instead, while the page above the practice section
+// (hero, format cards) renders and becomes interactive immediately.
+const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -94,9 +101,25 @@ const readingParts = [
 
 function Page() {
   const [selectedPart, setSelectedPart] = useState<number | "all">("all");
+  const [bank, setBank] = useState<{
+    all: PracticeQuestionData[];
+    byPart: QuestionPart[];
+  } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    import("@/data/listeningReadingQuestions").then((mod) => {
+      if (cancelled) return;
+      setBank({ all: mod.listeningReadingQuestions, byPart: mod.questionsByPart });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const activePart =
-    selectedPart === "all" ? null : questionsByPart.find((p) => p.part === selectedPart);
-  const activeQuestions = activePart ? activePart.questions : listeningReadingQuestions;
+    selectedPart === "all" || !bank ? null : bank.byPart.find((p) => p.part === selectedPart);
+  const activeQuestions = activePart ? activePart.questions : (bank?.all ?? null);
   const storageKey =
     selectedPart === "all"
       ? "toeicpath:lr-practice:best"
@@ -154,10 +177,29 @@ function Page() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
           <PartFilter selectedPart={selectedPart} onSelect={setSelectedPart} />
-          <PracticeSession key={storageKey} questions={activeQuestions} storageKey={storageKey} />
+          {activeQuestions ? (
+            <PracticeSession key={storageKey} questions={activeQuestions} storageKey={storageKey} />
+          ) : (
+            <PracticeSessionSkeleton />
+          )}
         </div>
       </section>
     </SiteLayout>
+  );
+}
+
+function PracticeSessionSkeleton() {
+  return (
+    <div aria-hidden="true" aria-busy="true">
+      <div className="h-9 w-56 animate-pulse rounded-lg bg-muted" />
+      <div className="mt-3 h-5 w-full max-w-md animate-pulse rounded bg-muted" />
+      <div className="mt-6 h-24 animate-pulse rounded-2xl bg-muted" />
+      <div className="mt-6 space-y-5">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="h-40 animate-pulse rounded-2xl bg-muted" />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -182,19 +224,19 @@ function PartFilter({
       >
         All parts
       </button>
-      {questionsByPart.map((p) => (
+      {PART_NUMBERS.map((p) => (
         <button
-          key={p.part}
+          key={p}
           type="button"
-          onClick={() => onSelect(p.part)}
+          onClick={() => onSelect(p)}
           className={cn(
             "rounded-full border px-4 py-2 text-sm font-medium transition",
-            selectedPart === p.part
+            selectedPart === p
               ? "border-primary bg-primary text-primary-foreground"
               : "border-border bg-card text-foreground hover:bg-muted",
           )}
         >
-          Part {p.part}
+          Part {p}
         </button>
       ))}
     </div>
