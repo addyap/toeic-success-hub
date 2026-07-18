@@ -849,6 +849,69 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       },
     ],
   },
+  tl522d8per: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "tl522d8per-0.mp3",
+      },
+    ],
+  },
+  "1eme83tp5co": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "onyx",
+        file: "1eme83tp5co-0.mp3",
+      },
+    ],
+  },
+  "29f75g1054j": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "29f75g1054j-0.mp3",
+      },
+    ],
+  },
+  g6xmkdqwu7: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "g6xmkdqwu7-0.mp3",
+      },
+    ],
+  },
+  "4oovzzgh45": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "4oovzzgh45-0.mp3",
+      },
+    ],
+  },
+  "1lyf9cb2glb": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "onyx",
+        file: "1lyf9cb2glb-0.mp3",
+      },
+    ],
+  },
+  "2gbmi560p7c": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "2gbmi560p7c-0.mp3",
+      },
+    ],
+  },
   "2d4ev0osi0g": {
     model: "gpt-4o-mini-tts",
     segments: [
@@ -2640,11 +2703,261 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       },
     ],
   },
-  "21c6wd3ib0z": {
+  if6k48qlc7: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "if6k48qlc7-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "if6k48qlc7-1.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "if6k48qlc7-2.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "if6k48qlc7-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "if6k48qlc7-4.mp3",
+      },
+    ],
+  },
+  "1kg9xd2c0r9": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "onyx",
+        file: "1kg9xd2c0r9-0.mp3",
+      },
+      {
+        voice: "nova",
+        file: "1kg9xd2c0r9-1.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "1kg9xd2c0r9-2.mp3",
+      },
+      {
+        voice: "nova",
+        file: "1kg9xd2c0r9-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1kg9xd2c0r9-4.mp3",
+      },
+    ],
+  },
+  bn7kq94htz: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "bn7kq94htz-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "bn7kq94htz-1.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "bn7kq94htz-2.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "bn7kq94htz-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "bn7kq94htz-4.mp3",
+      },
+    ],
+  },
+  "1d0jv38b1ls": {
     model: "gpt-4o-mini-tts",
     segments: [
       {
         voice: "nova",
+        file: "1d0jv38b1ls-0.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "1d0jv38b1ls-1.mp3",
+      },
+      {
+        voice: "nova",
+        file: "1d0jv38b1ls-2.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "1d0jv38b1ls-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1d0jv38b1ls-4.mp3",
+      },
+    ],
+  },
+  "1inwf1lihzu": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "1inwf1lihzu-0.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "1inwf1lihzu-1.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1inwf1lihzu-2.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "1inwf1lihzu-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1inwf1lihzu-4.mp3",
+      },
+    ],
+  },
+  "27u164q4kls": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "27u164q4kls-0.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "27u164q4kls-1.mp3",
+      },
+      {
+        voice: "nova",
+        file: "27u164q4kls-2.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "27u164q4kls-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "27u164q4kls-4.mp3",
+      },
+    ],
+  },
+  n08diinzkm: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "n08diinzkm-0.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "n08diinzkm-1.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "n08diinzkm-2.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "n08diinzkm-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "n08diinzkm-4.mp3",
+      },
+    ],
+  },
+  "2ew044pbsnq": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "2ew044pbsnq-0.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "2ew044pbsnq-1.mp3",
+      },
+      {
+        voice: "nova",
+        file: "2ew044pbsnq-2.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "2ew044pbsnq-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "2ew044pbsnq-4.mp3",
+      },
+    ],
+  },
+  "19xa13gkajb": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "19xa13gkajb-0.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "19xa13gkajb-1.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "19xa13gkajb-2.mp3",
+      },
+      {
+        voice: "shimmer",
+        file: "19xa13gkajb-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "19xa13gkajb-4.mp3",
+      },
+    ],
+  },
+  "2g9cck57xew": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "2g9cck57xew-0.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "2g9cck57xew-1.mp3",
+      },
+      {
+        voice: "nova",
+        file: "2g9cck57xew-2.mp3",
+      },
+      {
+        voice: "onyx",
+        file: "2g9cck57xew-3.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "2g9cck57xew-4.mp3",
+      },
+    ],
+  },
+  "21c6wd3ib0z": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
         file: "21c6wd3ib0z-0.mp3",
       },
       {
@@ -2657,7 +2970,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "wdgh6l059q-0.mp3",
       },
       {
@@ -2670,7 +2983,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "3cb9hfhqct-0.mp3",
       },
       {
@@ -2683,7 +2996,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "ozks29c4fg-0.mp3",
       },
       {
@@ -2696,7 +3009,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "22fop6ycatw-0.mp3",
       },
       {
@@ -2709,7 +3022,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "2anch8fknk4-0.mp3",
       },
       {
@@ -2722,7 +3035,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "1t2efo6prtl-0.mp3",
       },
       {
@@ -2735,7 +3048,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "pxjif3isy2-0.mp3",
       },
       {
@@ -2748,7 +3061,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "rnrd4dmxas-0.mp3",
       },
       {
@@ -2761,7 +3074,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "3ruz9c41ct-0.mp3",
       },
       {
@@ -2774,7 +3087,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "11l3ptszo79-0.mp3",
       },
       {
@@ -2787,7 +3100,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "r44tin4nkw-0.mp3",
       },
       {
@@ -2800,7 +3113,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "hsztp9ie1r-0.mp3",
       },
       {
@@ -2813,7 +3126,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "uk26um3gu4-0.mp3",
       },
       {
@@ -2826,7 +3139,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "2g0auv639yr-0.mp3",
       },
       {
@@ -2839,7 +3152,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "24ocku2smyf-0.mp3",
       },
       {
@@ -2852,7 +3165,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "u8i9nol4e5-0.mp3",
       },
       {
@@ -2865,7 +3178,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "1hu66h3mkb0-0.mp3",
       },
       {
@@ -2878,7 +3191,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "2e9yl9syc6c-0.mp3",
       },
       {
@@ -2891,7 +3204,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "1tvuljvynqv-0.mp3",
       },
       {
@@ -2904,7 +3217,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "fv9e1hiik3-0.mp3",
       },
       {
@@ -2917,7 +3230,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "117cqav43ka-0.mp3",
       },
       {
@@ -2930,7 +3243,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "1xtlbjhm0nf-0.mp3",
       },
       {
@@ -2943,7 +3256,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "1d3nhkc91t4-0.mp3",
       },
       {
@@ -2956,7 +3269,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "15ql26s6ssj-0.mp3",
       },
       {
@@ -2969,7 +3282,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "27kmge33uxl-0.mp3",
       },
       {
@@ -2982,7 +3295,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "24p7duu15ml-0.mp3",
       },
       {
@@ -2995,7 +3308,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "1jvw9ghromc-0.mp3",
       },
       {
@@ -3008,7 +3321,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "wh73dgg48j-0.mp3",
       },
       {
@@ -3021,7 +3334,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "13cw9aaxs0v-0.mp3",
       },
       {
@@ -3034,7 +3347,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "255wizvopb2-0.mp3",
       },
       {
@@ -3047,7 +3360,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "6zg1pyfyh0-0.mp3",
       },
       {
@@ -3060,7 +3373,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "sl86nvr5f9-0.mp3",
       },
       {
@@ -3073,7 +3386,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "12p7nuo4qat-0.mp3",
       },
       {
@@ -3086,7 +3399,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "15tyrkkva4u-0.mp3",
       },
       {
@@ -3099,7 +3412,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "id293kz4we-0.mp3",
       },
       {
@@ -3112,7 +3425,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "1k3ojgynrn4-0.mp3",
       },
       {
@@ -3125,7 +3438,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "23jnjcyeq21-0.mp3",
       },
       {
@@ -3138,7 +3451,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "2bcg5o9aobs-0.mp3",
       },
       {
@@ -3151,7 +3464,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "4p4leampe9-0.mp3",
       },
       {
@@ -3164,7 +3477,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "1ieufpfosie-0.mp3",
       },
       {
@@ -3177,7 +3490,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "1s60xctiih0-0.mp3",
       },
       {
@@ -3190,7 +3503,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "5x7nwj4ec1-0.mp3",
       },
       {
@@ -3203,7 +3516,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "9y106a3cub-0.mp3",
       },
       {
@@ -3216,7 +3529,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "g1k6lvvixa-0.mp3",
       },
       {
@@ -3229,7 +3542,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "2afcbbpajhh-0.mp3",
       },
       {
@@ -3242,7 +3555,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "15w8u847wmb-0.mp3",
       },
       {
@@ -3255,7 +3568,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "236do9x1kc4-0.mp3",
       },
       {
@@ -3268,7 +3581,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "18qn147xfvf-0.mp3",
       },
       {
@@ -3281,7 +3594,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "oz144pt62m-0.mp3",
       },
       {
@@ -3294,7 +3607,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "1o9tye3nt11-0.mp3",
       },
       {
@@ -3307,7 +3620,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "alloy",
+        voice: "shimmer",
         file: "z9lmno9dz1-0.mp3",
       },
       {
@@ -3320,7 +3633,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "nova",
+        voice: "alloy",
         file: "28g3mly3wni-0.mp3",
       },
       {
@@ -3333,7 +3646,7 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "onyx",
+        voice: "nova",
         file: "2aj8qt5zmmc-0.mp3",
       },
       {
@@ -3346,12 +3659,103 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
     model: "gpt-4o-mini-tts",
     segments: [
       {
-        voice: "shimmer",
+        voice: "onyx",
         file: "adxra71snm-0.mp3",
       },
       {
         voice: "alloy",
         file: "adxra71snm-1.mp3",
+      },
+    ],
+  },
+  "113zt9hyw21": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "113zt9hyw21-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "113zt9hyw21-1.mp3",
+      },
+    ],
+  },
+  itrt129zuv: {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "itrt129zuv-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "itrt129zuv-1.mp3",
+      },
+    ],
+  },
+  "1llrp23hr8z": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "1llrp23hr8z-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1llrp23hr8z-1.mp3",
+      },
+    ],
+  },
+  "29q43ut79t5": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "onyx",
+        file: "29q43ut79t5-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "29q43ut79t5-1.mp3",
+      },
+    ],
+  },
+  "17j0ga7jprx": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "shimmer",
+        file: "17j0ga7jprx-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "17j0ga7jprx-1.mp3",
+      },
+    ],
+  },
+  "1naeti8lg5m": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "alloy",
+        file: "1naeti8lg5m-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1naeti8lg5m-1.mp3",
+      },
+    ],
+  },
+  "1s1k8f9p2w3": {
+    model: "gpt-4o-mini-tts",
+    segments: [
+      {
+        voice: "nova",
+        file: "1s1k8f9p2w3-0.mp3",
+      },
+      {
+        voice: "alloy",
+        file: "1s1k8f9p2w3-1.mp3",
       },
     ],
   },
