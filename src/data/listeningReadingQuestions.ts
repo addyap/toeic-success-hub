@@ -3550,44 +3550,44 @@ const PART4_SHIFT_BRIEFING = {
 
 const part4s1: PracticeQuestionData = {
   ...PART4_SHIFT_BRIEFING,
-  question: "Who is the speaker most likely addressing?",
+  question: "What is the main purpose of the talk?",
   options: [
-    { label: "A", text: "Maintenance technicians repairing equipment." },
-    { label: "B", text: "Warehouse staff at the end of their shift." },
-    { label: "C", text: "Delivery drivers waiting at the loading dock." },
-    { label: "D", text: "Customers collecting an order in person." },
+    { label: "A", text: "To report equipment failures to the maintenance department." },
+    { label: "B", text: "To review the findings of a completed inventory audit." },
+    { label: "C", text: "To pass on conditions the incoming crew will need to work around." },
+    { label: "D", text: "To introduce a new procedure for loading outbound trucks." },
   ],
-  correct: "B",
+  correct: "C",
   explanation:
-    "The opening line, 'Before you head out, let's do a quick shift-change briefing,' and the closing instruction to sweep up 'before you clock out' place the listeners at the end of a warehouse shift. (A) and (C) name groups the talk mentions — maintenance and outbound trucks — but the speaker is talking about them, not to them, which is the most common trap on a Part 4 gist question. Set questions like this one almost always come first, so decide who is speaking to whom while the recording is still playing.",
+    "Every item the speaker raises — the unfinished count, the two jacks out of service, the closed dock — is something the next crew has to work around, and the talk ends by asking listeners to 'pass this information along to the next crew.' Each wrong answer takes one true fragment and inflates it into the whole purpose: equipment is discussed but not reported to maintenance (A), the inventory count is explicitly unfinished rather than reviewed (B), and the dock change is a one-night workaround, not a new procedure (D). Purpose questions reward the thread running through the whole talk, so resist answering from the first detail you recognise.",
 };
 
 const part4s2: PracticeQuestionData = {
   ...PART4_SHIFT_BRIEFING,
-  question: "What does the speaker say about the two pallet jacks?",
+  question: "What does the speaker imply about the two pallet jacks?",
   options: [
-    { label: "A", text: "They will be out of service until tomorrow morning." },
-    { label: "B", text: "They have been replaced with new units." },
-    { label: "C", text: "They should be moved to aisle twelve." },
-    { label: "D", text: "They must be swept and stacked before clocking out." },
+    { label: "A", text: "They will be unavailable for the whole of the night shift." },
+    { label: "B", text: "They are being replaced with newer models." },
+    { label: "C", text: "They should be returned to the maintenance area." },
+    { label: "D", text: "They are needed to finish the count in aisle twelve." },
   ],
   correct: "A",
   explanation:
-    "The speaker says maintenance 'says they won't be back in service until tomorrow morning.' (C) and (D) both reuse real details from the talk — aisle twelve and the sweeping instruction — but attach them to the wrong subject. In a three-question set the middle question is usually a specific detail, so track the numbers and times as you listen.",
+    "Maintenance says the jacks 'won't be back in service until tomorrow morning,' and the crew being briefed is handing over to the night shift — so the jacks are gone for that entire shift, which is why the speaker says to plan routes around them. The answer is never stated in those words; you have to combine the repair time with who is working next. (D) is the strongest trap, joining two real details — the jacks and aisle twelve — that the talk never connects.",
 };
 
 const part4s3: PracticeQuestionData = {
   ...PART4_SHIFT_BRIEFING,
-  question: "Why will outbound trucks use the west dock tonight?",
+  question: "Why must outbound trucks use the west dock tonight?",
   options: [
-    { label: "A", text: "The west dock has more available space." },
-    { label: "B", text: "The east dock is closed for resurfacing." },
-    { label: "C", text: "New dock equipment is being installed." },
-    { label: "D", text: "The east dock flooded during a storm." },
+    { label: "A", text: "The east side will be undergoing repair work." },
+    { label: "B", text: "The west dock is nearer to the aisle being counted." },
+    { label: "C", text: "The east dock has no working pallet jacks available." },
+    { label: "D", text: "More outbound trucks are expected than usual." },
   ],
-  correct: "B",
+  correct: "A",
   explanation:
-    "The speaker states, 'The loading dock on the east side will be closed for resurfacing starting at ten p.m., so all outbound trucks need to use the west dock tonight.' More space (A), equipment installation (C), and flooding (D) are never mentioned. The final question of a set usually draws on the last part of the recording, so keep listening to the end rather than stopping once you have answered the first two.",
+    "The east dock 'will be closed for resurfacing starting at ten p.m.' — resurfacing is repair work, so (A) restates it without repeating the word, which is how the real test phrases a correct answer. (C) is the trap: both the broken jacks and the closed dock are real, but the talk never links them. Listening for the exact words you heard will steer you wrong here; listen for the meaning instead.",
 };
 
 const part4t: PracticeQuestionData = {
