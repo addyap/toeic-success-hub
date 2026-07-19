@@ -8,6 +8,7 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
+  Clock,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
@@ -167,6 +168,30 @@ function Index() {
               body={`${VOCAB_COUNT} essential terms across 6 key categories: management, travel, finance, technical, marketing & sales, and HR.`}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Mock test teaser */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-10">
+        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+              <Clock className="h-3.5 w-3.5" /> Full mock test
+            </div>
+            <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
+              200 questions. Two hours. One real score.
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              A timed, full-length practice test in real exam proportions, with a complete score
+              breakdown at the end.
+            </p>
+          </div>
+          <Link
+            to="/mock-test"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+          >
+            Take the mock test <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
