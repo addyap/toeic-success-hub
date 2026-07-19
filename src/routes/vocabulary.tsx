@@ -13,6 +13,7 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn, shuffle } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
+import { vocabularyGlosses, GLOSS_LANGUAGES, type GlossLang } from "@/data/vocabularyGlosses";
 import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/vocabulary")({
@@ -50,11 +51,13 @@ const FILTERS: { id: Filter; emoji: string }[] = [
 
 const LS_FILTER = "toeicpath:vocab:filter";
 const LS_SCORE = "toeicpath:vocab:score";
+const LS_GLOSS = "toeicpath:vocab:gloss-lang";
 
 function Page() {
   const [filter, setFilter] = useState<Filter>("All");
   const [mode, setMode] = useState<Mode>("flashcards");
   const [score, setScore] = useState<{ correct: number; total: number }>({ correct: 0, total: 0 });
+  const [glossLang, setGlossLang] = useState<GlossLang | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   // Hydrate from localStorage
@@ -68,6 +71,8 @@ function Page() {
         if (typeof parsed?.correct === "number" && typeof parsed?.total === "number")
           setScore(parsed);
       }
+      const g = localStorage.getItem(LS_GLOSS) as GlossLang | null;
+      if (g && GLOSS_LANGUAGES.some((x) => x.id === g)) setGlossLang(g);
     } catch {
       // localStorage unavailable (private mode / disabled) — filter/score just won't persist
     }
@@ -91,6 +96,16 @@ function Page() {
         // localStorage unavailable — score just won't persist
       }
   }, [score, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      if (glossLang) localStorage.setItem(LS_GLOSS, glossLang);
+      else localStorage.removeItem(LS_GLOSS);
+    } catch {
+      // localStorage unavailable — gloss language just won't persist
+    }
+  }, [glossLang, hydrated]);
 
   const terms = useMemo(
     () => (filter === "All" ? vocabulary : vocabulary.filter((t) => t.category === filter)),
@@ -160,9 +175,42 @@ function Page() {
           </button>
         </div>
 
+        {mode === "flashcards" && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Gloss:
+            </span>
+            <button
+              onClick={() => setGlossLang(null)}
+              className={cn(
+                "rounded-full border px-3 py-1.5 text-xs font-medium transition",
+                glossLang === null
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted",
+              )}
+            >
+              None
+            </button>
+            {GLOSS_LANGUAGES.map((l) => (
+              <button
+                key={l.id}
+                onClick={() => setGlossLang(l.id)}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs font-medium transition",
+                  glossLang === l.id
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-foreground hover:bg-muted",
+                )}
+              >
+                {l.nativeLabel}
+              </button>
+            ))}
+          </div>
+        )}
+
         <div className="mt-8">
           {mode === "flashcards" ? (
-            <Flashcards terms={terms} key={`fc-${filter}`} />
+            <Flashcards terms={terms} glossLang={glossLang} key={`fc-${filter}`} />
           ) : (
             <Quiz
               terms={terms}
@@ -178,7 +226,7 @@ function Page() {
   );
 }
 
-function Flashcards({ terms }: { terms: VocabTerm[] }) {
+function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: GlossLang | null }) {
   const [order, setOrder] = useState<number[]>(() => terms.map((_, i) => i));
   const [idx, setIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -198,6 +246,7 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
   }
 
   const card = terms[order[idx] ?? 0];
+  const gloss = glossLang ? vocabularyGlosses[card.term]?.[glossLang] : undefined;
 
   const next = () => {
     setFlipped(false);
@@ -229,6 +278,7 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
               <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
                 {card.term}
               </div>
+              {gloss && <div className="mt-2 text-lg text-muted-foreground">{gloss}</div>}
               <div className="mt-6 text-xs text-muted-foreground">Tap to reveal meaning</div>
             </div>
           ) : (
@@ -236,6 +286,7 @@ function Flashcards({ terms }: { terms: VocabTerm[] }) {
               <div className="font-display text-2xl font-semibold sm:text-3xl">{card.term}</div>
               <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
                 {card.pos}
+                {gloss && <span className="text-foreground"> · {gloss}</span>}
               </div>
               <p className="mt-3 text-base leading-relaxed text-foreground">{card.definition}</p>
               <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">
