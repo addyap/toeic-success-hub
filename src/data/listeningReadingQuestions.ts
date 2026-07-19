@@ -3231,89 +3231,259 @@ const part3r11j: PracticeQuestionData = {
 };
 
 // ── Part 4 · Short Talks ──
-const part4: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the announcement and answer the question.",
-  listening: true,
+const PART4_TRAIN = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-train-delay",
   audio: { label: "Short talk — Train announcement", durationSec: 0 },
   context:
-    "Good morning, passengers, and welcome aboard Skyline Rail service 402 to Central Station. Please be advised that due to scheduled track maintenance between Riverside and Oak Park, we will be operating on a single track for approximately twenty minutes. You can expect a delay of about fifteen minutes into Central Station. Complimentary coffee and tea are available in the café car for the duration of the delay. We appreciate your patience this morning.\n\nQuestion: What does the speaker offer the passengers?",
+    "Good morning, passengers, and welcome aboard Skyline Rail service 402 to Central Station. Please be advised that due to scheduled track maintenance between Riverside and Oak Park, we will be operating on a single track for approximately twenty minutes. You can expect a delay of about fifteen minutes into Central Station. Complimentary coffee and tea are available in the café car for the duration of the delay. We appreciate your patience this morning.",
+};
+
+const part4a1: PracticeQuestionData = {
+  ...PART4_TRAIN,
+  question: "What is the main purpose of the announcement?",
   options: [
-    { label: "A", text: "A full refund for their tickets." },
-    { label: "B", text: "Free drinks in the café car." },
-    { label: "C", text: "A transfer to an express train." },
-    { label: "D", text: "A discount on their next trip." },
+    { label: "A", text: "To advertise the refreshments sold on board." },
+    { label: "B", text: "To explain why the service will reach its destination late." },
+    { label: "C", text: "To direct passengers onto a replacement train." },
+    { label: "D", text: "To announce a change to the train's final stop." },
   ],
   correct: "B",
   explanation:
-    "The announcement states 'Complimentary coffee and tea are available in the café car' — 'complimentary' means free. (A), (C), and (D) are common compensation offers but are never mentioned in the talk.",
+    "The body of the announcement exists to account for the fifteen-minute delay into Central Station and the single-track working behind it. The café car is offered as compensation for that delay rather than being advertised in its own right (A), and the train's destination and route are unchanged, so nothing supports a replacement service (C) or a new final stop (D).",
 };
 
-const part4b: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the radio ad and answer the question.",
-  listening: true,
+const part4a2: PracticeQuestionData = {
+  ...PART4_TRAIN,
+  question: "What has caused the disruption?",
+  options: [
+    { label: "A", text: "Engineering work being carried out on the route." },
+    { label: "B", text: "A mechanical problem with the train itself." },
+    { label: "C", text: "Congestion on the approach to Central Station." },
+    { label: "D", text: "A shortage of available train crew." },
+  ],
+  correct: "A",
+  explanation:
+    "The cause is 'scheduled track maintenance between Riverside and Oak Park', which is engineering work on the line — note that the answer describes it rather than repeating the phrase. The fault is with the track, not the train (B), and neither congestion (C) nor staffing (D) is raised at any point.",
+};
+
+const part4a3: PracticeQuestionData = {
+  ...PART4_TRAIN,
+  question: "What is available to passengers while the delay lasts?",
+  options: [
+    { label: "A", text: "A partial refund of the fare." },
+    { label: "B", text: "A voucher towards a future journey." },
+    { label: "C", text: "Hot drinks at no charge." },
+    { label: "D", text: "An upgrade to a seat in the café car." },
+  ],
+  correct: "C",
+  explanation:
+    "'Complimentary coffee and tea are available in the café car for the duration of the delay' — complimentary means free of charge. Refunds (A) and vouchers (B) are the compensation passengers might expect but are never offered here, and the café car is where the drinks are served, not a class of seat (D).",
+};
+
+const PART4_GRAND_OPENING = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-grand-opening",
   audio: { label: "Short talk — Store grand-opening ad", durationSec: 0 },
   context:
-    "Attention shoppers! Greenfield Home Goods is celebrating its grand opening this Saturday at our new location on Maple Avenue. From nine A.M. until closing, enjoy twenty percent off your entire purchase. The first fifty customers through our doors will receive a free tote bag filled with samples. We'll also have live music, refreshments, and prize drawings throughout the day. Don't miss out — see you Saturday at Greenfield Home Goods!\n\nQuestion: What will the first fifty customers receive?",
+    "Attention shoppers! Greenfield Home Goods is celebrating its grand opening this Saturday at our new location on Maple Avenue. From nine A.M. until closing, enjoy twenty percent off your entire purchase. The first fifty customers through our doors will receive a free tote bag filled with samples. We'll also have live music, refreshments, and prize drawings throughout the day. Don't miss out — see you Saturday at Greenfield Home Goods!",
+};
+
+const part4b1: PracticeQuestionData = {
+  ...PART4_GRAND_OPENING,
+  question: "What event is being advertised?",
   options: [
-    { label: "A", text: "A twenty percent discount coupon for a future visit." },
-    { label: "B", text: "A free tote bag filled with samples." },
-    { label: "C", text: "An entry into a raffle for a gift card." },
-    { label: "D", text: "A voucher for free refreshments." },
+    { label: "A", text: "The first day of trading at a new branch." },
+    { label: "B", text: "A clearance sale before a store closes." },
+    { label: "C", text: "A prize competition for regular customers." },
+    { label: "D", text: "A change to a store's weekend opening hours." },
+  ],
+  correct: "A",
+  explanation:
+    "The store is 'celebrating its grand opening this Saturday at our new location on Maple Avenue', which is a new branch trading for the first time. The prize drawings (C) are one attraction on the day rather than the occasion itself, and nothing points to a closure (B) or to a permanent change in hours (D) — the nine A.M. start describes that Saturday only.",
+};
+
+const part4b2: PracticeQuestionData = {
+  ...PART4_GRAND_OPENING,
+  question: "What will the first fifty customers receive?",
+  options: [
+    { label: "A", text: "A voucher to spend on a later visit." },
+    { label: "B", text: "A complimentary bag containing samples." },
+    { label: "C", text: "Free tickets to the live music performance." },
+    { label: "D", text: "An additional discount on their purchase." },
   ],
   correct: "B",
   explanation:
-    "The ad states 'The first fifty customers through our doors will receive a free tote bag filled with samples.' The twenty percent discount (A) applies to all shoppers, not just the first fifty, and (C) and (D) are never mentioned in the talk.",
+    "Those customers 'will receive a free tote bag filled with samples'. The live music (C) is open to everyone at no cost rather than ticketed, the twenty percent reduction (D) is not an extra on top of anything, and no future-visit voucher (A) is offered.",
 };
 
-const part4c: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the safety briefing and answer the question.",
-  listening: true,
+const part4b3: PracticeQuestionData = {
+  ...PART4_GRAND_OPENING,
+  question: "What is implied about the twenty percent reduction?",
+  options: [
+    { label: "A", text: "It is reserved for the first fifty customers." },
+    { label: "B", text: "It requires a coupon cut from the advertisement." },
+    { label: "C", text: "It applies to anyone shopping on the day." },
+    { label: "D", text: "It covers selected departments only." },
+  ],
+  correct: "C",
+  explanation:
+    "The reduction runs 'from nine A.M. until closing' on 'your entire purchase', with no limit on who qualifies — so everyone shopping that Saturday gets it. (A) is the trap the advertisement sets by placing two offers side by side: only the tote bags are capped at fifty. No coupon (B) or departmental restriction (D) is mentioned.",
+};
+
+const PART4_SAFETY_BRIEFING = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-safety-briefing",
   audio: { label: "Short talk — Factory safety briefing", durationSec: 0 },
   context:
-    "Good morning, everyone. Before we begin today's shift, I want to remind you that all workers must wear safety goggles and steel-toed boots at all times on the production floor. Yesterday's inspection turned up a loose guard rail near assembly line three, so that area will be roped off until maintenance completes repairs this afternoon. Please use the alternate walkway near the loading dock in the meantime. As always, report any hazards you notice to your shift supervisor immediately. Thank you for helping us keep this facility safe.\n\nQuestion: Why is the area near assembly line three roped off?",
+    "Good morning, everyone. Before we begin today's shift, I want to remind you that all workers must wear safety goggles and steel-toed boots at all times on the production floor. Yesterday's inspection turned up a loose guard rail near assembly line three, so that area will be roped off until maintenance completes repairs this afternoon. Please use the alternate walkway near the loading dock in the meantime. As always, report any hazards you notice to your shift supervisor immediately. Thank you for helping us keep this facility safe.",
+};
+
+const part4c1: PracticeQuestionData = {
+  ...PART4_SAFETY_BRIEFING,
+  question: "Where does the talk most likely take place?",
   options: [
-    { label: "A", text: "A machine there is being replaced." },
-    { label: "B", text: "A guard rail needs to be repaired." },
-    { label: "C", text: "A new safety inspection is starting." },
-    { label: "D", text: "The loading dock is being cleaned." },
+    { label: "A", text: "At a manufacturing plant." },
+    { label: "B", text: "At a building site." },
+    { label: "C", text: "At a vehicle repair garage." },
+    { label: "D", text: "At an equipment supplier's showroom." },
+  ],
+  correct: "A",
+  explanation:
+    "The talk refers to 'the production floor', 'assembly line three' and 'this facility', which together place it inside a factory. Protective boots and goggles would suit a building site (B) or a garage (C) equally well, which is what makes those tempting, but neither has assembly lines; a showroom (D) would have no production floor at all.",
+};
+
+const part4c2: PracticeQuestionData = {
+  ...PART4_SAFETY_BRIEFING,
+  question: "What must workers wear on the production floor?",
+  options: [
+    { label: "A", text: "Helmets and reflective vests." },
+    { label: "B", text: "Eye protection and reinforced footwear." },
+    { label: "C", text: "Gloves and ear defenders." },
+    { label: "D", text: "Overalls issued by the supervisor." },
   ],
   correct: "B",
   explanation:
-    "The speaker says the inspection found 'a loose guard rail near assembly line three, so that area will be roped off until maintenance completes repairs.' (A), (C), and (D) are never stated — the inspection already happened, and the loading dock is only mentioned as an alternate walkway.",
+    "The requirement is 'safety goggles and steel-toed boots at all times' — goggles protect the eyes and steel toecaps reinforce the boot, so (B) restates both without reusing either word. The other three name protective equipment common on industrial sites but absent from this talk.",
 };
 
-const part4d: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the voicemail message and answer the question.",
-  listening: true,
+const part4c3: PracticeQuestionData = {
+  ...PART4_SAFETY_BRIEFING,
+  question: "What are workers told to do while assembly line three is closed off?",
+  options: [
+    { label: "A", text: "Assist maintenance with the repair work." },
+    { label: "B", text: "Wait until the afternoon before starting." },
+    { label: "C", text: "Report to a supervisor for reassignment." },
+    { label: "D", text: "Reach the area by a different route." },
+  ],
+  correct: "D",
+  explanation:
+    "'Please use the alternate walkway near the loading dock in the meantime' tells workers to go round another way. The repair belongs to maintenance rather than the listeners (A), the afternoon is when repairs finish rather than when work begins (B), and supervisors are mentioned only as the people to whom hazards are reported (C).",
+};
+
+const PART4_VOICEMAIL = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-client-voicemail",
   audio: { label: "Short talk — Client voicemail", durationSec: 0 },
   context:
-    "Hi, this is Marcus Lee calling from Bright Path Consulting for Dana. I'm so sorry for the short notice, but I need to reschedule our meeting that was planned for Thursday at two o'clock. Something urgent has come up on my end. Would Friday morning around ten work instead? I'll have the revised budget proposal ready either way. Please call me back at your earliest convenience to confirm, or just send me an email. Thanks so much for understanding, and I look forward to speaking with you soon.\n\nQuestion: Why is Marcus calling?",
-  options: [
-    { label: "A", text: "To cancel the contract with Dana's company." },
-    { label: "B", text: "To request a new time for their meeting." },
-    { label: "C", text: "To ask Dana to prepare a budget proposal." },
-    { label: "D", text: "To confirm receipt of an email from Dana." },
-  ],
-  correct: "B",
-  explanation:
-    "Marcus says, 'I need to reschedule our meeting that was planned for Thursday at two o'clock... Would Friday morning around ten work instead?' Canceling the contract (A) and confirming an email (D) are never mentioned, and it is Marcus, not Dana, who will prepare the budget proposal (C).",
+    "Hi, this is Marcus Lee calling from Bright Path Consulting for Dana. I'm so sorry for the short notice, but I need to reschedule our meeting that was planned for Thursday at two o'clock. Something urgent has come up on my end. Would Friday morning around ten work instead? I'll have the revised budget proposal ready either way. Please call me back at your earliest convenience to confirm, or just send me an email. Thanks so much for understanding, and I look forward to speaking with you soon.",
 };
 
-const part4e: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the museum audio-tour excerpt and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Museum audio tour", durationSec: 0 },
-  context:
-    "Welcome to Gallery Four, home to the museum's collection of nineteenth-century landscape paintings. The large canvas directly in front of you, painted in eighteen sixty-two, was the artist's first work to be publicly exhibited, and it established the dramatic use of light that would define her career. In her later works on display in the next gallery, you'll notice the brushwork becomes looser toward the horizon, a technique she developed years afterward, once she had moved to the coast. When you're ready, proceed through the archway on your right to Gallery Five, where you'll find those later, more abstract works. Press pause at any point if you'd like to linger here longer.\n\nQuestion: What is significant about the large painting in Gallery Four?",
+const part4d1: PracticeQuestionData = {
+  ...PART4_VOICEMAIL,
+  question: "Why is the speaker calling?",
   options: [
-    { label: "A", text: "It was the artist's final completed work." },
-    { label: "B", text: "It was the artist's first publicly exhibited work." },
-    { label: "C", text: "It was painted after she moved to the coast." },
-    { label: "D", text: "It was donated by a private collector." },
+    { label: "A", text: "To propose meeting on a different day." },
+    { label: "B", text: "To end an agreement between the two firms." },
+    { label: "C", text: "To ask the listener to draw up a budget." },
+    { label: "D", text: "To check that an email has arrived." },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker needs 'to reschedule our meeting that was planned for Thursday' and suggests 'Friday morning around ten' instead. (C) reverses who does the work — Marcus is preparing the proposal, not Dana — and neither ending the relationship (B) nor chasing an email (D) is raised, though email is mentioned as a way of replying.",
+};
+
+const part4d2: PracticeQuestionData = {
+  ...PART4_VOICEMAIL,
+  question: "What does the speaker say he will do in any case?",
+  options: [
+    { label: "A", text: "Arrange for a colleague to attend instead." },
+    { label: "B", text: "Have the updated proposal prepared." },
+    { label: "C", text: "Send a written summary after the meeting." },
+    { label: "D", text: "Hold the original Thursday appointment open." },
   ],
   correct: "B",
   explanation:
-    "The narrator states the painting 'was the artist's first work to be publicly exhibited.' It is not her final work (A) — her later works are in Gallery Five — and the looser, coastal-influenced brushwork is described as belonging to those later works, not this 1862 painting, so (C) is not supported. (D) is never mentioned.",
+    "'I'll have the revised budget proposal ready either way' — 'either way' means whichever time is agreed, so the document is promised regardless. Nobody is standing in for him (A), no summary is offered (C), and the Thursday slot is precisely what he is giving up (D).",
+};
+
+const part4d3: PracticeQuestionData = {
+  ...PART4_VOICEMAIL,
+  question: "What is the listener asked to do?",
+  options: [
+    { label: "A", text: "Suggest a day later in the month." },
+    { label: "B", text: "Pass the message to a colleague." },
+    { label: "C", text: "Bring the proposal to the meeting." },
+    { label: "D", text: "Respond by telephone or email." },
+  ],
+  correct: "D",
+  explanation:
+    "'Please call me back at your earliest convenience to confirm, or just send me an email' offers two ways of replying. Dana is asked to confirm the proposed Friday slot rather than to nominate another date (A), and the proposal is the speaker's to bring (C). No colleague is involved (B).",
+};
+
+const PART4_AUDIO_TOUR = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-museum-tour",
+  audio: { label: "Short talk — Museum audio tour", durationSec: 0 },
+  context:
+    "Welcome to Gallery Four, home to the museum's collection of nineteenth-century landscape paintings. The large canvas directly in front of you, painted in eighteen sixty-two, was the artist's first work to be publicly exhibited, and it established the dramatic use of light that would define her career. In her later works on display in the next gallery, you'll notice the brushwork becomes looser toward the horizon, a technique she developed years afterward, once she had moved to the coast. When you're ready, proceed through the archway on your right to Gallery Five, where you'll find those later, more abstract works. Press pause at any point if you'd like to linger here longer.",
+};
+
+const part4e1: PracticeQuestionData = {
+  ...PART4_AUDIO_TOUR,
+  question: "What is significant about the large canvas?",
+  options: [
+    { label: "A", text: "It was the last painting the artist finished." },
+    { label: "B", text: "It was the first of her works shown in public." },
+    { label: "C", text: "It was painted after she settled on the coast." },
+    { label: "D", text: "It was the museum's earliest acquisition." },
+  ],
+  correct: "B",
+  explanation:
+    "The canvas 'was the artist's first work to be publicly exhibited'. (A) and (C) both belong to the later paintings hanging in Gallery Five, which the talk carefully separates from this one — the move to the coast came years afterward. How the museum obtained the work (D) is never discussed.",
+};
+
+const part4e2: PracticeQuestionData = {
+  ...PART4_AUDIO_TOUR,
+  question: "What does the speaker say about the artist's later paintings?",
+  options: [
+    { label: "A", text: "They were painted in a looser style near the horizon." },
+    { label: "B", text: "They abandoned her characteristic treatment of light." },
+    { label: "C", text: "They were completed before she left the city." },
+    { label: "D", text: "They remain in a private collection." },
+  ],
+  correct: "A",
+  explanation:
+    "In the later works 'the brushwork becomes looser toward the horizon'. The dramatic handling of light is described as defining her whole career rather than being dropped (B), the coastal move came before those works rather than after (C), and they are on display in the next gallery, not privately held (D).",
+};
+
+const part4e3: PracticeQuestionData = {
+  ...PART4_AUDIO_TOUR,
+  question: "What are listeners told they may do?",
+  options: [
+    { label: "A", text: "Ask a guide for further explanation." },
+    { label: "B", text: "Photograph the works without flash." },
+    { label: "C", text: "Stop the recording to stay longer." },
+    { label: "D", text: "Return to Gallery Four at the end." },
+  ],
+  correct: "C",
+  explanation:
+    "'Press pause at any point if you'd like to linger here longer' invites listeners to halt the recording and remain in the gallery. The talk directs them onward to Gallery Five rather than back (D), and neither guides (A) nor photography (B) is mentioned.",
 };
 
 const part4f: PracticeQuestionData = {
@@ -9300,11 +9470,21 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r11j,
 ];
 export const part4Questions: PracticeQuestionData[] = [
-  part4,
-  part4b,
-  part4c,
-  part4d,
-  part4e,
+  part4a1,
+  part4a2,
+  part4a3,
+  part4b1,
+  part4b2,
+  part4b3,
+  part4c1,
+  part4c2,
+  part4c3,
+  part4d1,
+  part4d2,
+  part4d3,
+  part4e1,
+  part4e2,
+  part4e3,
   part4f,
   part4g,
   part4h,
