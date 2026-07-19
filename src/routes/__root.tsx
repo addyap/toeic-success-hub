@@ -139,6 +139,11 @@ function RootShell({ children }: { children: ReactNode }) {
           // Static, hardcoded JSON — no user input, so this is not an XSS vector.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="6fe5c566-e81f-4ca4-a9b3-f7ed4ca5e002"
+        />
       </head>
       <body>
         {children}
