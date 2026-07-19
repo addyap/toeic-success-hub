@@ -13,7 +13,12 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn, shuffle } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
-import { vocabularyGlosses, GLOSS_LANGUAGES, type GlossLang } from "@/data/vocabularyGlosses";
+import {
+  vocabularyGlosses,
+  GLOSS_LANGUAGES,
+  RTL_LANGS,
+  type GlossLang,
+} from "@/data/vocabularyGlosses";
 import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/vocabulary")({
@@ -247,6 +252,7 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
 
   const card = terms[order[idx] ?? 0];
   const gloss = glossLang ? vocabularyGlosses[card.term]?.[glossLang] : undefined;
+  const glossDir = glossLang && RTL_LANGS.has(glossLang) ? "rtl" : "ltr";
 
   const next = () => {
     setFlipped(false);
@@ -278,7 +284,11 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
               <div className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
                 {card.term}
               </div>
-              {gloss && <div className="mt-2 text-lg text-muted-foreground">{gloss}</div>}
+              {gloss && (
+                <div dir={glossDir} className="mt-2 text-lg text-muted-foreground">
+                  {gloss}
+                </div>
+              )}
               <div className="mt-6 text-xs text-muted-foreground">Tap to reveal meaning</div>
             </div>
           ) : (
@@ -286,7 +296,12 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
               <div className="font-display text-2xl font-semibold sm:text-3xl">{card.term}</div>
               <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
                 {card.pos}
-                {gloss && <span className="text-foreground"> · {gloss}</span>}
+                {gloss && (
+                  <span dir={glossDir} className="text-foreground">
+                    {" "}
+                    · {gloss}
+                  </span>
+                )}
               </div>
               <p className="mt-3 text-base leading-relaxed text-foreground">{card.definition}</p>
               <p className="mt-4 rounded-xl bg-muted p-4 text-sm italic text-muted-foreground">
