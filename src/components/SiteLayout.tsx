@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/listening-reading", label: "Listening & Reading" },
+  { to: "/mock-test", label: "Mock Test" },
   { to: "/speaking-writing", label: "Speaking & Writing" },
   { to: "/vocabulary", label: "Vocabulary" },
   { to: "/study-tips", label: "Study Tips" },
@@ -115,6 +116,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link to="/listening-reading" className="hover:text-foreground">
                   Listening & Reading
+                </Link>
+              </li>
+              <li>
+                <Link to="/mock-test" className="hover:text-foreground">
+                  Full Mock Test
                 </Link>
               </li>
               <li>

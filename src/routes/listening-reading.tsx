@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
-import { cn, shuffle } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { shuffleQuestionOptions } from "@/lib/quiz";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
 // The question bank (500+ items, growing every content round) is loaded via
@@ -13,18 +14,6 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 // chunk right after mount instead, while the page above the practice section
 // (hero, format cards) renders and becomes interactive immediately.
 const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
-
-const OPTION_LABELS = ["A", "B", "C", "D"];
-
-/** Returns a copy of `data` with its options shuffled into a new random order
- *  and relabeled A/B/C/D to match, so the correct answer isn't always in the
- *  same position as authored in the source data. */
-function shuffleQuestionOptions(data: PracticeQuestionData): PracticeQuestionData {
-  const shuffled = shuffle(data.options);
-  const correctIndex = shuffled.findIndex((opt) => opt.label === data.correct);
-  const options = shuffled.map((opt, i) => ({ ...opt, label: OPTION_LABELS[i] }));
-  return { ...data, options, correct: OPTION_LABELS[correctIndex] };
-}
 
 export const Route = createFileRoute("/listening-reading")({
   head: () => ({
@@ -171,6 +160,24 @@ function Page() {
               <PartCard key={p.n} {...p} />
             ))}
           </div>
+        </div>
+
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:flex-row sm:items-center">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Ready for the real thing?
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              Take a full, timed 200-question mock test — real exam proportions and a complete score
+              breakdown at the end.
+            </p>
+          </div>
+          <Link
+            to="/mock-test"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+          >
+            Take the mock test
+          </Link>
         </div>
       </section>
 

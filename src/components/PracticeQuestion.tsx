@@ -33,6 +33,13 @@ export interface PracticeQuestionProps {
   picked?: string | null;
   onAnswer?: (label: string, correct: boolean) => void;
   resetKey?: number;
+  /** Overrides the default "reveal as soon as answered" behavior. Pass
+   *  `false` to let an answer be picked (and changed) without showing
+   *  correctness/explanation/transcript yet — used by the mock test, which
+   *  defers every reveal until the whole test is submitted. Pass `true` to
+   *  force the fully-revealed review state regardless of when it was
+   *  answered. Omit for normal immediate-reveal practice behavior. */
+  revealed?: boolean;
 }
 
 export function PracticeQuestion({
@@ -41,11 +48,12 @@ export function PracticeQuestion({
   picked: pickedProp,
   onAnswer,
   resetKey,
+  revealed: revealedProp,
 }: PracticeQuestionProps) {
   const [internalPicked, setInternalPicked] = useState<string | null>(null);
   const controlled = pickedProp !== undefined;
   const picked = controlled ? (pickedProp ?? null) : internalPicked;
-  const revealed = picked !== null;
+  const revealed = revealedProp ?? picked !== null;
 
   useEffect(() => {
     if (!controlled) setInternalPicked(null);
@@ -133,7 +141,8 @@ export function PracticeQuestion({
               aria-disabled={revealed}
               className={cn(
                 "flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
-                !revealed && "border-border hover:border-primary/60 hover:bg-muted",
+                !revealed && isPicked && "border-primary bg-primary/5",
+                !revealed && !isPicked && "border-border hover:border-primary/60 hover:bg-muted",
                 revealed && "pointer-events-none",
                 revealed && isCorrect && "border-success/60 bg-success/10",
                 revealed && isPicked && !isCorrect && "border-destructive/60 bg-destructive/10",
@@ -143,7 +152,8 @@ export function PracticeQuestion({
               <span
                 className={cn(
                   "grid h-7 w-7 shrink-0 place-items-center rounded-full border text-xs font-bold",
-                  !revealed && "border-border text-muted-foreground",
+                  !revealed && isPicked && "border-primary bg-primary text-primary-foreground",
+                  !revealed && !isPicked && "border-border text-muted-foreground",
                   revealed && isCorrect && "border-success bg-success text-primary-foreground",
                   revealed &&
                     isPicked &&
