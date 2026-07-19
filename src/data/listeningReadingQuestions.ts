@@ -1936,7 +1936,7 @@ const part3aj: PracticeQuestionData = {
     { label: "A", text: "By next Monday." },
     { label: "B", text: "By the end of September." },
     { label: "C", text: "By the end of the year." },
-    { label: "D", text: "By the following Monday." },
+    { label: "D", text: "By the end of next week." },
   ],
   correct: "A",
   explanation:
@@ -3304,7 +3304,7 @@ const part4e: PracticeQuestionData = {
   listening: true,
   audio: { label: "Short talk — Museum audio tour", durationSec: 0 },
   context:
-    "Welcome to Gallery Four, home to the museum's collection of nineteenth-century landscape paintings. The large canvas directly in front of you, painted in eighteen sixty-two, was the artist's first work to be publicly exhibited, and it established the dramatic use of light that would define her career. Notice how the brushwork becomes looser toward the horizon, a technique she developed after moving to the coast. When you're ready, proceed through the archway on your right to Gallery Five, where you'll find her later, more abstract works. Press pause at any point if you'd like to linger here longer.\n\nQuestion: What is significant about the large painting in Gallery Four?",
+    "Welcome to Gallery Four, home to the museum's collection of nineteenth-century landscape paintings. The large canvas directly in front of you, painted in eighteen sixty-two, was the artist's first work to be publicly exhibited, and it established the dramatic use of light that would define her career. In her later works on display in the next gallery, you'll notice the brushwork becomes looser toward the horizon, a technique she developed years afterward, once she had moved to the coast. When you're ready, proceed through the archway on your right to Gallery Five, where you'll find those later, more abstract works. Press pause at any point if you'd like to linger here longer.\n\nQuestion: What is significant about the large painting in Gallery Four?",
   options: [
     { label: "A", text: "It was the artist's final completed work." },
     { label: "B", text: "It was the artist's first publicly exhibited work." },
@@ -3313,7 +3313,7 @@ const part4e: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The narrator states the painting 'was the artist's first work to be publicly exhibited.' It is not her final work (A) — her later works are in Gallery Five — and the coastal move happened after this painting, since the looser brushwork technique was 'developed after moving to the coast' (C). (D) is never mentioned.",
+    "The narrator states the painting 'was the artist's first work to be publicly exhibited.' It is not her final work (A) — her later works are in Gallery Five — and the looser, coastal-influenced brushwork is described as belonging to those later works, not this 1862 painting, so (C) is not supported. (D) is never mentioned.",
 };
 
 const part4f: PracticeQuestionData = {
@@ -4863,12 +4863,12 @@ const part5j: PracticeQuestionData = {
   options: [
     { label: "A", text: "doesn't arrive" },
     { label: "B", text: "won't arrive" },
-    { label: "C", text: "hasn't arrived" },
+    { label: "C", text: "didn't arrive" },
     { label: "D", text: "wouldn't arrive" },
   ],
   correct: "A",
   explanation:
-    "In a first conditional sentence, the if-clause uses the present simple even though it refers to the future, while the main clause uses 'will': 'If the shipment doesn't arrive..., the client will not receive...'. (B) 'won't arrive' incorrectly uses future tense inside the if-clause. (C) 'hasn't arrived' (present perfect) doesn't fit the simple factual condition being described. (D) 'wouldn't arrive' is the second-conditional (hypothetical) form and is inconsistent with 'will' in the main clause.",
+    "In a first conditional sentence, the if-clause uses the present simple even though it refers to the future, while the main clause uses 'will': 'If the shipment doesn't arrive..., the client will not receive...'. (B) 'won't arrive' incorrectly uses future tense inside the if-clause. (C) 'didn't arrive' (simple past) wrongly treats the arrival as an already-completed past event rather than a future condition. (D) 'wouldn't arrive' is the second-conditional (hypothetical) form and is inconsistent with 'will' in the main clause.",
 };
 
 const part5k: PracticeQuestionData = {
@@ -5668,7 +5668,7 @@ const part5r9a: PracticeQuestionData = {
 const part5r9b: PracticeQuestionData = {
   prompt: "Part 5 · Choose the word that best completes the sentence.",
   context:
-    "The plant manager explained that the auditors ______ access the archived records whenever necessary.",
+    "The plant manager explained that, during last quarter's one-time investigation, the auditors ______ access the archived records without submitting a written request.",
   options: [
     { label: "A", text: "can have" },
     { label: "B", text: "will can" },
@@ -5677,7 +5677,7 @@ const part5r9b: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "Because the reporting verb 'explained' is past tense, the modal in the original statement ('can access') must backshift to 'could' in reported speech: 'explained that the auditors could access...'. (C) 'can' is the unshifted direct-speech form and is inconsistent with the past-tense reporting verb. (A) 'can have' is not a valid modal-backshift form. (B) 'will can' stacks two modals, which is ungrammatical in standard English.",
+    "Because the reporting verb 'explained' is past tense and describes a one-time, now-concluded arrangement, the modal in the original statement ('can access') must backshift to 'could' in reported speech: 'explained that... the auditors could access...'. (C) 'can' is the unshifted direct-speech form and is inconsistent with the past-tense reporting verb describing a closed episode. (A) 'can have' is not a valid modal-backshift form. (B) 'will can' stacks two modals, which is ungrammatical in standard English.",
 };
 
 const part5r9c: PracticeQuestionData = {
