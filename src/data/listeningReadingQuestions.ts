@@ -3559,7 +3559,7 @@ const part4s1: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "Every item the speaker raises — the unfinished count, the two jacks out of service, the closed dock — is something the next crew has to work around, and the talk ends by asking listeners to 'pass this information along to the next crew.' Each wrong answer takes one true fragment and inflates it into the whole purpose: equipment is discussed but not reported to maintenance (A), the inventory count is explicitly unfinished rather than reviewed (B), and the dock change is a one-night workaround, not a new procedure (D). Purpose questions reward the thread running through the whole talk, so resist answering from the first detail you recognise.",
+    "Every item the speaker raises — the unfinished count, the two jacks out of service, the closed dock — is something the next crew has to work around, and the talk ends by asking listeners to 'pass this information along to the next crew.' Each wrong answer takes one true fragment and inflates it into the whole purpose: equipment is discussed but not reported to maintenance (A), the inventory count is explicitly unfinished rather than reviewed (B), and the dock change is a one-night workaround, not a new procedure (D).",
 };
 
 const part4s2: PracticeQuestionData = {
@@ -3573,7 +3573,7 @@ const part4s2: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "Maintenance says the jacks 'won't be back in service until tomorrow morning,' and the crew being briefed is handing over to the night shift — so the jacks are gone for that entire shift, which is why the speaker says to plan routes around them. The answer is never stated in those words; you have to combine the repair time with who is working next. (D) is the strongest trap, joining two real details — the jacks and aisle twelve — that the talk never connects.",
+    "Maintenance says the jacks 'won't be back in service until tomorrow morning,' and the crew being briefed is handing over to the night shift — so the jacks are gone for that entire shift, which is why the speaker says to plan routes around them. Nothing suggests replacement units (B) or a return to maintenance (C), and (D) joins two real details — the jacks and aisle twelve — that the talk never connects.",
 };
 
 const part4s3: PracticeQuestionData = {
@@ -3587,7 +3587,7 @@ const part4s3: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The east dock 'will be closed for resurfacing starting at ten p.m.' — resurfacing is repair work, so (A) restates it without repeating the word, which is how the real test phrases a correct answer. (C) is the trap: both the broken jacks and the closed dock are real, but the talk never links them. Listening for the exact words you heard will steer you wrong here; listen for the meaning instead.",
+    "The east dock 'will be closed for resurfacing starting at ten p.m.', and resurfacing is repair work, so (A) restates the reason without repeating the word. Proximity to the aisle being counted (B) and a heavier truck schedule (D) are never mentioned, and (C) links the broken jacks to the closed dock, two real details the talk keeps separate.",
 };
 
 const part4t: PracticeQuestionData = {
