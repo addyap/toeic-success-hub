@@ -4615,16 +4615,16 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1llrp23hr8z": {
+  "1l52j3ymzek": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "alloy",
-        "file": "1llrp23hr8z-0.mp3"
+        "file": "1l52j3ymzek-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1llrp23hr8z-1.mp3"
+        "file": "1l52j3ymzek-1.mp3"
       }
     ]
   },
