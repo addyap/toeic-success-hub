@@ -5,7 +5,7 @@
       "name": "toeic-success-hub-dev",
       "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "port": 8080
     }
   ]
 }
