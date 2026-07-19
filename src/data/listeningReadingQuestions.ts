@@ -10,16 +10,16 @@ const part1a: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "A woman wearing an apron stands behind a café counter, holding a cup. Shelves of mugs line the wall behind her.",
+    "A close-up of a barista's hands at an espresso machine. One hand presses a wooden tamper into a portafilter while the other rests on the machine's controls.",
   options: [
-    { label: "A", text: "She's wiping down the counter." },
-    { label: "B", text: "She's holding a cup." },
-    { label: "C", text: "She's stocking the shelves." },
-    { label: "D", text: "She's pouring coffee for a customer." },
+    { label: "A", text: "The barista is wiping down the espresso machine." },
+    { label: "B", text: "The barista is pouring milk into a jug." },
+    { label: "C", text: "The barista is pressing a tamper into a portafilter." },
+    { label: "D", text: "The barista is stamping a customer's loyalty card." },
   ],
-  correct: "B",
+  correct: "C",
   explanation:
-    "B matches the action actually shown — she's holding a cup. A, C, and D describe plausible café actions that aren't happening in the scene. Part 1 rewards what is visibly true, not what could be true.",
+    "C matches the action actually shown — the tamper is being pressed into the portafilter. D swaps 'tamping' for the similar-sounding 'stamping,' a classic Part 1 auditory trap. A and B describe plausible café actions that aren't happening. Part 1 rewards what is visibly true, not what could be true.",
 };
 
 const part1b: PracticeQuestionData = {
@@ -52,16 +52,16 @@ const part1c: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In a warehouse, a worker wearing a safety vest pushes a hand truck stacked with boxes down a narrow aisle. Tall stacks of crates line both sides.",
+    "A worker in a yellow hard hat operates a pallet jack on a loading dock. Stacks of green plastic crates are piled against the wall to his right.",
   options: [
-    { label: "A", text: "He's loading boxes onto a delivery truck." },
-    { label: "B", text: "He's pushing a hand truck stacked with boxes." },
-    { label: "C", text: "He's climbing a ladder to reach the top shelf." },
-    { label: "D", text: "He's sweeping the aisle floor." },
+    { label: "A", text: "He's loading crates onto a delivery truck." },
+    { label: "B", text: "He's operating a pallet jack." },
+    { label: "C", text: "He's climbing a ladder to reach a top shelf." },
+    { label: "D", text: "He's carrying a crate on his shoulder." },
   ],
   correct: "B",
   explanation:
-    "B matches the action actually shown — he's pushing a hand truck loaded with boxes. A confuses the hand truck with a delivery truck, a similar-sounding swap that's a classic Part 1 trap. C and D describe actions that aren't happening in the scene.",
+    "B matches the action actually shown — he's operating the pallet jack. A is tempting because crates are visible, but no one is loading them onto a truck; the crates are simply stacked. C and D describe actions that aren't happening. Watch for statements that name objects you can genuinely see but attach the wrong action to them.",
 };
 
 const part1d: PracticeQuestionData = {
@@ -73,16 +73,16 @@ const part1d: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In an office, a man points at a laptop screen while a woman across the table writes in a notebook. A whiteboard covered in diagrams hangs on the wall behind them.",
+    "A woman in a dark blazer sits at a desk writing in a notebook with a pen. An open laptop stands on the desk beside her, and a framed picture hangs on the wall behind.",
   options: [
-    { label: "A", text: "The man is printing out a report." },
-    { label: "B", text: "The man is pointing at the laptop screen." },
-    { label: "C", text: "The woman is erasing the whiteboard." },
-    { label: "D", text: "They're shaking hands to end the meeting." },
+    { label: "A", text: "She's writing in a notebook." },
+    { label: "B", text: "She's typing on the laptop." },
+    { label: "C", text: "She's hanging a picture on the wall." },
+    { label: "D", text: "She's righting an overturned chair." },
   ],
-  correct: "B",
+  correct: "A",
   explanation:
-    "B accurately describes the visible action — the man pointing at the laptop screen. A swaps 'pointing' for the similar-sounding 'printing,' a common Part 1 trap. C and D describe actions that aren't occurring — no one is erasing the board or shaking hands.",
+    "A describes the visible action — she's writing in the notebook. B is the trap: the laptop is right there and open, but her hands are on the pen, not the keyboard. D swaps 'writing' for the identical-sounding 'righting,' a classic Part 1 homophone trap. C names an object in the scene but an action nobody is performing.",
 };
 
 const part1e: PracticeQuestionData = {
@@ -94,16 +94,16 @@ const part1e: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "At a construction site, a worker in a hard hat kneels to fasten a beam with a wrench, while a second worker in the background carries a stack of wooden planks across the yard.",
+    "A building under construction, seen from a distance. Scaffolding covers the concrete structure. One worker stands on the scaffolding at the left, and two workers in yellow hard hats stand on a platform to the right.",
   options: [
-    { label: "A", text: "A worker is climbing a crane." },
-    { label: "B", text: "A worker is planting flowers along the path." },
-    { label: "C", text: "A worker is carrying a stack of planks." },
-    { label: "D", text: "The workers are taking a lunch break." },
+    { label: "A", text: "Scaffolding has been erected around the building." },
+    { label: "B", text: "The workers are pouring concrete." },
+    { label: "C", text: "A crane is lifting a steel beam." },
+    { label: "D", text: "The workers are removing their hard hats." },
   ],
-  correct: "C",
+  correct: "A",
   explanation:
-    "C matches the background worker's action — carrying a stack of planks. B swaps 'planks' for the similar-sounding 'planting,' a classic Part 1 auditory trap. A and D describe actions that aren't occurring — no one is climbing a crane or on break.",
+    "A correctly describes the state of the scene — note the passive 'has been erected,' which describes a result rather than an action in progress. When a photo is taken from far away and you can't make out precisely what each person is doing, the answer is usually a statement about the setting, not about an individual's action. B, C, and D all name specific actions that can't be seen.",
 };
 
 const part1f: PracticeQuestionData = {
@@ -115,16 +115,16 @@ const part1f: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "On a train platform, a conductor checks his watch while passengers line up to board through an open door. A cart of luggage sits near the edge of the platform.",
+    "A green and white train is stopped alongside a covered station platform. A crowd of passengers, many of them children wearing backpacks, walks along the platform beside the train.",
   options: [
-    { label: "A", text: "The conductor is checking a ticket." },
-    { label: "B", text: "The conductor is checking his watch." },
-    { label: "C", text: "The passengers are waiting to disembark." },
-    { label: "D", text: "The luggage cart is being pushed onto the train." },
+    { label: "A", text: "The train is pulling out of the station." },
+    { label: "B", text: "The platform has been cleared of passengers." },
+    { label: "C", text: "The train is being washed." },
+    { label: "D", text: "Passengers are walking along the platform." },
   ],
-  correct: "B",
+  correct: "D",
   explanation:
-    "B correctly describes the conductor's visible action — checking his watch. A names a plausible but unstated action; he's not shown handling a ticket. C reverses the actual situation, since the passengers are boarding, not disembarking, and D describes the luggage cart as moving when it's simply sitting near the platform's edge.",
+    "D describes what's visibly happening — the passengers are walking along the platform. A and B both reverse the actual situation: the train is stopped, not departing, and the platform is crowded, not cleared. C names an action nobody is performing. Reversals like these are common in Part 1, so listen carefully to the verb.",
 };
 
 const part1g: PracticeQuestionData = {
@@ -136,16 +136,16 @@ const part1g: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In a clothing store, a saleswoman folds sweaters and stacks them on a display table near the entrance. Racks of jackets stand nearby, and a mannequin wearing a scarf stands by the window.",
+    "In a clothing store, a woman reaches toward a rack of garments on hangers. Two dressed mannequins stand to her left, and folded shirts are displayed on shelves behind her.",
   options: [
-    { label: "A", text: "She's holding a stack of folders near the window." },
-    { label: "B", text: "She's folding sweaters and stacking them on a table." },
-    { label: "C", text: "She's hanging jackets on a rack." },
-    { label: "D", text: "She's trying on a scarf in front of a mirror." },
+    { label: "A", text: "She's folding shirts into a pile." },
+    { label: "B", text: "She's looking through a rack of clothing." },
+    { label: "C", text: "She's dressing a mannequin." },
+    { label: "D", text: "She's paying at the register." },
   ],
   correct: "B",
   explanation:
-    "B matches the action actually shown — she's folding sweaters and stacking them on a table. A confuses folding with holding and sweaters with folders, a classic sound-alike swap. C and D describe actions that aren't happening in the scene; the jackets are already on the rack and the scarf is worn only by the mannequin.",
+    "B matches the action actually shown — she's going through the clothes on the rack. A and C are traps built from things you really can see: the shirts are already folded and the mannequins are already dressed, but she isn't doing either. D describes an action that isn't happening at all.",
 };
 
 const part1h: PracticeQuestionData = {
@@ -157,16 +157,16 @@ const part1h: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In a restaurant kitchen, a chef in a white apron stirs a large pot of soup on the stove while another cook chops vegetables at a nearby counter. Pots and pans hang from an overhead rack.",
+    "A man wearing a striped apron stands at a kitchen counter, holding a knife in one hand and half a red onion in the other. Another piece of onion rests on a wooden cutting board beside the sink.",
   options: [
-    { label: "A", text: "The chef is staring at a pot of soup." },
-    { label: "B", text: "The chef is stirring a pot of soup on the stove." },
-    { label: "C", text: "The cook is washing dishes at the sink." },
-    { label: "D", text: "The pans are being taken down from the rack." },
+    { label: "A", text: "He's washing vegetables in the sink." },
+    { label: "B", text: "He's putting on an apron." },
+    { label: "C", text: "He's cutting an onion." },
+    { label: "D", text: "He's setting the table for a meal." },
   ],
-  correct: "B",
+  correct: "C",
   explanation:
-    "B matches the action actually shown — the chef is stirring the pot of soup on the stove. A confuses stirring with staring, a similar-sounding swap that's a classic Part 1 trap. C mentions a sink that isn't in the scene, and D describes an action that isn't happening; the pans are hanging, not being taken down.",
+    "C matches the action actually shown — he's cutting the onion. A and B are traps drawn from real details in the photo: there is a sink, and he is wearing an apron, but he isn't washing anything and he put the apron on long before this moment. Part 1 often names something genuinely present and pairs it with the wrong verb.",
 };
 
 const part1i: PracticeQuestionData = {
@@ -178,16 +178,16 @@ const part1i: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In a public library, a librarian pushes a cart of returned books between tall bookshelves while a young man reads a newspaper at a table nearby.",
+    "A three-shelf library cart stands on a carpeted floor, filled with books shelved upright. There are no people in the photograph.",
   options: [
-    { label: "A", text: "The librarian is checking out books at the front desk." },
-    { label: "B", text: "The librarian is pushing a cart of books between the shelves." },
-    { label: "C", text: "The man is writing in a notebook at the table." },
-    { label: "D", text: "The shelves are being restocked with new arrivals." },
+    { label: "A", text: "Books have been arranged on a cart." },
+    { label: "B", text: "A librarian is pushing the cart." },
+    { label: "C", text: "The cart's shelves are empty." },
+    { label: "D", text: "Someone is reading at a table." },
   ],
-  correct: "B",
+  correct: "A",
   explanation:
-    "B matches the action actually shown — the librarian is pushing a cart of books between the shelves. A describes an action that isn't happening and mentions a front desk that isn't in the scene. C misstates what the man is doing; he's reading a newspaper, not writing. D isn't happening — the cart holds returned books, not new arrivals being shelved.",
+    "A is correct, and note the passive 'have been arranged' — when a photo contains no people, the answer almost always describes the position or state of objects rather than anyone's action. B and D are the trap: they invent a person the photo doesn't contain. C simply contradicts what you can see.",
 };
 
 const part1j: PracticeQuestionData = {
@@ -199,16 +199,16 @@ const part1j: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "At a farmers market stall, a vendor arranges baskets of fresh strawberries and peaches on a wooden table while a customer smells a bouquet of flowers at the next stall.",
+    "At a covered market stall, a vendor in an apron reaches across a display of grapes while a customer holds an open plastic bag above the produce. Bunches of bananas fill the front of the stall, and a scale sits on the counter.",
   options: [
-    { label: "A", text: "The vendor is watering plants in a greenhouse." },
-    { label: "B", text: "The vendor is arranging baskets of fruit on the table." },
-    { label: "C", text: "The customer is buying a bouquet of flowers." },
-    { label: "D", text: "The vendor is weighing bags of flour." },
+    { label: "A", text: "The vendor is weighing the bananas." },
+    { label: "B", text: "The stall is being packed up for the day." },
+    { label: "C", text: "The vendor is watering plants in a greenhouse." },
+    { label: "D", text: "The customer is holding an open plastic bag." },
   ],
-  correct: "B",
+  correct: "D",
   explanation:
-    "B matches the action actually shown — the vendor is arranging baskets of fruit on the table. A describes a greenhouse that isn't in the scene. C overstates the customer's action; she's smelling the flowers, not buying them. D confuses flour with flowers and fruit, a classic sound-alike trap.",
+    "D describes exactly what's visible — the customer holds the bag open over the fruit. A is the strongest trap: there really is a scale and there really are bananas, but nothing is on the scale. C moves the scene somewhere it isn't, and B contradicts the stall's full display.",
 };
 
 const part1k: PracticeQuestionData = {
@@ -220,16 +220,16 @@ const part1k: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "In a hair salon, a stylist trims a client's hair while the client sits in a chair facing a large mirror. Bottles of shampoo and hair products line a shelf along the wall, and another customer waits on a bench near the entrance, flipping through a magazine.",
+    "A close-up of a barber's hands at work on a client's dark hair. One hand holds a comb flat against the back of the head while the other works a pair of scissors.",
   options: [
-    { label: "A", text: "She's sweeping hair clippings off the floor." },
-    { label: "B", text: "She's trimming the client's hair while the client faces a mirror." },
-    { label: "C", text: "She's reading a magazine while waiting on a bench." },
-    { label: "D", text: "She's washing the client's hair at a sink." },
+    { label: "A", text: "The barber is drying the client's hair." },
+    { label: "B", text: "The barber is cutting the client's hair with scissors." },
+    { label: "C", text: "The client is holding a mirror." },
+    { label: "D", text: "The barber is sweeping up hair clippings." },
   ],
   correct: "B",
   explanation:
-    "B accurately describes the stylist trimming the client's hair while the client sits facing the mirror. A describes an action that isn't happening — there's no mention of clippings being swept. C describes what the waiting customer is doing on the bench, not the stylist, mistakenly attributing one person's action to another. D describes a step that hasn't occurred; the scene shows trimming, not washing at a sink.",
+    "B describes the visible action — the scissors are cutting hair. D is plausible in a salon and will feel familiar, but sweeping isn't happening here. A names a different step in the same routine, and C invents a mirror the close-up doesn't show. Choose the statement that survives a look at this photo, not one that fits salons in general.",
 };
 
 const part1l: PracticeQuestionData = {
@@ -241,16 +241,16 @@ const part1l: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "At a shipping dock, a worker in a hard hat scans a barcode on a cardboard box before loading it onto a delivery truck. Stacks of boxes sit on wooden pallets nearby, and a forklift is parked beside the loading ramp.",
+    "In a warehouse aisle, a man points a handheld barcode scanner at a storage rack. Shrink-wrapped pallets of bottled water are stacked from floor to ceiling on both sides of the aisle.",
   options: [
-    { label: "A", text: "He's stacking boxes onto a forklift." },
-    { label: "B", text: "He's scanning a barcode on a box before loading it onto the truck." },
-    { label: "C", text: "He's signing a form beside the delivery truck." },
-    { label: "D", text: "He's driving the forklift toward the ramp." },
+    { label: "A", text: "He's driving a forklift down the aisle." },
+    { label: "B", text: "He's unwrapping a pallet of bottles." },
+    { label: "C", text: "He's pointing a scanner at the rack." },
+    { label: "D", text: "He's stacking bottles onto a shelf." },
   ],
-  correct: "B",
+  correct: "C",
   explanation:
-    "B matches the scene exactly — he scans the barcode on the box before loading it onto the truck. A confuses the boxes already stacked on pallets with boxes being stacked onto the forklift, which isn't happening. C swaps 'scanning' for the similar-sounding 'signing,' an action that isn't shown. D is inaccurate because the forklift is parked beside the ramp, not being driven.",
+    "C matches the action actually shown — he's aiming the handheld scanner at the rack. B and D describe things being done to the pallets, but the stock is untouched; it's already wrapped and stacked. A puts him on equipment he isn't using. In a warehouse photo, expect several statements that sound like warehouse work but describe the wrong action.",
 };
 
 // ── Part 2 · Question–Response ──
