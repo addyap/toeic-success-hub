@@ -19,7 +19,7 @@ const part1a: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "C matches the action actually shown — the tamper is being pressed into the portafilter. D swaps 'tamping' for the similar-sounding 'stamping,' a classic Part 1 auditory trap. A and B describe plausible café actions that aren't happening. Part 1 rewards what is visibly true, not what could be true.",
+    "(C) matches the action actually shown — the tamper is being pressed into the portafilter. (D) swaps 'tamping' for the similar-sounding 'stamping,' a classic Part 1 auditory trap. (A) and (B) describe plausible café actions that aren't happening. Part 1 rewards what is visibly true, not what could be true.",
 };
 
 const part1b: PracticeQuestionData = {
@@ -40,7 +40,7 @@ const part1b: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "C correctly describes the state of the scene — note the passive 'has been placed.' A and D name actions no one is performing, and B swaps the man's real action (reading) for a similar-sounding one (folding) — a classic Part 1 trap.",
+    "(C) correctly describes the state of the scene — note the passive 'has been placed.' (A) and (D) name actions no one is performing, and (B) swaps the man's real action (reading) for a similar-sounding one (folding) — a classic Part 1 trap.",
 };
 
 const part1c: PracticeQuestionData = {
@@ -61,7 +61,7 @@ const part1c: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "B matches the action actually shown — he's operating the pallet jack. A is tempting because crates are visible, but no one is loading them onto a truck; the crates are simply stacked. C and D describe actions that aren't happening. Watch for statements that name objects you can genuinely see but attach the wrong action to them.",
+    "(B) matches the action actually shown — he's operating the pallet jack. (A) is tempting because crates are visible, but no one is loading them onto a truck; the crates are simply stacked. (C) and (D) describe actions that aren't happening. Watch for statements that name objects you can genuinely see but attach the wrong action to them.",
 };
 
 const part1d: PracticeQuestionData = {
@@ -82,7 +82,7 @@ const part1d: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "A describes the visible action — she's writing in the notebook. B is the trap: the laptop is right there and open, but her hands are on the pen, not the keyboard. D swaps 'writing' for the identical-sounding 'righting,' a classic Part 1 homophone trap. C names an object in the scene but an action nobody is performing.",
+    "(A) describes the visible action — she's writing in the notebook. (B) is the trap: the laptop is right there and open, but her hands are on the pen, not the keyboard. (D) swaps 'writing' for the identical-sounding 'righting,' a classic Part 1 homophone trap. (C) names an object in the scene but an action nobody is performing.",
 };
 
 const part1e: PracticeQuestionData = {
@@ -103,7 +103,7 @@ const part1e: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "A correctly describes the state of the scene — note the passive 'has been erected,' which describes a result rather than an action in progress. When a photo is taken from far away and you can't make out precisely what each person is doing, the answer is usually a statement about the setting, not about an individual's action. B, C, and D all name specific actions that can't be seen.",
+    "(A) correctly describes the state of the scene — note the passive 'has been erected,' which describes a result rather than an action in progress. When a photo is taken from far away and you can't make out precisely what each person is doing, the answer is usually a statement about the setting, not about an individual's action. (B), (C), and (D) all name specific actions that can't be seen.",
 };
 
 const part1f: PracticeQuestionData = {
@@ -124,7 +124,7 @@ const part1f: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "D describes what's visibly happening — the passengers are walking along the platform. A and B both reverse the actual situation: the train is stopped, not departing, and the platform is crowded, not cleared. C names an action nobody is performing. Reversals like these are common in Part 1, so listen carefully to the verb.",
+    "(D) describes what's visibly happening — the passengers are walking along the platform. (A) and (B) both reverse the actual situation: the train is stopped, not departing, and the platform is crowded, not cleared. (C) names an action nobody is performing. Reversals like these are common in Part 1, so listen carefully to the verb.",
 };
 
 const part1g: PracticeQuestionData = {
@@ -145,7 +145,7 @@ const part1g: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "B matches the action actually shown — she's going through the clothes on the rack. A and C are traps built from things you really can see: the shirts are already folded and the mannequins are already dressed, but she isn't doing either. D describes an action that isn't happening at all.",
+    "(B) matches the action actually shown — she's going through the clothes on the rack. (A) and (C) are traps built from things you really can see: the shirts are already folded and the mannequins are already dressed, but she isn't doing either. (D) describes an action that isn't happening at all.",
 };
 
 const part1h: PracticeQuestionData = {
@@ -166,7 +166,7 @@ const part1h: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "C matches the action actually shown — he's cutting the onion. A and B are traps drawn from real details in the photo: there is a sink, and he is wearing an apron, but he isn't washing anything and he put the apron on long before this moment. Part 1 often names something genuinely present and pairs it with the wrong verb.",
+    "(C) matches the action actually shown — he's cutting the onion. (A) and (B) are traps drawn from real details in the photo: there is a sink, and he is wearing an apron, but he isn't washing anything and he put the apron on long before this moment. Part 1 often names something genuinely present and pairs it with the wrong verb.",
 };
 
 const part1i: PracticeQuestionData = {
@@ -187,7 +187,7 @@ const part1i: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "A is correct, and note the passive 'have been arranged' — when a photo contains no people, the answer almost always describes the position or state of objects rather than anyone's action. B and D are the trap: they invent a person the photo doesn't contain. C simply contradicts what you can see.",
+    "(A) is correct, and note the passive 'have been arranged' — when a photo contains no people, the answer almost always describes the position or state of objects rather than anyone's action. (B) and (D) are the trap: they invent a person the photo doesn't contain. (C) simply contradicts what you can see.",
 };
 
 const part1j: PracticeQuestionData = {
@@ -208,7 +208,7 @@ const part1j: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "D describes exactly what's visible — the customer holds the bag open over the fruit. A is the strongest trap: there really is a scale and there really are bananas, but nothing is on the scale. C moves the scene somewhere it isn't, and B contradicts the stall's full display.",
+    "(D) describes exactly what's visible — the customer holds the bag open over the fruit. (A) is the strongest trap: there really is a scale and there really are bananas, but nothing is on the scale. (C) moves the scene somewhere it isn't, and (B) contradicts the stall's full display.",
 };
 
 const part1k: PracticeQuestionData = {
@@ -229,7 +229,7 @@ const part1k: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "B describes the visible action — the scissors are cutting hair. D is plausible in a salon and will feel familiar, but sweeping isn't happening here. A names a different step in the same routine, and C invents a mirror the close-up doesn't show. Choose the statement that survives a look at this photo, not one that fits salons in general.",
+    "(B) describes the visible action — the scissors are cutting hair. (D) is plausible in a salon and will feel familiar, but sweeping isn't happening here. (A) names a different step in the same routine, and (C) invents a mirror the close-up doesn't show. Choose the statement that survives a look at this photo, not one that fits salons in general.",
 };
 
 const part1l: PracticeQuestionData = {
@@ -250,7 +250,7 @@ const part1l: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "C matches the action actually shown — he's aiming the handheld scanner at the rack. B and D describe things being done to the pallets, but the stock is untouched; it's already wrapped and stacked. A puts him on equipment he isn't using. In a warehouse photo, expect several statements that sound like warehouse work but describe the wrong action.",
+    "(C) matches the action actually shown — he's aiming the handheld scanner at the rack. (B) and (D) describe things being done to the pallets, but the stock is untouched; it's already wrapped and stacked. (A) puts him on equipment he isn't using. In a warehouse photo, expect several statements that sound like warehouse work but describe the wrong action.",
 };
 
 // ── Part 2 · Question–Response ──
