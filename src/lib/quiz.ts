@@ -27,6 +27,36 @@ function remapExplanationRefs(explanation: string, oldToNew: Map<string, string>
     });
 }
 
+/** One card's worth of questions: either a single standalone question or a
+ *  Part 3/4 set sharing one recording. `start` is the index of the first
+ *  question within the flat bank, which the page uses to read and write the
+ *  matching slice of its flat answers array. */
+export interface QuestionUnit {
+  start: number;
+  questions: PracticeQuestionData[];
+}
+
+/** Collapses a flat question list into render units, merging runs of
+ *  questions that share a `groupId`. Questions in a set are always adjacent in
+ *  the bank, and nothing reorders questions (only options are shuffled), so a
+ *  single forward pass is enough. */
+export function groupQuestions(questions: PracticeQuestionData[]): QuestionUnit[] {
+  const units: QuestionUnit[] = [];
+  for (let i = 0; i < questions.length; ) {
+    const groupId = questions[i].groupId;
+    if (!groupId) {
+      units.push({ start: i, questions: [questions[i]] });
+      i += 1;
+      continue;
+    }
+    let end = i;
+    while (end < questions.length && questions[end].groupId === groupId) end += 1;
+    units.push({ start: i, questions: questions.slice(i, end) });
+    i = end;
+  }
+  return units;
+}
+
 /** Returns a copy of `data` with its options shuffled into a new random order
  *  and relabeled A/B/C/D to match, so the correct answer isn't always in the
  *  same position as authored in the source data. The explanation's letter

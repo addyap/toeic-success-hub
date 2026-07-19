@@ -39,6 +39,39 @@ export function getAudioTurns(data: AudioSourceInput): AudioTurn[] {
   const questionMatch = data.context.match(TRAILING_QUESTION_RE);
   const body = questionMatch ? data.context.slice(0, questionMatch.index) : data.context;
 
+  const turns: AudioTurn[] = splitBody(body);
+
+  if (questionMatch) {
+    turns.push({ speaker: "narrator", isQuestionPrompt: true, text: questionMatch[1].trim() });
+  }
+  return turns;
+}
+
+/** Audio for a Part 3/4 question set: the conversation or talk once, followed
+ *  by each of the set's questions read by the narrator — mirroring the real
+ *  test, where one recording is followed by its three questions. The whole set
+ *  shares a single clip, so it is keyed off every question in the set; adding
+ *  or reworking any one of them re-keys the group and the clip regenerates. */
+export function getGroupAudioTurns(
+  questions: (AudioSourceInput & { question?: string })[],
+): AudioTurn[] {
+  const first = questions[0];
+  if (!first?.listening || !first.context) return [];
+
+  const questionMatch = first.context.match(TRAILING_QUESTION_RE);
+  const body = questionMatch ? first.context.slice(0, questionMatch.index) : first.context;
+
+  const turns = splitBody(body);
+  for (const q of questions) {
+    const text = q.question?.trim();
+    if (text) turns.push({ speaker: "narrator", isQuestionPrompt: true, text });
+  }
+  return turns;
+}
+
+/** Splits a conversation body into per-speaker turns, or returns a single
+ *  narrator turn for monologues (Part 4) and single-speaker prompts. */
+function splitBody(body: string): AudioTurn[] {
   const turns: AudioTurn[] = [];
   const dialogueTurns = body.split(/(?=\((?:M|W)\d?\))/g).filter((t) => t.trim().length > 0);
   if (dialogueTurns.length > 1 && /^\((?:M|W)\d?\)/.test(dialogueTurns[0])) {
@@ -59,10 +92,6 @@ export function getAudioTurns(data: AudioSourceInput): AudioTurn[] {
       .replace(/^"(.*)"$/s, "$1")
       .trim();
     turns.push({ speaker: "narrator", text: cleaned });
-  }
-
-  if (questionMatch) {
-    turns.push({ speaker: "narrator", isQuestionPrompt: true, text: questionMatch[1].trim() });
   }
   return turns;
 }

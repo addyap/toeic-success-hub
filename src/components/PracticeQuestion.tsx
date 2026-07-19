@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getAudioTurns, audioKeyForTurns, audioKey } from "@/lib/audioSource";
+import { getAudioTurns, getGroupAudioTurns, audioKeyForTurns, audioKey } from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 
 export interface PracticeQuestionData {
@@ -25,6 +25,17 @@ export interface PracticeQuestionData {
   /** Real photo shown for Part 1 (photo) questions, sourced under a
    *  commercial-use-permissive license (Wikimedia Commons). */
   image?: { src: string; credit: string };
+  /** Marks this question as part of a multi-question set sharing one
+   *  conversation or talk, as Parts 3 and 4 of the real test do (three
+   *  questions per recording). Questions in a set are consecutive in the
+   *  bank and carry an identical `context`; the passage and its audio are
+   *  rendered once for the whole set. */
+  groupId?: string;
+  /** The question sentence itself ("What does the speaker offer?"), used by
+   *  grouped questions. Ungrouped questions instead append a trailing
+   *  "Question: ..." line to `context`, which is how the single-question
+   *  bank has always stored it. */
+  question?: string;
 }
 
 export interface PracticeQuestionProps {
@@ -76,7 +87,31 @@ export function PracticeQuestion({
             </div>
           )}
           <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{data.prompt}</p>
-          {data.photo && data.image && (
+          <QuestionPassage data={data} resetKey={resetKey} revealed={revealed} />
+        </div>
+      </div>
+      <QuestionOptions data={data} picked={picked} revealed={revealed} onPick={handlePick} />
+    </div>
+  );
+}
+
+/** A question set's shared material: the photo or scene (Part 1), the audio
+ *  player, and the transcript once it may be revealed. Rendered once per set,
+ *  so the three questions of a Part 3/4 group sit under a single recording. */
+function QuestionPassage({
+  data,
+  group,
+  resetKey,
+  revealed,
+}: {
+  data: PracticeQuestionData;
+  group?: PracticeQuestionData[];
+  resetKey?: number;
+  revealed: boolean;
+}) {
+  return (
+    <>
+      {data.photo && data.image && (
             <div className="mt-3">
               <img
                 src={data.image.src}
@@ -108,8 +143,10 @@ export function PracticeQuestion({
           {data.listening && !data.photo && data.context && (
             <AudioClipPlayer
               data={data}
+              group={group}
               label={data.audio?.label ?? "Listening audio"}
               resetKey={resetKey}
+              hint={group ? "Tap play to hear the talk, then answer all the questions below." : undefined}
             />
           )}
           {!data.listening && !data.photo && data.audio && (
@@ -127,9 +164,25 @@ export function PracticeQuestion({
               </p>
             </div>
           )}
-        </div>
-      </div>
+    </>
+  );
+}
 
+/** One question's answer choices, feedback state and explanation. Rendered
+ *  once per question, whether it stands alone or belongs to a set. */
+function QuestionOptions({
+  data,
+  picked,
+  revealed,
+  onPick,
+}: {
+  data: PracticeQuestionData;
+  picked: string | null;
+  revealed: boolean;
+  onPick: (label: string) => void;
+}) {
+  return (
+    <>
       <div className="mt-4 space-y-2">
         {data.options.map((opt) => {
           const isCorrect = opt.label === data.correct;
@@ -137,7 +190,7 @@ export function PracticeQuestion({
           return (
             <button
               key={opt.label}
-              onClick={() => handlePick(opt.label)}
+              onClick={() => onPick(opt.label)}
               aria-disabled={revealed}
               className={cn(
                 "flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
@@ -201,6 +254,84 @@ export function PracticeQuestion({
           <p className="mt-1 text-sm leading-relaxed text-foreground">{data.explanation}</p>
         </div>
       )}
+    </>
+  );
+}
+
+/** A Part 3/4 question set: one conversation or talk, played once, followed by
+ *  its questions — the format the real test uses. `picked` and `onAnswer` are
+ *  indexed within the set; the page keeps answers in one flat array and maps
+ *  the set's slice in and out, so scoring and progress stay per-question. */
+export function PracticeQuestionGroup({
+  questions,
+  startIndex,
+  picked,
+  onAnswer,
+  resetKey,
+  revealed: revealedProp,
+}: {
+  questions: PracticeQuestionData[];
+  startIndex: number;
+  picked?: (string | null)[];
+  onAnswer?: (offset: number, label: string, correct: boolean) => void;
+  resetKey?: number;
+  revealed?: boolean;
+}) {
+  const [internal, setInternal] = useState<(string | null)[]>(() => questions.map(() => null));
+  const controlled = picked !== undefined;
+  const answers = controlled ? picked : internal;
+
+  useEffect(() => {
+    if (!controlled) setInternal(questions.map(() => null));
+  }, [resetKey, controlled, questions]);
+
+  const first = questions[0];
+  // The transcript stays hidden until every question in the set is answered,
+  // so it can't be used to answer the ones still open.
+  const allAnswered = questions.every((_, i) => answers[i] != null);
+  const passageRevealed = revealedProp ?? allAnswered;
+
+  const handlePick = (offset: number, label: string) => {
+    if ((revealedProp ?? answers[offset] !== null) === true) return;
+    if (!controlled) {
+      setInternal((prev) => prev.map((v, i) => (i === offset ? label : v)));
+    }
+    onAnswer?.(offset, label, label === questions[offset].correct);
+  };
+
+  return (
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+      <div className="min-w-0">
+        <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+          Questions {startIndex + 1}–{startIndex + questions.length}
+        </div>
+        <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{first.prompt}</p>
+        <QuestionPassage
+          data={first}
+          group={questions}
+          resetKey={resetKey}
+          revealed={passageRevealed}
+        />
+      </div>
+
+      <div className="mt-5 space-y-5">
+        {questions.map((q, i) => (
+          <div
+            key={q.question ?? i}
+            className="border-t border-border pt-5 first:border-t-0 first:pt-0"
+          >
+            <p className="text-sm font-semibold text-foreground">
+              {startIndex + i + 1}. {q.question}
+            </p>
+            <QuestionOptions
+              data={q}
+              picked={answers[i] ?? null}
+              revealed={revealedProp ?? answers[i] !== null}
+              onPick={(label) => handlePick(i, label)}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -211,16 +342,23 @@ export function PracticeQuestion({
  *  from a round the audio generator hasn't been re-run for yet). */
 function AudioClipPlayer({
   data,
+  group,
   label,
   resetKey,
   hint,
 }: {
   data: Pick<PracticeQuestionData, "photo" | "listening" | "context" | "options">;
+  /** When present, the clip covers a whole Part 3/4 set: the recording once,
+   *  then each of the set's questions read aloud. */
+  group?: PracticeQuestionData[];
   label: string;
   resetKey?: number;
   hint?: string;
 }) {
-  const turns = useMemo(() => getAudioTurns(data), [data]);
+  const turns = useMemo(
+    () => (group ? getGroupAudioTurns(group) : getAudioTurns(data)),
+    [data, group],
+  );
 
   // Part 1 (photo): each currently-displayed option is looked up by its own
   // content hash — never a combined key — since the client shuffles option

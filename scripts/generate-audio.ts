@@ -18,7 +18,14 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import OpenAI from "openai";
 import { listeningReadingQuestions } from "../src/data/listeningReadingQuestions";
-import { getAudioTurns, audioKeyForTurns, audioKey, type AudioTurn } from "../src/lib/audioSource";
+import {
+  getAudioTurns,
+  getGroupAudioTurns,
+  audioKeyForTurns,
+  audioKey,
+  type AudioTurn,
+} from "../src/lib/audioSource";
+import { groupQuestions } from "../src/lib/quiz";
 import type { PracticeQuestionData } from "../src/components/PracticeQuestion";
 
 const MODEL = "gpt-4o-mini-tts";
@@ -76,9 +83,12 @@ function voiceFor(turn: AudioTurn, pair: { M: string; W: string } | null): strin
   return ALL_VOICES[singleVoiceIndex++ % ALL_VOICES.length];
 }
 
-async function processItem(data: PracticeQuestionData) {
+/** `group` is the whole Part 3/4 set when `data` heads one: the clip then
+ *  covers the recording plus every question in the set, matching what the
+ *  player looks up at runtime. */
+async function processItem(data: PracticeQuestionData, group?: PracticeQuestionData[]) {
   if (!data.photo && !data.listening) return;
-  const turns = getAudioTurns(data);
+  const turns = group ? getGroupAudioTurns(group) : getAudioTurns(data);
   if (turns.length === 0) return;
 
   if (data.photo) {
@@ -120,10 +130,12 @@ async function processItem(data: PracticeQuestionData) {
 async function main() {
   await mkdir(AUDIO_DIR, { recursive: true });
   let done = 0;
-  for (const data of listeningReadingQuestions) {
-    await processItem(data);
-    done++;
-    if (done % 25 === 0) {
+  // Walk in units so a Part 3/4 set is synthesized once, as a single clip.
+  for (const unit of groupQuestions(listeningReadingQuestions)) {
+    const isSet = unit.questions.length > 1;
+    await processItem(unit.questions[0], isSet ? unit.questions : undefined);
+    done += unit.questions.length;
+    if (done % 25 < unit.questions.length) {
       console.log(`Processed ${done}/${listeningReadingQuestions.length} questions...`);
     }
   }

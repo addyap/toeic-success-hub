@@ -4108,16 +4108,24 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "2e9yl9syc6c": {
+  "dfuw81r710": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "2e9yl9syc6c-0.mp3"
+        "file": "dfuw81r710-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "2e9yl9syc6c-1.mp3"
+        "file": "dfuw81r710-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "dfuw81r710-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "dfuw81r710-3.mp3"
       }
     ]
   },

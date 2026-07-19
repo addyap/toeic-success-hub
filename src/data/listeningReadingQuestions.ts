@@ -3538,12 +3538,47 @@ const part4r: PracticeQuestionData = {
     "The speaker says, 'We're so close to our goal of two hundred thousand dollars,' implying the target has not yet been met. Exceeding it (A), lowering it (C), and a future announcement (D) are never mentioned.",
 };
 
-const part4s: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the warehouse shift-change briefing and answer the question.",
-  listening: true,
+// ── Part 4 set: one talk, three questions (real-exam format) ──
+const PART4_SHIFT_BRIEFING = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-shift-briefing",
   audio: { label: "Short talk — Warehouse shift-change briefing", durationSec: 0 },
   context:
-    "Before you head out, let's do a quick shift-change briefing. Inventory count for aisle twelve is still incomplete, so the incoming night shift needs to finish that before starting any new picks. We had two pallet jacks go down for repair today, unit four and unit seven, and maintenance says they won't be back in service until tomorrow morning, so plan your routes around that. The loading dock on the east side will be closed for resurfacing starting at ten p.m., so all outbound trucks need to use the west dock tonight. Please make sure your area is swept and pallets are stacked before you clock out. Thanks for a good shift, everyone, and pass this information along to the next crew.\n\nQuestion: According to the speaker, why will outbound trucks use the west dock tonight?",
+    "Before you head out, let's do a quick shift-change briefing. Inventory count for aisle twelve is still incomplete, so the incoming night shift needs to finish that before starting any new picks. We had two pallet jacks go down for repair today, unit four and unit seven, and maintenance says they won't be back in service until tomorrow morning, so plan your routes around that. The loading dock on the east side will be closed for resurfacing starting at ten p.m., so all outbound trucks need to use the west dock tonight. Please make sure your area is swept and pallets are stacked before you clock out. Thanks for a good shift, everyone, and pass this information along to the next crew.",
+};
+
+const part4s1: PracticeQuestionData = {
+  ...PART4_SHIFT_BRIEFING,
+  question: "Who is the speaker most likely addressing?",
+  options: [
+    { label: "A", text: "Maintenance technicians repairing equipment." },
+    { label: "B", text: "Warehouse staff at the end of their shift." },
+    { label: "C", text: "Delivery drivers waiting at the loading dock." },
+    { label: "D", text: "Customers collecting an order in person." },
+  ],
+  correct: "B",
+  explanation:
+    "The opening line, 'Before you head out, let's do a quick shift-change briefing,' and the closing instruction to sweep up 'before you clock out' place the listeners at the end of a warehouse shift. (A) and (C) name groups the talk mentions — maintenance and outbound trucks — but the speaker is talking about them, not to them, which is the most common trap on a Part 4 gist question. Set questions like this one almost always come first, so decide who is speaking to whom while the recording is still playing.",
+};
+
+const part4s2: PracticeQuestionData = {
+  ...PART4_SHIFT_BRIEFING,
+  question: "What does the speaker say about the two pallet jacks?",
+  options: [
+    { label: "A", text: "They will be out of service until tomorrow morning." },
+    { label: "B", text: "They have been replaced with new units." },
+    { label: "C", text: "They should be moved to aisle twelve." },
+    { label: "D", text: "They must be swept and stacked before clocking out." },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker says maintenance 'says they won't be back in service until tomorrow morning.' (C) and (D) both reuse real details from the talk — aisle twelve and the sweeping instruction — but attach them to the wrong subject. In a three-question set the middle question is usually a specific detail, so track the numbers and times as you listen.",
+};
+
+const part4s3: PracticeQuestionData = {
+  ...PART4_SHIFT_BRIEFING,
+  question: "Why will outbound trucks use the west dock tonight?",
   options: [
     { label: "A", text: "The west dock has more available space." },
     { label: "B", text: "The east dock is closed for resurfacing." },
@@ -3552,7 +3587,7 @@ const part4s: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The speaker states, 'The loading dock on the east side will be closed for resurfacing starting at ten p.m., so all outbound trucks need to use the west dock tonight.' More space (A), equipment installation (C), and flooding (D) are never mentioned.",
+    "The speaker states, 'The loading dock on the east side will be closed for resurfacing starting at ten p.m., so all outbound trucks need to use the west dock tonight.' More space (A), equipment installation (C), and flooding (D) are never mentioned. The final question of a set usually draws on the last part of the recording, so keep listening to the end rather than stopping once you have answered the first two.",
 };
 
 const part4t: PracticeQuestionData = {
@@ -9283,7 +9318,9 @@ export const part4Questions: PracticeQuestionData[] = [
   part4p,
   part4q,
   part4r,
-  part4s,
+  part4s1,
+  part4s2,
+  part4s3,
   part4t,
   part4u,
   part4v,

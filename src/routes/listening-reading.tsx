@@ -2,10 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
+import {
+  PracticeQuestion,
+  PracticeQuestionGroup,
+  type PracticeQuestionData,
+} from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { shuffleQuestionOptions } from "@/lib/quiz";
+import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
@@ -283,6 +287,9 @@ function PracticeSession({
   useLayoutEffect(() => {
     setDisplayQuestions(questions.map(shuffleQuestionOptions));
   }, [questions]);
+  // Part 3/4 sets render as one card, so the list is walked in units rather
+  // than per question. Indices still address the flat answers array.
+  const units = useMemo(() => groupQuestions(displayQuestions), [displayQuestions]);
   const [best, setBest] = useState<number | null>(null);
   const [bestLoaded, setBestLoaded] = useState(false);
   const [justImprovedBest, setJustImprovedBest] = useState(false);
@@ -402,16 +409,29 @@ function PracticeSession({
       </div>
 
       <div className="mt-6 space-y-5">
-        {displayQuestions.slice(0, visibleCount).map((q, i) => (
-          <PracticeQuestion
-            key={i}
-            data={q}
-            index={i}
-            picked={answers[i]}
-            resetKey={resetKey}
-            onAnswer={(label) => handleAnswer(i, label)}
-          />
-        ))}
+        {units
+          .filter((u) => u.start < visibleCount)
+          .map((u) =>
+            u.questions.length === 1 ? (
+              <PracticeQuestion
+                key={u.start}
+                data={u.questions[0]}
+                index={u.start}
+                picked={answers[u.start]}
+                resetKey={resetKey}
+                onAnswer={(label) => handleAnswer(u.start, label)}
+              />
+            ) : (
+              <PracticeQuestionGroup
+                key={u.start}
+                questions={u.questions}
+                startIndex={u.start}
+                picked={u.questions.map((_, k) => answers[u.start + k])}
+                resetKey={resetKey}
+                onAnswer={(offset, label) => handleAnswer(u.start + offset, label)}
+              />
+            ),
+          )}
       </div>
 
       {visibleCount < total && (

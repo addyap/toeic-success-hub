@@ -2,10 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Clock, Headphones, BookOpen, RotateCcw, AlertTriangle, Trophy } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { PracticeQuestion, type PracticeQuestionData } from "@/components/PracticeQuestion";
+import {
+  PracticeQuestion,
+  PracticeQuestionGroup,
+  type PracticeQuestionData,
+} from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
 import { cn, shuffle } from "@/lib/utils";
-import { shuffleQuestionOptions } from "@/lib/quiz";
+import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
@@ -89,9 +93,19 @@ const PART_LABELS: Record<number, string> = {
 };
 
 function buildMockTest(byPart: QuestionPart[]) {
+  // Sample whole units, never individual questions: a Part 3/4 set shares one
+  // recording, so pulling question 2 without 1 and 3 would strand it. The exam
+  // proportions divide evenly by three (39 = 13 sets, 30 = 10 sets), so a bank
+  // of grouped questions fills each part exactly.
   const pick = (part: number, count: number) => {
     const pool = byPart.find((p) => p.part === part)?.questions ?? [];
-    return shuffle(pool).slice(0, count).map(shuffleQuestionOptions);
+    const picked: PracticeQuestionData[] = [];
+    for (const unit of shuffle(groupQuestions(pool))) {
+      if (picked.length === count) break;
+      if (picked.length + unit.questions.length > count) continue;
+      picked.push(...unit.questions);
+    }
+    return picked.map(shuffleQuestionOptions);
   };
   const listeningQuestions = LISTENING_PARTS.flatMap(({ part, count }) => pick(part, count));
   const readingQuestions = READING_PARTS.flatMap(({ part, count }) => pick(part, count));
@@ -467,16 +481,29 @@ function PhaseView({
       </div>
 
       <div className="mt-6 space-y-5">
-        {questions.slice(0, visibleCount).map((q, i) => (
-          <PracticeQuestion
-            key={i}
-            data={q}
-            index={i}
-            picked={answers[i]}
-            revealed={false}
-            onAnswer={(label) => onAnswer(which, i, label)}
-          />
-        ))}
+        {groupQuestions(questions)
+          .filter((u) => u.start < visibleCount)
+          .map((u) =>
+            u.questions.length === 1 ? (
+              <PracticeQuestion
+                key={u.start}
+                data={u.questions[0]}
+                index={u.start}
+                picked={answers[u.start]}
+                revealed={false}
+                onAnswer={(label) => onAnswer(which, u.start, label)}
+              />
+            ) : (
+              <PracticeQuestionGroup
+                key={u.start}
+                questions={u.questions}
+                startIndex={u.start}
+                picked={u.questions.map((_, k) => answers[u.start + k])}
+                revealed={false}
+                onAnswer={(offset, label) => onAnswer(which, u.start + offset, label)}
+              />
+            ),
+          )}
       </div>
 
       {visibleCount < questions.length && (
@@ -604,9 +631,27 @@ function ResultsView({
         <div className="mt-8">
           <h2 className="font-display text-2xl font-semibold">Answer review</h2>
           <div className="mt-4 space-y-5">
-            {allQuestions.slice(0, reviewVisible).map((q, i) => (
-              <PracticeQuestion key={i} data={q} index={i} picked={allAnswers[i]} revealed />
-            ))}
+            {groupQuestions(allQuestions)
+              .filter((u) => u.start < reviewVisible)
+              .map((u) =>
+                u.questions.length === 1 ? (
+                  <PracticeQuestion
+                    key={u.start}
+                    data={u.questions[0]}
+                    index={u.start}
+                    picked={allAnswers[u.start]}
+                    revealed
+                  />
+                ) : (
+                  <PracticeQuestionGroup
+                    key={u.start}
+                    questions={u.questions}
+                    startIndex={u.start}
+                    picked={u.questions.map((_, k) => allAnswers[u.start + k])}
+                    revealed
+                  />
+                ),
+              )}
           </div>
           {reviewVisible < allQuestions.length && (
             <button
