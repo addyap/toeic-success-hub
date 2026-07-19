@@ -6,6 +6,7 @@ import { PracticeQuestion, type PracticeQuestionData } from "@/components/Practi
 import { absoluteUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { shuffleQuestionOptions } from "@/lib/quiz";
+import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
 // The question bank (500+ items, growing every content round) is loaded via
@@ -89,7 +90,7 @@ const readingParts = [
 ];
 
 function Page() {
-  const [selectedPart, setSelectedPart] = useState<number | "all">("all");
+  const [selectedPart, setSelectedPart] = useState<ProgressScope>("all");
   const [bank, setBank] = useState<{
     all: PracticeQuestionData[];
     byPart: QuestionPart[];
@@ -185,7 +186,12 @@ function Page() {
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
           <PartFilter selectedPart={selectedPart} onSelect={setSelectedPart} />
           {activeQuestions ? (
-            <PracticeSession key={storageKey} questions={activeQuestions} storageKey={storageKey} />
+            <PracticeSession
+              key={storageKey}
+              questions={activeQuestions}
+              storageKey={storageKey}
+              scope={selectedPart}
+            />
           ) : (
             <PracticeSessionSkeleton />
           )}
@@ -214,8 +220,8 @@ function PartFilter({
   selectedPart,
   onSelect,
 }: {
-  selectedPart: number | "all";
-  onSelect: (part: number | "all") => void;
+  selectedPart: ProgressScope;
+  onSelect: (part: ProgressScope) => void;
 }) {
   return (
     <div className="mb-6 flex flex-wrap gap-2">
@@ -260,9 +266,11 @@ const PAGE_SIZE = 15;
 function PracticeSession({
   questions,
   storageKey,
+  scope,
 }: {
   questions: PracticeQuestionData[];
   storageKey: string;
+  scope: ProgressScope;
 }) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
@@ -321,6 +329,16 @@ function PracticeSession({
       }
     }
   }, [complete, score, bestLoaded, storageKey]);
+
+  // Fires once per completed session (re-fires only if `complete` toggles
+  // false→true again, i.e. after a reset) — feeds the cross-page progress
+  // history and daily streak, independent of whether this was a new best.
+  useEffect(() => {
+    if (!complete || total === 0) return;
+    recordSession({ source: "practice", scope, correct: score, total });
+    recordActivity();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [complete]);
 
   const handleAnswer = (idx: number, label: string) => {
     setAnswers((prev) => {

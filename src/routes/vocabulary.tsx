@@ -13,6 +13,8 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn, shuffle } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
+import { recordVocabAnswer, weightedPickTerm } from "@/lib/vocabStats";
+import { recordActivity } from "@/lib/progress";
 import {
   vocabularyGlosses,
   GLOSS_LANGUAGES,
@@ -342,7 +344,9 @@ interface QuizQuestion {
 }
 
 function buildQuestion(terms: VocabTerm[], pool: VocabTerm[]): QuizQuestion {
-  const answer = terms[Math.floor(Math.random() * terms.length)];
+  // Recently-missed terms are weighted to come up more often (lightweight
+  // spaced repetition), while every term keeps a nonzero chance of appearing.
+  const answer = weightedPickTerm(terms, (t) => t.term);
   // Distractors prefer same category, fall back to full pool
   const sameCat = pool.filter((t) => t.term !== answer.term && t.category === answer.category);
   const others = pool.filter((t) => t.term !== answer.term);
@@ -384,11 +388,14 @@ function Quiz({
 
   const choose = (term: string) => {
     if (revealed) return;
+    const isCorrect = term === q.answer.term;
     setPicked(term);
     setScore((s) => ({
-      correct: s.correct + (term === q.answer.term ? 1 : 0),
+      correct: s.correct + (isCorrect ? 1 : 0),
       total: s.total + 1,
     }));
+    recordVocabAnswer(q.answer.term, isCorrect);
+    recordActivity();
   };
 
   const nextQuestion = () => {

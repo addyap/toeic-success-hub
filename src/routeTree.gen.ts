@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VocabularyRouteImport } from './routes/vocabulary'
 import { Route as SpeakingWritingRouteImport } from './routes/speaking-writing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
 import { Route as IndexRouteImport } from './routes/index'
@@ -31,6 +32,11 @@ const SpeakingWritingRoute = SpeakingWritingRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MockTestRoute = MockTestRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
   '/vocabulary': typeof VocabularyRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
   '/vocabulary': typeof VocabularyRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
   '/vocabulary': typeof VocabularyRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/listening-reading'
     | '/mock-test'
+    | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
     | '/vocabulary'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/listening-reading'
     | '/mock-test'
+    | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
     | '/vocabulary'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/listening-reading'
     | '/mock-test'
+    | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
     | '/vocabulary'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ListeningReadingRoute: typeof ListeningReadingRoute
   MockTestRoute: typeof MockTestRoute
+  ProgressRoute: typeof ProgressRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpeakingWritingRoute: typeof SpeakingWritingRoute
   VocabularyRoute: typeof VocabularyRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mock-test': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ListeningReadingRoute: ListeningReadingRoute,
   MockTestRoute: MockTestRoute,
+  ProgressRoute: ProgressRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpeakingWritingRoute: SpeakingWritingRoute,
   VocabularyRoute: VocabularyRoute,

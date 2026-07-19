@@ -6,6 +6,7 @@ import { PracticeQuestion, type PracticeQuestionData } from "@/components/Practi
 import { absoluteUrl } from "@/lib/site";
 import { cn, shuffle } from "@/lib/utils";
 import { shuffleQuestionOptions } from "@/lib/quiz";
+import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
 export const Route = createFileRoute("/mock-test")({
@@ -199,6 +200,21 @@ function Page() {
     } catch {
       // localStorage unavailable — last-result summary just won't persist
     }
+    for (const p of result.byPart) {
+      recordSession({
+        source: "mock-test",
+        scope: p.part as ProgressScope,
+        correct: p.correct,
+        total: p.total,
+      });
+    }
+    recordSession({
+      source: "mock-test",
+      scope: "all",
+      correct: result.totalCorrect,
+      total: result.totalQuestions,
+    });
+    recordActivity();
     setLastResult(result);
     setFinished({ session: s, result });
     saveSession(null);

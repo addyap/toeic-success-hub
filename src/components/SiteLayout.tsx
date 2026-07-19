@@ -10,6 +10,7 @@ const navItems = [
   { to: "/speaking-writing", label: "Speaking & Writing" },
   { to: "/vocabulary", label: "Vocabulary" },
   { to: "/study-tips", label: "Study Tips" },
+  { to: "/progress", label: "My Progress" },
 ] as const;
 
 export function SiteLayout({ children }: { children: ReactNode }) {
@@ -141,6 +142,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link to="/study-tips" className="hover:text-foreground">
                   Study Tips
+                </Link>
+              </li>
+              <li>
+                <Link to="/progress" className="hover:text-foreground">
+                  My Progress
                 </Link>
               </li>
             </ul>
