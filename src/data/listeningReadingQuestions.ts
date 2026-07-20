@@ -6202,10 +6202,15 @@ const part6grp10d: PracticeQuestionData = {
 };
 
 // ── Part 7 · Reading Comprehension ──
-const part7: PracticeQuestionData = {
-  prompt: "Part 7 · Read the email and answer the question.",
+const PART7_OFFICE_CLOSURE = {
+  prompt: "Part 7 · Read the email and answer the questions.",
+  groupId: "p7single-office-closure",
   context:
-    "From: m.tanaka@northwind.co\nTo: all-staff@northwind.co\nSubject: Office closure\n\nPlease note that the Tokyo office will be closed on Monday, June 22, for routine electrical maintenance. Staff are encouraged to work from home that day. Normal operations will resume on Tuesday.\n\nQuestion: Why will the office be closed?",
+    "From: m.tanaka@northwind.co\nTo: all-staff@northwind.co\nSubject: Office closure\n\nPlease note that the Tokyo office will be closed on Monday, June 22, for routine electrical maintenance. Staff are encouraged to work from home that day. Normal operations will resume on Tuesday.",
+};
+const part7: PracticeQuestionData = {
+  ...PART7_OFFICE_CLOSURE,
+  question: "Why will the office be closed?",
   options: [
     { label: "A", text: "For a national holiday." },
     { label: "B", text: "For electrical maintenance." },
@@ -6216,11 +6221,29 @@ const part7: PracticeQuestionData = {
   explanation:
     "The email states the closure is 'for routine electrical maintenance', so (B) is correct.",
 };
+const part72: PracticeQuestionData = {
+  ...PART7_OFFICE_CLOSURE,
+  question: "What are staff encouraged to do on the day of the closure?",
+  options: [
+    { label: "A", text: "Come into the office as usual." },
+    { label: "B", text: "Work from home." },
+    { label: "C", text: "Take a paid day off." },
+    { label: "D", text: "Report to a different office location." },
+  ],
+  correct: "B",
+  explanation:
+    "The email states 'Staff are encouraged to work from home that day', so (B) is correct.",
+};
 
-const part7b: PracticeQuestionData = {
-  prompt: "Part 7 · Read the notice and answer the question.",
+const PART7_KETTLE_RECALL = {
+  prompt: "Part 7 · Read the notice and answer the questions.",
+  groupId: "p7single-kettle-recall",
   context:
-    "PRODUCT RECALL NOTICE\nBrightHome Appliances\n\nModel: BH-2200 Electric Kettle\n\nBrightHome Appliances is voluntarily recalling all BH-2200 Electric Kettles manufactured between March and June 2025. A defect in the base wiring may cause the kettle to overheat during use, posing a fire risk. No injuries have been reported to date.\n\nCustomers who purchased this model should stop using it immediately and contact our support line at 1-800-555-0199 to arrange a free replacement. Proof of purchase is not required.\n\nQuestion: Why is BrightHome Appliances recalling the BH-2200 Electric Kettle?",
+    "PRODUCT RECALL NOTICE\nBrightHome Appliances\n\nModel: BH-2200 Electric Kettle\n\nBrightHome Appliances is voluntarily recalling all BH-2200 Electric Kettles manufactured between March and June 2025. A defect in the base wiring may cause the kettle to overheat during use, posing a fire risk. No injuries have been reported to date.\n\nCustomers who purchased this model should stop using it immediately and contact our support line at 1-800-555-0199 to arrange a free replacement. Proof of purchase is not required.",
+};
+const part7b: PracticeQuestionData = {
+  ...PART7_KETTLE_RECALL,
+  question: "Why is BrightHome Appliances recalling the BH-2200 Electric Kettle?",
   options: [
     { label: "A", text: "Because customers complained about its price." },
     { label: "B", text: "Because the wiring defect creates a fire risk." },
@@ -6231,11 +6254,41 @@ const part7b: PracticeQuestionData = {
   explanation:
     "The notice states the defect 'may cause the kettle to overheat during use, posing a fire risk', so (B) is correct.",
 };
+const part7b2: PracticeQuestionData = {
+  ...PART7_KETTLE_RECALL,
+  question: "What are customers who purchased this model instructed to do?",
+  options: [
+    { label: "A", text: "Return the kettle to the store where it was purchased." },
+    { label: "B", text: "Stop using it immediately and contact the support line." },
+    { label: "C", text: "Wait for a replacement part to arrive by mail." },
+    { label: "D", text: "Register the product online for a refund." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice instructs customers to 'stop using it immediately and contact our support line ... to arrange a free replacement', so (B) is correct.",
+};
+const part7b3: PracticeQuestionData = {
+  ...PART7_KETTLE_RECALL,
+  question: "What is indicated about proof of purchase for the replacement?",
+  options: [
+    { label: "A", text: "It must be submitted online." },
+    { label: "B", text: "It is not required." },
+    { label: "C", text: "It must be the original receipt only." },
+    { label: "D", text: "It is required only for kettles purchased after June 2025." },
+  ],
+  correct: "B",
+  explanation: "The notice states 'Proof of purchase is not required', so (B) is correct.",
+};
 
-const part7c: PracticeQuestionData = {
-  prompt: "Part 7 · Read the job posting and answer the question.",
+const PART7_DATA_ANALYST = {
+  prompt: "Part 7 · Read the job posting and answer the questions.",
+  groupId: "p7single-data-analyst",
   context:
-    "JUNIOR DATA ANALYST — Riverstone Consulting\n\nWe are seeking a detail-oriented Junior Data Analyst to join our growing team in Chicago. Responsibilities include cleaning datasets, building dashboards, and presenting findings to clients. Candidates must hold a bachelor's degree in statistics, economics, or a related field, and have at least one year of experience with SQL. Familiarity with Python is a plus but not required.\n\nThis is a hybrid role requiring two days per week in the office. Interested applicants should submit a resume and cover letter by August 15.\n\nQuestion: What is required of applicants for this position?",
+    "JUNIOR DATA ANALYST — Riverstone Consulting\n\nWe are seeking a detail-oriented Junior Data Analyst to join our growing team in Chicago. Responsibilities include cleaning datasets, building dashboards, and presenting findings to clients. Candidates must hold a bachelor's degree in statistics, economics, or a related field, and have at least one year of experience with SQL. Familiarity with Python is a plus but not required.\n\nThis is a hybrid role requiring two days per week in the office. Interested applicants should submit a resume and cover letter by August 15.",
+};
+const part7c: PracticeQuestionData = {
+  ...PART7_DATA_ANALYST,
+  question: "What is required of applicants for this position?",
   options: [
     { label: "A", text: "A master's degree in computer science." },
     { label: "B", text: "Advanced proficiency in Python." },
@@ -6246,11 +6299,42 @@ const part7c: PracticeQuestionData = {
   explanation:
     "The posting states candidates 'must hold a bachelor's degree ... and have at least one year of experience with SQL', while Python is described as 'a plus but not required', so (C) is correct.",
 };
+const part7c2: PracticeQuestionData = {
+  ...PART7_DATA_ANALYST,
+  question: "What does the posting indicate about the work arrangement for this role?",
+  options: [
+    { label: "A", text: "It is a fully remote position." },
+    { label: "B", text: "It requires two days per week in the office." },
+    { label: "C", text: "It requires relocation to a different city." },
+    { label: "D", text: "It is a temporary, six-month contract." },
+  ],
+  correct: "B",
+  explanation:
+    "The posting states 'This is a hybrid role requiring two days per week in the office', so (B) is correct.",
+};
+const part7c3: PracticeQuestionData = {
+  ...PART7_DATA_ANALYST,
+  question: "By when should interested applicants submit their materials?",
+  options: [
+    { label: "A", text: "August 15." },
+    { label: "B", text: "Within one year of the posting." },
+    { label: "C", text: "Before their SQL certification expires." },
+    { label: "D", text: "On their first day of work." },
+  ],
+  correct: "A",
+  explanation:
+    "The posting states 'Interested applicants should submit a resume and cover letter by August 15', so (A) is correct.",
+};
 
-const part7d: PracticeQuestionData = {
-  prompt: "Part 7 · Read the flyer and answer the question.",
+const PART7_HOTEL_PACKAGE = {
+  prompt: "Part 7 · Read the flyer and answer the questions.",
+  groupId: "p7single-hotel-package",
   context:
-    "THE HARBOR VIEW HOTEL — Weekday Escape Package\n\nHelp us fill our rooms during the quieter weekdays! Our Weekday Escape Package is available Sunday through Thursday nights only and includes a deluxe room with harbor views, a complimentary breakfast for two, and a 20% discount at our on-site spa. Rooms must be booked at least seven days in advance, and the package is not available during holiday weekends.\n\nGuests who mention this flyer at check-in will also receive a late checkout until 2 p.m., subject to availability.\n\nQuestion: What can be inferred about the Weekday Escape Package?",
+    "THE HARBOR VIEW HOTEL — Weekday Escape Package\n\nHelp us fill our rooms during the quieter weekdays! Our Weekday Escape Package is available Sunday through Thursday nights only and includes a deluxe room with harbor views, a complimentary breakfast for two, and a 20% discount at our on-site spa. Rooms must be booked at least seven days in advance, and the package is not available during holiday weekends.\n\nGuests who mention this flyer at check-in will also receive a late checkout until 2 p.m., subject to availability.",
+};
+const part7d: PracticeQuestionData = {
+  ...PART7_HOTEL_PACKAGE,
+  question: "What can be inferred about the Weekday Escape Package?",
   options: [
     { label: "A", text: "It is designed to attract guests during slower business days." },
     { label: "B", text: "It is only available to hotel loyalty program members." },
@@ -6261,11 +6345,29 @@ const part7d: PracticeQuestionData = {
   explanation:
     "The flyer opens with 'Help us fill our rooms during the quieter weekdays!' and limits the package to 'Sunday through Thursday nights only', indicating it is meant to attract guests on slower days, so (A) is correct.",
 };
+const part7d2: PracticeQuestionData = {
+  ...PART7_HOTEL_PACKAGE,
+  question: "What additional benefit can guests receive by mentioning the flyer at check-in?",
+  options: [
+    { label: "A", text: "A free upgrade to a suite." },
+    { label: "B", text: "A late checkout until 2 p.m., subject to availability." },
+    { label: "C", text: "A complimentary dinner for two." },
+    { label: "D", text: "An extra 10% discount at the spa." },
+  ],
+  correct: "B",
+  explanation:
+    "The flyer states guests who mention it at check-in 'will also receive a late checkout until 2 p.m., subject to availability', so (B) is correct.",
+};
 
-const part7e: PracticeQuestionData = {
-  prompt: "Part 7 · Read the delivery notice and answer the question.",
+const PART7_DELIVERY_NOTICE = {
+  prompt: "Part 7 · Read the delivery notice and answer the questions.",
+  groupId: "p7single-delivery-notice",
   context:
-    "SWIFTCARGO DELIVERY NOTICE\n\nTracking Number: SC-88213456\n\nOur driver attempted to deliver your package today at 2:15 p.m., but no one was available to accept it at the address provided. Because the package requires a signature upon delivery, it could not be left at your door.\n\nYour package is now being held at our local depot (14 Elm Street) for up to five business days. To arrange redelivery or to pick up the package yourself, please schedule a time using the SwiftCargo app or call 1-800-555-0134. If the package is not claimed within five business days, it will be returned to the sender.\n\nQuestion: What must the recipient do to receive the package?",
+    "SWIFTCARGO DELIVERY NOTICE\n\nTracking Number: SC-88213456\n\nOur driver attempted to deliver your package today at 2:15 p.m., but no one was available to accept it at the address provided. Because the package requires a signature upon delivery, it could not be left at your door.\n\nYour package is now being held at our local depot (14 Elm Street) for up to five business days. To arrange redelivery or to pick up the package yourself, please schedule a time using the SwiftCargo app or call 1-800-555-0134. If the package is not claimed within five business days, it will be returned to the sender.",
+};
+const part7e: PracticeQuestionData = {
+  ...PART7_DELIVERY_NOTICE,
+  question: "What must the recipient do to receive the package?",
   options: [
     { label: "A", text: "Wait for a second automatic delivery attempt." },
     { label: "B", text: "Pay a redelivery fee at the depot." },
@@ -6276,11 +6378,42 @@ const part7e: PracticeQuestionData = {
   explanation:
     "The notice instructs the recipient to 'schedule a time using the SwiftCargo app or call 1-800-555-0134' before the depot hold of 'up to five business days' expires, so (C) is correct.",
 };
+const part7e2: PracticeQuestionData = {
+  ...PART7_DELIVERY_NOTICE,
+  question: "Why couldn't the driver leave the package at the recipient's door?",
+  options: [
+    { label: "A", text: "The package was too large to fit." },
+    { label: "B", text: "The package requires a signature upon delivery." },
+    { label: "C", text: "The address on the package was incorrect." },
+    { label: "D", text: "The recipient had requested it be held at the depot." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Because the package requires a signature upon delivery, it could not be left at your door', so (B) is correct.",
+};
+const part7e3: PracticeQuestionData = {
+  ...PART7_DELIVERY_NOTICE,
+  question: "What will happen if the package is not claimed within five business days?",
+  options: [
+    { label: "A", text: "It will be delivered again automatically." },
+    { label: "B", text: "It will be donated to a local charity." },
+    { label: "C", text: "It will be returned to the sender." },
+    { label: "D", text: "A storage fee will be added to the delivery cost." },
+  ],
+  correct: "C",
+  explanation:
+    "The notice states 'If the package is not claimed within five business days, it will be returned to the sender', so (C) is correct.",
+};
 
-const part7f: PracticeQuestionData = {
-  prompt: "Part 7 · Read the letter and answer the question.",
+const PART7_FURNITURE_LETTER = {
+  prompt: "Part 7 · Read the letter and answer the questions.",
+  groupId: "p7single-furniture-letter",
   context:
-    "Dear Ms. Alvarez,\n\nThank you for bringing the issue with your recent order (#48213) to our attention. We are sorry to hear that the dining chairs arrived with visible scratches on the armrests. This does not meet the quality standard we aim to provide, and we take full responsibility for the packaging oversight that caused the damage.\n\nA replacement set will be shipped to you at no additional cost, and you should receive it within 5-7 business days. We have also issued a 15% discount code, SAVE15, for use on your next purchase with us. Please keep the damaged chairs until the replacement arrives, as our courier will collect them at that time.\n\nSincerely,\nDaniel Osei\nCustomer Care, Aldridge Furniture\n\nQuestion: What can be inferred from the letter?",
+    "Dear Ms. Alvarez,\n\nThank you for bringing the issue with your recent order (#48213) to our attention. We are sorry to hear that the dining chairs arrived with visible scratches on the armrests. This does not meet the quality standard we aim to provide, and we take full responsibility for the packaging oversight that caused the damage.\n\nA replacement set will be shipped to you at no additional cost, and you should receive it within 5-7 business days. We have also issued a 15% discount code, SAVE15, for use on your next purchase with us. Please keep the damaged chairs until the replacement arrives, as our courier will collect them at that time.\n\nSincerely,\nDaniel Osei\nCustomer Care, Aldridge Furniture",
+};
+const part7f: PracticeQuestionData = {
+  ...PART7_FURNITURE_LETTER,
+  question: "What can be inferred from the letter?",
   options: [
     { label: "A", text: "The customer will be charged for the replacement chairs." },
     { label: "B", text: "The company believes its own packaging process caused the damage." },
@@ -6291,11 +6424,55 @@ const part7f: PracticeQuestionData = {
   explanation:
     "The letter states the company 'take[s] full responsibility for the packaging oversight that caused the damage', indicating it believes its own process was at fault, so (B) is correct.",
 };
+const part7f2: PracticeQuestionData = {
+  ...PART7_FURNITURE_LETTER,
+  question: "What will the company provide at no additional cost?",
+  options: [
+    { label: "A", text: "A full refund instead of a replacement." },
+    { label: "B", text: "A replacement set of chairs." },
+    { label: "C", text: "An extended warranty on future orders." },
+    { label: "D", text: "A gift card for a future purchase." },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states 'A replacement set will be shipped to you at no additional cost', so (B) is correct.",
+};
+const part7f3: PracticeQuestionData = {
+  ...PART7_FURNITURE_LETTER,
+  question: "What is Ms. Alvarez asked to do with the damaged chairs?",
+  options: [
+    { label: "A", text: "Discard them immediately." },
+    { label: "B", text: "Return them by mail using a prepaid label." },
+    { label: "C", text: "Keep them until the replacement arrives, when the courier will collect them." },
+    { label: "D", text: "Donate them to a local charity." },
+  ],
+  correct: "C",
+  explanation:
+    "The letter asks her to 'keep the damaged chairs until the replacement arrives, as our courier will collect them at that time', so (C) is correct.",
+};
+const part7f4: PracticeQuestionData = {
+  ...PART7_FURNITURE_LETTER,
+  question: "What additional benefit did the company offer?",
+  options: [
+    { label: "A", text: "Free shipping on all future orders." },
+    { label: "B", text: "A 15% discount code for a future purchase." },
+    { label: "C", text: "A store credit equal to the order total." },
+    { label: "D", text: "Priority customer support access." },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states the company 'issued a 15% discount code, SAVE15, for use on your next purchase', so (B) is correct.",
+};
 
-const part7g: PracticeQuestionData = {
-  prompt: "Part 7 · Read the reminder and answer the question.",
+const PART7_WARRANTY_REMINDER = {
+  prompt: "Part 7 · Read the reminder and answer the questions.",
+  groupId: "p7single-warranty-reminder",
   context:
-    "WARRANTY REGISTRATION REMINDER\nVantage Home Electronics\n\nDear Customer,\n\nOur records show that you purchased a Vantage 55-inch Smart TV (Model VX-550) on April 3, but have not yet registered your product for warranty coverage. Registering online at vantage-electronics.com/register takes less than five minutes and extends your standard one-year warranty to two years at no additional cost.\n\nPlease note that registration must be completed within 30 days of purchase. If you do not register by May 3, your warranty will remain limited to the standard one-year term.\n\nQuestion: What will happen if the customer does not register the TV by May 3?",
+    "WARRANTY REGISTRATION REMINDER\nVantage Home Electronics\n\nDear Customer,\n\nOur records show that you purchased a Vantage 55-inch Smart TV (Model VX-550) on April 3, but have not yet registered your product for warranty coverage. Registering online at vantage-electronics.com/register takes less than five minutes and extends your standard one-year warranty to two years at no additional cost.\n\nPlease note that registration must be completed within 30 days of purchase. If you do not register by May 3, your warranty will remain limited to the standard one-year term.",
+};
+const part7g: PracticeQuestionData = {
+  ...PART7_WARRANTY_REMINDER,
+  question: "What will happen if the customer does not register the TV by May 3?",
   options: [
     { label: "A", text: "The TV will be automatically returned to the store." },
     { label: "B", text: "The warranty will remain limited to one year." },
@@ -6306,11 +6483,29 @@ const part7g: PracticeQuestionData = {
   explanation:
     "The reminder states 'If you do not register by May 3, your warranty will remain limited to the standard one-year term', so (B) is correct.",
 };
+const part7g2: PracticeQuestionData = {
+  ...PART7_WARRANTY_REMINDER,
+  question: "What benefit does registering the product provide?",
+  options: [
+    { label: "A", text: "A free accessory bundle." },
+    { label: "B", text: "An extension of the warranty from one year to two years." },
+    { label: "C", text: "A discount on future Vantage purchases." },
+    { label: "D", text: "Priority customer support access." },
+  ],
+  correct: "B",
+  explanation:
+    "The reminder states registering 'extends your standard one-year warranty to two years at no additional cost', so (B) is correct.",
+};
 
-const part7h: PracticeQuestionData = {
-  prompt: "Part 7 · Read the confirmation and answer the question.",
+const PART7_SUMMIT_CONFIRMATION = {
+  prompt: "Part 7 · Read the confirmation and answer the questions.",
+  groupId: "p7single-summit-confirmation",
   context:
-    "REGISTRATION CONFIRMATION\nGlobal Marketing Summit 2026\n\nDear Ms. Alvarez,\n\nThank you for registering for the Global Marketing Summit, taking place September 14-15 at the Riverside Convention Center. Your registration includes access to all keynote sessions, workshop tracks, and the networking reception on the evening of September 14.\n\nPlease bring a printed or digital copy of this confirmation to the registration desk to receive your attendee badge. Note that workshop seats are assigned on a first-come, first-served basis, so we recommend arriving at least 30 minutes before your first session.\n\nQuestion: Why does the confirmation recommend arriving 30 minutes early?",
+    "REGISTRATION CONFIRMATION\nGlobal Marketing Summit 2026\n\nDear Ms. Alvarez,\n\nThank you for registering for the Global Marketing Summit, taking place September 14-15 at the Riverside Convention Center. Your registration includes access to all keynote sessions, workshop tracks, and the networking reception on the evening of September 14.\n\nPlease bring a printed or digital copy of this confirmation to the registration desk to receive your attendee badge. Note that workshop seats are assigned on a first-come, first-served basis, so we recommend arriving at least 30 minutes before your first session.",
+};
+const part7h: PracticeQuestionData = {
+  ...PART7_SUMMIT_CONFIRMATION,
+  question: "Why does the confirmation recommend arriving 30 minutes early?",
   options: [
     { label: "A", text: "Because parking is limited near the venue." },
     {
@@ -6324,11 +6519,42 @@ const part7h: PracticeQuestionData = {
   explanation:
     "The confirmation notes that 'workshop seats are assigned on a first-come, first-served basis, so we recommend arriving at least 30 minutes before your first session', so (B) is correct.",
 };
+const part7h2: PracticeQuestionData = {
+  ...PART7_SUMMIT_CONFIRMATION,
+  question: "What is included in Ms. Alvarez's registration?",
+  options: [
+    { label: "A", text: "Access to all keynote sessions, workshop tracks, and the networking reception." },
+    { label: "B", text: "A hotel room for the two nights of the summit." },
+    { label: "C", text: "Round-trip transportation to the convention center." },
+    { label: "D", text: "One-on-one meetings with keynote speakers." },
+  ],
+  correct: "A",
+  explanation:
+    "The confirmation states registration 'includes access to all keynote sessions, workshop tracks, and the networking reception', so (A) is correct.",
+};
+const part7h3: PracticeQuestionData = {
+  ...PART7_SUMMIT_CONFIRMATION,
+  question: "What must Ms. Alvarez bring to receive her attendee badge?",
+  options: [
+    { label: "A", text: "A government-issued photo ID." },
+    { label: "B", text: "A printed or digital copy of the confirmation." },
+    { label: "C", text: "Payment for the remaining registration balance." },
+    { label: "D", text: "A letter of introduction from her employer." },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation asks attendees to 'bring a printed or digital copy of this confirmation to the registration desk to receive your attendee badge', so (B) is correct.",
+};
 
-const part7i: PracticeQuestionData = {
-  prompt: "Part 7 · Read the notice and answer the question.",
+const PART7_SUBSCRIPTION_RENEWAL = {
+  prompt: "Part 7 · Read the notice and answer the questions.",
+  groupId: "p7single-subscription-renewal",
   context:
-    "SUBSCRIPTION RENEWAL NOTICE\nCloudTrack Project Management Software\n\nYour CloudTrack Pro annual subscription (Account #48210) is set to renew automatically on August 20 at the current rate of $180/year. If you would like to switch to a different plan or cancel your subscription, please do so before August 13 through your account settings page.\n\nNote: starting with this renewal cycle, all Pro plans will include unlimited file storage, a feature previously available only to Enterprise subscribers.\n\nQuestion: What can be inferred about the Enterprise plan before this renewal cycle?",
+    "SUBSCRIPTION RENEWAL NOTICE\nCloudTrack Project Management Software\n\nYour CloudTrack Pro annual subscription (Account #48210) is set to renew automatically on August 20 at the current rate of $180/year. If you would like to switch to a different plan or cancel your subscription, please do so before August 13 through your account settings page.\n\nNote: starting with this renewal cycle, all Pro plans will include unlimited file storage, a feature previously available only to Enterprise subscribers.",
+};
+const part7i: PracticeQuestionData = {
+  ...PART7_SUBSCRIPTION_RENEWAL,
+  question: "What can be inferred about the Enterprise plan before this renewal cycle?",
   options: [
     { label: "A", text: "It cost less than the Pro plan." },
     { label: "B", text: "It offered unlimited file storage while the Pro plan did not." },
@@ -6339,11 +6565,29 @@ const part7i: PracticeQuestionData = {
   explanation:
     "Since unlimited file storage is described as 'a feature previously available only to Enterprise subscribers', it follows that Enterprise had this feature while Pro did not, so (B) is correct.",
 };
+const part7i2: PracticeQuestionData = {
+  ...PART7_SUBSCRIPTION_RENEWAL,
+  question: "What must a subscriber do to switch plans or cancel before the renewal?",
+  options: [
+    { label: "A", text: "Call customer support directly." },
+    { label: "B", text: "Make the change through the account settings page before August 13." },
+    { label: "C", text: "Submit a written cancellation request by mail." },
+    { label: "D", text: "Wait until after the renewal charge to request a refund." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states subscribers should 'do so before August 13 through your account settings page', so (B) is correct.",
+};
 
-const part7j: PracticeQuestionData = {
-  prompt: "Part 7 · Read the listing and answer the question.",
+const PART7_OFFICE_LEASE = {
+  prompt: "Part 7 · Read the listing and answer the questions.",
+  groupId: "p7single-office-lease",
   context:
-    "OFFICE SPACE FOR LEASE\nMeridian Business Park, Suite 210\n\nAvailable immediately: a 650-square-foot office suite on the second floor, featuring two private rooms, a shared reception area, and high-speed fiber internet included in the rent. Monthly rent is $1,450, with a minimum lease term of 12 months.\n\nOn-site parking is available for an additional $75/month per space. Interested parties should contact the leasing office at leasing@meridianpark.com to schedule a viewing.\n\nQuestion: What is included in the $1,450 monthly rent?",
+    "OFFICE SPACE FOR LEASE\nMeridian Business Park, Suite 210\n\nAvailable immediately: a 650-square-foot office suite on the second floor, featuring two private rooms, a shared reception area, and high-speed fiber internet included in the rent. Monthly rent is $1,450, with a minimum lease term of 12 months.\n\nOn-site parking is available for an additional $75/month per space. Interested parties should contact the leasing office at leasing@meridianpark.com to schedule a viewing.",
+};
+const part7j: PracticeQuestionData = {
+  ...PART7_OFFICE_LEASE,
+  question: "What is included in the $1,450 monthly rent?",
   options: [
     { label: "A", text: "On-site parking for one vehicle." },
     { label: "B", text: "High-speed fiber internet." },
@@ -6354,11 +6598,42 @@ const part7j: PracticeQuestionData = {
   explanation:
     "The listing states the suite features 'high-speed fiber internet included in the rent', so (B) is correct.",
 };
+const part7j2: PracticeQuestionData = {
+  ...PART7_OFFICE_LEASE,
+  question: "What is the minimum lease term for the suite?",
+  options: [
+    { label: "A", text: "Six months." },
+    { label: "B", text: "12 months." },
+    { label: "C", text: "24 months." },
+    { label: "D", text: "There is no minimum term." },
+  ],
+  correct: "B",
+  explanation:
+    "The listing states the suite has 'a minimum lease term of 12 months', so (B) is correct.",
+};
+const part7j3: PracticeQuestionData = {
+  ...PART7_OFFICE_LEASE,
+  question: "How can interested parties schedule a viewing?",
+  options: [
+    { label: "A", text: "By visiting the property during posted open-house hours." },
+    { label: "B", text: "By contacting the leasing office by email." },
+    { label: "C", text: "By submitting a request through an online booking form." },
+    { label: "D", text: "By calling the building's front desk." },
+  ],
+  correct: "B",
+  explanation:
+    "The listing states interested parties 'should contact the leasing office at leasing@meridianpark.com to schedule a viewing', so (B) is correct.",
+};
 
-const part7k: PracticeQuestionData = {
-  prompt: "Part 7 · Read the announcement and answer the question.",
+const PART7_MENU_UPDATE = {
+  prompt: "Part 7 · Read the announcement and answer the questions.",
+  groupId: "p7single-menu-update",
   context:
-    "MENU UPDATE\nHarbor Grill Restaurant\n\nStarting next Monday, Harbor Grill will introduce a refreshed dinner menu featuring locally sourced seafood and seasonal vegetables. Several long-time favorites, including the classic clam chowder, will remain on the menu, while a few less popular dishes will be retired to make room for new options.\n\nGuests who have dietary restrictions are encouraged to inform their server, as some new dishes contain nuts and shellfish not used in our previous menu.\n\nQuestion: What can be inferred about the previous dinner menu?",
+    "MENU UPDATE\nHarbor Grill Restaurant\n\nStarting next Monday, Harbor Grill will introduce a refreshed dinner menu featuring locally sourced seafood and seasonal vegetables. Several long-time favorites, including the classic clam chowder, will remain on the menu, while a few less popular dishes will be retired to make room for new options.\n\nGuests who have dietary restrictions are encouraged to inform their server, as some new dishes contain nuts and shellfish not used in our previous menu.",
+};
+const part7k: PracticeQuestionData = {
+  ...PART7_MENU_UPDATE,
+  question: "What can be inferred about the previous dinner menu?",
   options: [
     { label: "A", text: "It did not include any dishes containing nuts or shellfish." },
     { label: "B", text: "It was created by a different head chef." },
@@ -6369,11 +6644,29 @@ const part7k: PracticeQuestionData = {
   explanation:
     "The announcement notes that some new dishes 'contain nuts and shellfish not used in our previous menu', which means the previous menu did not include those ingredients, so (A) is correct.",
 };
+const part7k2: PracticeQuestionData = {
+  ...PART7_MENU_UPDATE,
+  question: "What are guests with dietary restrictions encouraged to do?",
+  options: [
+    { label: "A", text: "Order from a separate allergen-free menu." },
+    { label: "B", text: "Inform their server." },
+    { label: "C", text: "Call ahead before their reservation." },
+    { label: "D", text: "Avoid the new menu items entirely." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states 'Guests who have dietary restrictions are encouraged to inform their server', so (B) is correct.",
+};
 
-const part7l: PracticeQuestionData = {
-  prompt: "Part 7 · Read the email and answer the question.",
+const PART7_GUEST_SURVEY = {
+  prompt: "Part 7 · Read the email and answer the questions.",
+  groupId: "p7single-guest-survey",
   context:
-    "Subject: We'd Love Your Feedback\n\nDear Mr. Tanaka,\n\nThank you for staying with Lakeside Inn during your recent visit. We would appreciate it if you could take a few minutes to complete our online guest survey at lakesideinn.com/survey. Your responses help us improve our services for future guests.\n\nAs a token of appreciation, everyone who completes the survey by June 30 will receive a 15% discount code for their next stay.\n\nQuestion: What will guests receive for completing the survey by June 30?",
+    "Subject: We'd Love Your Feedback\n\nDear Mr. Tanaka,\n\nThank you for staying with Lakeside Inn during your recent visit. We would appreciate it if you could take a few minutes to complete our online guest survey at lakesideinn.com/survey. Your responses help us improve our services for future guests.\n\nAs a token of appreciation, everyone who completes the survey by June 30 will receive a 15% discount code for their next stay.",
+};
+const part7l: PracticeQuestionData = {
+  ...PART7_GUEST_SURVEY,
+  question: "What will guests receive for completing the survey by June 30?",
   options: [
     { label: "A", text: "A free night at the inn." },
     { label: "B", text: "A 15% discount code for a future stay." },
@@ -6384,11 +6677,42 @@ const part7l: PracticeQuestionData = {
   explanation:
     "The email states that guests who complete the survey by June 30 'will receive a 15% discount code for their next stay', so (B) is correct.",
 };
+const part7l2: PracticeQuestionData = {
+  ...PART7_GUEST_SURVEY,
+  question: "Why is Mr. Tanaka being asked to complete the survey?",
+  options: [
+    { label: "A", text: "To enter a prize drawing." },
+    { label: "B", text: "To help the inn improve its services for future guests." },
+    { label: "C", text: "To confirm his contact information is correct." },
+    { label: "D", text: "To qualify for a refund on his stay." },
+  ],
+  correct: "B",
+  explanation:
+    "The email states that survey responses 'help us improve our services for future guests', so (B) is correct.",
+};
+const part7l3: PracticeQuestionData = {
+  ...PART7_GUEST_SURVEY,
+  question: "Where can Mr. Tanaka complete the survey?",
+  options: [
+    { label: "A", text: "At the inn's front desk." },
+    { label: "B", text: "By replying to the email directly." },
+    { label: "C", text: "At an online address, lakesideinn.com/survey." },
+    { label: "D", text: "Through a mailed paper questionnaire." },
+  ],
+  correct: "C",
+  explanation:
+    "The email asks him to 'complete our online guest survey at lakesideinn.com/survey', so (C) is correct.",
+};
 
-const part7m: PracticeQuestionData = {
-  prompt: "Part 7 · Read the notice and answer the question.",
+const PART7_TOS_UPDATE = {
+  prompt: "Part 7 · Read the notice and answer the questions.",
+  groupId: "p7single-tos-update",
   context:
-    "IMPORTANT: UPDATE TO OUR TERMS OF SERVICE\nStreamPlay Media\n\nWe are updating our Terms of Service, effective July 1. The key change concerns account sharing: under the revised terms, each subscription may only be used by members of a single household, verified periodically through device location data.\n\nSubscribers who continue using the service after July 1 will be considered to have accepted the updated terms. If you do not agree, you may cancel your subscription at any time before that date without penalty.\n\nQuestion: What can be inferred about someone who shares a StreamPlay account with a person outside their household?",
+    "IMPORTANT: UPDATE TO OUR TERMS OF SERVICE\nStreamPlay Media\n\nWe are updating our Terms of Service, effective July 1. The key change concerns account sharing: under the revised terms, each subscription may only be used by members of a single household, verified periodically through device location data.\n\nSubscribers who continue using the service after July 1 will be considered to have accepted the updated terms. If you do not agree, you may cancel your subscription at any time before that date without penalty.",
+};
+const part7m: PracticeQuestionData = {
+  ...PART7_TOS_UPDATE,
+  question: "What can be inferred about someone who shares a StreamPlay account with a person outside their household?",
   options: [
     { label: "A", text: "They will be able to continue as before after July 1." },
     { label: "B", text: "They may be affected by the new device location verification." },
@@ -6399,11 +6723,42 @@ const part7m: PracticeQuestionData = {
   explanation:
     "Since the revised terms restrict each subscription to 'members of a single household, verified periodically through device location data', someone sharing an account outside their household would be affected by this verification, so (B) is correct.",
 };
+const part7m2: PracticeQuestionData = {
+  ...PART7_TOS_UPDATE,
+  question: "What option do subscribers have if they disagree with the updated terms?",
+  options: [
+    { label: "A", text: "They may cancel their subscription before July 1 without penalty." },
+    { label: "B", text: "They may keep their current terms by contacting support." },
+    { label: "C", text: "They may switch to a household-only plan at a lower rate." },
+    { label: "D", text: "They have no option but to accept the new terms." },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states 'you may cancel your subscription at any time before that date without penalty', so (A) is correct.",
+};
+const part7m3: PracticeQuestionData = {
+  ...PART7_TOS_UPDATE,
+  question: "What will be considered acceptance of the updated terms?",
+  options: [
+    { label: "A", text: "Replying to the notice by email." },
+    { label: "B", text: "Continuing to use the service after July 1." },
+    { label: "C", text: "Updating payment information on file." },
+    { label: "D", text: "Verifying a household address." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Subscribers who continue using the service after July 1 will be considered to have accepted the updated terms', so (B) is correct.",
+};
 
-const part7n: PracticeQuestionData = {
-  prompt: "Part 7 · Read the announcement and answer the question.",
+const PART7_VOLUNTEER_DAY = {
+  prompt: "Part 7 · Read the announcement and answer the questions.",
+  groupId: "p7single-volunteer-day",
   context:
-    "COMPANY VOLUNTEER DAY ANNOUNCEMENT\nNorthfield Corp Community Outreach\n\nNorthfield Corp is organizing a company-wide volunteer day on Saturday, October 10, in partnership with the Riverside Food Bank. Employees who sign up will spend the morning sorting and packing donated food items for local families.\n\nEmployees may sign up for one of two shifts, 8:00-11:00 a.m. or 11:00 a.m.-2:00 p.m., through the internal HR portal by October 3. Lunch will be provided for all volunteers at the end of their shift.\n\nQuestion: What will volunteers receive at the end of their shift?",
+    "COMPANY VOLUNTEER DAY ANNOUNCEMENT\nNorthfield Corp Community Outreach\n\nNorthfield Corp is organizing a company-wide volunteer day on Saturday, October 10, in partnership with the Riverside Food Bank. Employees who sign up will spend the morning sorting and packing donated food items for local families.\n\nEmployees may sign up for one of two shifts, 8:00-11:00 a.m. or 11:00 a.m.-2:00 p.m., through the internal HR portal by October 3. Lunch will be provided for all volunteers at the end of their shift.",
+};
+const part7n: PracticeQuestionData = {
+  ...PART7_VOLUNTEER_DAY,
+  question: "What will volunteers receive at the end of their shift?",
   options: [
     { label: "A", text: "A paid day off in exchange." },
     { label: "B", text: "Lunch." },
@@ -6414,11 +6769,55 @@ const part7n: PracticeQuestionData = {
   explanation:
     "The announcement states that 'Lunch will be provided for all volunteers at the end of their shift', so (B) is correct.",
 };
+const part7n2: PracticeQuestionData = {
+  ...PART7_VOLUNTEER_DAY,
+  question: "Who is Northfield Corp partnering with for the volunteer day?",
+  options: [
+    { label: "A", text: "The Riverside Food Bank." },
+    { label: "B", text: "A local elementary school." },
+    { label: "C", text: "A neighboring corporation." },
+    { label: "D", text: "The city parks department." },
+  ],
+  correct: "A",
+  explanation:
+    "The announcement states the volunteer day is organized 'in partnership with the Riverside Food Bank', so (A) is correct.",
+};
+const part7n3: PracticeQuestionData = {
+  ...PART7_VOLUNTEER_DAY,
+  question: "What will volunteers do during their shift?",
+  options: [
+    { label: "A", text: "Deliver meals directly to families' homes." },
+    { label: "B", text: "Sort and pack donated food items." },
+    { label: "C", text: "Prepare hot meals in a community kitchen." },
+    { label: "D", text: "Collect donations door-to-door." },
+  ],
+  correct: "B",
+  explanation:
+    "The announcement states employees 'will spend the morning sorting and packing donated food items for local families', so (B) is correct.",
+};
+const part7n4: PracticeQuestionData = {
+  ...PART7_VOLUNTEER_DAY,
+  question: "By when must employees sign up for a shift?",
+  options: [
+    { label: "A", text: "October 3." },
+    { label: "B", text: "October 10." },
+    { label: "C", text: "The morning of the event." },
+    { label: "D", text: "There is no sign-up deadline." },
+  ],
+  correct: "A",
+  explanation:
+    "The announcement states employees may sign up 'through the internal HR portal by October 3', so (A) is correct.",
+};
 
-const part7o: PracticeQuestionData = {
-  prompt: "Part 7 · Read the bank notice and answer the question.",
+const PART7_BANK_FEE = {
+  prompt: "Part 7 · Read the bank notice and answer the questions.",
+  groupId: "p7single-bank-fee",
   context:
-    "NOTICE OF FEE SCHEDULE CHANGE\nMeridian Trust Bank\n\nDear Account Holder,\n\nEffective September 1, the monthly maintenance fee for Standard Checking accounts will increase from $8 to $12. This fee will continue to be waived for customers who maintain a minimum daily balance of $1,500 or who receive direct deposits totaling at least $500 per month.\n\nCustomers who wish to avoid the new fee without meeting these requirements may switch to our fee-free Basic Checking account, which has no monthly minimum but does not include free checks or overdraft protection. To make this change, visit any branch or call 1-800-555-0199 before September 1.\n\nQuestion: How can a Standard Checking customer avoid the new $12 fee without changing accounts?",
+    "NOTICE OF FEE SCHEDULE CHANGE\nMeridian Trust Bank\n\nDear Account Holder,\n\nEffective September 1, the monthly maintenance fee for Standard Checking accounts will increase from $8 to $12. This fee will continue to be waived for customers who maintain a minimum daily balance of $1,500 or who receive direct deposits totaling at least $500 per month.\n\nCustomers who wish to avoid the new fee without meeting these requirements may switch to our fee-free Basic Checking account, which has no monthly minimum but does not include free checks or overdraft protection. To make this change, visit any branch or call 1-800-555-0199 before September 1.",
+};
+const part7o: PracticeQuestionData = {
+  ...PART7_BANK_FEE,
+  question: "How can a Standard Checking customer avoid the new $12 fee without changing accounts?",
   options: [
     { label: "A", text: "By calling the bank to request a one-time waiver" },
     {
@@ -6432,11 +6831,42 @@ const part7o: PracticeQuestionData = {
   explanation:
     "The notice states the fee 'will continue to be waived for customers who maintain a minimum daily balance of $1,500 or who receive direct deposits totaling at least $500 per month', so (B) is correct.",
 };
+const part7o2: PracticeQuestionData = {
+  ...PART7_BANK_FEE,
+  question: "What does switching to Basic Checking involve, according to the notice?",
+  options: [
+    { label: "A", text: "No monthly minimum, but no free checks or overdraft protection." },
+    { label: "B", text: "A higher monthly fee than Standard Checking." },
+    { label: "C", text: "A required minimum daily balance of $1,500." },
+    { label: "D", text: "Free checks but no overdraft protection." },
+  ],
+  correct: "A",
+  explanation:
+    "The notice describes Basic Checking as having 'no monthly minimum but does not include free checks or overdraft protection', so (A) is correct.",
+};
+const part7o3: PracticeQuestionData = {
+  ...PART7_BANK_FEE,
+  question: "By how much is the Standard Checking maintenance fee increasing?",
+  options: [
+    { label: "A", text: "From $8 to $12." },
+    { label: "B", text: "From $12 to $15." },
+    { label: "C", text: "From $5 to $8." },
+    { label: "D", text: "The fee is not changing." },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states the fee 'will increase from $8 to $12', so (A) is correct.",
+};
 
-const part7p: PracticeQuestionData = {
-  prompt: "Part 7 · Read the enrollment confirmation and answer the question.",
+const PART7_COURSE_ENROLLMENT = {
+  prompt: "Part 7 · Read the enrollment confirmation and answer the questions.",
+  groupId: "p7single-course-enrollment",
   context:
-    "COURSE ENROLLMENT CONFIRMATION\nWestbridge University — Office of the Registrar\n\nDear Ms. Alvarez,\n\nThis confirms your enrollment in ECON 305: International Trade Policy for the Fall semester. The course meets Tuesdays and Thursdays from 2:00 to 3:15 p.m. in Hartley Hall, Room 210, beginning September 8.\n\nPlease note that this course has a required weekly discussion section, and you have not yet selected a section time. You must choose a discussion section through the student portal by August 25, or you will be automatically dropped from the course and placed on the waitlist.\n\nQuestion: What must Ms. Alvarez do by August 25?",
+    "COURSE ENROLLMENT CONFIRMATION\nWestbridge University — Office of the Registrar\n\nDear Ms. Alvarez,\n\nThis confirms your enrollment in ECON 305: International Trade Policy for the Fall semester. The course meets Tuesdays and Thursdays from 2:00 to 3:15 p.m. in Hartley Hall, Room 210, beginning September 8.\n\nPlease note that this course has a required weekly discussion section, and you have not yet selected a section time. You must choose a discussion section through the student portal by August 25, or you will be automatically dropped from the course and placed on the waitlist.",
+};
+const part7p: PracticeQuestionData = {
+  ...PART7_COURSE_ENROLLMENT,
+  question: "What must Ms. Alvarez do by August 25?",
   options: [
     { label: "A", text: "Pay the remaining course tuition balance" },
     { label: "B", text: "Select a discussion section through the student portal" },
@@ -6447,11 +6877,42 @@ const part7p: PracticeQuestionData = {
   explanation:
     "The confirmation states 'You must choose a discussion section through the student portal by August 25, or you will be automatically dropped from the course', so (B) is correct.",
 };
+const part7p2: PracticeQuestionData = {
+  ...PART7_COURSE_ENROLLMENT,
+  question: "When does the course begin?",
+  options: [
+    { label: "A", text: "September 8." },
+    { label: "B", text: "August 25." },
+    { label: "C", text: "The first Tuesday of the Fall semester's second month." },
+    { label: "D", text: "The date she selects her discussion section." },
+  ],
+  correct: "A",
+  explanation:
+    "The confirmation states the course meets 'beginning September 8', so (A) is correct.",
+};
+const part7p3: PracticeQuestionData = {
+  ...PART7_COURSE_ENROLLMENT,
+  question: "What will happen if Ms. Alvarez does not select a discussion section in time?",
+  options: [
+    { label: "A", text: "She will be charged a late registration fee." },
+    { label: "B", text: "She will be automatically dropped from the course and waitlisted." },
+    { label: "C", text: "She will be assigned a section at random." },
+    { label: "D", text: "Her enrollment will be paused until the following semester." },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation warns that without choosing a section by the deadline, she 'will be automatically dropped from the course and placed on the waitlist', so (B) is correct.",
+};
 
-const part7q: PracticeQuestionData = {
-  prompt: "Part 7 · Read the rental agreement summary and answer the question.",
+const PART7_CAR_RENTAL = {
+  prompt: "Part 7 · Read the rental agreement summary and answer the questions.",
+  groupId: "p7single-car-rental",
   context:
-    "RENTAL AGREEMENT SUMMARY\nCoastal Car Rentals — Confirmation #CR-88213\n\nVehicle: Mid-size Sedan\nPickup: July 22, 9:00 a.m., Downtown Branch\nReturn: July 26, 9:00 a.m., Downtown Branch\nRate: $45/day, unlimited mileage\n\nNote: The vehicle must be returned with a full fuel tank. If returned with less than a full tank, a refueling charge of $9 per gallon will be added to your final bill, in addition to a flat $15 service fee. Rentals returned more than one hour past the scheduled time will be charged for an additional full day.\n\nQuestion: What will happen if the vehicle is returned with a partly empty fuel tank?",
+    "RENTAL AGREEMENT SUMMARY\nCoastal Car Rentals — Confirmation #CR-88213\n\nVehicle: Mid-size Sedan\nPickup: July 22, 9:00 a.m., Downtown Branch\nReturn: July 26, 9:00 a.m., Downtown Branch\nRate: $45/day, unlimited mileage\n\nNote: The vehicle must be returned with a full fuel tank. If returned with less than a full tank, a refueling charge of $9 per gallon will be added to your final bill, in addition to a flat $15 service fee. Rentals returned more than one hour past the scheduled time will be charged for an additional full day.",
+};
+const part7q: PracticeQuestionData = {
+  ...PART7_CAR_RENTAL,
+  question: "What will happen if the vehicle is returned with a partly empty fuel tank?",
   options: [
     { label: "A", text: "The rental rate will be recalculated at a higher daily rate" },
     { label: "B", text: "The renter will be charged a refueling charge plus a $15 service fee" },
@@ -6462,11 +6923,42 @@ const part7q: PracticeQuestionData = {
   explanation:
     "The summary states 'a refueling charge of $9 per gallon will be added to your final bill, in addition to a flat $15 service fee', so (B) is correct.",
 };
+const part7q2: PracticeQuestionData = {
+  ...PART7_CAR_RENTAL,
+  question: "What is included in the rental rate?",
+  options: [
+    { label: "A", text: "Unlimited mileage." },
+    { label: "B", text: "A full tank of fuel at pickup and return." },
+    { label: "C", text: "A one-time late-return grace period." },
+    { label: "D", text: "Free transfer to a different branch." },
+  ],
+  correct: "A",
+  explanation:
+    "The summary lists the 'Rate: $45/day, unlimited mileage', so (A) is correct.",
+};
+const part7q3: PracticeQuestionData = {
+  ...PART7_CAR_RENTAL,
+  question: "What happens if the vehicle is returned more than one hour past the scheduled time?",
+  options: [
+    { label: "A", text: "A flat $15 late fee is added." },
+    { label: "B", text: "The renter is charged for an additional full day." },
+    { label: "C", text: "The rental is automatically extended by one hour at no charge." },
+    { label: "D", text: "The renter loses eligibility for future rentals." },
+  ],
+  correct: "B",
+  explanation:
+    "The summary states rentals returned more than an hour late 'will be charged for an additional full day', so (B) is correct.",
+};
 
-const part7r: PracticeQuestionData = {
-  prompt: "Part 7 · Read the membership policy update and answer the question.",
+const PART7_FITNESS_POLICY = {
+  prompt: "Part 7 · Read the membership policy update and answer the questions.",
+  groupId: "p7single-fitness-policy",
   context:
-    "Peak Fitness Center — Membership Policy Update\n\nDear Member,\n\nStarting next month, members will be able to place their membership on freeze for medical or travel reasons for up to 90 days per calendar year at no charge, provided a freeze request is submitted at least 5 business days in advance. Previously, freezes were limited to 30 days and required a $10 processing fee.\n\nCancellations still require 30 days' written notice and are not affected by this update. Members currently on an active freeze do not need to take any action; the new terms will apply automatically.\n\nQuestion: What can be inferred about members who are currently on an active freeze?",
+    "Peak Fitness Center — Membership Policy Update\n\nDear Member,\n\nStarting next month, members will be able to place their membership on freeze for medical or travel reasons for up to 90 days per calendar year at no charge, provided a freeze request is submitted at least 5 business days in advance. Previously, freezes were limited to 30 days and required a $10 processing fee.\n\nCancellations still require 30 days' written notice and are not affected by this update. Members currently on an active freeze do not need to take any action; the new terms will apply automatically.",
+};
+const part7r: PracticeQuestionData = {
+  ...PART7_FITNESS_POLICY,
+  question: "What can be inferred about members who are currently on an active freeze?",
   options: [
     { label: "A", text: "They will receive written confirmation of the change by mail" },
     { label: "B", text: "They will benefit from the new terms without submitting any new request" },
@@ -6477,11 +6969,42 @@ const part7r: PracticeQuestionData = {
   explanation:
     "The update states that members on an active freeze 'do not need to take any action; the new terms will apply automatically', so it can be inferred that they benefit from the new terms without submitting a new request, making (B) correct.",
 };
+const part7r2: PracticeQuestionData = {
+  ...PART7_FITNESS_POLICY,
+  question: "How long can a membership now be frozen at no charge?",
+  options: [
+    { label: "A", text: "Up to 30 days." },
+    { label: "B", text: "Up to 90 days." },
+    { label: "C", text: "Up to 5 business days." },
+    { label: "D", text: "Indefinitely, with no maximum." },
+  ],
+  correct: "B",
+  explanation:
+    "The update states members can freeze 'for up to 90 days per calendar year at no charge', so (B) is correct.",
+};
+const part7r3: PracticeQuestionData = {
+  ...PART7_FITNESS_POLICY,
+  question: "What does the update say about cancellations?",
+  options: [
+    { label: "A", text: "They now require 90 days' notice instead of 30." },
+    { label: "B", text: "They still require 30 days' written notice, unaffected by this update." },
+    { label: "C", text: "They now require a $10 processing fee." },
+    { label: "D", text: "They can no longer be submitted in writing." },
+  ],
+  correct: "B",
+  explanation:
+    "The update states 'Cancellations still require 30 days' written notice and are not affected by this update', so (B) is correct.",
+};
 
-const part7s: PracticeQuestionData = {
-  prompt: "Part 7 · Read the permit approval letter and answer the question.",
+const PART7_PERMIT_APPROVAL = {
+  prompt: "Part 7 · Read the permit approval letter and answer the questions.",
+  groupId: "p7single-permit-approval",
   context:
-    "CITY OF FAIRVIEW — DEPARTMENT OF BUILDING AND SAFETY\n\nRe: Permit Application #BP-4471, 218 Maple Street\n\nDear Mr. Nakamura,\n\nYour application for a permit to construct a rear deck addition at the above address has been approved. Construction may begin immediately, but must be completed within 180 days of this letter's date, or the permit will expire and a new application will be required.\n\nA city inspector must conduct a final inspection before the deck may be used. Please call (555) 209-4400 at least 48 hours in advance to schedule this inspection once construction is complete.\n\nQuestion: What is indicated about the deck once construction is finished?",
+    "CITY OF FAIRVIEW — DEPARTMENT OF BUILDING AND SAFETY\n\nRe: Permit Application #BP-4471, 218 Maple Street\n\nDear Mr. Nakamura,\n\nYour application for a permit to construct a rear deck addition at the above address has been approved. Construction may begin immediately, but must be completed within 180 days of this letter's date, or the permit will expire and a new application will be required.\n\nA city inspector must conduct a final inspection before the deck may be used. Please call (555) 209-4400 at least 48 hours in advance to schedule this inspection once construction is complete.",
+};
+const part7s: PracticeQuestionData = {
+  ...PART7_PERMIT_APPROVAL,
+  question: "What is indicated about the deck once construction is finished?",
   options: [
     { label: "A", text: "It must be registered with the homeowners' association" },
     { label: "B", text: "It cannot be used until a city inspector has approved it" },
@@ -6492,11 +7015,42 @@ const part7s: PracticeQuestionData = {
   explanation:
     "The letter states 'A city inspector must conduct a final inspection before the deck may be used', so (B) is correct.",
 };
+const part7s2: PracticeQuestionData = {
+  ...PART7_PERMIT_APPROVAL,
+  question: "By when must construction be completed?",
+  options: [
+    { label: "A", text: "Within 48 hours of the letter's date." },
+    { label: "B", text: "Within 180 days of the letter's date." },
+    { label: "C", text: "Before the next building inspection cycle." },
+    { label: "D", text: "There is no completion deadline." },
+  ],
+  correct: "B",
+  explanation:
+    "The letter states construction 'must be completed within 180 days of this letter's date, or the permit will expire', so (B) is correct.",
+};
+const part7s3: PracticeQuestionData = {
+  ...PART7_PERMIT_APPROVAL,
+  question: "What must Mr. Nakamura do to schedule the final inspection?",
+  options: [
+    { label: "A", text: "Submit a written request by mail." },
+    { label: "B", text: "Call the department at least 48 hours in advance." },
+    { label: "C", text: "Visit the building department in person." },
+    { label: "D", text: "Wait for the inspector to contact him automatically." },
+  ],
+  correct: "B",
+  explanation:
+    "The letter asks him to 'call (555) 209-4400 at least 48 hours in advance to schedule this inspection', so (B) is correct.",
+};
 
-const part7t: PracticeQuestionData = {
-  prompt: "Part 7 · Read the status update notification and answer the question.",
+const PART7_AIRLINE_STATUS = {
+  prompt: "Part 7 · Read the status update notification and answer the questions.",
+  groupId: "p7single-airline-status",
   context:
-    "SkyPoint Rewards — Status Update Notification\n\nDear Mr. Owusu,\n\nCongratulations! Based on the 32,000 qualifying miles you flew between January 1 and December 31, you have reached Silver tier status, effective immediately. Silver tier members receive priority boarding and one complimentary checked bag on all SkyPoint-operated flights.\n\nPlease note that Gold tier status, which adds lounge access, requires 50,000 qualifying miles within the same calendar year. Your tier status is reviewed annually each January and will reset unless the mileage threshold is met again in the following year.\n\nQuestion: What must Mr. Owusu do to obtain lounge access?",
+    "SkyPoint Rewards — Status Update Notification\n\nDear Mr. Owusu,\n\nCongratulations! Based on the 32,000 qualifying miles you flew between January 1 and December 31, you have reached Silver tier status, effective immediately. Silver tier members receive priority boarding and one complimentary checked bag on all SkyPoint-operated flights.\n\nPlease note that Gold tier status, which adds lounge access, requires 50,000 qualifying miles within the same calendar year. Your tier status is reviewed annually each January and will reset unless the mileage threshold is met again in the following year.",
+};
+const part7t: PracticeQuestionData = {
+  ...PART7_AIRLINE_STATUS,
+  question: "What must Mr. Owusu do to obtain lounge access?",
   options: [
     { label: "A", text: "Fly 50,000 qualifying miles to reach Gold tier" },
     { label: "B", text: "Pay an annual fee for lounge membership" },
@@ -6507,11 +7061,42 @@ const part7t: PracticeQuestionData = {
   explanation:
     "The notification states 'Gold tier status, which adds lounge access, requires 50,000 qualifying miles within the same calendar year', so (A) is correct.",
 };
+const part7t2: PracticeQuestionData = {
+  ...PART7_AIRLINE_STATUS,
+  question: "What benefits does Silver tier status include?",
+  options: [
+    { label: "A", text: "Lounge access and a free upgrade." },
+    { label: "B", text: "Priority boarding and one complimentary checked bag." },
+    { label: "C", text: "Unlimited complimentary checked bags." },
+    { label: "D", text: "A discount on future ticket purchases." },
+  ],
+  correct: "B",
+  explanation:
+    "The notification states 'Silver tier members receive priority boarding and one complimentary checked bag on all SkyPoint-operated flights', so (B) is correct.",
+};
+const part7t3: PracticeQuestionData = {
+  ...PART7_AIRLINE_STATUS,
+  question: "What happens to Mr. Owusu's tier status each January?",
+  options: [
+    { label: "A", text: "It is reviewed and will reset unless the mileage threshold is met again." },
+    { label: "B", text: "It automatically upgrades to the next tier." },
+    { label: "C", text: "It is suspended pending a new application." },
+    { label: "D", text: "It converts to a points-based system." },
+  ],
+  correct: "A",
+  explanation:
+    "The notification states tier status 'is reviewed annually each January and will reset unless the mileage threshold is met again in the following year', so (A) is correct.",
+};
 
-const part7u: PracticeQuestionData = {
-  prompt: "Part 7 · Read the vendor application notice and answer the question.",
+const PART7_FARMERS_MARKET = {
+  prompt: "Part 7 · Read the vendor application notice and answer the questions.",
+  groupId: "p7single-farmers-market",
   context:
-    "Riverside Farmers Market — 2026 Vendor Applications Now Open\n\nThe Riverside Farmers Market is accepting vendor applications for the upcoming season, which runs every Saturday from May through October. Priority will be given to applicants who sell locally grown produce; applications from prepared-food vendors will be considered only after all produce vendor spaces are filled.\n\nCompleted applications, along with a $50 non-refundable application fee, must be submitted by April 10. Vendors will be notified of acceptance by April 24. Space is limited to 40 vendors, and no more than 10 spaces will be reserved for prepared-food vendors.\n\nQuestion: What can be inferred about prepared-food vendor applicants?",
+    "Riverside Farmers Market — 2026 Vendor Applications Now Open\n\nThe Riverside Farmers Market is accepting vendor applications for the upcoming season, which runs every Saturday from May through October. Priority will be given to applicants who sell locally grown produce; applications from prepared-food vendors will be considered only after all produce vendor spaces are filled.\n\nCompleted applications, along with a $50 non-refundable application fee, must be submitted by April 10. Vendors will be notified of acceptance by April 24. Space is limited to 40 vendors, and no more than 10 spaces will be reserved for prepared-food vendors.",
+};
+const part7u: PracticeQuestionData = {
+  ...PART7_FARMERS_MARKET,
+  question: "What can be inferred about prepared-food vendor applicants?",
   options: [
     { label: "A", text: "They are required to attend a market orientation session before selling" },
     {
@@ -6525,11 +7110,42 @@ const part7u: PracticeQuestionData = {
   explanation:
     "The notice states 'applications from prepared-food vendors will be considered only after all produce vendor spaces are filled', so it can be inferred that a prepared-food vendor may not get a space, making (B) correct.",
 };
+const part7u2: PracticeQuestionData = {
+  ...PART7_FARMERS_MARKET,
+  question: "What must be submitted along with a completed application?",
+  options: [
+    { label: "A", text: "A $50 non-refundable application fee." },
+    { label: "B", text: "A sample of the vendor's products." },
+    { label: "C", text: "Proof of a state business license." },
+    { label: "D", text: "A letter of recommendation from another vendor." },
+  ],
+  correct: "A",
+  explanation:
+    "The notice states applications must be submitted 'along with a $50 non-refundable application fee', so (A) is correct.",
+};
+const part7u3: PracticeQuestionData = {
+  ...PART7_FARMERS_MARKET,
+  question: "By when will vendors be notified of acceptance?",
+  options: [
+    { label: "A", text: "April 10." },
+    { label: "B", text: "April 24." },
+    { label: "C", text: "The first Saturday in May." },
+    { label: "D", text: "The end of October." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Vendors will be notified of acceptance by April 24', so (B) is correct.",
+};
 
-const part7v: PracticeQuestionData = {
-  prompt: "Part 7 · Read the press release and answer the question.",
+const PART7_PRESS_RELEASE = {
+  prompt: "Part 7 · Read the press release and answer the questions.",
+  groupId: "p7single-press-release",
   context:
-    'FOR IMMEDIATE RELEASE\n\nBrightline Logistics Wins 2026 Regional Excellence in Sustainability Award\n\nBrightline Logistics announced today that it has received the Regional Excellence in Sustainability Award from the Metro Chamber of Commerce, recognizing its transition to an all-electric delivery fleet completed last year. The award is presented annually to one company in the transportation sector that demonstrates measurable environmental impact.\n\n"This recognition reflects three years of investment in cleaner delivery operations," said CEO Priya Chandrasekaran. Brightline plans to open its methodology to other regional logistics firms through a free sustainability workshop series beginning in September.\n\nQuestion: What is indicated about the Regional Excellence in Sustainability Award?',
+    'FOR IMMEDIATE RELEASE\n\nBrightline Logistics Wins 2026 Regional Excellence in Sustainability Award\n\nBrightline Logistics announced today that it has received the Regional Excellence in Sustainability Award from the Metro Chamber of Commerce, recognizing its transition to an all-electric delivery fleet completed last year. The award is presented annually to one company in the transportation sector that demonstrates measurable environmental impact.\n\n"This recognition reflects three years of investment in cleaner delivery operations," said CEO Priya Chandrasekaran. Brightline plans to open its methodology to other regional logistics firms through a free sustainability workshop series beginning in September.',
+};
+const part7v: PracticeQuestionData = {
+  ...PART7_PRESS_RELEASE,
+  question: "What is indicated about the Regional Excellence in Sustainability Award?",
   options: [
     { label: "A", text: "It includes a cash prize for the winning company" },
     { label: "B", text: "It is awarded once a year to a single transportation-sector company" },
@@ -6543,11 +7159,42 @@ const part7v: PracticeQuestionData = {
   explanation:
     "The release states 'The award is presented annually to one company in the transportation sector', so (B) is correct.",
 };
+const part7v2: PracticeQuestionData = {
+  ...PART7_PRESS_RELEASE,
+  question: "What accomplishment is Brightline Logistics being recognized for?",
+  options: [
+    { label: "A", text: "Opening a new regional headquarters." },
+    { label: "B", text: "Completing its transition to an all-electric delivery fleet." },
+    { label: "C", text: "Doubling its delivery capacity." },
+    { label: "D", text: "Partnering with the Metro Chamber of Commerce on a new initiative." },
+  ],
+  correct: "B",
+  explanation:
+    "The release states the award recognizes 'its transition to an all-electric delivery fleet completed last year', so (B) is correct.",
+};
+const part7v3: PracticeQuestionData = {
+  ...PART7_PRESS_RELEASE,
+  question: "What does Brightline plan to do starting in September?",
+  options: [
+    { label: "A", text: "Launch its all-electric fleet nationwide." },
+    { label: "B", text: "Offer a free sustainability workshop series to other logistics firms." },
+    { label: "C", text: "Apply for a second sustainability award." },
+    { label: "D", text: "Begin manufacturing its own electric vehicles." },
+  ],
+  correct: "B",
+  explanation:
+    "The release states Brightline 'plans to open its methodology to other regional logistics firms through a free sustainability workshop series beginning in September', so (B) is correct.",
+};
 
-const part7w: PracticeQuestionData = {
-  prompt: "Part 7 · Read the payment plan offer and answer the question.",
+const PART7_UTILITY_PAYMENT = {
+  prompt: "Part 7 · Read the payment plan offer and answer the questions.",
+  groupId: "p7single-utility-payment",
   context:
-    "Cedar Valley Utilities — Payment Plan Offer\n\nDear Customer,\n\nOur records indicate your account balance of $342.60 is currently past due. To help avoid service interruption, we are offering a payment plan that allows you to spread this balance over four equal monthly installments of $85.65, added to your regular monthly bill.\n\nTo enroll, you must contact our billing department by August 5. Accounts not enrolled in a payment plan and remaining unpaid after August 15 will be subject to service disconnection. Enrollment in the plan does not affect your ability to dispute charges separately.\n\nQuestion: What will happen to accounts that are unpaid and not enrolled in a payment plan after August 15?",
+    "Cedar Valley Utilities — Payment Plan Offer\n\nDear Customer,\n\nOur records indicate your account balance of $342.60 is currently past due. To help avoid service interruption, we are offering a payment plan that allows you to spread this balance over four equal monthly installments of $85.65, added to your regular monthly bill.\n\nTo enroll, you must contact our billing department by August 5. Accounts not enrolled in a payment plan and remaining unpaid after August 15 will be subject to service disconnection. Enrollment in the plan does not affect your ability to dispute charges separately.",
+};
+const part7w: PracticeQuestionData = {
+  ...PART7_UTILITY_PAYMENT,
+  question: "What will happen to accounts that are unpaid and not enrolled in a payment plan after August 15?",
   options: [
     { label: "A", text: "They will receive a late fee added to the next bill" },
     { label: "B", text: "They will be subject to service disconnection" },
@@ -6558,11 +7205,42 @@ const part7w: PracticeQuestionData = {
   explanation:
     "The offer states 'Accounts not enrolled in a payment plan and remaining unpaid after August 15 will be subject to service disconnection', so (B) is correct.",
 };
+const part7w2: PracticeQuestionData = {
+  ...PART7_UTILITY_PAYMENT,
+  question: "How much is each monthly installment under the payment plan?",
+  options: [
+    { label: "A", text: "$342.60." },
+    { label: "B", text: "$85.65." },
+    { label: "C", text: "$500.00." },
+    { label: "D", text: "The amount varies each month." },
+  ],
+  correct: "B",
+  explanation:
+    "The offer states the balance is spread 'over four equal monthly installments of $85.65', so (B) is correct.",
+};
+const part7w3: PracticeQuestionData = {
+  ...PART7_UTILITY_PAYMENT,
+  question: "By when must a customer contact the billing department to enroll?",
+  options: [
+    { label: "A", text: "August 5." },
+    { label: "B", text: "August 15." },
+    { label: "C", text: "Within 24 hours of the offer." },
+    { label: "D", text: "Before their next scheduled bill." },
+  ],
+  correct: "A",
+  explanation:
+    "The offer states 'To enroll, you must contact our billing department by August 5', so (A) is correct.",
+};
 
-const part7x: PracticeQuestionData = {
-  prompt: "Part 7 · Read the overdue notice and answer the question.",
+const PART7_LIBRARY_OVERDUE = {
+  prompt: "Part 7 · Read the overdue notice and answer the questions.",
+  groupId: "p7single-library-overdue",
   context:
-    'Fairhaven Public Library — Overdue Notice\n\nDear Patron,\n\nThe following item is overdue: "Data Structures and Algorithms" (Call #QA76.9), originally due July 5. A fine of $0.25 per day is accruing on this item, up to a maximum fine of $10 per item.\n\nPlease return the item or renew it online at fairhavenlibrary.org/account within 7 days. Items not returned or renewed within 21 days of the due date will be marked as lost, and the patron will be billed the full replacement cost of $65.\n\nQuestion: What will happen if the item is not returned or renewed within 21 days of the due date?',
+    'Fairhaven Public Library — Overdue Notice\n\nDear Patron,\n\nThe following item is overdue: "Data Structures and Algorithms" (Call #QA76.9), originally due July 5. A fine of $0.25 per day is accruing on this item, up to a maximum fine of $10 per item.\n\nPlease return the item or renew it online at fairhavenlibrary.org/account within 7 days. Items not returned or renewed within 21 days of the due date will be marked as lost, and the patron will be billed the full replacement cost of $65.',
+};
+const part7x: PracticeQuestionData = {
+  ...PART7_LIBRARY_OVERDUE,
+  question: "What will happen if the item is not returned or renewed within 21 days of the due date?",
   options: [
     { label: "A", text: "The patron's library card will be suspended" },
     { label: "B", text: "The patron will be billed the full replacement cost of $65" },
@@ -6573,11 +7251,42 @@ const part7x: PracticeQuestionData = {
   explanation:
     "The notice states 'Items not returned or renewed within 21 days of the due date will be marked as lost, and the patron will be billed the full replacement cost of $65', so (B) is correct.",
 };
+const part7x2: PracticeQuestionData = {
+  ...PART7_LIBRARY_OVERDUE,
+  question: "What is the maximum fine the patron can be charged for this item?",
+  options: [
+    { label: "A", text: "$0.25." },
+    { label: "B", text: "$10." },
+    { label: "C", text: "$65." },
+    { label: "D", text: "There is no maximum fine." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states the daily fine accrues 'up to a maximum fine of $10 per item', so (B) is correct.",
+};
+const part7x3: PracticeQuestionData = {
+  ...PART7_LIBRARY_OVERDUE,
+  question: "How can the patron stop the fine from continuing to accrue?",
+  options: [
+    { label: "A", text: "Pay the $65 replacement cost in advance." },
+    { label: "B", text: "Return or renew the item online within 7 days." },
+    { label: "C", text: "Contact the library to request a fine waiver." },
+    { label: "D", text: "Wait until the 21-day period ends." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice asks the patron to 'return the item or renew it online at fairhavenlibrary.org/account within 7 days', so (B) is correct.",
+};
 
-const part7y: PracticeQuestionData = {
-  prompt: "Part 7 · Read the museum notice and answer the question.",
+const PART7_MUSEUM_RENEWAL = {
+  prompt: "Part 7 · Read the museum notice and answer the questions.",
+  groupId: "p7single-museum-renewal",
   context:
-    'MEMBERSHIP RENEWAL NOTICE\nFairview City Museum of Art\n\nDear Ms. Delgado,\n\nYour Dual Membership (two adults, unlimited free admission) is due to expire on August 15. Renewing before that date keeps your current rate of $95 per year; after August 15, the Dual Membership rate rises to $110. Members also receive a 10% discount at the museum shop and early entry to special exhibitions, including the upcoming Modern Sculpture exhibit opening September 3.\n\nTo renew online, log in to your account at fairviewmuseum.org/members and select "Renew Now." Members who renew by mail should allow up to two weeks for processing.\n\nQuestion: What will happen if Ms. Delgado renews her membership after August 15?',
+    'MEMBERSHIP RENEWAL NOTICE\nFairview City Museum of Art\n\nDear Ms. Delgado,\n\nYour Dual Membership (two adults, unlimited free admission) is due to expire on August 15. Renewing before that date keeps your current rate of $95 per year; after August 15, the Dual Membership rate rises to $110. Members also receive a 10% discount at the museum shop and early entry to special exhibitions, including the upcoming Modern Sculpture exhibit opening September 3.\n\nTo renew online, log in to your account at fairviewmuseum.org/members and select "Renew Now." Members who renew by mail should allow up to two weeks for processing.',
+};
+const part7y: PracticeQuestionData = {
+  ...PART7_MUSEUM_RENEWAL,
+  question: "What will happen if Ms. Delgado renews her membership after August 15?",
   options: [
     { label: "A", text: "She will lose access to the museum shop discount" },
     { label: "B", text: "She will be charged the new $110 rate" },
@@ -6588,11 +7297,42 @@ const part7y: PracticeQuestionData = {
   explanation:
     "The notice states that 'after August 15, the Dual Membership rate rises to $110', so (B) is correct.",
 };
+const part7y2: PracticeQuestionData = {
+  ...PART7_MUSEUM_RENEWAL,
+  question: "What discount do members receive at the museum shop?",
+  options: [
+    { label: "A", text: "5%." },
+    { label: "B", text: "10%." },
+    { label: "C", text: "15%." },
+    { label: "D", text: "20%." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states members 'receive a 10% discount at the museum shop', so (B) is correct.",
+};
+const part7y3: PracticeQuestionData = {
+  ...PART7_MUSEUM_RENEWAL,
+  question: "What should members who renew by mail expect?",
+  options: [
+    { label: "A", text: "Immediate confirmation by email." },
+    { label: "B", text: "Processing that may take up to two weeks." },
+    { label: "C", text: "An additional processing fee." },
+    { label: "D", text: "A temporary membership card until renewal is confirmed." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states 'Members who renew by mail should allow up to two weeks for processing', so (B) is correct.",
+};
 
-const part7z: PracticeQuestionData = {
-  prompt: "Part 7 · Read the booking confirmation and answer the question.",
+const PART7_COWORKING_BOOKING = {
+  prompt: "Part 7 · Read the booking confirmation and answer the questions.",
+  groupId: "p7single-coworking-booking",
   context:
-    "BOOKING CONFIRMATION\nHearth & Desk Co-working Space\n\nHi Marcus,\n\nThis confirms your reservation of Meeting Room B for Thursday, June 12, from 1:00 P.M. to 3:00 P.M. Your booking includes a projector, whiteboard, and complimentary coffee service for up to 6 guests. Please note that Meeting Room B is located on the third floor and requires a keycard, which you can pick up from the front desk starting at 12:45 P.M.\n\nIf you need to cancel or reschedule, please do so at least 24 hours in advance to avoid a $25 cancellation fee.\n\nQuestion: What must Marcus do before he can enter Meeting Room B on June 12?",
+    "BOOKING CONFIRMATION\nHearth & Desk Co-working Space\n\nHi Marcus,\n\nThis confirms your reservation of Meeting Room B for Thursday, June 12, from 1:00 P.M. to 3:00 P.M. Your booking includes a projector, whiteboard, and complimentary coffee service for up to 6 guests. Please note that Meeting Room B is located on the third floor and requires a keycard, which you can pick up from the front desk starting at 12:45 P.M.\n\nIf you need to cancel or reschedule, please do so at least 24 hours in advance to avoid a $25 cancellation fee.",
+};
+const part7z: PracticeQuestionData = {
+  ...PART7_COWORKING_BOOKING,
+  question: "What must Marcus do before he can enter Meeting Room B on June 12?",
   options: [
     { label: "A", text: "Pay a $25 access fee at the front desk" },
     { label: "B", text: "Pick up a keycard from the front desk" },
@@ -6603,11 +7343,29 @@ const part7z: PracticeQuestionData = {
   explanation:
     "The confirmation notes the room 'requires a keycard, which you can pick up from the front desk starting at 12:45 P.M.', so (B) is correct.",
 };
+const part7z2: PracticeQuestionData = {
+  ...PART7_COWORKING_BOOKING,
+  question: "What is included in the meeting room booking?",
+  options: [
+    { label: "A", text: "A projector, whiteboard, and complimentary coffee for up to 6 guests." },
+    { label: "B", text: "Catered lunch for all attendees." },
+    { label: "C", text: "Free parking validation." },
+    { label: "D", text: "A dedicated receptionist for the meeting." },
+  ],
+  correct: "A",
+  explanation:
+    "The confirmation states the booking 'includes a projector, whiteboard, and complimentary coffee service for up to 6 guests', so (A) is correct.",
+};
 
-const part7aa: PracticeQuestionData = {
-  prompt: "Part 7 · Read the warranty approval letter and answer the question.",
+const PART7_WARRANTY_APPROVAL = {
+  prompt: "Part 7 · Read the warranty approval letter and answer the questions.",
+  groupId: "p7single-warranty-approval",
   context:
-    "WARRANTY CLAIM APPROVAL\nBrightHome Appliances\n\nDear Mr. Kowalski,\n\nWe have reviewed your warranty claim (Claim #WC-4471) for your BrightHome Model X200 refrigerator and confirmed that the compressor failure is covered under your 5-year extended warranty. A replacement compressor will be shipped to your registered address within 5 business days, and a certified technician will contact you within 2 business days to schedule the installation at no charge.\n\nPlease keep your original proof-of-purchase receipt on file, as it may be required for any future claims. If the technician determines that additional parts are needed, those will also be covered under the same warranty terms.\n\nQuestion: What will happen within 2 business days of this letter?",
+    "WARRANTY CLAIM APPROVAL\nBrightHome Appliances\n\nDear Mr. Kowalski,\n\nWe have reviewed your warranty claim (Claim #WC-4471) for your BrightHome Model X200 refrigerator and confirmed that the compressor failure is covered under your 5-year extended warranty. A replacement compressor will be shipped to your registered address within 5 business days, and a certified technician will contact you within 2 business days to schedule the installation at no charge.\n\nPlease keep your original proof-of-purchase receipt on file, as it may be required for any future claims. If the technician determines that additional parts are needed, those will also be covered under the same warranty terms.",
+};
+const part7aa: PracticeQuestionData = {
+  ...PART7_WARRANTY_APPROVAL,
+  question: "What will happen within 2 business days of this letter?",
   options: [
     { label: "A", text: "The replacement compressor will arrive at Mr. Kowalski's address" },
     { label: "B", text: "A technician will contact Mr. Kowalski to schedule installation" },
@@ -6618,11 +7376,42 @@ const part7aa: PracticeQuestionData = {
   explanation:
     "The letter states 'a certified technician will contact you within 2 business days to schedule the installation', so (B) is correct.",
 };
+const part7aa2: PracticeQuestionData = {
+  ...PART7_WARRANTY_APPROVAL,
+  question: "What is covered under Mr. Kowalski's extended warranty?",
+  options: [
+    { label: "A", text: "The compressor failure." },
+    { label: "B", text: "Cosmetic damage to the exterior." },
+    { label: "C", text: "Accidental damage caused by the customer." },
+    { label: "D", text: "Only parts, not labor." },
+  ],
+  correct: "A",
+  explanation:
+    "The letter confirms 'the compressor failure is covered under your 5-year extended warranty', so (A) is correct.",
+};
+const part7aa3: PracticeQuestionData = {
+  ...PART7_WARRANTY_APPROVAL,
+  question: "What is Mr. Kowalski advised to keep on file?",
+  options: [
+    { label: "A", text: "A copy of the technician's report." },
+    { label: "B", text: "His original proof-of-purchase receipt." },
+    { label: "C", text: "The replacement compressor's packaging." },
+    { label: "D", text: "A written estimate of repair costs." },
+  ],
+  correct: "B",
+  explanation:
+    "The letter advises him to 'keep your original proof-of-purchase receipt on file, as it may be required for any future claims', so (B) is correct.",
+};
 
-const part7ab: PracticeQuestionData = {
-  prompt: "Part 7 · Read the certification notice and answer the question.",
+const PART7_CERTIFICATION = {
+  prompt: "Part 7 · Read the certification notice and answer the questions.",
+  groupId: "p7single-certification",
   context:
-    "CERTIFICATION NOTICE\nGlobal Compliance Institute\n\nDear Ms. Efe,\n\nCongratulations — you have successfully completed the Workplace Safety Certification course and passed the final assessment with a score of 88%. Your certificate is valid for 3 years from the date of this notice and will be sent to your employer's HR department automatically, since your enrollment was submitted through your company's corporate training account.\n\nTo maintain your certification, you must complete a renewal course before the 3-year expiration date. A reminder will be sent to your registered email 60 days before expiration.\n\nQuestion: What can be inferred about Ms. Efe's certification if she does not complete a renewal course before the expiration date?",
+    "CERTIFICATION NOTICE\nGlobal Compliance Institute\n\nDear Ms. Efe,\n\nCongratulations — you have successfully completed the Workplace Safety Certification course and passed the final assessment with a score of 88%. Your certificate is valid for 3 years from the date of this notice and will be sent to your employer's HR department automatically, since your enrollment was submitted through your company's corporate training account.\n\nTo maintain your certification, you must complete a renewal course before the 3-year expiration date. A reminder will be sent to your registered email 60 days before expiration.",
+};
+const part7ab: PracticeQuestionData = {
+  ...PART7_CERTIFICATION,
+  question: "What can be inferred about Ms. Efe's certification if she does not complete a renewal course before the expiration date?",
   options: [
     { label: "A", text: "It will remain valid indefinitely" },
     { label: "B", text: "It will need to be renewed through a different institute" },
@@ -6633,11 +7422,29 @@ const part7ab: PracticeQuestionData = {
   explanation:
     "Since the certificate 'is valid for 3 years' and Ms. Efe 'must complete a renewal course before the 3-year expiration date' to maintain it, it can be inferred that the certification would no longer be valid if she fails to renew it, making (C) correct.",
 };
+const part7ab2: PracticeQuestionData = {
+  ...PART7_CERTIFICATION,
+  question: "Why will Ms. Efe's certificate be sent to her employer's HR department automatically?",
+  options: [
+    { label: "A", text: "Because her employer co-signed the certification agreement." },
+    { label: "B", text: "Because her enrollment was submitted through the company's corporate training account." },
+    { label: "C", text: "Because her score was above the company's minimum requirement." },
+    { label: "D", text: "Because all certifications are sent to employers by default." },
+  ],
+  correct: "B",
+  explanation:
+    "The notice states the certificate is sent automatically 'since your enrollment was submitted through your company's corporate training account', so (B) is correct.",
+};
 
-const part7ac: PracticeQuestionData = {
-  prompt: "Part 7 · Read the open house invitation and answer the question.",
+const PART7_OPEN_HOUSE = {
+  prompt: "Part 7 · Read the open house invitation and answer the questions.",
+  groupId: "p7single-open-house",
   context:
-    "OPEN HOUSE INVITATION\nRiverside Realty Group\n\nYou're Invited: Open House at 214 Maple Grove Lane\n\nJoin us this Saturday, July 25, from 11:00 A.M. to 2:00 P.M. for an open house at this newly renovated 3-bedroom, 2-bathroom home featuring an updated kitchen, hardwood floors throughout, and a fenced backyard. Light refreshments will be served, and our agent, Priya Nair, will be on-site to answer questions and provide a printed information packet.\n\nParking is limited on Maple Grove Lane, so visitors are encouraged to park in the community lot on Birchwood Avenue and walk the short block to the property.\n\nQuestion: Where should visitors to the open house park their cars?",
+    "OPEN HOUSE INVITATION\nRiverside Realty Group\n\nYou're Invited: Open House at 214 Maple Grove Lane\n\nJoin us this Saturday, July 25, from 11:00 A.M. to 2:00 P.M. for an open house at this newly renovated 3-bedroom, 2-bathroom home featuring an updated kitchen, hardwood floors throughout, and a fenced backyard. Light refreshments will be served, and our agent, Priya Nair, will be on-site to answer questions and provide a printed information packet.\n\nParking is limited on Maple Grove Lane, so visitors are encouraged to park in the community lot on Birchwood Avenue and walk the short block to the property.",
+};
+const part7ac: PracticeQuestionData = {
+  ...PART7_OPEN_HOUSE,
+  question: "Where should visitors to the open house park their cars?",
   options: [
     { label: "A", text: "In the driveway of 214 Maple Grove Lane" },
     { label: "B", text: "In the community lot on Birchwood Avenue" },
@@ -6648,11 +7455,42 @@ const part7ac: PracticeQuestionData = {
   explanation:
     "The invitation states visitors 'are encouraged to park in the community lot on Birchwood Avenue', so (B) is correct.",
 };
+const part7ac2: PracticeQuestionData = {
+  ...PART7_OPEN_HOUSE,
+  question: "Who will be available at the open house to answer questions?",
+  options: [
+    { label: "A", text: "The homeowner." },
+    { label: "B", text: "A representative from the community association." },
+    { label: "C", text: "The agent, Priya Nair." },
+    { label: "D", text: "A home inspector." },
+  ],
+  correct: "C",
+  explanation:
+    "The invitation states 'our agent, Priya Nair, will be on-site to answer questions and provide a printed information packet', so (C) is correct.",
+};
+const part7ac3: PracticeQuestionData = {
+  ...PART7_OPEN_HOUSE,
+  question: "What feature of the home does the invitation mention?",
+  options: [
+    { label: "A", text: "A finished basement." },
+    { label: "B", text: "Hardwood floors throughout." },
+    { label: "C", text: "A swimming pool." },
+    { label: "D", text: "A two-car garage." },
+  ],
+  correct: "B",
+  explanation:
+    "The invitation describes the home as featuring 'an updated kitchen, hardwood floors throughout, and a fenced backyard', so (B) is correct.",
+};
 
-const part7ad: PracticeQuestionData = {
-  prompt: "Part 7 · Read the subscription cancellation confirmation and answer the question.",
+const PART7_MAGAZINE_CANCEL = {
+  prompt: "Part 7 · Read the subscription cancellation confirmation and answer the questions.",
+  groupId: "p7single-magazine-cancel",
   context:
-    "SUBSCRIPTION CANCELLATION CONFIRMATION\nHorizon Monthly Magazine\n\nDear Mr. Takahashi,\n\nThis confirms that your subscription to Horizon Monthly has been canceled as requested. You will continue to receive the 2 remaining issues already paid for under your current billing cycle, and no further charges will be applied to your card on file. Because you canceled more than 30 days before your renewal date, you are not eligible for a prorated refund, as our refund policy only applies to cancellations made after an automatic renewal charge has occurred.\n\nIf you change your mind, you may resubscribe at any time at horizonmonthly.com/subscribe.\n\nQuestion: What can be inferred about customers who cancel their subscription after an automatic renewal charge has occurred?",
+    "SUBSCRIPTION CANCELLATION CONFIRMATION\nHorizon Monthly Magazine\n\nDear Mr. Takahashi,\n\nThis confirms that your subscription to Horizon Monthly has been canceled as requested. You will continue to receive the 2 remaining issues already paid for under your current billing cycle, and no further charges will be applied to your card on file. Because you canceled more than 30 days before your renewal date, you are not eligible for a prorated refund, as our refund policy only applies to cancellations made after an automatic renewal charge has occurred.\n\nIf you change your mind, you may resubscribe at any time at horizonmonthly.com/subscribe.",
+};
+const part7ad: PracticeQuestionData = {
+  ...PART7_MAGAZINE_CANCEL,
+  question: "What can be inferred about customers who cancel their subscription after an automatic renewal charge has occurred?",
   options: [
     { label: "A", text: "They are eligible for a prorated refund" },
     { label: "B", text: "They must pay an early cancellation fee" },
@@ -6662,6 +7500,19 @@ const part7ad: PracticeQuestionData = {
   correct: "A",
   explanation:
     "Mr. Takahashi, who canceled before a renewal charge occurred, is told he is 'not eligible for a prorated refund' because the 'refund policy only applies to cancellations made after an automatic renewal charge has occurred', so it can be inferred that customers who cancel after a renewal charge are eligible for a refund, making (A) correct.",
+};
+const part7ad2: PracticeQuestionData = {
+  ...PART7_MAGAZINE_CANCEL,
+  question: "How many more issues will Mr. Takahashi receive?",
+  options: [
+    { label: "A", text: "None." },
+    { label: "B", text: "2 issues already paid for." },
+    { label: "C", text: "A full year of issues." },
+    { label: "D", text: "One final issue as a courtesy." },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation states he 'will continue to receive the 2 remaining issues already paid for under your current billing cycle', so (B) is correct.",
 };
 
 const part7ae: PracticeQuestionData = {
@@ -9380,35 +10231,89 @@ export const part7Questions: PracticeQuestionData[] = [
   part7grp5d,
   part7grp5e,
   part7,
+  part72,
   part7b,
+  part7b2,
+  part7b3,
   part7c,
+  part7c2,
+  part7c3,
   part7d,
+  part7d2,
   part7e,
+  part7e2,
+  part7e3,
   part7f,
+  part7f2,
+  part7f3,
+  part7f4,
   part7g,
+  part7g2,
   part7h,
+  part7h2,
+  part7h3,
   part7i,
+  part7i2,
   part7j,
+  part7j2,
+  part7j3,
   part7k,
+  part7k2,
   part7l,
+  part7l2,
+  part7l3,
   part7m,
+  part7m2,
+  part7m3,
   part7n,
+  part7n2,
+  part7n3,
+  part7n4,
   part7o,
+  part7o2,
+  part7o3,
   part7p,
+  part7p2,
+  part7p3,
   part7q,
+  part7q2,
+  part7q3,
   part7r,
+  part7r2,
+  part7r3,
   part7s,
+  part7s2,
+  part7s3,
   part7t,
+  part7t2,
+  part7t3,
   part7u,
+  part7u2,
+  part7u3,
   part7v,
+  part7v2,
+  part7v3,
   part7w,
+  part7w2,
+  part7w3,
   part7x,
+  part7x2,
+  part7x3,
   part7y,
+  part7y2,
+  part7y3,
   part7z,
+  part7z2,
   part7aa,
+  part7aa2,
+  part7aa3,
   part7ab,
+  part7ab2,
   part7ac,
+  part7ac2,
+  part7ac3,
   part7ad,
+  part7ad2,
   part7ae,
   part7af,
   part7ag,
