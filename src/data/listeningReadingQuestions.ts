@@ -3486,89 +3486,259 @@ const part4e3: PracticeQuestionData = {
     "'Press pause at any point if you'd like to linger here longer' invites listeners to halt the recording and remain in the gallery. The talk directs them onward to Gallery Five rather than back (D), and neither guides (A) nor photography (B) is mentioned.",
 };
 
-const part4f: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the company announcement and answer the question.",
-  listening: true,
+const PART4_ALL_HANDS = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-all-hands",
   audio: { label: "Short talk — Company all-hands announcement", durationSec: 0 },
   context:
-    "Thank you all for joining today's all-hands meeting. I want to update you on a change to our remote work policy that takes effect next month. Starting the first of next month, employees will be required to come into the office at least three days a week, up from the current one day. This decision follows feedback from team leads about collaboration challenges. Your manager will reach out individually to confirm which three days work best for your team. We understand this is a big shift, and HR will be hosting Q&A sessions next week to address your questions. We appreciate your flexibility as we make this transition.\n\nQuestion: What will happen next week, according to the speaker?",
+    "Thank you all for joining today's all-hands meeting. I want to update you on a change to our remote work policy that takes effect next month. Starting the first of next month, employees will be required to come into the office at least three days a week, up from the current one day. This decision follows feedback from team leads about collaboration challenges. Your manager will reach out individually to confirm which three days work best for your team. We understand this is a big shift, and HR will be hosting Q&A sessions next week to address your questions. We appreciate your flexibility as we make this transition.",
+};
+
+const part4f1: PracticeQuestionData = {
+  ...PART4_ALL_HANDS,
+  question: "What is the announcement mainly about?",
   options: [
-    { label: "A", text: "The new policy will officially take effect." },
-    { label: "B", text: "Managers will assign permanent office days." },
-    { label: "C", text: "HR will hold sessions to answer employees' questions." },
-    { label: "D", text: "Team leads will submit feedback on collaboration." },
+    { label: "A", text: "A revision to how often staff work from the office." },
+    { label: "B", text: "The results of a recent staff survey." },
+    { label: "C", text: "A change to who employees report to." },
+    { label: "D", text: "New equipment being issued for home offices." },
+  ],
+  correct: "A",
+  explanation:
+    "The talk announces that in-office attendance is rising 'from the current one day' to 'at least three days a week' — a change in how often people work from the office. The feedback from team leads is the reason for the change rather than a survey being reported on (B), and neither reporting lines (C) nor equipment (D) is mentioned.",
+};
+
+const part4f2: PracticeQuestionData = {
+  ...PART4_ALL_HANDS,
+  question: "Why is the change being made, according to the speaker?",
+  options: [
+    { label: "A", text: "To reduce the cost of running the office." },
+    { label: "B", text: "In response to concerns raised about teamwork." },
+    { label: "C", text: "Because HR requested more in-person meetings." },
+    { label: "D", text: "To match a policy used by a competitor." },
+  ],
+  correct: "B",
+  explanation:
+    "The decision 'follows feedback from team leads about collaboration challenges' — difficulty working together is a concern about teamwork. HR's role is running the Q&A sessions afterwards, not requesting the change (C), and neither cost (A) nor a competitor (D) is raised.",
+};
+
+const part4f3: PracticeQuestionData = {
+  ...PART4_ALL_HANDS,
+  question: "What will happen next week?",
+  options: [
+    { label: "A", text: "The new attendance requirement takes effect." },
+    { label: "B", text: "Staff will learn their assigned in-office days." },
+    { label: "C", text: "HR will run sessions to take employee questions." },
+    { label: "D", text: "Team leads will submit their collaboration feedback." },
   ],
   correct: "C",
   explanation:
-    "The speaker says 'HR will be hosting Q&A sessions next week to address your questions.' The policy itself takes effect 'next month,' not next week (A), no timeframe is given for managers confirming office days (B), and the team leads' feedback is described as something that already happened (D).",
+    "'HR will be hosting Q&A sessions next week to address your questions.' The policy itself takes effect 'next month', not next week (A), no timeframe is given for managers confirming days (B), and the team leads' feedback is described as something that already happened (D).",
 };
 
-const part4g: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the airport announcement and answer the question.",
-  listening: true,
+const PART4_FLIGHT_DELAY = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-flight-delay",
   audio: { label: "Short talk — Airport flight delay announcement", durationSec: 0 },
   context:
-    "Attention passengers. Flight 238 to Chicago, originally scheduled to depart at three fifteen, has been delayed due to severe thunderstorms in the area. We currently expect boarding to begin at four forty-five at gate C12, though this time may change as conditions develop. Passengers connecting through Chicago should see a representative at the service desk near gate C10 to confirm their onward flights. Complimentary beverage vouchers are available at the counter for anyone affected by this delay. We apologize for the inconvenience and will provide updates as soon as they become available.\n\nQuestion: Why has Flight 238 been delayed?",
+    "Attention passengers. Flight 238 to Chicago, originally scheduled to depart at three fifteen, has been delayed due to severe thunderstorms in the area. We currently expect boarding to begin at four forty-five at gate C12, though this time may change as conditions develop. Passengers connecting through Chicago should see a representative at the service desk near gate C10 to confirm their onward flights. Complimentary beverage vouchers are available at the counter for anyone affected by this delay. We apologize for the inconvenience and will provide updates as soon as they become available.",
+};
+
+const part4g1: PracticeQuestionData = {
+  ...PART4_FLIGHT_DELAY,
+  question: "Why has the flight been delayed?",
   options: [
-    { label: "A", text: "A mechanical problem with the aircraft." },
-    { label: "B", text: "Severe thunderstorms in the area." },
-    { label: "C", text: "A shortage of ground crew staff." },
-    { label: "D", text: "An air traffic control system failure." },
+    { label: "A", text: "A technical fault found during inspection." },
+    { label: "B", text: "Weather conditions in the area." },
+    { label: "C", text: "Insufficient ground crew on duty." },
+    { label: "D", text: "A malfunction in air traffic control." },
   ],
   correct: "B",
   explanation:
-    "The announcement states the flight 'has been delayed due to severe thunderstorms in the area.' A mechanical problem (A), a staff shortage (C), and an air traffic control failure (D) are never mentioned.",
+    "The delay is 'due to severe thunderstorms in the area' — a weather condition. A mechanical fault (A), a staffing shortage (C), and an air traffic control failure (D) are never mentioned.",
 };
 
-const part4h: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the press conference excerpt and answer the question.",
-  listening: true,
+const part4g2: PracticeQuestionData = {
+  ...PART4_FLIGHT_DELAY,
+  question: "What does the speaker suggest about the new boarding time?",
+  options: [
+    { label: "A", text: "It is confirmed and will not move again." },
+    { label: "B", text: "It applies only to connecting passengers." },
+    { label: "C", text: "It could still be adjusted." },
+    { label: "D", text: "It replaces the original three fifteen departure entirely." },
+  ],
+  correct: "C",
+  explanation:
+    "Boarding is expected at four forty-five, 'though this time may change as conditions develop' — the new time is provisional, not final (A). It is given for all passengers on the flight, not just those connecting (B), and it is a revised estimate rather than a full schedule replacement (D).",
+};
+
+const part4g3: PracticeQuestionData = {
+  ...PART4_FLIGHT_DELAY,
+  question: "What is being offered to passengers affected by the delay?",
+  options: [
+    { label: "A", text: "Priority rebooking onto a later flight." },
+    { label: "B", text: "A free drink at the counter." },
+    { label: "C", text: "A discount on a future ticket." },
+    { label: "D", text: "A private lounge pass." },
+  ],
+  correct: "B",
+  explanation:
+    "'Complimentary beverage vouchers are available at the counter for anyone affected by this delay' — complimentary means free of charge. Rebooking (A), a discount (C), and lounge access (D) are never offered; the service desk is mentioned only for connecting passengers confirming onward flights.",
+};
+
+const PART4_PRODUCT_LAUNCH = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-product-launch",
   audio: { label: "Short talk — Product-launch press conference", durationSec: 0 },
   context:
-    "Good afternoon, everyone, and thank you for joining us today. I'm thrilled to introduce the Solara X200, our most advanced solar-powered charger yet, capable of fully charging a smartphone in under two hours using nothing but sunlight. The X200 will be available in stores nationwide starting next Friday, priced at seventy-nine dollars. Due to overwhelming pre-order demand, our first shipment has already sold out, so we've doubled production for the following month. We believe this device will change the way people think about portable power, especially for outdoor enthusiasts and travelers. We'll now take a few questions from the press.\n\nQuestion: What can be inferred about the Solara X200?",
+    "Good afternoon, everyone, and thank you for joining us today. I'm thrilled to introduce the Solara X200, our most advanced solar-powered charger yet, capable of fully charging a smartphone in under two hours using nothing but sunlight. The X200 will be available in stores nationwide starting next Friday, priced at seventy-nine dollars. Due to overwhelming pre-order demand, our first shipment has already sold out, so we've doubled production for the following month. We believe this device will change the way people think about portable power, especially for outdoor enthusiasts and travelers. We'll now take a few questions from the press.",
+};
+
+const part4h1: PracticeQuestionData = {
+  ...PART4_PRODUCT_LAUNCH,
+  question: "What feature of the Solara X200 does the speaker highlight?",
   options: [
-    { label: "A", text: "It will be sold exclusively online." },
-    { label: "B", text: "Demand for the product has exceeded the company's expectations." },
-    { label: "C", text: "It is the company's first solar-powered product." },
-    { label: "D", text: "It will initially be available only overseas." },
+    { label: "A", text: "It charges a phone quickly using sunlight alone." },
+    { label: "B", text: "It can charge several devices at the same time." },
+    { label: "C", text: "It is smaller than the company's previous chargers." },
+    { label: "D", text: "It includes a built-in battery backup." },
+  ],
+  correct: "A",
+  explanation:
+    "The device is described as 'capable of fully charging a smartphone in under two hours using nothing but sunlight' — fast, solar-only charging. Charging multiple devices (B), a smaller size (C), and a backup battery (D) are never mentioned, though 'our most advanced' charger yet implies improvement over earlier models generally.",
+};
+
+const part4h2: PracticeQuestionData = {
+  ...PART4_PRODUCT_LAUNCH,
+  question: "What can be inferred about interest in the X200 before its release?",
+  options: [
+    { label: "A", text: "It was lower than the company had hoped." },
+    { label: "B", text: "It surpassed what the company had planned for." },
+    { label: "C", text: "It came mainly from outdoor equipment retailers." },
+    { label: "D", text: "It was limited to customers overseas." },
   ],
   correct: "B",
   explanation:
-    "The speaker notes that 'our first shipment has already sold out, so we've doubled production for the following month,' which logically indicates demand outpaced expectations. Exclusive online sales (A), the product being the company's first (C), and overseas-only availability (D) are never stated.",
+    "'Our first shipment has already sold out, so we've doubled production for the following month' — selling out and doubling production only make sense if demand outpaced what was planned. Nothing suggests demand was disappointing (A), retailer-specific (C), or geographically limited (D).",
 };
 
-const part4i: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the phone-menu recording and answer the question.",
-  listening: true,
+const part4h3: PracticeQuestionData = {
+  ...PART4_PRODUCT_LAUNCH,
+  question: "What will most likely happen next?",
+  options: [
+    { label: "A", text: "The speaker will demonstrate the device." },
+    { label: "B", text: "Attendees will place pre-orders." },
+    { label: "C", text: "Reporters will ask the speaker questions." },
+    { label: "D", text: "The event will move to a different venue." },
+  ],
+  correct: "C",
+  explanation:
+    "The speaker closes with 'We'll now take a few questions from the press,' which is the standard close of a press conference before reporters speak. Pre-orders (B) are described as already having happened, and neither a live demonstration (A) nor a venue change (D) is mentioned.",
+};
+
+const PART4_PHONE_MENU = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-phone-menu",
   audio: { label: "Short talk — Customer-service phone menu", durationSec: 0 },
   context:
-    "Thank you for calling Briarwood Insurance. Our office hours are Monday through Friday, eight A.M. to six P.M. If you're calling to file a new claim, please press one. To check the status of an existing claim, press two. For billing and payment questions, press three. If you know your representative's extension, you may enter it at any time. For all other inquiries, please stay on the line and the next available agent will assist you. Please note that call volumes are currently high, and wait times may exceed twenty minutes.\n\nQuestion: What should a caller do to check the status of an existing claim?",
+    "Thank you for calling Briarwood Insurance. Our office hours are Monday through Friday, eight A.M. to six P.M. If you're calling to file a new claim, please press one. To check the status of an existing claim, press two. For billing and payment questions, press three. If you know your representative's extension, you may enter it at any time. For all other inquiries, please stay on the line and the next available agent will assist you. Please note that call volumes are currently high, and wait times may exceed twenty minutes.",
+};
+
+const part4i1: PracticeQuestionData = {
+  ...PART4_PHONE_MENU,
+  question: "What should a caller do to check on a claim already filed?",
   options: [
     { label: "A", text: "Press one." },
     { label: "B", text: "Press two." },
     { label: "C", text: "Press three." },
-    { label: "D", text: "Stay on the line without pressing anything." },
+    { label: "D", text: "Enter their representative's extension." },
   ],
   correct: "B",
   explanation:
-    "The recording states, 'To check the status of an existing claim, press two.' Pressing one (A) is for filing a new claim, pressing three (C) is for billing questions, and staying on the line (D) is only for other inquiries.",
+    "'To check the status of an existing claim, press two' — an existing claim is one already filed. Pressing one (A) is for a new claim, pressing three (C) is for billing, and entering an extension (D) is offered only to callers who already know one.",
 };
 
-const part4j: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the webinar introduction and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Webinar introduction", durationSec: 0 },
-  context:
-    "Good morning, and welcome to today's webinar on effective time management for remote teams. My name is Diane Foster, and I'll be your facilitator for the next ninety minutes. Before we begin, please make sure your microphone is muted, as this session is being recorded. We'll start with a twenty-minute presentation, followed by a hands-on exercise in breakout rooms, and we'll close with a live question-and-answer period. A copy of today's slides will be emailed to all registered participants by the end of the day. If you experience any technical difficulties, please type your issue into the chat box, and our support staff will assist you.\n\nQuestion: What are participants asked to do before the webinar begins?",
+const part4i2: PracticeQuestionData = {
+  ...PART4_PHONE_MENU,
+  question: "What can be inferred about a caller with a question not covered by the menu options?",
   options: [
-    { label: "A", text: "Download the presentation slides." },
-    { label: "B", text: "Mute their microphones." },
-    { label: "C", text: "Join a breakout room." },
-    { label: "D", text: "Type their name into the chat box." },
+    { label: "A", text: "They will be transferred to billing automatically." },
+    { label: "B", text: "They should wait on the line for a representative." },
+    { label: "C", text: "They must call back during office hours." },
+    { label: "D", text: "They should enter zero to be connected to an agent." },
   ],
   correct: "B",
   explanation:
-    "The facilitator says, 'please make sure your microphone is muted, as this session is being recorded.' Downloading slides (A), joining a breakout room (C), and typing a name into chat (D) are never mentioned as pre-session steps.",
+    "'For all other inquiries, please stay on the line and the next available agent will assist you' covers exactly this caller. No automatic transfer to billing is offered (A), no instruction to call back during office hours is given for this case (C), and no zero option is mentioned (D).",
+};
+
+const part4i3: PracticeQuestionData = {
+  ...PART4_PHONE_MENU,
+  question: "What does the recording warn callers about?",
+  options: [
+    { label: "A", text: "The office is currently closed." },
+    { label: "B", text: "Some menu options have changed recently." },
+    { label: "C", text: "Hold times may be longer than usual." },
+    { label: "D", text: "A representative's extension has changed." },
+  ],
+  correct: "C",
+  explanation:
+    "'Call volumes are currently high, and wait times may exceed twenty minutes' is a warning about long hold times. Office hours are stated but nothing indicates the office is closed right now (A), and neither changed menu options (B) nor a changed extension (D) is mentioned.",
+};
+
+const PART4_WEBINAR = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-webinar-intro",
+  audio: { label: "Short talk — Webinar introduction", durationSec: 0 },
+  context:
+    "Good morning, and welcome to today's webinar on effective time management for remote teams. My name is Diane Foster, and I'll be your facilitator for the next ninety minutes. Before we begin, please make sure your microphone is muted, as this session is being recorded. We'll start with a twenty-minute presentation, followed by a hands-on exercise in breakout rooms, and we'll close with a live question-and-answer period. A copy of today's slides will be emailed to all registered participants by the end of the day. If you experience any technical difficulties, please type your issue into the chat box, and our support staff will assist you.",
+};
+
+const part4j1: PracticeQuestionData = {
+  ...PART4_WEBINAR,
+  question: "Why does the speaker ask participants to mute their microphones?",
+  options: [
+    { label: "A", text: "Because the session is being recorded." },
+    { label: "B", text: "Because the presentation is about to start." },
+    { label: "C", text: "Because background noise disrupted an earlier session." },
+    { label: "D", text: "Because only the facilitator may speak during the webinar." },
+  ],
+  correct: "A",
+  explanation:
+    "The instruction is given 'as this session is being recorded' — the reason stated is the recording, not the presentation's start (B). No earlier session is mentioned (C), and the later Q&A period shows participants are expected to speak eventually (D).",
+};
+
+const part4j2: PracticeQuestionData = {
+  ...PART4_WEBINAR,
+  question: "What will happen after the opening presentation?",
+  options: [
+    { label: "A", text: "Participants will complete a group activity in breakout rooms." },
+    { label: "B", text: "Slides will be emailed immediately to attendees." },
+    { label: "C", text: "The session will move straight to questions." },
+    { label: "D", text: "Diane Foster will introduce a second speaker." },
+  ],
+  correct: "A",
+  explanation:
+    "The order given is presentation, then 'a hands-on exercise in breakout rooms', then the Q&A at the close — so breakout rooms come next. Slides go out 'by the end of the day', not right after the presentation (B), the Q&A is the final stage rather than the next one (C), and no second speaker is mentioned (D).",
+};
+
+const part4j3: PracticeQuestionData = {
+  ...PART4_WEBINAR,
+  question: "What are participants told to do if they have a technical problem?",
+  options: [
+    { label: "A", text: "Restart the webinar application." },
+    { label: "B", text: "Describe the problem in the chat box." },
+    { label: "C", text: "Wait until the question-and-answer period." },
+    { label: "D", text: "Contact Diane Foster directly." },
+  ],
+  correct: "B",
+  explanation:
+    "'Please type your issue into the chat box, and our support staff will assist you' directs this to the chat, not to Diane Foster herself (D). No instruction to restart anything is given (A), and technical issues are handled as they arise rather than saved for the Q&A (C).",
 };
 
 const part4k: PracticeQuestionData = {
@@ -9485,11 +9655,21 @@ export const part4Questions: PracticeQuestionData[] = [
   part4e1,
   part4e2,
   part4e3,
-  part4f,
-  part4g,
-  part4h,
-  part4i,
-  part4j,
+  part4f1,
+  part4f2,
+  part4f3,
+  part4g1,
+  part4g2,
+  part4g3,
+  part4h1,
+  part4h2,
+  part4h3,
+  part4i1,
+  part4i2,
+  part4i3,
+  part4j1,
+  part4j2,
+  part4j3,
   part4k,
   part4l,
   part4m,
