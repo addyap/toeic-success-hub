@@ -6090,10 +6090,16 @@ const part6new4: PracticeQuestionData = {
     "After a verb of recommendation such as 'recommends that,' English uses the subjunctive mood, which takes the base form of the verb regardless of the subject, making 'review' correct: 'recommends that every staff member review the updated handbook.' (A) 'reviews' is the third-person-singular present form, which would be expected outside the subjunctive but is not used after 'recommends that'; (B) 'reviewed' is a past-tense form and does not fit the subjunctive construction; (C) 'reviewing' is a gerund/present participle and cannot serve as the main verb of the clause introduced by 'that.'",
 };
 
-const part6r9a: PracticeQuestionData = {
-  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+const PART6_INVENTORY_ROLLOUT = {
+  prompt: "Part 6 · Read the memo and answer the four questions.",
+  groupId: "p6-inventory-rollout",
   context:
-    "From: it-rollout@solara-analytics.com\nTo: warehouse-team@solara-analytics.com\nSubject: New Inventory Tracking System — Rollout Timeline\n\nDear Team,\n\nWe are pleased to share that the new inventory tracking system is currently in its final testing phase across all three warehouses. Once the system ______ fully operational next Tuesday, all staff will be required to log incoming and outgoing shipments exclusively through the new handheld scanners rather than the paper logs currently in use. Training sessions will be held Monday afternoon to ensure everyone feels comfortable with the new devices before the switch takes effect. We appreciate your patience as we transition away from the outdated tracking process. Please direct any questions about the rollout schedule to your shift supervisor.\n\nIT Rollout Team",
+    "From: it-rollout@solara-analytics.com\nTo: warehouse-team@solara-analytics.com\nSubject: New Inventory Tracking System — Rollout Timeline\n\nDear Team,\n\nWe are pleased to share that the new inventory tracking system is currently in its final testing phase across all three warehouses. Once the system ______ (1) fully operational next Tuesday, all staff will be required to log incoming and outgoing shipments exclusively through the new handheld scanners rather than the paper logs currently in use. ______ (2)\n\nTraining sessions will be held Monday afternoon to ensure everyone feels ______ (3) with the new devices before the switch takes effect. Staff who are unable to attend the Monday session must complete an online tutorial ______ (4) the end of the week.\n\nWe appreciate your patience as we transition away from the outdated tracking process. Please direct any questions about the rollout schedule to your shift supervisor.\n\nIT Rollout Team",
+};
+
+const part6grp2a: PracticeQuestionData = {
+  ...PART6_INVENTORY_ROLLOUT,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "will become" },
     { label: "B", text: "becomes" },
@@ -6102,7 +6108,52 @@ const part6r9a: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "Time clauses introduced by 'once' that refer to a future event use the present simple, not the future tense, so 'becomes' is correct: 'Once the system becomes fully operational next Tuesday, all staff will be required...' (A) 'will become' incorrectly uses future tense inside a time clause, where English requires the present simple even though the meaning is future; (C) 'became' is simple past and wrongly implies the switch already happened; (D) 'becoming' is a gerund/participle and cannot function as the finite verb of the 'once' clause.",
+    "Time clauses introduced by 'once' that refer to a future event use the present simple, not the future tense, so 'becomes' is correct: 'Once the system becomes fully operational next Tuesday, all staff will be required...' (A) incorrectly uses future tense inside a time clause, where English requires the present simple even though the meaning is future; (C) is simple past and wrongly implies the switch already happened; (D) is a gerund/participle and cannot function as the finite verb of the 'once' clause.",
+};
+
+const part6grp2b: PracticeQuestionData = {
+  ...PART6_INVENTORY_ROLLOUT,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "Each scanner has already been pre-loaded with the current inventory database, so no manual setup will be needed on your part.",
+    },
+    { label: "B", text: "The warehouse parking lot will be repaved starting next month." },
+    { label: "C", text: "Please remember to submit your vacation requests two weeks in advance." },
+    { label: "D", text: "Our quarterly sales figures exceeded expectations this year." },
+  ],
+  correct: "A",
+  explanation:
+    "The surrounding sentences describe staff switching to handheld scanners for logging shipments. (A) directly continues that topic by explaining the scanners are already set up and ready, reassuring staff that no extra work is needed on their end. (B), (C), and (D) are all plausible sentences from a workplace email, but none relate to the scanner rollout.",
+};
+
+const part6grp2c: PracticeQuestionData = {
+  ...PART6_INVENTORY_ROLLOUT,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "comfortable" },
+    { label: "B", text: "comfort" },
+    { label: "C", text: "comforting" },
+    { label: "D", text: "comfortably" },
+  ],
+  correct: "A",
+  explanation:
+    "'Feels ______ with' needs an adjective describing the subject's state: 'feels comfortable with the new devices'. (B) is a noun, (C) is a participle meaning something that provides comfort to others, which does not fit here, and (D) is an adverb, which cannot follow the linking verb 'feels' this way.",
+};
+
+const part6grp2d: PracticeQuestionData = {
+  ...PART6_INVENTORY_ROLLOUT,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "by" },
+    { label: "B", text: "until" },
+    { label: "C", text: "since" },
+    { label: "D", text: "at" },
+  ],
+  correct: "A",
+  explanation:
+    "'By the end of the week' expresses a deadline — the tutorial must be finished no later than that point. (B) would imply a continuous action lasting up to that time, which does not fit 'complete,' a one-time action. (C) refers to a starting point in the past, and (D) does not fit before a phrase like 'the end of the week' in this sense.",
 };
 
 const part6r9b: PracticeQuestionData = {
@@ -6165,10 +6216,16 @@ const part6r10a: PracticeQuestionData = {
     "'By the time' introducing a present-tense clause about a future event ('inspectors arrive next Friday') pairs with the future perfect in the main clause to show an action finished before that future point: 'the crew will have completed the reinforcement work'. (B) 'completes' is present simple and does not indicate completion prior to another future event; (C) 'will complete' is simple future and would suggest the action happens at or after the inspection rather than being finished beforehand; (D) 'has completed' is present perfect and cannot combine with a future time frame introduced by 'by the time...next Friday'.",
 };
 
-const part6r10b: PracticeQuestionData = {
-  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+const PART6_TRAINING_CREDIT = {
+  prompt: "Part 6 · Read the email and answer the four questions.",
+  groupId: "p6-training-credit",
   context:
-    "From: training@apexlearningsolutions.com\nTo: all-staff@apexlearningsolutions.com\nSubject: Reminder: Redeem Your Annual Training Credit\n\nDear colleagues,\n\nAs the fiscal year draws to a close, we want to remind everyone that unused training credits expire on September 30 and cannot be carried over into next year. When redeeming your credit through the employee portal, you may choose ______ the online certification bundle or the in-person workshop series, but the credit cannot be split between the two options. Both choices include full access to course materials for twelve months after enrollment. If you have already redeemed your credit this year, no further action is needed. Please reach out to the training team with any questions before the deadline.\n\nApex Learning Solutions",
+    "From: training@apexlearningsolutions.com\nTo: all-staff@apexlearningsolutions.com\nSubject: Reminder: Redeem Your Annual Training Credit\n\nDear colleagues,\n\nAs the fiscal year draws to a close, we want to remind everyone that unused training credits expire on September 30 and cannot be carried over into next year. When redeeming your credit through the employee portal, you may choose ______ (1) the online certification bundle or the in-person workshop series, but the credit cannot be split between the two options. Both choices include full access to course materials for twelve months after enrollment. ______ (2)\n\nIf you have already redeemed your credit this year, no further action is needed. Employees who redeem after September 15 should expect their enrollment confirmation to arrive ______ (3) three business days, since the training team processes a high volume of requests near the deadline. Please reach out to the training team with any questions ______ (4) the deadline.\n\nApex Learning Solutions",
+};
+
+const part6grp3a: PracticeQuestionData = {
+  ...PART6_TRAINING_CREDIT,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "neither" },
     { label: "B", text: "both" },
@@ -6177,7 +6234,52 @@ const part6r10b: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "'Either' pairs with 'or' to present two mutually exclusive options: 'choose either the online certification bundle or the in-person workshop series'. (A) 'neither' pairs with 'nor' and would create an illogical double negative, since the sentence describes making a choice rather than rejecting both options; (B) 'both' pairs with 'and', not 'or', and contradicts the later statement that 'the credit cannot be split between the two options'; (D) 'each' would need to refer to the two options individually rather than presenting them as alternatives joined by 'or'.",
+    "'Either' pairs with 'or' to present two mutually exclusive options: 'choose either the online certification bundle or the in-person workshop series'. (A) pairs with 'nor' and would create an illogical double negative, since the sentence describes making a choice rather than rejecting both options; (B) pairs with 'and', not 'or', and contradicts the later statement that 'the credit cannot be split between the two options'; (D) would need to refer to the two options individually rather than presenting them as alternatives joined by 'or'.",
+};
+
+const part6grp3b: PracticeQuestionData = {
+  ...PART6_TRAINING_CREDIT,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "The workshop series also includes a printed certificate upon completion, while the online bundle offers a digital badge instead.",
+    },
+    { label: "B", text: "Our office will be relocating to a new building next spring." },
+    { label: "C", text: "All expense reports must be submitted through the finance portal." },
+    { label: "D", text: "The company picnic has been rescheduled to accommodate more staff." },
+  ],
+  correct: "A",
+  explanation:
+    "The previous sentence describes what both options include; (A) naturally continues that comparison by noting a difference between the two, keeping the focus on the training credit options. (B), (C), and (D) are unrelated to the training credit redemption being described.",
+};
+
+const part6grp3c: PracticeQuestionData = {
+  ...PART6_TRAINING_CREDIT,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "within" },
+    { label: "B", text: "during" },
+    { label: "C", text: "for" },
+    { label: "D", text: "since" },
+  ],
+  correct: "A",
+  explanation:
+    "'Within three business days' means inside that span of time from the point of redemption. (B) would need a defined period noun, such as 'during the week,' not a duration like 'three business days'. (C) would describe how long something lasts, not a deadline by which it happens. (D) refers to a starting point in the past, which does not fit a future arrival estimate.",
+};
+
+const part6grp3d: PracticeQuestionData = {
+  ...PART6_TRAINING_CREDIT,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "before" },
+    { label: "B", text: "after" },
+    { label: "C", text: "during" },
+    { label: "D", text: "since" },
+  ],
+  correct: "A",
+  explanation:
+    "'Before the deadline' tells employees to ask questions prior to September 30, while there is still time to act on the answer. (B) would mean asking once the deadline has already passed, which defeats the purpose. (C) does not fit before a single point in time like 'the deadline'. (D) refers to a starting point in the past.",
 };
 
 const part6r10c: PracticeQuestionData = {
@@ -6225,10 +6327,16 @@ const part6r11a: PracticeQuestionData = {
     "'The number of' takes a singular verb because 'number' (not the noun that follows 'of') is the true subject, making 'has risen' correct — this is the reverse of the quantifier 'a number of,' which takes a plural verb. (A) 'have' incorrectly agrees with the plural noun 'complaints' instead of the singular subject 'number'; (C) 'were' is plural and past tense, matching neither the subject nor the present-perfect structure; (D) 'are' is likewise plural and present tense, not present perfect, so it cannot pair with 'risen.'",
 };
 
-const part6r11b: PracticeQuestionData = {
-  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+const PART6_SHIFT_PATTERN = {
+  prompt: "Part 6 · Read the memo and answer the four questions.",
+  groupId: "p6-shift-pattern",
   context:
-    "From: hr@millhaven-textiles.com\nTo: floor-supervisors@millhaven-textiles.com\nSubject: Shift Pattern Background for New Hires\n\nDear Supervisors,\n\nAs you onboard the newest group of floor workers, it may help to explain how our scheduling has evolved over time. The plant ______ run a single ten-hour shift each day, but after last year's expansion we now operate three overlapping eight-hour shifts to keep the machines running around the clock. New hires sometimes ask why longtime staff describe such a different daily routine, and this background should clear up the confusion. Please share this context during your first orientation session with each new group. Thank you for helping new employees understand how far the plant has come.\n\nHuman Resources",
+    "From: hr@millhaven-textiles.com\nTo: floor-supervisors@millhaven-textiles.com\nSubject: Shift Pattern Background for New Hires\n\nDear Supervisors,\n\nAs you onboard the newest group of floor workers, it may help to explain how our scheduling has evolved over time. The plant ______ (1) run a single ten-hour shift each day, but after last year's expansion we now operate three overlapping eight-hour shifts to keep the machines running around the clock. ______ (2)\n\nNew hires sometimes ask why longtime staff describe such a different daily routine, and this background should clear up the confusion. Employees who wish to request a shift change must submit their preference ______ (3) their supervisor at least two weeks in advance. Please share this context during your first orientation session with each new group, and encourage new hires to raise any scheduling questions ______ (4) they arise rather than waiting until the next meeting.\n\nThank you for helping new employees understand how far the plant has come.\n\nHuman Resources",
+};
+
+const part6grp4a: PracticeQuestionData = {
+  ...PART6_SHIFT_PATTERN,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "use to" },
     { label: "B", text: "uses to" },
@@ -6237,7 +6345,52 @@ const part6r11b: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "'Used to + base verb' describes a repeated past habit or state that no longer holds true, correctly contrasting the old single-shift pattern with today's three-shift system: 'The plant used to run a single ten-hour shift.' (A) 'use to' drops the required past-tense marker '-d'; (B) 'uses to' incorrectly adds a third-person '-s' to this invariable expression; (D) 'was used to' means 'was accustomed to' and would require a gerund ('was used to running'), not the base verb 'run' that follows the blank.",
+    "'Used to + base verb' describes a repeated past habit or state that no longer holds true, correctly contrasting the old single-shift pattern with today's three-shift system: 'The plant used to run a single ten-hour shift.' (A) drops the required past-tense marker '-d'; (B) incorrectly adds a third-person '-s' to this invariable expression; (D) means 'was accustomed to' and would require a gerund ('was used to running'), not the base verb 'run' that follows the blank.",
+};
+
+const part6grp4b: PracticeQuestionData = {
+  ...PART6_SHIFT_PATTERN,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "This change allowed us to increase overall production capacity by nearly forty percent.",
+    },
+    { label: "B", text: "The cafeteria will begin serving breakfast starting next Monday." },
+    { label: "C", text: "All safety equipment must be inspected on a monthly basis." },
+    { label: "D", text: "Employee parking passes will be renewed automatically this year." },
+  ],
+  correct: "A",
+  explanation:
+    "The passage has just described switching from one shift to three overlapping shifts; (A) explains the benefit that switch produced, which fits naturally as the reason the change was worth making. (B), (C), and (D) are unrelated to the shift-pattern history being explained.",
+};
+
+const part6grp4c: PracticeQuestionData = {
+  ...PART6_SHIFT_PATTERN,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "to" },
+    { label: "B", text: "into" },
+    { label: "C", text: "toward" },
+    { label: "D", text: "upon" },
+  ],
+  correct: "A",
+  explanation:
+    "'Submit X to Y' is the standard pairing for sending something to a person for review: 'submit their preference to their supervisor'. (B), (C), and (D) are prepositions that do not pair correctly with 'submit' in this sense.",
+};
+
+const part6grp4d: PracticeQuestionData = {
+  ...PART6_SHIFT_PATTERN,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "as" },
+    { label: "B", text: "before" },
+    { label: "C", text: "unless" },
+    { label: "D", text: "despite" },
+  ],
+  correct: "A",
+  explanation:
+    "'As they arise' is a fixed expression meaning 'at the time each one comes up,' encouraging new hires to ask questions immediately rather than waiting. (B) would illogically mean raising questions before they exist. (C) introduces a condition that does not fit this context. (D) is followed by a noun phrase, not a clause like 'they arise,' and does not fit the intended meaning.",
 };
 
 const part6r11c: PracticeQuestionData = {
@@ -9048,16 +9201,25 @@ export const part6Questions: PracticeQuestionData[] = [
   part6new2,
   part6new3,
   part6new4,
-  part6r9a,
+  part6grp2a,
+  part6grp2b,
+  part6grp2c,
+  part6grp2d,
   part6r9b,
   part6r9c,
   part6r9d,
   part6r10a,
-  part6r10b,
+  part6grp3a,
+  part6grp3b,
+  part6grp3c,
+  part6grp3d,
   part6r10c,
   part6r10d,
   part6r11a,
-  part6r11b,
+  part6grp4a,
+  part6grp4b,
+  part6grp4c,
+  part6grp4d,
   part6r11c,
   part6r11d,
   part6r11e,
