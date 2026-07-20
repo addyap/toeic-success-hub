@@ -6201,10 +6201,16 @@ const part6r9d: PracticeQuestionData = {
     "'A number of' functions as a plural quantifier meaning 'several,' so it takes a plural verb agreeing with 'customers,' making 'have requested' correct. (A) 'has' is singular and would incorrectly agree with 'number' as if it were the true subject, a common confusion with the similar but distinct phrase 'the number of,' which does take a singular verb; (B) 'is' is also singular and present tense, mismatched both in number and in failing to form the needed present-perfect verb phrase; (C) 'was' is singular and past tense, which fits neither the plural subject nor the present-perfect structure needed here.",
 };
 
-const part6r10a: PracticeQuestionData = {
-  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+const PART6_BRIDGE_TIMELINE = {
+  prompt: "Part 6 · Read the email and answer the four questions.",
+  groupId: "p6-bridge-timeline",
   context:
-    "From: projects@cascadebridgeworks.com\nTo: client-relations@cascadebridgeworks.com\nSubject: Riverside Bridge Renovation – Timeline Update\n\nDear Client Relations Team,\n\nThe Riverside Bridge renovation project remains on track despite last month's brief weather delay. By the time the state inspectors arrive next Friday for the final structural review, the crew ______ the reinforcement work on all four support piers, including the protective coating that was added ahead of schedule. This puts us roughly one week ahead of the original timeline. We will send photographs of the completed piers along with the updated inspection checklist by Wednesday. Please let us know if the client would like to schedule a site visit before the inspection date.\n\nProject Management Office",
+    "From: projects@cascadebridgeworks.com\nTo: client-relations@cascadebridgeworks.com\nSubject: Riverside Bridge Renovation – Timeline Update\n\nDear Client Relations Team,\n\nThe Riverside Bridge renovation project remains on track despite last month's brief weather delay. By the time the state inspectors arrive next Friday for the final structural review, the crew ______ (1) the reinforcement work on all four support piers, including the protective coating that was added ahead of schedule. This puts us roughly one week ahead of the original timeline. ______ (2)\n\nWe will send photographs of the completed piers along with the updated inspection checklist ______ (3) Wednesday. Please let us know ______ (4) the client would like to schedule a site visit before the inspection date.\n\nProject Management Office",
+};
+
+const part6grp5a: PracticeQuestionData = {
+  ...PART6_BRIDGE_TIMELINE,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "will have completed" },
     { label: "B", text: "completes" },
@@ -6213,7 +6219,52 @@ const part6r10a: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "'By the time' introducing a present-tense clause about a future event ('inspectors arrive next Friday') pairs with the future perfect in the main clause to show an action finished before that future point: 'the crew will have completed the reinforcement work'. (B) 'completes' is present simple and does not indicate completion prior to another future event; (C) 'will complete' is simple future and would suggest the action happens at or after the inspection rather than being finished beforehand; (D) 'has completed' is present perfect and cannot combine with a future time frame introduced by 'by the time...next Friday'.",
+    "'By the time' introducing a present-tense clause about a future event ('inspectors arrive next Friday') pairs with the future perfect in the main clause to show an action finished before that future point: 'the crew will have completed the reinforcement work'. (B) is present simple and does not indicate completion prior to another future event; (C) is simple future and would suggest the action happens at or after the inspection rather than being finished beforehand; (D) is present perfect and cannot combine with a future time frame introduced by 'by the time...next Friday'.",
+};
+
+const part6grp5b: PracticeQuestionData = {
+  ...PART6_BRIDGE_TIMELINE,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "The extra time will allow the crew to complete a few additional quality checks before the inspection.",
+    },
+    { label: "B", text: "Our office will be closed for the upcoming holiday weekend." },
+    { label: "C", text: "The client's invoice for this quarter has already been processed." },
+    { label: "D", text: "A new bridge project is scheduled to begin in the spring." },
+  ],
+  correct: "A",
+  explanation:
+    "The passage has just noted the project is a week ahead of schedule; (A) explains how that extra time will be used, which fits naturally before the email moves on to the inspection details. (B), (C), and (D) are unrelated to the bridge project's timeline.",
+};
+
+const part6grp5c: PracticeQuestionData = {
+  ...PART6_BRIDGE_TIMELINE,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "by" },
+    { label: "B", text: "until" },
+    { label: "C", text: "at" },
+    { label: "D", text: "since" },
+  ],
+  correct: "A",
+  explanation:
+    "'By Wednesday' sets a deadline for sending the materials. (B) would imply the sending continues up to that point, which does not fit a one-time action like sending photographs. (C) does not fit before a day name in this sense, and (D) refers to a starting point in the past.",
+};
+
+const part6grp5d: PracticeQuestionData = {
+  ...PART6_BRIDGE_TIMELINE,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "whether" },
+    { label: "B", text: "that" },
+    { label: "C", text: "which" },
+    { label: "D", text: "what" },
+  ],
+  correct: "A",
+  explanation:
+    "'Let us know whether...' introduces an indirect yes/no question, correctly asking if the client wants a site visit or not. (B) would need a full factual statement rather than a yes/no question. (C) would require a set of specific choices to select from, not a yes/no decision. (D) would ask for unspecified information rather than a yes/no choice.",
 };
 
 const PART6_TRAINING_CREDIT = {
@@ -6282,10 +6333,16 @@ const part6grp3d: PracticeQuestionData = {
     "'Before the deadline' tells employees to ask questions prior to September 30, while there is still time to act on the answer. (B) would mean asking once the deadline has already passed, which defeats the purpose. (C) does not fit before a single point in time like 'the deadline'. (D) refers to a starting point in the past.",
 };
 
-const part6r10c: PracticeQuestionData = {
-  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+const PART6_FESTIVAL_TICKETS = {
+  prompt: "Part 6 · Read the email and answer the four questions.",
+  groupId: "p6-festival-tickets",
   context:
-    "From: marketing@harborfestevents.com\nTo: subscribers@harborfestevents.com\nSubject: Early-Bird Tickets Sold Out\n\nDear Harborfest Subscriber,\n\nThank you to everyone who took part in this year's early-bird ticket promotion for the annual waterfront festival. The response was ______ overwhelming that all early-bird tickets sold out within three days, nearly two weeks ahead of our original schedule. General admission tickets will go on sale next Monday at the standard price, and we encourage you to purchase early given the strong demand. A limited number of VIP packages, including reserved seating and backstage access, will also be released at that time. We appreciate your continued support of the festival each year.\n\nHarborfest Events Marketing Team",
+    "From: marketing@harborfestevents.com\nTo: subscribers@harborfestevents.com\nSubject: Early-Bird Tickets Sold Out\n\nDear Harborfest Subscriber,\n\nThank you to everyone who took part in this year's early-bird ticket promotion for the annual waterfront festival. The response was ______ (1) overwhelming that all early-bird tickets sold out within three days, nearly two weeks ahead of our original schedule. General admission tickets will go on sale next Monday at the standard price, and we encourage you to purchase early given the strong demand. ______ (2)\n\nA limited number of VIP packages, including reserved seating and backstage access, will also be released at that time. Each VIP package includes a welcome gift ______ (3) an exclusive festival tote bag and a set of collectible pins. Subscribers who purchased early-bird tickets last year will receive ______ (4) access to the VIP package sale, one hour before it opens to the public.\n\nWe appreciate your continued support of the festival each year.\n\nHarborfest Events Marketing Team",
+};
+
+const part6grp6a: PracticeQuestionData = {
+  ...PART6_FESTIVAL_TICKETS,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "very" },
     { label: "B", text: "too" },
@@ -6294,13 +6351,61 @@ const part6r10c: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "'So' pairs with an adjective ('overwhelming') followed by a 'that' clause expressing result: 'so overwhelming that all early-bird tickets sold out within three days'. (A) 'very' can intensify an adjective but cannot be followed by a 'that' result clause; (B) 'too' implies an excess that prevents something and typically pairs with an infinitive ('too crowded to enter'), not a 'that' clause of result; (C) 'such' must be followed by a noun phrase (e.g., 'such an overwhelming response'), not directly by an adjective alone.",
+    "'So' pairs with an adjective ('overwhelming') followed by a 'that' clause expressing result: 'so overwhelming that all early-bird tickets sold out within three days'. (A) can intensify an adjective but cannot be followed by a 'that' result clause; (B) implies an excess that prevents something and typically pairs with an infinitive ('too crowded to enter'), not a 'that' clause of result; (C) must be followed by a noun phrase (e.g., 'such an overwhelming response'), not directly by an adjective alone.",
 };
 
-const part6r10d: PracticeQuestionData = {
-  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+const part6grp6b: PracticeQuestionData = {
+  ...PART6_FESTIVAL_TICKETS,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    { label: "A", text: "We recommend setting a calendar reminder so you don't miss the Monday release." },
+    { label: "B", text: "Our food vendors will offer a new selection of dishes this year." },
+    { label: "C", text: "Parking near the waterfront tends to fill up quickly on festival weekends." },
+    { label: "D", text: "Weather forecasts for the festival weekend currently show clear skies." },
+  ],
+  correct: "A",
+  explanation:
+    "The previous sentence urges subscribers to buy early given the strong demand; (A) gives them a practical way to act on that advice before the email shifts to the VIP package details. (B), (C), and (D) are unrelated to the ticket sale being described.",
+};
+
+const part6grp6c: PracticeQuestionData = {
+  ...PART6_FESTIVAL_TICKETS,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "including" },
+    { label: "B", text: "include" },
+    { label: "C", text: "included" },
+    { label: "D", text: "includes" },
+  ],
+  correct: "A",
+  explanation:
+    "'Including' introduces examples of what the welcome gift contains: 'a welcome gift including an exclusive tote bag and pins.' (B), (C), and (D) are all finite verb forms that would require a second clause (e.g., 'which includes'), but none can directly follow a noun phrase like 'welcome gift' without a relative pronoun.",
+};
+
+const part6grp6d: PracticeQuestionData = {
+  ...PART6_FESTIVAL_TICKETS,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "early" },
+    { label: "B", text: "earlier" },
+    { label: "C", text: "earliest" },
+    { label: "D", text: "earliness" },
+  ],
+  correct: "A",
+  explanation:
+    "'Early access' is a fixed noun phrase meaning access granted ahead of the general public. (B) is a comparative form that would need an explicit comparison ('earlier than...'). (C) is superlative and would need to compare among three or more groups. (D) is a noun and cannot modify another noun this way.",
+};
+
+const PART6_SANITATION_AUDIT = {
+  prompt: "Part 6 · Read the memo and answer the four questions.",
+  groupId: "p6-sanitation-audit",
   context:
-    "From: quality-assurance@graniteridgefoods.com\nTo: production-staff@graniteridgefoods.com\nSubject: Q3 Sanitation Audit Findings\n\nDear Team,\n\nThe third-quarter sanitation audit identified a recurring buildup of residue on packaging equipment during late-afternoon shifts. To reduce contamination risk going forward, the audit team suggests ______ all packaging equipment before each shift rather than only at the beginning of the week. This adjustment is expected to bring residue levels back within the range required for our food safety certification. Shift supervisors will receive an updated cleaning checklist by Friday, and a brief refresher training will be held next Tuesday. We appreciate everyone's attention to this matter as we work to maintain our certification standing.\n\nQuality Assurance Department",
+    "From: quality-assurance@graniteridgefoods.com\nTo: production-staff@graniteridgefoods.com\nSubject: Q3 Sanitation Audit Findings\n\nDear Team,\n\nThe third-quarter sanitation audit identified a recurring buildup of residue on packaging equipment during late-afternoon shifts. To reduce contamination risk going forward, the audit team suggests ______ (1) all packaging equipment before each shift rather than only at the beginning of the week. ______ (2)\n\nThis adjustment is expected to bring residue levels back within the range required for our food safety certification. Shift supervisors will receive an updated cleaning checklist ______ (3) Friday, and a brief refresher training will be held next Tuesday. Staff who have questions about the new schedule should raise them ______ (4) the training session rather than during production hours.\n\nWe appreciate everyone's attention to this matter as we work to maintain our certification standing.\n\nQuality Assurance Department",
+};
+
+const part6grp7a: PracticeQuestionData = {
+  ...PART6_SANITATION_AUDIT,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "sanitize" },
     { label: "B", text: "sanitizing" },
@@ -6309,7 +6414,52 @@ const part6r10d: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The verb 'suggest' takes a gerund complement rather than an infinitive, making 'sanitizing' correct: 'the audit team suggests sanitizing all packaging equipment before each shift'. (A) 'sanitize' is a bare base form and cannot directly follow 'suggests' without 'to' or '-ing'; (C) 'to sanitize' uses an infinitive, but 'suggest' does not take a to-infinitive complement (unlike verbs such as 'want' or 'decide'); (D) 'sanitized' is a past participle and cannot serve as the object of 'suggests' in this position.",
+    "The verb 'suggest' takes a gerund complement rather than an infinitive, making 'sanitizing' correct: 'the audit team suggests sanitizing all packaging equipment before each shift'. (A) is a bare base form and cannot directly follow 'suggests' without 'to' or '-ing'; (C) uses an infinitive, but 'suggest' does not take a to-infinitive complement, unlike verbs such as 'want' or 'decide'; (D) is a past participle and cannot serve as the object of 'suggests' in this position.",
+};
+
+const part6grp7b: PracticeQuestionData = {
+  ...PART6_SANITATION_AUDIT,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "The buildup was traced primarily to the packaging line that runs during the second and third shifts.",
+    },
+    { label: "B", text: "Our facility will host a food safety conference next spring." },
+    { label: "C", text: "New employee badges will be issued starting next month." },
+    { label: "D", text: "The cafeteria menu has been updated with more vegetarian options." },
+  ],
+  correct: "A",
+  explanation:
+    "The opening sentence mentions residue buildup 'during late-afternoon shifts'; (A) follows up on that detail by identifying which line is responsible, before the memo moves on to describe the fix. (B), (C), and (D) are unrelated to the sanitation findings being reported.",
+};
+
+const part6grp7c: PracticeQuestionData = {
+  ...PART6_SANITATION_AUDIT,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "by" },
+    { label: "B", text: "until" },
+    { label: "C", text: "at" },
+    { label: "D", text: "since" },
+  ],
+  correct: "A",
+  explanation:
+    "'By Friday' sets a deadline for when supervisors will have the checklist. (B) would imply the receiving continues up to that point, which does not fit a one-time delivery. (C) does not fit before a day name in this sense, and (D) refers to a starting point in the past.",
+};
+
+const part6grp7d: PracticeQuestionData = {
+  ...PART6_SANITATION_AUDIT,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "during" },
+    { label: "B", text: "between" },
+    { label: "C", text: "among" },
+    { label: "D", text: "along" },
+  ],
+  correct: "A",
+  explanation:
+    "'During the training session' specifies the appropriate time to ask questions, contrasted with 'during production hours' later in the sentence. (B) would require two specific points or items being compared. (C) is used for groups of three or more entities, not a single time period. (D) does not fit a time expression like this.",
 };
 
 const part6r11a: PracticeQuestionData = {
@@ -9208,13 +9358,22 @@ export const part6Questions: PracticeQuestionData[] = [
   part6r9b,
   part6r9c,
   part6r9d,
-  part6r10a,
+  part6grp5a,
+  part6grp5b,
+  part6grp5c,
+  part6grp5d,
   part6grp3a,
   part6grp3b,
   part6grp3c,
   part6grp3d,
-  part6r10c,
-  part6r10d,
+  part6grp6a,
+  part6grp6b,
+  part6grp6c,
+  part6grp6d,
+  part6grp7a,
+  part6grp7b,
+  part6grp7c,
+  part6grp7d,
   part6r11a,
   part6grp4a,
   part6grp4b,
