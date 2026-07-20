@@ -31,16 +31,16 @@ const part1b: PracticeQuestionData = {
   photo: true,
   audio: { label: "Photograph statements", durationSec: 0 },
   context:
-    "Several passengers sit in an airport waiting area. One man is reading a newspaper, and a suitcase stands on the floor beside him.",
+    "Several passengers sit in an airport waiting area. One passenger is reading a newspaper, and bags rest on the floor beside the seats.",
   options: [
     { label: "A", text: "The passengers are boarding the plane." },
-    { label: "B", text: "A man is folding his newspaper." },
-    { label: "C", text: "A suitcase has been placed on the floor." },
+    { label: "B", text: "A passenger is folding a newspaper." },
+    { label: "C", text: "Bags have been placed on the floor." },
     { label: "D", text: "The seats are being cleaned." },
   ],
   correct: "C",
   explanation:
-    "(C) correctly describes the state of the scene — note the passive 'has been placed.' (A) and (D) name actions no one is performing, and (B) swaps the man's real action (reading) for a similar-sounding one (folding) — a classic Part 1 trap.",
+    "(C) correctly describes the state of the scene — note the passive 'have been placed.' (A) and (D) name actions no one is performing, and (B) swaps the passenger's real action (reading) for a similar-sounding one (folding) — a classic Part 1 trap.",
 };
 
 const part1c: PracticeQuestionData = {

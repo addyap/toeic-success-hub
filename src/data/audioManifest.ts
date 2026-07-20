@@ -57,21 +57,21 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1wkpl1efrkq": {
+  "250pu6h1iut": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "1wkpl1efrkq-0.mp3"
+        "file": "250pu6h1iut-0.mp3"
       }
     ]
   },
-  "1vs1cr0roh5": {
+  "nyfyiwvf5w": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "1vs1cr0roh5-0.mp3"
+        "file": "nyfyiwvf5w-0.mp3"
       }
     ]
   },
