@@ -9054,12 +9054,331 @@ const part7grp1e: PracticeQuestionData = {
     "The email states she 'purchased it using the standard shipping option,' and the policy specifies 'standard shipping customers receive their refund within 5–7 business days of approval.' The 2–3 day window (B) applies only to expedited shipping, which she did not use. The 30-day figure (C) is the return deadline, not a refund processing time, and the policy explicitly offers refunds for damaged items (D).",
 };
 
+// ── Part 7 double passage #2: job posting + application email.
+const PART7_JOB_APPLICATION = {
+  prompt: "Part 7 · Read the two documents and answer the five questions.",
+  groupId: "p7-job-application",
+  context:
+    "MARKETING COORDINATOR — Bluepeak Media\n\nBluepeak Media is hiring a full-time Marketing Coordinator to support our client-facing campaigns team in Austin, Texas.\n\nResponsibilities include drafting social media content, coordinating with freelance designers, and tracking campaign performance metrics.\n\nRequirements:\n- At least two years of experience in a marketing or communications role\n- A portfolio of writing or campaign samples\n- Comfortable working with spreadsheets and basic analytics tools\n\nTo apply, email a cover letter and a link to your portfolio to jobs@bluepeakmedia.com. Please use the subject line \"Marketing Coordinator – [Your Full Name]\" so your application is routed correctly. Applications are reviewed on a rolling basis through April 10. The start date is flexible for the right candidate.\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: Marcus Webb <marcus.webb@mailbox.com>\nTo: jobs@bluepeakmedia.com\nSubject: Marketing Coordinator – Marcus Webb\nDate: April 2\n\nHello,\n\nI'm writing to apply for the Marketing Coordinator position I saw listed on your careers page. I've spent the past three years as a marketing assistant at a small agency in Dallas, where I managed social media calendars and helped put together quarterly performance reports for clients.\n\nI've attached a link to my portfolio, which includes several campaign write-ups from the past year.\n\nI'm very interested in relocating to Austin for this role. I would need to give two weeks' notice to my current employer before starting, but I'm otherwise available to begin as soon as the position requires.\n\nThank you for your consideration,\nMarcus Webb",
+};
+
+const part7grp2a: PracticeQuestionData = {
+  ...PART7_JOB_APPLICATION,
+  question: "What is one stated requirement for the Marketing Coordinator position?",
+  options: [
+    { label: "A", text: "At least two years of relevant experience." },
+    { label: "B", text: "A graduate degree in marketing." },
+    { label: "C", text: "Fluency in a second language." },
+    { label: "D", text: "Prior experience managing a team." },
+  ],
+  correct: "A",
+  explanation:
+    "The posting lists requirements including \"at least two years of experience in a marketing or communications role.\" A graduate degree (B), a second language (C), and team-management experience (D) are not mentioned.",
+};
+const part7grp2b: PracticeQuestionData = {
+  ...PART7_JOB_APPLICATION,
+  question: "According to the email, what does Mr. Webb say he will need to do before starting the new job?",
+  options: [
+    { label: "A", text: "Complete a training certification." },
+    { label: "B", text: "Give two weeks' notice to his current employer." },
+    { label: "C", text: "Relocate his family to a new city." },
+    { label: "D", text: "Finish a project for a current client." },
+  ],
+  correct: "B",
+  explanation:
+    "Mr. Webb writes that he \"would need to give two weeks' notice\" to his current employer before starting. He does not mention a certification (A), family relocation (C), or an in-progress client project (D).",
+};
+const part7grp2c: PracticeQuestionData = {
+  ...PART7_JOB_APPLICATION,
+  question: "How does the posting ask applicants to format their email subject line?",
+  options: [
+    { label: "A", text: "With the job title and today's date." },
+    { label: "B", text: "With the applicant's full name and the job title." },
+    { label: "C", text: "With the words \"Job Application\" only." },
+    { label: "D", text: "With the applicant's years of experience." },
+  ],
+  correct: "B",
+  explanation:
+    "The posting asks applicants to use the subject line \"Marketing Coordinator – [Your Full Name],\" combining the job title with the applicant's full name. It does not ask for a date (A), a generic label (C), or years of experience (D).",
+};
+const part7grp2d: PracticeQuestionData = {
+  ...PART7_JOB_APPLICATION,
+  question: "Based on both documents, does Mr. Webb meet the position's requirements?",
+  options: [
+    { label: "A", text: "No, because he has less than two years of experience." },
+    { label: "B", text: "No, because he did not include a portfolio." },
+    { label: "C", text: "Yes, because he has three years of relevant experience and provided a portfolio." },
+    { label: "D", text: "Yes, but only because the experience requirement was waived." },
+  ],
+  correct: "C",
+  explanation:
+    "The posting requires at least two years of relevant experience and a portfolio. Mr. Webb's email states he has three years of relevant experience and includes a portfolio link, satisfying both requirements — nothing suggests either requirement was waived (D).",
+};
+const part7grp2e: PracticeQuestionData = {
+  ...PART7_JOB_APPLICATION,
+  question: "What can be inferred about when Mr. Webb could begin the position?",
+  options: [
+    { label: "A", text: "He could start only after relocating his family." },
+    { label: "B", text: "He could start once his current employer's two-week notice period ends." },
+    { label: "C", text: "He could start immediately, since he is currently unemployed." },
+    { label: "D", text: "He could not start until after April 10." },
+  ],
+  correct: "B",
+  explanation:
+    "The posting says the start date is flexible, and the email says Mr. Webb needs to give two weeks' notice before starting. Combining both, he could begin once that notice period is over. April 10 (D) is the application deadline, not a start-date restriction, and nothing indicates he is currently unemployed (C) or relocating family (A).",
+};
+
+// ── Part 7 triple passage #1: event announcement + confirmation email +
+// attendee's follow-up email requesting a change.
+const PART7_BUSINESS_SUMMIT = {
+  prompt: "Part 7 · Read the three documents and answer the five questions.",
+  groupId: "p7-business-summit",
+  context:
+    "RIVERSIDE BUSINESS SUMMIT\n\nJune 18–19, Grandview Conference Center, Portland\n\nJoin over 300 professionals for two days of talks and hands-on workshops on leadership, marketing analytics, and small business finance.\n\nRegistration:\n- Early Bird (before May 1): $150\n- Standard (May 1–June 10): $200\n- Walk-in registration will not be available this year.\n\nEach attendee may choose ONE workshop session to attend on Day 2:\n- Workshop A: Leadership Fundamentals (10:00 AM)\n- Workshop B: Marketing Analytics in Practice (10:00 AM)\n- Workshop C: Small Business Finance Basics (1:00 PM)\n\nRegister at riversidesummit.example.com/register. A confirmation email will be sent within 3 business days.\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: registration@riversidesummit.example.com\nTo: hannah.ortiz@brightpath.co\nSubject: Your Riverside Business Summit Registration\nDate: May 14\n\nDear Ms. Ortiz,\n\nThank you for registering for the Riverside Business Summit. Below is a summary of your registration:\n\nRegistration type: Standard ($200)\nDay 2 workshop: Workshop B – Marketing Analytics in Practice\n\nPlease bring a printed copy of this email or show it on your phone at check-in. If you need to change your workshop selection, replies to this email are monitored until June 1.\n\nWe look forward to seeing you in Portland.\n\nRiverside Business Summit Team\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: hannah.ortiz@brightpath.co\nTo: registration@riversidesummit.example.com\nSubject: RE: Your Riverside Business Summit Registration\nDate: May 20\n\nHello,\n\nThanks for the confirmation. I'd actually like to switch my Day 2 workshop — a colleague on my team is already attending the marketing analytics session, and I'd get more value from the finance-focused one instead. Could you move me to that session? I understand it runs at a different time than my current one, so I'll plan my schedule around that.\n\nThank you,\nHannah Ortiz",
+};
+
+const part7grp3a: PracticeQuestionData = {
+  ...PART7_BUSINESS_SUMMIT,
+  question: "What is one detail about registration for the summit?",
+  options: [
+    { label: "A", text: "Early bird registration costs $150." },
+    { label: "B", text: "Walk-in registration is available for $200." },
+    { label: "C", text: "Registration is free for first-time attendees." },
+    { label: "D", text: "All attendees must register by phone." },
+  ],
+  correct: "A",
+  explanation:
+    "The announcement lists \"Early Bird (before May 1): $150.\" It explicitly states walk-in registration will not be available (B), says nothing about free registration (C), and registration is done online, not by phone (D).",
+};
+const part7grp3b: PracticeQuestionData = {
+  ...PART7_BUSINESS_SUMMIT,
+  question: "According to the confirmation email, which registration rate did Ms. Ortiz pay?",
+  options: [
+    { label: "A", text: "Early Bird." },
+    { label: "B", text: "Standard." },
+    { label: "C", text: "Walk-in." },
+    { label: "D", text: "Group rate." },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation email lists \"Registration type: Standard ($200).\" Early Bird (A) and walk-in (C) are different rates, and no group rate (D) is mentioned anywhere.",
+};
+const part7grp3c: PracticeQuestionData = {
+  ...PART7_BUSINESS_SUMMIT,
+  question: "Why does Ms. Ortiz want to change her workshop?",
+  options: [
+    { label: "A", text: "She will be out of town during Workshop B." },
+    { label: "B", text: "A colleague is already attending the session she originally chose." },
+    { label: "C", text: "She was assigned to the wrong workshop by mistake." },
+    { label: "D", text: "She no longer wants to attend the summit." },
+  ],
+  correct: "B",
+  explanation:
+    "Ms. Ortiz writes that \"a colleague on my team is already attending the marketing analytics session,\" so she'd rather attend a different one. She does not mention travel conflicts (A), an assignment error (C), or withdrawing from the summit (D).",
+};
+const part7grp3d: PracticeQuestionData = {
+  ...PART7_BUSINESS_SUMMIT,
+  question: "Which workshop does Ms. Ortiz want to attend instead?",
+  options: [
+    { label: "A", text: "Workshop A: Leadership Fundamentals." },
+    { label: "B", text: "Workshop B: Marketing Analytics in Practice." },
+    { label: "C", text: "Workshop C: Small Business Finance Basics." },
+    { label: "D", text: "A workshop not listed in the announcement." },
+  ],
+  correct: "C",
+  explanation:
+    "Ms. Ortiz asks to switch to \"the finance-focused one,\" which matches Workshop C, Small Business Finance Basics, from the announcement's list. Workshop B (B) is the session she is trying to leave, and the workshop she wants is listed, not new (D).",
+};
+const part7grp3e: PracticeQuestionData = {
+  ...PART7_BUSINESS_SUMMIT,
+  question: "What does Ms. Ortiz imply about her new workshop's schedule?",
+  options: [
+    { label: "A", text: "It takes place at the same time as her original workshop." },
+    { label: "B", text: "It takes place at a different time than her original workshop." },
+    { label: "C", text: "It has already been cancelled." },
+    { label: "D", text: "It requires an additional fee." },
+  ],
+  correct: "B",
+  explanation:
+    "Ms. Ortiz writes, \"I understand it runs at a different time than my current one\" — consistent with the announcement, which lists Workshop B at 10:00 AM and Workshop C at 1:00 PM. Nothing suggests cancellation (C) or an added fee (D).",
+};
+
+// ── Part 7 triple passage #2: product page + order confirmation + customer
+// support email.
+const PART7_PRINTER_ORDER = {
+  prompt: "Part 7 · Read the three documents and answer the five questions.",
+  groupId: "p7-printer-order",
+  context:
+    "COMPACT OFFICE PRINTER — Model PZ-410\n$189.99\n\nFeatures:\n- Wireless printing from any device on your network\n- Prints up to 22 pages per minute\n- Includes a 1-year manufacturer's warranty covering parts and labor\n\nShipping: Orders placed before 2 PM ship the same business day via standard ground shipping (5–7 business days) or express shipping (2 business days) for an additional $15.\n\nReturns: Unopened items may be returned within 30 days for a full refund. Opened items with a manufacturing defect are covered under the 1-year warranty instead of the standard return policy.\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: orders@officesupplyhub.example.com\nTo: daniel.reyes@fastmail.com\nSubject: Order Confirmation #77042\nDate: September 8\n\nHi Daniel,\n\nThanks for your order! Here are the details:\n\nItem: Compact Office Printer (Model PZ-410) — Qty 1\nShipping method: Express shipping\nEstimated delivery: September 10\n\nYou'll receive a separate email with tracking information once your order ships.\n\nOffice Supply Hub\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: daniel.reyes@fastmail.com\nTo: support@officesupplyhub.example.com\nSubject: Order #77042 – Printer won't connect to WiFi\nDate: September 25\n\nHello,\n\nI received my printer (Order #77042) a couple of weeks ago and set it up right away. It prints fine when connected directly by USB cable, but it won't connect to my wireless network no matter what I try — I've reset it twice and updated the firmware.\n\nSince I've already opened and used the printer, I assume a standard return isn't an option anymore. Is this something that would be covered instead? I still have my original order confirmation if you need it.\n\nThanks,\nDaniel Reyes",
+};
+
+const part7grp4a: PracticeQuestionData = {
+  ...PART7_PRINTER_ORDER,
+  question: "According to the product page, what does the printer's warranty cover?",
+  options: [
+    { label: "A", text: "Parts and labor for one year." },
+    { label: "B", text: "Shipping costs only." },
+    { label: "C", text: "Accessories purchased separately." },
+    { label: "D", text: "Software updates for five years." },
+  ],
+  correct: "A",
+  explanation:
+    "The product page states the printer \"includes a 1-year manufacturer's warranty covering parts and labor.\" Shipping (B), separate accessories (C), and five years of software updates (D) are not mentioned.",
+};
+const part7grp4b: PracticeQuestionData = {
+  ...PART7_PRINTER_ORDER,
+  question: "According to the confirmation email, how was Daniel's order shipped?",
+  options: [
+    { label: "A", text: "Standard ground shipping." },
+    { label: "B", text: "Express shipping." },
+    { label: "C", text: "In-store pickup." },
+    { label: "D", text: "International shipping." },
+  ],
+  correct: "B",
+  explanation:
+    "The confirmation email lists \"Shipping method: Express shipping.\" Standard shipping (A) is the other option mentioned on the product page, not what Daniel chose, and pickup (C) or international shipping (D) are never mentioned.",
+};
+const part7grp4c: PracticeQuestionData = {
+  ...PART7_PRINTER_ORDER,
+  question: "What problem does Daniel describe in his email?",
+  options: [
+    { label: "A", text: "The printer arrived damaged." },
+    { label: "B", text: "The printer will not connect wirelessly." },
+    { label: "C", text: "He received the wrong model." },
+    { label: "D", text: "The printer is missing parts." },
+  ],
+  correct: "B",
+  explanation:
+    "Daniel writes that the printer \"won't connect to my wireless network no matter what I try,\" though it works fine over USB. He does not mention shipping damage (A), a wrong model (C), or missing parts (D).",
+};
+const part7grp4d: PracticeQuestionData = {
+  ...PART7_PRINTER_ORDER,
+  question: "Why does Daniel believe a standard return is no longer available to him?",
+  options: [
+    { label: "A", text: "More than 30 days have passed since delivery." },
+    { label: "B", text: "He has already opened and used the item." },
+    { label: "C", text: "The item was a final-sale purchase." },
+    { label: "D", text: "He lost his order confirmation." },
+  ],
+  correct: "B",
+  explanation:
+    "Daniel writes, \"Since I've already opened and used the printer, I assume a standard return isn't an option anymore\" — matching the product page's policy that standard returns require an unopened item. He does not mention the 30-day window (A), a final-sale condition (C), or a lost confirmation (D, he says he still has it).",
+};
+const part7grp4e: PracticeQuestionData = {
+  ...PART7_PRINTER_ORDER,
+  question: "Based on all three documents, how will Daniel's issue most likely be handled?",
+  options: [
+    { label: "A", text: "He will receive a full refund under the standard return policy." },
+    { label: "B", text: "He will need to purchase a new printer at full price." },
+    { label: "C", text: "The wireless defect will likely be covered under the 1-year manufacturer's warranty." },
+    { label: "D", text: "He will be charged an additional fee for wireless setup support." },
+  ],
+  correct: "C",
+  explanation:
+    "The product page states that opened items with a manufacturing defect are \"covered under the 1-year warranty instead of the standard return policy.\" Daniel's printer is opened and has a defect (the WiFi will not connect), matching this warranty case rather than a standard refund (A), full-price replacement (B), or a paid support fee (D).",
+};
+
+// ── Part 7 triple passage #3: expense policy excerpt + employee email +
+// manager's reply.
+const PART7_EXPENSE_REPORT = {
+  prompt: "Part 7 · Read the three documents and answer the five questions.",
+  groupId: "p7-expense-report",
+  context:
+    "TRAVEL & EXPENSE POLICY (EXCERPT)\nMeridian Consulting Group\n\nEmployees traveling for client meetings may book economy-class flights and hotel stays up to $180 per night. Meals during travel are reimbursed up to $60 per day with itemized receipts. Reimbursement requests must be submitted within 14 days of the trip's end date, using the Expense Portal. Requests submitted after this window require manager approval.\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: sofia.lindqvist@meridianconsulting.com\nTo: james.okoro@meridianconsulting.com\nSubject: Expense Report – Chicago Client Trip\nDate: November 18\n\nHi James,\n\nI've submitted my expense report for the Chicago trip (November 2–4) through the portal. Total comes to $612, including flights, three nights at the Lakeside Hotel ($165/night), and meals.\n\nOne note: I wasn't able to submit until today because the portal was down most of last week. Let me know if you need anything else from me to get this approved.\n\nThanks,\nSofia\n\n— — — — — — — — — —\n\nEMAIL\n\nFrom: james.okoro@meridianconsulting.com\nTo: sofia.lindqvist@meridianconsulting.com\nSubject: RE: Expense Report – Chicago Client Trip\nDate: November 19\n\nHi Sofia,\n\nThanks for the update — I'll approve the late submission given the portal outage, so no issue there.\n\nI did want to flag one line: the hotel policy caps reimbursable stays at $180 per night, so the $165 rate is well within range. Everything else looks consistent with the policy as well. I'll approve the full $612 today.\n\nJames",
+};
+
+const part7grp5a: PracticeQuestionData = {
+  ...PART7_EXPENSE_REPORT,
+  question: "According to the policy, what is the maximum reimbursable amount for meals per day?",
+  options: [
+    { label: "A", text: "$60." },
+    { label: "B", text: "$180." },
+    { label: "C", text: "$165." },
+    { label: "D", text: "$612." },
+  ],
+  correct: "A",
+  explanation:
+    "The policy states meals \"are reimbursed up to $60 per day with itemized receipts.\" $180 (B) is the hotel cap, $165 (C) is Sofia's actual room rate, and $612 (D) is her total expense report.",
+};
+const part7grp5b: PracticeQuestionData = {
+  ...PART7_EXPENSE_REPORT,
+  question: "Why was Sofia unable to submit her expense report on time?",
+  options: [
+    { label: "A", text: "She was still traveling." },
+    { label: "B", text: "She forgot to keep her receipts." },
+    { label: "C", text: "The expense portal was not working." },
+    { label: "D", text: "She was waiting for her manager's approval first." },
+  ],
+  correct: "C",
+  explanation:
+    "Sofia writes she couldn't submit earlier \"because the portal was down most of last week.\" She does not mention still traveling (A), missing receipts (B), or waiting on prior approval (D).",
+};
+const part7grp5c: PracticeQuestionData = {
+  ...PART7_EXPENSE_REPORT,
+  question: "What does James say about Sofia's late submission?",
+  options: [
+    { label: "A", text: "He will not approve it." },
+    { label: "B", text: "He will approve it because of the portal outage." },
+    { label: "C", text: "He needs additional documentation before deciding." },
+    { label: "D", text: "He is escalating it to another manager." },
+  ],
+  correct: "B",
+  explanation:
+    "James writes, \"I'll approve the late submission given the portal outage, so no issue there.\" He does not refuse (A), ask for more documentation (C), or escalate the decision (D).",
+};
+const part7grp5d: PracticeQuestionData = {
+  ...PART7_EXPENSE_REPORT,
+  question: "How does Sofia's hotel cost compare to the company policy?",
+  options: [
+    { label: "A", text: "It exceeds the nightly limit." },
+    { label: "B", text: "It matches the nightly limit exactly." },
+    { label: "C", text: "It is below the nightly limit." },
+    { label: "D", text: "The policy does not address hotel costs." },
+  ],
+  correct: "C",
+  explanation:
+    "The policy caps hotel stays at $180 per night, and Sofia's rate was $165 per night — below the limit. James confirms this directly, saying the rate \"is well within range.\"",
+};
+const part7grp5e: PracticeQuestionData = {
+  ...PART7_EXPENSE_REPORT,
+  question: "Based on all three documents, what is the status of Sofia's expense report?",
+  options: [
+    { label: "A", text: "It was rejected due to being submitted late." },
+    { label: "B", text: "It is on hold pending further review." },
+    { label: "C", text: "It was approved in full despite the late submission." },
+    { label: "D", text: "Only part of the amount was approved." },
+  ],
+  correct: "C",
+  explanation:
+    "Although Sofia's submission fell outside the policy's normal window because of the portal outage, James's reply states he will approve the late submission and \"approve the full $612 today\" — full approval, not a rejection (A), hold (B), or partial approval (D).",
+};
+
 export const part7Questions: PracticeQuestionData[] = [
   part7grp1a,
   part7grp1b,
   part7grp1c,
   part7grp1d,
   part7grp1e,
+  part7grp2a,
+  part7grp2b,
+  part7grp2c,
+  part7grp2d,
+  part7grp2e,
+  part7grp3a,
+  part7grp3b,
+  part7grp3c,
+  part7grp3d,
+  part7grp3e,
+  part7grp4a,
+  part7grp4b,
+  part7grp4c,
+  part7grp4d,
+  part7grp4e,
+  part7grp5a,
+  part7grp5b,
+  part7grp5c,
+  part7grp5d,
+  part7grp5e,
   part7,
   part7b,
   part7c,
