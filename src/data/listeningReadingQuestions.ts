@@ -4561,39 +4561,106 @@ const part4z3: PracticeQuestionData = {
     "'Later in this call, our Chief Financial Officer will walk you through the detailed financial statements, and I'll return afterward to take your questions' — the CFO's presentation comes first, with questions to follow afterward (A). No product launch (C) or break (D) is mentioned.",
 };
 
-const part4aa: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the radio traffic and weather update and answer the question.",
-  listening: true,
+const PART4_TRAFFIC_WEATHER = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-traffic-weather",
   audio: { label: "Short talk — Radio traffic and weather update", durationSec: 0 },
   context:
-    "Good morning, this is your six-forty traffic and weather update on WKRD Radio. If you're heading downtown this morning, expect heavy delays on Interstate 95 northbound near exit 12, where a multi-vehicle accident has traffic backed up for nearly three miles. Drivers are advised to take the Route 9 bypass instead until the scene is cleared, which authorities estimate will take at least another hour. On the weather side, expect sunny skies through midday, with rain moving in after four p.m., so grab an umbrella if you're heading out this evening. We'll have another update in twenty minutes.\n\nQuestion: Why is traffic backed up on Interstate 95 northbound?",
-  options: [
-    { label: "A", text: "Road construction near exit 12." },
-    { label: "B", text: "A multi-vehicle accident." },
-    { label: "C", text: "Heavy rain flooding the roadway." },
-    { label: "D", text: "A stalled vehicle blocking a lane." },
-  ],
-  correct: "B",
-  explanation:
-    "The reporter states that 'a multi-vehicle accident has traffic backed up for nearly three miles.' Construction (A), rain (C), and a stalled vehicle (D) are never mentioned — the rain is forecast for later in the day, not the current cause of delays.",
+    "Good morning, this is your six-forty traffic and weather update on WKRD Radio. If you're heading downtown this morning, expect heavy delays on Interstate 95 northbound near exit 12, where a multi-vehicle accident has traffic backed up for nearly three miles. Drivers are advised to take the Route 9 bypass instead until the scene is cleared, which authorities estimate will take at least another hour. On the weather side, expect sunny skies through midday, with rain moving in after four p.m., so grab an umbrella if you're heading out this evening. We'll have another update in twenty minutes.",
 };
 
-const part4ab: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the product recall announcement and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Children's toy product recall announcement", durationSec: 0 },
-  context:
-    "This is an important safety announcement from Brightstar Toys. We are voluntarily recalling our Rainbow Stacker toy, model number RS-204, sold nationwide between January and May of this year, after discovering that a small plastic piece can detach and pose a choking hazard to young children. If you own this product, please stop using it immediately and keep it away from children. Customers can return the toy to any Brightstar retailer for a full refund, no receipt required. For more information, visit our website or call our customer hotline listed on the recall notice.\n\nQuestion: What are customers asked to do if they own the recalled toy?",
+const part4aa1: PracticeQuestionData = {
+  ...PART4_TRAFFIC_WEATHER,
+  question: "Why is northbound traffic backed up on Interstate 95?",
   options: [
-    { label: "A", text: "Repair it using a kit mailed to them." },
-    { label: "B", text: "Stop using it and return it for a refund." },
-    { label: "C", text: "Exchange it for a different toy model." },
-    { label: "D", text: "Register it online for a replacement part." },
+    { label: "A", text: "Construction work near exit 12." },
+    { label: "B", text: "A collision involving several vehicles." },
+    { label: "C", text: "Flooding caused by heavy rain." },
+    { label: "D", text: "A vehicle stalled in a travel lane." },
   ],
   correct: "B",
   explanation:
-    "The announcement instructs owners to 'stop using it immediately and keep it away from children' and states they 'can return the toy to any Brightstar retailer for a full refund.' A repair kit (A), an exchange (C), and online registration (D) are never mentioned.",
+    "'A multi-vehicle accident has traffic backed up for nearly three miles' — a collision involving several vehicles. Construction (A), flooding (C), and a stalled vehicle (D) are never mentioned; the rain is forecast for the afternoon, not the current cause of delay.",
+};
+
+const part4aa2: PracticeQuestionData = {
+  ...PART4_TRAFFIC_WEATHER,
+  question: "What are drivers advised to do?",
+  options: [
+    { label: "A", text: "Take an alternate route until the road clears." },
+    { label: "B", text: "Delay their trip by about an hour." },
+    { label: "C", text: "Avoid downtown entirely today." },
+    { label: "D", text: "Listen for an update before leaving." },
+  ],
+  correct: "A",
+  explanation:
+    "'Drivers are advised to take the Route 9 bypass instead until the scene is cleared' — an alternate route, not a delayed departure (B) or avoiding downtown altogether (C). The next update is mentioned only as a general programming note, not as advice to wait for it (D).",
+};
+
+const part4aa3: PracticeQuestionData = {
+  ...PART4_TRAFFIC_WEATHER,
+  question: "What does the forecast suggest for later today?",
+  options: [
+    { label: "A", text: "Conditions will stay dry through the evening." },
+    { label: "B", text: "Rain is expected after the middle of the afternoon." },
+    { label: "C", text: "Skies will clear up by midday." },
+    { label: "D", text: "A storm will arrive before lunchtime." },
+  ],
+  correct: "B",
+  explanation:
+    "'Sunny skies through midday, with rain moving in after four p.m.' — rain arrives well into the afternoon, not before lunch (D), and the evening will not stay dry (A). Skies are sunny in the morning and turn to rain later, rather than clearing at midday (C).",
+};
+
+const PART4_TOY_RECALL = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-toy-recall",
+  audio: { label: "Short talk — Children's toy product recall announcement", durationSec: 0 },
+  context:
+    "This is an important safety announcement from Brightstar Toys. We are voluntarily recalling our Rainbow Stacker toy, model number RS-204, sold nationwide between January and May of this year, after discovering that a small plastic piece can detach and pose a choking hazard to young children. If you own this product, please stop using it immediately and keep it away from children. Customers can return the toy to any Brightstar retailer for a full refund, no receipt required. For more information, visit our website or call our customer hotline listed on the recall notice.",
+};
+
+const part4ab1: PracticeQuestionData = {
+  ...PART4_TOY_RECALL,
+  question: "Why is the toy being recalled?",
+  options: [
+    { label: "A", text: "A small piece may come loose and be swallowed." },
+    { label: "B", text: "The paint used contains a harmful chemical." },
+    { label: "C", text: "The toy fails to meet a size requirement." },
+    { label: "D", text: "Sharp edges were found on the packaging." },
+  ],
+  correct: "A",
+  explanation:
+    "'A small plastic piece can detach and pose a choking hazard to young children' — a piece coming loose and posing a swallowing risk. Paint (B), sizing (C), and packaging (D) are never mentioned.",
+};
+
+const part4ab2: PracticeQuestionData = {
+  ...PART4_TOY_RECALL,
+  question: "What is implied about customers seeking a refund?",
+  options: [
+    { label: "A", text: "They must provide proof of purchase." },
+    { label: "B", text: "They can return the toy without a receipt." },
+    { label: "C", text: "They must return it to the store of purchase." },
+    { label: "D", text: "They will receive store credit rather than cash." },
+  ],
+  correct: "B",
+  explanation:
+    "Customers 'can return the toy to any Brightstar retailer for a full refund, no receipt required' — no proof of purchase is needed (A), and the return can be made at any retailer, not only the original store (C). A full refund is offered, not store credit (D).",
+};
+
+const part4ab3: PracticeQuestionData = {
+  ...PART4_TOY_RECALL,
+  question: "What should owners do with the toy in the meantime?",
+  options: [
+    { label: "A", text: "Keep it out of children's reach until it is returned." },
+    { label: "B", text: "Continue using it under adult supervision." },
+    { label: "C", text: "Remove the loose piece before returning it." },
+    { label: "D", text: "Mail it directly to the manufacturer." },
+  ],
+  correct: "A",
+  explanation:
+    "Owners are told to 'stop using it immediately and keep it away from children' — not to keep using it even with supervision (B). Nothing is said about removing the piece first (C), and the toy goes to 'any Brightstar retailer', not by mail to the manufacturer (D).",
 };
 
 const part4ac: PracticeQuestionData = {
@@ -10223,8 +10290,12 @@ export const part4Questions: PracticeQuestionData[] = [
   part4z1,
   part4z2,
   part4z3,
-  part4aa,
-  part4ab,
+  part4aa1,
+  part4aa2,
+  part4aa3,
+  part4ab1,
+  part4ab2,
+  part4ab3,
   part4ac,
   part4ad,
   part4ae,

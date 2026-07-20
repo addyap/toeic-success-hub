@@ -4420,29 +4420,45 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "24p7duu15ml": {
+  "1lhngyy92hd": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "24p7duu15ml-0.mp3"
+        "file": "1lhngyy92hd-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "24p7duu15ml-1.mp3"
+        "file": "1lhngyy92hd-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1lhngyy92hd-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1lhngyy92hd-3.mp3"
       }
     ]
   },
-  "1jvw9ghromc": {
+  "p3txje0i48": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "1jvw9ghromc-0.mp3"
+        "file": "p3txje0i48-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1jvw9ghromc-1.mp3"
+        "file": "p3txje0i48-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "p3txje0i48-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "p3txje0i48-3.mp3"
       }
     ]
   },
