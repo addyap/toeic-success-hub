@@ -4315,68 +4315,108 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "117cqav43ka": {
+  "jnapve5qy1": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "alloy",
-        "file": "117cqav43ka-0.mp3"
+        "file": "jnapve5qy1-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "117cqav43ka-1.mp3"
+        "file": "jnapve5qy1-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "jnapve5qy1-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "jnapve5qy1-3.mp3"
       }
     ]
   },
-  "1xtlbjhm0nf": {
+  "1yu4gamdbiq": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "1xtlbjhm0nf-0.mp3"
+        "file": "1yu4gamdbiq-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1xtlbjhm0nf-1.mp3"
+        "file": "1yu4gamdbiq-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1yu4gamdbiq-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1yu4gamdbiq-3.mp3"
       }
     ]
   },
-  "1d3nhkc91t4": {
+  "28bd929nwv4": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "1d3nhkc91t4-0.mp3"
+        "file": "28bd929nwv4-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1d3nhkc91t4-1.mp3"
+        "file": "28bd929nwv4-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "28bd929nwv4-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "28bd929nwv4-3.mp3"
       }
     ]
   },
-  "15ql26s6ssj": {
+  "imxogy3sx3": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "shimmer",
-        "file": "15ql26s6ssj-0.mp3"
+        "file": "imxogy3sx3-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "15ql26s6ssj-1.mp3"
+        "file": "imxogy3sx3-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "imxogy3sx3-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "imxogy3sx3-3.mp3"
       }
     ]
   },
-  "27kmge33uxl": {
+  "1b828l1k2eh": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "alloy",
-        "file": "27kmge33uxl-0.mp3"
+        "file": "1b828l1k2eh-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "27kmge33uxl-1.mp3"
+        "file": "1b828l1k2eh-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1b828l1k2eh-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1b828l1k2eh-3.mp3"
       }
     ]
   },

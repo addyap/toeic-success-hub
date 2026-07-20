@@ -4303,95 +4303,262 @@ const part4u3: PracticeQuestionData = {
     "'The property has already received two offers, so anyone interested is encouraged to submit paperwork by Friday' — the deadline exists because other buyers are already competing for it, the opposite of no interest at all (B). Neither withdrawing the listing (C) nor a price cut (D) is mentioned.",
 };
 
-const part4v: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the corporate training video introduction and answer the question.",
-  listening: true,
+const PART4_ONBOARDING = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-onboarding-video",
   audio: { label: "Short talk — Corporate onboarding training video introduction", durationSec: 0 },
   context:
-    "Welcome to Module One of our new employee onboarding series. My name is Denise Okafor, and I'll be your guide through this training video, which covers company policies, workplace safety, and how to use our internal software systems. This module is approximately twenty minutes long, and you'll be asked to complete a short quiz at the end before moving on to Module Two. If you need to pause the video, your progress will be saved automatically, so there's no need to rewatch anything you've already completed. All new hires must finish the full onboarding series within their first two weeks of employment. If you run into any technical issues, please contact the IT help desk rather than your manager.\n\nQuestion: What must new hires do before proceeding to Module Two?",
+    "Welcome to Module One of our new employee onboarding series. My name is Denise Okafor, and I'll be your guide through this training video, which covers company policies, workplace safety, and how to use our internal software systems. This module is approximately twenty minutes long, and you'll be asked to complete a short quiz at the end before moving on to Module Two. If you need to pause the video, your progress will be saved automatically, so there's no need to rewatch anything you've already completed. All new hires must finish the full onboarding series within their first two weeks of employment. If you run into any technical issues, please contact the IT help desk rather than your manager.",
+};
+
+const part4v1: PracticeQuestionData = {
+  ...PART4_ONBOARDING,
+  question: "What topics does this module cover?",
   options: [
-    { label: "A", text: "Meet with their manager" },
-    { label: "B", text: "Submit a signed policy form" },
-    { label: "C", text: "Complete a short quiz" },
-    { label: "D", text: "Watch the video a second time" },
+    { label: "A", text: "Company rules, workplace safety and internal software." },
+    { label: "B", text: "Payroll procedures and employee benefits." },
+    { label: "C", text: "Department structure and reporting lines." },
+    { label: "D", text: "Customer service standards." },
+  ],
+  correct: "A",
+  explanation:
+    "Denise says the video 'covers company policies, workplace safety, and how to use our internal software systems'. Payroll and benefits (B), reporting structure (C), and customer service (D) are never mentioned as topics of this module.",
+};
+
+const part4v2: PracticeQuestionData = {
+  ...PART4_ONBOARDING,
+  question: "What happens if a viewer pauses the video partway through?",
+  options: [
+    { label: "A", text: "They must restart the module from the beginning." },
+    { label: "B", text: "Their place is saved for them automatically." },
+    { label: "C", text: "They must notify the IT help desk." },
+    { label: "D", text: "Their access to the module expires." },
+  ],
+  correct: "B",
+  explanation:
+    "'Your progress will be saved automatically, so there's no need to rewatch anything you've already completed' — no restart is required (A), and there is nothing to notify IT about (C) or any expiry mentioned (D).",
+};
+
+const part4v3: PracticeQuestionData = {
+  ...PART4_ONBOARDING,
+  question: "What must new hires do before moving on to Module Two?",
+  options: [
+    { label: "A", text: "Have a meeting with their manager." },
+    { label: "B", text: "Submit a signed copy of the policies." },
+    { label: "C", text: "Pass a brief quiz at the end of the module." },
+    { label: "D", text: "Watch the full video a second time." },
   ],
   correct: "C",
   explanation:
-    "Denise states that new hires 'will be asked to complete a short quiz at the end before moving on to Module Two.' A manager meeting (A), a signed form (B), and rewatching (D) are never mentioned.",
+    "New hires 'will be asked to complete a short quiz at the end before moving on to Module Two.' A manager meeting (A) and a signed form (B) are never mentioned, and rewatching (D) contradicts the earlier point that progress is saved so nothing needs repeating.",
 };
 
-const part4w: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the stadium PA announcement and answer the question.",
-  listening: true,
+const PART4_STADIUM_PA = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-stadium-pa",
   audio: {
     label: "Short talk — Sports stadium pre-game safety and parking announcement",
     durationSec: 0,
   },
   context:
-    "Good afternoon, and welcome to Cardinal Stadium. Before today's game begins, we'd like to remind all fans that bags larger than the size of a standard sheet of paper are not permitted inside the venue and must be returned to your vehicle. Lot C, located behind the north entrance, is now full, so any fans still arriving should proceed directly to the overflow lot on Grant Street. In case of severe weather, stadium staff will direct fans to designated shelter areas beneath the main concourse, and updates will also be posted on the stadium's mobile app. Please have your tickets ready for scanning at the gate to help keep lines moving quickly. Enjoy the game, and thank you for your cooperation.\n\nQuestion: Where does the announcer direct fans to park once Lot C is full?",
+    "Good afternoon, and welcome to Cardinal Stadium. Before today's game begins, we'd like to remind all fans that bags larger than the size of a standard sheet of paper are not permitted inside the venue and must be returned to your vehicle. Lot C, located behind the north entrance, is now full, so any fans still arriving should proceed directly to the overflow lot on Grant Street. In case of severe weather, stadium staff will direct fans to designated shelter areas beneath the main concourse, and updates will also be posted on the stadium's mobile app. Please have your tickets ready for scanning at the gate to help keep lines moving quickly. Enjoy the game, and thank you for your cooperation.",
+};
+
+const part4w1: PracticeQuestionData = {
+  ...PART4_STADIUM_PA,
+  question: "What restriction does the announcement mention?",
   options: [
-    { label: "A", text: "In a nearby parking garage" },
-    { label: "B", text: "On the street near the north entrance" },
-    { label: "C", text: "In the overflow lot on Grant Street" },
-    { label: "D", text: "In the shelter area beneath the concourse" },
+    { label: "A", text: "A limit on the size of bags allowed inside." },
+    { label: "B", text: "A ban on food brought from outside." },
+    { label: "C", text: "A restriction on re-entering the venue." },
+    { label: "D", text: "A limit on the number of tickets per person." },
+  ],
+  correct: "A",
+  explanation:
+    "'Bags larger than the size of a standard sheet of paper are not permitted inside the venue' — a size limit on bags. Outside food (B), re-entry (C), and ticket limits (D) are never mentioned.",
+};
+
+const part4w2: PracticeQuestionData = {
+  ...PART4_STADIUM_PA,
+  question: "What are arriving fans told to do now that Lot C is full?",
+  options: [
+    { label: "A", text: "Park in a nearby garage instead." },
+    { label: "B", text: "Wait near the north entrance for a space." },
+    { label: "C", text: "Go directly to the Grant Street lot." },
+    { label: "D", text: "Use the shelter area beneath the concourse." },
   ],
   correct: "C",
   explanation:
-    "The announcer says fans still arriving 'should proceed directly to the overflow lot on Grant Street.' A parking garage (A), on-street parking (B), and the shelter area (D) are never mentioned as parking options.",
+    "Fans still arriving 'should proceed directly to the overflow lot on Grant Street.' A garage (A), waiting at the north entrance (B), and the shelter area (D) are never offered as parking options — the shelter is for severe weather only.",
 };
 
-const part4x: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the supermarket in-store PA announcement and answer the question.",
-  listening: true,
+const part4w3: PracticeQuestionData = {
+  ...PART4_STADIUM_PA,
+  question: "Where will fans be directed in the event of severe weather?",
+  options: [
+    { label: "A", text: "To the overflow lot on Grant Street." },
+    { label: "B", text: "To designated areas under the main concourse." },
+    { label: "C", text: "To their vehicles in Lot C." },
+    { label: "D", text: "To the stadium's mobile app for instructions." },
+  ],
+  correct: "B",
+  explanation:
+    "'In case of severe weather, stadium staff will direct fans to designated shelter areas beneath the main concourse.' The Grant Street lot (A) is for parking, not shelter, and the app (D) is only where updates are posted, not where fans are sent.",
+};
+
+const PART4_SUPERMARKET_PA = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-supermarket-pa",
   audio: { label: "Short talk — Supermarket in-store promotional PA announcement", durationSec: 0 },
   context:
-    "Attention shoppers, welcome to Fresh Harvest Market. For the next fifteen minutes only, all bakery items are marked down by twenty-five percent, so head over to aisle two to take advantage of these savings. We'd also like to remind everyone that our deli counter will close at eight p.m. tonight, one hour earlier than usual, due to a staff training session. If you're a Fresh Harvest Rewards member, don't forget to scan your card at checkout to earn double points on all produce purchases today. Samples of our new organic granola are available near the front entrance for anyone who'd like to try before they buy. Thank you for shopping with us, and enjoy the rest of your visit.\n\nQuestion: Why will the deli counter close early tonight?",
+    "Attention shoppers, welcome to Fresh Harvest Market. For the next fifteen minutes only, all bakery items are marked down by twenty-five percent, so head over to aisle two to take advantage of these savings. We'd also like to remind everyone that our deli counter will close at eight p.m. tonight, one hour earlier than usual, due to a staff training session. If you're a Fresh Harvest Rewards member, don't forget to scan your card at checkout to earn double points on all produce purchases today. Samples of our new organic granola are available near the front entrance for anyone who'd like to try before they buy. Thank you for shopping with us, and enjoy the rest of your visit.",
+};
+
+const part4x1: PracticeQuestionData = {
+  ...PART4_SUPERMARKET_PA,
+  question: "What is implied about the bakery discount?",
   options: [
-    { label: "A", text: "The store is closing for a holiday" },
-    { label: "B", text: "Staff will be attending a training session" },
-    { label: "C", text: "The deli is out of inventory" },
-    { label: "D", text: "A refrigeration unit is being repaired" },
+    { label: "A", text: "It applies for a limited window today only." },
+    { label: "B", text: "It is available every day this week." },
+    { label: "C", text: "It applies only to Rewards members." },
+    { label: "D", text: "It is offered on a different aisle each day." },
+  ],
+  correct: "A",
+  explanation:
+    "The discount runs 'for the next fifteen minutes only' — a short window on this visit, not a standing weekly offer (B). Rewards membership is tied to the separate produce points offer, not the bakery discount (C), and only one aisle is mentioned (D).",
+};
+
+const part4x2: PracticeQuestionData = {
+  ...PART4_SUPERMARKET_PA,
+  question: "Why is the deli counter closing an hour early tonight?",
+  options: [
+    { label: "A", text: "The store is closed for a holiday." },
+    { label: "B", text: "Staff members are attending a training session." },
+    { label: "C", text: "The counter has run out of stock." },
+    { label: "D", text: "A piece of equipment is being fixed." },
   ],
   correct: "B",
   explanation:
-    "The announcement states the deli will close early 'due to a staff training session.' A holiday closing (A), lack of inventory (C), and equipment repair (D) are never mentioned.",
+    "The deli closes early 'due to a staff training session.' A holiday closure (A), running out of stock (C), and equipment repair (D) are never mentioned.",
 };
 
-const part4y: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the call-center hold message and answer the question.",
-  listening: true,
+const part4x3: PracticeQuestionData = {
+  ...PART4_SUPERMARKET_PA,
+  question: "How can Rewards members earn double points today?",
+  options: [
+    { label: "A", text: "By purchasing bakery items." },
+    { label: "B", text: "By trying the granola samples." },
+    { label: "C", text: "By buying produce and scanning their card." },
+    { label: "D", text: "By shopping before the deli closes." },
+  ],
+  correct: "C",
+  explanation:
+    "Members are told to 'scan your card at checkout to earn double points on all produce purchases today' — the points apply to produce, not bakery items (A), and scanning the card is required, not merely trying a sample (B). The deli's closing time is unrelated to the points offer (D).",
+};
+
+const PART4_HOLD_MESSAGE = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-hold-message",
   audio: { label: "Short talk — Call-center hold-music informational message", durationSec: 0 },
   context:
-    "Thank you for calling Summit Bank customer support. Your call is important to us, and a representative will be with you as soon as possible. Current wait times are longer than usual due to a high volume of calls regarding recent updates to our mobile banking app. While you wait, you can visit our website to reset your password or check your account balance without speaking to an agent. If your call is regarding a lost or stolen card, please stay on the line, as this is treated as a priority and will be transferred immediately. Please note that this call may be recorded for quality assurance and training purposes. We appreciate your patience and will connect you shortly.\n\nQuestion: What can be inferred about callers who report a lost or stolen card?",
-  options: [
-    { label: "A", text: "They will receive a new card by mail within 24 hours" },
-    { label: "B", text: "They will be connected to a representative without further wait" },
-    { label: "C", text: "They must call back during business hours" },
-    { label: "D", text: "They will need to visit a branch in person" },
-  ],
-  correct: "B",
-  explanation:
-    "Although wait times are 'longer than usual,' the message says lost-or-stolen-card calls are 'treated as a priority and will be transferred immediately,' meaning these callers skip the wait. A mailed card (A), calling back later (C), and an in-person visit (D) are never mentioned.",
+    "Thank you for calling Summit Bank customer support. Your call is important to us, and a representative will be with you as soon as possible. Current wait times are longer than usual due to a high volume of calls regarding recent updates to our mobile banking app. While you wait, you can visit our website to reset your password or check your account balance without speaking to an agent. If your call is regarding a lost or stolen card, please stay on the line, as this is treated as a priority and will be transferred immediately. Please note that this call may be recorded for quality assurance and training purposes. We appreciate your patience and will connect you shortly.",
 };
 
-const part4z: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the CEO's earnings-call opening remarks and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Company earnings-call opening remarks excerpt", durationSec: 0 },
-  context:
-    "Good morning, everyone, and thank you for joining Vantix Corporation's second-quarter earnings call. I'm pleased to report that revenue this quarter reached three hundred twenty million dollars, an increase of eighteen percent compared to the same period last year, driven largely by strong demand in our cloud services division. Our operating margin also improved, thanks to cost efficiencies achieved through the automation initiatives we discussed on last quarter's call. We did see softer results in our hardware segment, which we attribute to ongoing supply chain constraints, and we expect that trend to continue into the third quarter. Later in this call, our Chief Financial Officer will walk you through the detailed financial statements, and I'll return afterward to take your questions. Before we move forward, I want to thank our employees for their continued dedication during a challenging global environment.\n\nQuestion: What can be inferred about the company's cloud services division?",
+const part4y1: PracticeQuestionData = {
+  ...PART4_HOLD_MESSAGE,
+  question: "Why are wait times longer than usual?",
   options: [
-    { label: "A", text: "It is the company's newest business segment" },
-    { label: "B", text: "It contributed significantly to this quarter's revenue growth" },
-    { label: "C", text: "It will be sold off next quarter" },
-    { label: "D", text: "It generated less revenue than the hardware segment" },
+    { label: "A", text: "A large number of calls concern a recent app update." },
+    { label: "B", text: "The call center is short-staffed today." },
+    { label: "C", text: "The website is temporarily unavailable." },
+    { label: "D", text: "A system outage is affecting all accounts." },
+  ],
+  correct: "A",
+  explanation:
+    "Wait times are longer 'due to a high volume of calls regarding recent updates to our mobile banking app.' Staffing (B), the website (C), and a system outage (D) are never mentioned as causes.",
+};
+
+const part4y2: PracticeQuestionData = {
+  ...PART4_HOLD_MESSAGE,
+  question: "What can callers do without speaking to a representative?",
+  options: [
+    { label: "A", text: "Report a lost or stolen card." },
+    { label: "B", text: "Reset a password and check a balance." },
+    { label: "C", text: "Request a new mobile banking app." },
+    { label: "D", text: "Leave a message for a callback." },
   ],
   correct: "B",
   explanation:
-    "The CEO attributes the quarter's 'increase of eighteen percent' in revenue to 'strong demand in our cloud services division,' making its significant contribution to growth a logical conclusion. Being the newest segment (A), being sold off (C), and underperforming hardware (D) are never mentioned.",
+    "'You can visit our website to reset your password or check your account balance without speaking to an agent.' A lost or stolen card requires staying on the line to speak to someone (A), and neither requesting the app (C) nor leaving a callback message (D) is mentioned.",
+};
+
+const part4y3: PracticeQuestionData = {
+  ...PART4_HOLD_MESSAGE,
+  question: "What is implied about callers reporting a lost or stolen card?",
+  options: [
+    { label: "A", text: "They will receive a replacement card by mail." },
+    { label: "B", text: "They will bypass the current wait." },
+    { label: "C", text: "They must call again during business hours." },
+    { label: "D", text: "They will be asked to visit a branch." },
+  ],
+  correct: "B",
+  explanation:
+    "Despite wait times being 'longer than usual', these calls are 'treated as a priority and will be transferred immediately' — skipping the wait everyone else faces. A mailed card (A), calling back later (C), and a branch visit (D) are never mentioned.",
+};
+
+const PART4_EARNINGS_CALL = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-earnings-call",
+  audio: { label: "Short talk — Company earnings-call opening remarks excerpt", durationSec: 0 },
+  context:
+    "Good morning, everyone, and thank you for joining Vantix Corporation's second-quarter earnings call. I'm pleased to report that revenue this quarter reached three hundred twenty million dollars, an increase of eighteen percent compared to the same period last year, driven largely by strong demand in our cloud services division. Our operating margin also improved, thanks to cost efficiencies achieved through the automation initiatives we discussed on last quarter's call. We did see softer results in our hardware segment, which we attribute to ongoing supply chain constraints, and we expect that trend to continue into the third quarter. Later in this call, our Chief Financial Officer will walk you through the detailed financial statements, and I'll return afterward to take your questions. Before we move forward, I want to thank our employees for their continued dedication during a challenging global environment.",
+};
+
+const part4z1: PracticeQuestionData = {
+  ...PART4_EARNINGS_CALL,
+  question: "What is implied about the cloud services division?",
+  options: [
+    { label: "A", text: "It was a major driver of this quarter's growth." },
+    { label: "B", text: "It is a newly created part of the company." },
+    { label: "C", text: "It is being sold in the coming quarter." },
+    { label: "D", text: "It brought in less revenue than hardware." },
+  ],
+  correct: "A",
+  explanation:
+    "Revenue growth of 'eighteen percent' is attributed to 'strong demand in our cloud services division' — a major driver of the increase. Nothing suggests the division is new (B) or being sold (C), and the hardware segment is described as weaker this quarter, not stronger (D).",
+};
+
+const part4z2: PracticeQuestionData = {
+  ...PART4_EARNINGS_CALL,
+  question: "Why did the hardware segment underperform?",
+  options: [
+    { label: "A", text: "Difficulties in the supply chain." },
+    { label: "B", text: "Reduced spending on automation." },
+    { label: "C", text: "Increased competition in the sector." },
+    { label: "D", text: "A decline in customer demand." },
+  ],
+  correct: "A",
+  explanation:
+    "Softer hardware results are attributed to 'ongoing supply chain constraints'. Automation spending is credited with improving margin, not linked to the hardware weakness (B), and neither competition (C) nor falling demand (D) is mentioned as the cause.",
+};
+
+const part4z3: PracticeQuestionData = {
+  ...PART4_EARNINGS_CALL,
+  question: "What will happen next on the call?",
+  options: [
+    { label: "A", text: "The speaker will take questions from listeners." },
+    { label: "B", text: "The Chief Financial Officer will present detailed figures." },
+    { label: "C", text: "A new product will be unveiled." },
+    { label: "D", text: "The call will end for a short break." },
+  ],
+  correct: "B",
+  explanation:
+    "'Later in this call, our Chief Financial Officer will walk you through the detailed financial statements, and I'll return afterward to take your questions' — the CFO's presentation comes first, with questions to follow afterward (A). No product launch (C) or break (D) is mentioned.",
 };
 
 const part4aa: PracticeQuestionData = {
@@ -10041,11 +10208,21 @@ export const part4Questions: PracticeQuestionData[] = [
   part4u1,
   part4u2,
   part4u3,
-  part4v,
-  part4w,
-  part4x,
-  part4y,
-  part4z,
+  part4v1,
+  part4v2,
+  part4v3,
+  part4w1,
+  part4w2,
+  part4w3,
+  part4x1,
+  part4x2,
+  part4x3,
+  part4y1,
+  part4y2,
+  part4y3,
+  part4z1,
+  part4z2,
+  part4z3,
   part4aa,
   part4ab,
   part4ac,
