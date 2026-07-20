@@ -4282,28 +4282,44 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1y06len7tdq": {
+  "2f4k3ddeqnq": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "1y06len7tdq-0.mp3"
+        "file": "2f4k3ddeqnq-0.mp3"
       },
       {
         "voice": "nova",
-        "file": "1y06len7tdq-1.mp3"
+        "file": "2f4k3ddeqnq-1.mp3"
       },
       {
         "voice": "onyx",
-        "file": "1y06len7tdq-2.mp3"
+        "file": "2f4k3ddeqnq-2.mp3"
       },
       {
         "voice": "nova",
-        "file": "1y06len7tdq-3.mp3"
+        "file": "2f4k3ddeqnq-3.mp3"
+      },
+      {
+        "voice": "onyx",
+        "file": "2f4k3ddeqnq-4.mp3"
+      },
+      {
+        "voice": "nova",
+        "file": "2f4k3ddeqnq-5.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1y06len7tdq-4.mp3"
+        "file": "2f4k3ddeqnq-6.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "2f4k3ddeqnq-7.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "2f4k3ddeqnq-8.mp3"
       }
     ]
   },
@@ -5264,28 +5280,44 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "2g9cck57xew": {
+  "hbo6rzljue": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "2g9cck57xew-0.mp3"
+        "file": "hbo6rzljue-0.mp3"
       },
       {
         "voice": "onyx",
-        "file": "2g9cck57xew-1.mp3"
+        "file": "hbo6rzljue-1.mp3"
       },
       {
         "voice": "nova",
-        "file": "2g9cck57xew-2.mp3"
+        "file": "hbo6rzljue-2.mp3"
       },
       {
         "voice": "onyx",
-        "file": "2g9cck57xew-3.mp3"
+        "file": "hbo6rzljue-3.mp3"
+      },
+      {
+        "voice": "nova",
+        "file": "hbo6rzljue-4.mp3"
+      },
+      {
+        "voice": "onyx",
+        "file": "hbo6rzljue-5.mp3"
       },
       {
         "voice": "alloy",
-        "file": "2g9cck57xew-4.mp3"
+        "file": "hbo6rzljue-6.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "hbo6rzljue-7.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "hbo6rzljue-8.mp3"
       }
     ]
   },
@@ -5596,53 +5628,85 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1z93us9rdsa": {
+  "yihd7o1d2c": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "nova",
-        "file": "1z93us9rdsa-0.mp3"
+        "file": "yihd7o1d2c-0.mp3"
       },
       {
         "voice": "onyx",
-        "file": "1z93us9rdsa-1.mp3"
+        "file": "yihd7o1d2c-1.mp3"
       },
       {
         "voice": "nova",
-        "file": "1z93us9rdsa-2.mp3"
+        "file": "yihd7o1d2c-2.mp3"
       },
       {
         "voice": "onyx",
-        "file": "1z93us9rdsa-3.mp3"
+        "file": "yihd7o1d2c-3.mp3"
+      },
+      {
+        "voice": "nova",
+        "file": "yihd7o1d2c-4.mp3"
+      },
+      {
+        "voice": "onyx",
+        "file": "yihd7o1d2c-5.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1z93us9rdsa-4.mp3"
+        "file": "yihd7o1d2c-6.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "yihd7o1d2c-7.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "yihd7o1d2c-8.mp3"
       }
     ]
   },
-  "4lyi17sshb": {
+  "927pt0oke9": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "shimmer",
-        "file": "4lyi17sshb-0.mp3"
+        "file": "927pt0oke9-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "4lyi17sshb-1.mp3"
+        "file": "927pt0oke9-1.mp3"
       },
       {
         "voice": "shimmer",
-        "file": "4lyi17sshb-2.mp3"
+        "file": "927pt0oke9-2.mp3"
       },
       {
         "voice": "alloy",
-        "file": "4lyi17sshb-3.mp3"
+        "file": "927pt0oke9-3.mp3"
+      },
+      {
+        "voice": "shimmer",
+        "file": "927pt0oke9-4.mp3"
       },
       {
         "voice": "alloy",
-        "file": "4lyi17sshb-4.mp3"
+        "file": "927pt0oke9-5.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "927pt0oke9-6.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "927pt0oke9-7.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "927pt0oke9-8.mp3"
       }
     ]
   },

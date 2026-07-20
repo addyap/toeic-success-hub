@@ -2558,12 +2558,18 @@ const part3ap3: PracticeQuestionData = {
     "'Please continue with your current dosage until the new one is approved and ready for pickup.' (B) reverses his actual advice. A temporary refill (C) and contacting insurance herself (D) are never mentioned.",
 };
 
-const part3aq: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 43 — Art gallery loan extension request", durationSec: 37 },
+const PART3_GALLERY_LOAN = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-gallery-loan",
+  audio: { label: "Conversation — Art gallery loan extension request", durationSec: 0 },
   context:
-    "(M) Hi, this is Daniel from the Whitfield Gallery. I'm calling about the painting we borrowed for our exhibit — it's due back next Friday.\n(W) Yes, I have that on file.\n(M) The exhibit has been so popular that we'd like to keep it on display for two more weeks, if that's possible.\n(W) I'll need to check with the owner, but I don't think that will be a problem. I'll call you back by tomorrow.\n\nQuestion: What does the man request?",
+    "(M) Hi, this is Daniel from the Whitfield Gallery. I'm calling about the painting we borrowed for our exhibit — it's due back next Friday.\n(W) Yes, I have that on file.\n(M) The exhibit has been so popular that we'd like to keep it on display for two more weeks, if that's possible.\n(W) I'll need to check with the owner, but I don't think that will be a problem. I'll call you back by tomorrow.\n(M) Thank you. If the owner agrees, will the insurance coverage on the painting automatically extend as well?\n(W) Yes, our policy covers the piece for the full duration it's on loan, so that won't be an issue.",
+};
+
+const part3aq1: PracticeQuestionData = {
+  ...PART3_GALLERY_LOAN,
+  question: "What does the man request?",
   options: [
     { label: "A", text: "A two-week extension on the painting's loan period." },
     { label: "B", text: "A replacement for a damaged painting." },
@@ -2573,6 +2579,34 @@ const part3aq: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man says, 'we'd like to keep it on display for two more weeks, if that's possible.' (B), (C), and (D) are never mentioned — they are typical gallery-related distractors.",
+};
+
+const part3aq2: PracticeQuestionData = {
+  ...PART3_GALLERY_LOAN,
+  question: "What does the woman say she needs to do before responding?",
+  options: [
+    { label: "A", text: "Check with the painting's owner." },
+    { label: "B", text: "Consult the gallery's insurance provider." },
+    { label: "C", text: "Review the original loan agreement." },
+    { label: "D", text: "Speak with her manager." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll need to check with the owner, but I don't think that will be a problem.' Consulting insurance (B), reviewing the agreement (C), and speaking with a manager (D) are never mentioned.",
+};
+
+const part3aq3: PracticeQuestionData = {
+  ...PART3_GALLERY_LOAN,
+  question: "What does the woman say about insurance coverage?",
+  options: [
+    { label: "A", text: "It will automatically extend for the full loan duration." },
+    { label: "B", text: "It must be renewed separately for the extension." },
+    { label: "C", text: "It only covers damage, not theft." },
+    { label: "D", text: "It expires at the end of this week." },
+  ],
+  correct: "A",
+  explanation:
+    "'Our policy covers the piece for the full duration it's on loan, so that won't be an issue.' A separate renewal (B) is the opposite of what she says. Coverage limits (C) and an end-of-week expiration (D) are never mentioned.",
 };
 
 const part3ar: PracticeQuestionData = {
@@ -3275,12 +3309,18 @@ const part3new9: PracticeQuestionData = {
     "'Do the trick' is an idiom meaning to successfully solve a problem; the woman uses it right after describing the reprogramming fix, meaning she expects it to work. (A), (B), and (C) are never mentioned or misread the idiom.",
 };
 
-const part3new10: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 81 — Executive coaching session reschedule", durationSec: 34 },
+const PART3_COACHING_RESCHEDULE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-coaching-reschedule",
+  audio: { label: "Conversation — Executive coaching session reschedule", durationSec: 0 },
   context:
-    "(W) Hi, this is Monica. I have my coaching session with you scheduled for Thursday at 9 AM, but I just found out I need to fly to Chicago for a client meeting that morning.\n(M) No problem at all. I have an opening Wednesday afternoon at 4 PM, or we could do a video call while you're traveling.\n(W) Let's do Wednesday at 4 PM in person if possible.\n(M) Perfect, I'll update the calendar invite now.\n\nQuestion: Why does the woman want to reschedule her coaching session?",
+    "(W) Hi, this is Monica. I have my coaching session with you scheduled for Thursday at 9 AM, but I just found out I need to fly to Chicago for a client meeting that morning.\n(M) No problem at all. I have an opening Wednesday afternoon at 4 PM, or we could do a video call while you're traveling.\n(W) Let's do Wednesday at 4 PM in person if possible.\n(M) Perfect, I'll update the calendar invite now.\n(W) Thanks. Could we also focus on delegation strategies this time? That's been a challenge for me lately.\n(M) Absolutely, I'll prepare some materials on that specifically and send them over before we meet.",
+};
+
+const part3new10a: PracticeQuestionData = {
+  ...PART3_COACHING_RESCHEDULE,
+  question: "Why does the woman want to reschedule her coaching session?",
   options: [
     { label: "A", text: "She is unhappy with her current coach." },
     { label: "B", text: "She has to travel for a client meeting." },
@@ -3290,6 +3330,34 @@ const part3new10: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The woman explains she 'need[s] to fly to Chicago for a client meeting that morning.' (A), (C), and (D) are never mentioned — they are typical scheduling-related distractors.",
+};
+
+const part3new10b: PracticeQuestionData = {
+  ...PART3_COACHING_RESCHEDULE,
+  question: "What two options does the man offer the woman?",
+  options: [
+    { label: "A", text: "An in-person session on Wednesday, or a video call." },
+    { label: "B", text: "A morning session, or an evening session." },
+    { label: "C", text: "A session next week, or a refund." },
+    { label: "D", text: "A group session, or a private session." },
+  ],
+  correct: "A",
+  explanation:
+    "'I have an opening Wednesday afternoon at 4 PM, or we could do a video call while you're traveling.' Morning/evening (B), next week or a refund (C), and group/private (D) are never mentioned.",
+};
+
+const part3new10c: PracticeQuestionData = {
+  ...PART3_COACHING_RESCHEDULE,
+  question: "What does the woman ask the man to focus on this time?",
+  options: [
+    { label: "A", text: "Delegation strategies." },
+    { label: "B", text: "Public speaking skills." },
+    { label: "C", text: "Time management techniques." },
+    { label: "D", text: "Conflict resolution." },
+  ],
+  correct: "A",
+  explanation:
+    "'Could we also focus on delegation strategies this time? That's been a challenge for me lately.' Public speaking (B), time management (C), and conflict resolution (D) are never mentioned.",
 };
 
 const part3r9a: PracticeQuestionData = {
@@ -3550,12 +3618,18 @@ const part3r10a3: PracticeQuestionData = {
     "'I'll ask the driver to prioritize your delivery first on the route, so it should arrive well before that.' Delivering all twenty-five at once (B), a phone confirmation (C), and an expedited fee (D) are never mentioned.",
 };
 
-const part3r10b: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 93 — Dental clinic sterilizer breakdown", durationSec: 36 },
+const PART3_STERILIZER_BREAKDOWN = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-sterilizer-breakdown",
+  audio: { label: "Conversation — Dental clinic sterilizer breakdown", durationSec: 0 },
   context:
-    "(W) Hi Mr. Reyes, unfortunately the sterilizer in exam room two just stopped heating properly, so we can't process instruments in there right now.\n(M) That's concerning with a full schedule today. Can we move those patients to room three?\n(W) Yes, room three's sterilizer is working fine, so I've already started rerouting the instrument trays there.\n(M) Good thinking. I'll call the repair technician now to see how soon they can come look at the broken unit.\n\nQuestion: What will the man do next?",
+    "(W) Hi Mr. Reyes, unfortunately the sterilizer in exam room two just stopped heating properly, so we can't process instruments in there right now.\n(M) That's concerning with a full schedule today. Can we move those patients to room three?\n(W) Yes, room three's sterilizer is working fine, so I've already started rerouting the instrument trays there.\n(M) Good thinking. I'll call the repair technician now to see how soon they can come look at the broken unit.\n(W) Should I let the front desk know to direct patients to room three instead?\n(M) Yes, please do that right away so no one waits outside the wrong room.",
+};
+
+const part3r10b1: PracticeQuestionData = {
+  ...PART3_STERILIZER_BREAKDOWN,
+  question: "What will the man do next?",
   options: [
     { label: "A", text: "Reschedule all of today's patient appointments." },
     { label: "B", text: "Call a technician to repair the sterilizer." },
@@ -3567,12 +3641,46 @@ const part3r10b: PracticeQuestionData = {
     "The man says, 'I'll call the repair technician now to see how soon they can come look at the broken unit.' (A), (C), and (D) are never mentioned — the woman, not the man, is the one rerouting trays to room three.",
 };
 
-const part3r10c: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 94 — Employee relocation package inquiry", durationSec: 34 },
+const part3r10b2: PracticeQuestionData = {
+  ...PART3_STERILIZER_BREAKDOWN,
+  question: "Why can't room two currently be used?",
+  options: [
+    { label: "A", text: "Its sterilizer stopped heating properly." },
+    { label: "B", text: "It is being cleaned." },
+    { label: "C", text: "It lacks enough instrument trays." },
+    { label: "D", text: "It is reserved for a different procedure." },
+  ],
+  correct: "A",
+  explanation:
+    "'The sterilizer in exam room two just stopped heating properly, so we can't process instruments in there right now.' Cleaning (B), a lack of trays (C), and a reserved procedure (D) are never mentioned.",
+};
+
+const part3r10b3: PracticeQuestionData = {
+  ...PART3_STERILIZER_BREAKDOWN,
+  question: "What does the woman offer to do?",
+  options: [
+    { label: "A", text: "Tell the front desk to direct patients to room three." },
+    { label: "B", text: "Cancel the day's remaining appointments." },
+    { label: "C", text: "Call the repair technician herself." },
+    { label: "D", text: "Move the broken sterilizer to room three." },
+  ],
+  correct: "A",
+  explanation:
+    "'Should I let the front desk know to direct patients to room three instead?' Canceling appointments (B), calling the technician herself (C), and moving the sterilizer (D) are never mentioned — the man is the one calling the technician.",
+};
+
+const PART3_RELOCATION_PACKAGE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-relocation-package",
+  audio: { label: "Conversation — Employee relocation package inquiry", durationSec: 0 },
   context:
-    "(W) Hi, I'm calling about the relocation package for my transfer to the Denver office. I wanted to ask whether moving costs for my furniture are covered.\n(M) Yes, the package covers up to $3,000 in moving expenses, including furniture and boxes, as long as you use one of our approved moving companies.\n(W) Great, and is there a deadline to submit receipts?\n(M) You'll have sixty days after your move date to submit them for reimbursement.\n\nQuestion: Why is the woman calling?",
+    "(W) Hi, I'm calling about the relocation package for my transfer to the Denver office. I wanted to ask whether moving costs for my furniture are covered.\n(M) Yes, the package covers up to $3,000 in moving expenses, including furniture and boxes, as long as you use one of our approved moving companies.\n(W) Great, and is there a deadline to submit receipts?\n(M) You'll have sixty days after your move date to submit them for reimbursement.\n(W) Perfect. One more question — does the package include any help with temporary housing while I look for an apartment?\n(M) Yes, we cover up to thirty days at a corporate extended-stay hotel near the Denver office.",
+};
+
+const part3r10c1: PracticeQuestionData = {
+  ...PART3_RELOCATION_PACKAGE,
+  question: "Why is the woman calling?",
   options: [
     { label: "A", text: "To complain about a moving company's poor service." },
     { label: "B", text: "To request an extension on her start date in Denver." },
@@ -3585,6 +3693,34 @@ const part3r10c: PracticeQuestionData = {
   correct: "C",
   explanation:
     "The woman says she is 'calling about the relocation package' and 'wanted to ask whether moving costs for my furniture are covered.' (A), (B), and (D) are never mentioned — they are common relocation-related distractors.",
+};
+
+const part3r10c2: PracticeQuestionData = {
+  ...PART3_RELOCATION_PACKAGE,
+  question: "What condition must be met for moving expenses to be covered?",
+  options: [
+    { label: "A", text: "An approved moving company must be used." },
+    { label: "B", text: "The move must happen within thirty days." },
+    { label: "C", text: "A manager must pre-approve the move." },
+    { label: "D", text: "Receipts must be submitted before the move." },
+  ],
+  correct: "A",
+  explanation:
+    "Coverage applies 'as long as you use one of our approved moving companies.' A thirty-day window (B) applies to temporary housing, not this condition. Manager pre-approval (C) and submitting receipts beforehand (D) are never mentioned.",
+};
+
+const part3r10c3: PracticeQuestionData = {
+  ...PART3_RELOCATION_PACKAGE,
+  question: "What does the man say the package includes for temporary housing?",
+  options: [
+    { label: "A", text: "Up to thirty days at a corporate extended-stay hotel." },
+    { label: "B", text: "A monthly housing stipend." },
+    { label: "C", text: "Full reimbursement for a rental deposit." },
+    { label: "D", text: "Assistance finding a permanent apartment." },
+  ],
+  correct: "A",
+  explanation:
+    "'We cover up to thirty days at a corporate extended-stay hotel near the Denver office.' A monthly stipend (B), a deposit reimbursement (C), and apartment-finding assistance (D) are never mentioned.",
 };
 
 const PART3_ZOO_RENOVATION = {
@@ -9913,7 +10049,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3ap1,
   part3ap2,
   part3ap3,
-  part3aq,
+  part3aq1,
+  part3aq2,
+  part3aq3,
   part3ar,
   part3as,
   part3at,
@@ -9955,7 +10093,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3new7,
   part3new8,
   part3new9,
-  part3new10,
+  part3new10a,
+  part3new10b,
+  part3new10c,
   part3r9a,
   part3r9b1,
   part3r9b2,
@@ -9971,8 +10111,12 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r10a1,
   part3r10a2,
   part3r10a3,
-  part3r10b,
-  part3r10c,
+  part3r10b1,
+  part3r10b2,
+  part3r10b3,
+  part3r10c1,
+  part3r10c2,
+  part3r10c3,
   part3r10d1,
   part3r10d2,
   part3r10d3,
