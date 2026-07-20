@@ -1,6 +1,9 @@
 import type { PracticeQuestionData } from "@/components/PracticeQuestion";
 
-type AudioSourceInput = Pick<PracticeQuestionData, "photo" | "listening" | "context" | "options">;
+type AudioSourceInput = Pick<
+  PracticeQuestionData,
+  "photo" | "spokenOptions" | "listening" | "context" | "options"
+>;
 
 export interface AudioTurn {
   /** Who speaks this turn. "narrator" covers Part 1 photo statements, Part 2
@@ -44,6 +47,14 @@ export function getAudioTurns(data: AudioSourceInput): AudioTurn[] {
   if (questionMatch) {
     turns.push({ speaker: "narrator", isQuestionPrompt: true, text: questionMatch[1].trim() });
   }
+
+  // Part 2: nothing is printed on the real test, so the audio has to carry
+  // the three responses too, not just the question — read in the fixed
+  // A/B/C order, independent of whatever order the shuffle displays them in.
+  if (data.spokenOptions) {
+    turns.push(...data.options.map((o) => ({ speaker: "narrator" as const, text: o.text })));
+  }
+
   return turns;
 }
 

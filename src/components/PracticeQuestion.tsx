@@ -22,6 +22,12 @@ export interface PracticeQuestionData {
    *  audio reads the four answer statements aloud. Option text is hidden
    *  until the user answers. */
   photo?: boolean;
+  /** Part 2 style: the audio reads the question, then each response option,
+   *  aloud — nothing is printed on screen until the user answers. This is
+   *  what makes Part 2 the purely-aural item type it is on the real test;
+   *  Parts 3 and 4 print their options in the test booklet, so only Parts 1
+   *  and 2 hide option text and speak it instead. */
+  spokenOptions?: boolean;
   /** Real photo shown for Part 1 (photo) questions, sourced under a
    *  commercial-use-permissive license (Wikimedia Commons). */
   image?: { src: string; credit: string };
@@ -146,7 +152,13 @@ function QuestionPassage({
               group={group}
               label={data.audio?.label ?? "Listening audio"}
               resetKey={resetKey}
-              hint={group ? "Tap play to hear the talk, then answer all the questions below." : undefined}
+              hint={
+                group
+                  ? "Tap play to hear the talk, then answer all the questions below."
+                  : data.spokenOptions
+                    ? "Tap play to hear the question and the three responses, then choose the best reply."
+                    : undefined
+              }
             />
           )}
           {!data.listening && !data.photo && data.audio && (
@@ -223,9 +235,9 @@ function QuestionOptions({
                 )}
               </span>
               <span className="pt-0.5">
-                {data.photo && !revealed ? (
+                {(data.photo || data.spokenOptions) && !revealed ? (
                   <span className="italic text-muted-foreground">
-                    Statement {opt.label} (listen to the audio)
+                    {data.photo ? "Statement" : "Response"} {opt.label} (listen to the audio)
                   </span>
                 ) : (
                   opt.text
@@ -347,7 +359,10 @@ function AudioClipPlayer({
   resetKey,
   hint,
 }: {
-  data: Pick<PracticeQuestionData, "photo" | "listening" | "context" | "options">;
+  data: Pick<
+    PracticeQuestionData,
+    "photo" | "spokenOptions" | "listening" | "context" | "options"
+  >;
   /** When present, the clip covers a whole Part 3/4 set: the recording once,
    *  then each of the set's questions read aloud. */
   group?: PracticeQuestionData[];
@@ -360,13 +375,20 @@ function AudioClipPlayer({
     [data, group],
   );
 
-  // Part 1 (photo): each currently-displayed option is looked up by its own
-  // content hash — never a combined key — since the client shuffles option
-  // order/labels every session and a single fixed "A./B./C./D." recording
-  // would drift out of sync with whatever order is currently on screen.
-  if (data.photo) {
+  // Part 1 (photo) and Part 2 (spokenOptions): each currently-displayed turn
+  // is looked up by its own content hash — never a combined key — since the
+  // client shuffles option order/labels every session and a single fixed
+  // recording would drift out of sync with whatever order is currently on
+  // screen. Part 2's turns are the question followed by its three responses,
+  // in that fixed order, so shuffling the on-screen labels never touches
+  // which clip plays for which response.
+  if (data.photo || data.spokenOptions) {
     const entries = turns.map((t) => audioManifest[audioKey(t.text)]);
-    const fallbackText = data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ");
+    const fallbackText = data.photo
+      ? data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ")
+      : [turns[0]?.text, ...data.options.map((o) => `${o.label}. ${o.text}`)]
+          .filter(Boolean)
+          .join(" ... ");
     if (!entries.every((e): e is AudioManifestEntry => !!e)) {
       return (
         <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />

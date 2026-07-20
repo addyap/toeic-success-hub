@@ -91,12 +91,12 @@ async function processItem(data: PracticeQuestionData, group?: PracticeQuestionD
   const turns = group ? getGroupAudioTurns(group) : getAudioTurns(data);
   if (turns.length === 0) return;
 
-  if (data.photo) {
-    // Each option's statement gets its own independently-keyed clip — never
-    // one combined key for all four — so playback stays correct regardless
-    // of the client-side answer shuffle, which reorders and relabels
-    // options every session. The pre-recorded audio must match by content
-    // (the statement's own text), not by position.
+  if (data.photo || data.spokenOptions) {
+    // Each turn (Part 1's statements, or Part 2's question plus its three
+    // responses) gets its own independently-keyed clip — never one combined
+    // key — so playback stays correct regardless of the client-side answer
+    // shuffle, which reorders and relabels options every session. The
+    // pre-recorded audio must match by content, not by position.
     for (const turn of turns) {
       const key = audioKey(turn.text);
       if (manifest[key]) continue;

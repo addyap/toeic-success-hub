@@ -257,7 +257,8 @@ const part1l: PracticeQuestionData = {
 const part2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "When is the quarterly report due?"',
   options: [
     { label: "A", text: "In the conference room." },
@@ -272,7 +273,8 @@ const part2: PracticeQuestionData = {
 const part2b: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s interviewing the marketing candidate this afternoon?"',
   options: [
     { label: "A", text: "In the third-floor conference room." },
@@ -287,7 +289,8 @@ const part2b: PracticeQuestionData = {
 const part2c: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Where did you send the client\'s shipment?"',
   options: [
     { label: "A", text: "We shipped it yesterday afternoon." },
@@ -302,7 +305,8 @@ const part2c: PracticeQuestionData = {
 const part2d: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Did you back up the server files before the update?"',
   options: [
     { label: "A", text: "Yes, I ran it last night before we started." },
@@ -317,7 +321,8 @@ const part2d: PracticeQuestionData = {
 const part2e: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The quarterly budget report is due Friday, isn\'t it?"',
   options: [
     { label: "A", text: "Yes, that's right — end of day Friday." },
@@ -332,7 +337,8 @@ const part2e: PracticeQuestionData = {
 const part2f: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "I think we should book the earlier flight to Chicago."',
   options: [
     { label: "A", text: "That works for me — I'll change the reservation now." },
@@ -347,7 +353,8 @@ const part2f: PracticeQuestionData = {
 const part2g: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Should we hold the training session in the main hall or the small conference room?"',
   options: [
@@ -363,7 +370,8 @@ const part2g: PracticeQuestionData = {
 const part2h: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Why did the client cancel their order?"',
   options: [
     { label: "A", text: "They found a cheaper supplier." },
@@ -378,7 +386,8 @@ const part2h: PracticeQuestionData = {
 const part2i: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How do I reset my password for the new expense system?"',
   options: [
     { label: "A", text: "Click the 'Forgot Password' link on the login page." },
@@ -393,7 +402,8 @@ const part2i: PracticeQuestionData = {
 const part2j: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How many units did we sell during the weekend clearance sale?"',
   options: [
     { label: "A", text: "We moved about three hundred units." },
@@ -408,7 +418,8 @@ const part2j: PracticeQuestionData = {
 const part2k: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Isn\'t the new assembly line supposed to start today?"',
   options: [
     { label: "A", text: "Yes, it's scheduled to go live this afternoon." },
@@ -423,7 +434,8 @@ const part2k: PracticeQuestionData = {
 const part2l: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Do you know when the contract needs to be signed?"',
   options: [
     { label: "A", text: "By the end of this week, I believe." },
@@ -438,7 +450,8 @@ const part2l: PracticeQuestionData = {
 const part2m: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "What\'s the asking price for the downtown office space?"',
   options: [
     { label: "A", text: "It's listed at $4,200 a month." },
@@ -453,7 +466,8 @@ const part2m: PracticeQuestionData = {
 const part2n: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: "Question: \"The patient's insurance is still valid, isn't it?\"",
   options: [
     { label: "A", text: "Yes, it doesn't expire until December." },
@@ -468,7 +482,8 @@ const part2n: PracticeQuestionData = {
 const part2o: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Would you like the buffet option or the plated dinner service for the gala?"',
   options: [
@@ -484,7 +499,8 @@ const part2o: PracticeQuestionData = {
 const part2p: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "We just received a complaint about a delivery delay."',
   options: [
     { label: "A", text: "I'll call the customer right away to check the tracking and apologize." },
@@ -499,7 +515,8 @@ const part2p: PracticeQuestionData = {
 const part2q: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Why was the concrete pour postponed until tomorrow?"',
   options: [
     { label: "A", text: "Because the weather forecast predicts heavy rain this afternoon." },
@@ -514,7 +531,8 @@ const part2q: PracticeQuestionData = {
 const part2r: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Why did the hotel switch to a new laundry service?"',
   options: [
     { label: "A", text: "The previous company kept losing linens." },
@@ -529,7 +547,8 @@ const part2r: PracticeQuestionData = {
 const part2s: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s leading the new teacher orientation next week?"',
   options: [
     { label: "A", text: "Ms. Reynolds from the curriculum department." },
@@ -544,7 +563,8 @@ const part2s: PracticeQuestionData = {
 const part2t: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who approved the final cover design for the novel?"',
   options: [
     { label: "A", text: "The editorial director signed off on it yesterday." },
@@ -559,7 +579,8 @@ const part2t: PracticeQuestionData = {
 const part2u: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Did the wheat shipment clear customs inspection?"',
   options: [
     { label: "A", text: "Yes, it passed without any issues this morning." },
@@ -574,7 +595,8 @@ const part2u: PracticeQuestionData = {
 const part2v: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Has the recall notice been sent to all affected owners?"',
   options: [
     { label: "A", text: "Not yet, we're still finalizing the mailing list." },
@@ -589,7 +611,8 @@ const part2v: PracticeQuestionData = {
 const part2w: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The new fiber lines are finished, aren\'t they?"',
   options: [
     { label: "A", text: "Yes, the installation crew completed them this morning." },
@@ -604,7 +627,8 @@ const part2w: PracticeQuestionData = {
 const part2x: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: "Question: \"The gala raised more than last year's event, didn't it?\"",
   options: [
     { label: "A", text: "Yes, we exceeded last year's total by fifteen percent." },
@@ -619,7 +643,8 @@ const part2x: PracticeQuestionData = {
 const part2y: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Should we pour the foundation on Thursday, or wait until the inspector signs off?"',
   options: [
@@ -635,7 +660,8 @@ const part2y: PracticeQuestionData = {
 const part2z: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Would you like the ocean-view room, or the one facing the garden?"',
   options: [
     { label: "A", text: "The ocean-view room sounds perfect, thank you." },
@@ -650,7 +676,8 @@ const part2z: PracticeQuestionData = {
 const part2aa: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "The workshop materials haven\'t arrived from the printer yet."',
   options: [
     { label: "A", text: "I'll call them right now to check on the delivery." },
@@ -665,7 +692,8 @@ const part2aa: PracticeQuestionData = {
 const part2ab: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "Sales of the paperback edition dropped sharply last quarter."',
   options: [
     { label: "A", text: "Maybe we should run a discount promotion." },
@@ -680,7 +708,8 @@ const part2ab: PracticeQuestionData = {
 const part2ac: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Why was the 6:45 departure to Chicago delayed?"',
   options: [
     { label: "A", text: "A mechanical issue turned up during the pre-flight inspection." },
@@ -695,7 +724,8 @@ const part2ac: PracticeQuestionData = {
 const part2ad: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s directing the reshoots next week?"',
   options: [
     { label: "A", text: "The same director who shot the original scenes." },
@@ -710,7 +740,8 @@ const part2ad: PracticeQuestionData = {
 const part2ae: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Should I file the claim online or call the claims office?"',
   options: [
     { label: "A", text: "Online would be quicker since the phone lines are backed up." },
@@ -725,7 +756,8 @@ const part2ae: PracticeQuestionData = {
 const part2af: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Is the pool open for lap swimming this morning?"',
   options: [
     { label: "A", text: "Yes, but only until nine because of a swim class." },
@@ -740,7 +772,8 @@ const part2af: PracticeQuestionData = {
 const part2ag: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "When does the recycling truck usually come by?"',
   options: [
     { label: "A", text: "Every other Thursday, early in the morning." },
@@ -755,7 +788,8 @@ const part2ag: PracticeQuestionData = {
 const part2ah: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: "Question: \"The vet said the dog's stitches should come out by Friday, didn't she?\"",
   options: [
     { label: "A", text: "Yes, that's exactly what she told us at the last visit." },
@@ -770,7 +804,8 @@ const part2ah: PracticeQuestionData = {
 const part2ai: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Do you happen to know where the spare projector bulb is kept?"',
   options: [
     { label: "A", text: "It's in the supply closet next to the printer." },
@@ -785,7 +820,8 @@ const part2ai: PracticeQuestionData = {
 const part2aj: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context:
     'Statement: "Our biggest wholesale client is renegotiating their contract terms this week."',
   options: [
@@ -804,7 +840,8 @@ const part2aj: PracticeQuestionData = {
 const part2ak: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How long will the road resurfacing project take?"',
   options: [
     { label: "A", text: "About three weeks, weather permitting." },
@@ -819,7 +856,8 @@ const part2ak: PracticeQuestionData = {
 const part2al: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Would you rather present the findings yourself, or have someone from the research team do it?"',
   options: [
@@ -835,7 +873,8 @@ const part2al: PracticeQuestionData = {
 const part2am: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: "Question: \"What's the main topic on tomorrow's board meeting agenda?\"",
   options: [
     { label: "A", text: "The proposed merger with Fenwick Corp." },
@@ -850,7 +889,8 @@ const part2am: PracticeQuestionData = {
 const part2an: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Has the loan application been approved yet?"',
   options: [
     { label: "A", text: "Not yet — the underwriter needs two more days." },
@@ -865,7 +905,8 @@ const part2an: PracticeQuestionData = {
 const part2ao: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The software subscription renews automatically next month, doesn\'t it?"',
   options: [
     { label: "A", text: "Yes, unless we cancel it before the billing date." },
@@ -880,7 +921,8 @@ const part2ao: PracticeQuestionData = {
 const part2ap: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Would you like the photos printed on matte paper or glossy paper?"',
   options: [
     { label: "A", text: "Matte, please — it won't show fingerprints." },
@@ -895,7 +937,8 @@ const part2ap: PracticeQuestionData = {
 const part2aq: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Do you know which platform the express train to Leeds leaves from?"',
   options: [
     { label: "A", text: "Platform six, according to the departure board." },
@@ -910,7 +953,8 @@ const part2aq: PracticeQuestionData = {
 const part2ar: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "The production server crashed twice this morning."',
   options: [
     { label: "A", text: "I'll check the error logs and loop in the on-call engineer." },
@@ -925,7 +969,8 @@ const part2ar: PracticeQuestionData = {
 const part2as: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How much does it cost to rent the moving truck for a full day?"',
   options: [
     { label: "A", text: "About ninety dollars, plus mileage." },
@@ -940,7 +985,8 @@ const part2as: PracticeQuestionData = {
 const part2new1: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "When is my performance review scheduled?"',
   options: [
     { label: "A", text: "In Room 204, down the hall." },
@@ -955,7 +1001,8 @@ const part2new1: PracticeQuestionData = {
 const part2new2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Did you submit the expense report for the sales trip?"',
   options: [
     { label: "A", text: "Yes, I submitted it this morning." },
@@ -970,7 +1017,8 @@ const part2new2: PracticeQuestionData = {
 const part2new3: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The new payroll system goes live next Monday, doesn\'t it?"',
   options: [
     { label: "A", text: "Pay stubs are emailed automatically each cycle." },
@@ -985,7 +1033,8 @@ const part2new3: PracticeQuestionData = {
 const part2new4: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Should we schedule the vendor meeting for Tuesday or Wednesday?"',
   options: [
     { label: "A", text: "Yes, that works for everyone." },
@@ -1000,7 +1049,8 @@ const part2new4: PracticeQuestionData = {
 const part2new5: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Why did the inventory count come up short this quarter?"',
   options: [
     { label: "A", text: "Several pallets were mislabeled during the audit." },
@@ -1015,7 +1065,8 @@ const part2new5: PracticeQuestionData = {
 const part2new6: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How do I join today\'s video conference call?"',
   options: [
     { label: "A", text: "It starts at two o'clock." },
@@ -1030,7 +1081,8 @@ const part2new6: PracticeQuestionData = {
 const part2new7: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context:
     'Statement: "Several employees still haven\'t received their new parking permits for the office relocation."',
   options: [
@@ -1046,7 +1098,8 @@ const part2new7: PracticeQuestionData = {
 const part2r9a: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s catering the retirement party on Friday?"',
   options: [
     { label: "A", text: "It starts at noon." },
@@ -1061,7 +1114,8 @@ const part2r9a: PracticeQuestionData = {
 const part2r9b: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Has the new printer been installed in the design studio?"',
   options: [
     { label: "A", text: "Not yet, IT is coming next Tuesday." },
@@ -1076,7 +1130,8 @@ const part2r9b: PracticeQuestionData = {
 const part2r9c: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The annual audit starts next Monday, doesn\'t it?"',
   options: [
     { label: "A", text: "The auditors specialize in tax compliance." },
@@ -1091,7 +1146,8 @@ const part2r9c: PracticeQuestionData = {
 const part2r9d: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Would you prefer the window seat or the aisle seat for the flight?"',
   options: [
     { label: "A", text: "The flight departs at six." },
@@ -1106,7 +1162,8 @@ const part2r9d: PracticeQuestionData = {
 const part2r9e: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "The conference Wi-Fi keeps disconnecting during presentations."',
   options: [
     { label: "A", text: "I'll ask the IT team to check the router." },
@@ -1121,7 +1178,8 @@ const part2r9e: PracticeQuestionData = {
 const part2r9f: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Where should I drop off the signed vendor contracts?"',
   options: [
     { label: "A", text: "They were signed this morning." },
@@ -1136,7 +1194,8 @@ const part2r9f: PracticeQuestionData = {
 const part2r10a: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Where do new hires pick up their building access badge?"',
   options: [
     { label: "A", text: "The badge system was upgraded last year." },
@@ -1151,7 +1210,8 @@ const part2r10a: PracticeQuestionData = {
 const part2r10b: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Has the security patch been installed on all the laptops?"',
   options: [
     { label: "A", text: "Yes, IT pushed it out to every device last night." },
@@ -1166,7 +1226,8 @@ const part2r10b: PracticeQuestionData = {
 const part2r10c: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The new dinosaur exhibit opens to the public next Saturday, doesn\'t it?"',
   options: [
     { label: "A", text: "The museum expanded its gift shop last year." },
@@ -1181,7 +1242,8 @@ const part2r10c: PracticeQuestionData = {
 const part2r10d: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Should we print the brochures in-house, or send the job to an outside print shop?"',
   options: [
@@ -1197,7 +1259,8 @@ const part2r10d: PracticeQuestionData = {
 const part2r10e: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "The pharmacy says this medication is on backorder for two weeks."',
   options: [
     { label: "A", text: "The pharmacy just renovated its front counter." },
@@ -1212,7 +1275,8 @@ const part2r10e: PracticeQuestionData = {
 const part2r10f: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How much does it cost to rent a booth at the trade show?"',
   options: [
     { label: "A", text: "It's held in the convention center downtown." },
@@ -1227,7 +1291,8 @@ const part2r10f: PracticeQuestionData = {
 const part2r10g: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s reviewing the research grant applications this year?"',
   options: [
     { label: "A", text: "A committee from the dean's office." },
@@ -1242,7 +1307,8 @@ const part2r10g: PracticeQuestionData = {
 const part2r11a: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "How do I submit a reimbursement request for travel expenses?"',
   options: [
     { label: "A", text: "Fill out the online form and attach your receipts." },
@@ -1257,7 +1323,8 @@ const part2r11a: PracticeQuestionData = {
 const part2r11b: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Who\'s proofreading the annual report before it goes to print?"',
   options: [
     { label: "A", text: "It goes to print next Friday." },
@@ -1272,7 +1339,8 @@ const part2r11b: PracticeQuestionData = {
 const part2r11c: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "Did the courier already pick up the outgoing packages?"',
   options: [
     { label: "A", text: "Yes, right around noon." },
@@ -1287,7 +1355,8 @@ const part2r11c: PracticeQuestionData = {
 const part2r11d: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context: 'Question: "The elevator maintenance is scheduled for this weekend, isn\'t it?"',
   options: [
     { label: "A", text: "The building has three elevators." },
@@ -1302,7 +1371,8 @@ const part2r11d: PracticeQuestionData = {
 const part2r11e: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
   listening: true,
-  audio: { label: "Spoken question", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
   context:
     'Question: "Should we hold the client dinner at the steakhouse or the seafood restaurant?"',
   options: [
@@ -1318,7 +1388,8 @@ const part2r11e: PracticeQuestionData = {
 const part2r11f: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the statement.",
   listening: true,
-  audio: { label: "Spoken statement", durationSec: 0 },
+  spokenOptions: true,
+  audio: { label: "Statement and responses", durationSec: 0 },
   context: 'Statement: "The keynote speaker just canceled for tomorrow\'s conference."',
   options: [
     { label: "A", text: "Conferences usually run for two full days." },
