@@ -3741,90 +3741,259 @@ const part4j3: PracticeQuestionData = {
     "'Please type your issue into the chat box, and our support staff will assist you' directs this to the chat, not to Diane Foster herself (D). No instruction to restart anything is given (A), and technical issues are handled as they arise rather than saved for the Q&A (C).",
 };
 
-const part4k: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the reservation confirmation voicemail and answer the question.",
-  listening: true,
+const PART4_RESERVATION = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-reservation",
   audio: { label: "Short talk — Restaurant reservation voicemail", durationSec: 0 },
   context:
-    "Hi, this is Marco calling from Bellavista Restaurant to confirm your reservation for four people this Saturday at seven thirty P.M. We ask that you arrive within fifteen minutes of your reservation time, since tables are held for that period only and we have a fully booked evening. Please note that we've recently moved to a new location on Harbor Street, just two blocks from our old address. If you need to cancel or change the size of your party, please call us back at least twenty-four hours in advance. We look forward to seeing you this weekend.\n\nQuestion: What will most likely happen if the party arrives more than fifteen minutes after seven thirty?",
-  options: [
-    { label: "A", text: "The restaurant will offer them a different table." },
-    { label: "B", text: "Their reservation may no longer be held." },
-    { label: "C", text: "They will receive a discount on their bill." },
-    { label: "D", text: "They will be moved to the new Harbor Street location automatically." },
-  ],
-  correct: "B",
-  explanation:
-    "Marco explains that 'tables are held for that period only,' which logically means a party arriving later than fifteen minutes risks losing the reservation. Being offered another table (A), a discount (C), and automatic relocation (D) are never mentioned.",
+    "Hi, this is Marco calling from Bellavista Restaurant to confirm your reservation for four people this Saturday at seven thirty P.M. We ask that you arrive within fifteen minutes of your reservation time, since tables are held for that period only and we have a fully booked evening. Please note that we've recently moved to a new location on Harbor Street, just two blocks from our old address. If you need to cancel or change the size of your party, please call us back at least twenty-four hours in advance. We look forward to seeing you this weekend.",
 };
 
-const part4l: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the store announcement and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Retail store holiday-hours announcement", durationSec: 0 },
-  context:
-    "Attention shoppers, thank you for visiting Falcon Electronics. Please note that in observance of the upcoming holiday, our store will close early today at six P.M. instead of our usual nine P.M. closing time. We will also be closed all day tomorrow and will reopen the following morning at our regular time of ten A.M. Our online store, however, remains open twenty-four hours a day for your convenience. If you need assistance before we close, our staff will be available at the customer service desk near the main entrance. We thank you for shopping with us and wish you a wonderful holiday.\n\nQuestion: What can customers infer about shopping during the holiday closure?",
+const part4k1: PracticeQuestionData = {
+  ...PART4_RESERVATION,
+  question: "What is the purpose of the call?",
   options: [
-    { label: "A", text: "They can still make purchases through the online store." },
-    { label: "B", text: "They can pick up online orders at the customer service desk." },
-    { label: "C", text: "They will receive a discount for shopping online instead." },
-    { label: "D", text: "The store's regular hours will change permanently starting next week." },
+    { label: "A", text: "To verify an upcoming booking." },
+    { label: "B", text: "To offer a table at short notice." },
+    { label: "C", text: "To inform the listener of a menu change." },
+    { label: "D", text: "To collect payment in advance." },
   ],
   correct: "A",
   explanation:
-    "Since the announcement states the physical store will be closed but 'our online store... remains open twenty-four hours a day for your convenience,' it can be inferred that customers can still shop online during the closure. In-store pickup (B), an online discount (C), and a permanent hours change (D) are never mentioned.",
+    "Marco is 'calling from Bellavista Restaurant to confirm your reservation' — confirming a booking already made. Nothing suggests a spontaneous offer (B), and neither a menu (C) nor payment (D) is mentioned.",
 };
 
-const part4m: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the public-works announcement and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — City public-works road closure announcement", durationSec: 0 },
-  context:
-    "This is an automated notice from the City of Riverton Department of Public Works. Beginning Monday, Elm Street between Fourth and Seventh Avenue will be closed to all vehicle traffic while crews repair a broken water main. The closure is expected to last through Thursday, and residents on the affected block will experience temporary water service interruptions each day between nine a.m. and one p.m. Detour signs will direct traffic along Maple Avenue for the duration of the project. Businesses along Elm Street are asked to inform customers that pedestrian access to storefronts will remain open throughout the repair. For questions or to report an issue, please call our maintenance hotline at the number listed on the city website.\n\nQuestion: Why is Elm Street being closed to vehicle traffic?",
+const part4k2: PracticeQuestionData = {
+  ...PART4_RESERVATION,
+  question: "What is implied about the party if they arrive after seven forty-five?",
   options: [
-    { label: "A", text: "The street is being repaved." },
-    { label: "B", text: "Crews are repairing a broken water main." },
-    { label: "C", text: "A parade is taking place downtown." },
-    { label: "D", text: "A tree fell and blocked the road." },
+    { label: "A", text: "They will be seated at the old location instead." },
+    { label: "B", text: "Their table could be given to someone else." },
+    { label: "C", text: "They will need to reduce their party size." },
+    { label: "D", text: "They will be charged an additional fee." },
   ],
   correct: "B",
   explanation:
-    "The announcement states the street will be closed 'while crews repair a broken water main.' Repaving (A), a parade (C), and a fallen tree (D) are never mentioned.",
+    "'Tables are held for that period only and we have a fully booked evening' — with the restaurant full, a table not claimed within fifteen minutes would logically go to another party. The move to Harbor Street already happened, so there is no 'old location' to return to (A), and neither a size change (C) nor a fee (D) is mentioned.",
 };
 
-const part4n: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the fitness studio voicemail and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Gym class cancellation voicemail", durationSec: 0 },
-  context:
-    "Hi, this is Dana from Peak Fitness Studio calling to let you know that tonight's six o'clock spin class has been cancelled because our instructor, Marco, is out with a family emergency. We tried to find a substitute on short notice but weren't able to arrange one in time. Your class credit will automatically be restored to your account, so you won't need to do anything on your end. If you'd like, you're welcome to join tomorrow morning's seven a.m. spin class instead, which still has a few open spots. We apologize for the inconvenience and hope to see you at the studio again soon. Please call us back if you have any questions.\n\nQuestion: Why was tonight's spin class cancelled?",
+const part4k3: PracticeQuestionData = {
+  ...PART4_RESERVATION,
+  question: "What should the listener do if their group size changes?",
   options: [
-    { label: "A", text: "The studio lost power." },
-    { label: "B", text: "Not enough members registered." },
-    { label: "C", text: "The instructor had a family emergency." },
-    { label: "D", text: "The equipment was being repaired." },
+    { label: "A", text: "Arrive fifteen minutes earlier than planned." },
+    { label: "B", text: "Mention it to staff upon arrival." },
+    { label: "C", text: "Contact the restaurant a day beforehand." },
+    { label: "D", text: "Book a second table separately." },
   ],
   correct: "C",
   explanation:
-    "Dana says the class was cancelled 'because our instructor, Marco, is out with a family emergency.' A power outage (A), low registration (B), and equipment repair (D) are never mentioned.",
+    "'If you need to cancel or change the size of your party, please call us back at least twenty-four hours in advance' asks for advance notice, not a change made on arrival (B). Arriving early (A) relates to the fifteen-minute hold, a separate point, and no second booking is mentioned (D).",
 };
 
-const part4o: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the podcast introduction and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Business podcast episode introduction", durationSec: 0 },
+const PART4_HOLIDAY_HOURS = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-holiday-hours",
+  audio: { label: "Short talk — Retail store holiday-hours announcement", durationSec: 0 },
   context:
-    "Welcome back to Bottom Line Business, the podcast where we break down the strategies behind today's fastest-growing companies. I'm your host, Priya Chandra, and this week I'm joined by the co-founder of a logistics startup that scaled from three employees to over two hundred in just eighteen months. Before we dive into today's interview, quick note: registration for our annual listener meetup in Austin closes this Friday, so if you've been planning to grab a ticket, now's the time. As always, this episode is brought to you by our sponsor, Ledger Cloud Accounting. Let's get into the conversation.\n\nQuestion: What can be inferred about this week's podcast guest?",
+    "Attention shoppers, thank you for visiting Falcon Electronics. Please note that in observance of the upcoming holiday, our store will close early today at six P.M. instead of our usual nine P.M. closing time. We will also be closed all day tomorrow and will reopen the following morning at our regular time of ten A.M. Our online store, however, remains open twenty-four hours a day for your convenience. If you need assistance before we close, our staff will be available at the customer service desk near the main entrance. We thank you for shopping with us and wish you a wonderful holiday.",
+};
+
+const part4l1: PracticeQuestionData = {
+  ...PART4_HOLIDAY_HOURS,
+  question: "How is today different from a typical day, according to the announcement?",
   options: [
-    { label: "A", text: "They previously worked for Ledger Cloud Accounting." },
-    { label: "B", text: "Their company has grown rapidly in a short time." },
-    { label: "C", text: "They are stepping down as CEO of their company." },
-    { label: "D", text: "They will speak at the Austin meetup." },
+    { label: "A", text: "The store will shut three hours ahead of schedule." },
+    { label: "B", text: "The store will open three hours later than usual." },
+    { label: "C", text: "Only online orders will be accepted." },
+    { label: "D", text: "Staff will not be available for assistance." },
+  ],
+  correct: "A",
+  explanation:
+    "Closing moves from the 'usual nine P.M. closing time' to 'six P.M.' — three hours earlier. The opening time is unaffected today (B), in-store shopping continues normally until closing (C), and staff remain at the service desk until then (D).",
+};
+
+const part4l2: PracticeQuestionData = {
+  ...PART4_HOLIDAY_HOURS,
+  question: "What is implied about shopping while the physical store is closed?",
+  options: [
+    { label: "A", text: "It will not be possible until the store reopens." },
+    { label: "B", text: "It can continue through the store's website." },
+    { label: "C", text: "It will require picking up items at the service desk." },
+    { label: "D", text: "It will be offered at a reduced price." },
   ],
   correct: "B",
   explanation:
-    "The host describes the guest as co-founder of a startup that 'scaled from three employees to over two hundred in just eighteen months,' which indicates rapid growth. A prior job at the sponsor (A), stepping down (C), and speaking at the meetup (D) are never mentioned.",
+    "'Our online store... remains open twenty-four hours a day for your convenience' while the physical store is shut — so shopping continues online (A is wrong for that reason). No in-store pickup (C) or discount (D) is mentioned.",
+};
+
+const part4l3: PracticeQuestionData = {
+  ...PART4_HOLIDAY_HOURS,
+  question: "When will the store next open to in-person customers?",
+  options: [
+    { label: "A", text: "Later the same day, after a short closure." },
+    { label: "B", text: "The following morning, at its usual time." },
+    { label: "C", text: "The following morning, earlier than usual." },
+    { label: "D", text: "Two days from now." },
+  ],
+  correct: "B",
+  explanation:
+    "The store is 'closed all day tomorrow and will reopen the following morning at our regular time of ten A.M.' — the usual opening time, not an earlier one (C), and not a same-day reopening (A) or a two-day wait (D).",
+};
+
+const PART4_ROAD_CLOSURE = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-road-closure",
+  audio: { label: "Short talk — City public-works road closure announcement", durationSec: 0 },
+  context:
+    "This is an automated notice from the City of Riverton Department of Public Works. Beginning Monday, Elm Street between Fourth and Seventh Avenue will be closed to all vehicle traffic while crews repair a broken water main. The closure is expected to last through Thursday, and residents on the affected block will experience temporary water service interruptions each day between nine a.m. and one p.m. Detour signs will direct traffic along Maple Avenue for the duration of the project. Businesses along Elm Street are asked to inform customers that pedestrian access to storefronts will remain open throughout the repair. For questions or to report an issue, please call our maintenance hotline at the number listed on the city website.",
+};
+
+const part4m1: PracticeQuestionData = {
+  ...PART4_ROAD_CLOSURE,
+  question: "Why is Elm Street being closed to vehicles?",
+  options: [
+    { label: "A", text: "To resurface the road." },
+    { label: "B", text: "To fix a damaged pipe beneath the street." },
+    { label: "C", text: "To allow a downtown parade to pass." },
+    { label: "D", text: "To clear a tree that fell across the road." },
+  ],
+  correct: "B",
+  explanation:
+    "The closure is 'while crews repair a broken water main' — a damaged pipe. Resurfacing (A), a parade (C), and a fallen tree (D) are never mentioned.",
+};
+
+const part4m2: PracticeQuestionData = {
+  ...PART4_ROAD_CLOSURE,
+  question: "What is implied about businesses on Elm Street during the closure?",
+  options: [
+    { label: "A", text: "They must close for the duration of the repair." },
+    { label: "B", text: "They can still be reached on foot." },
+    { label: "C", text: "They will be relocated to Maple Avenue temporarily." },
+    { label: "D", text: "They will receive compensation from the city." },
+  ],
+  correct: "B",
+  explanation:
+    "Businesses are told 'pedestrian access to storefronts will remain open throughout the repair' — customers on foot can still get in, even though vehicles cannot. Nothing requires businesses to close (A), Maple Avenue is only the vehicle detour route (C), and no compensation is mentioned (D).",
+};
+
+const part4m3: PracticeQuestionData = {
+  ...PART4_ROAD_CLOSURE,
+  question: "What will affected residents experience each day during the project?",
+  options: [
+    { label: "A", text: "A brief loss of water service." },
+    { label: "B", text: "Noise from repair work overnight." },
+    { label: "C", text: "A temporary loss of electricity." },
+    { label: "D", text: "Restricted access to their driveways." },
+  ],
+  correct: "A",
+  explanation:
+    "Residents 'will experience temporary water service interruptions each day between nine a.m. and one p.m.' — a daily, daytime loss of water. Electricity (C) is never mentioned, overnight noise (B) is not stated, and driveway access is not addressed (D).",
+};
+
+const PART4_CLASS_CANCELLATION = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-class-cancellation",
+  audio: { label: "Short talk — Gym class cancellation voicemail", durationSec: 0 },
+  context:
+    "Hi, this is Dana from Peak Fitness Studio calling to let you know that tonight's six o'clock spin class has been cancelled because our instructor, Marco, is out with a family emergency. We tried to find a substitute on short notice but weren't able to arrange one in time. Your class credit will automatically be restored to your account, so you won't need to do anything on your end. If you'd like, you're welcome to join tomorrow morning's seven a.m. spin class instead, which still has a few open spots. We apologize for the inconvenience and hope to see you at the studio again soon. Please call us back if you have any questions.",
+};
+
+const part4n1: PracticeQuestionData = {
+  ...PART4_CLASS_CANCELLATION,
+  question: "Why has tonight's class been cancelled?",
+  options: [
+    { label: "A", text: "Too few members signed up." },
+    { label: "B", text: "The instructor is unavailable due to a personal matter." },
+    { label: "C", text: "The studio's equipment needs repair." },
+    { label: "D", text: "The building has lost electricity." },
+  ],
+  correct: "B",
+  explanation:
+    "Marco 'is out with a family emergency' — a personal matter that has made him unavailable. Low sign-up (A), equipment (C), and a power loss (D) are never mentioned.",
+};
+
+const part4n2: PracticeQuestionData = {
+  ...PART4_CLASS_CANCELLATION,
+  question: "What does the speaker say the listener needs to do to have their credit restored?",
+  options: [
+    { label: "A", text: "Call the studio to request it." },
+    { label: "B", text: "Nothing, as it happens automatically." },
+    { label: "C", text: "Attend the substitute class instead." },
+    { label: "D", text: "Submit a refund form online." },
+  ],
+  correct: "B",
+  explanation:
+    "'Your class credit will automatically be restored to your account, so you won't need to do anything on your end.' Calling back (A) is offered only for questions, not for the credit, and no substitute class (C) was found, nor is a form mentioned (D).",
+};
+
+const part4n3: PracticeQuestionData = {
+  ...PART4_CLASS_CANCELLATION,
+  question: "What alternative does the speaker offer?",
+  options: [
+    { label: "A", text: "A private session with a different instructor." },
+    { label: "B", text: "A spot in the next morning's class." },
+    { label: "C", text: "A refund instead of a credit." },
+    { label: "D", text: "A discount on a future class." },
+  ],
+  correct: "B",
+  explanation:
+    "The listener is 'welcome to join tomorrow morning's seven a.m. spin class instead, which still has a few open spots.' A substitute instructor could not be arranged for tonight (A), the credit is automatic rather than a refund (C), and no discount is mentioned (D).",
+};
+
+const PART4_PODCAST_INTRO = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-podcast-intro",
+  audio: { label: "Short talk — Business podcast episode introduction", durationSec: 0 },
+  context:
+    "Welcome back to Bottom Line Business, the podcast where we break down the strategies behind today's fastest-growing companies. I'm your host, Priya Chandra, and this week I'm joined by the co-founder of a logistics startup that scaled from three employees to over two hundred in just eighteen months. Before we dive into today's interview, quick note: registration for our annual listener meetup in Austin closes this Friday, so if you've been planning to grab a ticket, now's the time. As always, this episode is brought to you by our sponsor, Ledger Cloud Accounting. Let's get into the conversation.",
+};
+
+const part4o1: PracticeQuestionData = {
+  ...PART4_PODCAST_INTRO,
+  question: "What type of company does the podcast typically feature?",
+  options: [
+    { label: "A", text: "Companies expanding at an unusually fast pace." },
+    { label: "B", text: "Companies preparing to go public." },
+    { label: "C", text: "Companies in the accounting industry." },
+    { label: "D", text: "Companies based outside the country." },
+  ],
+  correct: "A",
+  explanation:
+    "The show covers 'the strategies behind today's fastest-growing companies' — rapid expansion, not going public (B), which is never mentioned. Accounting (C) describes only the sponsor, and no international focus is stated (D).",
+};
+
+const part4o2: PracticeQuestionData = {
+  ...PART4_PODCAST_INTRO,
+  question: "What can be inferred about this week's guest?",
+  options: [
+    { label: "A", text: "Their company expanded its workforce dramatically in a short period." },
+    { label: "B", text: "They previously worked at the show's sponsor." },
+    { label: "C", text: "They are leaving their position as co-founder." },
+    { label: "D", text: "They will appear at the Austin meetup." },
+  ],
+  correct: "A",
+  explanation:
+    "The guest's company 'scaled from three employees to over two hundred in just eighteen months' — dramatic workforce growth. A past role at the sponsor (B), stepping down (C), and appearing at the meetup (D) are never mentioned.",
+};
+
+const part4o3: PracticeQuestionData = {
+  ...PART4_PODCAST_INTRO,
+  question: "What does the host say about the Austin meetup?",
+  options: [
+    { label: "A", text: "It has been rescheduled to a later date." },
+    { label: "B", text: "Registration closes soon." },
+    { label: "C", text: "This week's guest will be speaking there." },
+    { label: "D", text: "It is sponsored by Ledger Cloud Accounting." },
+  ],
+  correct: "B",
+  explanation:
+    "'Registration for our annual listener meetup in Austin closes this Friday, so if you've been planning to grab a ticket, now's the time' — a closing deadline. No rescheduling (A) is mentioned, the guest's attendance is never stated (C), and the sponsor is linked to the episode, not the meetup (D).",
 };
 
 const part4p: PracticeQuestionData = {
@@ -9670,11 +9839,21 @@ export const part4Questions: PracticeQuestionData[] = [
   part4j1,
   part4j2,
   part4j3,
-  part4k,
-  part4l,
-  part4m,
-  part4n,
-  part4o,
+  part4k1,
+  part4k2,
+  part4k3,
+  part4l1,
+  part4l2,
+  part4l3,
+  part4m1,
+  part4m2,
+  part4m3,
+  part4n1,
+  part4n2,
+  part4n3,
+  part4o1,
+  part4o2,
+  part4o3,
   part4p,
   part4q,
   part4r,
