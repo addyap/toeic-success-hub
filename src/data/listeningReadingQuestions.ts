@@ -1708,12 +1708,18 @@ const part3f3: PracticeQuestionData = {
     "'If it keeps happening I'll probably need a hardware upgrade eventually.' A new license (B), extra training (C), and a different model (D) are never mentioned.",
 };
 
-const part3g: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 7 — Client dinner reservation", durationSec: 38 },
+const PART3_DINNER_RESERVATION = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-dinner-reservation",
+  audio: { label: "Conversation — Client dinner reservation", durationSec: 0 },
   context:
-    "(M) Hi, I'd like to confirm a reservation for six people under the name Whitfield, for this Thursday at 7 PM.\n(W) Let me check... I see the reservation, but I have you down for four people, not six.\n(M) Oh, two of our clients confirmed just this morning, so we need to add two more seats.\n(W) No problem, I can update it to six and move you to a larger table in our private dining room.\n\nQuestion: Why does the man contact the restaurant?",
+    "(M) Hi, I'd like to confirm a reservation for six people under the name Whitfield, for this Thursday at 7 PM.\n(W) Let me check... I see the reservation, but I have you down for four people, not six.\n(M) Oh, two of our clients confirmed just this morning, so we need to add two more seats.\n(W) No problem, I can update it to six and move you to a larger table in our private dining room.\n(M) Perfect, thank you. One more thing — two of the guests have shellfish allergies. Can the kitchen accommodate that?\n(W) Absolutely, I'll flag it on the reservation so the chef prepares separate dishes for them.",
+};
+
+const part3g1: PracticeQuestionData = {
+  ...PART3_DINNER_RESERVATION,
+  question: "Why does the man contact the restaurant?",
   options: [
     { label: "A", text: "To cancel the Thursday reservation." },
     { label: "B", text: "To increase the number of guests on a reservation." },
@@ -1723,6 +1729,34 @@ const part3g: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The man explains that 'two of our clients confirmed just this morning, so we need to add two more seats,' and the woman updates the reservation from four to six. (A), (C), and (D) are never mentioned — they are common restaurant-related distractors that reuse vocabulary ('reservation', 'Thursday') from the conversation.",
+};
+
+const part3g2: PracticeQuestionData = {
+  ...PART3_DINNER_RESERVATION,
+  question: "What does the woman offer to do about the reservation?",
+  options: [
+    { label: "A", text: "Move the party to a larger table in the private dining room." },
+    { label: "B", text: "Give the party a discount on their bill." },
+    { label: "C", text: "Offer complimentary drinks for the wait." },
+    { label: "D", text: "Reschedule the reservation to a later time." },
+  ],
+  correct: "A",
+  explanation:
+    "She offers to 'update it to six and move you to a larger table in our private dining room.' A discount (B), complimentary drinks (C), and rescheduling (D) are never mentioned.",
+};
+
+const part3g3: PracticeQuestionData = {
+  ...PART3_DINNER_RESERVATION,
+  question: "What does the man ask about?",
+  options: [
+    { label: "A", text: "Whether the kitchen can accommodate a shellfish allergy." },
+    { label: "B", text: "Whether the restaurant offers vegetarian options." },
+    { label: "C", text: "Whether the private room has a view." },
+    { label: "D", text: "Whether the reservation can be moved earlier." },
+  ],
+  correct: "A",
+  explanation:
+    "'Two of the guests have shellfish allergies. Can the kitchen accommodate that?' Vegetarian options (B), a view (C), and an earlier time (D) are never mentioned.",
 };
 
 const part3h: PracticeQuestionData = {
@@ -1793,12 +1827,18 @@ const part3i3: PracticeQuestionData = {
     "'I'd leave by 9:15 to be safe — traffic downtown tends to build up around then.' The visit itself starts at 10:00 (B), which is the appointment time, not the recommended departure time. 8:30 (C) and 9:45 (D) are never mentioned.",
 };
 
-const part3j: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 10 — Trade show booth setup", durationSec: 40 },
+const PART3_BOOTH_SETUP = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-booth-setup",
+  audio: { label: "Conversation — Trade show booth setup", durationSec: 0 },
   context:
-    "(W) The booth panels for the trade show just arrived, but two of them are missing the company logo decals.\n(M) That's a problem — the show opens in two hours. Can we print replacement decals here at the hotel business center?\n(W) I already called them; they said they can have new decals ready within thirty minutes.\n(M) Great, I'll go pick them up as soon as they're done so we can finish setting up on time.\n\nQuestion: What does the woman say is missing from two of the booth panels?",
+    "(W) The booth panels for the trade show just arrived, but two of them are missing the company logo decals.\n(M) That's a problem — the show opens in two hours. Can we print replacement decals here at the hotel business center?\n(W) I already called them; they said they can have new decals ready within thirty minutes.\n(M) Great, I'll go pick them up as soon as they're done so we can finish setting up on time.\n(W) While you're gone, I'll start arranging the product displays and testing the demo laptops.\n(M) Good idea. If you finish early, could you also set out the brochures near the entrance?",
+};
+
+const part3j1: PracticeQuestionData = {
+  ...PART3_BOOTH_SETUP,
+  question: "What does the woman say is missing from two of the booth panels?",
   options: [
     { label: "A", text: "The company logo decals" },
     { label: "B", text: "The price list" },
@@ -1808,6 +1848,34 @@ const part3j: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The woman states that two of the panels 'are missing the company logo decals.' (B), (C), and (D) are never mentioned — they are plausible booth-related items that do not appear in the conversation.",
+};
+
+const part3j2: PracticeQuestionData = {
+  ...PART3_BOOTH_SETUP,
+  question: "How long did the business center say the new decals would take?",
+  options: [
+    { label: "A", text: "About thirty minutes." },
+    { label: "B", text: "About two hours." },
+    { label: "C", text: "About one hour." },
+    { label: "D", text: "About fifteen minutes." },
+  ],
+  correct: "A",
+  explanation:
+    "'They said they can have new decals ready within thirty minutes.' Two hours (B) is when the show opens, not the decal turnaround. One hour (C) and fifteen minutes (D) are never mentioned.",
+};
+
+const part3j3: PracticeQuestionData = {
+  ...PART3_BOOTH_SETUP,
+  question: "What does the woman say she will do while the man is gone?",
+  options: [
+    { label: "A", text: "Arrange the product displays and test the demo laptops." },
+    { label: "B", text: "Call the trade show organizers." },
+    { label: "C", text: "Print additional brochures." },
+    { label: "D", text: "Rearrange the booth panels." },
+  ],
+  correct: "A",
+  explanation:
+    "'While you're gone, I'll start arranging the product displays and testing the demo laptops.' Calling the organizers (B), printing brochures (C), and rearranging panels (D) are never mentioned.",
 };
 
 const part3k: PracticeQuestionData = {
@@ -1946,12 +2014,18 @@ const part3p: PracticeQuestionData = {
     "The man says the laptop 'will be waiting at your desk with your login credentials.' (B), (C), and (D) are never mentioned — the front desk is discussed only in connection with the security badge.",
 };
 
-const part3q: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 17 — Hotel checkout charge", durationSec: 32 },
+const PART3_HOTEL_CHECKOUT = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-hotel-checkout",
+  audio: { label: "Conversation — Hotel checkout charge", durationSec: 0 },
   context:
-    "(M) Hi, I'm checking out of room 412, but I noticed an extra charge on my bill for room service that I never ordered.\n(W) I'm sorry about that — let me check... You're right, it looks like it was charged to your room by mistake. I'll remove it right away.\n(M) Thank you. Could you also print an updated receipt for me?\n(W) Of course, here you go. Is everything correct now?\n(M) Yes, that looks right.\n\nQuestion: Why does the man question his hotel bill?",
+    "(M) Hi, I'm checking out of room 412, but I noticed an extra charge on my bill for room service that I never ordered.\n(W) I'm sorry about that — let me check... You're right, it looks like it was charged to your room by mistake. I'll remove it right away.\n(M) Thank you. Could you also print an updated receipt for me?\n(W) Of course, here you go. Is everything correct now?\n(M) Yes, that looks right.\n(W) Great. Will you be paying with the card on file, or a different method today?\n(M) The same card is fine. Also, could you email me a copy of the receipt as well, for my expense report?\n(W) Of course, I'll send that to the address on file right after you check out.",
+};
+
+const part3q1: PracticeQuestionData = {
+  ...PART3_HOTEL_CHECKOUT,
+  question: "Why does the man question his hotel bill?",
   options: [
     { label: "A", text: "He was charged for room service he did not order." },
     { label: "B", text: "He was charged twice for his room." },
@@ -1961,6 +2035,34 @@ const part3q: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man says he noticed 'an extra charge on my bill for room service that I never ordered.' (B), (C), and (D) are never mentioned — they are typical distractors involving other billing problems.",
+};
+
+const part3q2: PracticeQuestionData = {
+  ...PART3_HOTEL_CHECKOUT,
+  question: "How does the man say he will pay?",
+  options: [
+    { label: "A", text: "With the card already on file." },
+    { label: "B", text: "In cash." },
+    { label: "C", text: "With a different credit card." },
+    { label: "D", text: "By bank transfer." },
+  ],
+  correct: "A",
+  explanation:
+    "'The same card is fine.' Cash (B), a different card (C), and a bank transfer (D) are never mentioned.",
+};
+
+const part3q3: PracticeQuestionData = {
+  ...PART3_HOTEL_CHECKOUT,
+  question: "What does the man ask the woman to send him?",
+  options: [
+    { label: "A", text: "An emailed copy of the receipt." },
+    { label: "B", text: "A printed hotel loyalty card." },
+    { label: "C", text: "A discount coupon for a future stay." },
+    { label: "D", text: "A confirmation of his checkout time." },
+  ],
+  correct: "A",
+  explanation:
+    "'Could you email me a copy of the receipt as well, for my expense report?' A loyalty card (B), a discount coupon (C), and checkout confirmation (D) are never mentioned.",
 };
 
 const part3r: PracticeQuestionData = {
@@ -2201,12 +2303,18 @@ const part3ae: PracticeQuestionData = {
     "The woman explains he can't attend 'because his equipment was damaged in transit.' (B), (C), and (D) are never mentioned — they are typical distractors involving other scheduling problems.",
 };
 
-const part3af: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 32 — Office lease renewal negotiation", durationSec: 32 },
+const PART3_LEASE_RENEWAL = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-lease-renewal",
+  audio: { label: "Conversation — Office lease renewal negotiation", durationSec: 0 },
   context:
-    "(M) I spoke with the landlord about renewing our office lease, and he's offering the same rent as last year if we sign a three-year term.\n(W) That's a good deal, but can we ask for a shorter term instead? A lot could change in three years.\n(M) I did ask — he said he'd only offer that rate for a term of three years or longer.\n(W) Alright, let's go ahead and sign for three years then.\n\nQuestion: What condition did the landlord set for keeping the same rent?",
+    "(M) I spoke with the landlord about renewing our office lease, and he's offering the same rent as last year if we sign a three-year term.\n(W) That's a good deal, but can we ask for a shorter term instead? A lot could change in three years.\n(M) I did ask — he said he'd only offer that rate for a term of three years or longer.\n(W) Alright, let's go ahead and sign for three years then.\n(M) I'll let him know today. He also mentioned the new lease would include a small parking allowance we didn't have before.\n(W) That's a nice bonus. How many spaces are we talking about?\n(M) Two reserved spaces near the entrance, at no extra cost.",
+};
+
+const part3af1: PracticeQuestionData = {
+  ...PART3_LEASE_RENEWAL,
+  question: "What condition did the landlord set for keeping the same rent?",
   options: [
     { label: "A", text: "The company must sign a three-year lease." },
     { label: "B", text: "The company must pay a deposit." },
@@ -2216,6 +2324,34 @@ const part3af: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man says the landlord 'said he'd only offer that rate for a term of three years or longer.' (B), (C), and (D) are never mentioned — they are typical distractors involving other lease conditions.",
+};
+
+const part3af2: PracticeQuestionData = {
+  ...PART3_LEASE_RENEWAL,
+  question: "What does the man say he will do today?",
+  options: [
+    { label: "A", text: "Let the landlord know they will sign for three years." },
+    { label: "B", text: "Ask the landlord for a lower rate." },
+    { label: "C", text: "Review the new lease with a lawyer." },
+    { label: "D", text: "Request an extension on the decision deadline." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll let him know today,' referring to the decision to sign for three years. Asking for a lower rate (B), a lawyer review (C), and a deadline extension (D) are never mentioned.",
+};
+
+const part3af3: PracticeQuestionData = {
+  ...PART3_LEASE_RENEWAL,
+  question: "What new benefit does the man mention?",
+  options: [
+    { label: "A", text: "Two reserved parking spaces at no extra cost." },
+    { label: "B", text: "A discount on utilities." },
+    { label: "C", text: "Free access to a shared conference room." },
+    { label: "D", text: "A reduced security deposit." },
+  ],
+  correct: "A",
+  explanation:
+    "'Two reserved spaces near the entrance, at no extra cost.' A utilities discount (B), shared conference room access (C), and a reduced deposit (D) are never mentioned.",
 };
 
 const part3ag: PracticeQuestionData = {
@@ -9727,12 +9863,16 @@ export const part3Questions: PracticeQuestionData[] = [
   part3f1,
   part3f2,
   part3f3,
-  part3g,
+  part3g1,
+  part3g2,
+  part3g3,
   part3h,
   part3i1,
   part3i2,
   part3i3,
-  part3j,
+  part3j1,
+  part3j2,
+  part3j3,
   part3k,
   part3l,
   part3m1,
@@ -9741,7 +9881,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3n,
   part3o,
   part3p,
-  part3q,
+  part3q1,
+  part3q2,
+  part3q3,
   part3r,
   part3s,
   part3t,
@@ -9756,7 +9898,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3ac,
   part3ad,
   part3ae,
-  part3af,
+  part3af1,
+  part3af2,
+  part3af3,
   part3ag,
   part3ah,
   part3ai,
