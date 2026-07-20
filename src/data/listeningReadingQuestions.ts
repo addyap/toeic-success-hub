@@ -5965,9 +5965,15 @@ const part6grp6b: PracticeQuestionData = {
   ...PART6_FESTIVAL_TICKETS,
   question: "Question (2): Which sentence best fits the blank?",
   options: [
-    { label: "A", text: "We recommend setting a calendar reminder so you don't miss the Monday release." },
+    {
+      label: "A",
+      text: "We recommend setting a calendar reminder so you don't miss the Monday release.",
+    },
     { label: "B", text: "Our food vendors will offer a new selection of dishes this year." },
-    { label: "C", text: "Parking near the waterfront tends to fill up quickly on festival weekends." },
+    {
+      label: "C",
+      text: "Parking near the waterfront tends to fill up quickly on festival weekends.",
+    },
     { label: "D", text: "Weather forecasts for the festival weekend currently show clear skies." },
   ],
   correct: "A",
@@ -6443,7 +6449,10 @@ const part7f3: PracticeQuestionData = {
   options: [
     { label: "A", text: "Discard them immediately." },
     { label: "B", text: "Return them by mail using a prepaid label." },
-    { label: "C", text: "Keep them until the replacement arrives, when the courier will collect them." },
+    {
+      label: "C",
+      text: "Keep them until the replacement arrives, when the courier will collect them.",
+    },
     { label: "D", text: "Donate them to a local charity." },
   ],
   correct: "C",
@@ -6523,7 +6532,10 @@ const part7h2: PracticeQuestionData = {
   ...PART7_SUMMIT_CONFIRMATION,
   question: "What is included in Ms. Alvarez's registration?",
   options: [
-    { label: "A", text: "Access to all keynote sessions, workshop tracks, and the networking reception." },
+    {
+      label: "A",
+      text: "Access to all keynote sessions, workshop tracks, and the networking reception.",
+    },
     { label: "B", text: "A hotel room for the two nights of the summit." },
     { label: "C", text: "Round-trip transportation to the convention center." },
     { label: "D", text: "One-on-one meetings with keynote speakers." },
@@ -6712,7 +6724,8 @@ const PART7_TOS_UPDATE = {
 };
 const part7m: PracticeQuestionData = {
   ...PART7_TOS_UPDATE,
-  question: "What can be inferred about someone who shares a StreamPlay account with a person outside their household?",
+  question:
+    "What can be inferred about someone who shares a StreamPlay account with a person outside their household?",
   options: [
     { label: "A", text: "They will be able to continue as before after July 1." },
     { label: "B", text: "They may be affected by the new device location verification." },
@@ -6854,8 +6867,7 @@ const part7o3: PracticeQuestionData = {
     { label: "D", text: "The fee is not changing." },
   ],
   correct: "A",
-  explanation:
-    "The notice states the fee 'will increase from $8 to $12', so (A) is correct.",
+  explanation: "The notice states the fee 'will increase from $8 to $12', so (A) is correct.",
 };
 
 const PART7_COURSE_ENROLLMENT = {
@@ -6933,8 +6945,7 @@ const part7q2: PracticeQuestionData = {
     { label: "D", text: "Free transfer to a different branch." },
   ],
   correct: "A",
-  explanation:
-    "The summary lists the 'Rate: $45/day, unlimited mileage', so (A) is correct.",
+  explanation: "The summary lists the 'Rate: $45/day, unlimited mileage', so (A) is correct.",
 };
 const part7q3: PracticeQuestionData = {
   ...PART7_CAR_RENTAL,
@@ -7078,7 +7089,10 @@ const part7t3: PracticeQuestionData = {
   ...PART7_AIRLINE_STATUS,
   question: "What happens to Mr. Owusu's tier status each January?",
   options: [
-    { label: "A", text: "It is reviewed and will reset unless the mileage threshold is met again." },
+    {
+      label: "A",
+      text: "It is reviewed and will reset unless the mileage threshold is met again.",
+    },
     { label: "B", text: "It automatically upgrades to the next tier." },
     { label: "C", text: "It is suspended pending a new application." },
     { label: "D", text: "It converts to a points-based system." },
@@ -7194,7 +7208,8 @@ const PART7_UTILITY_PAYMENT = {
 };
 const part7w: PracticeQuestionData = {
   ...PART7_UTILITY_PAYMENT,
-  question: "What will happen to accounts that are unpaid and not enrolled in a payment plan after August 15?",
+  question:
+    "What will happen to accounts that are unpaid and not enrolled in a payment plan after August 15?",
   options: [
     { label: "A", text: "They will receive a late fee added to the next bill" },
     { label: "B", text: "They will be subject to service disconnection" },
@@ -7240,7 +7255,8 @@ const PART7_LIBRARY_OVERDUE = {
 };
 const part7x: PracticeQuestionData = {
   ...PART7_LIBRARY_OVERDUE,
-  question: "What will happen if the item is not returned or renewed within 21 days of the due date?",
+  question:
+    "What will happen if the item is not returned or renewed within 21 days of the due date?",
   options: [
     { label: "A", text: "The patron's library card will be suspended" },
     { label: "B", text: "The patron will be billed the full replacement cost of $65" },
@@ -7411,7 +7427,8 @@ const PART7_CERTIFICATION = {
 };
 const part7ab: PracticeQuestionData = {
   ...PART7_CERTIFICATION,
-  question: "What can be inferred about Ms. Efe's certification if she does not complete a renewal course before the expiration date?",
+  question:
+    "What can be inferred about Ms. Efe's certification if she does not complete a renewal course before the expiration date?",
   options: [
     { label: "A", text: "It will remain valid indefinitely" },
     { label: "B", text: "It will need to be renewed through a different institute" },
@@ -7427,7 +7444,10 @@ const part7ab2: PracticeQuestionData = {
   question: "Why will Ms. Efe's certificate be sent to her employer's HR department automatically?",
   options: [
     { label: "A", text: "Because her employer co-signed the certification agreement." },
-    { label: "B", text: "Because her enrollment was submitted through the company's corporate training account." },
+    {
+      label: "B",
+      text: "Because her enrollment was submitted through the company's corporate training account.",
+    },
     { label: "C", text: "Because her score was above the company's minimum requirement." },
     { label: "D", text: "Because all certifications are sent to employers by default." },
   ],
@@ -7490,7 +7510,8 @@ const PART7_MAGAZINE_CANCEL = {
 };
 const part7ad: PracticeQuestionData = {
   ...PART7_MAGAZINE_CANCEL,
-  question: "What can be inferred about customers who cancel their subscription after an automatic renewal charge has occurred?",
+  question:
+    "What can be inferred about customers who cancel their subscription after an automatic renewal charge has occurred?",
   options: [
     { label: "A", text: "They are eligible for a prorated refund" },
     { label: "B", text: "They must pay an early cancellation fee" },
@@ -9517,8 +9538,7 @@ export const part2Questions: PracticeQuestionData[] = [
   part2r11e,
   part2r11f,
 ];
-export const part3Questions: PracticeQuestionData[
-  ] = [
+export const part3Questions: PracticeQuestionData[] = [
   part31,
   part32,
   part33,
@@ -9604,8 +9624,7 @@ export const part3Questions: PracticeQuestionData[
   part3r11f2,
   part3r11f3,
 ];
-export const part4Questions: PracticeQuestionData[
-  ] = [
+export const part4Questions: PracticeQuestionData[] = [
   part4a1,
   part4a2,
   part4a3,
@@ -9778,8 +9797,7 @@ export const part5Questions: PracticeQuestionData[] = [
   part5r11f,
   part5r11g,
 ];
-export const part6Questions: PracticeQuestionData[
-  ] = [
+export const part6Questions: PracticeQuestionData[] = [
   part6grp1a,
   part6grp1b,
   part6grp1c,
@@ -9879,9 +9897,13 @@ const part7grp1c: PracticeQuestionData = {
 
 const part7grp1d: PracticeQuestionData = {
   ...PART7_LAMP_RETURN,
-  question: "Based on the email and the policy, will Ms. Desai need to send the lamp back to receive a refund?",
+  question:
+    "Based on the email and the policy, will Ms. Desai need to send the lamp back to receive a refund?",
   options: [
-    { label: "A", text: "No, because a photo of the damage is sufficient for a damaged-item refund." },
+    {
+      label: "A",
+      text: "No, because a photo of the damage is sufficient for a damaged-item refund.",
+    },
     { label: "B", text: "Yes, because she requested a refund rather than a replacement." },
     { label: "C", text: "Yes, because more than 14 days have passed since delivery." },
     { label: "D", text: "No, because standard shipping items are automatically exempted." },
@@ -9924,11 +9946,12 @@ const part7grp2a: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The posting lists requirements including \"at least two years of experience in a marketing or communications role.\" A graduate degree (B), a second language (C), and team-management experience (D) are not mentioned.",
+    'The posting lists requirements including "at least two years of experience in a marketing or communications role." A graduate degree (B), a second language (C), and team-management experience (D) are not mentioned.',
 };
 const part7grp2b: PracticeQuestionData = {
   ...PART7_JOB_APPLICATION,
-  question: "According to the email, what does Mr. Webb say he will need to do before starting the new job?",
+  question:
+    "According to the email, what does Mr. Webb say he will need to do before starting the new job?",
   options: [
     { label: "A", text: "Complete a training certification." },
     { label: "B", text: "Give two weeks' notice to his current employer." },
@@ -9937,7 +9960,7 @@ const part7grp2b: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "Mr. Webb writes that he \"would need to give two weeks' notice\" to his current employer before starting. He does not mention a certification (A), family relocation (C), or an in-progress client project (D).",
+    'Mr. Webb writes that he "would need to give two weeks\' notice" to his current employer before starting. He does not mention a certification (A), family relocation (C), or an in-progress client project (D).',
 };
 const part7grp2c: PracticeQuestionData = {
   ...PART7_JOB_APPLICATION,
@@ -9945,12 +9968,12 @@ const part7grp2c: PracticeQuestionData = {
   options: [
     { label: "A", text: "With the job title and today's date." },
     { label: "B", text: "With the applicant's full name and the job title." },
-    { label: "C", text: "With the words \"Job Application\" only." },
+    { label: "C", text: 'With the words "Job Application" only.' },
     { label: "D", text: "With the applicant's years of experience." },
   ],
   correct: "B",
   explanation:
-    "The posting asks applicants to use the subject line \"Marketing Coordinator – [Your Full Name],\" combining the job title with the applicant's full name. It does not ask for a date (A), a generic label (C), or years of experience (D).",
+    'The posting asks applicants to use the subject line "Marketing Coordinator – [Your Full Name]," combining the job title with the applicant\'s full name. It does not ask for a date (A), a generic label (C), or years of experience (D).',
 };
 const part7grp2d: PracticeQuestionData = {
   ...PART7_JOB_APPLICATION,
@@ -9958,7 +9981,10 @@ const part7grp2d: PracticeQuestionData = {
   options: [
     { label: "A", text: "No, because he has less than two years of experience." },
     { label: "B", text: "No, because he did not include a portfolio." },
-    { label: "C", text: "Yes, because he has three years of relevant experience and provided a portfolio." },
+    {
+      label: "C",
+      text: "Yes, because he has three years of relevant experience and provided a portfolio.",
+    },
     { label: "D", text: "Yes, but only because the experience requirement was waived." },
   ],
   correct: "C",
@@ -9999,7 +10025,7 @@ const part7grp3a: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The announcement lists \"Early Bird (before May 1): $150.\" It explicitly states walk-in registration will not be available (B), says nothing about free registration (C), and registration is done online, not by phone (D).",
+    'The announcement lists "Early Bird (before May 1): $150." It explicitly states walk-in registration will not be available (B), says nothing about free registration (C), and registration is done online, not by phone (D).',
 };
 const part7grp3b: PracticeQuestionData = {
   ...PART7_BUSINESS_SUMMIT,
@@ -10012,7 +10038,7 @@ const part7grp3b: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The confirmation email lists \"Registration type: Standard ($200).\" Early Bird (A) and walk-in (C) are different rates, and no group rate (D) is mentioned anywhere.",
+    'The confirmation email lists "Registration type: Standard ($200)." Early Bird (A) and walk-in (C) are different rates, and no group rate (D) is mentioned anywhere.',
 };
 const part7grp3c: PracticeQuestionData = {
   ...PART7_BUSINESS_SUMMIT,
@@ -10025,7 +10051,7 @@ const part7grp3c: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "Ms. Ortiz writes that \"a colleague on my team is already attending the marketing analytics session,\" so she'd rather attend a different one. She does not mention travel conflicts (A), an assignment error (C), or withdrawing from the summit (D).",
+    'Ms. Ortiz writes that "a colleague on my team is already attending the marketing analytics session," so she\'d rather attend a different one. She does not mention travel conflicts (A), an assignment error (C), or withdrawing from the summit (D).',
 };
 const part7grp3d: PracticeQuestionData = {
   ...PART7_BUSINESS_SUMMIT,
@@ -10038,7 +10064,7 @@ const part7grp3d: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "Ms. Ortiz asks to switch to \"the finance-focused one,\" which matches Workshop C, Small Business Finance Basics, from the announcement's list. Workshop B (B) is the session she is trying to leave, and the workshop she wants is listed, not new (D).",
+    'Ms. Ortiz asks to switch to "the finance-focused one," which matches Workshop C, Small Business Finance Basics, from the announcement\'s list. Workshop B (B) is the session she is trying to leave, and the workshop she wants is listed, not new (D).',
 };
 const part7grp3e: PracticeQuestionData = {
   ...PART7_BUSINESS_SUMMIT,
@@ -10051,7 +10077,7 @@ const part7grp3e: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "Ms. Ortiz writes, \"I understand it runs at a different time than my current one\" — consistent with the announcement, which lists Workshop B at 10:00 AM and Workshop C at 1:00 PM. Nothing suggests cancellation (C) or an added fee (D).",
+    'Ms. Ortiz writes, "I understand it runs at a different time than my current one" — consistent with the announcement, which lists Workshop B at 10:00 AM and Workshop C at 1:00 PM. Nothing suggests cancellation (C) or an added fee (D).',
 };
 
 // ── Part 7 triple passage #2: product page + order confirmation + customer
@@ -10074,7 +10100,7 @@ const part7grp4a: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The product page states the printer \"includes a 1-year manufacturer's warranty covering parts and labor.\" Shipping (B), separate accessories (C), and five years of software updates (D) are not mentioned.",
+    'The product page states the printer "includes a 1-year manufacturer\'s warranty covering parts and labor." Shipping (B), separate accessories (C), and five years of software updates (D) are not mentioned.',
 };
 const part7grp4b: PracticeQuestionData = {
   ...PART7_PRINTER_ORDER,
@@ -10087,7 +10113,7 @@ const part7grp4b: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "The confirmation email lists \"Shipping method: Express shipping.\" Standard shipping (A) is the other option mentioned on the product page, not what Daniel chose, and pickup (C) or international shipping (D) are never mentioned.",
+    'The confirmation email lists "Shipping method: Express shipping." Standard shipping (A) is the other option mentioned on the product page, not what Daniel chose, and pickup (C) or international shipping (D) are never mentioned.',
 };
 const part7grp4c: PracticeQuestionData = {
   ...PART7_PRINTER_ORDER,
@@ -10100,7 +10126,7 @@ const part7grp4c: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "Daniel writes that the printer \"won't connect to my wireless network no matter what I try,\" though it works fine over USB. He does not mention shipping damage (A), a wrong model (C), or missing parts (D).",
+    'Daniel writes that the printer "won\'t connect to my wireless network no matter what I try," though it works fine over USB. He does not mention shipping damage (A), a wrong model (C), or missing parts (D).',
 };
 const part7grp4d: PracticeQuestionData = {
   ...PART7_PRINTER_ORDER,
@@ -10121,12 +10147,15 @@ const part7grp4e: PracticeQuestionData = {
   options: [
     { label: "A", text: "He will receive a full refund under the standard return policy." },
     { label: "B", text: "He will need to purchase a new printer at full price." },
-    { label: "C", text: "The wireless defect will likely be covered under the 1-year manufacturer's warranty." },
+    {
+      label: "C",
+      text: "The wireless defect will likely be covered under the 1-year manufacturer's warranty.",
+    },
     { label: "D", text: "He will be charged an additional fee for wireless setup support." },
   ],
   correct: "C",
   explanation:
-    "The product page states that opened items with a manufacturing defect are \"covered under the 1-year warranty instead of the standard return policy.\" Daniel's printer is opened and has a defect (the WiFi will not connect), matching this warranty case rather than a standard refund (A), full-price replacement (B), or a paid support fee (D).",
+    'The product page states that opened items with a manufacturing defect are "covered under the 1-year warranty instead of the standard return policy." Daniel\'s printer is opened and has a defect (the WiFi will not connect), matching this warranty case rather than a standard refund (A), full-price replacement (B), or a paid support fee (D).',
 };
 
 // ── Part 7 triple passage #3: expense policy excerpt + employee email +
@@ -10149,7 +10178,7 @@ const part7grp5a: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The policy states meals \"are reimbursed up to $60 per day with itemized receipts.\" $180 (B) is the hotel cap, $165 (C) is Sofia's actual room rate, and $612 (D) is her total expense report.",
+    'The policy states meals "are reimbursed up to $60 per day with itemized receipts." $180 (B) is the hotel cap, $165 (C) is Sofia\'s actual room rate, and $612 (D) is her total expense report.',
 };
 const part7grp5b: PracticeQuestionData = {
   ...PART7_EXPENSE_REPORT,
@@ -10162,7 +10191,7 @@ const part7grp5b: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "Sofia writes she couldn't submit earlier \"because the portal was down most of last week.\" She does not mention still traveling (A), missing receipts (B), or waiting on prior approval (D).",
+    'Sofia writes she couldn\'t submit earlier "because the portal was down most of last week." She does not mention still traveling (A), missing receipts (B), or waiting on prior approval (D).',
 };
 const part7grp5c: PracticeQuestionData = {
   ...PART7_EXPENSE_REPORT,
@@ -10175,7 +10204,7 @@ const part7grp5c: PracticeQuestionData = {
   ],
   correct: "B",
   explanation:
-    "James writes, \"I'll approve the late submission given the portal outage, so no issue there.\" He does not refuse (A), ask for more documentation (C), or escalate the decision (D).",
+    'James writes, "I\'ll approve the late submission given the portal outage, so no issue there." He does not refuse (A), ask for more documentation (C), or escalate the decision (D).',
 };
 const part7grp5d: PracticeQuestionData = {
   ...PART7_EXPENSE_REPORT,
@@ -10188,7 +10217,7 @@ const part7grp5d: PracticeQuestionData = {
   ],
   correct: "C",
   explanation:
-    "The policy caps hotel stays at $180 per night, and Sofia's rate was $165 per night — below the limit. James confirms this directly, saying the rate \"is well within range.\"",
+    'The policy caps hotel stays at $180 per night, and Sofia\'s rate was $165 per night — below the limit. James confirms this directly, saying the rate "is well within range."',
 };
 const part7grp5e: PracticeQuestionData = {
   ...PART7_EXPENSE_REPORT,

@@ -42,7 +42,7 @@ export interface QuestionUnit {
  *  single forward pass is enough. */
 export function groupQuestions(questions: PracticeQuestionData[]): QuestionUnit[] {
   const units: QuestionUnit[] = [];
-  for (let i = 0; i < questions.length; ) {
+  for (let i = 0; i < questions.length;) {
     const groupId = questions[i].groupId;
     if (!groupId) {
       units.push({ start: i, questions: [questions[i]] });

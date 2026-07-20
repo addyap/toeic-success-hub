@@ -64,17 +64,44 @@ const manifest: Record<string, ManifestEntry> = {};
 let conversationIndex = 0;
 let singleVoiceIndex = 0;
 
+/** Generated mp3s are 125 kbps CBR, so bytes/sec is a reliable duration proxy.
+ *  Speech runs ~15 chars/sec; a clip under half its expected length was
+ *  truncated mid-synthesis. This has actually happened in production — two
+ *  clips shipped as sub-second blips, one of them a question's correct answer,
+ *  which is undetectable at runtime because the file and manifest entry both
+ *  exist. Retry, then fail loudly rather than write a dead clip. */
+const BYTES_PER_SEC = 15974;
+const MIN_DURATION_RATIO = 0.55;
+
+function isTruncated(text: string, bytes: number) {
+  if (text.length <= 15) return false;
+  const seconds = bytes / BYTES_PER_SEC;
+  return seconds / (text.length / 15) < MIN_DURATION_RATIO;
+}
+
 async function synth(text: string, voice: string, file: string) {
   const dest = new URL(file, AUDIO_DIR);
   if (!FORCE && existsSync(dest)) return;
-  const res = await client.audio.speech.create({
-    model: MODEL,
-    voice,
-    input: text,
-    response_format: "mp3",
-  });
-  const buf = Buffer.from(await res.arrayBuffer());
-  await writeFile(dest, buf);
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const res = await client.audio.speech.create({
+      model: MODEL,
+      voice,
+      input: text,
+      response_format: "mp3",
+    });
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (!isTruncated(text, buf.length)) {
+      await writeFile(dest, buf);
+      return;
+    }
+    console.warn(
+      `  ⚠ truncated clip (attempt ${attempt}/3, ${(buf.length / BYTES_PER_SEC).toFixed(2)}s): "${text.slice(0, 60)}"`,
+    );
+  }
+  throw new Error(
+    `TTS kept returning a truncated clip for: "${text}". Nothing was written for ${file}.`,
+  );
 }
 
 function voiceFor(turn: AudioTurn, pair: { M: string; W: string } | null): string {

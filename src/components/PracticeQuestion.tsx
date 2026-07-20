@@ -118,64 +118,64 @@ function QuestionPassage({
   return (
     <>
       {data.photo && data.image && (
-            <div className="mt-3">
-              <img
-                src={data.image.src}
-                alt={data.context ?? "Scene"}
-                loading="lazy"
-                className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
-              />
-              <p className="mt-1 text-[11px] text-muted-foreground/70">{data.image.credit}</p>
+        <div className="mt-3">
+          <img
+            src={data.image.src}
+            alt={data.context ?? "Scene"}
+            loading="lazy"
+            className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
+          />
+          <p className="mt-1 text-[11px] text-muted-foreground/70">{data.image.credit}</p>
+        </div>
+      )}
+      {data.photo && data.context && (
+        <div className="mt-3">
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Scene
+          </div>
+          <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+            {data.context}
+          </p>
+        </div>
+      )}
+      {data.photo && (
+        <AudioClipPlayer
+          data={data}
+          label={data.audio?.label ?? "Photograph statements"}
+          resetKey={resetKey}
+          hint="Tap play to hear statements A–D. Pick the one that best describes the scene."
+        />
+      )}
+      {data.listening && !data.photo && data.context && (
+        <AudioClipPlayer
+          data={data}
+          group={group}
+          label={data.audio?.label ?? "Listening audio"}
+          resetKey={resetKey}
+          hint={
+            group
+              ? "Tap play to hear the talk, then answer all the questions below."
+              : data.spokenOptions
+                ? "Tap play to hear the question and the three responses, then choose the best reply."
+                : undefined
+          }
+        />
+      )}
+      {!data.listening && !data.photo && data.audio && (
+        <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />
+      )}
+      {data.context && !data.photo && (!data.listening || revealed) && (
+        <div className="mt-3">
+          {data.listening && (
+            <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Transcript
             </div>
           )}
-          {data.photo && data.context && (
-            <div className="mt-3">
-              <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Scene
-              </div>
-              <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
-                {data.context}
-              </p>
-            </div>
-          )}
-          {data.photo && (
-            <AudioClipPlayer
-              data={data}
-              label={data.audio?.label ?? "Photograph statements"}
-              resetKey={resetKey}
-              hint="Tap play to hear statements A–D. Pick the one that best describes the scene."
-            />
-          )}
-          {data.listening && !data.photo && data.context && (
-            <AudioClipPlayer
-              data={data}
-              group={group}
-              label={data.audio?.label ?? "Listening audio"}
-              resetKey={resetKey}
-              hint={
-                group
-                  ? "Tap play to hear the talk, then answer all the questions below."
-                  : data.spokenOptions
-                    ? "Tap play to hear the question and the three responses, then choose the best reply."
-                    : undefined
-              }
-            />
-          )}
-          {!data.listening && !data.photo && data.audio && (
-            <AudioPlayer label={data.audio.label} durationSec={data.audio.durationSec} />
-          )}
-          {data.context && !data.photo && (!data.listening || revealed) && (
-            <div className="mt-3">
-              {data.listening && (
-                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Transcript
-                </div>
-              )}
-              <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
-                {data.context}
-              </p>
-            </div>
-          )}
+          <p className="whitespace-pre-line rounded-lg bg-muted px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+            {data.context}
+          </p>
+        </div>
+      )}
     </>
   );
 }
@@ -359,10 +359,7 @@ function AudioClipPlayer({
   resetKey,
   hint,
 }: {
-  data: Pick<
-    PracticeQuestionData,
-    "photo" | "spokenOptions" | "listening" | "context" | "options"
-  >;
+  data: Pick<PracticeQuestionData, "photo" | "spokenOptions" | "listening" | "context" | "options">;
   /** When present, the clip covers a whole Part 3/4 set: the recording once,
    *  then each of the set's questions read aloud. */
   group?: PracticeQuestionData[];
