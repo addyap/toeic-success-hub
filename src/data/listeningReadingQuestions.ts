@@ -1844,12 +1844,18 @@ const part3l: PracticeQuestionData = {
     "The man says building management told him 'a technician is scheduled to come tomorrow morning.' (B), (C), and (D) are never mentioned — the afternoon in the conversation refers only to when the fans will arrive.",
 };
 
-const part3m: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 13 — Contract renewal negotiation", durationSec: 41 },
+const PART3_CONTRACT_RENEWAL = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-contract-renewal",
+  audio: { label: "Conversation — Contract renewal negotiation", durationSec: 0 },
   context:
-    "(M) Ms. Fournier, our current contract with your firm expires at the end of this month. We'd like to renew, but we're hoping to negotiate a lower rate given our order volume.\n(W) I understand. Based on your volume this year, I can offer a five percent discount on the renewal.\n(M) That sounds fair. Could you send over the updated contract by Friday so our legal team can review it?\n(W) Absolutely, I'll have it in your inbox by Thursday.\n\nQuestion: What discount does the woman offer on the contract renewal?",
+    "(M) Ms. Fournier, our current contract with your firm expires at the end of this month. We'd like to renew, but we're hoping to negotiate a lower rate given our order volume.\n(W) I understand. Based on your volume this year, I can offer a five percent discount on the renewal.\n(M) That sounds fair. Could you send over the updated contract by Friday so our legal team can review it?\n(W) Absolutely, I'll have it in your inbox by Thursday.\n(M) Great. Will the new contract still be for one year, or are you offering a longer term this time?\n(W) We can offer a two-year term at the same discounted rate, which would lock in your pricing through next year as well.",
+};
+
+const part3m1: PracticeQuestionData = {
+  ...PART3_CONTRACT_RENEWAL,
+  question: "What discount does the woman offer on the contract renewal?",
   options: [
     { label: "A", text: "Five percent" },
     { label: "B", text: "Ten percent" },
@@ -1859,6 +1865,34 @@ const part3m: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The woman says, 'I can offer a five percent discount on the renewal.' (B), (C), and (D) are never mentioned — they are other plausible discount amounts.",
+};
+
+const part3m2: PracticeQuestionData = {
+  ...PART3_CONTRACT_RENEWAL,
+  question: "When does the woman say she will send the updated contract?",
+  options: [
+    { label: "A", text: "By Thursday." },
+    { label: "B", text: "By Friday." },
+    { label: "C", text: "By the end of the month." },
+    { label: "D", text: "By next Monday." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll have it in your inbox by Thursday.' Friday (B) is when the man asked for it, one day later than what she commits to. The end of the month (C) is when the current contract expires, not when the new one arrives. Monday (D) is never mentioned.",
+};
+
+const part3m3: PracticeQuestionData = {
+  ...PART3_CONTRACT_RENEWAL,
+  question: "What does the woman offer regarding the contract term?",
+  options: [
+    { label: "A", text: "A two-year term at the same discounted rate." },
+    { label: "B", text: "A month-to-month arrangement." },
+    { label: "C", text: "An automatic renewal clause." },
+    { label: "D", text: "A trial period before committing." },
+  ],
+  correct: "A",
+  explanation:
+    "'We can offer a two-year term at the same discounted rate, which would lock in your pricing through next year as well.' Month-to-month (B), automatic renewal (C), and a trial period (D) are never mentioned.",
 };
 
 const part3n: PracticeQuestionData = {
@@ -2337,12 +2371,18 @@ const part3ao: PracticeQuestionData = {
     "The man says the microphone in booth two 'isn't picking up any sound.' (B), (C), and (D) are never mentioned — they are typical studio-related distractors that reuse vocabulary ('booth', 'recording') from the conversation.",
 };
 
-const part3ap: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 42 — Pharmacy prescription refill delay", durationSec: 40 },
+const PART3_PRESCRIPTION_DELAY = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-prescription-delay",
+  audio: { label: "Conversation — Pharmacy prescription refill delay", durationSec: 0 },
   context:
-    "(W) Hi, this is Melissa, I'm calling about my blood pressure prescription — I was told it would be ready today, but the pharmacist said it's still pending.\n(M) Let me check... it looks like your insurance requires prior authorization for this particular medication, and we're waiting on approval from your doctor's office.\n(W) How long does that usually take?\n(M) Typically one to two business days, but I can call your doctor's office directly to speed things up.\n\nQuestion: Why is the woman's prescription still pending?",
+    "(W) Hi, this is Melissa, I'm calling about my blood pressure prescription — I was told it would be ready today, but the pharmacist said it's still pending.\n(M) Let me check... it looks like your insurance requires prior authorization for this particular medication, and we're waiting on approval from your doctor's office.\n(W) How long does that usually take?\n(M) Typically one to two business days, but I can call your doctor's office directly to speed things up.\n(W) That would be great, thank you. Should I keep taking my old prescription in the meantime?\n(M) Yes, please continue with your current dosage until the new one is approved and ready for pickup.",
+};
+
+const part3ap1: PracticeQuestionData = {
+  ...PART3_PRESCRIPTION_DELAY,
+  question: "Why is the woman's prescription still pending?",
   options: [
     { label: "A", text: "Her insurance requires prior authorization for the medication." },
     { label: "B", text: "The pharmacy is out of stock of the medication." },
@@ -2352,6 +2392,34 @@ const part3ap: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man explains, 'your insurance requires prior authorization for this particular medication, and we're waiting on approval from your doctor's office.' (B), (C), and (D) are never mentioned — they are typical pharmacy-related distractors.",
+};
+
+const part3ap2: PracticeQuestionData = {
+  ...PART3_PRESCRIPTION_DELAY,
+  question: "What does the man offer to do?",
+  options: [
+    { label: "A", text: "Call her doctor's office directly." },
+    { label: "B", text: "Waive the prior authorization requirement." },
+    { label: "C", text: "Provide a temporary supply of medication." },
+    { label: "D", text: "Transfer the prescription to another pharmacy." },
+  ],
+  correct: "A",
+  explanation:
+    "'I can call your doctor's office directly to speed things up.' Waiving the requirement (B), a temporary supply (C), and transferring the prescription (D) are never mentioned.",
+};
+
+const part3ap3: PracticeQuestionData = {
+  ...PART3_PRESCRIPTION_DELAY,
+  question: "What does the man tell the woman to do in the meantime?",
+  options: [
+    { label: "A", text: "Continue taking her current medication." },
+    { label: "B", text: "Stop taking any medication until approval." },
+    { label: "C", text: "Pick up a temporary refill today." },
+    { label: "D", text: "Contact her insurance company directly." },
+  ],
+  correct: "A",
+  explanation:
+    "'Please continue with your current dosage until the new one is approved and ready for pickup.' (B) reverses his actual advice. A temporary refill (C) and contacting insurance herself (D) are never mentioned.",
 };
 
 const part3aq: PracticeQuestionData = {
@@ -2524,12 +2592,18 @@ const part3az: PracticeQuestionData = {
     "The man says he 'found a section that's not up to code — it could be a fire hazard.' (B), (C), and (D) are never mentioned — they are typical home-inspection-related distractors.",
 };
 
-const part3ba: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 53 — Dry cleaner stain complaint", durationSec: 36 },
+const PART3_DRY_CLEANER = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-dry-cleaner",
+  audio: { label: "Conversation — Dry cleaner stain complaint", durationSec: 0 },
   context:
-    "(W) Hi, I'm picking up the navy blazer I dropped off Tuesday, but there's still a coffee stain on the left sleeve.\n(M) I'm so sorry about that — let me check our log... it looks like the stain treatment was only applied once. I can run it through a second treatment at no charge.\n(W) How long will that take?\n(M) About twenty minutes if you don't mind waiting, or I can have it ready by six this evening.\n\nQuestion: What problem does the woman report about her blazer?",
+    "(W) Hi, I'm picking up the navy blazer I dropped off Tuesday, but there's still a coffee stain on the left sleeve.\n(M) I'm so sorry about that — let me check our log... it looks like the stain treatment was only applied once. I can run it through a second treatment at no charge.\n(W) How long will that take?\n(M) About twenty minutes if you don't mind waiting, or I can have it ready by six this evening.\n(W) I have a bit of time, so I'll just wait if that's alright.\n(M) No problem — there's a seating area by the front window, and I'll bring it out to you as soon as it's done.",
+};
+
+const part3ba1: PracticeQuestionData = {
+  ...PART3_DRY_CLEANER,
+  question: "What problem does the woman report about her blazer?",
   options: [
     { label: "A", text: "A stain is still visible after cleaning." },
     { label: "B", text: "A button is missing from the sleeve." },
@@ -2539,6 +2613,34 @@ const part3ba: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The woman says the blazer still has 'a coffee stain on the left sleeve,' and the man confirms 'the stain treatment was only applied once.' (B), (C), and (D) are never mentioned — they are typical dry-cleaning-related distractors.",
+};
+
+const part3ba2: PracticeQuestionData = {
+  ...PART3_DRY_CLEANER,
+  question: "What does the man offer to do about the stain?",
+  options: [
+    { label: "A", text: "Run the blazer through a second treatment at no charge." },
+    { label: "B", text: "Replace the blazer entirely." },
+    { label: "C", text: "Refund the original cleaning fee." },
+    { label: "D", text: "Send it to a specialist cleaner." },
+  ],
+  correct: "A",
+  explanation:
+    "'I can run it through a second treatment at no charge.' Replacing the blazer (B), a refund (C), and a specialist cleaner (D) are never mentioned.",
+};
+
+const part3ba3: PracticeQuestionData = {
+  ...PART3_DRY_CLEANER,
+  question: "What does the woman decide to do?",
+  options: [
+    { label: "A", text: "Wait at the shop for the blazer." },
+    { label: "B", text: "Come back at six this evening." },
+    { label: "C", text: "Have the blazer delivered to her home." },
+    { label: "D", text: "Cancel the second treatment." },
+  ],
+  correct: "A",
+  explanation:
+    "'I have a bit of time, so I'll just wait if that's alright.' Coming back this evening (B) was the alternative the man offered, but she doesn't choose it. Delivery (C) and canceling (D) are never mentioned.",
 };
 
 const part3bb: PracticeQuestionData = {
@@ -3502,12 +3604,18 @@ const part3r10j: PracticeQuestionData = {
     "The woman explains the shirts 'came back flagged after inspection — the stitching on the collars is uneven,' meaning quality control identified a defect. (A), (C), and (D) are never mentioned.",
 };
 
-const part3r11a: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 102 — Coworking space booth double-booking", durationSec: 34 },
+const PART3_COWORKING_BOOTH = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-coworking-booth",
+  audio: { label: "Conversation — Coworking space booth double-booking", durationSec: 0 },
   context:
-    "(M) Hi, this is Trevor from desk 14. I reserved the private booth for a client call at 3 PM today, but someone else is already using it.\n(W) I'm sorry about that — let me check the calendar... it looks like a system glitch double-booked that room.\n(M) Is there another quiet space available around that time?\n(W) Yes, the Meeting Pod on the second floor is free from 2:45 to 4. I'll block it for you now.\n\nQuestion: What problem does the man report?",
+    "(M) Hi, this is Trevor from desk 14. I reserved the private booth for a client call at 3 PM today, but someone else is already using it.\n(W) I'm sorry about that — let me check the calendar... it looks like a system glitch double-booked that room.\n(M) Is there another quiet space available around that time?\n(W) Yes, the Meeting Pod on the second floor is free from 2:45 to 4. I'll block it for you now.\n(M) Great, thanks. Is it easy to find from the main stairwell?\n(W) Yes, just take the stairs up and it's the second door on your right, right past the printing station.",
+};
+
+const part3r11a1: PracticeQuestionData = {
+  ...PART3_COWORKING_BOOTH,
+  question: "What problem does the man report?",
   options: [
     { label: "A", text: "The private booth he reserved is occupied by someone else." },
     { label: "B", text: "He forgot his access keycard at home." },
@@ -3517,6 +3625,34 @@ const part3r11a: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man says he reserved the booth 'but someone else is already using it,' which the woman confirms was caused by a scheduling glitch. (B), (C), and (D) are never mentioned — they are typical coworking-space distractors.",
+};
+
+const part3r11a2: PracticeQuestionData = {
+  ...PART3_COWORKING_BOOTH,
+  question: "What does the woman say caused the problem?",
+  options: [
+    { label: "A", text: "A system glitch." },
+    { label: "B", text: "A staff scheduling error." },
+    { label: "C", text: "A client's late cancellation." },
+    { label: "D", text: "An overbooked event." },
+  ],
+  correct: "A",
+  explanation:
+    "'It looks like a system glitch double-booked that room.' A staff error (B), a late cancellation (C), and an overbooked event (D) are never mentioned.",
+};
+
+const part3r11a3: PracticeQuestionData = {
+  ...PART3_COWORKING_BOOTH,
+  question: "How does the woman say the man can find the Meeting Pod?",
+  options: [
+    { label: "A", text: "It is the second door past the printing station." },
+    { label: "B", text: "It is on the first floor near the entrance." },
+    { label: "C", text: "A staff member will escort him." },
+    { label: "D", text: "It is marked with a sign near the elevator." },
+  ],
+  correct: "A",
+  explanation:
+    "'Take the stairs up and it's the second door on your right, right past the printing station.' The first floor (B), an escort (C), and elevator signage (D) are never mentioned.",
 };
 
 const part3r11b: PracticeQuestionData = {
@@ -9599,7 +9735,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3j,
   part3k,
   part3l,
-  part3m,
+  part3m1,
+  part3m2,
+  part3m3,
   part3n,
   part3o,
   part3p,
@@ -9628,7 +9766,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3am,
   part3an,
   part3ao,
-  part3ap,
+  part3ap1,
+  part3ap2,
+  part3ap3,
   part3aq,
   part3ar,
   part3as,
@@ -9639,7 +9779,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3ax,
   part3ay,
   part3az,
-  part3ba,
+  part3ba1,
+  part3ba2,
+  part3ba3,
   part3bb,
   part3bc,
   part3bd,
@@ -9696,7 +9838,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r10h,
   part3r10i,
   part3r10j,
-  part3r11a,
+  part3r11a1,
+  part3r11a2,
+  part3r11a3,
   part3r11b,
   part3r11c,
   part3r11d,
