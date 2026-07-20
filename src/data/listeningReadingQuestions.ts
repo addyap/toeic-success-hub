@@ -3996,55 +3996,157 @@ const part4o3: PracticeQuestionData = {
     "'Registration for our annual listener meetup in Austin closes this Friday, so if you've been planning to grab a ticket, now's the time' — a closing deadline. No rescheduling (A) is mentioned, the guest's attendance is never stated (C), and the sponsor is linked to the episode, not the meetup (D).",
 };
 
-const part4p: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the factory changeover briefing and answer the question.",
-  listening: true,
+const PART4_CHANGEOVER = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-changeover",
   audio: { label: "Short talk — Factory production-line changeover briefing", durationSec: 0 },
   context:
-    "All right, everyone, let's get started. As you know, at the end of this shift we're switching Line 3 over from the blue widget casing to the new gray casing model, so I need everyone at their changeover stations by two forty-five. Before you begin, make sure the old mold inserts are fully cleaned and returned to the tool crib — do not leave them on the line. The new gray casing molds arrived yesterday and have already been inspected and approved by quality control, so we're clear to install them as soon as the line stops. Changeover should take no more than forty minutes if everyone follows the checklist posted at each station. Once the line is running again, we'll do a first-piece inspection before resuming full production. Any questions, grab me before we break for changeover.\n\nQuestion: According to the speaker, what has already happened to the new gray casing molds?",
+    "All right, everyone, let's get started. As you know, at the end of this shift we're switching Line 3 over from the blue widget casing to the new gray casing model, so I need everyone at their changeover stations by two forty-five. Before you begin, make sure the old mold inserts are fully cleaned and returned to the tool crib — do not leave them on the line. The new gray casing molds arrived yesterday and have already been inspected and approved by quality control, so we're clear to install them as soon as the line stops. Changeover should take no more than forty minutes if everyone follows the checklist posted at each station. Once the line is running again, we'll do a first-piece inspection before resuming full production. Any questions, grab me before we break for changeover.",
+};
+
+const part4p1: PracticeQuestionData = {
+  ...PART4_CHANGEOVER,
+  question: "What is the main topic of the briefing?",
   options: [
-    { label: "A", text: "They were sent back for repair." },
-    { label: "B", text: "They have been inspected and approved by quality control." },
-    { label: "C", text: "They were installed on Line 2." },
-    { label: "D", text: "They were delayed in customs." },
+    { label: "A", text: "A switch to a different casing model on one line." },
+    { label: "B", text: "A newly introduced quality inspection process." },
+    { label: "C", text: "A change to shift start and end times." },
+    { label: "D", text: "The results of a first-piece inspection." },
+  ],
+  correct: "A",
+  explanation:
+    "The briefing exists to prepare the crew for 'switching Line 3 over from the blue widget casing to the new gray casing model.' Quality control is mentioned as already having approved the new molds, not as a new process (B), shift timing is only the changeover deadline within the existing shift (C), and the first-piece inspection is a step still to come, with no results yet (D).",
+};
+
+const part4p2: PracticeQuestionData = {
+  ...PART4_CHANGEOVER,
+  question: "What are workers told to do with the old mold inserts?",
+  options: [
+    { label: "A", text: "Leave them on the line for the next shift." },
+    { label: "B", text: "Clean them and take them to storage." },
+    { label: "C", text: "Send them for inspection by quality control." },
+    { label: "D", text: "Install them on a different production line." },
   ],
   correct: "B",
   explanation:
-    "The speaker states the new molds 'have already been inspected and approved by quality control.' Repair (A), installation on Line 2 (C), and a customs delay (D) are never mentioned.",
+    "'Make sure the old mold inserts are fully cleaned and returned to the tool crib' — cleaned and taken to storage. Leaving them on the line (A) is explicitly ruled out, quality control inspects the new molds, not the old ones (C), and no other line is mentioned (D).",
 };
 
-const part4q: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the hotel wake-up call and answer the question.",
-  listening: true,
+const part4p3: PracticeQuestionData = {
+  ...PART4_CHANGEOVER,
+  question: "What is implied about the new gray casing molds?",
+  options: [
+    { label: "A", text: "They still need to clear quality control before use." },
+    { label: "B", text: "They can be installed as soon as the line stops." },
+    { label: "C", text: "They will not arrive until after the changeover." },
+    { label: "D", text: "They require a longer changeover than forty minutes." },
+  ],
+  correct: "B",
+  explanation:
+    "Because the molds 'have already been inspected and approved by quality control', the speaker says 'we're clear to install them as soon as the line stops' — clearance is already complete, not still pending (A). They 'arrived yesterday', before this briefing (C), and the forty-minute estimate is given as the expected length of the whole changeover (D).",
+};
+
+const PART4_WAKEUP_CALL = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-wakeup-call",
   audio: { label: "Short talk — Hotel automated wake-up call", durationSec: 0 },
   context:
-    "Good morning, this is your automated wake-up call from the front desk at the Lakeside Grand Hotel. It is currently six thirty a.m. Your shuttle to the airport is scheduled to depart from the main lobby entrance at seven fifteen, so please have your luggage ready in the hallway by seven o'clock for pickup by our bell staff. Breakfast is being served in the Harbor Room until nine a.m., though we recommend eating early given your shuttle time. If you need any assistance or would like to request a later shuttle, please dial zero to speak with our concierge desk. We hope you enjoyed your stay and look forward to welcoming you back to the Lakeside Grand.\n\nQuestion: What is the guest asked to do by seven o'clock?",
-  options: [
-    { label: "A", text: "Check out at the front desk." },
-    { label: "B", text: "Have their luggage ready in the hallway." },
-    { label: "C", text: "Return their room key." },
-    { label: "D", text: "Confirm a breakfast reservation." },
-  ],
-  correct: "B",
-  explanation:
-    "The recording asks the guest to 'have your luggage ready in the hallway by seven o'clock for pickup by our bell staff.' Checking out (A), returning a key (C), and confirming breakfast (D) are never mentioned.",
+    "Good morning, this is your automated wake-up call from the front desk at the Lakeside Grand Hotel. It is currently six thirty a.m. Your shuttle to the airport is scheduled to depart from the main lobby entrance at seven fifteen, so please have your luggage ready in the hallway by seven o'clock for pickup by our bell staff. Breakfast is being served in the Harbor Room until nine a.m., though we recommend eating early given your shuttle time. If you need any assistance or would like to request a later shuttle, please dial zero to speak with our concierge desk. We hope you enjoyed your stay and look forward to welcoming you back to the Lakeside Grand.",
 };
 
-const part4r: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the fundraising gala speech and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Nonprofit gala fundraising pitch", durationSec: 0 },
-  context:
-    "Good evening, everyone, and thank you so much for joining us tonight at the Riverbend Children's Fund gala. Over the past year, your generosity has allowed us to open two new after-school tutoring centers and provide school supplies to more than eight hundred children in our community. Tonight, every dollar raised through the silent auction and the paddle raise will go directly toward building a third center in the Westside neighborhood. We're so close to our goal of two hundred thousand dollars, and with your help tonight, I believe we can get there. Please take a look at the auction items near the stage, and remember that bidding closes at nine p.m. sharp. Thank you again for standing with us and with the children we serve.\n\nQuestion: What can be inferred about the organization's fundraising goal?",
+const part4q1: PracticeQuestionData = {
+  ...PART4_WAKEUP_CALL,
+  question: "What is the guest asked to prepare by seven o'clock?",
   options: [
-    { label: "A", text: "It has already been exceeded." },
-    { label: "B", text: "It has not yet been reached." },
-    { label: "C", text: "It was lowered this year." },
-    { label: "D", text: "It will be announced next year." },
+    { label: "A", text: "Their bags, for collection outside the room." },
+    { label: "B", text: "Their bill, for review at the front desk." },
+    { label: "C", text: "Their room key, for return to reception." },
+    { label: "D", text: "A breakfast reservation for the Harbor Room." },
+  ],
+  correct: "A",
+  explanation:
+    "The guest is told to 'have your luggage ready in the hallway by seven o'clock for pickup by our bell staff' — bags left outside the room. No mention is made of the bill (B), a key (C), or a breakfast reservation (D).",
+};
+
+const part4q2: PracticeQuestionData = {
+  ...PART4_WAKEUP_CALL,
+  question: "Why does the speaker recommend eating breakfast early?",
+  options: [
+    { label: "A", text: "The Harbor Room closes earlier than usual today." },
+    { label: "B", text: "The shuttle is scheduled to depart soon after." },
+    { label: "C", text: "Breakfast service ends before the shuttle departs." },
+    { label: "D", text: "A large group is expected in the dining room." },
   ],
   correct: "B",
   explanation:
-    "The speaker says, 'We're so close to our goal of two hundred thousand dollars,' implying the target has not yet been met. Exceeding it (A), lowering it (C), and a future announcement (D) are never mentioned.",
+    "Breakfast runs 'until nine a.m., though we recommend eating early given your shuttle time' — the shuttle at seven fifteen is what makes an early breakfast advisable, not a shortened closing time (A), and breakfast in fact runs later than the shuttle departure, not before it (C). No crowding is mentioned (D).",
+};
+
+const part4q3: PracticeQuestionData = {
+  ...PART4_WAKEUP_CALL,
+  question: "What should the guest do to arrange a later shuttle?",
+  options: [
+    { label: "A", text: "Speak with the bell staff directly." },
+    { label: "B", text: "Leave a note at the front desk." },
+    { label: "C", text: "Call the concierge desk." },
+    { label: "D", text: "Wait for the next scheduled announcement." },
+  ],
+  correct: "C",
+  explanation:
+    "'If you... would like to request a later shuttle, please dial zero to speak with our concierge desk.' Bell staff handle luggage pickup, not shuttle timing (A), and no note-leaving (B) or further announcement (D) is mentioned.",
+};
+
+const PART4_GALA_PITCH = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-gala-pitch",
+  audio: { label: "Short talk — Nonprofit gala fundraising pitch", durationSec: 0 },
+  context:
+    "Good evening, everyone, and thank you so much for joining us tonight at the Riverbend Children's Fund gala. Over the past year, your generosity has allowed us to open two new after-school tutoring centers and provide school supplies to more than eight hundred children in our community. Tonight, every dollar raised through the silent auction and the paddle raise will go directly toward building a third center in the Westside neighborhood. We're so close to our goal of two hundred thousand dollars, and with your help tonight, I believe we can get there. Please take a look at the auction items near the stage, and remember that bidding closes at nine p.m. sharp. Thank you again for standing with us and with the children we serve.",
+};
+
+const part4r1: PracticeQuestionData = {
+  ...PART4_GALA_PITCH,
+  question: "What has past donor support already accomplished?",
+  options: [
+    { label: "A", text: "Two tutoring centers were opened." },
+    { label: "B", text: "A third center was completed." },
+    { label: "C", text: "The organization's original goal was met." },
+    { label: "D", text: "School supplies were sent nationwide." },
+  ],
+  correct: "A",
+  explanation:
+    "'Your generosity has allowed us to open two new after-school tutoring centers' describes what has already happened, over the past year. The third center is what tonight's funds are for building, not something completed (B), the two-hundred-thousand-dollar goal is described as not yet reached (C), and supplies went to the local community, not nationwide (D).",
+};
+
+const part4r2: PracticeQuestionData = {
+  ...PART4_GALA_PITCH,
+  question: "What is implied about the fundraising goal?",
+  options: [
+    { label: "A", text: "It has already been surpassed tonight." },
+    { label: "B", text: "It remains just out of reach." },
+    { label: "C", text: "It was reduced from an earlier target." },
+    { label: "D", text: "It will not be revealed until next year." },
+  ],
+  correct: "B",
+  explanation:
+    "'We're so close to our goal of two hundred thousand dollars' — near but not there yet, so still out of reach. Nothing suggests the goal has been exceeded (A) or lowered (C), and the amount is stated tonight, not deferred (D).",
+};
+
+const part4r3: PracticeQuestionData = {
+  ...PART4_GALA_PITCH,
+  question: "What will the money raised tonight be used for?",
+  options: [
+    { label: "A", text: "Ongoing costs at the two existing centers." },
+    { label: "B", text: "School supplies for the coming year." },
+    { label: "C", text: "Constructing an additional center." },
+    { label: "D", text: "Covering the cost of the gala event." },
+  ],
+  correct: "C",
+  explanation:
+    "'Every dollar raised through the silent auction and the paddle raise will go directly toward building a third center in the Westside neighborhood.' The two existing centers (A) and the supplies already provided (B) describe past achievements, and gala costs are never mentioned (D).",
 };
 
 // ── Part 4 set: one talk, three questions (real-exam format) ──
@@ -4099,39 +4201,106 @@ const part4s3: PracticeQuestionData = {
     "The east dock 'will be closed for resurfacing starting at ten p.m.', and resurfacing is repair work, so (A) restates the reason without repeating the word. Proximity to the aisle being counted (B) and a heavier truck schedule (D) are never mentioned, and (C) links the broken jacks to the closed dock, two real details the talk keeps separate.",
 };
 
-const part4t: PracticeQuestionData = {
-  prompt: "Part 4 · Short Talks. Read the software outage status update and answer the question.",
-  listening: true,
+const PART4_OUTAGE_UPDATE = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-outage-update",
   audio: { label: "Short talk — Software company outage status update", durationSec: 0 },
   context:
-    "This is an automated status update regarding the service disruption affecting our platform's file-upload feature. Our engineering team identified the root cause as a misconfigured server update pushed at approximately two a.m. Eastern Time, and a fix has already been deployed to our staging environment for testing. We expect the fix to be rolled out to all production servers within the next two hours, and file uploads should return to normal shortly after that. In the meantime, all other platform features, including messaging and document editing, continue to function normally. We'll post another update as soon as the issue is fully resolved, and we apologize for any disruption to your workflow. Thank you for your patience.\n\nQuestion: What is suggested about the cause of the outage?",
-  options: [
-    { label: "A", text: "It resulted from a cyberattack." },
-    { label: "B", text: "It was caused by an internal update error." },
-    { label: "C", text: "It was caused by a hardware failure." },
-    { label: "D", text: "It was caused by unusually high user traffic." },
-  ],
-  correct: "B",
-  explanation:
-    "The update attributes the disruption to 'a misconfigured server update pushed at approximately two a.m. Eastern Time' by the company's own engineering team, indicating an internal error. A cyberattack (A), hardware failure (C), and high traffic (D) are never mentioned.",
+    "This is an automated status update regarding the service disruption affecting our platform's file-upload feature. Our engineering team identified the root cause as a misconfigured server update pushed at approximately two a.m. Eastern Time, and a fix has already been deployed to our staging environment for testing. We expect the fix to be rolled out to all production servers within the next two hours, and file uploads should return to normal shortly after that. In the meantime, all other platform features, including messaging and document editing, continue to function normally. We'll post another update as soon as the issue is fully resolved, and we apologize for any disruption to your workflow. Thank you for your patience.",
 };
 
-const part4u: PracticeQuestionData = {
-  prompt:
-    "Part 4 · Short Talks. Read the real estate agent's open-house announcement and answer the question.",
-  listening: true,
-  audio: { label: "Short talk — Real estate open-house announcement", durationSec: 0 },
-  context:
-    "Welcome to the open house at 214 Birchwood Lane. This four-bedroom home was fully renovated last year, including a new kitchen with granite countertops and stainless steel appliances. Feel free to walk through at your own pace, and I'll be here in the living room if you have any questions. Please sign the guest book by the front door before you leave, as the seller has asked us to keep a record of all visitors today. The property has already received two offers, so anyone interested is encouraged to submit paperwork by Friday at five p.m. Parking is available on the street, but please avoid blocking the neighbor's driveway.\n\nQuestion: According to the agent, why should visitors sign the guest book?",
+const part4t1: PracticeQuestionData = {
+  ...PART4_OUTAGE_UPDATE,
+  question: "Which feature does the update say is affected?",
   options: [
-    { label: "A", text: "To enter a raffle for a prize" },
-    { label: "B", text: "Because the seller wants a record of all visitors" },
-    { label: "C", text: "To receive a copy of the listing" },
-    { label: "D", text: "Because parking passes are being distributed" },
+    { label: "A", text: "Uploading files." },
+    { label: "B", text: "Sending messages." },
+    { label: "C", text: "Editing documents." },
+    { label: "D", text: "Logging into the platform." },
+  ],
+  correct: "A",
+  explanation:
+    "The disruption affects 'our platform's file-upload feature'. Messaging and document editing are named as features that 'continue to function normally' (B, C), and logging in is never mentioned (D).",
+};
+
+const part4t2: PracticeQuestionData = {
+  ...PART4_OUTAGE_UPDATE,
+  question: "What does the update indicate about the cause of the issue?",
+  options: [
+    { label: "A", text: "It originated outside the company." },
+    { label: "B", text: "It resulted from an error made internally." },
+    { label: "C", text: "It was caused by a piece of failed equipment." },
+    { label: "D", text: "It followed an unexpected rise in usage." },
   ],
   correct: "B",
   explanation:
-    "The agent explains that 'the seller has asked us to keep a record of all visitors today.' A raffle (A), a copy of the listing (C), and parking passes (D) are never mentioned.",
+    "The cause was 'a misconfigured server update pushed' by the company's own engineering team — a mistake made internally, ruling out an outside cause such as an attack (A). Neither hardware failure (C) nor a traffic spike (D) is mentioned.",
+};
+
+const part4t3: PracticeQuestionData = {
+  ...PART4_OUTAGE_UPDATE,
+  question: "What is expected to happen within the next two hours?",
+  options: [
+    { label: "A", text: "The fix will be tested in the staging environment." },
+    { label: "B", text: "All platform features will be temporarily suspended." },
+    { label: "C", text: "The fix will be applied across production servers." },
+    { label: "D", text: "A further explanation of the cause will be published." },
+  ],
+  correct: "C",
+  explanation:
+    "'We expect the fix to be rolled out to all production servers within the next two hours' — the two-hour window is for the production rollout. Staging testing has already happened, before this update (A), other features stay running throughout (B), and any further update is timed by resolution, not by the two hours (D).",
+};
+
+const PART4_OPEN_HOUSE = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-open-house",
+  audio: { label: "Short talk — Real estate open-house announcement", durationSec: 0 },
+  context:
+    "Welcome to the open house at 214 Birchwood Lane. This four-bedroom home was fully renovated last year, including a new kitchen with granite countertops and stainless steel appliances. Feel free to walk through at your own pace, and I'll be here in the living room if you have any questions. Please sign the guest book by the front door before you leave, as the seller has asked us to keep a record of all visitors today. The property has already received two offers, so anyone interested is encouraged to submit paperwork by Friday at five p.m. Parking is available on the street, but please avoid blocking the neighbor's driveway.",
+};
+
+const part4u1: PracticeQuestionData = {
+  ...PART4_OPEN_HOUSE,
+  question: "What does the agent say about the property?",
+  options: [
+    { label: "A", text: "It underwent recent renovation work." },
+    { label: "B", text: "It is being sold without a kitchen." },
+    { label: "C", text: "It was built within the past year." },
+    { label: "D", text: "It has three bedrooms." },
+  ],
+  correct: "A",
+  explanation:
+    "The home 'was fully renovated last year, including a new kitchen'. It was renovated, not newly built (C), the kitchen is a highlighted upgrade rather than absent (B), and the talk states it has four bedrooms, not three (D).",
+};
+
+const part4u2: PracticeQuestionData = {
+  ...PART4_OPEN_HOUSE,
+  question: "Why does the agent ask visitors to sign the guest book?",
+  options: [
+    { label: "A", text: "To be entered into a prize draw." },
+    { label: "B", text: "To receive a printed copy of the listing." },
+    { label: "C", text: "Because the seller wants a log of who attended." },
+    { label: "D", text: "Because parking passes will be issued to signers." },
+  ],
+  correct: "C",
+  explanation:
+    "'The seller has asked us to keep a record of all visitors today' — a log of attendance. No raffle (A), listing copy (B), or parking pass (D) is mentioned.",
+};
+
+const part4u3: PracticeQuestionData = {
+  ...PART4_OPEN_HOUSE,
+  question: "What is implied about the property by Friday's deadline?",
+  options: [
+    { label: "A", text: "It has already attracted competing interest." },
+    { label: "B", text: "It has failed to attract any offers so far." },
+    { label: "C", text: "It will be taken off the market if unsold." },
+    { label: "D", text: "Its price will be reduced after that date." },
+  ],
+  correct: "A",
+  explanation:
+    "'The property has already received two offers, so anyone interested is encouraged to submit paperwork by Friday' — the deadline exists because other buyers are already competing for it, the opposite of no interest at all (B). Neither withdrawing the listing (C) nor a price cut (D) is mentioned.",
 };
 
 const part4v: PracticeQuestionData = {
@@ -9854,14 +10023,24 @@ export const part4Questions: PracticeQuestionData[] = [
   part4o1,
   part4o2,
   part4o3,
-  part4p,
-  part4q,
-  part4r,
+  part4p1,
+  part4p2,
+  part4p3,
+  part4q1,
+  part4q2,
+  part4q3,
+  part4r1,
+  part4r2,
+  part4r3,
   part4s1,
   part4s2,
   part4s3,
-  part4t,
-  part4u,
+  part4t1,
+  part4t2,
+  part4t3,
+  part4u1,
+  part4u2,
+  part4u3,
   part4v,
   part4w,
   part4x,

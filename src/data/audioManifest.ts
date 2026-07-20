@@ -4189,42 +4189,66 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "24ocku2smyf": {
+  "15hwbl8lit5": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "24ocku2smyf-0.mp3"
+        "file": "15hwbl8lit5-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "24ocku2smyf-1.mp3"
+        "file": "15hwbl8lit5-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "15hwbl8lit5-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "15hwbl8lit5-3.mp3"
       }
     ]
   },
-  "u8i9nol4e5": {
+  "1rmpihdv4qc": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "shimmer",
-        "file": "u8i9nol4e5-0.mp3"
+        "file": "1rmpihdv4qc-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "u8i9nol4e5-1.mp3"
+        "file": "1rmpihdv4qc-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1rmpihdv4qc-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1rmpihdv4qc-3.mp3"
       }
     ]
   },
-  "1hu66h3mkb0": {
+  "6nw5zdo2v7": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "alloy",
-        "file": "1hu66h3mkb0-0.mp3"
+        "file": "6nw5zdo2v7-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1hu66h3mkb0-1.mp3"
+        "file": "6nw5zdo2v7-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "6nw5zdo2v7-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "6nw5zdo2v7-3.mp3"
       }
     ]
   },
@@ -4249,29 +4273,45 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1tvuljvynqv": {
+  "bz076wrj8x": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "onyx",
-        "file": "1tvuljvynqv-0.mp3"
+        "file": "bz076wrj8x-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "1tvuljvynqv-1.mp3"
+        "file": "bz076wrj8x-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "bz076wrj8x-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "bz076wrj8x-3.mp3"
       }
     ]
   },
-  "fv9e1hiik3": {
+  "1w0e7a47z7g": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "shimmer",
-        "file": "fv9e1hiik3-0.mp3"
+        "file": "1w0e7a47z7g-0.mp3"
       },
       {
         "voice": "alloy",
-        "file": "fv9e1hiik3-1.mp3"
+        "file": "1w0e7a47z7g-1.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1w0e7a47z7g-2.mp3"
+      },
+      {
+        "voice": "alloy",
+        "file": "1w0e7a47z7g-3.mp3"
       }
     ]
   },
