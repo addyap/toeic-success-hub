@@ -1657,12 +1657,18 @@ const part3e3: PracticeQuestionData = {
     "'I'll follow up with a written confirmation once the air shipment is booked.' Personally delivering the boxes (B), calling customs (C), and a price reduction (D) are never mentioned. Notifying the production team is the man's task, not hers — the written confirmation is what she commits to.",
 };
 
-const part3f: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 6 — IT helpdesk call", durationSec: 36 },
+const PART3_IT_HELPDESK = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-it-helpdesk",
+  audio: { label: "Conversation — IT helpdesk call", durationSec: 0 },
   context:
-    "(W) Hi, this is Lauren in accounting. My laptop keeps freezing every time I open the new expense software.\n(M) Thanks for calling, Lauren. Can you tell me what error message appears, if any?\n(W) There's no error, it just freezes completely and I have to restart the computer.\n(M) That sounds like it could be a memory issue. I'll remote into your machine in the next ten minutes and check the software's memory usage.\n(W) Great, I'll be at my desk.\n\nQuestion: What problem is Lauren experiencing?",
+    "(W) Hi, this is Lauren in accounting. My laptop keeps freezing every time I open the new expense software.\n(M) Thanks for calling, Lauren. Can you tell me what error message appears, if any?\n(W) There's no error, it just freezes completely and I have to restart the computer.\n(M) That sounds like it could be a memory issue. I'll remote into your machine in the next ten minutes and check the software's memory usage.\n(W) Great, I'll be at my desk.\n(M) If it turns out to be a memory issue, would you be open to a temporary fix, like closing other programs while you use the software?\n(W) Sure, that's fine for now, but if it keeps happening I'll probably need a hardware upgrade eventually.",
+};
+
+const part3f1: PracticeQuestionData = {
+  ...PART3_IT_HELPDESK,
+  question: "What problem is Lauren experiencing?",
   options: [
     { label: "A", text: "Her computer displays a memory error message." },
     { label: "B", text: "The expense software is not installed correctly." },
@@ -1672,6 +1678,34 @@ const part3f: PracticeQuestionData = {
   correct: "C",
   explanation:
     "Lauren states, 'my laptop keeps freezing every time I open the new expense software.' She explicitly says 'there's no error,' which rules out (A). (B) and (D) are never mentioned — they are typical IT-related distractors that reuse vocabulary ('expense software', 'accounting') from the conversation.",
+};
+
+const part3f2: PracticeQuestionData = {
+  ...PART3_IT_HELPDESK,
+  question: "What does the man plan to do next?",
+  options: [
+    { label: "A", text: "Remotely access her computer to check memory usage." },
+    { label: "B", text: "Reinstall the expense software." },
+    { label: "C", text: "Reset her password." },
+    { label: "D", text: "Send her a replacement laptop." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll remote into your machine in the next ten minutes and check the software's memory usage.' Reinstalling software (B), a password reset (C), and a replacement laptop (D) are never mentioned.",
+};
+
+const part3f3: PracticeQuestionData = {
+  ...PART3_IT_HELPDESK,
+  question: "What does Lauren say she may eventually need?",
+  options: [
+    { label: "A", text: "A hardware upgrade." },
+    { label: "B", text: "A new software license." },
+    { label: "C", text: "Additional training on the software." },
+    { label: "D", text: "A different laptop model." },
+  ],
+  correct: "A",
+  explanation:
+    "'If it keeps happening I'll probably need a hardware upgrade eventually.' A new license (B), extra training (C), and a different model (D) are never mentioned.",
 };
 
 const part3g: PracticeQuestionData = {
@@ -3224,12 +3258,18 @@ const part3r9j: PracticeQuestionData = {
     "The man states directly, 'I'm the lead architect on that project, so I'll finalize the structural revisions myself.' (B), (C), and (D) are never mentioned — they are typical architecture-firm-related distractors.",
 };
 
-const part3r10a: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 92 — Craft brewery keg shortage", durationSec: 33 },
+const PART3_KEG_SHORTAGE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-keg-shortage",
+  audio: { label: "Conversation — Craft brewery keg shortage", durationSec: 0 },
   context:
-    "(M) Hi, this is Dan from Northgate Brewing. I'm calling about our keg order for the festival this weekend — we only received sixteen kegs, but we ordered twenty-five.\n(W) Let me check our records... I see the discrepancy. It looks like nine kegs are still sitting in our loading dock; the driver must have missed them.\n(M) That's a relief, they weren't lost. Can you get them to us by tomorrow afternoon?\n(W) Yes, I'll have a truck out first thing tomorrow morning.\n\nQuestion: What does the woman discover about the missing kegs?",
+    "(M) Hi, this is Dan from Northgate Brewing. I'm calling about our keg order for the festival this weekend — we only received sixteen kegs, but we ordered twenty-five.\n(W) Let me check our records... I see the discrepancy. It looks like nine kegs are still sitting in our loading dock; the driver must have missed them.\n(M) That's a relief, they weren't lost. Can you get them to us by tomorrow afternoon?\n(W) Yes, I'll have a truck out first thing tomorrow morning.\n(M) Perfect. Setup starts at noon, so as long as they're here before then we're fine.\n(W) I'll ask the driver to prioritize your delivery first on the route, so it should arrive well before that.",
+};
+
+const part3r10a1: PracticeQuestionData = {
+  ...PART3_KEG_SHORTAGE,
+  question: "What does the woman discover about the missing kegs?",
   options: [
     {
       label: "A",
@@ -3242,6 +3282,34 @@ const part3r10a: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The woman says, 'it looks like nine kegs are still sitting in our loading dock; the driver must have missed them.' (B), (C), and (D) are never mentioned — they are plausible-sounding distractors that reuse vocabulary ('kegs', 'order') from the conversation.",
+};
+
+const part3r10a2: PracticeQuestionData = {
+  ...PART3_KEG_SHORTAGE,
+  question: "Why does the man say the timing matters?",
+  options: [
+    { label: "A", text: "Festival setup begins at noon." },
+    { label: "B", text: "The brewery closes early on weekends." },
+    { label: "C", text: "The kegs must be refrigerated by a deadline." },
+    { label: "D", text: "The delivery truck is booked for another job afterward." },
+  ],
+  correct: "A",
+  explanation:
+    "'Setup starts at noon, so as long as they're here before then we're fine.' Early closing (B), a refrigeration deadline (C), and another job for the truck (D) are never mentioned.",
+};
+
+const part3r10a3: PracticeQuestionData = {
+  ...PART3_KEG_SHORTAGE,
+  question: "What does the woman say she will ask the driver to do?",
+  options: [
+    { label: "A", text: "Prioritize the man's delivery first on the route." },
+    { label: "B", text: "Deliver all twenty-five kegs at once." },
+    { label: "C", text: "Confirm the order by phone before leaving." },
+    { label: "D", text: "Charge an expedited shipping fee." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll ask the driver to prioritize your delivery first on the route, so it should arrive well before that.' Delivering all twenty-five at once (B), a phone confirmation (C), and an expedited fee (D) are never mentioned.",
 };
 
 const part3r10b: PracticeQuestionData = {
@@ -3281,12 +3349,18 @@ const part3r10c: PracticeQuestionData = {
     "The woman says she is 'calling about the relocation package' and 'wanted to ask whether moving costs for my furniture are covered.' (A), (B), and (D) are never mentioned — they are common relocation-related distractors.",
 };
 
-const part3r10d: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 95 — Zoo enclosure renovation", durationSec: 38 },
+const PART3_ZOO_RENOVATION = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-zoo-renovation",
+  audio: { label: "Conversation — Zoo enclosure renovation", durationSec: 0 },
   context:
-    "(M) Hi, this is Owen from the maintenance crew. We're ready to start the renovation on the tiger enclosure, but the city inspector still hasn't signed off on the new fencing plan.\n(W) I spoke with the inspector this morning — she said she'll come by this afternoon to review it in person.\n(M) Okay, so should we hold off on removing the old fence until then?\n(W) Yes, please wait until she gives written approval before you touch the old fence.\n\nQuestion: Where does this conversation most likely take place?",
+    "(M) Hi, this is Owen from the maintenance crew. We're ready to start the renovation on the tiger enclosure, but the city inspector still hasn't signed off on the new fencing plan.\n(W) I spoke with the inspector this morning — she said she'll come by this afternoon to review it in person.\n(M) Okay, so should we hold off on removing the old fence until then?\n(W) Yes, please wait until she gives written approval before you touch the old fence.\n(M) Understood. In the meantime, should we move the tigers to the holding pen, or can they stay in the enclosure while we wait?\n(W) Let's move them to the holding pen this afternoon — it's safer, and it'll save us time once the approval comes through.",
+};
+
+const part3r10d1: PracticeQuestionData = {
+  ...PART3_ZOO_RENOVATION,
+  question: "Where does this conversation most likely take place?",
   options: [
     { label: "A", text: "At a construction equipment rental office." },
     { label: "B", text: "At a zoo." },
@@ -3296,6 +3370,34 @@ const part3r10d: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The man refers to 'the renovation on the tiger enclosure,' which places the conversation at a zoo. (A), (C), and (D) are never confirmed as the setting — they are plausible-sounding distractors that reuse vocabulary ('inspector', 'fencing') from the conversation.",
+};
+
+const part3r10d2: PracticeQuestionData = {
+  ...PART3_ZOO_RENOVATION,
+  question: "What is the man waiting for before removing the old fence?",
+  options: [
+    { label: "A", text: "Written approval from the inspector." },
+    { label: "B", text: "Delivery of the new fencing materials." },
+    { label: "C", text: "Confirmation from his supervisor." },
+    { label: "D", text: "The tigers to be sedated." },
+  ],
+  correct: "A",
+  explanation:
+    "'Please wait until she gives written approval before you touch the old fence.' Delivery of materials (B), a supervisor's confirmation (C), and sedation (D) are never mentioned.",
+};
+
+const part3r10d3: PracticeQuestionData = {
+  ...PART3_ZOO_RENOVATION,
+  question: "What does the woman suggest doing with the tigers while they wait for approval?",
+  options: [
+    { label: "A", text: "Moving them to the holding pen." },
+    { label: "B", text: "Keeping them in the enclosure as usual." },
+    { label: "C", text: "Transferring them to a different zoo temporarily." },
+    { label: "D", text: "Sedating them during the fence work." },
+  ],
+  correct: "A",
+  explanation:
+    "'Let's move them to the holding pen this afternoon — it's safer, and it'll save us time once the approval comes through.' Leaving them in the enclosure (B) is the opposite of her suggestion. A different zoo (C) and sedation (D) are never mentioned.",
 };
 
 const part3r10e: PracticeQuestionData = {
@@ -3488,12 +3590,18 @@ const part3r11e: PracticeQuestionData = {
     "The woman schedules a renewal course before the certification expires, meaning he 'won't be caught without it' — i.e., he'll get it renewed in time. (A) and (C) are never mentioned, and (D) directly contradicts her reassurance.",
 };
 
-const part3r11f: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 107 — Corporate uniform order sizing error", durationSec: 31 },
+const PART3_UNIFORM_SIZING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-uniform-sizing",
+  audio: { label: "Conversation — Corporate uniform order sizing error", durationSec: 0 },
   context:
-    "(W) Hi, this is Carla from the front office. The batch of staff polo shirts we ordered came in, but half of them are in the wrong size.\n(M) I'm sorry to hear that — let me pull up the order... it looks like our warehouse pulled from the wrong size run by mistake.\n(W) Can you send correct replacements before the new-hire orientation next Monday?\n(M) Yes, I'll ship the correct sizes today by overnight courier so they arrive by Friday.\n\nQuestion: Why did the woman receive the wrong shirt sizes?",
+    "(W) Hi, this is Carla from the front office. The batch of staff polo shirts we ordered came in, but half of them are in the wrong size.\n(M) I'm sorry to hear that — let me pull up the order... it looks like our warehouse pulled from the wrong size run by mistake.\n(W) Can you send correct replacements before the new-hire orientation next Monday?\n(M) Yes, I'll ship the correct sizes today by overnight courier so they arrive by Friday.\n(W) Great, thank you. Should we send the wrong-sized shirts back, or would you like us to hold onto them?\n(M) Go ahead and hold onto them for now — we might be able to use some of the smaller sizes for our summer interns.",
+};
+
+const part3r11f1: PracticeQuestionData = {
+  ...PART3_UNIFORM_SIZING,
+  question: "Why did the woman receive the wrong shirt sizes?",
   options: [
     { label: "A", text: "The warehouse pulled from the wrong size run." },
     { label: "B", text: "The order form listed incorrect sizes." },
@@ -3503,6 +3611,34 @@ const part3r11f: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man discovers 'our warehouse pulled from the wrong size run by mistake.' (B), (C), and (D) are never mentioned.",
+};
+
+const part3r11f2: PracticeQuestionData = {
+  ...PART3_UNIFORM_SIZING,
+  question: "How will the man send the correct sizes?",
+  options: [
+    { label: "A", text: "By overnight courier." },
+    { label: "B", text: "By standard ground shipping." },
+    { label: "C", text: "Through in-person delivery." },
+    { label: "D", text: "Through the woman's regular sales representative." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll ship the correct sizes today by overnight courier so they arrive by Friday.' Ground shipping (B), in-person delivery (C), and a sales representative (D) are never mentioned.",
+};
+
+const part3r11f3: PracticeQuestionData = {
+  ...PART3_UNIFORM_SIZING,
+  question: "What does the man ask the woman to do with the wrong-sized shirts?",
+  options: [
+    { label: "A", text: "Hold onto them for now." },
+    { label: "B", text: "Return them immediately by mail." },
+    { label: "C", text: "Donate them to a local charity." },
+    { label: "D", text: "Discard them." },
+  ],
+  correct: "A",
+  explanation:
+    "'Go ahead and hold onto them for now — we might be able to use some of the smaller sizes for our summer interns.' Returning them (B), donating them (C), and discarding them (D) are never mentioned.",
 };
 
 const part3r11g: PracticeQuestionData = {
@@ -9452,7 +9588,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3e1,
   part3e2,
   part3e3,
-  part3f,
+  part3f1,
+  part3f2,
+  part3f3,
   part3g,
   part3h,
   part3i1,
@@ -9544,10 +9682,14 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r9h,
   part3r9i,
   part3r9j,
-  part3r10a,
+  part3r10a1,
+  part3r10a2,
+  part3r10a3,
   part3r10b,
   part3r10c,
-  part3r10d,
+  part3r10d1,
+  part3r10d2,
+  part3r10d3,
   part3r10e,
   part3r10f,
   part3r10g,
@@ -9559,7 +9701,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r11c,
   part3r11d,
   part3r11e,
-  part3r11f,
+  part3r11f1,
+  part3r11f2,
+  part3r11f3,
   part3r11g,
   part3r11h,
   part3r11i,
