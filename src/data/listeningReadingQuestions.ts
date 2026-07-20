@@ -1759,12 +1759,18 @@ const part3g3: PracticeQuestionData = {
     "'Two of the guests have shellfish allergies. Can the kitchen accommodate that?' Vegetarian options (B), a view (C), and an earlier time (D) are never mentioned.",
 };
 
-const part3h: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 8 — Expense report question", durationSec: 37 },
+const PART3_EXPENSE_REPORT = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-expense-report",
+  audio: { label: "Conversation — Expense report question", durationSec: 0 },
   context:
-    "(W) Hi Tom, I'm calling about my expense report from last week — it still shows as pending.\n(M) Let me pull it up... I see the issue. The receipt for your taxi ride is missing from the submission.\n(W) I have it right here, I must have forgotten to attach it. Can I email it to you now?\n(M) Yes, please send it today and I'll approve the report by end of day tomorrow.\n\nQuestion: Why is the woman's expense report still pending?",
+    "(W) Hi Tom, I'm calling about my expense report from last week — it still shows as pending.\n(M) Let me pull it up... I see the issue. The receipt for your taxi ride is missing from the submission.\n(W) I have it right here, I must have forgotten to attach it. Can I email it to you now?\n(M) Yes, please send it today and I'll approve the report by end of day tomorrow.\n(W) Great, thank you. Also, do you know if my reimbursement will go out with this week's payroll?\n(M) It should, as long as I approve it by tomorrow — payroll processes on Thursdays.",
+};
+
+const part3h1: PracticeQuestionData = {
+  ...PART3_EXPENSE_REPORT,
+  question: "Why is the woman's expense report still pending?",
   options: [
     { label: "A", text: "She submitted the report to the wrong department." },
     { label: "B", text: "A receipt is missing from her submission." },
@@ -1774,6 +1780,34 @@ const part3h: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The man tells her, 'I see the issue. The receipt for your taxi ride is missing from the submission.' (A), (C), and (D) are never mentioned — they are typical expense-related distractors that reuse vocabulary ('expense report', 'approve') from the conversation.",
+};
+
+const part3h2: PracticeQuestionData = {
+  ...PART3_EXPENSE_REPORT,
+  question: "What does the woman say she will do?",
+  options: [
+    { label: "A", text: "Email the missing receipt today." },
+    { label: "B", text: "Resubmit the entire expense report." },
+    { label: "C", text: "Visit Tom's office in person." },
+    { label: "D", text: "Contact her manager directly." },
+  ],
+  correct: "A",
+  explanation:
+    "'I have it right here... Can I email it to you now?' — and Tom asks her to send it today. Resubmitting the whole report (B), an in-person visit (C), and contacting a manager (D) are never mentioned.",
+};
+
+const part3h3: PracticeQuestionData = {
+  ...PART3_EXPENSE_REPORT,
+  question: "When does the man say payroll is processed?",
+  options: [
+    { label: "A", text: "On Thursdays." },
+    { label: "B", text: "On Mondays." },
+    { label: "C", text: "At the end of the month." },
+    { label: "D", text: "Every other Friday." },
+  ],
+  correct: "A",
+  explanation:
+    "'It should, as long as I approve it by tomorrow — payroll processes on Thursdays.' Mondays (B), month-end (C), and biweekly Fridays (D) are never mentioned.",
 };
 
 const PART3_POOL_CAR = {
@@ -3428,12 +3462,18 @@ const part3r9b3: PracticeQuestionData = {
     "'About thirty minutes, so you should still be out well before your dinner reservation.' One hour (B), fifteen minutes (C), and two hours (D) are never mentioned.",
 };
 
-const part3r9c: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 84 — Ski resort lift closure", durationSec: 33 },
+const PART3_SKI_LIFT_CLOSURE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-ski-lift-closure",
+  audio: { label: "Conversation — Ski resort lift closure", durationSec: 0 },
   context:
-    "(M) Hi, I just tried to use my lift ticket on the north side, but a sign says that chairlift is closed for the day.\n(W) I'm sorry about that — the lift is down for a mechanical inspection. The south side lifts are all running normally, though.\n(M) Since I only planned to ski the north trails, is a partial refund possible?\n(W) Yes, I can issue a fifty percent credit toward your next visit.\n\nQuestion: What does the resort offer the man?",
+    "(M) Hi, I just tried to use my lift ticket on the north side, but a sign says that chairlift is closed for the day.\n(W) I'm sorry about that — the lift is down for a mechanical inspection. The south side lifts are all running normally, though.\n(M) Since I only planned to ski the north trails, is a partial refund possible?\n(W) Yes, I can issue a fifty percent credit toward your next visit.\n(M) Thanks. How do I redeem it next time I come?\n(W) I'll email you a voucher code today — just show it at the ticket window and they'll apply the discount.",
+};
+
+const part3r9c1: PracticeQuestionData = {
+  ...PART3_SKI_LIFT_CLOSURE,
+  question: "What does the resort offer the man?",
   options: [
     { label: "A", text: "A full refund for his lift ticket." },
     { label: "B", text: "A free equipment rental." },
@@ -3445,12 +3485,46 @@ const part3r9c: PracticeQuestionData = {
     "The woman tells the man, 'I can issue a fifty percent credit toward your next visit.' (A), (B), and (D) are never mentioned — they are typical ski-resort-related distractors.",
 };
 
-const part3r9d: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 85 — Newspaper subscription billing error", durationSec: 32 },
+const part3r9c2: PracticeQuestionData = {
+  ...PART3_SKI_LIFT_CLOSURE,
+  question: "Why is the north side chairlift closed?",
+  options: [
+    { label: "A", text: "It is undergoing a mechanical inspection." },
+    { label: "B", text: "It is closed due to bad weather." },
+    { label: "C", text: "It is being replaced with a new lift." },
+    { label: "D", text: "It ran out of available seats." },
+  ],
+  correct: "A",
+  explanation:
+    "'The lift is down for a mechanical inspection.' Bad weather (B), replacement (C), and seat availability (D) are never mentioned.",
+};
+
+const part3r9c3: PracticeQuestionData = {
+  ...PART3_SKI_LIFT_CLOSURE,
+  question: "How will the man receive his credit?",
+  options: [
+    { label: "A", text: "A voucher code sent by email." },
+    { label: "B", text: "A printed coupon mailed to his home." },
+    { label: "C", text: "An automatic account credit." },
+    { label: "D", text: "A gift card at the front desk." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll email you a voucher code today — just show it at the ticket window and they'll apply the discount.' A mailed coupon (B), an automatic credit (C), and a gift card (D) are never mentioned.",
+};
+
+const PART3_SUBSCRIPTION_BILLING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-subscription-billing",
+  audio: { label: "Conversation — Newspaper subscription billing error", durationSec: 0 },
   context:
-    "(W) Hi, this is Claire calling about my subscription to the Daily Herald — I was charged for the annual plan, but I only signed up for the monthly one.\n(M) Let me check your account... you're right, it looks like our system defaulted you to the annual rate by mistake.\n(W) Can that be corrected and refunded?\n(M) Yes, I'll switch you back to the monthly plan and refund the difference within three business days.\n\nQuestion: What problem does the woman report?",
+    "(W) Hi, this is Claire calling about my subscription to the Daily Herald — I was charged for the annual plan, but I only signed up for the monthly one.\n(M) Let me check your account... you're right, it looks like our system defaulted you to the annual rate by mistake.\n(W) Can that be corrected and refunded?\n(M) Yes, I'll switch you back to the monthly plan and refund the difference within three business days.\n(W) Thank you. Will I get an email confirming the refund once it's processed?\n(M) Yes, you'll receive a confirmation email as soon as the refund is issued.",
+};
+
+const part3r9d1: PracticeQuestionData = {
+  ...PART3_SUBSCRIPTION_BILLING,
+  question: "What problem does the woman report?",
   options: [
     { label: "A", text: "Her newspaper delivery stopped completely." },
     { label: "B", text: "She never received a renewal notice." },
@@ -3460,6 +3534,34 @@ const part3r9d: PracticeQuestionData = {
   correct: "D",
   explanation:
     "The woman says, 'I was charged for the annual plan, but I only signed up for the monthly one,' which the man confirms was a system error. (A), (B), and (C) are never mentioned — they are typical subscription-related distractors.",
+};
+
+const part3r9d2: PracticeQuestionData = {
+  ...PART3_SUBSCRIPTION_BILLING,
+  question: "What does the man say caused the billing error?",
+  options: [
+    { label: "A", text: "The system defaulted her to the annual rate by mistake." },
+    { label: "B", text: "A staff member manually entered the wrong plan." },
+    { label: "C", text: "She accidentally selected the annual plan herself." },
+    { label: "D", text: "A recent price increase affected her account." },
+  ],
+  correct: "A",
+  explanation:
+    "'It looks like our system defaulted you to the annual rate by mistake.' A staff error (B), her own selection (C), and a price increase (D) are never mentioned — the man's explanation places the fault with the system, not the woman.",
+};
+
+const part3r9d3: PracticeQuestionData = {
+  ...PART3_SUBSCRIPTION_BILLING,
+  question: "How will the woman know when her refund is processed?",
+  options: [
+    { label: "A", text: "She will receive a confirmation email." },
+    { label: "B", text: "She will see it reflected on her next bill only." },
+    { label: "C", text: "She must call back to check." },
+    { label: "D", text: "She will get a text message alert." },
+  ],
+  correct: "A",
+  explanation:
+    "'You'll receive a confirmation email as soon as the refund is issued.' Waiting for the next bill (B), calling back (C), and a text alert (D) are never mentioned.",
 };
 
 const part3r9e: PracticeQuestionData = {
@@ -3774,12 +3876,18 @@ const part3r10d3: PracticeQuestionData = {
     "'Let's move them to the holding pen this afternoon — it's safer, and it'll save us time once the approval comes through.' Leaving them in the enclosure (B) is the opposite of her suggestion. A different zoo (C) and sedation (D) are never mentioned.",
 };
 
-const part3r10e: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 96 — Movie premiere seating mix-up", durationSec: 35 },
+const PART3_PREMIERE_SEATING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-premiere-seating",
+  audio: { label: "Conversation — Movie premiere seating mix-up", durationSec: 0 },
   context:
-    "(W) Hi, I'm one of the ushers for tonight's premiere. Two rows we reserved for the sponsors are already filled with general ticket holders.\n(M) That's not good, the sponsors arrive in twenty minutes. Can we move those guests to the balcony seats instead?\n(W) I can do that, but I'll need two more staff members to help guide them up there quickly.\n(M) I'll pull two people from concessions right now and send them to you.\n\nQuestion: What does the woman want the man to do?",
+    "(W) Hi, I'm one of the ushers for tonight's premiere. Two rows we reserved for the sponsors are already filled with general ticket holders.\n(M) That's not good, the sponsors arrive in twenty minutes. Can we move those guests to the balcony seats instead?\n(W) I can do that, but I'll need two more staff members to help guide them up there quickly.\n(M) I'll pull two people from concessions right now and send them to you.\n(W) Perfect. Should we also have someone waiting at the entrance to greet the sponsors directly?\n(M) Good idea — I'll ask the lobby manager to personally welcome them and explain the seating change.",
+};
+
+const part3r10e1: PracticeQuestionData = {
+  ...PART3_PREMIERE_SEATING,
+  question: "What does the woman want the man to do?",
   options: [
     { label: "A", text: "Cancel the premiere due to overselling." },
     { label: "B", text: "Refund the sponsors' tickets." },
@@ -3789,6 +3897,34 @@ const part3r10e: PracticeQuestionData = {
   correct: "C",
   explanation:
     "The woman says she'll need to move the general ticket holders 'but I'll need two more staff members to help guide them up there quickly,' and the man agrees to send staff from concessions. (A), (B), and (D) are never mentioned.",
+};
+
+const part3r10e2: PracticeQuestionData = {
+  ...PART3_PREMIERE_SEATING,
+  question: "Why does the man say the situation is urgent?",
+  options: [
+    { label: "A", text: "The sponsors are arriving in twenty minutes." },
+    { label: "B", text: "The premiere has already started." },
+    { label: "C", text: "Tickets have sold out completely." },
+    { label: "D", text: "The balcony is also overbooked." },
+  ],
+  correct: "A",
+  explanation:
+    "'That's not good, the sponsors arrive in twenty minutes.' The premiere hasn't started yet (B), and neither a full sellout (C) nor an overbooked balcony (D) is mentioned.",
+};
+
+const part3r10e3: PracticeQuestionData = {
+  ...PART3_PREMIERE_SEATING,
+  question: "Who will explain the seating change to the sponsors?",
+  options: [
+    { label: "A", text: "The lobby manager." },
+    { label: "B", text: "The woman herself." },
+    { label: "C", text: "A concessions staff member." },
+    { label: "D", text: "The theater's general manager." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll ask the lobby manager to personally welcome them and explain the seating change.' The woman (B), a concessions staff member (C), and the general manager (D) are never assigned this task.",
 };
 
 const part3r10f: PracticeQuestionData = {
@@ -10002,7 +10138,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3g1,
   part3g2,
   part3g3,
-  part3h,
+  part3h1,
+  part3h2,
+  part3h3,
   part3i1,
   part3i2,
   part3i3,
@@ -10100,8 +10238,12 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r9b1,
   part3r9b2,
   part3r9b3,
-  part3r9c,
-  part3r9d,
+  part3r9c1,
+  part3r9c2,
+  part3r9c3,
+  part3r9d1,
+  part3r9d2,
+  part3r9d3,
   part3r9e,
   part3r9f,
   part3r9g,
@@ -10120,7 +10262,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r10d1,
   part3r10d2,
   part3r10d3,
-  part3r10e,
+  part3r10e1,
+  part3r10e2,
+  part3r10e3,
   part3r10f,
   part3r10g,
   part3r10h,
