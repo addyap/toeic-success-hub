@@ -5544,10 +5544,16 @@ const part5r11g: PracticeQuestionData = {
 };
 
 // ── Part 6 · Text Completion ──
-const part6: PracticeQuestionData = {
-  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+const PART6_SYSTEM_UPGRADE = {
+  prompt: "Part 6 · Read the email and answer the four questions.",
+  groupId: "p6-system-upgrade",
   context:
-    "From: it-support@northwind.co\nTo: all-staff@northwind.co\nSubject: System Upgrade — This Weekend\n\nDear team,\n\nPlease be advised that a company-wide system upgrade has been ______ for Saturday, June 20, from 10:00 PM to 2:00 AM. During this window, email and file servers will be unavailable. We apologize for any interruption this may cause and thank you for your understanding and cooperation as we improve our infrastructure.\n\n— IT Support",
+    "From: it-support@northwind.co\nTo: all-staff@northwind.co\nSubject: System Upgrade — This Weekend\n\nDear team,\n\nPlease be advised that a company-wide system upgrade has been ______ (1) for Saturday, June 20, from 10:00 PM to 2:00 AM. During this window, email and file servers will be temporarily ______ (2), so please save any unfinished work before the maintenance period begins. ______ (3) The new system is expected to load documents and process requests noticeably faster once the upgrade is complete.\n\nIf you experience any issues accessing your files ______ (4) the upgrade, please contact the IT helpdesk at extension 4521 right away.\n\nWe apologize for any interruption this may cause and thank you for your understanding and cooperation as we improve our infrastructure.\n\n— IT Support",
+};
+
+const part6grp1a: PracticeQuestionData = {
+  ...PART6_SYSTEM_UPGRADE,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "scheduled" },
     { label: "B", text: "schedule" },
@@ -5557,6 +5563,51 @@ const part6: PracticeQuestionData = {
   correct: "A",
   explanation:
     "'Has been ______ for Saturday' needs a past participle to complete the present-perfect passive: 'has been scheduled'. (B) is a base verb/noun, (C) is a gerund/noun, and (D) is a third-person-singular verb — none fit after 'has been'.",
+};
+
+const part6grp1b: PracticeQuestionData = {
+  ...PART6_SYSTEM_UPGRADE,
+  question: "Question (2): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "unavailable" },
+    { label: "B", text: "unavailability" },
+    { label: "C", text: "available" },
+    { label: "D", text: "avoiding" },
+  ],
+  correct: "A",
+  explanation:
+    "'Will be temporarily ______' needs an adjective after the linking verb 'be': 'will be temporarily unavailable'. (B) is a noun and cannot follow 'be' this way, (C) is the opposite meaning — the servers are going offline, not staying reachable — and (D) is a verb form that does not fit the sentence structure.",
+};
+
+const part6grp1c: PracticeQuestionData = {
+  ...PART6_SYSTEM_UPGRADE,
+  question: "Question (3): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "This upgrade will replace several outdated components in our server infrastructure.",
+    },
+    { label: "B", text: "Please remember to submit your timesheets by Friday afternoon." },
+    { label: "C", text: "The IT department will be closed for a training session next week." },
+    { label: "D", text: "All employees must reset their passwords within thirty days." },
+  ],
+  correct: "A",
+  explanation:
+    "The sentence before the blank explains that servers will be down for maintenance, and the sentence after promises faster performance 'once the upgrade is complete.' (A) bridges the two by explaining what the upgrade actually replaces, which is why performance will improve. (B), (C), and (D) are all plausible office-email sentences, but none connect to the surrounding discussion of server maintenance and performance.",
+};
+
+const part6grp1d: PracticeQuestionData = {
+  ...PART6_SYSTEM_UPGRADE,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "after" },
+    { label: "B", text: "before" },
+    { label: "C", text: "during" },
+    { label: "D", text: "against" },
+  ],
+  correct: "A",
+  explanation:
+    "Any access problems would occur once the maintenance window ends, so 'after the upgrade' is correct. (B) reverses the timeline — the upgrade has not started yet, so there is nothing to have issues from. (C) contradicts the earlier statement that servers are unavailable throughout the window, not merely glitchy. (D) does not fit this context grammatically.",
 };
 
 const part6b: PracticeQuestionData = {
@@ -8961,7 +9012,10 @@ export const part5Questions: PracticeQuestionData[] = [
   part5r11g,
 ];
 export const part6Questions: PracticeQuestionData[] = [
-  part6,
+  part6grp1a,
+  part6grp1b,
+  part6grp1c,
+  part6grp1d,
   part6b,
   part6c,
   part6d,
