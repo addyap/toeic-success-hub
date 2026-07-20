@@ -3422,56 +3422,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "wtqbu885fn": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "wtqbu885fn-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "wtqbu885fn-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "wtqbu885fn-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "wtqbu885fn-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "wtqbu885fn-4.mp3"
-      }
-    ]
-  },
-  "yjnzg0ma26": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "yjnzg0ma26-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "yjnzg0ma26-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "yjnzg0ma26-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "yjnzg0ma26-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "yjnzg0ma26-4.mp3"
-      }
-    ]
-  },
   "vju2js3nmu": {
     "model": "gpt-4o-mini-tts",
     "segments": [
@@ -3513,114 +3463,39 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "12tgyqblegm": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "12tgyqblegm-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "12tgyqblegm-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "12tgyqblegm-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "12tgyqblegm-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "12tgyqblegm-4.mp3"
-      }
-    ]
-  },
-  "26ou6fgoxtq": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "26ou6fgoxtq-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "26ou6fgoxtq-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "26ou6fgoxtq-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "26ou6fgoxtq-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "26ou6fgoxtq-4.mp3"
-      }
-    ]
-  },
-  "1rvc5yycckm": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "1rvc5yycckm-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rvc5yycckm-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1rvc5yycckm-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rvc5yycckm-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rvc5yycckm-4.mp3"
-      }
-    ]
-  },
   "1jvwy3uabx7": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "1jvwy3uabx7-0.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "1jvwy3uabx7-1.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "1jvwy3uabx7-2.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "1jvwy3uabx7-3.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "1jvwy3uabx7-4.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "1jvwy3uabx7-5.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "1jvwy3uabx7-6.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "1jvwy3uabx7-7.mp3"
       },
       {
@@ -3637,385 +3512,35 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "208oceh4x40": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "208oceh4x40-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "208oceh4x40-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "208oceh4x40-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "208oceh4x40-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "208oceh4x40-4.mp3"
-      }
-    ]
-  },
-  "22c3urkys0f": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "22c3urkys0f-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "22c3urkys0f-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "22c3urkys0f-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "22c3urkys0f-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "22c3urkys0f-4.mp3"
-      }
-    ]
-  },
-  "2fmy8ur3k9p": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "2fmy8ur3k9p-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2fmy8ur3k9p-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2fmy8ur3k9p-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2fmy8ur3k9p-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2fmy8ur3k9p-4.mp3"
-      }
-    ]
-  },
-  "1voyy4zf1jd": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1voyy4zf1jd-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1voyy4zf1jd-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1voyy4zf1jd-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1voyy4zf1jd-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1voyy4zf1jd-4.mp3"
-      }
-    ]
-  },
-  "qs79s8e5hk": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "qs79s8e5hk-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "qs79s8e5hk-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "qs79s8e5hk-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "qs79s8e5hk-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "qs79s8e5hk-4.mp3"
-      }
-    ]
-  },
-  "25oy0pdp4oz": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "25oy0pdp4oz-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "25oy0pdp4oz-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "25oy0pdp4oz-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "25oy0pdp4oz-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "25oy0pdp4oz-4.mp3"
-      }
-    ]
-  },
-  "17twzzalhed": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "17twzzalhed-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "17twzzalhed-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "17twzzalhed-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "17twzzalhed-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "17twzzalhed-4.mp3"
-      }
-    ]
-  },
-  "1xhjt4nm5ci": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1xhjt4nm5ci-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1xhjt4nm5ci-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1xhjt4nm5ci-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1xhjt4nm5ci-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1xhjt4nm5ci-4.mp3"
-      }
-    ]
-  },
-  "2aucrb8qkeb": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "2aucrb8qkeb-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2aucrb8qkeb-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2aucrb8qkeb-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2aucrb8qkeb-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2aucrb8qkeb-4.mp3"
-      }
-    ]
-  },
-  "29uwudkvagm": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "29uwudkvagm-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "29uwudkvagm-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "29uwudkvagm-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "29uwudkvagm-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "29uwudkvagm-4.mp3"
-      }
-    ]
-  },
-  "4yj9x477v": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "4yj9x477v-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "4yj9x477v-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "4yj9x477v-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "4yj9x477v-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "4yj9x477v-4.mp3"
-      }
-    ]
-  },
-  "25uo3prh4bq": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "25uo3prh4bq-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "25uo3prh4bq-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "25uo3prh4bq-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "25uo3prh4bq-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "25uo3prh4bq-4.mp3"
-      }
-    ]
-  },
-  "1r839l37uvg": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1r839l37uvg-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1r839l37uvg-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1r839l37uvg-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1r839l37uvg-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1r839l37uvg-4.mp3"
-      }
-    ]
-  },
-  "110ii3wr3f": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "110ii3wr3f-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "110ii3wr3f-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "110ii3wr3f-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "110ii3wr3f-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "110ii3wr3f-4.mp3"
-      }
-    ]
-  },
   "1sateq3hnf6": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1sateq3hnf6-0.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1sateq3hnf6-1.mp3"
       },
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1sateq3hnf6-2.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1sateq3hnf6-3.mp3"
       },
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1sateq3hnf6-4.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1sateq3hnf6-5.mp3"
       },
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1sateq3hnf6-6.mp3"
       },
       {
@@ -4029,231 +3554,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       {
         "voice": "alloy",
         "file": "1sateq3hnf6-9.mp3"
-      }
-    ]
-  },
-  "1e5kfetsac6": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1e5kfetsac6-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1e5kfetsac6-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1e5kfetsac6-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1e5kfetsac6-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1e5kfetsac6-4.mp3"
-      }
-    ]
-  },
-  "1k1n0znpthp": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1k1n0znpthp-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1k1n0znpthp-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1k1n0znpthp-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1k1n0znpthp-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1k1n0znpthp-4.mp3"
-      }
-    ]
-  },
-  "mqgbty21u4": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "mqgbty21u4-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "mqgbty21u4-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "mqgbty21u4-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "mqgbty21u4-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "mqgbty21u4-4.mp3"
-      }
-    ]
-  },
-  "23848jfkoob": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "23848jfkoob-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "23848jfkoob-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "23848jfkoob-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "23848jfkoob-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "23848jfkoob-4.mp3"
-      }
-    ]
-  },
-  "rsym2n9rx2": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "rsym2n9rx2-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "rsym2n9rx2-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "rsym2n9rx2-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "rsym2n9rx2-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "rsym2n9rx2-4.mp3"
-      }
-    ]
-  },
-  "8knjhht4g5": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "8knjhht4g5-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "8knjhht4g5-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "8knjhht4g5-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "8knjhht4g5-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "8knjhht4g5-4.mp3"
-      }
-    ]
-  },
-  "1s38um46ym1": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1s38um46ym1-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1s38um46ym1-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1s38um46ym1-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1s38um46ym1-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1s38um46ym1-4.mp3"
-      }
-    ]
-  },
-  "nnlx24lv7z": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "nnlx24lv7z-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "nnlx24lv7z-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "nnlx24lv7z-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "nnlx24lv7z-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "nnlx24lv7z-4.mp3"
-      }
-    ]
-  },
-  "1l9t1zvpd6q": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "1l9t1zvpd6q-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1l9t1zvpd6q-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1l9t1zvpd6q-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1l9t1zvpd6q-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1l9t1zvpd6q-4.mp3"
       }
     ]
   },
@@ -4339,256 +3639,31 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1xmp0y6heyg": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "1xmp0y6heyg-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1xmp0y6heyg-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1xmp0y6heyg-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1xmp0y6heyg-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1xmp0y6heyg-4.mp3"
-      }
-    ]
-  },
-  "2bbd2b0osm4": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "2bbd2b0osm4-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "2bbd2b0osm4-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "2bbd2b0osm4-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "2bbd2b0osm4-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2bbd2b0osm4-4.mp3"
-      }
-    ]
-  },
-  "2ejyaro7mvz": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "2ejyaro7mvz-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2ejyaro7mvz-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2ejyaro7mvz-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2ejyaro7mvz-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2ejyaro7mvz-4.mp3"
-      }
-    ]
-  },
-  "1uxdjx8g68d": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1uxdjx8g68d-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1uxdjx8g68d-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1uxdjx8g68d-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1uxdjx8g68d-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1uxdjx8g68d-4.mp3"
-      }
-    ]
-  },
-  "1zldxjakn5a": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1zldxjakn5a-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1zldxjakn5a-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1zldxjakn5a-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1zldxjakn5a-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1zldxjakn5a-4.mp3"
-      }
-    ]
-  },
-  "1rc65w2jcl4": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1rc65w2jcl4-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1rc65w2jcl4-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1rc65w2jcl4-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1rc65w2jcl4-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rc65w2jcl4-4.mp3"
-      }
-    ]
-  },
-  "zgg423fne6": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "zgg423fne6-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "zgg423fne6-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "zgg423fne6-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "zgg423fne6-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "zgg423fne6-4.mp3"
-      }
-    ]
-  },
-  "169f1cn6zng": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "169f1cn6zng-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "169f1cn6zng-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "169f1cn6zng-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "169f1cn6zng-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "169f1cn6zng-4.mp3"
-      }
-    ]
-  },
-  "dj5dvuym2p": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "dj5dvuym2p-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "dj5dvuym2p-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "dj5dvuym2p-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "dj5dvuym2p-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "dj5dvuym2p-4.mp3"
-      }
-    ]
-  },
   "18nc9v4xwzj": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "18nc9v4xwzj-0.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "18nc9v4xwzj-1.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "18nc9v4xwzj-2.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "18nc9v4xwzj-3.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "18nc9v4xwzj-4.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "18nc9v4xwzj-5.mp3"
       },
       {
@@ -4602,431 +3677,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       {
         "voice": "alloy",
         "file": "18nc9v4xwzj-8.mp3"
-      }
-    ]
-  },
-  "89w1hcs54": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "89w1hcs54-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "89w1hcs54-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "89w1hcs54-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "89w1hcs54-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "89w1hcs54-4.mp3"
-      }
-    ]
-  },
-  "1rvzext133y": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "1rvzext133y-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1rvzext133y-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1rvzext133y-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1rvzext133y-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rvzext133y-4.mp3"
-      }
-    ]
-  },
-  "10kt4b23zwe": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "10kt4b23zwe-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "10kt4b23zwe-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "10kt4b23zwe-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "10kt4b23zwe-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "10kt4b23zwe-4.mp3"
-      }
-    ]
-  },
-  "4lm57hquj9": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "4lm57hquj9-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "4lm57hquj9-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "4lm57hquj9-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "4lm57hquj9-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "4lm57hquj9-4.mp3"
-      }
-    ]
-  },
-  "expmppedt6": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "expmppedt6-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "expmppedt6-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "expmppedt6-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "expmppedt6-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "expmppedt6-4.mp3"
-      }
-    ]
-  },
-  "1euxpq4jgpe": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1euxpq4jgpe-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1euxpq4jgpe-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1euxpq4jgpe-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1euxpq4jgpe-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1euxpq4jgpe-4.mp3"
-      }
-    ]
-  },
-  "206o0urplut": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "206o0urplut-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "206o0urplut-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "206o0urplut-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "206o0urplut-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "206o0urplut-4.mp3"
-      }
-    ]
-  },
-  "1mew5llmd11": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1mew5llmd11-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1mew5llmd11-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1mew5llmd11-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1mew5llmd11-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1mew5llmd11-4.mp3"
-      }
-    ]
-  },
-  "1y75k18lru0": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1y75k18lru0-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1y75k18lru0-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1y75k18lru0-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1y75k18lru0-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1y75k18lru0-4.mp3"
-      }
-    ]
-  },
-  "13fmitcwjgr": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "13fmitcwjgr-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "13fmitcwjgr-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "13fmitcwjgr-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "13fmitcwjgr-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "13fmitcwjgr-4.mp3"
-      }
-    ]
-  },
-  "pb2ouqjn9i": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "pb2ouqjn9i-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "pb2ouqjn9i-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "pb2ouqjn9i-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "pb2ouqjn9i-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "pb2ouqjn9i-4.mp3"
-      }
-    ]
-  },
-  "1mlwzup4iwq": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1mlwzup4iwq-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1mlwzup4iwq-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1mlwzup4iwq-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1mlwzup4iwq-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1mlwzup4iwq-4.mp3"
-      }
-    ]
-  },
-  "1wno71vsvcq": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1wno71vsvcq-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1wno71vsvcq-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1wno71vsvcq-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1wno71vsvcq-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1wno71vsvcq-4.mp3"
-      }
-    ]
-  },
-  "w1p3yfivf1": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "w1p3yfivf1-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "w1p3yfivf1-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "w1p3yfivf1-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "w1p3yfivf1-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "w1p3yfivf1-4.mp3"
-      }
-    ]
-  },
-  "19s576wcqf1": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "19s576wcqf1-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "19s576wcqf1-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "19s576wcqf1-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "19s576wcqf1-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "19s576wcqf1-4.mp3"
-      }
-    ]
-  },
-  "1be96t9tkaf": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1be96t9tkaf-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1be96t9tkaf-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1be96t9tkaf-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1be96t9tkaf-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1be96t9tkaf-4.mp3"
-      }
-    ]
-  },
-  "2avpqah5yva": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "2avpqah5yva-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2avpqah5yva-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2avpqah5yva-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "2avpqah5yva-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2avpqah5yva-4.mp3"
       }
     ]
   },
@@ -5071,256 +3721,31 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "if6k48qlc7": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "if6k48qlc7-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "if6k48qlc7-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "if6k48qlc7-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "if6k48qlc7-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "if6k48qlc7-4.mp3"
-      }
-    ]
-  },
-  "1kg9xd2c0r9": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "1kg9xd2c0r9-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1kg9xd2c0r9-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1kg9xd2c0r9-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1kg9xd2c0r9-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1kg9xd2c0r9-4.mp3"
-      }
-    ]
-  },
-  "bn7kq94htz": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "bn7kq94htz-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "bn7kq94htz-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "bn7kq94htz-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "bn7kq94htz-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "bn7kq94htz-4.mp3"
-      }
-    ]
-  },
-  "1d0jv38b1ls": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1d0jv38b1ls-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1d0jv38b1ls-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1d0jv38b1ls-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1d0jv38b1ls-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1d0jv38b1ls-4.mp3"
-      }
-    ]
-  },
-  "1inwf1lihzu": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1inwf1lihzu-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1inwf1lihzu-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1inwf1lihzu-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1inwf1lihzu-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1inwf1lihzu-4.mp3"
-      }
-    ]
-  },
-  "27u164q4kls": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "27u164q4kls-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "27u164q4kls-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "27u164q4kls-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "27u164q4kls-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "27u164q4kls-4.mp3"
-      }
-    ]
-  },
-  "n08diinzkm": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "n08diinzkm-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "n08diinzkm-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "n08diinzkm-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "n08diinzkm-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "n08diinzkm-4.mp3"
-      }
-    ]
-  },
-  "2ew044pbsnq": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "2ew044pbsnq-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "2ew044pbsnq-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "2ew044pbsnq-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "2ew044pbsnq-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "2ew044pbsnq-4.mp3"
-      }
-    ]
-  },
-  "19xa13gkajb": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "19xa13gkajb-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "19xa13gkajb-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "19xa13gkajb-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "19xa13gkajb-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "19xa13gkajb-4.mp3"
-      }
-    ]
-  },
   "hbo6rzljue": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "hbo6rzljue-0.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "hbo6rzljue-1.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "hbo6rzljue-2.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "hbo6rzljue-3.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "hbo6rzljue-4.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "hbo6rzljue-5.mp3"
       },
       {
@@ -5334,31 +3759,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       {
         "voice": "alloy",
         "file": "hbo6rzljue-8.mp3"
-      }
-    ]
-  },
-  "tulj6e08qe": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "tulj6e08qe-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "tulj6e08qe-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "tulj6e08qe-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "tulj6e08qe-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "tulj6e08qe-4.mp3"
       }
     ]
   },
@@ -5482,156 +3882,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       {
         "voice": "alloy",
         "file": "25gtnl6srzf-8.mp3"
-      }
-    ]
-  },
-  "1hpozmj3wxg": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1hpozmj3wxg-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1hpozmj3wxg-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1hpozmj3wxg-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1hpozmj3wxg-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1hpozmj3wxg-4.mp3"
-      }
-    ]
-  },
-  "ub9ifmmxi0": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "ub9ifmmxi0-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "ub9ifmmxi0-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "ub9ifmmxi0-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "ub9ifmmxi0-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "ub9ifmmxi0-4.mp3"
-      }
-    ]
-  },
-  "oedoka39sr": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "oedoka39sr-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "oedoka39sr-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "oedoka39sr-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "oedoka39sr-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "oedoka39sr-4.mp3"
-      }
-    ]
-  },
-  "x487ruyvfj": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "x487ruyvfj-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "x487ruyvfj-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "x487ruyvfj-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "x487ruyvfj-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "x487ruyvfj-4.mp3"
-      }
-    ]
-  },
-  "1b6ar5uwr55": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1b6ar5uwr55-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1b6ar5uwr55-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1b6ar5uwr55-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1b6ar5uwr55-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1b6ar5uwr55-4.mp3"
-      }
-    ]
-  },
-  "thtl7npf3r": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "thtl7npf3r-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "thtl7npf3r-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "thtl7npf3r-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "thtl7npf3r-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "thtl7npf3r-4.mp3"
       }
     ]
   },
@@ -5840,156 +4090,31 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1rm1m08gt8p": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "1rm1m08gt8p-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1rm1m08gt8p-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1rm1m08gt8p-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1rm1m08gt8p-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1rm1m08gt8p-4.mp3"
-      }
-    ]
-  },
-  "byv2xxjmgy": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "byv2xxjmgy-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "byv2xxjmgy-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "byv2xxjmgy-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "byv2xxjmgy-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "byv2xxjmgy-4.mp3"
-      }
-    ]
-  },
-  "ag109h32mx": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "ag109h32mx-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "ag109h32mx-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "ag109h32mx-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "ag109h32mx-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "ag109h32mx-4.mp3"
-      }
-    ]
-  },
-  "158ss3u9xwd": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "158ss3u9xwd-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "158ss3u9xwd-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "158ss3u9xwd-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "158ss3u9xwd-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "158ss3u9xwd-4.mp3"
-      }
-    ]
-  },
-  "19utbnw68vo": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "19utbnw68vo-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "19utbnw68vo-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "19utbnw68vo-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "19utbnw68vo-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "19utbnw68vo-4.mp3"
-      }
-    ]
-  },
   "1am3nshcexr": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1am3nshcexr-0.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1am3nshcexr-1.mp3"
       },
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1am3nshcexr-2.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1am3nshcexr-3.mp3"
       },
       {
-        "voice": "alloy",
+        "voice": "onyx",
         "file": "1am3nshcexr-4.mp3"
       },
       {
-        "voice": "shimmer",
+        "voice": "nova",
         "file": "1am3nshcexr-5.mp3"
       },
       {
@@ -6006,131 +4131,31 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "1h19ibm1q63": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "1h19ibm1q63-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1h19ibm1q63-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1h19ibm1q63-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1h19ibm1q63-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1h19ibm1q63-4.mp3"
-      }
-    ]
-  },
-  "20z6ukvnjqo": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "20z6ukvnjqo-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "20z6ukvnjqo-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "20z6ukvnjqo-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "20z6ukvnjqo-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "20z6ukvnjqo-4.mp3"
-      }
-    ]
-  },
-  "1ndmn42quur": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "1ndmn42quur-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1ndmn42quur-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "1ndmn42quur-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "1ndmn42quur-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1ndmn42quur-4.mp3"
-      }
-    ]
-  },
-  "1e6k57bmqoe": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "1e6k57bmqoe-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1e6k57bmqoe-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1e6k57bmqoe-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "1e6k57bmqoe-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "1e6k57bmqoe-4.mp3"
-      }
-    ]
-  },
   "21r1dmtqawx": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "21r1dmtqawx-0.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "21r1dmtqawx-1.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "21r1dmtqawx-2.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "21r1dmtqawx-3.mp3"
       },
       {
-        "voice": "nova",
+        "voice": "shimmer",
         "file": "21r1dmtqawx-4.mp3"
       },
       {
-        "voice": "onyx",
+        "voice": "alloy",
         "file": "21r1dmtqawx-5.mp3"
       },
       {
@@ -6144,106 +4169,6 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       {
         "voice": "alloy",
         "file": "21r1dmtqawx-8.mp3"
-      }
-    ]
-  },
-  "14py4vshc48": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "alloy",
-        "file": "14py4vshc48-0.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "14py4vshc48-1.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "14py4vshc48-2.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "14py4vshc48-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "14py4vshc48-4.mp3"
-      }
-    ]
-  },
-  "g2q1pr0ni2": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "nova",
-        "file": "g2q1pr0ni2-0.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "g2q1pr0ni2-1.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "g2q1pr0ni2-2.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "g2q1pr0ni2-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "g2q1pr0ni2-4.mp3"
-      }
-    ]
-  },
-  "21yh2im1qc0": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "shimmer",
-        "file": "21yh2im1qc0-0.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "21yh2im1qc0-1.mp3"
-      },
-      {
-        "voice": "shimmer",
-        "file": "21yh2im1qc0-2.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "21yh2im1qc0-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "21yh2im1qc0-4.mp3"
-      }
-    ]
-  },
-  "iw7fxud8om": {
-    "model": "gpt-4o-mini-tts",
-    "segments": [
-      {
-        "voice": "onyx",
-        "file": "iw7fxud8om-0.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "iw7fxud8om-1.mp3"
-      },
-      {
-        "voice": "onyx",
-        "file": "iw7fxud8om-2.mp3"
-      },
-      {
-        "voice": "nova",
-        "file": "iw7fxud8om-3.mp3"
-      },
-      {
-        "voice": "alloy",
-        "file": "iw7fxud8om-4.mp3"
       }
     ]
   },
