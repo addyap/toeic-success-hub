@@ -8970,7 +8970,96 @@ export const part6Questions: PracticeQuestionData[
   part6grp10c,
   part6grp10d,
 ];
+// ── Part 7 double passages: two related documents, answered together.
+// Real Part 7 always includes double- and triple-passage sets that require
+// combining information across documents, not just reading one at a time —
+// a skill nothing else in the bank exercises. Represented as one `context`
+// string holding both documents under clear headers, since the existing
+// grouping mechanism (shared passage, N sub-questions) needs no changes to
+// support it — the same approach that let Parts 3, 4, and 6 reuse it.
+const PART7_LAMP_RETURN = {
+  prompt: "Part 7 · Read the two documents and answer the five questions.",
+  groupId: "p7-lamp-return",
+  context:
+    "EMAIL\n\nFrom: Priya Desai <priya.desai@webmail.com>\nTo: returns@urbanhomegoods.com\nSubject: Return Request — Order #48213\nDate: March 3\n\nHello,\n\nI purchased a ceramic table lamp (Item #TL-220) from your website on February 18, and it arrived on February 22. Unfortunately, one of the shipping straps had cut into the box, and the lamp's base has a small chip on the underside. It doesn't affect how the lamp works, but I'd still like to return it for a refund since it was supposed to be a gift.\n\nI still have the original packaging and the receipt. Could you let me know how to proceed with the return? I purchased it using the standard shipping option, if that matters for the process.\n\nThank you,\nPriya Desai\n\n— — — — — — — — — —\n\nRETURN & EXCHANGE POLICY (EXCERPT)\nUrban Home Goods\n\nItems may be returned within 30 days of the delivery date for a full refund, provided the item is unused and in its original packaging. Items damaged in transit are eligible for a full refund or a free replacement, regardless of the 30-day window, as long as the damage is reported within 14 days of delivery.\n\nCustomers requesting a refund for a damaged item do not need to return the item; a photo of the damage is sufficient documentation. Standard shipping customers receive their refund within 5–7 business days of approval; expedited shipping customers receive refunds within 2–3 business days.\n\nQuestions or exchanges: contact returns@urbanhomegoods.com with your order number and a brief description of the issue.",
+};
+
+const part7grp1a: PracticeQuestionData = {
+  ...PART7_LAMP_RETURN,
+  question: "Why did Ms. Desai write the email?",
+  options: [
+    { label: "A", text: "To request a return for a damaged item." },
+    { label: "B", text: "To ask about the status of a delayed shipment." },
+    { label: "C", text: "To complain about poor customer service." },
+    { label: "D", text: "To cancel an order before it ships." },
+  ],
+  correct: "A",
+  explanation:
+    "She writes that the lamp arrived damaged and 'I'd still like to return it for a refund.' The shipment was not delayed — it arrived as expected (B) — and she does not complain about service (C) or ask to cancel before shipping, since the item has already arrived (D).",
+};
+
+const part7grp1b: PracticeQuestionData = {
+  ...PART7_LAMP_RETURN,
+  question: "What does Ms. Desai say about the lamp's condition?",
+  options: [
+    { label: "A", text: "It has a small chip but still works normally." },
+    { label: "B", text: "It arrived completely shattered." },
+    { label: "C", text: "It is missing several parts." },
+    { label: "D", text: "It was the wrong color." },
+  ],
+  correct: "A",
+  explanation:
+    "She writes that 'the lamp's base has a small chip on the underside' and 'it doesn't affect how the lamp works.' Nothing suggests it arrived shattered (B), incomplete (C), or in the wrong color (D).",
+};
+
+const part7grp1c: PracticeQuestionData = {
+  ...PART7_LAMP_RETURN,
+  question: "According to the policy, what is required to report a damaged item?",
+  options: [
+    { label: "A", text: "The damage must be reported within 14 days of delivery." },
+    { label: "B", text: "The item must be returned within 30 days." },
+    { label: "C", text: "A video of the item's condition must be submitted." },
+    { label: "D", text: "Customer service must be contacted by phone." },
+  ],
+  correct: "A",
+  explanation:
+    "The policy states damaged items 'are eligible for a full refund or a free replacement... as long as the damage is reported within 14 days of delivery.' The 30-day window (B) applies to ordinary returns of unused items, not damage reports. A video (C) and a phone call (D) are never required — a photo and an email are what the policy asks for.",
+};
+
+const part7grp1d: PracticeQuestionData = {
+  ...PART7_LAMP_RETURN,
+  question: "Based on the email and the policy, will Ms. Desai need to send the lamp back to receive a refund?",
+  options: [
+    { label: "A", text: "No, because a photo of the damage is sufficient for a damaged-item refund." },
+    { label: "B", text: "Yes, because she requested a refund rather than a replacement." },
+    { label: "C", text: "Yes, because more than 14 days have passed since delivery." },
+    { label: "D", text: "No, because standard shipping items are automatically exempted." },
+  ],
+  correct: "A",
+  explanation:
+    "The lamp was delivered February 22, and the email is dated March 3 — nine days later, within the policy's 14-day window for damage reports. The policy states that for damaged items reported in time, 'a photo of the damage is sufficient documentation' and the item does not need to be returned. Choosing a refund over a replacement (B) does not change this. Nothing in the policy ties the no-return exception to the shipping method (D), and the 14-day window has not been exceeded (C).",
+};
+
+const part7grp1e: PracticeQuestionData = {
+  ...PART7_LAMP_RETURN,
+  question: "How long will Ms. Desai likely wait for her refund once it is approved?",
+  options: [
+    { label: "A", text: "5 to 7 business days, since she used standard shipping." },
+    { label: "B", text: "2 to 3 business days, since she used expedited shipping." },
+    { label: "C", text: "30 days, per the standard return window." },
+    { label: "D", text: "Refunds are not available for damaged items." },
+  ],
+  correct: "A",
+  explanation:
+    "The email states she 'purchased it using the standard shipping option,' and the policy specifies 'standard shipping customers receive their refund within 5–7 business days of approval.' The 2–3 day window (B) applies only to expedited shipping, which she did not use. The 30-day figure (C) is the return deadline, not a refund processing time, and the policy explicitly offers refunds for damaged items (D).",
+};
+
 export const part7Questions: PracticeQuestionData[] = [
+  part7grp1a,
+  part7grp1b,
+  part7grp1c,
+  part7grp1d,
+  part7grp1e,
   part7,
   part7b,
   part7c,
