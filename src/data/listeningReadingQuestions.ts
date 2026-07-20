@@ -6156,10 +6156,16 @@ const part6grp2d: PracticeQuestionData = {
     "'By the end of the week' expresses a deadline — the tutorial must be finished no later than that point. (B) would imply a continuous action lasting up to that time, which does not fit 'complete,' a one-time action. (C) refers to a starting point in the past, and (D) does not fit before a phrase like 'the end of the week' in this sense.",
 };
 
-const part6r9b: PracticeQuestionData = {
-  prompt: "Part 6 · Read the notice and choose the best word for the blank.",
+const PART6_VISITOR_ACCESS = {
+  prompt: "Part 6 · Read the notice and answer the four questions.",
+  groupId: "p6-visitor-access",
   context:
-    "From: security@kestreltower.com\nTo: all-tenants@kestreltower.com\nSubject: Updated Visitor Access Procedure\n\nDear Tenants,\n\nBeginning next Monday, Kestrel Tower Management will implement a stricter visitor access procedure to improve building security. All visitors, including delivery couriers and outside contractors, must ______ their identification scanned at the front desk before they will be issued a temporary access badge. Tenants who are expecting a visitor should notify the front desk in advance so that check-in can proceed smoothly. Visitors who arrive without prior notice may experience a short delay while staff verify their appointment. We thank you for your cooperation as we work to keep the building secure for everyone.\n\nBuilding Management",
+    "From: security@kestreltower.com\nTo: all-tenants@kestreltower.com\nSubject: Updated Visitor Access Procedure\n\nDear Tenants,\n\nBeginning next Monday, Kestrel Tower Management will implement a stricter visitor access procedure to improve building security. All visitors, including delivery couriers and outside contractors, must ______ (1) their identification scanned at the front desk before they will be issued a temporary access badge. ______ (2)\n\nTenants who are expecting a visitor should notify the front desk ______ (3) advance so that check-in can proceed smoothly. Visitors who arrive without prior notice may experience a short delay, ______ (4) staff can verify their appointment.\n\nWe thank you for your cooperation as we work to keep the building secure for everyone.\n\nBuilding Management",
+};
+
+const part6grp8a: PracticeQuestionData = {
+  ...PART6_VISITOR_ACCESS,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "have" },
     { label: "B", text: "having" },
@@ -6168,7 +6174,52 @@ const part6r9b: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "The causative structure 'have + object + past participle' describes arranging for someone else to perform an action, and after the modal 'must' the base form 'have' is required: 'must have their identification scanned.' (B) 'having' is a gerund/present participle and cannot follow a modal verb directly; (C) 'has' is a third-person-singular form that also cannot follow a modal, which always takes the base form; (D) 'to have' adds an infinitive marker that is ungrammatical directly after a modal verb like 'must.'",
+    "The causative structure 'have + object + past participle' describes arranging for someone else to perform an action, and after the modal 'must' the base form 'have' is required: 'must have their identification scanned.' (B) is a gerund/present participle and cannot follow a modal verb directly; (C) is a third-person-singular form that also cannot follow a modal, which always takes the base form; (D) adds an infinitive marker that is ungrammatical directly after a modal verb like 'must.'",
+};
+
+const part6grp8b: PracticeQuestionData = {
+  ...PART6_VISITOR_ACCESS,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "This badge must be returned to the front desk before the visitor leaves the building.",
+    },
+    { label: "B", text: "The building's rooftop terrace will reopen for the summer season." },
+    { label: "C", text: "Recycling bins have been relocated to the loading dock area." },
+    { label: "D", text: "Tenant parking rates will increase slightly next quarter." },
+  ],
+  correct: "A",
+  explanation:
+    "The previous sentence introduces the temporary access badge; (A) naturally continues that topic with an instruction about the badge before the notice moves on to how tenants should prepare for visitors. (B), (C), and (D) are unrelated to the visitor access procedure.",
+};
+
+const part6grp8c: PracticeQuestionData = {
+  ...PART6_VISITOR_ACCESS,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "in" },
+    { label: "B", text: "on" },
+    { label: "C", text: "at" },
+    { label: "D", text: "with" },
+  ],
+  correct: "A",
+  explanation:
+    "'In advance' is a fixed expression meaning ahead of time. (B), (C), and (D) do not form standard expressions with 'advance' in this sense.",
+};
+
+const part6grp8d: PracticeQuestionData = {
+  ...PART6_VISITOR_ACCESS,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "so that" },
+    { label: "B", text: "so as" },
+    { label: "C", text: "in order" },
+    { label: "D", text: "for" },
+  ],
+  correct: "A",
+  explanation:
+    "'So that' introduces a purpose clause explaining why the delay occurs: to allow staff time to verify the appointment. (B) must be followed by an infinitive ('so as to verify'), not a full clause. (C) also requires 'to' before a verb ('in order to verify'), not a subject-verb clause on its own. (D) cannot introduce a full clause like 'staff can verify their appointment.'",
 };
 
 const part6r9c: PracticeQuestionData = {
@@ -6186,10 +6237,16 @@ const part6r9c: PracticeQuestionData = {
     "The results themselves produce a positive feeling in the reader, so the '-ing' participial adjective is required to describe the cause of that feeling: 'the overall results were extremely encouraging.' (A) 'encourage' is a base-form verb and cannot follow a linking verb like 'were' as a subject complement; (B) 'encouraged' is the '-ed' participial adjective used for a person who experiences a feeling (e.g., 'managers were encouraged by the results'), not for the results themselves; (D) 'encouragement' is a noun, and while nouns can follow 'were,' it would require an article (e.g., 'were an encouragement'), which is missing here.",
 };
 
-const part6r9d: PracticeQuestionData = {
-  prompt: "Part 6 · Read the memo and choose the best word for the blank.",
+const PART6_HOLIDAY_RETURN = {
+  prompt: "Part 6 · Read the memo and answer the four questions.",
+  groupId: "p6-holiday-return",
   context:
-    "From: customerservice@willowmerehomegoods.com\nTo: store-associates@willowmerehomegoods.com\nSubject: Holiday Return Policy Update\n\nDear Associates,\n\nAs the holiday shopping season approaches, we want to make you aware of an important update to our return policy. A number of customers ______ requested an extended return window for gifts purchased during November and December, and starting this year we will offer returns through January 31 instead of the standard 30-day period. Please make sure receipts issued during the holiday season clearly reflect this extended deadline. Associates should also remind customers at checkout that gift receipts are available upon request. We appreciate your help in making this transition smooth for our customers.\n\nCustomer Service Team",
+    "From: customerservice@willowmerehomegoods.com\nTo: store-associates@willowmerehomegoods.com\nSubject: Holiday Return Policy Update\n\nDear Associates,\n\nAs the holiday shopping season approaches, we want to make you aware of an important update to our return policy. A number of customers ______ (1) requested an extended return window for gifts purchased during November and December, and starting this year we will offer returns through January 31 instead of the standard 30-day period. ______ (2)\n\nThis policy adjustment applies ______ (3) all merchandise categories except clearance and final-sale items. Please make sure receipts issued during the holiday season clearly reflect this extended deadline. We appreciate your help in making this transition smooth ______ (4) our customers.\n\nCustomer Service Team",
+};
+
+const part6grp9a: PracticeQuestionData = {
+  ...PART6_HOLIDAY_RETURN,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "has" },
     { label: "B", text: "is" },
@@ -6198,7 +6255,52 @@ const part6r9d: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "'A number of' functions as a plural quantifier meaning 'several,' so it takes a plural verb agreeing with 'customers,' making 'have requested' correct. (A) 'has' is singular and would incorrectly agree with 'number' as if it were the true subject, a common confusion with the similar but distinct phrase 'the number of,' which does take a singular verb; (B) 'is' is also singular and present tense, mismatched both in number and in failing to form the needed present-perfect verb phrase; (C) 'was' is singular and past tense, which fits neither the plural subject nor the present-perfect structure needed here.",
+    "'A number of' functions as a plural quantifier meaning 'several,' so it takes a plural verb agreeing with 'customers,' making 'have requested' correct. (A) is singular and would incorrectly agree with 'number' as if it were the true subject, a common confusion with the similar but distinct phrase 'the number of,' which does take a singular verb; (B) is also singular and present tense, mismatched both in number and in failing to form the needed present-perfect verb phrase; (C) is singular and past tense, which fits neither the plural subject nor the present-perfect structure needed here.",
+};
+
+const part6grp9b: PracticeQuestionData = {
+  ...PART6_HOLIDAY_RETURN,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "This extension applies only to unworn merchandise with the original tags still attached.",
+    },
+    { label: "B", text: "Our loyalty program will introduce a new tier starting in January." },
+    { label: "C", text: "The warehouse team is preparing for the annual inventory count." },
+    { label: "D", text: "Employee holiday bonuses will be distributed in December." },
+  ],
+  correct: "A",
+  explanation:
+    "The previous sentence announces the extended return window; (A) naturally continues by clarifying a condition on that extension before the memo moves on to receipt requirements. (B), (C), and (D) are unrelated to the return policy update.",
+};
+
+const part6grp9c: PracticeQuestionData = {
+  ...PART6_HOLIDAY_RETURN,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "to" },
+    { label: "B", text: "for" },
+    { label: "C", text: "with" },
+    { label: "D", text: "on" },
+  ],
+  correct: "A",
+  explanation:
+    "'Applies to' is the standard verb-preposition pairing meaning a rule covers or affects something: 'applies to all merchandise categories.' (B), (C), and (D) do not pair correctly with 'applies' in this sense.",
+};
+
+const part6grp9d: PracticeQuestionData = {
+  ...PART6_HOLIDAY_RETURN,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "for" },
+    { label: "B", text: "to" },
+    { label: "C", text: "with" },
+    { label: "D", text: "by" },
+  ],
+  correct: "A",
+  explanation:
+    "'Smooth for our customers' describes the transition being easy or pleasant from the customers' perspective. (B) does not pair correctly with 'smooth' in this sense. (C) would imply cooperation alongside customers rather than describing the experience from their perspective. (D) does not fit this adjective-preposition pairing.",
 };
 
 const PART6_BRIDGE_TIMELINE = {
@@ -6543,10 +6645,16 @@ const part6grp4d: PracticeQuestionData = {
     "'As they arise' is a fixed expression meaning 'at the time each one comes up,' encouraging new hires to ask questions immediately rather than waiting. (B) would illogically mean raising questions before they exist. (C) introduces a condition that does not fit this context. (D) is followed by a noun phrase, not a clause like 'they arise,' and does not fit the intended meaning.",
 };
 
-const part6r11c: PracticeQuestionData = {
-  prompt: "Part 6 · Read the email and choose the best word for the blank.",
+const PART6_DASHBOARD_ROLLOUT = {
+  prompt: "Part 6 · Read the email and answer the four questions.",
+  groupId: "p6-dashboard-rollout",
   context:
-    "From: it@brookstone-analytics.com\nTo: department-heads@brookstone-analytics.com\nSubject: New Data Dashboard Rollout\n\nDear Department Heads,\n\nOver the past three months, our engineering team has built a new reporting dashboard that consolidates sales, support, and inventory data into a single view. We are rolling out the tool company-wide next week ______ reduce the time managers currently spend compiling separate spreadsheets from multiple systems. A short training video will be sent to all department heads on Monday morning, and live Q&A sessions will be held throughout the week. Please encourage your teams to complete the video before their first login. We are confident this change will save valuable time across every department.\n\nIT Department",
+    "From: it@brookstone-analytics.com\nTo: department-heads@brookstone-analytics.com\nSubject: New Data Dashboard Rollout\n\nDear Department Heads,\n\nOver the past three months, our engineering team has built a new reporting dashboard that consolidates sales, support, and inventory data into a single view. We are rolling out the tool company-wide next week ______ (1) reduce the time managers currently spend compiling separate spreadsheets from multiple systems. ______ (2)\n\nA short training video will be sent to all department heads on Monday morning, and live Q&A sessions will be held throughout the week. Please encourage your teams to complete the video ______ (3) their first login. We are confident this change will save valuable time across every department, ______ (4) the sales team has already reported strong early results during the pilot phase.\n\nIT Department",
+};
+
+const part6grp10a: PracticeQuestionData = {
+  ...PART6_DASHBOARD_ROLLOUT,
+  question: "Question (1): Choose the best word for the blank.",
   options: [
     { label: "A", text: "for" },
     { label: "B", text: "so" },
@@ -6555,7 +6663,52 @@ const part6r11c: PracticeQuestionData = {
   ],
   correct: "D",
   explanation:
-    "The infinitive of purpose 'to reduce' explains why the dashboard is being rolled out, as in 'rolling out the tool... to reduce the time managers currently spend.' (A) 'for' would require a noun or gerund object ('for reducing'), not the bare base verb 'reduce'; (B) 'so' alone cannot introduce a purpose infinitive without 'as to' or 'that'; (C) 'for to' is not standard English and is never used to mark purpose.",
+    "The infinitive of purpose 'to reduce' explains why the dashboard is being rolled out, as in 'rolling out the tool... to reduce the time managers currently spend.' (A) would require a noun or gerund object ('for reducing'), not the bare base verb 'reduce'; (B) alone cannot introduce a purpose infinitive without 'as to' or 'that'; (C) is not standard English and is never used to mark purpose.",
+};
+
+const part6grp10b: PracticeQuestionData = {
+  ...PART6_DASHBOARD_ROLLOUT,
+  question: "Question (2): Which sentence best fits the blank?",
+  options: [
+    {
+      label: "A",
+      text: "The new dashboard pulls live data automatically, so manual updates will no longer be necessary.",
+    },
+    { label: "B", text: "Our office will observe a modified holiday schedule this December." },
+    { label: "C", text: "Please remember to renew your parking permit by the end of the month." },
+    { label: "D", text: "The building's elevator will be out of service for routine maintenance." },
+  ],
+  correct: "A",
+  explanation:
+    "The previous sentence explains the dashboard reduces time spent compiling spreadsheets; (A) continues that point by explaining why — the data updates automatically — before the email moves on to training logistics. (B), (C), and (D) are unrelated to the dashboard rollout.",
+};
+
+const part6grp10c: PracticeQuestionData = {
+  ...PART6_DASHBOARD_ROLLOUT,
+  question: "Question (3): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "before" },
+    { label: "B", text: "after" },
+    { label: "C", text: "during" },
+    { label: "D", text: "until" },
+  ],
+  correct: "A",
+  explanation:
+    "'Before their first login' tells department heads to have their teams watch the video ahead of using the dashboard. (B) would reverse the order, having teams log in first. (C) does not fit a single point in time like 'their first login.' (D) would imply repeated viewing up to that point rather than a one-time requirement.",
+};
+
+const part6grp10d: PracticeQuestionData = {
+  ...PART6_DASHBOARD_ROLLOUT,
+  question: "Question (4): Choose the best word for the blank.",
+  options: [
+    { label: "A", text: "and" },
+    { label: "B", text: "but" },
+    { label: "C", text: "or" },
+    { label: "D", text: "nor" },
+  ],
+  correct: "A",
+  explanation:
+    "'And' links two positive, complementary statements: confidence about future time savings, plus evidence already seen from the pilot. (B) would incorrectly signal contrast, but the sales team's early results support rather than contradict the previous statement. (C) would present alternatives, not two things both being true. (D) is used for negative agreement following a negative clause, which does not apply here.",
 };
 
 const part6r11d: PracticeQuestionData = {
@@ -9355,9 +9508,15 @@ export const part6Questions: PracticeQuestionData[] = [
   part6grp2b,
   part6grp2c,
   part6grp2d,
-  part6r9b,
+  part6grp8a,
+  part6grp8b,
+  part6grp8c,
+  part6grp8d,
   part6r9c,
-  part6r9d,
+  part6grp9a,
+  part6grp9b,
+  part6grp9c,
+  part6grp9d,
   part6grp5a,
   part6grp5b,
   part6grp5c,
@@ -9379,7 +9538,10 @@ export const part6Questions: PracticeQuestionData[] = [
   part6grp4b,
   part6grp4c,
   part6grp4d,
-  part6r11c,
+  part6grp10a,
+  part6grp10b,
+  part6grp10c,
+  part6grp10d,
   part6r11d,
   part6r11e,
 ];
