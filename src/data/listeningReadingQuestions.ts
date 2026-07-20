@@ -1402,12 +1402,18 @@ const part2r11f: PracticeQuestionData = {
 };
 
 // ── Part 3 · Conversations ──
-const part3: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 1 — Print shop brochures", durationSec: 38 },
+const PART3_BROCHURE_MISPRINT = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-brochure-misprint",
+  audio: { label: "Conversation — Print shop brochures", durationSec: 0 },
   context:
-    "(W) Hi, David. I just got back from the print shop. The brochures for tomorrow's trade show are ready, but they spelled our company name wrong on the back cover.\n(M) You're kidding. We hand those out in less than 18 hours. Can they reprint?\n(W) They said yes, but only if we approve a new proof by 5 PM today. Otherwise we'll have to use what we have.\n(M) Okay — forward me the proof as soon as it arrives and I'll sign off immediately.\n\nQuestion: What problem does the woman mention?",
+    "(W) Hi, David. I just got back from the print shop. The brochures for tomorrow's trade show are ready, but they spelled our company name wrong on the back cover.\n(M) You're kidding. We hand those out in less than 18 hours. Can they reprint?\n(W) They said yes, but only if we approve a new proof by 5 PM today. Otherwise we'll have to use what we have.\n(M) Okay — forward me the proof as soon as it arrives and I'll sign off immediately.\n(W) Will do. Should I also let Marketing know there might be a delay picking these up?\n(M) Good idea — I'll call them now so they can plan the booth setup around it.",
+};
+
+const part31: PracticeQuestionData = {
+  ...PART3_BROCHURE_MISPRINT,
+  question: "What problem does the woman mention?",
   options: [
     { label: "A", text: "The trade show has been postponed." },
     { label: "B", text: "The print shop is closed for the day." },
@@ -1417,6 +1423,34 @@ const part3: PracticeQuestionData = {
   correct: "C",
   explanation:
     "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
+};
+
+const part32: PracticeQuestionData = {
+  ...PART3_BROCHURE_MISPRINT,
+  question: "What must happen by 5 PM for the brochures to be reprinted?",
+  options: [
+    { label: "A", text: "A new proof must be approved." },
+    { label: "B", text: "Payment must be finalized." },
+    { label: "C", text: "The design must be resubmitted." },
+    { label: "D", text: "The trade show must be confirmed." },
+  ],
+  correct: "A",
+  explanation:
+    "The print shop will reprint 'only if we approve a new proof by 5 PM today.' Payment (B), resubmitting the design (C), and confirming the trade show (D) are never mentioned.",
+};
+
+const part33: PracticeQuestionData = {
+  ...PART3_BROCHURE_MISPRINT,
+  question: "What does the man say he will do next?",
+  options: [
+    { label: "A", text: "Contact the Marketing team." },
+    { label: "B", text: "Pick up the brochures himself." },
+    { label: "C", text: "Request a refund from the print shop." },
+    { label: "D", text: "Reschedule the trade show." },
+  ],
+  correct: "A",
+  explanation:
+    "He says, 'I'll call them now so they can plan the booth setup around it,' referring to Marketing, whom the woman just suggested notifying. Picking up the brochures himself (B), a refund (C), and rescheduling (D) are never mentioned.",
 };
 
 const PART3_SHUTTLE_INQUIRY = {
@@ -1674,12 +1708,18 @@ const part3h: PracticeQuestionData = {
     "The man tells her, 'I see the issue. The receipt for your taxi ride is missing from the submission.' (A), (C), and (D) are never mentioned — they are typical expense-related distractors that reuse vocabulary ('expense report', 'approve') from the conversation.",
 };
 
-const part3i: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 9 — Company car trouble", durationSec: 38 },
+const PART3_POOL_CAR = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-pool-car",
+  audio: { label: "Conversation — Company car trouble", durationSec: 0 },
   context:
-    "(M) Hi Sandra, the pool car I reserved for tomorrow's client visit is making a strange noise. I don't think it's safe to drive.\n(W) Thanks for letting me know. I'll have the mechanic take a look at it today. In the meantime, would you like to take a taxi to the client visit instead?\n(M) That would help, as long as I can be reimbursed for the fare.\n(W) Definitely. Just keep the receipt and attach it to your expense report next week.\n\nQuestion: Why does the man say the pool car is not safe to drive?",
+    "(M) Hi Sandra, the pool car I reserved for tomorrow's client visit is making a strange noise. I don't think it's safe to drive.\n(W) Thanks for letting me know. I'll have the mechanic take a look at it today. In the meantime, would you like to take a taxi to the client visit instead?\n(M) That would help, as long as I can be reimbursed for the fare.\n(W) Definitely. Just keep the receipt and attach it to your expense report next week.\n(M) Sounds good. What time should I book the taxi for, given the client visit starts at 10?\n(W) I'd leave by 9:15 to be safe — traffic downtown tends to build up around then.",
+};
+
+const part3i1: PracticeQuestionData = {
+  ...PART3_POOL_CAR,
+  question: "Why does the man say the pool car is not safe to drive?",
   options: [
     { label: "A", text: "It is making a strange noise." },
     { label: "B", text: "It has a flat tire." },
@@ -1689,6 +1729,34 @@ const part3i: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The man says the pool car 'is making a strange noise' and that he doesn't think it's safe to drive. (B), (C), and (D) are never mentioned — they are typical distractors involving other vehicle problems.",
+};
+
+const part3i2: PracticeQuestionData = {
+  ...PART3_POOL_CAR,
+  question: "What does the woman tell the man to do to be reimbursed?",
+  options: [
+    { label: "A", text: "Keep the receipt and submit it with his expense report." },
+    { label: "B", text: "Email a copy of the receipt to accounting immediately." },
+    { label: "C", text: "Get approval from her before booking the taxi." },
+    { label: "D", text: "Use a company credit card for the fare." },
+  ],
+  correct: "A",
+  explanation:
+    "'Just keep the receipt and attach it to your expense report next week.' Emailing accounting (B), needing prior approval (C), and a company card (D) are never mentioned.",
+};
+
+const part3i3: PracticeQuestionData = {
+  ...PART3_POOL_CAR,
+  question: "What time does the woman recommend the man leave for the client visit?",
+  options: [
+    { label: "A", text: "9:15" },
+    { label: "B", text: "10:00" },
+    { label: "C", text: "8:30" },
+    { label: "D", text: "9:45" },
+  ],
+  correct: "A",
+  explanation:
+    "'I'd leave by 9:15 to be safe — traffic downtown tends to build up around then.' The visit itself starts at 10:00 (B), which is the appointment time, not the recommended departure time. 8:30 (C) and 9:45 (D) are never mentioned.",
 };
 
 const part3j: PracticeQuestionData = {
@@ -2728,12 +2796,18 @@ const part3br: PracticeQuestionData = {
     "The man says he 'tried to scan my membership card at the pool entrance this morning, but the gate wouldn't let me in,' which the woman traces to an expired membership. (B), (C), and (D) are never mentioned — they are typical pool-related distractors.",
 };
 
-const part3bs: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 71 — Bowling alley lane double-booking", durationSec: 44 },
+const PART3_BOWLING_DOUBLE_BOOKING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-bowling-double-booking",
+  audio: { label: "Conversation — Bowling alley lane double-booking", durationSec: 0 },
   context:
-    "(W) Hi, I reserved two lanes for a birthday party at 6 PM, but when we arrived, the lanes were already occupied by another group.\n(M) I'm so sorry about that mix-up. It looks like our system double-booked those lanes. I can offer you two lanes on the other side of the alley right now, plus complimentary shoe rentals for your group.\n(W) That would work, as long as we can still start close to 6.\n(M) Absolutely, I'll get you set up within the next five minutes.\n\nQuestion: What problem does the woman report?",
+    "(W) Hi, I reserved two lanes for a birthday party at 6 PM, but when we arrived, the lanes were already occupied by another group.\n(M) I'm so sorry about that mix-up. It looks like our system double-booked those lanes. I can offer you two lanes on the other side of the alley right now, plus complimentary shoe rentals for your group.\n(W) That would work, as long as we can still start close to 6.\n(M) Absolutely, I'll get you set up within the next five minutes.\n(W) Thank you. We also have a food order for twelve pizzas coming at 6:30 — will that still be delivered to the new lanes?\n(M) Yes, I'll update the delivery note myself so the driver brings everything to the new spot.",
+};
+
+const part3bs1: PracticeQuestionData = {
+  ...PART3_BOWLING_DOUBLE_BOOKING,
+  question: "What problem does the woman report?",
   options: [
     { label: "A", text: "Her reserved lanes were occupied by another group." },
     { label: "B", text: "The bowling shoes were the wrong sizes." },
@@ -2743,6 +2817,34 @@ const part3bs: PracticeQuestionData = {
   correct: "A",
   explanation:
     "The woman says the lanes she 'reserved... for a birthday party at 6 PM' 'were already occupied by another group,' and the man confirms 'our system double-booked those lanes.' (B), (C), and (D) are never mentioned — they are typical bowling-alley-related distractors.",
+};
+
+const part3bs2: PracticeQuestionData = {
+  ...PART3_BOWLING_DOUBLE_BOOKING,
+  question: "What does the man offer the woman's group?",
+  options: [
+    { label: "A", text: "Two lanes elsewhere in the alley, plus free shoe rentals." },
+    { label: "B", text: "A full refund of the reservation fee." },
+    { label: "C", text: "A discount on a future visit." },
+    { label: "D", text: "A private party room instead of lanes." },
+  ],
+  correct: "A",
+  explanation:
+    "He offers 'two lanes on the other side of the alley right now, plus complimentary shoe rentals for your group.' A refund (B), a future discount (C), and a private room (D) are never mentioned.",
+};
+
+const part3bs3: PracticeQuestionData = {
+  ...PART3_BOWLING_DOUBLE_BOOKING,
+  question: "What does the man say he will do about the food order?",
+  options: [
+    { label: "A", text: "Update the delivery note himself." },
+    { label: "B", text: "Cancel the pizza order." },
+    { label: "C", text: "Ask the woman to call the restaurant." },
+    { label: "D", text: "Offer a free dessert instead." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll update the delivery note myself so the driver brings everything to the new spot.' Canceling the order (B), asking her to call the restaurant (C), and a free dessert (D) are never mentioned.",
 };
 
 const part3new1: PracticeQuestionData = {
@@ -2935,12 +3037,18 @@ const part3r9a: PracticeQuestionData = {
     "The man explains, 'our key witness just had a family emergency and can't attend,' which is why he calls to reschedule the deposition. (B), (C), and (D) are never mentioned — they are typical law-firm-related distractors that reuse vocabulary ('case', 'deposition') from the conversation.",
 };
 
-const part3r9b: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 83 — Hair salon color touch-up", durationSec: 37 },
+const PART3_SALON_COLOR = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-salon-color",
+  audio: { label: "Conversation — Hair salon color touch-up", durationSec: 0 },
   context:
-    "(W) Hi, I picked up my hair color today, but it came out much darker than the shade we discussed at my consultation.\n(M) I'm so sorry about that. Let me take a look... you're right, it does look a shade or two darker than what we agreed on.\n(W) Is there a way to lighten it back to what I wanted?\n(M) Yes, I can apply a toner treatment this afternoon at no extra charge to get it closer to the original shade.\n\nQuestion: What problem does the woman report?",
+    "(W) Hi, I picked up my hair color today, but it came out much darker than the shade we discussed at my consultation.\n(M) I'm so sorry about that. Let me take a look... you're right, it does look a shade or two darker than what we agreed on.\n(W) Is there a way to lighten it back to what I wanted?\n(M) Yes, I can apply a toner treatment this afternoon at no extra charge to get it closer to the original shade.\n(W) That's a relief. How long will the toner take?\n(M) About thirty minutes, so you should still be out well before your dinner reservation.",
+};
+
+const part3r9b1: PracticeQuestionData = {
+  ...PART3_SALON_COLOR,
+  question: "What problem does the woman report?",
   options: [
     { label: "A", text: "Her appointment was canceled without notice." },
     { label: "B", text: "Her hair color turned out darker than requested." },
@@ -2950,6 +3058,34 @@ const part3r9b: PracticeQuestionData = {
   correct: "B",
   explanation:
     "The woman says her hair color 'came out much darker than the shade we discussed at my consultation,' and the man agrees it looks 'a shade or two darker.' (A), (C), and (D) are never mentioned — they are typical salon-related distractors.",
+};
+
+const part3r9b2: PracticeQuestionData = {
+  ...PART3_SALON_COLOR,
+  question: "What does the man offer to do?",
+  options: [
+    { label: "A", text: "Apply a toner treatment at no extra charge." },
+    { label: "B", text: "Refund the cost of the coloring service." },
+    { label: "C", text: "Reschedule her with a different stylist." },
+    { label: "D", text: "Recommend a home coloring kit." },
+  ],
+  correct: "A",
+  explanation:
+    "'I can apply a toner treatment this afternoon at no extra charge to get it closer to the original shade.' A refund (B), a different stylist (C), and a home kit (D) are never mentioned.",
+};
+
+const part3r9b3: PracticeQuestionData = {
+  ...PART3_SALON_COLOR,
+  question: "How long does the man say the toner treatment will take?",
+  options: [
+    { label: "A", text: "About thirty minutes." },
+    { label: "B", text: "About one hour." },
+    { label: "C", text: "About fifteen minutes." },
+    { label: "D", text: "About two hours." },
+  ],
+  correct: "A",
+  explanation:
+    "'About thirty minutes, so you should still be out well before your dinner reservation.' One hour (B), fifteen minutes (C), and two hours (D) are never mentioned.",
 };
 
 const part3r9c: PracticeQuestionData = {
@@ -9301,7 +9437,9 @@ export const part2Questions: PracticeQuestionData[] = [
   part2r11f,
 ];
 export const part3Questions: PracticeQuestionData[] = [
-  part3,
+  part31,
+  part32,
+  part33,
   part3b1,
   part3b2,
   part3b3,
@@ -9317,7 +9455,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3f,
   part3g,
   part3h,
-  part3i,
+  part3i1,
+  part3i2,
+  part3i3,
   part3j,
   part3k,
   part3l,
@@ -9379,7 +9519,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3bp,
   part3bq,
   part3br,
-  part3bs,
+  part3bs1,
+  part3bs2,
+  part3bs3,
   part3new1,
   part3new2,
   part3new3,
@@ -9391,7 +9533,9 @@ export const part3Questions: PracticeQuestionData[] = [
   part3new9,
   part3new10,
   part3r9a,
-  part3r9b,
+  part3r9b1,
+  part3r9b2,
+  part3r9b3,
   part3r9c,
   part3r9d,
   part3r9e,
