@@ -1419,12 +1419,18 @@ const part3: PracticeQuestionData = {
     "The woman states the brochures are ready 'but they spelled our company name wrong on the back cover.' (A), (B), and (D) are never mentioned — they are typical Part 3 distractors that reuse vocabulary ('trade show', 'print shop', 'brochures') from the conversation.",
 };
 
-const part3b: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 2 — Hotel shuttle inquiry", durationSec: 42 },
+const PART3_SHUTTLE_INQUIRY = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-shuttle-inquiry",
+  audio: { label: "Conversation — Hotel shuttle schedule inquiry", durationSec: 0 },
   context:
-    "(M) Front desk, how may I help you?\n(W) Hi, this is Sarah Chen from room 412. I have a quick question about the airport shuttle — I saw the sign in the lobby says it runs every thirty minutes, but the brochure in my room says hourly.\n(M) Oh, I'm sorry for the confusion. We updated the schedule last month; the shuttle now departs on the hour and at half past. The next one leaves at 7:30 AM.\n(W) Great, and does it go directly to Terminal 2?\n(M) Yes, ma'am. It makes one brief stop at Terminal 1 first, then proceeds directly to Terminal 2.\n\nQuestion: Why does the woman call the front desk?",
+    "(M) Front desk, how may I help you?\n(W) Hi, this is Sarah Chen from room 412. I have a quick question about the airport shuttle — I saw the sign in the lobby says it runs every thirty minutes, but the brochure in my room says hourly.\n(M) Oh, I'm sorry for the confusion. We updated the schedule last month; the shuttle now departs on the hour and at half past. The next one leaves at 7:30 AM.\n(W) Great, and does it go directly to Terminal 2?\n(M) Yes, ma'am. It makes one brief stop at Terminal 1 first, then proceeds directly to Terminal 2.\n(W) That's good to know. I'll have four large suitcases with me — is there enough room, or should I book a second shuttle?\n(M) The van comfortably holds six bags, so four won't be a problem, but I'll let the driver know in advance just to be safe.",
+};
+
+const part3b1: PracticeQuestionData = {
+  ...PART3_SHUTTLE_INQUIRY,
+  question: "Why does the woman call the front desk?",
   options: [
     { label: "A", text: "To extend her stay by one night." },
     { label: "B", text: "To report a problem with her room." },
@@ -1436,12 +1442,46 @@ const part3b: PracticeQuestionData = {
     "The woman mentions she saw two different shuttle schedules — one in the lobby ('every thirty minutes') and one in her room brochure ('hourly'). She calls to resolve this conflicting information. (A), (B), and (D) are never mentioned; they are common hotel-related distractors.",
 };
 
-const part3c: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 3 — Conference room booking", durationSec: 40 },
+const part3b2: PracticeQuestionData = {
+  ...PART3_SHUTTLE_INQUIRY,
+  question: "What does the man say about the shuttle's current departure schedule?",
+  options: [
+    { label: "A", text: "It runs every fifteen minutes." },
+    { label: "B", text: "It departs every half hour." },
+    { label: "C", text: "It runs once every two hours." },
+    { label: "D", text: "It operates only in the morning." },
+  ],
+  correct: "B",
+  explanation:
+    "The man says the shuttle 'now departs on the hour and at half past' — twice within each hour, or every half hour. Fifteen minutes (A) and every two hours (C) both misstate the interval, and nothing limits service to mornings only (D).",
+};
+
+const part3b3: PracticeQuestionData = {
+  ...PART3_SHUTTLE_INQUIRY,
+  question: "What does the man say he will do about the woman's luggage?",
+  options: [
+    { label: "A", text: "Reserve a second shuttle for her bags." },
+    { label: "B", text: "Let the driver know in advance." },
+    { label: "C", text: "Have a porter carry the bags to the van." },
+    { label: "D", text: "Charge an additional luggage fee." },
+  ],
+  correct: "B",
+  explanation:
+    "The man says 'the van comfortably holds six bags, so four won't be a problem, but I'll let the driver know in advance just to be safe.' A second shuttle (A) is the option the woman raised, not what he does — he says it won't be necessary. A porter (C) and a fee (D) are never mentioned.",
+};
+
+const PART3_ROOM_BOOKING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-room-booking",
+  audio: { label: "Conversation — Conference room booking", durationSec: 0 },
   context:
-    "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a screen and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n\nQuestion: What is the man trying to do?",
+    "(W) Hi Greg, have you reserved the conference room for Friday's client presentation?\n(M) I tried to, but the system said both the Rose Room and the Orchid Room are already booked all day.\n(W) That's frustrating. The VP specifically asked for a room with a screen and seating for at least twelve.\n(M) Well, the Lily Room on the fourth floor is available from 2 PM, and it has a 4K display that connects wirelessly. It seats fourteen.\n(W) Perfect — let's book that and send an updated calendar invite to the client team.\n(M) Will do. Should I also arrange catering, or is the client bringing their own refreshments?\n(W) Let's order a light lunch for ten people — the client mentioned they'll grab coffee on their own.",
+};
+
+const part3c1: PracticeQuestionData = {
+  ...PART3_ROOM_BOOKING,
+  question: "What is the man trying to do?",
   options: [
     { label: "A", text: "Cancel an existing meeting with a client." },
     { label: "B", text: "Find an available room for a presentation." },
@@ -1453,12 +1493,46 @@ const part3c: PracticeQuestionData = {
     "The man initially tried to reserve a conference room for the client presentation but found two rooms booked. He then suggests the Lily Room as an alternative, which has the display screen and seating the VP asked for. The core action is finding an available room. (A), (C), and (D) are never mentioned — no meeting is cancelled, no projector is broken, and the meeting is a client presentation, not a training session.",
 };
 
-const part3d: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 4 — Interview schedule conflict", durationSec: 40 },
+const part3c2: PracticeQuestionData = {
+  ...PART3_ROOM_BOOKING,
+  question: "What feature of the Lily Room does the man mention?",
+  options: [
+    { label: "A", text: "It has a wireless 4K display." },
+    { label: "B", text: "It has floor-to-ceiling windows." },
+    { label: "C", text: "It is located on the second floor." },
+    { label: "D", text: "It requires booking one week in advance." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the room 'has a 4K display that connects wirelessly.' (C) swaps the actual floor — the room is on the fourth floor, not the second — a classic Part 3 numbers trap. Windows (B) and an advance-booking requirement (D) are never mentioned.",
+};
+
+const part3c3: PracticeQuestionData = {
+  ...PART3_ROOM_BOOKING,
+  question: "What will the woman order for the client meeting?",
+  options: [
+    { label: "A", text: "A light lunch for ten guests." },
+    { label: "B", text: "Coffee for the client team." },
+    { label: "C", text: "A catered breakfast." },
+    { label: "D", text: "Snacks for the presentation team only." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says, 'Let's order a light lunch for ten people.' (B) reverses who does what — coffee is what the client will get on their own, not something she is ordering. A catered breakfast (C) and snacks for the presentation team only (D) are never mentioned.",
+};
+
+const PART3_INTERVIEW_RESCHEDULE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-interview-reschedule",
+  audio: { label: "Conversation — Interview schedule conflict", durationSec: 0 },
   context:
-    "(M) Hi Denise, I just saw that the candidate for the marketing position, Mr. Alvarez, is scheduled to come in at 2 PM tomorrow, but I have a budget meeting at that exact time.\n(W) Oh, I didn't realize that meeting had been moved up. Would 10 AM work instead?\n(M) Yes, 10 AM is open on my calendar. Can you also ask Priya from the design team to join, since the role works closely with her group?\n(W) Sure, I'll email both of them right now to confirm the new time.\n\nQuestion: Why does the man want to change the interview time?",
+    "(M) Hi Denise, I just saw that the candidate for the marketing position, Mr. Alvarez, is scheduled to come in at 2 PM tomorrow, but I have a budget meeting at that exact time.\n(W) Oh, I didn't realize that meeting had been moved up. Would 10 AM work instead?\n(M) Yes, 10 AM is open on my calendar. Can you also ask Priya from the design team to join, since the role works closely with her group?\n(W) Sure, I'll email both of them right now to confirm the new time.\n(M) Thanks. Also, could you send Priya the candidate's portfolio beforehand so she has time to review it?\n(W) Of course — I'll attach it to the same email so she gets everything at once.",
+};
+
+const part3d1: PracticeQuestionData = {
+  ...PART3_INTERVIEW_RESCHEDULE,
+  question: "Why does the man want to change the interview time?",
   options: [
     { label: "A", text: "The candidate withdrew his application." },
     { label: "B", text: "He has a scheduling conflict with another meeting." },
@@ -1470,12 +1544,46 @@ const part3d: PracticeQuestionData = {
     "The man says, 'I have a budget meeting at that exact time,' which is why he asks to move the interview. (A), (C), and (D) are never mentioned — they are typical distractors that reuse vocabulary ('candidate', 'design team', 'interview') from the conversation.",
 };
 
-const part3e: PracticeQuestionData = {
-  prompt: "Part 3 · Conversations. Read the transcript and answer the question.",
-  listening: true,
-  audio: { label: "Conversation 5 — Supplier delivery delay", durationSec: 42 },
+const part3d2: PracticeQuestionData = {
+  ...PART3_INTERVIEW_RESCHEDULE,
+  question: "Who does the man ask to be included in the interview?",
+  options: [
+    { label: "A", text: "Someone from the design team." },
+    { label: "B", text: "A senior member of HR." },
+    { label: "C", text: "The current marketing director." },
+    { label: "D", text: "A representative from finance." },
+  ],
+  correct: "A",
+  explanation:
+    "The man asks Denise to 'ask Priya from the design team to join, since the role works closely with her group.' HR (B), the marketing director (C), and finance (D) are never mentioned.",
+};
+
+const part3d3: PracticeQuestionData = {
+  ...PART3_INTERVIEW_RESCHEDULE,
+  question: "What does the man ask the woman to send to Priya?",
+  options: [
+    { label: "A", text: "The candidate's portfolio." },
+    { label: "B", text: "A copy of the job posting." },
+    { label: "C", text: "The revised interview schedule." },
+    { label: "D", text: "A list of interview questions." },
+  ],
+  correct: "A",
+  explanation:
+    "The man asks her to 'send Priya the candidate's portfolio beforehand so she has time to review it.' (C) reuses the scheduling topic discussed earlier in the conversation but isn't what's being sent to Priya. The job posting (B) and interview questions (D) are never mentioned.",
+};
+
+const PART3_SHIPMENT_DELAY = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-shipment-delay",
+  audio: { label: "Conversation — Supplier delivery delay", durationSec: 0 },
   context:
-    "(M) Hi Ms. Tran, this is Mark from the warehouse. The shipment of packaging materials we ordered was supposed to arrive this morning, but it hasn't shown up yet.\n(W) I'm sorry about that — our supplier just informed us there's a delay at customs, and the truck won't leave the port until tomorrow.\n(M) That's a problem. We only have enough boxes for two more days of orders.\n(W) Understood. I'll ask them to prioritize a partial shipment by air so you get at least half the order tomorrow afternoon.\n\nQuestion: According to the woman, why is the shipment late?",
+    "(M) Hi Ms. Tran, this is Mark from the warehouse. The shipment of packaging materials we ordered was supposed to arrive this morning, but it hasn't shown up yet.\n(W) I'm sorry about that — our supplier just informed us there's a delay at customs, and the truck won't leave the port until tomorrow.\n(M) That's a problem. We only have enough boxes for two more days of orders.\n(W) Understood. I'll ask them to prioritize a partial shipment by air so you get at least half the order tomorrow afternoon.\n(M) That would help a lot. Should I let the production team know to expect a shortfall?\n(W) Yes, please give them a heads-up, and I'll follow up with a written confirmation once the air shipment is booked.",
+};
+
+const part3e1: PracticeQuestionData = {
+  ...PART3_SHIPMENT_DELAY,
+  question: "According to the woman, why is the shipment late?",
   options: [
     { label: "A", text: "The warehouse forgot to place the order." },
     { label: "B", text: "The delivery truck broke down on the highway." },
@@ -1485,6 +1593,34 @@ const part3e: PracticeQuestionData = {
   correct: "C",
   explanation:
     "The woman explains that 'our supplier just informed us there's a delay at customs, and the truck won't leave the port until tomorrow.' (A), (B), and (D) are never mentioned — they are common shipment-related distractors that reuse vocabulary ('shipment', 'truck', 'packaging materials') from the conversation.",
+};
+
+const part3e2: PracticeQuestionData = {
+  ...PART3_SHIPMENT_DELAY,
+  question: "What solution does the woman propose?",
+  options: [
+    { label: "A", text: "Sending part of the order by air freight." },
+    { label: "B", text: "Canceling the order and placing a new one." },
+    { label: "C", text: "Switching to a different supplier." },
+    { label: "D", text: "Refunding the cost of the shipment." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman offers 'to prioritize a partial shipment by air so you get at least half the order tomorrow afternoon' — sending part of the order by air. Canceling (B), a new supplier (C), and a refund (D) are never mentioned.",
+};
+
+const part3e3: PracticeQuestionData = {
+  ...PART3_SHIPMENT_DELAY,
+  question: "What will the woman do once the air shipment is booked?",
+  options: [
+    { label: "A", text: "Send the man written confirmation." },
+    { label: "B", text: "Personally deliver the boxes to the warehouse." },
+    { label: "C", text: "Call the customs office for an update." },
+    { label: "D", text: "Reduce the price of the delayed order." },
+  ],
+  correct: "A",
+  explanation:
+    "'I'll follow up with a written confirmation once the air shipment is booked.' Personally delivering the boxes (B), calling customs (C), and a price reduction (D) are never mentioned. Notifying the production team is the man's task, not hers — the written confirmation is what she commits to.",
 };
 
 const part3f: PracticeQuestionData = {
@@ -9166,10 +9302,18 @@ export const part2Questions: PracticeQuestionData[] = [
 ];
 export const part3Questions: PracticeQuestionData[] = [
   part3,
-  part3b,
-  part3c,
-  part3d,
-  part3e,
+  part3b1,
+  part3b2,
+  part3b3,
+  part3c1,
+  part3c2,
+  part3c3,
+  part3d1,
+  part3d2,
+  part3d3,
+  part3e1,
+  part3e2,
+  part3e3,
   part3f,
   part3g,
   part3h,
