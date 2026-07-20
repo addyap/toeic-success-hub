@@ -5,6 +5,11 @@ const part1a: PracticeQuestionData = {
   image: {
     src: "/images/part1/part1a.jpg",
     credit: "Photo by Shixart1985, CC BY 2.0, via Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Barista_prepares_espresso_at_coffee_shop.jpg",
+    author: "Shixart1985",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
   },
   prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
   photo: true,
@@ -110,6 +115,11 @@ const part1f: PracticeQuestionData = {
   image: {
     src: "/images/part1/part1f.jpg",
     credit: "Photo by Pekka J. Heiskanen, CC BY 4.0, via Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:People_on_the_platform_at_Tikkurila_railway_station_in_Vantaa,_Finland,_2012.jpg",
+    author: "Pekka J. Heiskanen",
+    licenseName: "CC BY 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/4.0",
   },
   prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
   photo: true,
@@ -131,6 +141,11 @@ const part1g: PracticeQuestionData = {
   image: {
     src: "/images/part1/part1g.jpg",
     credit: "Photo by PattayaPatrol, CC BY-SA 4.0, via Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:DFC_0796_A_woman_browsing_shirts_on_a_crowded_clothing_rack_in_a_busy_store_with_mannequins_and_folded_garments_nearby.jpg",
+    author: "PattayaPatrol",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
   },
   prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
   photo: true,
@@ -173,6 +188,10 @@ const part1i: PracticeQuestionData = {
   image: {
     src: "/images/part1/part1i.jpg",
     credit: "Photo by CamrynBell, CC BY-SA 4.0, via Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Book_cart_NBLA.jpg",
+    author: "CamrynBell",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
   },
   prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
   photo: true,
@@ -194,6 +213,11 @@ const part1j: PracticeQuestionData = {
   image: {
     src: "/images/part1/part1j.jpg",
     credit: "Photo by PattayaPatrol, CC BY-SA 4.0, via Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:DFC_1752_A_vendor_wearing_a_face_mask_hands_a_bag_of_fresh_fruit_to_a_customer_at_a_bustling_outdoor_market_stall_filled_with_bananas_grapes_and_other_produce.jpg",
+    author: "PattayaPatrol",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
   },
   prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
   photo: true,

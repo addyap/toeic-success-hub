@@ -153,6 +153,23 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
+          <ul className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <li>
+              <Link to="/privacy" className="hover:text-foreground">
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:text-foreground">
+                Terms
+              </Link>
+            </li>
+            <li>
+              <Link to="/legal" className="hover:text-foreground">
+                Mentions légales
+              </Link>
+            </li>
+          </ul>
           © {new Date().getFullYear()} ToeicPath. TOEIC is a registered trademark of ETS. This site
           is not affiliated with ETS.
         </div>

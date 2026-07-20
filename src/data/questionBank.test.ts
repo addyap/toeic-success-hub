@@ -110,6 +110,65 @@ describe("real-exam format", () => {
   });
 });
 
+/**
+ * Photos whose exact Wikimedia source file has NOT been confirmed. Their
+ * credits state an author and licence, but that claim is unverified: a search
+ * of Commons could not pin down which file each one is, and two plausible-
+ * looking candidates turned out on inspection to be different photographs.
+ *
+ * Shipping an unverified licence claim commercially is the risk here, not the
+ * missing hyperlink. Each of these needs its source page confirmed, or the
+ * photo replaced with one that can be. The list is a ratchet: it may shrink,
+ * never grow, so no new image can be added without proper attribution.
+ */
+const UNVERIFIED_IMAGES = [
+  "/images/part1/part1b.jpg",
+  "/images/part1/part1c.jpg",
+  "/images/part1/part1d.jpg",
+  "/images/part1/part1e.jpg",
+  "/images/part1/part1h.jpg",
+  "/images/part1/part1k.jpg",
+  "/images/part1/part1l.jpg",
+];
+
+describe("image licensing", () => {
+  it("every verified photo carries complete, linkable attribution", () => {
+    for (const q of part1Questions) {
+      const img = q.image!;
+      if (UNVERIFIED_IMAGES.includes(img.src)) continue;
+      expect(img.author, `${img.src} missing author`).toBeTruthy();
+      expect(img.licenseName, `${img.src} missing licence name`).toBeTruthy();
+      expect(img.sourceUrl, `${img.src} missing source URL`).toMatch(
+        /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/,
+      );
+      expect(img.licenseUrl, `${img.src} missing licence URL`).toMatch(
+        /^https:\/\/creativecommons\.org\/(licenses|publicdomain)\//,
+      );
+    }
+  });
+
+  it("the unverified-licence backlog only shrinks", () => {
+    const stillUnverified = part1Questions
+      .filter((q) => !q.image!.sourceUrl)
+      .map((q) => q.image!.src);
+    expect(
+      stillUnverified.length,
+      `unverified images: ${stillUnverified.join(", ")}`,
+    ).toBeLessThanOrEqual(UNVERIFIED_IMAGES.length);
+  });
+
+  it("no image is listed as unverified once it has been verified", () => {
+    for (const q of part1Questions) {
+      if (q.image!.sourceUrl) {
+        expect(
+          UNVERIFIED_IMAGES,
+          `${q.image!.src} is verified — remove it from UNVERIFIED_IMAGES`,
+        ).not.toContain(q.image!.src);
+      }
+    }
+  });
+});
+
 describe("question groups (Parts 3, 4, 6, 7 sets)", () => {
   const units = groupQuestions(listeningReadingQuestions);
   const sets = units.filter((u) => u.questions.length > 1);

@@ -19,6 +19,12 @@ export const Route = createFileRoute("/sitemap.xml")({
             priority: "0.7",
             changefreq: "monthly",
           })),
+          // Low priority but indexed: search engines and app stores expect
+          // reachable privacy/terms pages, and French law requires the
+          // mentions légales to be publicly accessible.
+          { path: "/privacy", priority: "0.3", changefreq: "yearly" },
+          { path: "/terms", priority: "0.3", changefreq: "yearly" },
+          { path: "/legal", priority: "0.3", changefreq: "yearly" },
         ];
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,

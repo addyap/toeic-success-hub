@@ -29,8 +29,26 @@ export interface PracticeQuestionData {
    *  and 2 hide option text and speak it instead. */
   spokenOptions?: boolean;
   /** Real photo shown for Part 1 (photo) questions, sourced under a
-   *  commercial-use-permissive license (Wikimedia Commons). */
-  image?: { src: string; credit: string };
+   *  commercial-use-permissive license (Wikimedia Commons).
+   *
+   *  CC BY and CC BY-SA require attribution that identifies the author, names
+   *  the licence and links to it, and points back at the source. A bare credit
+   *  string does not satisfy that, so verified images carry structured fields
+   *  rendered as real links. `credit` remains the human-readable fallback for
+   *  images whose exact source file has not yet been confirmed — see
+   *  UNVERIFIED_IMAGES in questionBank.test.ts, which stops that set growing. */
+  image?: {
+    src: string;
+    credit: string;
+    /** Wikimedia Commons file page for this exact photo. */
+    sourceUrl?: string;
+    /** Author as named on the source page. */
+    author?: string;
+    /** e.g. "CC BY 2.0" */
+    licenseName?: string;
+    /** Canonical licence deed URL. */
+    licenseUrl?: string;
+  };
   /** Marks this question as part of a multi-question set sharing one
    *  conversation or talk, as Parts 3 and 4 of the real test do (three
    *  questions per recording). Questions in a set are consecutive in the
@@ -125,7 +143,33 @@ function QuestionPassage({
             loading="lazy"
             className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
           />
-          <p className="mt-1 text-[11px] text-muted-foreground/70">{data.image.credit}</p>
+          <p className="mt-1 text-[11px] text-muted-foreground/70">
+            {data.image.sourceUrl && data.image.licenseUrl ? (
+              <>
+                Photo by {data.image.author} —{" "}
+                <a
+                  href={data.image.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer license"
+                  className="underline underline-offset-2 hover:text-foreground"
+                >
+                  source
+                </a>
+                {", "}
+                <a
+                  href={data.image.licenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer license"
+                  className="underline underline-offset-2 hover:text-foreground"
+                >
+                  {data.image.licenseName}
+                </a>
+                , via Wikimedia Commons
+              </>
+            ) : (
+              data.image.credit
+            )}
+          </p>
         </div>
       )}
       {data.photo && data.context && (

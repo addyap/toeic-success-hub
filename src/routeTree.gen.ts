@@ -10,11 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VocabularyRouteImport } from './routes/vocabulary'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SpeakingWritingRouteImport } from './routes/speaking-writing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudyTipsIndexRouteImport } from './routes/study-tips.index'
 import { Route as StudyTipsSlugRouteImport } from './routes/study-tips.$slug'
@@ -22,6 +25,11 @@ import { Route as StudyTipsSlugRouteImport } from './routes/study-tips.$slug'
 const VocabularyRoute = VocabularyRouteImport.update({
   id: '/vocabulary',
   path: '/vocabulary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SpeakingWritingRoute = SpeakingWritingRouteImport.update({
@@ -39,6 +47,11 @@ const ProgressRoute = ProgressRouteImport.update({
   path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MockTestRoute = MockTestRouteImport.update({
   id: '/mock-test',
   path: '/mock-test',
@@ -47,6 +60,11 @@ const MockTestRoute = MockTestRouteImport.update({
 const ListeningReadingRoute = ListeningReadingRouteImport.update({
   id: '/listening-reading',
   path: '/listening-reading',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -67,22 +85,28 @@ const StudyTipsSlugRoute = StudyTipsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
+  '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips/': typeof StudyTipsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
+  '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips': typeof StudyTipsIndexRoute
@@ -90,11 +114,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speaking-writing': typeof SpeakingWritingRoute
+  '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips/': typeof StudyTipsIndexRoute
@@ -103,33 +130,42 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/privacy'
     | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
+    | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
     | '/study-tips/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/privacy'
     | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
+    | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
     | '/study-tips'
   id:
     | '__root__'
     | '/'
+    | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/privacy'
     | '/progress'
     | '/sitemap.xml'
     | '/speaking-writing'
+    | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
     | '/study-tips/'
@@ -137,11 +173,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LegalRoute: typeof LegalRoute
   ListeningReadingRoute: typeof ListeningReadingRoute
   MockTestRoute: typeof MockTestRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpeakingWritingRoute: typeof SpeakingWritingRoute
+  TermsRoute: typeof TermsRoute
   VocabularyRoute: typeof VocabularyRoute
   StudyTipsSlugRoute: typeof StudyTipsSlugRoute
   StudyTipsIndexRoute: typeof StudyTipsIndexRoute
@@ -154,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/vocabulary'
       fullPath: '/vocabulary'
       preLoaderRoute: typeof VocabularyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/speaking-writing': {
@@ -177,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mock-test': {
       id: '/mock-test'
       path: '/mock-test'
@@ -189,6 +242,13 @@ declare module '@tanstack/react-router' {
       path: '/listening-reading'
       fullPath: '/listening-reading'
       preLoaderRoute: typeof ListeningReadingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -217,11 +277,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LegalRoute: LegalRoute,
   ListeningReadingRoute: ListeningReadingRoute,
   MockTestRoute: MockTestRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpeakingWritingRoute: SpeakingWritingRoute,
+  TermsRoute: TermsRoute,
   VocabularyRoute: VocabularyRoute,
   StudyTipsSlugRoute: StudyTipsSlugRoute,
   StudyTipsIndexRoute: StudyTipsIndexRoute,
