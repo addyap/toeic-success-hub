@@ -7,17 +7,17 @@ import type { ReactNode } from "react";
 
 /** Single source of truth for publisher identity across the legal pages.
  *
- * NOTE: `address` and `siret` are required by French law (LCEN art. 6-III)
- * for a site published from France and must be completed before launch —
- * they are deliberately left blank rather than invented. */
+ * Address and SIRET are required by French law (LCEN art. 6-III) for a site
+ * published from France. Sourced from antonyaddy.com/mentions-legales — same
+ * individual entrepreneur (auto-entrepreneur), so the same SIRET and address
+ * apply here; a SIRET identifies the person/business, not a single site. */
 export const PUBLISHER = {
   name: "Antony Addy",
   email: "antony@antonyaddy.com",
+  phone: "+33 6 49 82 98 26",
   site: "toeic.antonyaddy.com",
-  /** TODO(launch): postal address required for mentions légales. */
-  address: "",
-  /** TODO(launch): SIRET / company number if trading as a business. */
-  siret: "",
+  address: "135 rue Henri Vadon, Résidence des Arènes, 83600 Fréjus, France",
+  siret: "483 178 893 00028",
   /** Cloudflare is the deploy target (see .wrangler output in the build). */
   host: {
     name: "Cloudflare, Inc.",

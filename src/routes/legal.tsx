@@ -39,7 +39,8 @@ function Page() {
               <strong>Contact :</strong>{" "}
               <a className="underline" href={`mailto:${PUBLISHER.email}`}>
                 {PUBLISHER.email}
-              </a>
+              </a>{" "}
+              — {PUBLISHER.phone}
             </li>
             <li>
               <strong>Directeur de la publication :</strong> {PUBLISHER.name}
@@ -47,16 +48,12 @@ function Page() {
             <li>
               <strong>Site :</strong> {PUBLISHER.site}
             </li>
-            {PUBLISHER.address ? (
-              <li>
-                <strong>Adresse :</strong> {PUBLISHER.address}
-              </li>
-            ) : null}
-            {PUBLISHER.siret ? (
-              <li>
-                <strong>SIRET :</strong> {PUBLISHER.siret}
-              </li>
-            ) : null}
+            <li>
+              <strong>Adresse :</strong> {PUBLISHER.address}
+            </li>
+            <li>
+              <strong>SIRET :</strong> {PUBLISHER.siret}
+            </li>
           </ul>
         </LegalSection>
 
