@@ -84,13 +84,13 @@ function Page() {
 
         <LegalSection title="Fonts and third-party requests">
           <p>
-            Typefaces are currently loaded from Google Fonts. As a result, your browser makes a
-            request to Google's servers when a page loads, which necessarily discloses your IP
-            address to Google. We are aware this is a point of concern under EU data protection law
-            and intend to self-host these fonts so that no such request is made.
+            Typefaces are self-hosted: the font files are served from this site, not from Google
+            Fonts or any other third party. Your browser does not make any request to an external
+            font provider when a page loads, and no IP address is disclosed to one for this purpose.
           </p>
           <p>
-            Photographs used in Part 1 practice are served from this site, not from third parties.
+            Photographs used in Part 1 practice are also served from this site, not from third
+            parties.
           </p>
         </LegalSection>
 

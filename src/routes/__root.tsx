@@ -111,12 +111,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "apple-touch-icon", href: "/favicon.svg" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
-      },
+      // Fonts are self-hosted (see the @font-face rules in styles.css) rather
+      // than loaded from fonts.googleapis.com/fonts.gstatic.com, so no
+      // preconnect or external stylesheet is needed here — that avoided a
+      // third-party request disclosing every visitor's IP to Google.
       {
         rel: "stylesheet",
         href: appCss,
