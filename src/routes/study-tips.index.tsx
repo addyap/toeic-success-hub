@@ -1,14 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import {
-  Lightbulb,
-  Clock,
-  ArrowRight,
-  Headphones,
-  BookOpen,
-  MessageSquare,
-  Target,
-} from "lucide-react";
+import { Lightbulb, Clock, ArrowRight, Headphones, BookOpen, Target } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory } from "@/data/studyTips";
 import { absoluteUrl } from "@/lib/site";
@@ -20,13 +12,13 @@ export const Route = createFileRoute("/study-tips/")({
       {
         name: "description",
         content:
-          "Seven expert TOEIC study guides covering listening, reading, speaking, writing, timing, scoring, and a four-week study plan.",
+          "Six expert TOEIC study guides covering listening, reading, timing, scoring, and a four-week study plan.",
       },
       { property: "og:title", content: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
         content:
-          "Seven expert TOEIC study guides covering listening, reading, speaking, writing, timing, scoring, and a four-week study plan.",
+          "Six expert TOEIC study guides covering listening, reading, timing, scoring, and a four-week study plan.",
       },
       { property: "og:url", content: absoluteUrl("/study-tips") },
     ],
@@ -35,11 +27,10 @@ export const Route = createFileRoute("/study-tips/")({
   component: Page,
 });
 
-const categoryOrder: TipCategory[] = ["Listening & Reading", "Speaking & Writing", "Strategy"];
+const categoryOrder: TipCategory[] = ["Listening & Reading", "Strategy"];
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
-  "Speaking & Writing": <MessageSquare className="h-4 w-4" />,
   Strategy: <Target className="h-4 w-4" />,
 };
 
@@ -55,9 +46,8 @@ function Page() {
             Expert strategies for every part of the test.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Short, focused articles on pacing, listening tactics, reading shortcuts, and the
-            speaking and writing templates that earn the most points. Pick a section and start with
-            the part you're losing points on.
+            Short, focused articles on pacing, listening tactics, and reading shortcuts. Pick a
+            section and start with the part you're losing points on.
           </p>
         </div>
       </section>

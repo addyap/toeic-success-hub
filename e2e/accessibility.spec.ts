@@ -15,7 +15,6 @@ const ROUTES = [
   "/",
   "/listening-reading",
   "/mock-test",
-  "/speaking-writing",
   "/vocabulary",
   "/study-tips",
   "/progress",

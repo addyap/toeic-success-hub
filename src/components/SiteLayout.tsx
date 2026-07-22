@@ -7,7 +7,6 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/listening-reading", label: "Listening & Reading" },
   { to: "/mock-test", label: "Mock Test" },
-  { to: "/speaking-writing", label: "Speaking & Writing" },
   { to: "/vocabulary", label: "Vocabulary" },
   { to: "/study-tips", label: "Study Tips" },
   { to: "/progress", label: "My Progress" },
@@ -107,8 +106,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <span className="font-display text-lg font-semibold">ToeicPath</span>
             </div>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-              A modern, mobile-first study platform for TOEIC Listening, Reading, Speaking &
-              Writing.
+              A modern, mobile-first study platform for the TOEIC Listening & Reading test.
             </p>
           </div>
           <div>
@@ -122,11 +120,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link to="/mock-test" className="hover:text-foreground">
                   Full Mock Test
-                </Link>
-              </li>
-              <li>
-                <Link to="/speaking-writing" className="hover:text-foreground">
-                  Speaking & Writing
                 </Link>
               </li>
             </ul>

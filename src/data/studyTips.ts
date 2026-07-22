@@ -1,4 +1,4 @@
-export type TipCategory = "Listening & Reading" | "Speaking & Writing" | "Strategy";
+export type TipCategory = "Listening & Reading" | "Strategy";
 
 export interface TipSection {
   heading: string;
@@ -197,42 +197,6 @@ export const studyTips: StudyTip[] = [
       {
         heading: "Over-thinking yes/no questions",
         body: "In Part 2, indirect answers are correct more often at higher difficulty. 'Can you finish by Friday?' → 'I'll have to check my schedule' is a complete, correct answer.",
-      },
-    ],
-  },
-  {
-    slug: "speaking-writing-guide",
-    title: "Speaking & Writing: how the four-skill test is scored",
-    category: "Speaking & Writing",
-    readTime: "6 min",
-    summary:
-      "A task-by-task guide to the separate Speaking & Writing test, what raters reward, and templates that keep you on time.",
-    sections: [
-      {
-        heading: "How it's structured",
-        body: "Speaking & Writing is a separate test from Listening & Reading. Speaking has 11 tasks in about 20 minutes; Writing has 8 tasks in about 60 minutes. Each is scored 0–200, and they're often reported together as a 0–400 total.",
-      },
-      {
-        heading: "Speaking — what raters reward",
-        points: [
-          "Read-aloud tasks: clear pronunciation, natural stress, and smooth intonation matter more than speed.",
-          "Describe-a-picture: start with the setting, then people and actions, then details. Keep talking for the full time.",
-          "Opinion task: state your position in the first sentence, give two reasons with an example each, then a one-line conclusion. Structure beats vocabulary.",
-          "Don't leave silence. A complete, simple answer scores higher than an ambitious one you can't finish.",
-        ],
-      },
-      {
-        heading: "Writing — what raters reward",
-        points: [
-          "Sentence-from-picture: use the two given words correctly in one grammatical sentence. Accuracy over ambition.",
-          "Email response: address every point in the prompt, use a clear greeting and sign-off, and hit the required number of requests/answers.",
-          "Opinion essay: a four-paragraph shape (intro with thesis, two body paragraphs with reasons and examples, conclusion) reliably covers the rubric. Aim for around 300 words.",
-          "Connect ideas with linking words (however, in addition, as a result) — raters score coherence, not just grammar.",
-        ],
-      },
-      {
-        heading: "A reusable opinion template",
-        body: "Intro: restate the question and state your position. Body 1: first reason + concrete example. Body 2: second reason + concrete example. Conclusion: restate position in new words. Memorize this shape so you spend test time on content, not structure.",
       },
     ],
   },

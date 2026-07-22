@@ -1,15 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import {
-  Headphones,
-  BookOpen,
-  Mic,
-  PenLine,
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-} from "lucide-react";
+import { Headphones, BookOpen, Sparkles, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
 import { VOCAB_COUNT } from "@/data/vocabulary";
@@ -21,12 +12,12 @@ export const Route = createFileRoute("/")({
       { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         name: "description",
-        content: `Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
+        content: `Free TOEIC prep platform: realistic Listening & Reading practice, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
       },
       { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
-        content: `Free TOEIC prep platform: realistic Listening & Reading practice, Speaking & Writing templates, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
+        content: `Free TOEIC prep platform: realistic Listening & Reading practice, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
       },
       { property: "og:url", content: absoluteUrl("/") },
     ],
@@ -54,8 +45,8 @@ function Index() {
               Standard.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Your complete guide to the TOEIC® Listening, Reading, Speaking, and Writing tests.
-              Aligned with the official test format to help you achieve your career goals.
+              Your complete guide to the TOEIC® Listening & Reading test. Aligned with the official
+              test format to help you achieve your career goals.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -107,20 +98,20 @@ function Index() {
         </div>
       </section>
 
-      {/* Tracks */}
+      {/* Track */}
       <section className="mx-auto w-full max-w-6xl px-5 py-16">
         <div className="flex items-end justify-between gap-6">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Pick a track
+              One test, mastered
             </div>
             <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
-              Two tests. One clear path.
+              Everything for TOEIC Listening & Reading.
             </h2>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="mt-8">
           <TrackCard
             to="/listening-reading"
             icon={<Headphones className="h-5 w-5" />}
@@ -130,15 +121,6 @@ function Index() {
             description="200 questions covering workplace communication — 100 Listening (45 min) and 100 Reading (75 min)."
             tags={["Photographs", "Conversations", "Reading comp."]}
           />
-          <TrackCard
-            to="/speaking-writing"
-            icon={<Mic className="h-5 w-5" />}
-            badge="S&W Excellence"
-            title="Speaking & Writing"
-            duration="80m · 19 tasks · 0–400"
-            description="Real-world scenarios for active production: read aloud, describe a picture, write emails, and craft opinion essays."
-            tags={["Describe a picture", "Email response", "Opinion essay"]}
-          />
         </div>
       </section>
 
@@ -146,20 +128,14 @@ function Index() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 py-16">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Three pillars of TOEIC success.
+            Two pillars of TOEIC success.
           </h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
             <Feature
               to="/listening-reading"
               icon={<BookOpen className="h-5 w-5" />}
               title="L&R Mastery"
               body="200 questions covering workplace communication, from photographs to long-form reading comprehension."
-            />
-            <Feature
-              to="/speaking-writing"
-              icon={<Mic className="h-5 w-5" />}
-              title="S&W Excellence"
-              body="Real-world scenarios for active production — speak with confidence and write with clarity."
             />
             <Feature
               to="/vocabulary"
@@ -248,7 +224,7 @@ function TrackCard({
   tags,
   badge,
 }: {
-  to: "/listening-reading" | "/speaking-writing";
+  to: "/listening-reading";
   icon: React.ReactNode;
   title: string;
   duration: string;
@@ -298,7 +274,7 @@ function Feature({
   icon: React.ReactNode;
   title: string;
   body: string;
-  to?: "/listening-reading" | "/vocabulary" | "/speaking-writing" | "/study-tips";
+  to?: "/listening-reading" | "/vocabulary" | "/study-tips";
 }) {
   if (to) {
     return (

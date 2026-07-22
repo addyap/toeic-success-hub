@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VocabularyRouteImport } from './routes/vocabulary'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SpeakingWritingRouteImport } from './routes/speaking-writing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -30,11 +29,6 @@ const VocabularyRoute = VocabularyRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SpeakingWritingRoute = SpeakingWritingRouteImport.update({
-  id: '/speaking-writing',
-  path: '/speaking-writing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -91,7 +85,6 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/speaking-writing': typeof SpeakingWritingRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
@@ -105,7 +98,6 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/speaking-writing': typeof SpeakingWritingRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
@@ -120,7 +112,6 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/speaking-writing': typeof SpeakingWritingRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
@@ -136,7 +127,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
-    | '/speaking-writing'
     | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
@@ -150,7 +140,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
-    | '/speaking-writing'
     | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
@@ -164,7 +153,6 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
-    | '/speaking-writing'
     | '/terms'
     | '/vocabulary'
     | '/study-tips/$slug'
@@ -179,7 +167,6 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SpeakingWritingRoute: typeof SpeakingWritingRoute
   TermsRoute: typeof TermsRoute
   VocabularyRoute: typeof VocabularyRoute
   StudyTipsSlugRoute: typeof StudyTipsSlugRoute
@@ -200,13 +187,6 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/speaking-writing': {
-      id: '/speaking-writing'
-      path: '/speaking-writing'
-      fullPath: '/speaking-writing'
-      preLoaderRoute: typeof SpeakingWritingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -283,7 +263,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SpeakingWritingRoute: SpeakingWritingRoute,
   TermsRoute: TermsRoute,
   VocabularyRoute: VocabularyRoute,
   StudyTipsSlugRoute: StudyTipsSlugRoute,
