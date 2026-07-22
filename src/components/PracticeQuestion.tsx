@@ -147,7 +147,9 @@ function QuestionPassage({
             loading="lazy"
             className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
           />
-          <p className="mt-1 text-[11px] text-muted-foreground/70">
+          {/* Full-opacity muted-foreground, not /70: the faded variant drops
+              below WCAG AA's 4.5:1 contrast minimum for this caption text. */}
+          <p className="mt-1 text-[11px] text-muted-foreground">
             {data.image.sourceUrl && data.image.licenseUrl ? (
               <>
                 Photo by {data.image.author} —{" "}
