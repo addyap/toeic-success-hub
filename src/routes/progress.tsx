@@ -129,7 +129,9 @@ function Page() {
             <div className="mt-4 space-y-3">
               {PART_NUMBERS.map((part) => {
                 const entries = (history ?? []).filter((e) => e.scope === part);
-                return <PartRow key={part} label={PART_LABELS[part]} entries={entries} />;
+                return (
+                  <PartRow key={part} part={part} label={PART_LABELS[part]} entries={entries} />
+                );
               })}
             </div>
           </>
@@ -169,7 +171,11 @@ function StatCard({
   sub: string;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-4">
+    <div
+      className="rounded-2xl border border-border bg-card p-4"
+      data-testid="stat-card"
+      data-label={label}
+    >
       <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
         {icon} {label}
       </div>
@@ -189,10 +195,23 @@ function recentAccuracies(entries: ProgressEntry[]): number[] {
   return entries.slice(-SPARKLINE_POINTS).map((e) => Math.round((e.correct / e.total) * 100));
 }
 
-function PartRow({ label, entries }: { label: string; entries: ProgressEntry[] }) {
+function PartRow({
+  part,
+  label,
+  entries,
+}: {
+  part: number;
+  label: string;
+  entries: ProgressEntry[];
+}) {
   if (entries.length === 0) {
     return (
-      <div className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-border bg-card/50 p-4 text-sm text-muted-foreground">
+      <div
+        className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-border bg-card/50 p-4 text-sm text-muted-foreground"
+        data-testid="part-row"
+        data-part={part}
+        data-sessions={0}
+      >
         <span>{label}</span>
         <span>Not practiced yet</span>
       </div>
@@ -212,7 +231,14 @@ function PartRow({ label, entries }: { label: string; entries: ProgressEntry[] }
   const delta = priorPct === null ? 0 : latestPct - priorPct;
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4">
+    <div
+      className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4"
+      data-testid="part-row"
+      data-part={part}
+      data-sessions={entries.length}
+      data-latest-pct={latestPct}
+      data-delta={delta}
+    >
       <div className="min-w-0">
         <div className="truncate text-sm font-semibold text-foreground">{label}</div>
         <div className="text-xs text-muted-foreground">
