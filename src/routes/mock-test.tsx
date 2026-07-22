@@ -12,8 +12,12 @@ import { cn, shuffle } from "@/lib/utils";
 import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
+import { getMonetizationStatus } from "@/lib/api/purchase.functions";
+import { useLicense } from "@/lib/useLicense";
+import { PaywallCard } from "@/components/PaywallCard";
 
 export const Route = createFileRoute("/mock-test")({
+  loader: () => getMonetizationStatus(),
   head: () => ({
     meta: [
       { title: "Full Mock Test | ToeicPath - Official TOEIC Prep Guide" },
@@ -169,6 +173,11 @@ function scoreSection(
 }
 
 function Page() {
+  const { enabled: monetizationEnabled } = Route.useLoaderData();
+  const licensed = useLicense();
+  const locked = monetizationEnabled && licensed === false;
+  const checkingLicense = monetizationEnabled && licensed === null;
+
   const [bank, setBank] = useState<QuestionPart[] | null>(null);
   const [session, setSession] = useState<MockTestSession | null>(null);
   const [finished, setFinished] = useState<{
@@ -340,7 +349,24 @@ function Page() {
           </div>
         )}
 
-        {bank && !session && !finished && <IntroCard onStart={startTest} lastResult={lastResult} />}
+        {bank && !session && !finished && checkingLicense && (
+          <div className="rounded-2xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+            Loading…
+          </div>
+        )}
+
+        {bank &&
+          !session &&
+          !finished &&
+          !checkingLicense &&
+          (locked ? (
+            <PaywallCard
+              title="Unlock the full mock test"
+              description="A randomly assembled, full-length 200-question practice test in real TOEIC proportions, with a complete score breakdown when you finish."
+            />
+          ) : (
+            <IntroCard onStart={startTest} lastResult={lastResult} />
+          ))}
 
         {session && now !== null && (
           <PhaseView

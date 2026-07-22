@@ -58,12 +58,39 @@ function Page() {
           <ul>
             <li>your practice answers and best score per section;</li>
             <li>your daily practice streak;</li>
-            <li>your vocabulary review statistics.</li>
+            <li>your vocabulary review statistics;</li>
+            <li>if you've purchased full access, a signed code proving that purchase.</li>
           </ul>
           <p>
             You can erase all of it at any time using the <strong>Reset</strong> control in the
             practice areas, or by clearing site data in your browser settings. Doing so is immediate
             and permanent — we hold no copy to restore.
+          </p>
+        </LegalSection>
+
+        <LegalSection title="Payments">
+          <p>
+            If you purchase full access, payment is handled entirely by{" "}
+            <strong>Stripe, Inc.</strong>, a PCI-compliant payment processor. You enter your card
+            details directly on Stripe's own checkout page — we never see, receive, or store your
+            card number, and no card data ever touches our servers. Stripe's use of your data is
+            governed by{" "}
+            <a
+              className="underline"
+              href="https://stripe.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe's own privacy policy
+            </a>
+            .
+          </p>
+          <p>
+            We do not create a customer account or store a profile of you. After payment, our server
+            asks Stripe to confirm the transaction succeeded and, if so, issues a small signed code
+            to your browser proving you've paid — this code identifies a purchase, not a person, and
+            is stored the same way as your other progress data: only in <code>localStorage</code>,
+            only on your device.
           </p>
         </LegalSection>
 

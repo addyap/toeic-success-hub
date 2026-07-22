@@ -26,7 +26,7 @@ export const PUBLISHER = {
   },
 } as const;
 
-export const LAST_UPDATED = "20 July 2026";
+export const LAST_UPDATED = "22 July 2026";
 
 export function LegalPage({
   icon,

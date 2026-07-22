@@ -26,11 +26,26 @@ export default defineConfig({
     baseURL: "http://localhost:8080",
     trace: "retain-on-failure",
   },
-  webServer: {
-    command: "npm run dev",
-    url: "http://localhost:8080",
-    reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
-  },
+  webServer: [
+    {
+      command: "npm run dev",
+      url: "http://localhost:8080",
+      reuseExistingServer: !process.env.CI,
+      timeout: 60_000,
+    },
+    // Second server, paywall flipped on (STRIPE_PRICE_ID present is the
+    // entire on/off switch — see isMonetizationEnabled in config.server.ts).
+    // Its own port so both states can be tested in the same run without
+    // restarting anything. No real Stripe secret needed here: the gating
+    // tests only need `enabled: true` plus the dev-only test license
+    // (e2e/fixtures/license.ts) — they never exercise the real checkout call.
+    {
+      command: "npm run dev -- --port 8090",
+      url: "http://localhost:8090",
+      reuseExistingServer: !process.env.CI,
+      timeout: 60_000,
+      env: { STRIPE_PRICE_ID: "price_test_e2e_dummy" },
+    },
+  ],
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });

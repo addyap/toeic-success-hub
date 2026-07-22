@@ -91,6 +91,29 @@ function Page() {
           </p>
         </LegalSection>
 
+        <LegalSection title="Purchases and refunds">
+          <p>
+            Full access to the complete practice bank, mock test, and progress tracking is available
+            as a single one-time payment — no subscription, no recurring charge. Payment is
+            processed by Stripe; we never see or store your card details (see our{" "}
+            <a className="underline" href="/privacy">
+              Privacy Policy
+            </a>{" "}
+            for how Stripe is used).
+          </p>
+          <p>
+            Access is unlocked immediately after payment. Because this is digital content delivered
+            instantly, and because you explicitly consent to that immediate delivery at checkout,
+            you thereby waive the standard 14-day EU withdrawal right for this purchase, in
+            accordance with Article L221-28 of the French Consumer Code. If a technical fault on our
+            end prevents you from accessing what you paid for, contact{" "}
+            <a className="underline" href={`mailto:${PUBLISHER.email}`}>
+              {PUBLISHER.email}
+            </a>{" "}
+            within 14 days of purchase and we will fix it or refund you in full.
+          </p>
+        </LegalSection>
+
         <LegalSection title="Availability">
           <p>
             The site is provided as-is and as-available. We do not guarantee uninterrupted access

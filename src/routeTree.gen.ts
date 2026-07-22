@@ -12,14 +12,17 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VocabularyRouteImport } from './routes/vocabulary'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PurchaseSuccessRouteImport } from './routes/purchase-success'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudyTipsIndexRouteImport } from './routes/study-tips.index'
 import { Route as StudyTipsSlugRouteImport } from './routes/study-tips.$slug'
+import { Route as ApiCheckoutRouteImport } from './routes/api.checkout'
 
 const VocabularyRoute = VocabularyRouteImport.update({
   id: '/vocabulary',
@@ -36,6 +39,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PurchaseSuccessRoute = PurchaseSuccessRouteImport.update({
+  id: '/purchase-success',
+  path: '/purchase-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgressRoute = ProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
@@ -44,6 +52,11 @@ const ProgressRoute = ProgressRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MockTestRoute = MockTestRouteImport.update({
@@ -76,17 +89,25 @@ const StudyTipsSlugRoute = StudyTipsSlugRouteImport.update({
   path: '/study-tips/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCheckoutRoute = ApiCheckoutRouteImport.update({
+  id: '/api/checkout',
+  path: '/api/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/api/checkout': typeof ApiCheckoutRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips/': typeof StudyTipsIndexRoute
 }
@@ -95,11 +116,14 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/api/checkout': typeof ApiCheckoutRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips': typeof StudyTipsIndexRoute
 }
@@ -109,11 +133,14 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/vocabulary': typeof VocabularyRoute
+  '/api/checkout': typeof ApiCheckoutRoute
   '/study-tips/$slug': typeof StudyTipsSlugRoute
   '/study-tips/': typeof StudyTipsIndexRoute
 }
@@ -124,11 +151,14 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
+    | '/purchase-success'
     | '/sitemap.xml'
     | '/terms'
     | '/vocabulary'
+    | '/api/checkout'
     | '/study-tips/$slug'
     | '/study-tips/'
   fileRoutesByTo: FileRoutesByTo
@@ -137,11 +167,14 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
+    | '/purchase-success'
     | '/sitemap.xml'
     | '/terms'
     | '/vocabulary'
+    | '/api/checkout'
     | '/study-tips/$slug'
     | '/study-tips'
   id:
@@ -150,11 +183,14 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
+    | '/purchase-success'
     | '/sitemap.xml'
     | '/terms'
     | '/vocabulary'
+    | '/api/checkout'
     | '/study-tips/$slug'
     | '/study-tips/'
   fileRoutesById: FileRoutesById
@@ -164,11 +200,14 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   ListeningReadingRoute: typeof ListeningReadingRoute
   MockTestRoute: typeof MockTestRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
+  PurchaseSuccessRoute: typeof PurchaseSuccessRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   VocabularyRoute: typeof VocabularyRoute
+  ApiCheckoutRoute: typeof ApiCheckoutRoute
   StudyTipsSlugRoute: typeof StudyTipsSlugRoute
   StudyTipsIndexRoute: typeof StudyTipsIndexRoute
 }
@@ -196,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/purchase-success': {
+      id: '/purchase-success'
+      path: '/purchase-success'
+      fullPath: '/purchase-success'
+      preLoaderRoute: typeof PurchaseSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progress': {
       id: '/progress'
       path: '/progress'
@@ -208,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mock-test': {
@@ -252,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyTipsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/checkout': {
+      id: '/api/checkout'
+      path: '/api/checkout'
+      fullPath: '/api/checkout'
+      preLoaderRoute: typeof ApiCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -260,11 +320,14 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   ListeningReadingRoute: ListeningReadingRoute,
   MockTestRoute: MockTestRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
+  PurchaseSuccessRoute: PurchaseSuccessRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   VocabularyRoute: VocabularyRoute,
+  ApiCheckoutRoute: ApiCheckoutRoute,
   StudyTipsSlugRoute: StudyTipsSlugRoute,
   StudyTipsIndexRoute: StudyTipsIndexRoute,
 }

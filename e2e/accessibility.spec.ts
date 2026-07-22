@@ -18,6 +18,8 @@ const ROUTES = [
   "/vocabulary",
   "/study-tips",
   "/progress",
+  "/pricing",
+  "/purchase-success", // no session_id in the URL — the real "invalid link" state
   "/privacy",
   "/terms",
   "/legal",

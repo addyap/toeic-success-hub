@@ -5,8 +5,12 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { absoluteUrl } from "@/lib/site";
 import { getHistory, getStreak, type ProgressEntry, type StreakState } from "@/lib/progress";
 import { countWeakTerms } from "@/lib/vocabStats";
+import { getMonetizationStatus } from "@/lib/api/purchase.functions";
+import { useLicense } from "@/lib/useLicense";
+import { PaywallCard } from "@/components/PaywallCard";
 
 export const Route = createFileRoute("/progress")({
+  loader: () => getMonetizationStatus(),
   head: () => ({
     meta: [
       { title: "My Progress | ToeicPath - Official TOEIC Prep Guide" },
@@ -41,6 +45,11 @@ const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
 const SPARKLINE_POINTS = 10;
 
 function Page() {
+  const { enabled: monetizationEnabled } = Route.useLoaderData();
+  const licensed = useLicense();
+  const locked = monetizationEnabled && licensed === false;
+  const checkingLicense = monetizationEnabled && licensed === null;
+
   const [history, setHistory] = useState<ProgressEntry[] | null>(null);
   const [streak, setStreak] = useState<StreakState | null>(null);
   const [weakTerms, setWeakTerms] = useState<number | null>(null);
@@ -79,7 +88,14 @@ function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-5 py-12">
-        {!loaded ? (
+        {checkingLicense ? (
+          <ProgressSkeleton />
+        ) : locked ? (
+          <PaywallCard
+            title="Unlock progress tracking"
+            description="See your accuracy trends by part and your daily practice streak, tracked on this device."
+          />
+        ) : !loaded ? (
           <ProgressSkeleton />
         ) : totalSessions === 0 ? (
           <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">

@@ -12,6 +12,41 @@ import { cn } from "@/lib/utils";
 import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
+import { getMonetizationStatus } from "@/lib/api/purchase.functions";
+import { useLicense } from "@/lib/useLicense";
+import { PaywallCard } from "@/components/PaywallCard";
+
+// Free taste for unlicensed visitors: Part 1 stays fully free (it's small
+// and this app's traditional "try it now" hook), every other part shows
+// its first few questions. Truncation walks whole groupQuestions() units,
+// never splitting a Part 3/4/6/7 set mid-recording/mid-passage.
+const FREE_TEASER_COUNT = 5;
+
+function takeTeaser(questions: PracticeQuestionData[], count: number): PracticeQuestionData[] {
+  const result: PracticeQuestionData[] = [];
+  for (const unit of groupQuestions(questions)) {
+    if (result.length >= count) break;
+    result.push(...unit.questions);
+  }
+  return result;
+}
+
+function applyFreeTeaser(
+  selectedPart: ProgressScope,
+  bank: { all: PracticeQuestionData[]; byPart: QuestionPart[] } | null,
+  fullQuestions: PracticeQuestionData[],
+): PracticeQuestionData[] {
+  if (selectedPart === 1) return fullQuestions;
+  if (selectedPart === "all") {
+    if (!bank) return fullQuestions;
+    const part1 = bank.byPart.find((p) => p.part === 1)?.questions ?? [];
+    const rest = bank.byPart
+      .filter((p) => p.part !== 1)
+      .flatMap((p) => takeTeaser(p.questions, FREE_TEASER_COUNT));
+    return [...part1, ...rest];
+  }
+  return takeTeaser(fullQuestions, FREE_TEASER_COUNT);
+}
 
 // The question bank (500+ items, growing every content round) is loaded via
 // a dynamic import instead of a static one so its ~170KB (gzipped) doesn't
@@ -21,6 +56,7 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
 
 export const Route = createFileRoute("/listening-reading")({
+  loader: () => getMonetizationStatus(),
   head: () => ({
     meta: [
       { title: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
@@ -94,6 +130,11 @@ const readingParts = [
 ];
 
 function Page() {
+  const { enabled: monetizationEnabled } = Route.useLoaderData();
+  const licensed = useLicense();
+  const locked = monetizationEnabled && licensed === false;
+  const checkingLicense = monetizationEnabled && licensed === null;
+
   const [selectedPart, setSelectedPart] = useState<ProgressScope>("all");
   const [bank, setBank] = useState<{
     all: PracticeQuestionData[];
@@ -113,7 +154,12 @@ function Page() {
 
   const activePart =
     selectedPart === "all" || !bank ? null : bank.byPart.find((p) => p.part === selectedPart);
-  const activeQuestions = activePart ? activePart.questions : (bank?.all ?? null);
+  const fullActiveQuestions = activePart ? activePart.questions : (bank?.all ?? null);
+  const activeQuestions = !fullActiveQuestions
+    ? null
+    : locked
+      ? applyFreeTeaser(selectedPart, bank, fullActiveQuestions)
+      : fullActiveQuestions;
   const storageKey =
     selectedPart === "all"
       ? "toeicpath:lr-practice:best"
@@ -189,12 +235,13 @@ function Page() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
           <PartFilter selectedPart={selectedPart} onSelect={setSelectedPart} />
-          {activeQuestions ? (
+          {activeQuestions && !checkingLicense ? (
             <PracticeSession
               key={storageKey}
               questions={activeQuestions}
               storageKey={storageKey}
               scope={selectedPart}
+              fullTotal={locked ? fullActiveQuestions?.length : undefined}
             />
           ) : (
             <PracticeSessionSkeleton />
@@ -271,10 +318,16 @@ function PracticeSession({
   questions,
   storageKey,
   scope,
+  fullTotal,
 }: {
   questions: PracticeQuestionData[];
   storageKey: string;
   scope: ProgressScope;
+  /** The real question count for this filter, only passed when the visitor
+   *  is on the free teaser (i.e. `questions` has already been truncated).
+   *  Drives the "unlock the rest" card once they've paged through what's
+   *  free. Omit entirely for a licensed/unmetered session. */
+  fullTotal?: number;
 }) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
@@ -443,6 +496,15 @@ function PracticeSession({
           Load {Math.min(PAGE_SIZE, total - visibleCount)} more questions ({visibleCount}/{total}{" "}
           shown)
         </button>
+      )}
+
+      {fullTotal !== undefined && fullTotal > total && visibleCount >= total && (
+        <div className="mt-6">
+          <PaywallCard
+            title="Unlock the rest of this bank"
+            description={`You've reached the end of the free preview — unlock all ${fullTotal} questions to keep going.`}
+          />
+        </div>
       )}
 
       {complete && (
