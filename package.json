@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "lint": "eslint .",
     "format": "prettier --write .",
     "generate:audio": "bun run scripts/generate-audio.ts"
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.61.1",
     "@types/node": "^22.20.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",

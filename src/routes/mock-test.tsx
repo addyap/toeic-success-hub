@@ -444,7 +444,7 @@ function PhaseView({
   const answeredCount = answers.filter((a) => a !== null).length;
 
   return (
-    <div>
+    <div data-testid="mock-test-phase" data-phase={session.phase}>
       <div className="sticky top-[5.5rem] z-10 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -564,7 +564,12 @@ function ResultsView({
         <div className="text-xs font-semibold uppercase tracking-wider text-primary">
           Test complete
         </div>
-        <div className="mt-2 font-display text-4xl font-semibold sm:text-5xl">
+        <div
+          className="mt-2 font-display text-4xl font-semibold sm:text-5xl"
+          data-testid="mock-test-total-score"
+          data-correct={result.totalCorrect}
+          data-total={result.totalQuestions}
+        >
           {result.totalCorrect}/{result.totalQuestions}
         </div>
         <div className="mt-1 text-muted-foreground">{pct}% correct overall</div>
@@ -597,7 +602,14 @@ function ResultsView({
         <table className="w-full text-sm">
           <tbody>
             {result.byPart.map((p) => (
-              <tr key={p.part} className="border-b border-border last:border-0">
+              <tr
+                key={p.part}
+                className="border-b border-border last:border-0"
+                data-testid="mock-test-part-row"
+                data-part={p.part}
+                data-correct={p.correct}
+                data-total={p.total}
+              >
                 <td className="px-4 py-3 text-foreground">{p.label}</td>
                 <td className="px-4 py-3 text-right font-semibold tabular-nums text-foreground">
                   {p.correct}/{p.total}

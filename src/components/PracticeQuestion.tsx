@@ -102,7 +102,11 @@ export function PracticeQuestion({
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+    <div
+      className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6"
+      data-testid="practice-question"
+      data-index={index}
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           {typeof index === "number" && (
@@ -248,6 +252,8 @@ function QuestionOptions({
               key={opt.label}
               onClick={() => onPick(opt.label)}
               aria-disabled={revealed}
+              data-testid="question-option"
+              data-label={opt.label}
               className={cn(
                 "flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
                 !revealed && isPicked && "border-primary bg-primary/5",
@@ -356,7 +362,11 @@ export function PracticeQuestionGroup({
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+    <div
+      className="rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6"
+      data-testid="practice-question-group"
+      data-start-index={startIndex}
+    >
       <div className="min-w-0">
         <div className="text-xs font-semibold uppercase tracking-wider text-primary">
           Questions {startIndex + 1}–{startIndex + questions.length}
@@ -375,6 +385,8 @@ export function PracticeQuestionGroup({
           <div
             key={q.question ?? i}
             className="border-t border-border pt-5 first:border-t-0 first:pt-0"
+            data-testid="practice-question-item"
+            data-index={startIndex + i}
           >
             <p className="text-sm font-semibold text-foreground">
               {startIndex + i + 1}. {q.question}
