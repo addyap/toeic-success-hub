@@ -52,6 +52,11 @@ async function wasCorrectInReview(page: Page, index: number, label: string) {
 }
 
 test("complete a full mock test and get an internally-consistent score", async ({ page }) => {
+  // The review-pagination loop re-renders a 200-question grouped list on
+  // every "Load more" click — under CPU contention (e.g. running the full
+  // suite back-to-back) that occasionally outran the default timeout even
+  // though the logic itself is correct (10/10 clean in isolated repeats).
+  test.slow();
   await page.goto("/mock-test");
 
   await page.getByRole("button", { name: "Start the mock test" }).click();

@@ -307,7 +307,11 @@ function PromptCard({
 }) {
   const [show, setShow] = useState(false);
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+    <div
+      className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+      data-testid="prompt-card"
+      data-rubric={rubric}
+    >
       <div className="text-xs font-semibold uppercase tracking-wider text-primary">{title}</div>
       <p className="mt-2 text-base font-medium">{prompt}</p>
       <PrepRespTimer prepSec={prepSec} respSec={respSec} />
@@ -373,7 +377,11 @@ function WritingExercise({
 
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+    <div
+      className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+      data-testid="writing-exercise"
+      data-id={id}
+    >
       <div className="text-xs font-semibold uppercase tracking-wider text-primary">{title}</div>
       <p className="mt-2 text-base font-medium" id={`writing-prompt-${id}`}>
         {prompt}
@@ -392,7 +400,12 @@ function WritingExercise({
         aria-labelledby={`writing-prompt-${id}`}
         className="mt-4 w-full resize-y rounded-xl border border-border bg-background p-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40"
       />
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm">
+      <div
+        className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm"
+        data-testid="word-count"
+        data-words={words}
+        data-min={minWords}
+      >
         <span className="text-muted-foreground">
           Words: <strong className="text-foreground">{words}</strong> / {minWords}+
         </span>
@@ -433,7 +446,12 @@ function Checklist({ rubric }: { rubric: RubricKey }) {
   const [checked, setChecked] = useState<boolean[]>(() => r.items.map(() => false));
   const done = checked.filter(Boolean).length;
   return (
-    <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+    <div
+      className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4"
+      data-testid="checklist"
+      data-done={done}
+      data-total={r.items.length}
+    >
       <div className="flex items-center justify-between gap-2">
         <div className="text-xs font-semibold uppercase tracking-wider text-primary">{r.title}</div>
         <div className="text-xs font-semibold text-primary">
@@ -446,6 +464,7 @@ function Checklist({ rubric }: { rubric: RubricKey }) {
             <label className="flex cursor-pointer items-start gap-2 text-sm leading-relaxed">
               <input
                 type="checkbox"
+                data-testid="checklist-item"
                 checked={checked[i]}
                 onChange={(e) =>
                   setChecked((prev) => prev.map((v, j) => (j === i ? e.target.checked : v)))
@@ -524,7 +543,12 @@ function PrepRespTimer({ prepSec, respSec }: { prepSec: number; respSec: number 
           : "Time's up — review against the checklist below.";
 
   return (
-    <div className="mt-4 rounded-xl border border-border bg-muted/40 p-3">
+    <div
+      className="mt-4 rounded-xl border border-border bg-muted/40 p-3"
+      data-testid="prep-resp-timer"
+      data-phase={phase}
+      data-remaining={remaining}
+    >
       <div className="flex items-center justify-between gap-3">
         <div
           className={
@@ -625,7 +649,13 @@ function CountdownTimer({ durationSec, label }: { durationSec: number; label: st
   const pct = ((durationSec - remaining) / durationSec) * 100;
 
   return (
-    <div className="mt-4 rounded-xl border border-border bg-muted/40 p-3">
+    <div
+      className="mt-4 rounded-xl border border-border bg-muted/40 p-3"
+      data-testid="countdown-timer"
+      data-running={running}
+      data-done={done}
+      data-remaining={remaining}
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div
           className={
