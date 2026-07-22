@@ -27,11 +27,15 @@ async function answerByIndex(page: Page, index: number) {
 }
 
 /** Clicks "Load N more" in the review list until the given absolute index is
- *  rendered (or the button runs out, meaning everything is already shown). */
+ *  rendered (or the button runs out, meaning everything is already shown).
+ *  Each click loads another batch of question cards above the button,
+ *  shifting its position — scrolling it into view before every click avoids
+ *  an occasional actionability timeout from clicking mid-shift. */
 async function revealReviewIndex(page: Page, index: number) {
   const target = page.locator(`[data-testid="practice-question"][data-index="${index}"]`);
   const loadMore = page.getByRole("button", { name: /^Load \d+ more/ });
   while ((await target.count()) === 0 && (await loadMore.count()) > 0) {
+    await loadMore.scrollIntoViewIfNeeded();
     await loadMore.click();
   }
 }

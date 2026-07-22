@@ -275,7 +275,13 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
       <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         Card {idx + 1} of {order.length}
       </div>
-      <button onClick={() => setFlipped((f) => !f)} className="block w-full text-left">
+      <button
+        onClick={() => setFlipped((f) => !f)}
+        className="block w-full text-left"
+        data-testid="flashcard"
+        data-flipped={flipped}
+        data-term={card.term}
+      >
         <div className="relative min-h-[280px] overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-elegant transition hover:-translate-y-0.5 sm:min-h-[320px]">
           <div className="absolute right-5 top-5 text-xs font-semibold uppercase tracking-wider text-primary">
             {card.category}
@@ -287,7 +293,11 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
                 {card.term}
               </div>
               {gloss && (
-                <div dir={glossDir} className="mt-2 text-lg text-muted-foreground">
+                <div
+                  dir={glossDir}
+                  data-testid="flashcard-gloss"
+                  className="mt-2 text-lg text-muted-foreground"
+                >
                   {gloss}
                 </div>
               )}
@@ -299,7 +309,7 @@ function Flashcards({ terms, glossLang }: { terms: VocabTerm[]; glossLang: Gloss
               <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
                 {card.pos}
                 {gloss && (
-                  <span dir={glossDir} className="text-foreground">
+                  <span dir={glossDir} data-testid="flashcard-gloss" className="text-foreground">
                     {" "}
                     · {gloss}
                   </span>
@@ -409,7 +419,12 @@ function Quiz({
 
   return (
     <div>
-      <div className="mb-3 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <div
+        className="mb-3 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+        data-testid="vocab-quiz-score"
+        data-correct={score.correct}
+        data-total={score.total}
+      >
         <span>
           Score:{" "}
           <span className="text-foreground">
@@ -442,6 +457,8 @@ function Quiz({
                 key={opt.term}
                 onClick={() => choose(opt.term)}
                 aria-disabled={revealed}
+                data-testid="vocab-quiz-option"
+                data-term={opt.term}
                 className={cn(
                   "flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
                   !revealed && "border-border hover:border-primary/60 hover:bg-muted",
