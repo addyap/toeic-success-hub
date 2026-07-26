@@ -29,11 +29,13 @@ export function getServerConfig() {
   };
 }
 
-/** Single source of truth for "is the paywall live." Hard-disabled: the site
- *  is intentionally 100% free, so every gated page renders its free/open state
- *  regardless of any Stripe env vars that may be set in production. Monetization
- *  will be revisited later; to re-enable, return
- *  `Boolean(getServerConfig().stripePriceId)` again. */
+/** Single source of truth for "is the paywall live." Deliberately just a
+ *  presence check on the price ID (no network call) — cheap, synchronous,
+ *  and lets every gated page render its free/paid state without an extra
+ *  round trip to Stripe. Nothing sets STRIPE_PRICE_ID anywhere today, so
+ *  the site stays exactly as free/open as it is now — but unlike a
+ *  hardcoded `false`, this doesn't silently block a real future launch:
+ *  setting the env var is the one and only switch. */
 export function isMonetizationEnabled(): boolean {
-  return false;
+  return Boolean(getServerConfig().stripePriceId);
 }
