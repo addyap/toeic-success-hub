@@ -1433,6 +1433,737 @@ export const vocabulary: VocabTerm[] = [
     definition: "The act of formally removing an employee from their position.",
     example: "His dismissal followed a lengthy investigation into misconduct.",
   },
+
+  // ── Management (batch 4) ──
+  {
+    term: "downsize",
+    pos: "verb",
+    category: "Management",
+    definition: "To reduce the number of employees in a company, usually to cut costs.",
+    example:
+      "The company had to downsize its manufacturing division after losing its biggest client.",
+  },
+  {
+    term: "chain of command",
+    pos: "phrase",
+    category: "Management",
+    definition:
+      "The formal structure through which authority and instructions are passed from senior to junior staff.",
+    example:
+      "New hires are expected to follow the chain of command rather than emailing the CEO directly.",
+  },
+  {
+    term: "performance review",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "A formal, scheduled evaluation of an employee's work and contributions over a period of time.",
+    example: "During her performance review, she was praised for exceeding her sales targets.",
+  },
+  {
+    term: "cross-functional",
+    pos: "adjective",
+    category: "Management",
+    definition:
+      "Involving members from several different departments working together on a shared task.",
+    example:
+      "A cross-functional team of engineers, marketers, and designers was assembled to launch the new product.",
+  },
+  {
+    term: "middle management",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "The level of managers who supervise lower-level staff and report to senior executives.",
+    example:
+      "Middle management is responsible for translating the CEO's strategy into daily department goals.",
+  },
+  {
+    term: "chair a meeting",
+    pos: "verb",
+    category: "Management",
+    definition: "To lead and direct the proceedings of a meeting.",
+    example: "As department head, she will chair the budget meeting on Thursday.",
+  },
+  {
+    term: "line manager",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "The manager an employee reports to directly and who is responsible for their daily supervision.",
+    example: "Any request for time off must first be approved by your line manager.",
+  },
+  {
+    term: "workload",
+    pos: "noun",
+    category: "Management",
+    definition: "The amount of work assigned to or expected of a person within a given period.",
+    example: "His workload doubled after two colleagues left the team without being replaced.",
+  },
+  {
+    term: "phase out",
+    pos: "phrasal verb",
+    category: "Management",
+    definition: "To gradually stop using, producing, or offering something over time.",
+    example: "Management decided to phase out the old software system over the next six months.",
+  },
+  {
+    term: "work ethic",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "A belief in the value of hard work and diligence, reflected in a person's approach to their job.",
+    example: "Her strong work ethic impressed the hiring committee during the interview.",
+  },
+  {
+    term: "contingency plan",
+    pos: "noun",
+    category: "Management",
+    definition:
+      "A backup plan of action prepared in case an original plan fails or an unexpected event occurs.",
+    example:
+      "The team drafted a contingency plan in case the supplier missed the shipping deadline.",
+  },
+  {
+    term: "span of control",
+    pos: "noun",
+    category: "Management",
+    definition: "The number of subordinates a manager directly supervises.",
+    example:
+      "After the reorganization, each supervisor's span of control increased from five to eight employees.",
+  },
+
+  // ── Travel (batch 4) ──
+  {
+    term: "conference badge",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "An identification card worn at a conference or trade show that grants access to sessions and exhibits.",
+    example:
+      "Please pick up your conference badge at the registration desk before entering the exhibit hall.",
+  },
+  {
+    term: "frequent flyer program",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A loyalty scheme run by an airline that rewards passengers with points or perks for repeated travel.",
+    example:
+      "She joined the airline's frequent flyer program to earn free upgrades on her business trips.",
+  },
+  {
+    term: "visa sponsorship",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "Official support or documentation provided by a company or organization to help a traveler obtain an entry visa.",
+    example:
+      "The host company arranged visa sponsorship so the delegates could attend the trade summit abroad.",
+  },
+  {
+    term: "chauffeur",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A person employed to drive a car for a passenger, often as part of a professional travel arrangement.",
+    example:
+      "A chauffeur was waiting at the arrivals gate to drive the executives directly to headquarters.",
+  },
+  {
+    term: "travel insurance",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A policy that covers financial losses and emergencies, such as cancellations or medical costs, that occur during a trip.",
+    example:
+      "Because he travels only twice a year, he purchased a single-trip travel insurance policy instead of an annual plan.",
+  },
+  {
+    term: "gate agent",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "An airline employee stationed at the departure gate who manages boarding and passenger inquiries.",
+    example: "The gate agent announced that priority boarding would begin in ten minutes.",
+  },
+  {
+    term: "standby",
+    pos: "adjective",
+    category: "Travel",
+    definition:
+      "Describing a passenger who waits without a confirmed seat in hopes of being placed on a flight.",
+    example:
+      "After missing his connection, he was placed on standby for the next available flight to Chicago.",
+  },
+  {
+    term: "corporate rate",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A discounted price negotiated between a company and a hotel or airline for business travelers.",
+    example:
+      "Employees booking through the travel portal automatically receive the hotel's corporate rate.",
+  },
+  {
+    term: "site visit",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A trip made to inspect a facility, venue, or project location in person before finalizing a decision.",
+    example:
+      "The procurement team scheduled a site visit to the factory before signing the supply contract.",
+  },
+  {
+    term: "expatriate assignment",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "A work posting that requires an employee to relocate temporarily to another country.",
+    example: "She accepted a three-year expatriate assignment at the company's Tokyo branch.",
+  },
+  {
+    term: "airport transfer",
+    pos: "noun",
+    category: "Travel",
+    definition:
+      "Transportation arranged to take a traveler between an airport and another destination such as a hotel.",
+    example:
+      "The travel agency included a complimentary airport transfer in the conference package.",
+  },
+  {
+    term: "attendee",
+    pos: "noun",
+    category: "Travel",
+    definition: "A person who is present at an event, meeting, or conference.",
+    example: "Each attendee received a printed schedule and a name badge at the entrance.",
+  },
+
+  // ── Finance (batch 4) ──
+  {
+    term: "accounts receivable",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "Money owed to a company by customers who have received goods or services but not yet paid for them.",
+    example:
+      "Our accounts receivable increased last month because several clients delayed payment on their invoices.",
+  },
+  {
+    term: "cash flow",
+    pos: "noun",
+    category: "Finance",
+    definition: "The total amount of money moving into and out of a business over a given period.",
+    example:
+      "Even though sales were strong, poor cash flow made it difficult to pay suppliers on time.",
+  },
+  {
+    term: "net worth",
+    pos: "noun",
+    category: "Finance",
+    definition: "The value of all assets a person or company owns minus all liabilities owed.",
+    example: "After paying off the mortgage, the couple's net worth increased significantly.",
+  },
+  {
+    term: "subsidize",
+    pos: "verb",
+    category: "Finance",
+    definition:
+      "To support a business or activity financially, typically by paying part of the cost.",
+    example:
+      "The government agreed to subsidize the company's research into renewable energy technology.",
+  },
+  {
+    term: "shareholder",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "A person or organization that owns shares in a company and is therefore entitled to a portion of its profits.",
+    example: "Shareholders voted at the annual meeting to approve the merger with a rival firm.",
+  },
+  {
+    term: "loan covenant",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "A condition set by a lender that a borrower must follow as part of the terms of a loan agreement.",
+    example:
+      "The bank added a loan covenant requiring the company to maintain a minimum level of working capital.",
+  },
+  {
+    term: "bankruptcy",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "A legal process in which a person or organization declared unable to pay its debts has its assets assessed and used to repay creditors.",
+    example:
+      "After years of declining sales, the retailer filed for bankruptcy and closed all of its stores.",
+  },
+  {
+    term: "underlying",
+    pos: "adjective",
+    category: "Finance",
+    definition:
+      "Referring to the true, basic financial performance of a business once unusual or one-time items are excluded.",
+    example:
+      "Excluding the cost of the factory closure, underlying profit rose by eight percent this year.",
+  },
+  {
+    term: "float",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "The act of offering a company's shares for sale to the public for the first time on a stock exchange.",
+    example:
+      "The tech startup announced plans for a stock market float that could value the company at two billion dollars.",
+  },
+  {
+    term: "bad debt",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "Money owed to a company that is very unlikely ever to be paid and is therefore written off as a loss.",
+    example:
+      "The firm set aside a reserve for bad debt after two major clients declared insolvency.",
+  },
+  {
+    term: "principal",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "The original amount of money borrowed or invested, not including any interest earned or charged.",
+    example: "Her monthly payment covers both the interest and a portion of the loan's principal.",
+  },
+  {
+    term: "line of credit",
+    pos: "noun",
+    category: "Finance",
+    definition:
+      "An arrangement with a bank that allows a borrower to draw funds up to an agreed limit as needed.",
+    example:
+      "The company opened a line of credit to cover short-term gaps in cash flow during the slow season.",
+  },
+
+  // ── Technical (batch 4) ──
+  {
+    term: "reboot",
+    pos: "verb",
+    category: "Technical",
+    definition:
+      "To restart a computer or device by shutting it down completely and turning it on again.",
+    example:
+      "After installing the update, you will need to reboot your laptop for the changes to take effect.",
+  },
+  {
+    term: "cache",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "A temporary storage area where frequently used data is kept so it can be accessed more quickly.",
+    example:
+      "Clearing your browser's cache can help fix pages that are loading with outdated content.",
+  },
+  {
+    term: "workaround",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "A temporary method for overcoming a technical problem when no permanent solution is yet available.",
+    example:
+      "Until the vendor releases a fix, our IT team has set up a workaround so employees can still print documents.",
+  },
+  {
+    term: "interoperability",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "The ability of different systems, devices, or software to work together and exchange information smoothly.",
+    example:
+      "The new platform was designed with interoperability in mind, so it connects easily with the client's existing accounting software.",
+  },
+  {
+    term: "legacy system",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "An older piece of technology or software that is still in use, often because replacing it would be costly or disruptive.",
+    example:
+      "The company still relies on a legacy system from the 1990s to process warehouse inventory.",
+  },
+  {
+    term: "rollback",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "The act of reverting software or a system to a previous, stable version after a problem occurs.",
+    example:
+      "When the new release caused checkout errors, engineers performed a rollback to the last working version.",
+  },
+  {
+    term: "provisioning",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "The process of setting up and configuring IT resources, such as servers or accounts, so they are ready for use.",
+    example:
+      "Provisioning new employee laptops now takes only a few hours thanks to automated setup scripts.",
+  },
+  {
+    term: "sandbox",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "An isolated testing environment where new code or features can be tried out without affecting the live system.",
+    example:
+      "Developers test all payment features in a sandbox before releasing them to real customers.",
+  },
+  {
+    term: "middleware",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "Software that connects and manages communication between different applications or systems.",
+    example:
+      "The middleware translates data from the ordering app into a format the shipping system can read.",
+  },
+  {
+    term: "obsolete",
+    pos: "adjective",
+    category: "Technical",
+    definition:
+      "No longer in use or no longer useful because something newer and more advanced has replaced it.",
+    example:
+      "The manufacturer stopped supporting the obsolete printer model, so spare parts are hard to find.",
+  },
+  {
+    term: "glitch",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "A minor, usually temporary, technical fault that causes a system to behave unexpectedly.",
+    example:
+      "A glitch in the booking system briefly showed incorrect prices before it corrected itself.",
+  },
+  {
+    term: "endpoint",
+    pos: "noun",
+    category: "Technical",
+    definition:
+      "A specific point of connection, such as a device or a web address, where a system sends or receives data.",
+    example:
+      "Each mobile app request goes to a secure endpoint on the company's server before returning the requested data.",
+  },
+
+  // ── Marketing & Sales (batch 4) ──
+  {
+    term: "sales pitch",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A persuasive presentation designed to convince a potential customer to buy a product or service.",
+    example:
+      "The rep tailored her sales pitch to highlight the software's time-saving features for busy managers.",
+  },
+  {
+    term: "commission",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A payment to a salesperson calculated as a percentage of the value of the sales they make.",
+    example:
+      "Top performers on the sales team earn a 10 percent commission on every deal they close.",
+  },
+  {
+    term: "cross-sell",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition:
+      "To sell a customer an additional, related product alongside the one they are already buying.",
+    example:
+      "When a customer buys a laptop, staff are trained to cross-sell a carrying case and extended warranty.",
+  },
+  {
+    term: "outsell",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition: "To sell more of a product than a competitor does.",
+    example: "The new smartphone outsold every rival model during its first week on the market.",
+  },
+  {
+    term: "advertise",
+    pos: "verb",
+    category: "Marketing & Sales",
+    definition: "To promote a product, service, or event publicly in order to attract customers.",
+    example:
+      "The company plans to advertise its new energy drink on billboards and social media next month.",
+  },
+  {
+    term: "rebate",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A partial refund given to a buyer after a purchase, often as a promotional incentive.",
+    example:
+      "Customers who mail in the receipt receive a $50 rebate on the printer they purchased.",
+  },
+  {
+    term: "markup",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The amount added to the cost price of a product to determine its selling price and profit margin.",
+    example:
+      "The boutique applies a 100 percent markup, selling items for double what it paid the supplier.",
+  },
+  {
+    term: "product launch",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The coordinated introduction of a new product to the market, often accompanied by promotional events.",
+    example:
+      "The product launch included a press conference, live demonstrations, and a limited-time discount.",
+  },
+  {
+    term: "market penetration",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The extent to which a product or brand has been adopted by customers within a given market.",
+    example:
+      "Despite heavy advertising, the brand's market penetration in rural areas remains low.",
+  },
+  {
+    term: "focus group",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A small panel of people brought together to give feedback on a product, service, or advertisement.",
+    example:
+      "Before finalizing the packaging, the company tested three designs with a focus group of shoppers.",
+  },
+  {
+    term: "customer retention",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A company's ability to keep existing customers buying from it over time rather than losing them to competitors.",
+    example:
+      "The subscription service improved customer retention by offering personalized discounts to long-time members.",
+  },
+  {
+    term: "franchise",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A license that allows an individual or company to sell a business's products or operate under its brand name.",
+    example: "She bought a franchise of the coffee chain and opened her first location downtown.",
+  },
+  {
+    term: "price point",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A specific price at which a product is offered for sale within a range of competing options.",
+    example: "The new tablet was positioned at a lower price point to compete with budget brands.",
+  },
+  {
+    term: "supply chain",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The network of suppliers, manufacturers, and distributors involved in getting a product from production to the customer.",
+    example:
+      "A shortage of raw materials disrupted the company's supply chain and delayed store deliveries.",
+  },
+  {
+    term: "competitive pricing",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "Setting prices favorably enough to compete effectively against similar products in the market.",
+    example:
+      "The airline kept its fares at a competitive pricing level by matching other budget carriers.",
+  },
+  {
+    term: "out of stock",
+    pos: "phrase",
+    category: "Marketing & Sales",
+    definition:
+      "Describing an item that a store has temporarily sold out of and cannot currently sell to customers.",
+    example:
+      "The bestselling toy sold out within hours and was listed as out of stock on the website.",
+  },
+  {
+    term: "point of sale",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The location or system where a customer completes a purchase and payment is processed.",
+    example: "The new point of sale system lets cashiers accept mobile payments as well as cards.",
+  },
+  {
+    term: "conversion rate",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The percentage of potential customers who take a desired action, such as making a purchase, out of all who were reached.",
+    example:
+      "Redesigning the checkout page raised the website's conversion rate by fifteen percent.",
+  },
+
+  // ── Human Resources (batch 4) ──
+  {
+    term: "exit interview",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A meeting held with an employee who is leaving a company to gather feedback about their experience.",
+    example:
+      "During her exit interview, she explained that she was leaving for a position with better growth opportunities.",
+  },
+  {
+    term: "recruit",
+    pos: "verb",
+    category: "Human Resources",
+    definition:
+      "To find and attract suitable people to work for a company or join an organization.",
+    example: "The firm plans to recruit ten new engineers before the end of the quarter.",
+  },
+  {
+    term: "headhunter",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A person or agency hired to find suitable candidates, especially for senior positions, often by approaching people already employed elsewhere.",
+    example: "A headhunter contacted her directly about a vice president role at a rival company.",
+  },
+  {
+    term: "compensation package",
+    pos: "phrase",
+    category: "Human Resources",
+    definition: "The total combination of salary, bonuses, and benefits offered to an employee.",
+    example:
+      "The compensation package included a competitive base salary, an annual bonus, and full health coverage.",
+  },
+  {
+    term: "termination",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "The formal ending of an employee's contract of employment by the employer or the employee.",
+    example: "His termination came after repeated violations of the company's attendance policy.",
+  },
+  {
+    term: "reinstate",
+    pos: "verb",
+    category: "Human Resources",
+    definition: "To restore an employee to a job or position they previously held.",
+    example:
+      "After the investigation cleared her of any wrongdoing, the company agreed to reinstate her with full back pay.",
+  },
+  {
+    term: "workplace diversity",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "The inclusion of employees from a wide range of backgrounds, identities, and experiences within an organization.",
+    example:
+      "The company launched a new initiative to promote workplace diversity by widening its recruitment channels.",
+  },
+  {
+    term: "telecommute",
+    pos: "verb",
+    category: "Human Resources",
+    definition: "To work from home or another remote location instead of commuting to an office.",
+    example: "Since the policy change, most staff telecommute at least three days a week.",
+  },
+  {
+    term: "sick leave",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "Paid or unpaid time off from work granted to an employee because of illness.",
+    example: "He used two days of sick leave last week after coming down with the flu.",
+  },
+  {
+    term: "employee handbook",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "An official document that outlines a company's policies, procedures, and expectations for staff.",
+    example:
+      "New hires are required to read the employee handbook and sign an acknowledgment form.",
+  },
+  {
+    term: "workers' compensation",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "Insurance that provides wage replacement and medical benefits to employees injured on the job.",
+    example:
+      "She filed a workers' compensation claim after injuring her back while lifting boxes in the warehouse.",
+  },
+  {
+    term: "layoff",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "The temporary or permanent dismissal of employees, usually due to a lack of work or cost-cutting measures.",
+    example:
+      "The company announced a round of layoffs affecting fifty employees after losing its biggest client.",
+  },
+  {
+    term: "job description",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A written statement outlining the duties, responsibilities, and requirements of a particular position.",
+    example:
+      "The job description listed strong communication skills and three years of sales experience as requirements.",
+  },
+  {
+    term: "non-compete clause",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "A contractual provision that restricts an employee from working for a competitor for a specified period after leaving a company.",
+    example:
+      "Because of the non-compete clause in her contract, she could not join a rival firm for one year.",
+  },
+  {
+    term: "staffing agency",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "A company that supplies temporary or permanent workers to other businesses for a fee.",
+    example:
+      "The warehouse hires seasonal workers through a local staffing agency each holiday period.",
+  },
+  {
+    term: "work permit",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "Official authorization allowing a foreign national to legally work in a country.",
+    example:
+      "He could not start the job until his work permit was approved by immigration authorities.",
+  },
+  {
+    term: "probation period",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "An initial period of employment during which a new hire's performance is closely monitored before their position is confirmed.",
+    example: "She will be evaluated at the end of her three-month probation period.",
+  },
+  {
+    term: "corporate culture",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "The shared values, attitudes, and practices that characterize how people behave within an organization.",
+    example:
+      "The startup prides itself on a corporate culture that encourages open feedback between staff and management.",
+  },
 ];
 
 // Static count for pages (e.g. the homepage) that only need the number of
