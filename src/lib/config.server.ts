@@ -19,23 +19,8 @@ import process from "node:process";
 export function getServerConfig() {
   return {
     nodeEnv: process.env.NODE_ENV,
-    // "Full access" one-time purchase. Monetization is considered enabled
-    // only once stripePriceId is set — every gated page checks that flag
-    // (see isMonetizationEnabled below), so leaving these unset keeps the
-    // whole site exactly as free/open as it is today.
-    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
-    stripePriceId: process.env.STRIPE_PRICE_ID,
-    licenseSigningPrivateKeyJwk: process.env.LICENSE_SIGNING_PRIVATE_KEY_JWK,
+    // Add server-only values here, e.g.:
+    //   databaseUrl: process.env.DATABASE_URL,
+    //   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   };
-}
-
-/** Single source of truth for "is the paywall live." Deliberately just a
- *  presence check on the price ID (no network call) — cheap, synchronous,
- *  and lets every gated page render its free/paid state without an extra
- *  round trip to Stripe. Nothing sets STRIPE_PRICE_ID anywhere today, so
- *  the site stays exactly as free/open as it is now — but unlike a
- *  hardcoded `false`, this doesn't silently block a real future launch:
- *  setting the env var is the one and only switch. */
-export function isMonetizationEnabled(): boolean {
-  return Boolean(getServerConfig().stripePriceId);
 }
