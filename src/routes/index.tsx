@@ -1,6 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { Headphones, BookOpen, Sparkles, ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import {
+  Headphones,
+  BookOpen,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  Layers,
+  Mic,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
 import { VOCAB_COUNT } from "@/data/vocabulary";
@@ -12,12 +21,12 @@ export const Route = createFileRoute("/")({
       { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         name: "description",
-        content: `Free TOEIC prep platform: realistic Listening & Reading practice, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
+        content: `Free TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. No account required.`,
       },
       { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
-        content: `Free TOEIC prep platform: realistic Listening & Reading practice, a ${VOCAB_COUNT}-term business vocabulary builder, and expert study guides. No account required.`,
+        content: `Free TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. No account required.`,
       },
       { property: "og:url", content: absoluteUrl("/") },
     ],
@@ -45,12 +54,12 @@ function Index() {
               Standard.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Your complete guide to the TOEIC® Listening & Reading test. Aligned with the official
-              test format to help you achieve your career goals.
+              Your complete guide to the TOEIC® — Listening, Reading, Speaking and Writing. Aligned
+              with the official test format to help you achieve your career goals.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                to="/listening-reading"
+                to="/four-skills"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-hero px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:opacity-95"
               >
                 Start preparing <ArrowRight className="h-4 w-4" />
@@ -64,8 +73,8 @@ function Index() {
             </div>
             <ul className="mt-7 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
               {[
+                "All four skills covered",
                 "All 7 L&R parts explained",
-                "Aligned with the official test format",
                 `${VOCAB_COUNT} business vocabulary terms`,
                 "No account required",
               ].map((t) => (
@@ -103,15 +112,24 @@ function Index() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">
-              One test, mastered
+              Two formats, both covered
             </div>
             <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
-              Everything for TOEIC Listening & Reading.
+              Whichever TOEIC you're sitting.
             </h2>
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <TrackCard
+            to="/four-skills"
+            icon={<Layers className="h-5 w-5" />}
+            badge="All 4 skills"
+            title="TOEIC 4-Skills"
+            duration="~2h20 · 109 questions · adaptive"
+            description="Listening, Reading, Speaking and Writing in one sitting, with timed drills for the 11 speaking and 8 writing tasks."
+            tags={["Adaptive L&R", "11 speaking tasks", "8 writing tasks"]}
+          />
           <TrackCard
             to="/listening-reading"
             icon={<Headphones className="h-5 w-5" />}
@@ -128,9 +146,15 @@ function Index() {
       <section className="bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 py-16">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Two pillars of TOEIC success.
+            Three pillars of TOEIC success.
           </h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <Feature
+              to="/four-skills"
+              icon={<Mic className="h-5 w-5" />}
+              title="Speaking & Writing"
+              body="Every 4-Skills task explained, then drilled against the real exam clock — record your answers back and check them against the official criteria."
+            />
             <Feature
               to="/listening-reading"
               icon={<BookOpen className="h-5 w-5" />}
@@ -224,7 +248,7 @@ function TrackCard({
   tags,
   badge,
 }: {
-  to: "/listening-reading";
+  to: "/listening-reading" | "/four-skills";
   icon: React.ReactNode;
   title: string;
   duration: string;
@@ -274,7 +298,7 @@ function Feature({
   icon: React.ReactNode;
   title: string;
   body: string;
-  to?: "/listening-reading" | "/vocabulary" | "/study-tips";
+  to?: "/listening-reading" | "/four-skills" | "/vocabulary" | "/study-tips";
 }) {
   if (to) {
     return (

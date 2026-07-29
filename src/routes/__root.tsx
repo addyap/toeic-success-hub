@@ -21,7 +21,7 @@ const websiteJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description:
-    "Master the TOEIC Listening & Reading test with structured guides, interactive practice questions, and a smart vocabulary builder.",
+    "Prepare for every TOEIC skill — Listening, Reading, Speaking and Writing — with structured guides, interactive practice, timed drills, and a smart vocabulary builder.",
 };
 
 function NotFoundComponent() {
@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Master the TOEIC Listening & Reading test with structured guides, interactive practice questions, and a smart vocabulary builder.",
+          "Prepare for every TOEIC skill — Listening, Reading, Speaking and Writing — with structured guides, interactive practice, timed drills, and a smart vocabulary builder.",
       },
       { name: "author", content: "ToeicPath" },
       { property: "og:title", content: "ToeicPath — Modern TOEIC Test Preparation" },

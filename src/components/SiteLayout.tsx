@@ -107,7 +107,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <span className="font-display text-lg font-semibold">ToeicPath</span>
             </div>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-              A modern, mobile-first study platform for the TOEIC Listening & Reading test.
+              A modern, mobile-first study platform for the TOEIC — all four skills, from adaptive
+              Listening &amp; Reading to Speaking and Writing.
             </p>
           </div>
           <div>
