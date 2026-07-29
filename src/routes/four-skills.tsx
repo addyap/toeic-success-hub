@@ -7,6 +7,7 @@ import {
   Layers,
   ExternalLink,
   AlertCircle,
+  ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
@@ -38,6 +39,27 @@ export const Route = createFileRoute("/four-skills")({
   }),
   component: Page,
 });
+
+/** Deep links into the study-tips articles that expand on this page.
+ *  Slugs must match entries in `src/data/studyTips.ts`. */
+const relatedGuides = [
+  {
+    slug: "four-skills-format",
+    title: "The 4-Skills format",
+    blurb:
+      "Why the adaptive version changes your pacing, and what the opening questions really cost.",
+  },
+  {
+    slug: "speaking-tasks-1-11",
+    title: "Speaking tasks 1–11",
+    blurb: "What each task group is actually marked on, and how to fill the time you are given.",
+  },
+  {
+    slug: "writing-tasks-1-8",
+    title: "Writing tasks 1–8",
+    blurb: "Budgeting 60 minutes across eight tasks when one essay takes half the clock.",
+  },
+];
 
 const sectionIcons = {
   listening: Headphones,
@@ -305,6 +327,29 @@ function Page() {
             Official TOEIC handbook at ETS Global
             <ExternalLink className="h-4 w-4" />
           </a>
+        </div>
+
+        <div className="mt-8">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
+            Go deeper on each section
+          </h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {relatedGuides.map((g) => (
+              <Link
+                key={g.slug}
+                to="/study-tips/$slug"
+                params={{ slug: g.slug }}
+                className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elegant"
+              >
+                <h3 className="font-semibold leading-snug group-hover:text-primary">{g.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{g.blurb}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                  Read guide
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center">

@@ -7,6 +7,7 @@ import {
   Sparkles,
   Target,
   Lightbulb,
+  Mic,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
@@ -15,6 +16,7 @@ import { absoluteUrl } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
+  "Speaking & Writing": <Mic className="h-4 w-4" />,
   Strategy: <Target className="h-4 w-4" />,
 };
 

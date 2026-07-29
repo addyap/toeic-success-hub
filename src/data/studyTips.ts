@@ -1,4 +1,4 @@
-export type TipCategory = "Listening & Reading" | "Strategy";
+export type TipCategory = "Listening & Reading" | "Speaking & Writing" | "Strategy";
 
 export interface TipSection {
   heading: string;
@@ -238,6 +238,163 @@ export const studyTips: StudyTip[] = [
           "Take two full timed tests to lock in pacing.",
           "Review only your error patterns — the trap types you fall for most.",
           "Taper the day before: light vocabulary review, rest, and an early night.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "speaking-tasks-1-11",
+    title: "Speaking tasks 1–11: what each one actually rewards",
+    category: "Speaking & Writing",
+    readTime: "7 min",
+    summary:
+      "The eleven Speaking tasks are marked on cumulative criteria — task 1 only judges how you sound, task 11 judges everything. Here is what each group is really testing, and how long you get.",
+    sections: [
+      {
+        heading: "Read the criteria before you practise",
+        body: "The evaluation criteria stack. Tasks 1–2 are scored on pronunciation and intonation alone — the words are given to you, so content cannot be marked. Tasks 3–4 add grammar, vocabulary and cohesion. Tasks 5–7 add relevance and completeness of content. Tasks 8–11 are judged on all of it. Knowing which layer is being added tells you what to fix first: there is no point polishing your argument structure for task 2, and no point relying on a good accent in task 11.",
+      },
+      {
+        heading: "Tasks 1–2 — Read a text aloud (45s prepare, 45s read)",
+        points: [
+          "You cannot lose marks for content here, so the entire job is delivery. Use the preparation time to mark your pauses and decide which words carry the stress.",
+          "Read at a steady pace. Rushing to finish early gains nothing, and swallowed word endings cost you on pronunciation.",
+          "Let your pitch rise through a list and fall at the end of a sentence — flat delivery is explicitly marked down under intonation and stress.",
+          "If you stumble on a word, carry on. Stopping to restart costs more than the original slip.",
+        ],
+      },
+      {
+        heading: "Tasks 3–4 — Describe a picture (45s prepare, 30s speak)",
+        points: [
+          "Thirty seconds is shorter than it sounds. Have a fixed opening ready: where the scene is, then who is in it.",
+          "Use the present continuous for the main actions — 'she is handing him a form', not 'she hands him a form'.",
+          "Cover two or three areas of the image rather than exhausting one detail. Breadth reads as fluency; a single over-described object does not.",
+          "Keep talking until you are cut off. An unfinished sentence scores better than five seconds of silence.",
+        ],
+      },
+      {
+        heading: "Tasks 5–7 — Respond to questions (3s prepare, then 15s, 15s and 30s)",
+        points: [
+          "Three seconds is not planning time. Practise answering on instinct, because you cannot script anything at this speed.",
+          "Answer every part of the question. 'How do you travel to work and why?' is two questions, and completeness of content is a marked criterion here.",
+          "Task 7 gives you double the time of tasks 5 and 6 — that is a signal to expand with a reason or an example, not to repeat yourself.",
+        ],
+      },
+      {
+        heading: "Tasks 8–10 — Respond using information provided (45s to read, then 3s prepare)",
+        points: [
+          "You are given something like a schedule, agenda or itinerary, and 45 seconds to read it before the questions start.",
+          "Spend that time locating times, names, room numbers and prices. Those are almost always what you are asked for.",
+          "Tasks 8 and 9 give you 15 seconds each; task 10 gives you 30 and is played twice, so it is usually the multi-part one.",
+          "Answer in full sentences. Reading entries out flatly is not the same as reporting the information.",
+        ],
+      },
+      {
+        heading: "Task 11 — Express an opinion (15s prepare, 60s speak)",
+        points: [
+          "The longest response on the test, and the one where structure shows most.",
+          "State your position in the first sentence. Do not build up to it — the rater needs to hear a clear stance.",
+          "Two reasons, each with a concrete example, comfortably fills 60 seconds.",
+          "A clear position you actually support scores better than a balanced survey you never resolve.",
+        ],
+      },
+      {
+        heading: "One practical thing on test day",
+        body: "A timer is displayed on screen throughout. If you cannot see it, scroll down — it sits at the bottom of the page on some layouts. Knowing where it is before you start is worth more than it sounds when you have 30 seconds to fill.",
+      },
+    ],
+  },
+  {
+    slug: "writing-tasks-1-8",
+    title: "Writing tasks 1–8: from picture sentences to the opinion essay",
+    category: "Speaking & Writing",
+    readTime: "7 min",
+    summary:
+      "Sixty minutes, eight tasks, and half the clock belongs to the last one. How to budget the Writing section and what each task is marked on.",
+    sections: [
+      {
+        heading: "Know where the time goes",
+        body: "The 60 minutes are not evenly divided. Tasks 1–5 share a single 8-minute block between them. Tasks 6 and 7 get 10 minutes each. Task 8 — one essay — gets 30 minutes on its own. That means half the section rests on a single piece of writing, and the five picture sentences that look like the bulk of the section are actually the smallest part of it.",
+      },
+      {
+        heading: "Tasks 1–5 — Write a sentence based on a picture (8 minutes for all five)",
+        points: [
+          "You get a picture and two words. Both must appear in your sentence, but you may change their form and use them in any order.",
+          "Only grammar and relevance to the picture are marked. Ambition is not rewarded — an accurate simple sentence beats a complex one that breaks.",
+          "That is roughly 90 seconds each. If one picture stalls you, move on and come back; these five share one clock, so you can navigate between them.",
+          "Check the small things before you leave each item: articles, plurals, subject–verb agreement. That is precisely what is being marked.",
+        ],
+      },
+      {
+        heading: "Tasks 6–7 — Respond to a written request (10 minutes each)",
+        points: [
+          "Usually an email. The directions state exactly what your reply must contain — very often three specific things.",
+          "Missing one of those required elements costs you more than any grammar slip, so read the directions twice and tick them off.",
+          "Marked on quality and variety of your sentences, vocabulary, and organisation — so vary your structures instead of repeating one pattern.",
+          "Keep the register polite and professional. Open and close it as a real email.",
+          "Unlike tasks 1–5, these are timed individually and you cannot return to them once you move on.",
+        ],
+      },
+      {
+        heading: "Task 8 — Write an opinion essay (30 minutes)",
+        points: [
+          "Budget roughly 5 minutes planning, 20 writing, 5 checking. The checking pass is where easy marks live.",
+          "Marked on whether your opinion is genuinely supported with reasons and/or examples, plus grammar, vocabulary and organisation.",
+          "Structure: an introduction that states your position, two or three body paragraphs each carrying one supported reason, and a short conclusion.",
+          "Around 300 words is a solid target. Length alone earns nothing, but a developed argument is hard to make in much less.",
+          "Address the question that was asked. A well-written essay on an adjacent topic loses on relevance.",
+        ],
+      },
+      {
+        heading: "The on-screen tools are not your normal editor",
+        points: [
+          "Keyboard shortcuts are disabled. Ctrl+C and Ctrl+V do nothing — use the Cut, Copy, Paste, Undo and Redo buttons above the text box.",
+          "Those tools only work within the task currently on screen. You cannot move text between items.",
+          "A live word count sits in the upper right of the text box, and the timer in the upper right of the screen. Clicking the timer hides it; clicking the clock icon brings it back.",
+          "Depending on the centre's equipment you may be given an AZERTY or a QWERTY keyboard. If you touch-type on one, confirm which you will get before you book.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "four-skills-format",
+    title: "The 4-Skills format: what changes when all four are tested at once",
+    category: "Strategy",
+    readTime: "5 min",
+    summary:
+      "The 4-Skills test is not the Listening & Reading test with two sections bolted on. It uses the adaptive format, which changes how the opening questions matter.",
+    sections: [
+      {
+        heading: "What the test actually looks like",
+        body: "All four skills are assessed in one sitting of roughly 2 hours 20 minutes, across 109 questions: Listening (25 minutes, 45 questions), Reading (37 minutes, 45 questions), Speaking (20 minutes, 11 tasks) and Writing (60 minutes, 8 tasks). Listening and Reading are scored 5–495 each and combine into the familiar 10–990 total; Speaking and Writing are scored 0–200 each and reported separately, with a CEFR level for every skill.",
+      },
+      {
+        heading: "It only runs in the adaptive format",
+        body: "This is the detail that catches people out. The 4-Skills test is offered only with the Multistage Adaptive versions of Listening and Reading — which is why it has 45 questions per section rather than the 100 you get on the linear Listening & Reading test. If you have been practising against the 200-question format, the pacing you have trained is not the pacing you will sit.",
+      },
+      {
+        heading: "Unit 1 decides what Unit 2 looks like",
+        points: [
+          "Each adaptive section splits into Unit 1 (25 questions) and Unit 2 (20 questions).",
+          "Your performance on Unit 1 determines which questions you receive in Unit 2. That is how the test reaches an accurate score in far less time.",
+          "So do not treat the opening questions as a warm-up. Arrive focused — the first unit is where the test forms its estimate of your level.",
+          "If Unit 2 suddenly feels harder than Unit 1, that is usually a good sign rather than a bad one.",
+        ],
+      },
+      {
+        heading: "Four independent scores",
+        points: [
+          "The sections are marked independently. A strong Listening score cannot compensate for a weak Writing one.",
+          "That independence is exactly why employers ask for the 4-Skills format — it exposes the gap between what you understand and what you can produce.",
+          "It also means a bad Speaking section cannot damage the Listening score you already banked. Reset between sections rather than carrying one forward.",
+        ],
+      },
+      {
+        heading: "Rules worth knowing before you sit down",
+        points: [
+          "There is no penalty for a wrong answer. Never leave a Listening or Reading question blank — an unanswered question is a guaranteed zero, a guess is not.",
+          "You answer in order and against the clock. You can change an answer while it is still on screen by clicking a different option, but you cannot roam back through the section.",
+          "Read the current official Examinee Handbook from ETS before test day for identity documents, remote-proctoring equipment requirements and score review procedures. It is revised regularly, so check the live version rather than a saved copy.",
         ],
       },
     ],

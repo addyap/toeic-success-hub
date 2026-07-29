@@ -18,6 +18,9 @@ const ROUTES = [
   "/mock-test",
   "/vocabulary",
   "/study-tips",
+  // One representative article, so the $slug template and the category
+  // badges get scanned too — the index page alone never rendered them.
+  "/study-tips/speaking-tasks-1-11",
   "/progress",
   "/privacy",
   "/terms",
