@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/", label: "Home" },
+  { to: "/four-skills", label: "4 Skills" },
   { to: "/listening-reading", label: "Listening & Reading" },
   { to: "/mock-test", label: "Mock Test" },
   { to: "/vocabulary", label: "Vocabulary" },
@@ -112,6 +113,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div>
             <h4 className="text-sm font-semibold">Test prep</h4>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link to="/four-skills" className="hover:text-foreground">
+                  TOEIC 4-Skills
+                </Link>
+              </li>
               <li>
                 <Link to="/listening-reading" className="hover:text-foreground">
                   Listening & Reading

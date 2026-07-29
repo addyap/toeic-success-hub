@@ -17,6 +17,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as FourSkillsRouteImport } from './routes/four-skills'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudyTipsIndexRouteImport } from './routes/study-tips.index'
 import { Route as StudyTipsSlugRouteImport } from './routes/study-tips.$slug'
@@ -61,6 +62,11 @@ const LegalRoute = LegalRouteImport.update({
   path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FourSkillsRoute = FourSkillsRouteImport.update({
+  id: '/four-skills',
+  path: '/four-skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -79,6 +85,7 @@ const StudyTipsSlugRoute = StudyTipsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/four-skills': typeof FourSkillsRoute
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
@@ -92,6 +99,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/four-skills': typeof FourSkillsRoute
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
@@ -106,6 +114,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/four-skills': typeof FourSkillsRoute
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/four-skills'
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/four-skills'
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/four-skills'
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
@@ -161,6 +173,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FourSkillsRoute: typeof FourSkillsRoute
   LegalRoute: typeof LegalRoute
   ListeningReadingRoute: typeof ListeningReadingRoute
   MockTestRoute: typeof MockTestRoute
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/four-skills': {
+      id: '/four-skills'
+      path: '/four-skills'
+      fullPath: '/four-skills'
+      preLoaderRoute: typeof FourSkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -257,6 +277,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FourSkillsRoute: FourSkillsRoute,
   LegalRoute: LegalRoute,
   ListeningReadingRoute: ListeningReadingRoute,
   MockTestRoute: MockTestRoute,

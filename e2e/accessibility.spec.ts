@@ -13,6 +13,7 @@ import AxeBuilder from "@axe-core/playwright";
 
 const ROUTES = [
   "/",
+  "/four-skills",
   "/listening-reading",
   "/mock-test",
   "/vocabulary",
