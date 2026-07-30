@@ -349,16 +349,16 @@ export const speakingPrompts: SpeakingPrompt[] = [
     taskRange: "5–7",
     taskName: "Respond to questions",
     prepSeconds: 3,
-    speakSeconds: 30,
+    speakSeconds: 15,
     directions:
-      "Imagine a market research company is asking about your habits. You have 3 seconds to prepare, then 30 seconds to respond.",
+      "Imagine a market research company is asking about your habits. You have 3 seconds to prepare, then 15 seconds to respond.",
     prompt:
       "How do you usually travel to work or to your place of study, and why did you choose that method?",
     checklist: [
       "Did you begin speaking almost immediately?",
       "Did you answer both halves of the question — the how and the why?",
       "Did you add a reason or example rather than stopping after one sentence?",
-      "Did you use the full 30 seconds?",
+      "Did you get a complete thought out inside 15 seconds without rushing?",
     ],
   },
   {
@@ -402,9 +402,9 @@ export const speakingPrompts: SpeakingPrompt[] = [
     taskRange: "8–10",
     taskName: "Respond using information provided",
     prepSeconds: 45,
-    speakSeconds: 30,
+    speakSeconds: 15,
     directions:
-      "Read the schedule below. You have 45 seconds to read, then 3 seconds to prepare and 30 seconds to answer the question.",
+      "Read the schedule below. You have 45 seconds to read and think, then 15 seconds to answer the question.",
     reference: {
       title: "Regional Sales Workshop — Thursday 14 March, Room B2",
       lines: [
@@ -432,9 +432,9 @@ export const speakingPrompts: SpeakingPrompt[] = [
     taskRange: "8–10",
     taskName: "Respond using information provided",
     prepSeconds: 45,
-    speakSeconds: 30,
+    speakSeconds: 15,
     directions:
-      "Read the itinerary below. You have 45 seconds to read, then 3 seconds to prepare and 30 seconds to answer the question.",
+      "Read the itinerary below. You have 45 seconds to read and think, then 15 seconds to answer the question.",
     reference: {
       title: "Business trip itinerary — Ms Adeyemi, 8–9 October",
       lines: [
@@ -465,7 +465,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
     prepSeconds: 45,
     speakSeconds: 30,
     directions:
-      "Read the programme below. You have 45 seconds to read, then 3 seconds to prepare and 30 seconds to answer the question.",
+      "Read the programme below. You have 45 seconds to read and think, then 30 seconds to answer the question.",
     reference: {
       title: "Staff training day — Friday 22 November, Lakeside Centre",
       lines: [
@@ -556,6 +556,11 @@ export interface WritingPrompt {
   targetWords?: string;
   checklist: string[];
   model: string;
+  /** Tasks 1–5 share ONE clock across all five sentences, freely revisited —
+   *  a genuinely different timing model from every other Writing task, which
+   *  is timed individually with no going back. `WritingTrainer` branches on
+   *  this flag to run a shared-pool countdown instead of a per-prompt one. */
+  pooled?: boolean;
 }
 
 export const writingPrompts: WritingPrompt[] = [
@@ -564,6 +569,7 @@ export const writingPrompts: WritingPrompt[] = [
     taskRange: "1–5",
     taskName: "Write a sentence based on a picture",
     minutes: 2,
+    pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
     prompt:
@@ -583,6 +589,7 @@ export const writingPrompts: WritingPrompt[] = [
     taskRange: "1–5",
     taskName: "Write a sentence based on a picture",
     minutes: 2,
+    pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
     prompt:
@@ -601,6 +608,7 @@ export const writingPrompts: WritingPrompt[] = [
     taskRange: "1–5",
     taskName: "Write a sentence based on a picture",
     minutes: 2,
+    pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
     prompt:

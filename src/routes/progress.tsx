@@ -15,6 +15,11 @@ export const Route = createFileRoute("/progress")({
         content:
           "Track your TOEIC practice streak and accuracy trends across all 7 Listening & Reading parts.",
       },
+      // This page is a pure client-side view over this device's localStorage
+      // — every visitor sees different, non-shareable content, so it has
+      // nothing for a search result to usefully index. Deliberately left out
+      // of sitemap.xml for the same reason.
+      { name: "robots", content: "noindex" },
       { property: "og:title", content: "My Progress | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",

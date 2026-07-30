@@ -71,6 +71,43 @@ function saveDraft(promptId: string, draft: WritingDraft | null) {
   }
 }
 
+/** Real timing for Writing tasks 1–5: one shared 8-minute clock across all
+ *  five sentences, freely revisited — not five independent per-sentence
+ *  timers. Practice only has 3 sentences standing in for the real 5, but the
+ *  clock itself must still be the genuine shared pool. */
+const POOL_MINUTES = 8;
+
+interface WritingPoolDraft {
+  texts: Record<string, string>;
+  remaining: number;
+  submitted: boolean;
+}
+
+const poolDraftKey = (taskRange: string) => `toeicpath:four-skills:writing-pool:${taskRange}`;
+
+function loadPoolDraft(taskRange: string): WritingPoolDraft | null {
+  try {
+    const raw = localStorage.getItem(poolDraftKey(taskRange));
+    return raw ? (JSON.parse(raw) as WritingPoolDraft) : null;
+  } catch {
+    return null;
+  }
+}
+
+function savePoolDraft(taskRange: string, draft: WritingPoolDraft | null) {
+  try {
+    const touched = draft && (Object.values(draft.texts).some((t) => t.trim()) || draft.submitted);
+    if (draft && touched) {
+      localStorage.setItem(poolDraftKey(taskRange), JSON.stringify(draft));
+    } else {
+      localStorage.removeItem(poolDraftKey(taskRange));
+    }
+  } catch {
+    // localStorage unavailable (private mode / disabled) — the draft just
+    // won't survive a reload, which is the pre-existing behaviour.
+  }
+}
+
 interface TaskGroup<T> {
   taskRange: string;
   taskName: string;
@@ -112,6 +149,7 @@ function TaskPicker<T>({
           key={group.taskRange}
           type="button"
           onClick={() => onSelect(group.taskRange)}
+          aria-pressed={group.taskRange === activeRange}
           className={cn(
             "rounded-full border px-4 py-2 text-left text-sm font-medium transition",
             group.taskRange === activeRange
@@ -577,11 +615,33 @@ export function SpeakingTrainer() {
 
 export function WritingTrainer() {
   const [taskRange, setTaskRange] = useState(writingGroups[0].taskRange);
-  const [promptIndex, setPromptIndex] = useState(0);
   const group = useMemo(
     () => writingGroups.find((g) => g.taskRange === taskRange) as TaskGroup<WritingPrompt>,
     [taskRange],
   );
+  const selectTask = useCallback((range: string) => setTaskRange(range), []);
+
+  return (
+    <div>
+      <TaskPicker groups={writingGroups} activeRange={taskRange} onSelect={selectTask} />
+      {/* A different component per timing model, not a branch inside one —
+       *  the pooled and per-prompt trainers manage entirely different state
+       *  shapes (one shared clock vs. one clock per prompt), and switching
+       *  task group should always reset cleanly rather than try to carry
+       *  state across two incompatible shapes. `key` forces a remount on
+       *  every group change so neither trainer inherits stale state from
+       *  the other. */}
+      {group.items[0]?.pooled ? (
+        <PooledWritingTrainer key={taskRange} group={group} />
+      ) : (
+        <SingleWritingTrainer key={taskRange} group={group} />
+      )}
+    </div>
+  );
+}
+
+function SingleWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
+  const [promptIndex, setPromptIndex] = useState(0);
   const prompt = group.items[promptIndex] ?? group.items[0];
 
   const [running, setRunning] = useState(false);
@@ -650,11 +710,6 @@ export function WritingTrainer() {
     saveDraft(prompt.id, { text, remaining, submitted });
   }, [hydratedFor, prompt.id, text, remaining, submitted]);
 
-  const selectTask = useCallback((range: string) => {
-    setTaskRange(range);
-    setPromptIndex(0);
-  }, []);
-
   const nextPrompt = useCallback(() => {
     setPromptIndex((i) => (i + 1) % group.items.length);
   }, [group]);
@@ -663,7 +718,6 @@ export function WritingTrainer() {
 
   return (
     <div>
-      <TaskPicker groups={writingGroups} activeRange={taskRange} onSelect={selectTask} />
       <PromptRotator
         index={group.items.indexOf(prompt)}
         total={group.items.length}
@@ -782,6 +836,259 @@ export function WritingTrainer() {
             </p>
           </div>
         </>
+      )}
+    </div>
+  );
+}
+
+/** Small tab strip so a pooled group's sentences can be jumped to directly at
+ *  any time — unlike `PromptRotator`'s one-way "next", the real task lets you
+ *  move freely back and forth across all five while the shared clock runs. */
+function SentenceTabs({
+  count,
+  active,
+  onSelect,
+}: {
+  count: number;
+  active: number;
+  onSelect: (index: number) => void;
+}) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {Array.from({ length: count }, (_, i) => (
+        <button
+          key={i}
+          type="button"
+          onClick={() => onSelect(i)}
+          aria-pressed={i === active}
+          className={cn(
+            "rounded-full border px-3.5 py-1.5 text-xs font-semibold transition",
+            i === active
+              ? "border-primary bg-primary text-primary-foreground"
+              : "border-border bg-card text-foreground hover:bg-muted",
+          )}
+        >
+          Sentence {i + 1}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Writing tasks 1–5's genuine timing model: one shared clock across every
+ *  sentence, freely revisited, that keeps running while you move between
+ *  them — not five independent per-sentence timers. Kept as its own
+ *  component (see `WritingTrainer`) since the state shape here (one clock,
+ *  one draft per sentence, one submitted/not-submitted flag for the whole
+ *  pool) doesn't fit `SingleWritingTrainer`'s per-prompt model at all. */
+function PooledWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
+  const totalSeconds = POOL_MINUTES * 60;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [texts, setTexts] = useState<Record<string, string>>({});
+  const [running, setRunning] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [remaining, setRemaining] = useState(totalSeconds);
+  const prompt = group.items[activeIndex] ?? group.items[0];
+
+  const submitAll = useCallback(() => {
+    setRunning(false);
+    setSubmitted(true);
+    recordActivity();
+  }, []);
+
+  useEffect(() => {
+    if (!running) return;
+    const id = setInterval(() => {
+      setRemaining((r) => {
+        if (r <= 1) {
+          clearInterval(id);
+          submitAll();
+          return 0;
+        }
+        return r - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [running, submitAll]);
+
+  const reset = useCallback(() => {
+    setRunning(false);
+    setSubmitted(false);
+    setTexts({});
+    setRemaining(totalSeconds);
+    savePoolDraft(group.taskRange, null);
+  }, [group.taskRange, totalSeconds]);
+
+  // Same hydration guard as SingleWritingTrainer: don't persist until the
+  // pool's own saved draft (or lack of one) has actually been loaded, or the
+  // blank initial state would overwrite it.
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const saved = loadPoolDraft(group.taskRange);
+    if (saved) {
+      setTexts(saved.texts);
+      setRemaining(saved.remaining);
+      setSubmitted(saved.submitted);
+    } else {
+      setTexts({});
+      setRemaining(totalSeconds);
+      setSubmitted(false);
+    }
+    // Never auto-resume a running clock — see SingleWritingTrainer for why.
+    setRunning(false);
+    setActiveIndex(0);
+    setHydrated(true);
+    // group is remounted (via `key`) on every task-range change, so this only
+    // needs to run once per mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    savePoolDraft(group.taskRange, { texts, remaining, submitted });
+  }, [hydrated, group.taskRange, texts, remaining, submitted]);
+
+  const setActiveText = (value: string) => {
+    setTexts((prev) => ({ ...prev, [prompt.id]: value }));
+  };
+
+  return (
+    <div>
+      <p className="mt-4 text-xs text-muted-foreground">
+        These {group.items.length} sentences share ONE clock, just like the real task's five — move
+        between them freely with no penalty and no reset.
+      </p>
+      <SentenceTabs count={group.items.length} active={activeIndex} onSelect={setActiveIndex} />
+
+      <div className="mt-4 rounded-2xl border border-border bg-card p-6 shadow-soft">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Question {prompt.taskRange} · {prompt.taskName}
+            </p>
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{prompt.directions}</p>
+          </div>
+          <div
+            aria-live="polite"
+            className={cn(
+              "inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold tabular-nums",
+              running
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground",
+            )}
+          >
+            <Clock className="h-4 w-4" />
+            {formatTime(remaining)}
+          </div>
+        </div>
+
+        <div className="mt-5 whitespace-pre-line rounded-xl border border-border bg-muted/50 p-4 text-sm leading-relaxed">
+          {prompt.prompt}
+        </div>
+
+        {prompt.requiredWords && (
+          <p className="mt-4 text-sm">
+            <span className="font-semibold">Use both words:</span>{" "}
+            {prompt.requiredWords.map((w) => (
+              <span
+                key={w}
+                className="mr-2 inline-block rounded-md bg-primary/10 px-2 py-0.5 font-mono text-primary"
+              >
+                {w}
+              </span>
+            ))}
+          </p>
+        )}
+
+        <label
+          htmlFor={`writing-response-${prompt.id}`}
+          className="mt-6 block text-sm font-semibold"
+        >
+          Your sentence
+        </label>
+        <textarea
+          id={`writing-response-${prompt.id}`}
+          value={texts[prompt.id] ?? ""}
+          onChange={(e) => setActiveText(e.target.value)}
+          disabled={submitted}
+          rows={4}
+          placeholder={running ? "Start typing…" : "Press Start to begin the shared clock."}
+          className="mt-2 w-full resize-y rounded-xl border border-border bg-background p-4 text-sm leading-relaxed outline-none transition focus:border-primary disabled:opacity-70"
+        />
+
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+          <span>{(texts[prompt.id] ?? "").trim() ? "Sentence started" : "Not started yet"}</span>
+          <span>In the real test, keyboard shortcuts are disabled.</span>
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          {!running && !submitted && (
+            <button
+              type="button"
+              onClick={() => setRunning(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              <PenLine className="h-4 w-4" />
+              {/* A restored draft keeps its remaining time, so offering
+                  "Start · 8 min" there would misstate what you actually get. */}
+              {remaining < totalSeconds
+                ? `Resume · ${formatTime(remaining)} left`
+                : `Start · ${POOL_MINUTES} min for all ${group.items.length}`}
+            </button>
+          )}
+          {running && (
+            <button
+              type="button"
+              onClick={submitAll}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              <CheckCircle2 className="h-4 w-4" />
+              Submit all {group.items.length}
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={reset}
+            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition hover:bg-muted"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Reset
+          </button>
+        </div>
+      </div>
+
+      {submitted && (
+        <div className="mt-6 space-y-6">
+          <h4 className="font-display text-lg font-semibold">Review all {group.items.length}</h4>
+          {group.items.map((item) => (
+            <div key={item.id} className="rounded-2xl border border-border bg-card p-5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                {item.id === prompt.id ? "Currently shown" : `Question ${item.taskRange}`}
+              </p>
+              <div className="mt-2 whitespace-pre-line rounded-xl border border-border bg-muted/50 p-3 text-sm leading-relaxed">
+                {item.prompt}
+              </div>
+              <p className="mt-3 whitespace-pre-line rounded-xl border border-dashed border-border p-3 text-sm leading-relaxed">
+                {(texts[item.id] ?? "").trim() || (
+                  <span className="text-muted-foreground">(left blank)</span>
+                )}
+              </p>
+              <Checklist
+                key={item.id}
+                title="Check your sentence against the criteria"
+                items={item.checklist}
+                scope="writing"
+              />
+              <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                <h5 className="text-sm font-semibold">A strong sample sentence</h5>
+                <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                  {item.model}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

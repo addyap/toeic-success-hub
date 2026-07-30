@@ -12,7 +12,7 @@ import {
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
@@ -67,8 +67,26 @@ export const Route = createFileRoute("/study-tips/$slug")({
 
 function ArticlePage() {
   const { tip } = Route.useLoaderData() as { tip: StudyTip };
+  // No publish/update date exists in the source data, so datePublished /
+  // dateModified are deliberately omitted rather than fabricated — both are
+  // optional on schema.org's Article type.
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: tip.title,
+    description: tip.summary,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    mainEntityOfPage: absoluteUrl(`/study-tips/${tip.slug}`),
+  };
   return (
     <SiteLayout>
+      <script
+        type="application/ld+json"
+        // Built entirely from this site's own static studyTips.ts data, not
+        // user input — same safety justification as the root WebSite schema.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article className="mx-auto w-full max-w-3xl px-5 py-12 md:py-16">
         <Link
           to="/study-tips"
