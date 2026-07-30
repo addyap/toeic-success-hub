@@ -328,7 +328,7 @@ test.describe("writing trainer", () => {
     // the reset only needs to prove Q6–7's own draft is gone, so re-select
     // it rather than asserting on whatever the pooled default now shows.
     await expect(
-      writingSection(page).getByRole("button", { name: /Start · 8 min for all 3/ }),
+      writingSection(page).getByRole("button", { name: /Start · 8 min for all \d+/ }),
     ).toBeVisible();
     const resetSection = await selectIndependentTask(page);
     await expect(page.locator("#writing-response")).toHaveValue("");
@@ -407,9 +407,9 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
     await page.goto("/four-skills");
 
     const section = writingSection(page);
-    const start = section.getByRole("button", { name: /Start · 8 min for all 3/ });
+    const start = section.getByRole("button", { name: /Start · 8 min for all \d+/ });
     const sentence1 = page.locator("#writing-response-wr-sentence-1");
-    const submitAll = section.getByRole("button", { name: "Submit all 3" });
+    const submitAll = section.getByRole("button", { name: /Submit all \d+/ });
 
     // The textarea renders whether or not the clock has actually started, so
     // (unlike Submit-all appearing) it isn't a valid signal that Start's
@@ -447,15 +447,24 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
     await page.goto("/four-skills");
 
     const section = writingSection(page);
+    // Not hardcoded: the pooled sentence count grows with each content
+    // round, so read it off the "Start" button's own label instead of
+    // assuming a number.
+    const startLabel = await section
+      .getByRole("button", { name: /Start · 8 min for all \d+/ })
+      .textContent();
+    const total = Number(startLabel?.match(/all (\d+)/)?.[1]);
+    expect(total).toBeGreaterThan(1);
+
     await clickUntil(
-      section.getByRole("button", { name: /Start · 8 min for all 3/ }),
-      () => section.getByRole("button", { name: "Submit all 3" }).isVisible(),
+      section.getByRole("button", { name: new RegExp(`Start · 8 min for all ${total}`) }),
+      () => section.getByRole("button", { name: `Submit all ${total}` }).isVisible(),
       (visible) => visible,
     );
     await page.locator("#writing-response-wr-sentence-1").fill("Only the first sentence answered.");
 
-    await section.getByRole("button", { name: "Submit all 3" }).click();
-    await expect(section.getByRole("heading", { name: "Review all 3" })).toBeVisible();
+    await section.getByRole("button", { name: `Submit all ${total}` }).click();
+    await expect(section.getByRole("heading", { name: `Review all ${total}` })).toBeVisible();
     // The now-disabled textarea still renders the same text, so a bare
     // getByText matches it too under strict mode — scope to the review
     // block's own dashed-border answer paragraph specifically.
@@ -463,11 +472,11 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
       section.locator("p.border-dashed", { hasText: "Only the first sentence answered." }),
     ).toBeVisible();
     // Sentences left blank are shown as such rather than silently omitted.
-    await expect(section.getByText("(left blank)")).toHaveCount(2);
+    await expect(section.getByText("(left blank)")).toHaveCount(total - 1);
     // Every sentence gets its own checklist and sample, not just the one
     // that was actually written.
-    await expect(section.getByText("Check your sentence against the criteria")).toHaveCount(3);
-    await expect(section.getByText("A strong sample sentence")).toHaveCount(3);
+    await expect(section.getByText("Check your sentence against the criteria")).toHaveCount(total);
+    await expect(section.getByText("A strong sample sentence")).toHaveCount(total);
   });
 
   test("running out of the shared clock submits all three at once", async ({ page }) => {
@@ -476,15 +485,15 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
 
     const section = writingSection(page);
     await clickUntil(
-      section.getByRole("button", { name: /Start · 8 min for all 3/ }),
-      () => section.getByRole("button", { name: "Submit all 3" }).isVisible(),
+      section.getByRole("button", { name: /Start · 8 min for all \d+/ }),
+      () => section.getByRole("button", { name: /Submit all \d+/ }).isVisible(),
       (visible) => visible,
     );
     await page.locator("#writing-response-wr-sentence-1").fill("Whatever I managed in time.");
 
     // The full eight-minute pool, with no manual submit.
     await page.clock.runFor(480_000);
-    await expect(section.getByRole("heading", { name: "Review all 3" })).toBeVisible();
-    await expect(section.getByRole("button", { name: "Submit all 3" })).toBeHidden();
+    await expect(section.getByRole("heading", { name: /Review all \d+/ })).toBeVisible();
+    await expect(section.getByRole("button", { name: /Submit all \d+/ })).toBeHidden();
   });
 });

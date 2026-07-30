@@ -966,6 +966,33 @@ export const writingPrompts: WritingPrompt[] = [
       "Although the part looks difficult to fit back into place, the mechanic is trying to repair the engine himself.",
   },
   {
+    id: "wr-sentence-4",
+    taskRange: "1–5",
+    taskName: "Write a sentence based on a picture",
+    minutes: 2,
+    pooled: true,
+    directions:
+      "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
+    prompt: "Describe what you see in the picture above.",
+    image: {
+      src: "/images/four-skills/picture-office-desk.jpg",
+      alt: "Two men sitting at a desk covered in papers, one writing in a spiral notebook while the other gestures with his hand as he speaks",
+      author: "vondabdi",
+      sourceUrl: "https://www.flickr.com/photos/12751915@N07/2219334007",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
+    requiredWords: ["discuss", "while"],
+    checklist: [
+      "Did you use both words, in any form?",
+      "Is it exactly one sentence?",
+      "Does 'while' actually join two simultaneous actions?",
+      "Is the grammar accurate — tense, articles, subject–verb agreement?",
+    ],
+    model:
+      "The two men are discussing the papers on the desk while one of them takes notes in a notebook.",
+  },
+  {
     id: "wr-request-1",
     taskRange: "6–7",
     taskName: "Respond to a written request",
@@ -1049,16 +1076,16 @@ export const writingPrompts: WritingPrompt[] = [
     directions:
       "Read the email below and reply to it. Your response must do all three things listed in the directions.",
     prompt:
-      "From: Accounts Payable, Nordholm Office Supplies\nSubject: Invoice #7734 — overdue balance\n\nDear customer,\n\nOur records show that invoice #7734 for £860 remains unpaid, thirty days after the due date. Please arrange payment immediately, or contact us if you believe this is an error.\n\nRegards,\nAccounts Payable\n\nDIRECTIONS: Reply as the customer. In your email, state ONE problem with the invoice, request ONE thing from the supplier, and ask ONE question about how to resolve the matter.",
+      "From: Priya Chandra, Team Lead\nSubject: Handover before my parental leave\n\nHi,\n\nAs you know, I start parental leave in three weeks and you'll be covering the client accounts I manage while I'm away. I'd like to arrange a handover session before I go.\n\nLet me know what would be most useful to cover, and if there's anything you're worried about.\n\nBest,\nPriya\n\nDIRECTIONS: Reply as the covering colleague. In your email, name ONE specific thing you'd like the handover session to cover, propose ONE arrangement for how you'll reach Priya if something urgent comes up while she's away, and ask ONE question about a concern you have.",
     targetWords: "roughly 100–130 words",
     checklist: [
-      "Did you include all three required elements — a problem, a request and a question?",
+      "Did you include all three required elements — a handover topic, an arrangement for urgent contact, and a question?",
       "Did you open and close the email appropriately?",
       "Did you vary your sentence structures rather than repeating one pattern?",
       "Is the register polite and professional throughout?",
     ],
     model:
-      "Dear Accounts Payable,\n\nThank you for your message, but I believe there has been a mistake. Invoice #7734 includes a delivery charge of £120 for an order that was collected in person from your warehouse, so no delivery service was provided.\n\nCould you please issue a corrected invoice with this charge removed? Once I receive the amended figure, I will arrange payment straight away.\n\nI would also like to ask whether it is possible to send supporting documents, such as the collection receipt, by email so that this can be verified quickly on your side.\n\nI apologise for the delay this has caused and would like to settle the account as soon as the details are corrected.\n\nKind regards,\nTom Fenwick",
+      "Hi Priya,\n\nThank you for setting this up — congratulations again on the upcoming arrival!\n\nThe most useful thing for the handover session would be walking through the Halloran account renewal, since the contract is up in six weeks and I haven't been involved in those negotiations before.\n\nI'd suggest we agree that I'll only contact you by email, and only for something genuinely urgent — I don't want you checking your phone while you're meant to be off. For anything else, I'll hold it until you're back.\n\nOne thing I'm not sure about: should I keep sending your regular clients your out-of-office reply, or would you rather I introduce myself as their point of contact for now?\n\nBest,\nJordan",
   },
   {
     id: "wr-request-6",
@@ -1197,6 +1224,6 @@ export const writingPrompts: WritingPrompt[] = [
       "Does the conclusion restate your position rather than adding a new argument?",
     ],
     model:
-      "In my opinion, companies are generally better served by promoting from within rather than hiring senior staff from outside, because internal candidates bring institutional knowledge that cannot easily be replaced.\n\nThe first reason is that internal promotions preserve continuity during a leadership transition. An employee who has spent several years at a company already understands its processes, its clients and the informal relationships that keep projects running smoothly. When a regional manager at a logistics company I know retired, the company promoted her deputy rather than hiring externally, and the transition was seamless because the new manager already knew every major client by name.\n\nThe second reason is that promoting from within sends a powerful signal to the rest of the workforce about career progression. Employees who can see a realistic path to senior roles are more motivated and more likely to remain with the company long term, whereas consistently hiring outsiders for top positions can leave existing staff feeling that their loyalty is not rewarded. This is particularly important in industries where training new employees is costly and time-consuming.\n\nExternal hiring certainly has its place, particularly when a company needs skills or a fresh perspective that nobody internally possesses, and I would not argue that outside hiring should never happen. Still, treating it as the default choice for senior roles overlooks the real cost of losing institutional memory and discouraging ambitious employees.\n\nIn conclusion, because internal candidates offer continuity and stronger long-term motivation for staff, I believe companies should generally prioritise promoting from within when filling senior positions.",
+      "In my opinion, companies are generally better served by promoting from within rather than hiring senior staff from outside, because internal candidates bring institutional knowledge that cannot easily be replaced.\n\nThe first reason is that internal promotions preserve continuity during a leadership transition. An employee who has spent several years at a company already understands its processes, its clients and the informal relationships that keep projects running smoothly. When a regional manager at a logistics company I know retired, the company promoted her deputy rather than hiring externally, and the transition was seamless because the new manager already knew every major client by name.\n\nThe second reason is that promoting from within sends a powerful signal to the rest of the workforce about career progression. Employees who can see a realistic path to senior roles are more motivated and more likely to remain with the company long term. A friend of mine works at a manufacturing firm where three of the last four plant manager positions went to outside hires; two experienced supervisors who had been waiting years for that promotion left for competitors within months of being passed over again, taking their production knowledge with them.\n\nExternal hiring certainly has its place, particularly when a company needs skills or a fresh perspective that nobody internally possesses, and I would not argue that outside hiring should never happen. Still, treating it as the default choice for senior roles overlooks the real cost of losing institutional memory and discouraging ambitious employees.\n\nIn conclusion, because internal candidates offer continuity and stronger long-term motivation for staff, I believe companies should generally prioritise promoting from within when filling senior positions.",
   },
 ];
