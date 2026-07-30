@@ -18,7 +18,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import OpenAI from "openai";
 import { listeningReadingQuestions } from "../src/data/listeningReadingQuestions";
-import { speakingPrompts } from "../src/data/fourSkills";
+import { speakingPrompts } from "../src/data/fourSkillsPrompts";
 import {
   getAudioTurns,
   getGroupAudioTurns,
