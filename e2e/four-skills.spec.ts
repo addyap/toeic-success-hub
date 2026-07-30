@@ -114,24 +114,30 @@ test.describe("speaking trainer", () => {
     const counter = section.getByText(/^Prompt \d+ of \d+$/);
     const promptText = section.locator("blockquote");
 
-    await expect(counter).toHaveText("Prompt 1 of 3");
+    // Not hardcoded: the exact prompt count per task group grows with each
+    // content round, so read it from the page instead of assuming a number.
+    const initialLabel = await counter.textContent();
+    const total = Number(initialLabel?.match(/of (\d+)/)?.[1]);
+    expect(total).toBeGreaterThan(1);
+
+    await expect(counter).toHaveText(`Prompt 1 of ${total}`);
     const first = await promptText.textContent();
+    let previous = first;
 
-    await clickUntil(
-      rotate,
-      () => counter.textContent(),
-      (text) => text === "Prompt 2 of 3",
-    );
-    const second = await promptText.textContent();
-    expect(second).not.toBe(first);
-
-    await rotate.click();
-    await expect(counter).toHaveText("Prompt 3 of 3");
-    expect(await promptText.textContent()).not.toBe(second);
+    for (let n = 2; n <= total; n++) {
+      await clickUntil(
+        rotate,
+        () => counter.textContent(),
+        (text) => text === `Prompt ${n} of ${total}`,
+      );
+      const current = await promptText.textContent();
+      expect(current).not.toBe(previous);
+      previous = current;
+    }
 
     // Wraps back to the first prompt rather than dead-ending.
     await rotate.click();
-    await expect(counter).toHaveText("Prompt 1 of 3");
+    await expect(counter).toHaveText(`Prompt 1 of ${total}`);
     expect(await promptText.textContent()).toBe(first);
   });
 
@@ -145,15 +151,20 @@ test.describe("speaking trainer", () => {
     const counter = section.getByText(/^Prompt \d+ of \d+$/);
     const rotate = section.getByRole("button", { name: "Try another prompt" });
 
+    // The "of N" count is server-rendered and present pre-hydration, so it's
+    // safe to read before proving the click itself landed.
+    const total = Number((await counter.textContent())?.match(/of (\d+)/)?.[1]);
+    expect(total).toBeGreaterThan(1);
+
     await clickUntil(
       rotate,
       () => counter.textContent(),
-      (text) => text === "Prompt 2 of 3",
+      (text) => text === `Prompt 2 of ${total}`,
     );
 
     // Task 11 has different timings (15s prepare, 60s speak) to task 1–2.
     await section.getByRole("button", { name: /Q11 · Express an opinion/ }).click();
-    await expect(counter).toHaveText("Prompt 1 of 3");
+    await expect(counter).toHaveText(/^Prompt 1 of \d+$/);
     await expect(
       section.getByRole("button", { name: /Start · 15s prep, 60s speak/ }),
     ).toBeVisible();

@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
 import {
   Headphones,
   BookOpen,
@@ -11,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
 import {
   examSections,
@@ -20,31 +20,17 @@ import {
   type SkillTask,
 } from "@/data/fourSkills";
 
-// FourSkillsPractice.tsx pulls in the full speaking/writing prompt bank and
-// audioManifest.ts (~140KB combined) — lazy so that weight isn't part of
-// this route's initial bundle, matching the L&R question bank's dynamic
-// import in listening-reading.tsx. React.lazy (not a bare `import()` in an
-// effect) because these are full interactive components with their own
-// hooks/state, not plain data a loading flag can gate.
-const SpeakingTrainer = lazy(() =>
-  import("@/components/FourSkillsPractice").then((m) => ({ default: m.SpeakingTrainer })),
-);
-const WritingTrainer = lazy(() =>
-  import("@/components/FourSkillsPractice").then((m) => ({ default: m.WritingTrainer })),
-);
-
-function TrainerSkeleton() {
-  return (
-    <div aria-hidden="true" aria-busy="true">
-      <div className="flex flex-wrap gap-2">
-        {[0, 1, 2].map((i) => (
-          <div key={i} className="h-9 w-32 animate-pulse rounded-full bg-muted" />
-        ))}
-      </div>
-      <div className="mt-6 h-48 animate-pulse rounded-2xl bg-muted" />
-    </div>
-  );
-}
+// Deliberately a plain top-level import, not React.lazy + Suspense: that was
+// tried to keep the prompt bank and audioManifest (~140KB+) out of this
+// route's initial bundle, but on a cold/slow first compile the Suspense
+// boundary got stuck on the fallback forever (confirmed by reproducing it
+// directly — the dynamic import resolves fine if triggered manually, but the
+// SSR/hydration handoff for the lazy boundary never recovers). A stuck
+// skeleton for an unlucky first visitor is worse than the extra bundle
+// weight, so this reverts to the reliable eager import. If this needs
+// revisiting, the correct fix is the L&R page's own pattern instead —
+// useState + useEffect dynamic `import()` of the DATA only, not the whole
+// component tree via React.lazy.
 
 const DESCRIPTION =
   "The complete guide to the TOEIC 4-Skills test: adaptive Listening and Reading, all 11 Speaking tasks and all 8 Writing tasks, with timed practice for Speaking and Writing.";
@@ -274,9 +260,7 @@ function Page() {
           your browser.
         </p>
         <div className="mt-8">
-          <Suspense fallback={<TrainerSkeleton />}>
-            <SpeakingTrainer />
-          </Suspense>
+          <SpeakingTrainer />
         </div>
       </section>
 
@@ -302,9 +286,7 @@ function Page() {
           against the marking criteria and a strong sample response.
         </p>
         <div className="mt-8">
-          <Suspense fallback={<TrainerSkeleton />}>
-            <WritingTrainer />
-          </Suspense>
+          <WritingTrainer />
         </div>
       </section>
 

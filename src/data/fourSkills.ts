@@ -267,6 +267,57 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-read-4",
+    taskRange: "1–2",
+    taskName: "Read a text aloud",
+    prepSeconds: 45,
+    speakSeconds: 45,
+    directions:
+      "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
+    prompt:
+      "Good morning, ladies and gentlemen. This is the final boarding call for flight BA two-seven-four to Edinburgh, departing from gate fourteen. All passengers should now proceed immediately to the gate, as the doors will close at nine forty-five. Please have your boarding pass and passport ready for inspection. Passengers requiring special assistance, and those travelling with young children, are kindly asked to make themselves known to a member of staff. We remind you that hand luggage must fit within the overhead compartment or under the seat in front of you. Thank you, and we look forward to welcoming you aboard.",
+    checklist: [
+      "Did the flight number 'BA two-seven-four' and 'Edinburgh' stay clear and correctly stressed?",
+      "Did your pitch fall firmly on 'gate fourteen' and 'nine forty-five' so the numbers land as key information?",
+      "Did you pause after 'gentlemen' and before 'Please have your boarding pass' rather than rushing the instructions together?",
+      "Did 'passengers requiring special assistance' get its own clear phrase, not blur into the next clause?",
+    ],
+  },
+  {
+    id: "sp-read-5",
+    taskRange: "1–2",
+    taskName: "Read a text aloud",
+    prepSeconds: 45,
+    speakSeconds: 45,
+    directions:
+      "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
+    prompt:
+      "Welcome to the Ashcombe Gallery of Natural History. As you enter this hall, you'll see the skeleton of a blue whale suspended above you, measuring almost twenty-five metres from nose to tail. To your left, cabinet seven displays fossils discovered along the Dorset coast over the past two hundred years. Please feel free to walk around the whale skeleton, but do not touch the display cases. If you'd like to hear more detail about any exhibit, simply press the green button on your handset and enter the three-digit number shown on the nearby label. Our next stop, the Mineral Room, is just through the archway on your right.",
+    checklist: [
+      "Did 'Ashcombe' and 'Dorset' stay clear, and did 'twenty-five metres' sound natural rather than spelled out?",
+      "Did your pitch rise while listing 'cabinet seven... fossils... Dorset coast' and fall at the end of that sentence?",
+      "Did you pause slightly before 'but do not touch the display cases' to mark the warning?",
+      "Did 'three-digit number' and 'Mineral Room' stay crisp instead of running into the surrounding words?",
+    ],
+  },
+  {
+    id: "sp-read-6",
+    taskRange: "1–2",
+    taskName: "Read a text aloud",
+    prepSeconds: 45,
+    speakSeconds: 45,
+    directions:
+      "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
+    prompt:
+      "Good morning, everyone, and welcome to Hartley Manufacturing. Before you begin your shift on the production floor, please remember a few safety points. Safety glasses and steel-toed boots must be worn at all times in Zones A and B. The emergency assembly point is in the car park beside Gate Three; in the event of an alarm, exit through the nearest marked door, not the one you entered by. Machinery must never be left running unattended, and spills should be reported immediately to your supervisor. Fire extinguishers are located every twenty metres along the main corridor. Thank you for your attention, and have a safe shift.",
+    checklist: [
+      "Did 'Hartley Manufacturing' and 'Zones A and B' stay clear, with the letters A and B pronounced distinctly?",
+      "Did your pitch fall clearly at the end of 'Gate Three' and again at 'the one you entered by'?",
+      "Did you pause at the semicolon before 'in the event of an alarm' instead of rushing into the instruction?",
+      "Did 'unattended' and 'extinguishers' stay fully intelligible despite being longer, less common words?",
+    ],
+  },
+  {
     id: "sp-picture-1",
     taskRange: "3–4",
     taskName: "Describe a picture",
@@ -344,6 +395,56 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-picture-4",
+    taskRange: "3–4",
+    taskName: "Describe a picture",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Describe what you can see in the photograph above. You have 45 seconds to prepare, then 30 seconds to speak.",
+    prompt: "Describe what you can see in the photograph above.",
+    image: {
+      src: "/images/four-skills/picture-construction.jpg",
+      alt: "Two construction workers wearing hard hats standing on a rebar-reinforced concrete column, one guiding a crane hook and the other pointing and holding a rope, against a clear blue sky",
+      author: "billjacobus1",
+      sourceUrl: "https://www.flickr.com/photos/67513462@N00/122497422",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
+    checklist: [
+      "Did you say where the scene takes place — a construction site, high up on a structure?",
+      "Did you describe what each worker is doing, not just what they are wearing?",
+      "Did you mention the crane hook and the rebar/formwork structure they are standing on?",
+      "Did you use the present continuous throughout for the actions in progress?",
+      "Were you still speaking when the time ran out?",
+    ],
+  },
+  {
+    id: "sp-picture-5",
+    taskRange: "3–4",
+    taskName: "Describe a picture",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Describe what you can see in the photograph above. You have 45 seconds to prepare, then 30 seconds to speak.",
+    prompt: "Describe what you can see in the photograph above.",
+    image: {
+      src: "/images/four-skills/picture-lab.jpg",
+      alt: "Several lab technicians in white coats sitting at workstations looking through microscopes, while one man stands and speaks to the group, white cabinets and red chairs in the background",
+      author: "US Army Africa",
+      sourceUrl: "https://www.flickr.com/photos/36281822@N08/4077018383",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
+    checklist: [
+      "Did you say what kind of place this is and roughly how many people are present?",
+      "Did you describe what the seated technicians are doing with the microscopes?",
+      "Did you mention the standing man, who appears to be speaking rather than working at a microscope?",
+      "Did you use the present continuous throughout for the actions in progress?",
+      "Did you fill the full 30 seconds?",
+    ],
+  },
+  {
     id: "sp-questions-1",
     spoken: true,
     taskRange: "5–7",
@@ -393,6 +494,60 @@ export const speakingPrompts: SpeakingPrompt[] = [
       "Did you state a clear preference rather than hedging both ways?",
       "Did you address the 'has that changed' half of the question?",
       "Did you support your preference with a reason or an example?",
+      "Did you keep going for the full 30 seconds?",
+    ],
+  },
+  {
+    id: "sp-questions-4",
+    spoken: true,
+    taskRange: "5–7",
+    taskName: "Respond to questions",
+    prepSeconds: 3,
+    speakSeconds: 15,
+    directions:
+      "Imagine an event organizer is asking about your meeting preferences. You have 3 seconds to prepare, then 15 seconds to respond.",
+    prompt:
+      "Do you prefer meeting people in person or over video calls, and why do you prefer that format?",
+    checklist: [
+      "Did you start speaking within a second or two?",
+      "Did you state a clear preference between in-person and video meetings?",
+      "Did you give a specific reason rather than just naming your preference?",
+      "Did you get a complete thought out inside 15 seconds without rushing?",
+    ],
+  },
+  {
+    id: "sp-questions-5",
+    spoken: true,
+    taskRange: "5–7",
+    taskName: "Respond to questions",
+    prepSeconds: 3,
+    speakSeconds: 15,
+    directions:
+      "Imagine a magazine writer is asking about your daily habits. You have 3 seconds to prepare, then 15 seconds to respond.",
+    prompt:
+      "What app or tool do you use most often during the day, and what do you mainly use it for?",
+    checklist: [
+      "Did you begin speaking almost immediately?",
+      "Did you name a specific app or tool rather than being vague?",
+      "Did you explain what you actually use it for?",
+      "Did you avoid filler like 'ummm, let me think' that eats the clock?",
+    ],
+  },
+  {
+    id: "sp-questions-6",
+    spoken: true,
+    taskRange: "5–7",
+    taskName: "Respond to questions",
+    prepSeconds: 3,
+    speakSeconds: 30,
+    directions:
+      "A researcher is asking about your leisure time. You have 3 seconds to prepare, then 30 seconds to respond.",
+    prompt:
+      "How do you usually spend your weekends, and has the way you spend them changed since last year?",
+    checklist: [
+      "Did you describe how you typically spend your weekends?",
+      "Did you address whether that has changed since last year?",
+      "Did you support your answer with a specific example or detail?",
       "Did you keep going for the full 30 seconds?",
     ],
   },
@@ -488,6 +643,98 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-info-4",
+    spoken: true,
+    taskRange: "8–10",
+    taskName: "Respond using information provided",
+    prepSeconds: 45,
+    speakSeconds: 15,
+    directions:
+      "Read the appointment list below. You have 45 seconds to read and think, then 15 seconds to answer the question.",
+    reference: {
+      title: "Riverside Clinic — appointment list, Wednesday 5 August",
+      lines: [
+        "09:00   Dr. Halversen — Room 2 — routine check-ups",
+        "09:00   Dr. Osei — Room 4 — new patient consultations",
+        "10:30   Dr. Halversen — Room 2 — vaccinations (no appointment needed)",
+        "11:00   Nurse Practitioner Reyes — Room 1 — blood pressure clinic",
+        "12:00 – 13:00   Clinic closed for lunch",
+        "13:00   Dr. Osei — Room 4 — follow-up appointments",
+        "14:30   Dr. Halversen — Room 3 — minor injuries clinic",
+        "16:00   Clinic closes",
+      ],
+    },
+    prompt:
+      "I want to see Dr. Halversen without an appointment, but I can only come after lunch. Is that possible, and what should I do instead?",
+    checklist: [
+      "Did you correctly identify that only the 10:30 vaccination clinic is a walk-in with no appointment needed?",
+      "Did you correctly state that the 14:30 session in Room 3 (minor injuries) is not listed as a walk-in?",
+      "Did you suggest booking ahead, or coming in the morning instead?",
+      "Did you answer in full sentences rather than reading the list aloud?",
+    ],
+  },
+  {
+    id: "sp-info-5",
+    spoken: true,
+    taskRange: "8–10",
+    taskName: "Respond using information provided",
+    prepSeconds: 45,
+    speakSeconds: 15,
+    directions:
+      "Read the timetable below. You have 45 seconds to read and think, then 15 seconds to answer the question.",
+    reference: {
+      title: "Skyline Airport Shuttle — Saturday timetable, Terminal 2 stop",
+      lines: [
+        "05:45   First shuttle — Terminal 2 to Riverside Hotel, direct",
+        "06:30   Terminal 2 to Downtown, stops at Oakwood Station",
+        "07:15   Terminal 2 to Riverside Hotel, direct",
+        "08:00   Terminal 2 to Downtown, stops at Oakwood Station and Fairview Mall",
+        "09:30 – 17:00   Shuttle runs every 45 minutes, alternating direct/stopping service",
+        "17:45   Last direct shuttle to Riverside Hotel",
+        "18:30   Last shuttle to Downtown, stops at Oakwood Station",
+      ],
+    },
+    prompt:
+      "My flight lands at 17:20 and I'm staying at the Riverside Hotel. Can I catch a direct shuttle, and if so, what time does it leave?",
+    checklist: [
+      "Did you correctly name the 17:45 shuttle as the one that goes to Riverside Hotel?",
+      "Did you confirm it departs after the 17:20 landing time, so it can be caught?",
+      "Did you correctly identify it as a direct service rather than a stopping one?",
+      "Did you avoid mentioning the Downtown-bound shuttles, which aren't relevant here?",
+    ],
+  },
+  {
+    id: "sp-info-6",
+    spoken: true,
+    taskRange: "8–10",
+    taskName: "Respond using information provided",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Read the schedule below. You have 45 seconds to read and think, then 30 seconds to answer the question.",
+    reference: {
+      title: "New product launch — 'Halo' smart lamp, Tuesday 3 November, Grand Hall",
+      lines: [
+        "10:00 – 10:15   Doors open and registration",
+        "10:15 – 10:45   Welcome address — CEO Priya Nandakumar",
+        "10:45 – 11:30   Product demonstration — Halo smart lamp, Engineering team",
+        "11:30 – 12:00   Press Q&A — Priya Nandakumar and Head of Design, Tom Ferris",
+        "12:00 – 13:00   Networking lunch — Terrace",
+        "13:00 – 14:00   Media interviews (by appointment only, sign up at registration desk)",
+        "14:00 – 14:30   Photo session with product prototypes",
+        "14:30   Event closes — gift bags at the exit",
+      ],
+    },
+    prompt:
+      "I'm a journalist and I'd like a one-on-one interview with Tom Ferris. When could that happen, and what do I need to do first?",
+    checklist: [
+      "Did you correctly identify the 13:00–14:00 media interview slot as the one-on-one opportunity?",
+      "Did you mention that interviews require signing up in advance at the registration desk?",
+      "Did you distinguish this from the 11:30 press Q&A, which is a group session rather than one-on-one?",
+      "Did you organise your answer clearly rather than listing the whole schedule in order?",
+    ],
+  },
+  {
     id: "sp-opinion-1",
     spoken: true,
     taskRange: "11",
@@ -540,6 +787,63 @@ export const speakingPrompts: SpeakingPrompt[] = [
       "Did you explain why your choice beats the alternative, not just why it is good?",
       "Did you use a specific example to make one reason concrete?",
       "Did your answer have a recognisable beginning, middle and end?",
+    ],
+  },
+  {
+    id: "sp-opinion-4",
+    spoken: true,
+    taskRange: "11",
+    taskName: "Express an opinion",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    directions:
+      "State your opinion and support it. You have 15 seconds to prepare, then 60 seconds to speak.",
+    prompt:
+      "Some companies are requiring employees to return to the office full-time, while others let staff continue working remotely. Which approach do you think is better for employees and businesses? Give reasons and examples to support your opinion.",
+    checklist: [
+      "Did you clearly say whether you favor full-time office attendance or remote work?",
+      "Did you give one reason focused on the employee's perspective and one focused on the business's?",
+      "Did you use a specific example (a task, a team situation, a personal experience) rather than a general claim?",
+      "Did you acknowledge the other side briefly before restating your position?",
+      "Did you close with a clear concluding sentence rather than stopping mid-thought?",
+    ],
+  },
+  {
+    id: "sp-opinion-5",
+    spoken: true,
+    taskRange: "11",
+    taskName: "Express an opinion",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    directions:
+      "State your opinion and support it. You have 15 seconds to prepare, then 60 seconds to speak.",
+    prompt:
+      "Some companies pay employees a fixed salary regardless of individual output, while others use performance-based bonuses to reward top performers. Which system do you think is fairer and more effective? Give reasons and examples to support your opinion.",
+    checklist: [
+      "Did you state upfront whether you prefer fixed salaries or performance-based pay?",
+      "Did you explain one reason related to fairness and one related to motivation or results?",
+      "Did you illustrate your point with a concrete workplace scenario or example?",
+      "Did you address a possible downside of your chosen system to show balanced thinking?",
+      "Did you finish with a clear final statement instead of running out of time?",
+    ],
+  },
+  {
+    id: "sp-opinion-6",
+    spoken: true,
+    taskRange: "11",
+    taskName: "Express an opinion",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    directions:
+      "State your opinion and support it. You have 15 seconds to prepare, then 60 seconds to speak.",
+    prompt:
+      "Some people believe employees should stay with one company for many years to build expertise and trust, while others believe changing jobs every few years leads to faster career growth. Which do you agree with? Give reasons and examples to support your opinion.",
+    checklist: [
+      "Did you clearly state whether you favor long-term loyalty or frequent job changes?",
+      "Did you give one reason about skill or career development and one about relationships or stability?",
+      "Did you support each reason with a specific example, such as a career path or situation you know of?",
+      "Did you keep your two reasons distinct rather than repeating the same idea twice?",
+      "Did you end with a concise conclusion that reaffirms your position?",
     ],
   },
 ];
@@ -719,6 +1023,63 @@ export const writingPrompts: WritingPrompt[] = [
       "Dear Elena,\n\nThank you for the invitation. I would very much like to take one of the places on the course in May.\n\nThere are two things in particular I hope to gain. The first is confidence in handling questions: I present monthly figures to our regional managers and I find the discussion afterwards much harder than the talk itself. The second is practical guidance on visual aids, as my slides tend to be far too dense to read from the back of a room.\n\nCould you tell me whether the sessions run for the full working day on both dates? I need to arrange cover for my own team if so.\n\nBest wishes,\nRuth Kavanagh",
   },
   {
+    id: "wr-request-4",
+    taskRange: "6–7",
+    taskName: "Respond to a written request",
+    minutes: 10,
+    directions:
+      "Read the email below and reply to it. Your response must do all three things listed in the directions.",
+    prompt:
+      "From: Marcus Webb, Finance Director\nSubject: Q3 budget report — deadline moved up\n\nDear team,\n\nDue to an upcoming external audit, I need the Q3 budget report submitted by this Wednesday instead of the original date of next Monday. Please prioritise this over other tasks this week.\n\nLet me know if this creates any difficulties.\n\nRegards,\nMarcus\n\nDIRECTIONS: Reply as a team member. In your email, explain ONE problem the new deadline causes, request ONE thing that would help you meet it, and ask ONE question about what the auditors will need to see.",
+    targetWords: "roughly 100–130 words",
+    checklist: [
+      "Did you include all three required elements — a problem, a request and a question?",
+      "Did you open and close the email appropriately?",
+      "Did you vary your sentence structures rather than repeating one pattern?",
+      "Is the register polite and professional throughout?",
+    ],
+    model:
+      "Dear Marcus,\n\nThank you for the update on the audit.\n\nMoving the deadline to Wednesday is going to be difficult, as I am still waiting on final sales figures from the regional offices, which are not due until Tuesday afternoon. This leaves very little time to check the numbers before submission.\n\nWould it be possible for someone from the data team to help me consolidate the regional figures once they arrive, so I can focus on the analysis itself? That would make Wednesday realistic.\n\nI also wanted to ask what level of detail the auditors expect to see — a summary of variances, or the full transaction breakdown for each department?\n\nI will do everything I can to meet the new date.\n\nBest regards,\nAisha Patel",
+  },
+  {
+    id: "wr-request-5",
+    taskRange: "6–7",
+    taskName: "Respond to a written request",
+    minutes: 10,
+    directions:
+      "Read the email below and reply to it. Your response must do all three things listed in the directions.",
+    prompt:
+      "From: Accounts Payable, Nordholm Office Supplies\nSubject: Invoice #7734 — overdue balance\n\nDear customer,\n\nOur records show that invoice #7734 for £860 remains unpaid, thirty days after the due date. Please arrange payment immediately, or contact us if you believe this is an error.\n\nRegards,\nAccounts Payable\n\nDIRECTIONS: Reply as the customer. In your email, state ONE problem with the invoice, request ONE thing from the supplier, and ask ONE question about how to resolve the matter.",
+    targetWords: "roughly 100–130 words",
+    checklist: [
+      "Did you include all three required elements — a problem, a request and a question?",
+      "Did you open and close the email appropriately?",
+      "Did you vary your sentence structures rather than repeating one pattern?",
+      "Is the register polite and professional throughout?",
+    ],
+    model:
+      "Dear Accounts Payable,\n\nThank you for your message, but I believe there has been a mistake. Invoice #7734 includes a delivery charge of £120 for an order that was collected in person from your warehouse, so no delivery service was provided.\n\nCould you please issue a corrected invoice with this charge removed? Once I receive the amended figure, I will arrange payment straight away.\n\nI would also like to ask whether it is possible to send supporting documents, such as the collection receipt, by email so that this can be verified quickly on your side.\n\nI apologise for the delay this has caused and would like to settle the account as soon as the details are corrected.\n\nKind regards,\nTom Fenwick",
+  },
+  {
+    id: "wr-request-6",
+    taskRange: "6–7",
+    taskName: "Respond to a written request",
+    minutes: 10,
+    directions:
+      "Read the email below and reply to it. Your response must do all three things listed in the directions.",
+    prompt:
+      "From: Grace Lindqvist, Marketing Director\nSubject: Feedback on the campaign report\n\nHi,\n\nThanks for sending over the campaign report. Overall it's strong, but before we present it to the board on Monday I'd like the competitor analysis section expanded, and the summary of results made clearer. Please also double-check the figures in the final table.\n\nLet me know if you have any concerns about the timeline.\n\nBest,\nGrace\n\nDIRECTIONS: Reply as the report's author. In your email, explain ONE part of the feedback you have already acted on, ask ONE question about what is unclear in the feedback, and state ONE problem with the Monday deadline.",
+    targetWords: "roughly 100–130 words",
+    checklist: [
+      "Did you include all three required elements — something already done, a question and a problem?",
+      "Did you open and close the email appropriately?",
+      "Did you vary your sentence structures rather than repeating one pattern?",
+      "Is the register polite and professional throughout?",
+    ],
+    model:
+      "Hi Grace,\n\nThank you for the feedback on the report.\n\nI have already gone through the final table and corrected two figures that had been copied over from an earlier draft, so those numbers are now accurate.\n\nCould you clarify what you would like changed in the summary of results? I want to make sure I focus on the right area, whether that is the wording, the layout, or the level of detail.\n\nI do want to flag one issue with the Monday deadline: expanding the competitor analysis properly will mean requesting updated figures from two colleagues who are both out of the office until Sunday evening, which leaves very little time to review before the board meeting.\n\nI will do my best to have everything ready.\n\nBest wishes,\nDaniel Cho",
+  },
+  {
     id: "wr-essay-1",
     taskRange: "8",
     taskName: "Write an opinion essay",
@@ -777,5 +1138,65 @@ export const writingPrompts: WritingPrompt[] = [
     ],
     model:
       "I agree that employers should fund training for their staff, including skills that go beyond the immediate demands of the job.\n\nThe first reason is straightforward self-interest. Roles change faster than they used to, and an employer who only trains people for the job they hold today will eventually find that nobody is equipped for the job the company needs tomorrow. A retailer that taught its shop managers nothing about online sales spent years hiring expensive outside specialists for work its own staff could have done.\n\nSecond, funded training is one of the cheapest ways to keep good people. Employees who can see themselves developing are markedly less likely to leave, and replacing a skilled colleague costs far more than a course does. A former manager of mine approved a data analysis qualification for a colleague who had no immediate need for it; she stayed another six years and eventually led the team that used exactly those skills.\n\nThose who argue training is a personal responsibility do have a point about motivation: a course nobody chose and nobody wants is money wasted. But this argues for letting employees select their own training, not for withdrawing funding altogether. The answer to poor take-up is genuine choice, not a smaller budget.\n\nIn conclusion, I believe employers should pay for training, and should be relaxed about whether every skill has an obvious immediate use. The organisation gains adaptability, it retains experienced staff, and the cost is small set against the alternative of constantly recruiting from outside.",
+  },
+  {
+    id: "wr-essay-4",
+    taskRange: "8",
+    taskName: "Write an opinion essay",
+    minutes: 30,
+    directions:
+      "Write an essay stating your opinion. Support it with reasons and examples. You have 30 minutes to plan, write and revise.",
+    prompt:
+      "Some companies reward employees with individual performance bonuses, while others distribute bonuses equally among team members based on group results. Do you think individual bonuses are more effective than team-based rewards? Use specific reasons and examples to support your answer.",
+    targetWords: "around 300 words",
+    checklist: [
+      "Does your introduction state your position unambiguously?",
+      "Does each body paragraph carry one reason, supported by an example?",
+      "Did you use linking words to connect your ideas?",
+      "Did you leave time to check tenses, articles and plurals?",
+      "Does the conclusion restate your position rather than adding a new argument?",
+    ],
+    model:
+      "I believe that team-based rewards are more effective than individual bonuses for most organisations, because they encourage collaboration rather than internal competition.\n\nThe first reason is that individual bonuses can quietly damage teamwork. When employees know that only the top performer will be rewarded, they have little incentive to share knowledge or help a struggling colleague. At a former workplace of mine, sales staff stopped passing on useful client leads to one another once a monthly bonus was introduced for the single highest seller, and overall team sales actually fell.\n\nSecond, team-based rewards more accurately reflect how modern work is actually done. Most projects today depend on several people contributing different skills, and it is often difficult to isolate one person's exact contribution. A software release, for example, depends equally on developers, testers and designers; rewarding only the developer whose code was merged last ignores everyone else who made that release possible.\n\nOf course, some argue that team bonuses let weaker performers benefit from others' effort without contributing equally. This is a fair concern, and managers should still track and address individual underperformance directly through feedback and coaching. However, this does not mean the reward itself should be individual; it simply means recognition and reward can operate on different levels.\n\nIn conclusion, because individual bonuses tend to undermine cooperation while team-based rewards better match how collaborative work actually happens, I believe companies should generally favour rewarding teams rather than singling out individuals.",
+  },
+  {
+    id: "wr-essay-5",
+    taskRange: "8",
+    taskName: "Write an opinion essay",
+    minutes: 30,
+    directions:
+      "Write an essay stating your opinion. Support it with reasons and examples. You have 30 minutes to plan, write and revise.",
+    prompt:
+      "Many companies are moving from a standard five-day working week to a four-day working week with the same total pay. Do you think companies should adopt a four-day working week? Use specific reasons and examples to support your answer.",
+    targetWords: "around 300 words",
+    checklist: [
+      "Does your introduction state your position unambiguously?",
+      "Does each body paragraph carry one reason, supported by an example?",
+      "Did you use linking words to connect your ideas?",
+      "Did you leave time to check tenses, articles and plurals?",
+      "Does the conclusion restate your position rather than adding a new argument?",
+    ],
+    model:
+      "I strongly support companies adopting a four-day working week, since the evidence suggests it improves both employee wellbeing and organisational performance.\n\nOne major reason is that a shorter week reduces burnout without necessarily reducing output. Employees who know they only have four days to complete their tasks tend to eliminate low-value activities, such as unnecessary meetings, and focus on what actually matters. A marketing agency I read about trialled a four-day week and found that staff simply shortened their weekly meetings from an hour to twenty minutes, freeing up time without losing any important decisions.\n\nA second reason is that the policy helps companies attract and retain talent in a competitive job market. Skilled employees increasingly value flexibility as highly as salary, and an extra day off each week is a benefit that costs the company nothing in direct wages. Several technology firms that adopted four-day weeks have reported a noticeable drop in staff turnover, since employees are reluctant to leave a job that offers this level of work-life balance once they have experienced it.\n\nNaturally, not every industry can adopt this model easily; hospitals and factories that run continuously face genuine scheduling challenges. Even so, this is an argument for adapting the model to specific sectors, not for rejecting it entirely.\n\nIn conclusion, because a four-day week can raise efficiency while making a company more attractive to employees, I believe organisations that are able to implement it should do so, even if some sectors need a modified version of the idea.",
+  },
+  {
+    id: "wr-essay-6",
+    taskRange: "8",
+    taskName: "Write an opinion essay",
+    minutes: 30,
+    directions:
+      "Write an essay stating your opinion. Support it with reasons and examples. You have 30 minutes to plan, write and revise.",
+    prompt:
+      "When filling senior positions, some companies prefer to promote existing employees, while others prefer to hire experienced candidates from outside the organisation. Which approach do you think is generally better for a company? Use specific reasons and examples to support your answer.",
+    targetWords: "around 300 words",
+    checklist: [
+      "Does your introduction state your position unambiguously?",
+      "Does each body paragraph carry one reason, supported by an example?",
+      "Did you use linking words to connect your ideas?",
+      "Did you leave time to check tenses, articles and plurals?",
+      "Does the conclusion restate your position rather than adding a new argument?",
+    ],
+    model:
+      "In my opinion, companies are generally better served by promoting from within rather than hiring senior staff from outside, because internal candidates bring institutional knowledge that cannot easily be replaced.\n\nThe first reason is that internal promotions preserve continuity during a leadership transition. An employee who has spent several years at a company already understands its processes, its clients and the informal relationships that keep projects running smoothly. When a regional manager at a logistics company I know retired, the company promoted her deputy rather than hiring externally, and the transition was seamless because the new manager already knew every major client by name.\n\nThe second reason is that promoting from within sends a powerful signal to the rest of the workforce about career progression. Employees who can see a realistic path to senior roles are more motivated and more likely to remain with the company long term, whereas consistently hiring outsiders for top positions can leave existing staff feeling that their loyalty is not rewarded. This is particularly important in industries where training new employees is costly and time-consuming.\n\nExternal hiring certainly has its place, particularly when a company needs skills or a fresh perspective that nobody internally possesses, and I would not argue that outside hiring should never happen. Still, treating it as the default choice for senior roles overlooks the real cost of losing institutional memory and discouraging ambitious employees.\n\nIn conclusion, because internal candidates offer continuity and stronger long-term motivation for staff, I believe companies should generally prioritise promoting from within when filling senior positions.",
   },
 ];
