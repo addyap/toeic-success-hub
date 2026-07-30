@@ -1,8 +1,9 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2 } from "lucide-react";
+import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2, Flag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getAudioTurns, getGroupAudioTurns, audioKeyForTurns, audioKey } from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
+import { PUBLISHER } from "@/components/LegalPage";
 
 export interface PracticeQuestionData {
   prompt: string;
@@ -230,6 +231,28 @@ function QuestionPassage({
   );
 }
 
+/** Builds a pre-filled mailto: link so a learner can flag a wrong or
+ *  ambiguous question straight to the site owner. The site has no backend
+ *  (question bank is static bundled data, no accounts), so email is the
+ *  zero-infrastructure equivalent of an in-app report button — the question
+ *  text itself doubles as the identifier since there's no stable id field. */
+function reportIssueMailto(data: PracticeQuestionData, picked: string | null): string {
+  const question = data.question ?? data.prompt;
+  const pickedOption = data.options.find((o) => o.label === picked);
+  const correctOption = data.options.find((o) => o.label === data.correct);
+  const body = [
+    "What's wrong with this question? (please describe below)",
+    "",
+    "---",
+    `Question: ${question}`,
+    ...(data.context ? [`Context: ${data.context}`] : []),
+    ...(pickedOption ? [`Your answer: ${pickedOption.label}. ${pickedOption.text}`] : []),
+    ...(correctOption ? [`Marked correct: ${correctOption.label}. ${correctOption.text}`] : []),
+  ].join("\n");
+  const params = new URLSearchParams({ subject: "TOEIC question issue", body });
+  return `mailto:${PUBLISHER.email}?${params.toString().replace(/\+/g, "%20")}`;
+}
+
 /** One question's answer choices, feedback state and explanation. Rendered
  *  once per question, whether it stands alone or belongs to a set. */
 function QuestionOptions({
@@ -316,6 +339,13 @@ function QuestionOptions({
             Explanation
           </div>
           <p className="mt-1 text-sm leading-relaxed text-foreground">{data.explanation}</p>
+          <a
+            href={reportIssueMailto(data, picked)}
+            className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition hover:text-primary"
+          >
+            <Flag className="h-3.5 w-3.5" />
+            Report an issue with this question
+          </a>
         </div>
       )}
     </>
