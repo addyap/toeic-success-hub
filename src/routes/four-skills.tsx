@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import {
   Headphones,
   BookOpen,
@@ -10,8 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 import {
   examSections,
   examFacts,
@@ -19,6 +19,32 @@ import {
   writingTasks,
   type SkillTask,
 } from "@/data/fourSkills";
+
+// FourSkillsPractice.tsx pulls in the full speaking/writing prompt bank and
+// audioManifest.ts (~140KB combined) — lazy so that weight isn't part of
+// this route's initial bundle, matching the L&R question bank's dynamic
+// import in listening-reading.tsx. React.lazy (not a bare `import()` in an
+// effect) because these are full interactive components with their own
+// hooks/state, not plain data a loading flag can gate.
+const SpeakingTrainer = lazy(() =>
+  import("@/components/FourSkillsPractice").then((m) => ({ default: m.SpeakingTrainer })),
+);
+const WritingTrainer = lazy(() =>
+  import("@/components/FourSkillsPractice").then((m) => ({ default: m.WritingTrainer })),
+);
+
+function TrainerSkeleton() {
+  return (
+    <div aria-hidden="true" aria-busy="true">
+      <div className="flex flex-wrap gap-2">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="h-9 w-32 animate-pulse rounded-full bg-muted" />
+        ))}
+      </div>
+      <div className="mt-6 h-48 animate-pulse rounded-2xl bg-muted" />
+    </div>
+  );
+}
 
 const DESCRIPTION =
   "The complete guide to the TOEIC 4-Skills test: adaptive Listening and Reading, all 11 Speaking tasks and all 8 Writing tasks, with timed practice for Speaking and Writing.";
@@ -118,9 +144,29 @@ function TaskTable({ tasks }: { tasks: SkillTask[] }) {
   );
 }
 
+// Article, not FAQPage: examFacts below are declarative statements shown as
+// headed paragraphs, not literal questions — forcing FAQPage schema onto
+// content that isn't actually phrased as Q&A risks Google treating it as a
+// content/schema mismatch. Same safe pattern as study-tips.$slug.tsx.
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "The TOEIC 4-Skills test",
+  description: DESCRIPTION,
+  author: { "@type": "Organization", name: SITE_NAME },
+  publisher: { "@type": "Organization", name: SITE_NAME },
+  mainEntityOfPage: absoluteUrl("/four-skills"),
+};
+
 function Page() {
   return (
     <SiteLayout>
+      <script
+        type="application/ld+json"
+        // Static, hardcoded JSON built from this route's own constants — no
+        // user input, so this is not an XSS vector.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <section className="bg-gradient-soft">
         <div className="mx-auto w-full max-w-5xl px-5 py-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -228,7 +274,9 @@ function Page() {
           your browser.
         </p>
         <div className="mt-8">
-          <SpeakingTrainer />
+          <Suspense fallback={<TrainerSkeleton />}>
+            <SpeakingTrainer />
+          </Suspense>
         </div>
       </section>
 
@@ -254,7 +302,9 @@ function Page() {
           against the marking criteria and a strong sample response.
         </p>
         <div className="mt-8">
-          <WritingTrainer />
+          <Suspense fallback={<TrainerSkeleton />}>
+            <WritingTrainer />
+          </Suspense>
         </div>
       </section>
 

@@ -983,6 +983,40 @@ function PooledWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
           </div>
         </div>
 
+        {prompt.image && (
+          <figure className="mt-5">
+            <img
+              src={prompt.image.src}
+              alt={prompt.image.alt}
+              loading="lazy"
+              className="w-full rounded-xl border border-border object-cover"
+            />
+            {/* Full-opacity muted-foreground, not a faded variant: dimming
+                drops this caption below WCAG AA's 4.5:1 contrast minimum. */}
+            <figcaption className="mt-1 text-[11px] text-muted-foreground">
+              Photo by {prompt.image.author} —{" "}
+              <a
+                href={prompt.image.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer license"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                source
+              </a>
+              {", "}
+              <a
+                href={prompt.image.licenseUrl}
+                target="_blank"
+                rel="noopener noreferrer license"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                {prompt.image.licenseName}
+              </a>
+              , via Wikimedia Commons
+            </figcaption>
+          </figure>
+        )}
+
         <div className="mt-5 whitespace-pre-line rounded-xl border border-border bg-muted/50 p-4 text-sm leading-relaxed">
           {prompt.prompt}
         </div>

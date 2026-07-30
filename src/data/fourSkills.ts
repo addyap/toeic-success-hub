@@ -561,6 +561,21 @@ export interface WritingPrompt {
    *  is timed individually with no going back. `WritingTrainer` branches on
    *  this flag to run a shared-pool countdown instead of a per-prompt one. */
   pooled?: boolean;
+  /** Photo for tasks 1–5, sourced from a commercial-use-permissive licence —
+   *  same structured attribution shape as `SpeakingPrompt.image` (Part 1 and
+   *  the Speaking picture-description task). The real task shows an actual
+   *  photograph, not a text description — writing the scene first and
+   *  attaching a photo afterwards is what broke 8 of 12 Part 1 items and the
+   *  original 3 picture-sentence prompts here; each `prompt`/`model` below
+   *  was written from what is actually visible in its photo instead. */
+  image?: {
+    src: string;
+    alt: string;
+    author: string;
+    sourceUrl: string;
+    licenseName: string;
+    licenseUrl: string;
+  };
 }
 
 export const writingPrompts: WritingPrompt[] = [
@@ -572,8 +587,15 @@ export const writingPrompts: WritingPrompt[] = [
     pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
-    prompt:
-      "Picture: two warehouse workers in high-visibility vests are lifting a heavy cardboard box onto a metal shelf. A forklift is parked behind them.",
+    prompt: "Describe what you see in the picture above.",
+    image: {
+      src: "/images/four-skills/picture-movers.jpg",
+      alt: "Two removalists in high-visibility vests lifting a large wooden case up a ramp into the back of a moving truck, houses visible in the background under a cloudy sky",
+      author: "sunset_removals",
+      sourceUrl: "https://www.flickr.com/photos/128772241@N07/15579303145",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     requiredWords: ["lift", "because"],
     checklist: [
       "Did you use both words, in any form?",
@@ -582,7 +604,7 @@ export const writingPrompts: WritingPrompt[] = [
       "Is the grammar accurate — tense, articles, subject–verb agreement?",
     ],
     model:
-      "The two workers are lifting the box together because it is too heavy for one person to carry.",
+      "The two removalists are lifting the case up the ramp together because it is too heavy for one person to carry.",
   },
   {
     id: "wr-sentence-2",
@@ -592,8 +614,16 @@ export const writingPrompts: WritingPrompt[] = [
     pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
-    prompt:
-      "Picture: a woman sitting at a kitchen table with a laptop open in front of her. She is holding a mug in one hand and looking at the screen. A notebook and a pair of glasses are on the table beside her.",
+    prompt: "Describe what you see in the picture above.",
+    image: {
+      src: "/images/four-skills/picture-home-office.jpg",
+      alt: "A woman with curly hair and glasses sitting at a white kitchen table, holding a pink mug next to an open laptop, with a vase of white tulips on the table",
+      author: "Shixart1985",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:Senior_woman_working_on_laptop_in_modern_kitchen_with_coffee_and_flowers.jpg",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     requiredWords: ["while", "coffee"],
     checklist: [
       "Did you use both words, in any form?",
@@ -601,7 +631,8 @@ export const writingPrompts: WritingPrompt[] = [
       "Does 'while' actually join two simultaneous actions?",
       "Is the grammar accurate — tense, articles, subject–verb agreement?",
     ],
-    model: "She is drinking coffee while she works on her laptop at the kitchen table.",
+    model:
+      "She is drinking her coffee while she looks at something on her laptop at the kitchen table.",
   },
   {
     id: "wr-sentence-3",
@@ -611,8 +642,15 @@ export const writingPrompts: WritingPrompt[] = [
     pooled: true,
     directions:
       "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
-    prompt:
-      "Picture: a mechanic in blue overalls kneeling beside a car with its bonnet raised. A toolbox is open on the ground next to him and a spanner is in his right hand. Another car is waiting behind him in the garage.",
+    prompt: "Describe what you see in the picture above.",
+    image: {
+      src: "/images/four-skills/picture-mechanic.jpg",
+      alt: "A mechanic in a blue shirt reaching into the engine of a car with its bonnet raised, holding a large air filter part, with the windscreen and wipers visible behind him",
+      author: "Bembety",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Mechanic_repairing_car_engine_1.jpg",
+      licenseName: "CC0",
+      licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    },
     requiredWords: ["repair", "although"],
     checklist: [
       "Did you use both words, in any form?",
@@ -621,7 +659,7 @@ export const writingPrompts: WritingPrompt[] = [
       "Is the grammar accurate — tense, articles, subject–verb agreement?",
     ],
     model:
-      "Although the mechanic is still repairing the first car, another one is already waiting behind him.",
+      "Although the part looks difficult to fit back into place, the mechanic is trying to repair the engine himself.",
   },
   {
     id: "wr-request-1",
