@@ -206,6 +206,40 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-read-2",
+    taskRange: "1–2",
+    taskName: "Read a text aloud",
+    prepSeconds: 45,
+    speakSeconds: 45,
+    directions:
+      "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
+    prompt:
+      "Good afternoon, passengers, and welcome aboard the four fifteen service to Manchester Piccadilly. This train will be calling at Reading, Oxford, Banbury and Birmingham New Street. A buffet car offering hot drinks, sandwiches and snacks is located in coach C, towards the middle of the train. Please keep your luggage with you at all times, and do not leave bags in the aisles or doorways. We expect to arrive in Manchester at approximately seven twenty this evening. Thank you for travelling with us, and we hope you enjoy your journey.",
+    checklist: [
+      "Did the place names stay clear — Piccadilly, Banbury, Birmingham?",
+      "Did you read the times naturally rather than word by word?",
+      "Did your pitch rise through the list of stops and fall at the end?",
+      "Did you keep an even pace instead of speeding up towards the end?",
+    ],
+  },
+  {
+    id: "sp-read-3",
+    taskRange: "1–2",
+    taskName: "Read a text aloud",
+    prepSeconds: 45,
+    speakSeconds: 45,
+    directions:
+      "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
+    prompt:
+      "Are you spending too much of your week on paperwork? At Meridian Business Services, we handle the administration so you can concentrate on your customers. Our team manages invoicing, payroll and expense reporting for more than four hundred small businesses across the region. Setting up takes less than a day, there are no long-term contracts, and your first month is completely free. Visit our website or call our friendly advisers today, and find out how much time you could be getting back.",
+    checklist: [
+      "Did you sound persuasive rather than flat — this is an advertisement?",
+      "Did you stress the selling points: 'less than a day', 'completely free'?",
+      "Did the longer middle sentence stay intelligible all the way through?",
+      "Did you pause at the commas rather than running the clauses together?",
+    ],
+  },
+  {
     id: "sp-picture-1",
     taskRange: "3–4",
     taskName: "Describe a picture",
@@ -223,6 +257,40 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-picture-2",
+    taskRange: "3–4",
+    taskName: "Describe a picture",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Describe the scene in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
+    prompt:
+      "Picture to describe: an outdoor farmers' market on a bright morning. In the foreground a woman in an apron is weighing tomatoes on a set of scales while a customer holds out a cloth bag. Crates of vegetables are stacked on the stall in front of her, and a handwritten price sign is propped against them. Behind the stall, two people are looking at a flower display under a green striped awning, and a child is holding an adult's hand near a bicycle leaning against a lamp post.",
+    checklist: [
+      "Did you establish the setting before describing individual people?",
+      "Did you use the present continuous for the actions in progress?",
+      "Did you name specific objects — scales, crates, awning — rather than saying 'things'?",
+      "Did you move from the foreground to the background rather than jumping around?",
+    ],
+  },
+  {
+    id: "sp-picture-3",
+    taskRange: "3–4",
+    taskName: "Describe a picture",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Describe the scene in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
+    prompt:
+      "Picture to describe: a meeting room with a glass wall. Four colleagues are seated around an oval table covered with laptops, notebooks and coffee cups. A man in a light blue shirt is standing at the far end, pointing at a bar chart projected onto the wall. One woman is taking notes by hand while another leans back with her arms folded, listening. Through the glass wall behind them you can see an open-plan office and a row of desks.",
+    checklist: [
+      "Did you say what kind of room this is and roughly how many people are present?",
+      "Did you describe what the standing man is doing, not just that he is standing?",
+      "Did you contrast the two women's postures — taking notes versus listening?",
+      "Did you fill the full 30 seconds?",
+    ],
+  },
+  {
     id: "sp-questions-1",
     taskRange: "5–7",
     taskName: "Respond to questions",
@@ -237,6 +305,39 @@ export const speakingPrompts: SpeakingPrompt[] = [
       "Did you answer both halves of the question — the how and the why?",
       "Did you add a reason or example rather than stopping after one sentence?",
       "Did you use the full 30 seconds?",
+    ],
+  },
+  {
+    id: "sp-questions-2",
+    taskRange: "5–7",
+    taskName: "Respond to questions",
+    prepSeconds: 3,
+    speakSeconds: 15,
+    directions:
+      "Imagine a colleague is asking about your working habits. You have 3 seconds to prepare, then 15 seconds to respond.",
+    prompt: "What time of day do you concentrate best, and what do you usually work on then?",
+    checklist: [
+      "Did you start speaking within a second or two?",
+      "Did you answer both parts — the when and the what?",
+      "Did you get a complete thought out inside 15 seconds without rushing?",
+      "Did you avoid filler like 'ummm, let me think' that eats the clock?",
+    ],
+  },
+  {
+    id: "sp-questions-3",
+    taskRange: "5–7",
+    taskName: "Respond to questions",
+    prepSeconds: 3,
+    speakSeconds: 30,
+    directions:
+      "A researcher is asking about how you use technology. You have 3 seconds to prepare, then 30 seconds to respond.",
+    prompt:
+      "Do you prefer to shop online or in physical shops, and has that changed in the last few years?",
+    checklist: [
+      "Did you state a clear preference rather than hedging both ways?",
+      "Did you address the 'has that changed' half of the question?",
+      "Did you support your preference with a reason or an example?",
+      "Did you keep going for the full 30 seconds?",
     ],
   },
   {
@@ -269,6 +370,65 @@ export const speakingPrompts: SpeakingPrompt[] = [
     ],
   },
   {
+    id: "sp-info-2",
+    taskRange: "8–10",
+    taskName: "Respond using information provided",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Read the itinerary below. You have 45 seconds to read, then 3 seconds to prepare and 30 seconds to answer the question.",
+    reference: {
+      title: "Business trip itinerary — Ms Adeyemi, 8–9 October",
+      lines: [
+        "Tue 8 Oct  07:40   Depart Bristol Temple Meads (platform 5)",
+        "Tue 8 Oct  10:15   Arrive London Paddington",
+        "Tue 8 Oct  11:30   Client meeting — Hartwell Group, 12 Cannon Street",
+        "Tue 8 Oct  14:00   Site visit — Docklands warehouse (taxi arranged)",
+        "Tue 8 Oct  19:00   Dinner with regional team — The Copper Kettle",
+        "Overnight          Kingsway Hotel, room booked under Adeyemi",
+        "Wed 9 Oct  09:30   Workshop: contract renewals — Hartwell Group",
+        "Wed 9 Oct  16:20   Return train to Bristol",
+      ],
+    },
+    prompt:
+      "I'm arranging the taxi for the second day. What time does Ms Adeyemi's workshop start, and where is she staying the night before?",
+    checklist: [
+      "Did you give both the correct time and the correct hotel?",
+      "Did you avoid confusing the Tuesday and Wednesday entries?",
+      "Did you answer in full sentences rather than reading the lines aloud?",
+      "Did you sound confident rather than hesitant while locating the details?",
+    ],
+  },
+  {
+    id: "sp-info-3",
+    taskRange: "8–10",
+    taskName: "Respond using information provided",
+    prepSeconds: 45,
+    speakSeconds: 30,
+    directions:
+      "Read the programme below. You have 45 seconds to read, then 3 seconds to prepare and 30 seconds to answer the question.",
+    reference: {
+      title: "Staff training day — Friday 22 November, Lakeside Centre",
+      lines: [
+        "09:15 – 10:00   Welcome and objectives — Room 1 (all staff)",
+        "10:00 – 11:15   Data protection refresher — Room 1 (compulsory)",
+        "11:15 – 11:30   Break — foyer",
+        "11:30 – 12:45   Choose ONE: Customer service (Room 2) or Spreadsheets (Room 4)",
+        "12:45 – 13:45   Lunch — not provided, cafés nearby",
+        "13:45 – 15:15   First aid certification — Room 3 (sign up in advance)",
+        "15:15 – 15:45   Feedback and close — Room 1",
+      ],
+    },
+    prompt:
+      "I can only come in the morning. Which sessions would I have to attend, and is there anything I need to do beforehand?",
+    checklist: [
+      "Did you identify the compulsory morning session correctly?",
+      "Did you mention that one of the 11:30 sessions is a choice between two?",
+      "Did you correctly note that the advance sign-up applies to the afternoon first aid session?",
+      "Did you organise your answer rather than listing the programme in order?",
+    ],
+  },
+  {
     id: "sp-opinion-1",
     taskRange: "11",
     taskName: "Express an opinion",
@@ -283,6 +443,41 @@ export const speakingPrompts: SpeakingPrompt[] = [
       "Did you give at least two distinct reasons?",
       "Did you support each reason with a concrete example?",
       "Did you reach a conclusion instead of trailing off when time ran out?",
+    ],
+  },
+  {
+    id: "sp-opinion-2",
+    taskRange: "11",
+    taskName: "Express an opinion",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    directions:
+      "State your opinion and support it. You have 15 seconds to prepare, then 60 seconds to speak.",
+    prompt:
+      "Some employers have replaced individual offices with fully open-plan workspaces. Do you think open-plan offices help or harm productivity? Give reasons and examples to support your opinion.",
+    checklist: [
+      "Did you commit to 'help' or 'harm' in your opening sentence?",
+      "Did you give two separate reasons rather than restating one?",
+      "Did you include a concrete example from work or study?",
+      "Did you acknowledge and answer the opposing view rather than ignoring it?",
+      "Did you finish with a conclusion inside the 60 seconds?",
+    ],
+  },
+  {
+    id: "sp-opinion-3",
+    taskRange: "11",
+    taskName: "Express an opinion",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    directions:
+      "State your opinion and support it. You have 15 seconds to prepare, then 60 seconds to speak.",
+    prompt:
+      "Which is more valuable for a young person starting a career: further academic study, or two years of practical work experience? Explain your choice with reasons and examples.",
+    checklist: [
+      "Did you choose one option clearly instead of saying both are valuable?",
+      "Did you explain why your choice beats the alternative, not just why it is good?",
+      "Did you use a specific example to make one reason concrete?",
+      "Did your answer have a recognisable beginning, middle and end?",
     ],
   },
 ];
@@ -322,6 +517,43 @@ export const writingPrompts: WritingPrompt[] = [
       "The two workers are lifting the box together because it is too heavy for one person to carry.",
   },
   {
+    id: "wr-sentence-2",
+    taskRange: "1–5",
+    taskName: "Write a sentence based on a picture",
+    minutes: 2,
+    directions:
+      "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
+    prompt:
+      "Picture: a woman sitting at a kitchen table with a laptop open in front of her. She is holding a mug in one hand and looking at the screen. A notebook and a pair of glasses are on the table beside her.",
+    requiredWords: ["while", "coffee"],
+    checklist: [
+      "Did you use both words, in any form?",
+      "Is it exactly one sentence?",
+      "Does 'while' actually join two simultaneous actions?",
+      "Is the grammar accurate — tense, articles, subject–verb agreement?",
+    ],
+    model: "She is drinking coffee while she works on her laptop at the kitchen table.",
+  },
+  {
+    id: "wr-sentence-3",
+    taskRange: "1–5",
+    taskName: "Write a sentence based on a picture",
+    minutes: 2,
+    directions:
+      "Write ONE sentence about the picture using both words below. You may change the form of the words and use them in any order.",
+    prompt:
+      "Picture: a mechanic in blue overalls kneeling beside a car with its bonnet raised. A toolbox is open on the ground next to him and a spanner is in his right hand. Another car is waiting behind him in the garage.",
+    requiredWords: ["repair", "although"],
+    checklist: [
+      "Did you use both words, in any form?",
+      "Is it exactly one sentence?",
+      "Does 'although' introduce a genuine contrast rather than just being inserted?",
+      "Is the grammar accurate — tense, articles, subject–verb agreement?",
+    ],
+    model:
+      "Although the mechanic is still repairing the first car, another one is already waiting behind him.",
+  },
+  {
     id: "wr-request-1",
     taskRange: "6–7",
     taskName: "Respond to a written request",
@@ -339,6 +571,44 @@ export const writingPrompts: WritingPrompt[] = [
     ],
     model:
       "Dear Priya,\n\nThank you for letting us know about the move to the east wing.\n\nCould you tell me whether the IT team will be reconnecting our monitors and docking stations, or whether we are expected to do this ourselves? I would also be grateful if my new desk could be positioned away from the main walkway, as I take a large number of client calls and the corridor noise carries.\n\nOne difficulty is the date itself. I am scheduled to run a training session for new starters all day on Friday 21 June, so I would not be able to unpack until the following Monday. Would it be possible for my boxes to be moved on the Thursday evening instead?\n\nBest regards,\nSam Okonkwo",
+  },
+  {
+    id: "wr-request-2",
+    taskRange: "6–7",
+    taskName: "Respond to a written request",
+    minutes: 10,
+    directions:
+      "Read the email below and reply to it. Your response must do all three things listed in the directions.",
+    prompt:
+      "From: Customer Services, Brightfield Supplies\nSubject: Your order #48120\n\nDear customer,\n\nThank you for your recent order. Unfortunately, two of the items you requested — the A3 laminator and the box of archive folders — are currently out of stock. We expect the laminator to be available in approximately three weeks. The archive folders have been discontinued by the manufacturer.\n\nPlease let us know how you would like to proceed.\n\nKind regards,\nCustomer Services\n\nDIRECTIONS: Reply as the customer. In your email, ask ONE question about the delay, make ONE request regarding the discontinued item, and explain ONE consequence the delay will cause you.",
+    targetWords: "roughly 100–130 words",
+    checklist: [
+      "Did you include all three required elements — a question, a request and a consequence?",
+      "Did you keep the two out-of-stock items distinct in your reply?",
+      "Did you open and close the email appropriately?",
+      "Is the tone firm but still polite?",
+    ],
+    model:
+      "Dear Customer Services,\n\nThank you for letting me know about the problems with order #48120.\n\nCould you confirm whether the three-week estimate for the A3 laminator is guaranteed, or whether it might be delayed further? I would prefer to know now rather than wait indefinitely.\n\nRegarding the archive folders, as these have been discontinued, I would be grateful if you could recommend an equivalent product and send me the price so that I can order it instead.\n\nI should mention that the delay is a real difficulty for us. We are preparing files for an audit at the end of this month, and without the laminator and the folders we will have to hire equipment locally at additional cost.\n\nI look forward to your reply.\n\nKind regards,\nJordan Vale",
+  },
+  {
+    id: "wr-request-3",
+    taskRange: "6–7",
+    taskName: "Respond to a written request",
+    minutes: 10,
+    directions:
+      "Read the email below and reply to it. Your response must do all three things listed in the directions.",
+    prompt:
+      "From: Elena Marchetti, Learning & Development\nSubject: Optional presentation skills course\n\nHello,\n\nWe are running a two-day presentation skills course on 14–15 May at our head office. The course is optional and places are limited to twelve people. It covers structuring a talk, handling questions, and using visual aids effectively.\n\nIf you would like a place, please reply and tell us what you hope to gain from it.\n\nBest wishes,\nElena\n\nDIRECTIONS: Reply as an employee who wants a place. In your email, accept the invitation, explain TWO things you hope to gain, and ask ONE question about the practical arrangements.",
+    targetWords: "roughly 100–130 words",
+    checklist: [
+      "Did you clearly accept, rather than only expressing interest?",
+      "Did you give two distinct things you hope to gain, not one restated?",
+      "Did you ask a genuinely practical question — travel, times, materials?",
+      "Did you vary your sentence structures across the reply?",
+    ],
+    model:
+      "Dear Elena,\n\nThank you for the invitation. I would very much like to take one of the places on the course in May.\n\nThere are two things in particular I hope to gain. The first is confidence in handling questions: I present monthly figures to our regional managers and I find the discussion afterwards much harder than the talk itself. The second is practical guidance on visual aids, as my slides tend to be far too dense to read from the back of a room.\n\nCould you tell me whether the sessions run for the full working day on both dates? I need to arrange cover for my own team if so.\n\nBest wishes,\nRuth Kavanagh",
   },
   {
     id: "wr-essay-1",
@@ -359,5 +629,45 @@ export const writingPrompts: WritingPrompt[] = [
     ],
     model:
       "In my view, frequent check-ins are a considerably more effective way of managing performance than a single annual review, although they place greater demands on managers.\n\nThe strongest argument for regular check-ins is that feedback arrives while it can still change something. If an employee is approaching a project in the wrong way in February, being told so in December helps nobody. In my previous team, a colleague spent several months building reports that our clients never opened; a short monthly conversation would have surfaced that in weeks rather than at the end of the year.\n\nFrequent conversations also produce a fairer assessment. Annual reviews are vulnerable to recency bias, because managers remember the last two months far better than the first ten. A manager who has recorded twelve short discussions has evidence to draw on, rather than an impression formed in the final quarter.\n\nThere is a reasonable objection: check-ins consume management time, and a poorly run one becomes a status update that helps nobody. This is a genuine risk, but it is an argument for training managers properly, not for returning to a single annual meeting.\n\nOn balance, I believe organisations should favour regular check-ins. They correct problems early, they reduce bias, and they treat performance as something developed continuously rather than judged once a year.",
+  },
+  {
+    id: "wr-essay-2",
+    taskRange: "8",
+    taskName: "Write an opinion essay",
+    minutes: 30,
+    directions:
+      "Write an essay stating your opinion. Support it with reasons and examples. You have 30 minutes to plan, write and revise.",
+    prompt:
+      "Some companies now allow employees to choose entirely where they work, with no requirement to attend an office. Do you think companies should require employees to work in person for part of the week? Use specific reasons and examples to support your answer.",
+    targetWords: "around 300 words",
+    checklist: [
+      "Does your introduction state your position unambiguously?",
+      "Does each body paragraph carry one reason, supported by an example?",
+      "Did you address the strongest argument against your position?",
+      "Did you use linking words to connect your ideas?",
+      "Did you leave time to check tenses, articles and plurals?",
+    ],
+    model:
+      "I believe companies should require employees to attend in person for part of each week, though the requirement should be modest — one or two days rather than four.\n\nMy main reason is that some kinds of work are far harder at a distance. Solving an ambiguous problem, negotiating a disagreement, or teaching a new colleague all depend on the unplanned conversation, and a scheduled video call is a poor substitute. In my own team, a pricing dispute that had circled by email for a fortnight was settled in twenty minutes once three of us were in the same room.\n\nThe second reason concerns people early in their careers. New employees learn a great deal by overhearing how experienced colleagues handle a difficult client or explain a decision. A fully remote arrangement removes that entirely, and the cost falls hardest on exactly the people least able to ask for what they are missing.\n\nThe strongest objection is that mandatory attendance ignores individual circumstances — carers, people with long commutes, and those who simply concentrate better at home. This is a serious point, and it is why I would argue for a light requirement rather than a return to five days. A policy of two fixed days keeps the collaborative benefits while leaving most of the week flexible.\n\nOverall, I think the evidence points to a middle position. Fully remote work sacrifices something real in mentoring and problem-solving, but a full return to the office sacrifices flexibility that employees now reasonably expect. A small, predictable in-person requirement captures most of the benefit of both.",
+  },
+  {
+    id: "wr-essay-3",
+    taskRange: "8",
+    taskName: "Write an opinion essay",
+    minutes: 30,
+    directions:
+      "Write an essay stating your opinion. Support it with reasons and examples. You have 30 minutes to plan, write and revise.",
+    prompt:
+      "Some people believe employers should pay for their staff to learn new skills, even skills not directly needed for their current job. Others believe training should be the employee's own responsibility. Which view do you agree with? Use specific reasons and examples to support your answer.",
+    targetWords: "around 300 words",
+    checklist: [
+      "Did you pick one side rather than describing both views neutrally?",
+      "Does each body paragraph develop a single reason?",
+      "Are your examples specific rather than general claims?",
+      "Does the conclusion restate your position without adding a new argument?",
+      "Did you check for repeated vocabulary you could vary?",
+    ],
+    model:
+      "I agree that employers should fund training for their staff, including skills that go beyond the immediate demands of the job.\n\nThe first reason is straightforward self-interest. Roles change faster than they used to, and an employer who only trains people for the job they hold today will eventually find that nobody is equipped for the job the company needs tomorrow. A retailer that taught its shop managers nothing about online sales spent years hiring expensive outside specialists for work its own staff could have done.\n\nSecond, funded training is one of the cheapest ways to keep good people. Employees who can see themselves developing are markedly less likely to leave, and replacing a skilled colleague costs far more than a course does. A former manager of mine approved a data analysis qualification for a colleague who had no immediate need for it; she stayed another six years and eventually led the team that used exactly those skills.\n\nThose who argue training is a personal responsibility do have a point about motivation: a course nobody chose and nobody wants is money wasted. But this argues for letting employees select their own training, not for withdrawing funding altogether. The answer to poor take-up is genuine choice, not a smaller budget.\n\nIn conclusion, I believe employers should pay for training, and should be relaxed about whether every skill has an obvious immediate use. The organisation gains adaptability, it retains experienced staff, and the cost is small set against the alternative of constantly recruiting from outside.",
   },
 ];

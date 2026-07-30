@@ -9,7 +9,7 @@
  *  uploaded or persisted; it is revoked when you reset or leave the page.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Mic, Square, RotateCcw, Play, Clock, PenLine, CheckCircle2 } from "lucide-react";
+import { Mic, Square, RotateCcw, Play, Clock, PenLine, CheckCircle2, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { recordActivity } from "@/lib/progress";
 import {
@@ -25,25 +25,50 @@ function formatTime(totalSeconds: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-function TaskPicker<T extends { id: string; taskRange: string; taskName: string }>({
-  items,
-  activeId,
+interface TaskGroup<T> {
+  taskRange: string;
+  taskName: string;
+  items: T[];
+}
+
+/** Collapses the flat prompt arrays into one entry per task group, preserving
+ *  the order each group first appears. The picker shows task groups rather
+ *  than individual prompts, so adding more prompts to `fourSkills.ts` deepens
+ *  each group instead of growing the row of chips. */
+function groupByTask<T extends { taskRange: string; taskName: string }>(
+  items: T[],
+): TaskGroup<T>[] {
+  const groups: TaskGroup<T>[] = [];
+  for (const item of items) {
+    const existing = groups.find((g) => g.taskRange === item.taskRange);
+    if (existing) existing.items.push(item);
+    else groups.push({ taskRange: item.taskRange, taskName: item.taskName, items: [item] });
+  }
+  return groups;
+}
+
+const speakingGroups = groupByTask(speakingPrompts);
+const writingGroups = groupByTask(writingPrompts);
+
+function TaskPicker<T>({
+  groups,
+  activeRange,
   onSelect,
 }: {
-  items: readonly T[];
-  activeId: string;
-  onSelect: (id: string) => void;
+  groups: readonly TaskGroup<T>[];
+  activeRange: string;
+  onSelect: (taskRange: string) => void;
 }) {
   return (
     <div className="flex flex-wrap gap-2">
-      {items.map((item) => (
+      {groups.map((group) => (
         <button
-          key={item.id}
+          key={group.taskRange}
           type="button"
-          onClick={() => onSelect(item.id)}
+          onClick={() => onSelect(group.taskRange)}
           className={cn(
             "rounded-full border px-4 py-2 text-left text-sm font-medium transition",
-            item.id === activeId
+            group.taskRange === activeRange
               ? "border-primary bg-primary text-primary-foreground"
               : "border-border bg-card text-foreground hover:bg-muted",
           )}
@@ -51,10 +76,40 @@ function TaskPicker<T extends { id: string; taskRange: string; taskName: string 
           {/* The question number is de-emphasised, but only on the unselected
               chips — dimming it against the filled primary background drops
               contrast below the WCAG AA 4.5:1 threshold. */}
-          <span className={cn(item.id !== activeId && "opacity-70")}>Q{item.taskRange}</span> ·{" "}
-          {item.taskName}
+          <span className={cn(group.taskRange !== activeRange && "opacity-70")}>
+            Q{group.taskRange}
+          </span>{" "}
+          · {group.taskName}
         </button>
       ))}
+    </div>
+  );
+}
+
+/** "Prompt 2 of 3" plus a button to advance within the current task group. */
+function PromptRotator({
+  index,
+  total,
+  onNext,
+}: {
+  index: number;
+  total: number;
+  onNext: () => void;
+}) {
+  if (total <= 1) return null;
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-3">
+      <span className="text-xs font-medium text-muted-foreground">
+        Prompt {index + 1} of {total}
+      </span>
+      <button
+        type="button"
+        onClick={onNext}
+        className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium transition hover:bg-muted"
+      >
+        <Shuffle className="h-3.5 w-3.5" />
+        Try another prompt
+      </button>
     </div>
   );
 }
@@ -84,11 +139,15 @@ function Checklist({ items, title }: { items: string[]; title: string }) {
 type SpeakingPhase = "idle" | "prep" | "speaking" | "done";
 
 export function SpeakingTrainer() {
-  const [promptId, setPromptId] = useState(speakingPrompts[0].id);
-  const prompt = useMemo(
-    () => speakingPrompts.find((p) => p.id === promptId) as SpeakingPrompt,
-    [promptId],
+  const [taskRange, setTaskRange] = useState(speakingGroups[0].taskRange);
+  const [promptIndex, setPromptIndex] = useState(0);
+  const group = useMemo(
+    () => speakingGroups.find((g) => g.taskRange === taskRange) as TaskGroup<SpeakingPrompt>,
+    [taskRange],
   );
+  // Guard the index: switching to a group with fewer prompts must not leave
+  // promptIndex pointing past the end before the reset effect runs.
+  const prompt = group.items[promptIndex] ?? group.items[0];
   const [phase, setPhase] = useState<SpeakingPhase>("idle");
   const [recordUrl, setRecordUrl] = useState<string | null>(null);
   const [recordError, setRecordError] = useState<string | null>(null);
@@ -196,11 +255,20 @@ export function SpeakingTrainer() {
     setRecordError(null);
   }, [prompt, stopRecording, clearRecording]);
 
-  // Switching task resets the drill.
+  // Switching task group or rotating to another prompt resets the drill.
   useEffect(() => {
     reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [promptId]);
+  }, [prompt.id]);
+
+  const selectTask = useCallback((range: string) => {
+    setTaskRange(range);
+    setPromptIndex(0);
+  }, []);
+
+  const nextPrompt = useCallback(() => {
+    setPromptIndex((i) => (i + 1) % group.items.length);
+  }, [group]);
 
   const timerLabel =
     phase === "prep" ? "Preparation" : phase === "speaking" ? "Speak now" : "Ready";
@@ -208,7 +276,12 @@ export function SpeakingTrainer() {
 
   return (
     <div>
-      <TaskPicker items={speakingPrompts} activeId={promptId} onSelect={setPromptId} />
+      <TaskPicker groups={speakingGroups} activeRange={taskRange} onSelect={selectTask} />
+      <PromptRotator
+        index={group.items.indexOf(prompt)}
+        total={group.items.length}
+        onNext={nextPrompt}
+      />
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-soft">
         <p className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -308,11 +381,13 @@ export function SpeakingTrainer() {
 }
 
 export function WritingTrainer() {
-  const [promptId, setPromptId] = useState(writingPrompts[0].id);
-  const prompt = useMemo(
-    () => writingPrompts.find((p) => p.id === promptId) as WritingPrompt,
-    [promptId],
+  const [taskRange, setTaskRange] = useState(writingGroups[0].taskRange);
+  const [promptIndex, setPromptIndex] = useState(0);
+  const group = useMemo(
+    () => writingGroups.find((g) => g.taskRange === taskRange) as TaskGroup<WritingPrompt>,
+    [taskRange],
   );
+  const prompt = group.items[promptIndex] ?? group.items[0];
 
   const [running, setRunning] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -351,13 +426,27 @@ export function WritingTrainer() {
   useEffect(() => {
     reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [promptId]);
+  }, [prompt.id]);
+
+  const selectTask = useCallback((range: string) => {
+    setTaskRange(range);
+    setPromptIndex(0);
+  }, []);
+
+  const nextPrompt = useCallback(() => {
+    setPromptIndex((i) => (i + 1) % group.items.length);
+  }, [group]);
 
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
 
   return (
     <div>
-      <TaskPicker items={writingPrompts} activeId={promptId} onSelect={setPromptId} />
+      <TaskPicker groups={writingGroups} activeRange={taskRange} onSelect={selectTask} />
+      <PromptRotator
+        index={group.items.indexOf(prompt)}
+        total={group.items.length}
+        onNext={nextPrompt}
+      />
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-soft">
         <div className="flex flex-wrap items-start justify-between gap-4">
