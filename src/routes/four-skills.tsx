@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Headphones,
@@ -12,6 +13,7 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import ogImage from "@/assets/og-four-skills.jpg";
 import {
   examSections,
   examFacts,
@@ -19,18 +21,22 @@ import {
   writingTasks,
   type SkillTask,
 } from "@/data/fourSkills";
+import type { SpeakingPrompt, WritingPrompt } from "@/data/fourSkillsPrompts";
 
-// Deliberately a plain top-level import, not React.lazy + Suspense: that was
-// tried to keep the prompt bank and audioManifest (~140KB+) out of this
-// route's initial bundle, but on a cold/slow first compile the Suspense
-// boundary got stuck on the fallback forever (confirmed by reproducing it
-// directly — the dynamic import resolves fine if triggered manually, but the
-// SSR/hydration handoff for the lazy boundary never recovers). A stuck
-// skeleton for an unlucky first visitor is worse than the extra bundle
-// weight, so this reverts to the reliable eager import. If this needs
-// revisiting, the correct fix is the L&R page's own pattern instead —
-// useState + useEffect dynamic `import()` of the DATA only, not the whole
-// component tree via React.lazy.
+// The trainer COMPONENTS are a plain top-level import, not React.lazy +
+// Suspense: that was tried to keep the whole component tree (plus its data)
+// out of this route's initial bundle, but on a cold/slow first compile the
+// Suspense boundary got stuck on the fallback forever (confirmed by
+// reproducing it directly — the dynamic import resolves fine if triggered
+// manually, but the SSR/hydration handoff for the lazy boundary never
+// recovers). A stuck skeleton for an unlucky first visitor is worse than the
+// extra bundle weight, so the components stay eager.
+//
+// The actual weight — the ~1000-line speakingPrompts/writingPrompts arrays in
+// fourSkillsPrompts.ts — is lazy-loaded as DATA instead, below, the same
+// useState + useEffect dynamic `import()` pattern already proven on
+// /listening-reading (no Suspense boundary involved, so it doesn't hit the
+// bug above).
 
 const DESCRIPTION =
   "The complete guide to the TOEIC 4-Skills test: adaptive Listening and Reading, all 11 Speaking tasks and all 8 Writing tasks, with timed practice for Speaking and Writing.";
@@ -46,6 +52,14 @@ export const Route = createFileRoute("/four-skills")({
       },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: absoluteUrl("/four-skills") },
+      { property: "og:image", content: absoluteUrl(ogImage) },
+      { property: "og:image:width", content: "1280" },
+      { property: "og:image:height", content: "960" },
+      {
+        property: "og:image:alt",
+        content: "The four TOEIC 4-Skills sections: Listening, Reading, Speaking and Writing",
+      },
+      { name: "twitter:image", content: absoluteUrl(ogImage) },
     ],
     links: [{ rel: "canonical", href: absoluteUrl("/four-skills") }],
   }),
@@ -144,7 +158,32 @@ const articleJsonLd = {
   mainEntityOfPage: absoluteUrl("/four-skills"),
 };
 
+function TrainerSkeleton() {
+  return (
+    <div aria-hidden="true" aria-busy="true" className="space-y-4">
+      <div className="h-9 w-64 animate-pulse rounded-full bg-muted" />
+      <div className="h-48 animate-pulse rounded-2xl bg-muted" />
+    </div>
+  );
+}
+
 function Page() {
+  const [prompts, setPrompts] = useState<{
+    speaking: SpeakingPrompt[];
+    writing: WritingPrompt[];
+  } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    import("@/data/fourSkillsPrompts").then((mod) => {
+      if (cancelled) return;
+      setPrompts({ speaking: mod.speakingPrompts, writing: mod.writingPrompts });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <SiteLayout>
       <script
@@ -260,7 +299,7 @@ function Page() {
           your browser.
         </p>
         <div className="mt-8">
-          <SpeakingTrainer />
+          {prompts ? <SpeakingTrainer prompts={prompts.speaking} /> : <TrainerSkeleton />}
         </div>
       </section>
 
@@ -286,7 +325,7 @@ function Page() {
           against the marking criteria and a strong sample response.
         </p>
         <div className="mt-8">
-          <WritingTrainer />
+          {prompts ? <WritingTrainer prompts={prompts.writing} /> : <TrainerSkeleton />}
         </div>
       </section>
 

@@ -24,12 +24,7 @@ import { cn } from "@/lib/utils";
 import { recordActivity, recordSession } from "@/lib/progress";
 import { audioManifest } from "@/data/audioManifest";
 import { audioKey } from "@/lib/audioSource";
-import {
-  speakingPrompts,
-  writingPrompts,
-  type SpeakingPrompt,
-  type WritingPrompt,
-} from "@/data/fourSkills";
+import type { SpeakingPrompt, WritingPrompt } from "@/data/fourSkillsPrompts";
 
 function formatTime(totalSeconds: number) {
   const m = Math.floor(totalSeconds / 60);
@@ -129,9 +124,6 @@ function groupByTask<T extends { taskRange: string; taskName: string }>(
   }
   return groups;
 }
-
-const speakingGroups = groupByTask(speakingPrompts);
-const writingGroups = groupByTask(writingPrompts);
 
 function TaskPicker<T>({
   groups,
@@ -330,12 +322,13 @@ function Checklist({
 
 type SpeakingPhase = "idle" | "prep" | "speaking" | "done";
 
-export function SpeakingTrainer() {
+export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
+  const speakingGroups = useMemo(() => groupByTask(prompts), [prompts]);
   const [taskRange, setTaskRange] = useState(speakingGroups[0].taskRange);
   const [promptIndex, setPromptIndex] = useState(0);
   const group = useMemo(
     () => speakingGroups.find((g) => g.taskRange === taskRange) as TaskGroup<SpeakingPrompt>,
-    [taskRange],
+    [speakingGroups, taskRange],
   );
   // Guard the index: switching to a group with fewer prompts must not leave
   // promptIndex pointing past the end before the reset effect runs.
@@ -613,11 +606,12 @@ export function SpeakingTrainer() {
   );
 }
 
-export function WritingTrainer() {
+export function WritingTrainer({ prompts }: { prompts: WritingPrompt[] }) {
+  const writingGroups = useMemo(() => groupByTask(prompts), [prompts]);
   const [taskRange, setTaskRange] = useState(writingGroups[0].taskRange);
   const group = useMemo(
     () => writingGroups.find((g) => g.taskRange === taskRange) as TaskGroup<WritingPrompt>,
-    [taskRange],
+    [writingGroups, taskRange],
   );
   const selectTask = useCallback((range: string) => setTaskRange(range), []);
 
