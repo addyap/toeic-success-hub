@@ -61,6 +61,12 @@ function Page() {
   const totalSessions = primaryEntries.length;
   const totalQuestions = primaryEntries.reduce((sum, e) => sum + e.total, 0);
   const overallEntries = primaryEntries.filter((e) => e.scope === "all");
+  // 4-Skills drills are self-assessed against the official criteria rather
+  // than machine marked, so they are reported in their own section and are
+  // deliberately excluded from the accuracy figures above by the filter.
+  const speakingEntries = history?.filter((e) => e.scope === "speaking") ?? [];
+  const writingEntries = history?.filter((e) => e.scope === "writing") ?? [];
+  const hasSelfAssessment = speakingEntries.length > 0 || writingEntries.length > 0;
 
   return (
     <SiteLayout>
@@ -81,7 +87,7 @@ function Page() {
       <section className="mx-auto w-full max-w-4xl px-5 py-12">
         {!loaded ? (
           <ProgressSkeleton />
-        ) : totalSessions === 0 ? (
+        ) : totalSessions === 0 && !hasSelfAssessment ? (
           <div className="rounded-2xl border border-border bg-card p-8 text-center text-muted-foreground">
             No practice sessions recorded yet — complete a practice session, a vocab quiz question,
             or a mock test to start building your history.
@@ -125,15 +131,36 @@ function Page() {
               </div>
             )}
 
-            <h2 className="mt-10 font-display text-2xl font-semibold">Accuracy by part</h2>
-            <div className="mt-4 space-y-3">
-              {PART_NUMBERS.map((part) => {
-                const entries = (history ?? []).filter((e) => e.scope === part);
-                return (
-                  <PartRow key={part} part={part} label={PART_LABELS[part]} entries={entries} />
-                );
-              })}
-            </div>
+            {totalSessions > 0 && (
+              <>
+                <h2 className="mt-10 font-display text-2xl font-semibold">Accuracy by part</h2>
+                <div className="mt-4 space-y-3">
+                  {PART_NUMBERS.map((part) => {
+                    const entries = (history ?? []).filter((e) => e.scope === part);
+                    return (
+                      <PartRow key={part} part={part} label={PART_LABELS[part]} entries={entries} />
+                    );
+                  })}
+                </div>
+              </>
+            )}
+
+            {hasSelfAssessment && (
+              <>
+                <h2 className="mt-10 font-display text-2xl font-semibold">
+                  Speaking &amp; Writing self-assessment
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  How many of the official criteria you judged you met, from the 4-Skills trainers.
+                  These are your own ratings, not a marked score, so they are kept separate from the
+                  accuracy figures above.
+                </p>
+                <div className="mt-4 space-y-3">
+                  <SelfAssessmentRow label="Speaking" entries={speakingEntries} />
+                  <SelfAssessmentRow label="Writing" entries={writingEntries} />
+                </div>
+              </>
+            )}
           </>
         )}
       </section>
@@ -253,6 +280,51 @@ function PartRow({
           {delta < 0 && <TrendingDown className="h-4 w-4 text-destructive" />}
           {delta === 0 && <Minus className="h-4 w-4 text-muted-foreground" />}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/** Speaking/Writing counterpart to PartRow. Kept as its own component rather
+ *  than generalising PartRow, whose data-part attribute the progress E2E specs
+ *  select on. Phrased in criteria met rather than percent correct, because
+ *  these are self-ratings. */
+function SelfAssessmentRow({ label, entries }: { label: string; entries: ProgressEntry[] }) {
+  if (entries.length === 0) {
+    return (
+      <div
+        className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-border bg-card/50 p-4 text-sm text-muted-foreground"
+        data-testid="self-assessment-row"
+        data-skill={label.toLowerCase()}
+        data-sessions={0}
+      >
+        <span>{label}</span>
+        <span>No drills saved yet</span>
+      </div>
+    );
+  }
+
+  const met = entries.reduce((s, e) => s + e.correct, 0);
+  const possible = entries.reduce((s, e) => s + e.total, 0);
+  const pct = Math.round((met / possible) * 100);
+
+  return (
+    <div
+      className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4"
+      data-testid="self-assessment-row"
+      data-skill={label.toLowerCase()}
+      data-sessions={entries.length}
+      data-pct={pct}
+    >
+      <div className="min-w-0">
+        <div className="truncate text-sm font-semibold text-foreground">{label}</div>
+        <div className="text-xs text-muted-foreground">
+          {entries.length} drill{entries.length === 1 ? "" : "s"} · {met} of {possible} criteria met
+        </div>
+      </div>
+      <div className="flex shrink-0 items-center gap-3">
+        <Sparkline values={recentAccuracies(entries)} />
+        <div className="text-sm font-semibold tabular-nums">{pct}%</div>
       </div>
     </div>
   );

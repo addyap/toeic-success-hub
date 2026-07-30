@@ -291,6 +291,47 @@ test.describe("writing trainer", () => {
     await expect(writingSection(page).getByRole("button", { name: /Start · 2 min/ })).toBeVisible();
   });
 
+  test("a saved self-assessment reaches /progress without inflating L&R totals", async ({
+    page,
+  }) => {
+    await setUpClock(page);
+    await page.goto("/four-skills");
+
+    const section = writingSection(page);
+    const submit = section.getByRole("button", { name: "Submit" });
+
+    await clickUntil(
+      section.getByRole("button", { name: /Start · 2 min/ }),
+      () => submit.isVisible(),
+      (visible) => visible,
+    );
+    await page.locator("#writing-response").fill("An answer to assess.");
+    await submit.click();
+
+    const boxes = section.getByRole("checkbox");
+    const total = await boxes.count();
+    expect(total).toBeGreaterThan(1);
+    await boxes.nth(0).check();
+    await boxes.nth(1).check();
+    await expect(section.getByText(`2 of ${total} met`)).toBeVisible();
+
+    await section.getByRole("button", { name: "Save self-assessment" }).click();
+    await expect(section.getByText("Saved to your progress")).toBeVisible();
+    // Locked after saving so a rating can't be silently double-counted.
+    await expect(boxes.nth(0)).toBeDisabled();
+
+    await page.goto("/progress");
+    const row = page.locator('[data-testid="self-assessment-row"][data-skill="writing"]');
+    await expect(row).toHaveAttribute("data-sessions", "1");
+    await expect(row).toContainText(`2 of ${total} criteria met`);
+
+    // Self-ratings are not machine-marked, so they must stay out of the
+    // objective Listening & Reading figures entirely.
+    const sessions = page.locator('[data-testid="stat-card"][data-label="Sessions completed"]');
+    await expect(sessions).toContainText("0 questions answered");
+    await expect(page.getByText("Accuracy by part")).toBeHidden();
+  });
+
   test("each writing task loads its own duration", async ({ page }) => {
     await setUpClock(page);
     await page.goto("/four-skills");

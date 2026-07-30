@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Mic, Square, RotateCcw, Play, Clock, PenLine, CheckCircle2, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { recordActivity } from "@/lib/progress";
+import { recordActivity, recordSession } from "@/lib/progress";
 import {
   speakingPrompts,
   writingPrompts,
@@ -148,24 +148,81 @@ function PromptRotator({
   );
 }
 
-function Checklist({ items, title }: { items: string[]; title: string }) {
+/** The criteria checklist, as tickable items that can be saved to progress
+ *  history. This is explicitly self-assessment — nothing here is machine
+ *  marked — so the saved entry is kept in its own scope and never folded into
+ *  the objectively-scored Listening & Reading accuracy figures. */
+function Checklist({
+  items,
+  title,
+  scope,
+}: {
+  items: string[];
+  title: string;
+  scope: "speaking" | "writing";
+}) {
+  const [ticked, setTicked] = useState<string[]>([]);
+  const [saved, setSaved] = useState(false);
+
+  const toggle = (item: string) =>
+    setTicked((prev) => (prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]));
+
+  const save = () => {
+    recordSession({ source: "four-skills", scope, correct: ticked.length, total: items.length });
+    setSaved(true);
+  };
+
   return (
     <div className="mt-6 rounded-2xl border border-border bg-card p-5">
       <h4 className="flex items-center gap-2 text-sm font-semibold">
         <CheckCircle2 className="h-4 w-4 text-primary" />
         {title}
       </h4>
-      <ul className="mt-3 space-y-2">
-        {items.map((item) => (
-          <li key={item} className="flex gap-2 text-sm text-muted-foreground">
-            <span
-              aria-hidden="true"
-              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
-            />
-            {item}
-          </li>
-        ))}
+      <ul className="mt-3 space-y-1">
+        {items.map((item) => {
+          const checked = ticked.includes(item);
+          return (
+            <li key={item}>
+              <label
+                className={cn(
+                  "flex cursor-pointer gap-3 rounded-lg p-2 text-sm transition",
+                  saved ? "cursor-default" : "hover:bg-muted",
+                  checked ? "text-foreground" : "text-muted-foreground",
+                )}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  disabled={saved}
+                  onChange={() => toggle(item)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-primary)]"
+                />
+                {item}
+              </label>
+            </li>
+          );
+        })}
       </ul>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-border pt-4">
+        <span className="text-sm font-semibold tabular-nums">
+          {ticked.length} of {items.length} met
+        </span>
+        {saved ? (
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+            <CheckCircle2 className="h-4 w-4" />
+            Saved to your progress
+          </span>
+        ) : (
+          <button
+            type="button"
+            onClick={save}
+            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition hover:bg-muted"
+          >
+            Save self-assessment
+          </button>
+        )}
+      </div>
     </div>
   );
 }
@@ -442,7 +499,12 @@ export function SpeakingTrainer() {
       </div>
 
       {phase === "done" && (
-        <Checklist title="Score yourself against the criteria" items={prompt.checklist} />
+        <Checklist
+          key={prompt.id}
+          title="Score yourself against the criteria"
+          items={prompt.checklist}
+          scope="speaking"
+        />
       )}
     </div>
   );
@@ -642,7 +704,12 @@ export function WritingTrainer() {
 
       {submitted && (
         <>
-          <Checklist title="Check your response against the criteria" items={prompt.checklist} />
+          <Checklist
+            key={prompt.id}
+            title="Check your response against the criteria"
+            items={prompt.checklist}
+            scope="writing"
+          />
           <div className="mt-4 rounded-2xl border border-primary/20 bg-primary/5 p-5">
             <h4 className="text-sm font-semibold">A strong sample response</h4>
             <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">

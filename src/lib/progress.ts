@@ -1,11 +1,16 @@
 /** Cross-page progress tracking: session history (for accuracy trends) and
  *  a daily practice streak. Client-only (localStorage), no backend. */
 
-export type ProgressScope = "all" | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+/** Numeric scopes are Listening & Reading parts; "all" is a whole-bank or
+ *  mock-test session. "speaking"/"writing" come from the 4-Skills trainers and
+ *  are deliberately kept apart from the rest: those are *self*-assessed
+ *  against the official criteria, not objectively marked, so they must never
+ *  be averaged into the L&R accuracy figures. */
+export type ProgressScope = "all" | "speaking" | "writing" | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export interface ProgressEntry {
   completedAt: number;
-  source: "practice" | "mock-test";
+  source: "practice" | "mock-test" | "four-skills";
   scope: ProgressScope;
   correct: number;
   total: number;
