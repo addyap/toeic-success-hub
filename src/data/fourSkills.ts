@@ -182,6 +182,14 @@ export interface SpeakingPrompt {
   directions: string;
   /** Read-aloud text, picture description, or the question itself. */
   prompt: string;
+  /** True where the real test speaks this prompt aloud rather than printing
+   *  it — tasks 5–7, 8–10 and 11. Those get generated TTS audio, which is why
+   *  3 seconds of preparation is realistic: you are listening, not reading.
+   *  Tasks 1–2 (you read the text) and 3–4 (you look at a photo) are excluded.
+   *
+   *  Audio comes from `bun run generate:audio`; until that has been run for a
+   *  new prompt there is simply no player and the printed text stands in. */
+  spoken?: boolean;
   /** Optional reference material shown before the question (tasks 8–10). */
   reference?: { title: string; lines: string[] };
   /** Photo for the describe-a-picture tasks (3–4), sourced from Wikimedia
@@ -337,6 +345,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-questions-1",
+    spoken: true,
     taskRange: "5–7",
     taskName: "Respond to questions",
     prepSeconds: 3,
@@ -354,6 +363,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-questions-2",
+    spoken: true,
     taskRange: "5–7",
     taskName: "Respond to questions",
     prepSeconds: 3,
@@ -370,6 +380,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-questions-3",
+    spoken: true,
     taskRange: "5–7",
     taskName: "Respond to questions",
     prepSeconds: 3,
@@ -387,6 +398,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-info-1",
+    spoken: true,
     taskRange: "8–10",
     taskName: "Respond using information provided",
     prepSeconds: 45,
@@ -416,6 +428,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-info-2",
+    spoken: true,
     taskRange: "8–10",
     taskName: "Respond using information provided",
     prepSeconds: 45,
@@ -446,6 +459,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-info-3",
+    spoken: true,
     taskRange: "8–10",
     taskName: "Respond using information provided",
     prepSeconds: 45,
@@ -475,6 +489,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-opinion-1",
+    spoken: true,
     taskRange: "11",
     taskName: "Express an opinion",
     prepSeconds: 15,
@@ -492,6 +507,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-opinion-2",
+    spoken: true,
     taskRange: "11",
     taskName: "Express an opinion",
     prepSeconds: 15,
@@ -510,6 +526,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
   },
   {
     id: "sp-opinion-3",
+    spoken: true,
     taskRange: "11",
     taskName: "Express an opinion",
     prepSeconds: 15,

@@ -9,9 +9,21 @@
  *  uploaded or persisted; it is revoked when you reset or leave the page.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Mic, Square, RotateCcw, Play, Clock, PenLine, CheckCircle2, Shuffle } from "lucide-react";
+import {
+  Mic,
+  Square,
+  RotateCcw,
+  Play,
+  Clock,
+  PenLine,
+  CheckCircle2,
+  Shuffle,
+  Volume2,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { recordActivity, recordSession } from "@/lib/progress";
+import { audioManifest } from "@/data/audioManifest";
+import { audioKey } from "@/lib/audioSource";
 import {
   speakingPrompts,
   writingPrompts,
@@ -144,6 +156,57 @@ function PromptRotator({
         <Shuffle className="h-3.5 w-3.5" />
         Try another prompt
       </button>
+    </div>
+  );
+}
+
+/** Plays the generated TTS clip for a prompt the real test speaks aloud.
+ *
+ *  Renders nothing when no clip exists for this text — audio is produced by
+ *  `bun run generate:audio`, so a newly written prompt simply has no player
+ *  until that has been run, and the printed prompt stands in meanwhile.
+ *  Clips are content-addressed, so editing a prompt's wording orphans its
+ *  audio and the generator must be re-run. */
+function PromptAudio({ text }: { text: string }) {
+  const entry = audioManifest[audioKey(text)];
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+  if (!entry) return null;
+
+  const toggle = () => {
+    const el = audioRef.current;
+    if (!el) return;
+    if (playing) {
+      el.pause();
+      el.currentTime = 0;
+      setPlaying(false);
+    } else {
+      void el.play();
+      setPlaying(true);
+    }
+  };
+
+  return (
+    <div className="mt-4">
+      <button
+        type="button"
+        onClick={toggle}
+        className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition hover:bg-muted"
+      >
+        {playing ? <Square className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+        {playing ? "Stop" : "Play the question"}
+      </button>
+      <p className="mt-1.5 text-xs text-muted-foreground">
+        In the real test you only hear this — it is printed here as a fallback.
+      </p>
+      <audio
+        ref={audioRef}
+        src={`/audio/${entry.segments[0].file}`}
+        onEnded={() => setPlaying(false)}
+        preload="none"
+      >
+        <track kind="captions" />
+      </audio>
     </div>
   );
 }
@@ -430,6 +493,8 @@ export function SpeakingTrainer() {
         <blockquote className="mt-5 border-l-2 border-primary/40 pl-4 text-base leading-relaxed text-foreground">
           {prompt.prompt}
         </blockquote>
+
+        {prompt.spoken && <PromptAudio text={prompt.prompt} />}
 
         <div className="mt-6 flex flex-wrap items-center gap-4">
           {phase === "idle" ? (
