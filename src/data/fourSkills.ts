@@ -184,6 +184,25 @@ export interface SpeakingPrompt {
   prompt: string;
   /** Optional reference material shown before the question (tasks 8–10). */
   reference?: { title: string; lines: string[] };
+  /** Photo for the describe-a-picture tasks (3–4), sourced from Wikimedia
+   *  Commons under a commercial-use-permissive licence.
+   *
+   *  CC BY / CC BY-SA require attribution naming the author, naming the
+   *  licence and linking to it, and linking back to the source — so these are
+   *  structured fields rendered as real links, matching the Part 1 photos.
+   *
+   *  Each `prompt` below is written from what is actually visible in its
+   *  photo. Writing the scene first and attaching an image afterwards is what
+   *  broke 8 of the 12 Part 1 items previously; don't reintroduce it. */
+  image?: {
+    src: string;
+    /** Short factual alt text describing the photo. */
+    alt: string;
+    author: string;
+    sourceUrl: string;
+    licenseName: string;
+    licenseUrl: string;
+  };
   checklist: string[];
 }
 
@@ -246,13 +265,21 @@ export const speakingPrompts: SpeakingPrompt[] = [
     prepSeconds: 45,
     speakSeconds: 30,
     directions:
-      "Describe the scene in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
-    prompt:
-      "Picture to describe: a busy hospital reception area. A nurse in blue scrubs stands behind a curved counter, handing a clipboard to an elderly man who is leaning on a walking stick. Four people sit in a row of chairs along the wall behind him — one is reading a leaflet, another is looking at her phone. A large sign reading 'Outpatients' hangs above a corridor on the right, and a cleaning trolley has been left beside a potted plant.",
+      "Describe the picture in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
+    prompt: "Describe what you can see in the photograph above.",
+    image: {
+      src: "/images/four-skills/picture-meeting.jpg",
+      alt: "Four colleagues around a polished wooden conference table, one speaking with both hands raised, laptops and a travel mug on the table",
+      author: "Amtec Photos",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Work_Meeting.jpg",
+      licenseName: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     checklist: [
       "Did you say where the scene takes place in your first sentence?",
-      "Did you use the present continuous for the main actions ('she is handing', 'he is leaning')?",
-      "Did you cover more than one person or area, not just the closest detail?",
+      "Did you use the present continuous for the main actions ('he is explaining', 'she is holding a pen')?",
+      "Did you describe more than one person, and what makes them different?",
+      "Did you mention what is on the table — laptops, a mug, notepads?",
       "Were you still speaking when the time ran out?",
     ],
   },
@@ -264,12 +291,21 @@ export const speakingPrompts: SpeakingPrompt[] = [
     speakSeconds: 30,
     directions:
       "Describe the scene in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
-    prompt:
-      "Picture to describe: an outdoor farmers' market on a bright morning. In the foreground a woman in an apron is weighing tomatoes on a set of scales while a customer holds out a cloth bag. Crates of vegetables are stacked on the stall in front of her, and a handwritten price sign is propped against them. Behind the stall, two people are looking at a flower display under a green striped awning, and a child is holding an adult's hand near a bicycle leaning against a lamp post.",
+    prompt: "Describe what you can see in the photograph above.",
+    image: {
+      src: "/images/four-skills/picture-market.jpg",
+      alt: "A market vendor in an orange shirt standing behind a stall of vegetables, holding the pan of a large dial weighing scale, under bare hanging light bulbs",
+      author: "PattayaPatrol",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:DFC_1786_A_market_vendor_in_an_orange_shirt_smiles_as_she_arranges_fresh_produce_under_bright_hanging_lights_at_an_evening_market_stall.jpg",
+      licenseName: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    },
     checklist: [
-      "Did you establish the setting before describing individual people?",
-      "Did you use the present continuous for the actions in progress?",
-      "Did you name specific objects — scales, crates, awning — rather than saying 'things'?",
+      "Did you establish the setting — a market stall — before describing details?",
+      "Did you describe what the vendor is doing, not just what she is wearing?",
+      "Did you name specific produce and objects (scales, baskets, crates) rather than saying 'things'?",
+      "Did you mention the lighting, which tells you it is an evening market?",
       "Did you move from the foreground to the background rather than jumping around?",
     ],
   },
@@ -281,12 +317,21 @@ export const speakingPrompts: SpeakingPrompt[] = [
     speakSeconds: 30,
     directions:
       "Describe the scene in as much detail as you can. You have 45 seconds to prepare, then 30 seconds to speak.",
-    prompt:
-      "Picture to describe: a meeting room with a glass wall. Four colleagues are seated around an oval table covered with laptops, notebooks and coffee cups. A man in a light blue shirt is standing at the far end, pointing at a bar chart projected onto the wall. One woman is taking notes by hand while another leans back with her arms folded, listening. Through the glass wall behind them you can see an open-plan office and a row of desks.",
+    prompt: "Describe what you can see in the photograph above.",
+    image: {
+      src: "/images/four-skills/picture-kitchen.jpg",
+      alt: "Three kitchen staff in black uniforms and striped headscarves preparing food behind a counter, with stacked bowls on a shelf overhead and a customer watching from the right",
+      author: "PattayaPatrol",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:DZ6_0553_Busy_kitchen_staff_prepare_meals_behind_the_counter_as_a_customer_waits_and_watches.jpg",
+      licenseName: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    },
     checklist: [
-      "Did you say what kind of room this is and roughly how many people are present?",
-      "Did you describe what the standing man is doing, not just that he is standing?",
-      "Did you contrast the two women's postures — taking notes versus listening?",
+      "Did you say what kind of place this is and roughly how many people are present?",
+      "Did you describe what the staff are doing, not just what they are wearing?",
+      "Did you mention the person on the right, who is watching rather than cooking?",
+      "Did you use the present continuous throughout for the actions in progress?",
       "Did you fill the full 30 seconds?",
     ],
   },

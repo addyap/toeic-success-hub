@@ -25,6 +25,40 @@ function formatTime(totalSeconds: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
+/** A saved Writing answer. `running` is deliberately not persisted — a timer
+ *  is never resumed automatically across a reload. */
+interface WritingDraft {
+  text: string;
+  remaining: number;
+  submitted: boolean;
+}
+
+const draftKey = (promptId: string) => `toeicpath:four-skills:writing:${promptId}`;
+
+function loadDraft(promptId: string): WritingDraft | null {
+  try {
+    const raw = localStorage.getItem(draftKey(promptId));
+    return raw ? (JSON.parse(raw) as WritingDraft) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveDraft(promptId: string, draft: WritingDraft | null) {
+  try {
+    if (draft && (draft.text.trim() || draft.submitted)) {
+      localStorage.setItem(draftKey(promptId), JSON.stringify(draft));
+    } else {
+      // An untouched answer isn't worth persisting, and clearing it keeps a
+      // Reset from leaving a stale draft behind.
+      localStorage.removeItem(draftKey(promptId));
+    }
+  } catch {
+    // localStorage unavailable (private mode / disabled) — the draft just
+    // won't survive a reload, which is the pre-existing behaviour.
+  }
+}
+
 interface TaskGroup<T> {
   taskRange: string;
   taskName: string;
@@ -302,6 +336,40 @@ export function SpeakingTrainer() {
           </div>
         )}
 
+        {prompt.image && (
+          <figure className="mt-5">
+            <img
+              src={prompt.image.src}
+              alt={prompt.image.alt}
+              loading="lazy"
+              className="w-full rounded-xl border border-border object-cover"
+            />
+            {/* Full-opacity muted-foreground, not a faded variant: dimming
+                drops this caption below WCAG AA's 4.5:1 contrast minimum. */}
+            <figcaption className="mt-1 text-[11px] text-muted-foreground">
+              Photo by {prompt.image.author} —{" "}
+              <a
+                href={prompt.image.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer license"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                source
+              </a>
+              {", "}
+              <a
+                href={prompt.image.licenseUrl}
+                target="_blank"
+                rel="noopener noreferrer license"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                {prompt.image.licenseName}
+              </a>
+              , via Wikimedia Commons
+            </figcaption>
+          </figure>
+        )}
+
         <blockquote className="mt-5 border-l-2 border-primary/40 pl-4 text-base leading-relaxed text-foreground">
           {prompt.prompt}
         </blockquote>
@@ -421,12 +489,39 @@ export function WritingTrainer() {
     setSubmitted(false);
     setText("");
     setRemaining(prompt.minutes * 60);
+    saveDraft(prompt.id, null);
+  }, [prompt]);
+
+  // Which prompt the state below currently reflects. Until this matches the
+  // active prompt, the save effect must not run — otherwise the empty initial
+  // state would overwrite the very draft we are about to load.
+  const [hydratedFor, setHydratedFor] = useState<string | null>(null);
+
+  // Load any saved draft when the prompt changes. localStorage is read here
+  // rather than in a state initialiser because this page is server-rendered:
+  // reading during render would produce a hydration mismatch.
+  useEffect(() => {
+    const saved = loadDraft(prompt.id);
+    if (saved) {
+      setText(saved.text);
+      setRemaining(saved.remaining);
+      setSubmitted(saved.submitted);
+    } else {
+      setText("");
+      setRemaining(prompt.minutes * 60);
+      setSubmitted(false);
+    }
+    // Never auto-resume a running clock. The user has been away for an
+    // unknown length of time, so restarting the timer for them would silently
+    // burn minutes they never got to use.
+    setRunning(false);
+    setHydratedFor(prompt.id);
   }, [prompt]);
 
   useEffect(() => {
-    reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prompt.id]);
+    if (hydratedFor !== prompt.id) return;
+    saveDraft(prompt.id, { text, remaining, submitted });
+  }, [hydratedFor, prompt.id, text, remaining, submitted]);
 
   const selectTask = useCallback((range: string) => {
     setTaskRange(range);
@@ -517,7 +612,11 @@ export function WritingTrainer() {
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
             >
               <PenLine className="h-4 w-4" />
-              Start · {prompt.minutes} min
+              {/* A restored draft keeps its remaining time, so offering
+                  "Start · 30 min" there would misstate what you actually get. */}
+              {remaining < totalSeconds
+                ? `Resume · ${formatTime(remaining)} left`
+                : `Start · ${prompt.minutes} min`}
             </button>
           )}
           {running && (

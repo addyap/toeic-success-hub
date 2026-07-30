@@ -240,6 +240,57 @@ test.describe("writing trainer", () => {
     await expect(section.getByRole("button", { name: "Submit" })).toBeHidden();
   });
 
+  test("an in-progress answer survives a reload, with its remaining time", async ({ page }) => {
+    await setUpClock(page);
+    await page.goto("/four-skills");
+
+    const section = writingSection(page);
+    const response = page.locator("#writing-response");
+    const submit = section.getByRole("button", { name: "Submit" });
+
+    await clickUntil(
+      section.getByRole("button", { name: /Start · 2 min/ }),
+      () => submit.isVisible(),
+      (visible) => visible,
+    );
+    await response.fill("A partly written answer that must not be lost.");
+    await page.clock.runFor(30_000);
+    await expect(section.getByText("1:30")).toBeVisible();
+
+    await page.reload();
+
+    const reloaded = writingSection(page);
+    await expect(page.locator("#writing-response")).toHaveValue(
+      "A partly written answer that must not be lost.",
+    );
+    // The clock is not resumed automatically — the user was away for an
+    // unknown time — but the time they had left is preserved and offered back.
+    // Asserted via the Resume label rather than the timer chip: both render
+    // "1:30", so a bare text match is ambiguous under strict mode.
+    await expect(reloaded.getByRole("button", { name: /Resume · 1:30 left/ })).toBeVisible();
+  });
+
+  test("resetting clears the saved draft rather than leaving it behind", async ({ page }) => {
+    await setUpClock(page);
+    await page.goto("/four-skills");
+
+    const section = writingSection(page);
+    const response = page.locator("#writing-response");
+
+    await clickUntil(
+      section.getByRole("button", { name: /Start · 2 min/ }),
+      () => section.getByRole("button", { name: "Submit" }).isVisible(),
+      (visible) => visible,
+    );
+    await response.fill("Discard me.");
+    await section.getByRole("button", { name: "Reset" }).click();
+    await expect(response).toHaveValue("");
+
+    await page.reload();
+    await expect(page.locator("#writing-response")).toHaveValue("");
+    await expect(writingSection(page).getByRole("button", { name: /Start · 2 min/ })).toBeVisible();
+  });
+
   test("each writing task loads its own duration", async ({ page }) => {
     await setUpClock(page);
     await page.goto("/four-skills");
