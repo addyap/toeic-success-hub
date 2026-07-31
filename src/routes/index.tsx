@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-study.jpg";
+import heroImgWebp from "@/assets/hero-study.webp";
 import { VOCAB_COUNT } from "@/data/vocabulary";
 import { absoluteUrl } from "@/lib/site";
 
@@ -87,14 +88,17 @@ function Index() {
 
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-hero opacity-20 blur-2xl" />
-            <img
-              src={heroImg}
-              alt="A learner studying for the TOEIC at her desk"
-              width={1280}
-              height={960}
-              fetchPriority="high"
-              className="aspect-[4/3] w-full rounded-3xl object-cover shadow-elegant"
-            />
+            <picture>
+              <source srcSet={heroImgWebp} type="image/webp" />
+              <img
+                src={heroImg}
+                alt="A learner studying for the TOEIC at her desk"
+                width={1280}
+                height={960}
+                fetchPriority="high"
+                className="aspect-[4/3] w-full rounded-3xl object-cover shadow-elegant"
+              />
+            </picture>
             <div className="absolute -bottom-5 -left-3 hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:block">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Target score

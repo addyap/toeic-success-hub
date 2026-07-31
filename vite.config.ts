@@ -36,14 +36,7 @@ export default defineConfig(async ({ command }) => {
     // Lightning CSS in both keeps dev and build CSS output consistent.
     css: { transformer: "lightningcss" as const },
     resolve: {
-      dedupe: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "react/jsx-dev-runtime",
-        "@tanstack/react-query",
-        "@tanstack/query-core",
-      ],
+      dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
     },
     server: { host: "::", port: 8080 },
     plugins,
