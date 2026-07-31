@@ -111,10 +111,11 @@ describe("real-exam format", () => {
 });
 
 /**
- * Photos whose exact Wikimedia source file has NOT been confirmed. Their
- * credits state an author and licence, but that claim is unverified: a search
- * of Commons could not pin down which file each one is, and two plausible-
- * looking candidates turned out on inspection to be different photographs.
+ * Photos whose exact source file (on Wikimedia Commons or Flickr) has NOT
+ * been confirmed. Their credits state an author and licence, but that claim
+ * is unverified: a search could not pin down which file each one is, and two
+ * plausible-looking candidates turned out on inspection to be different
+ * photographs.
  *
  * Shipping an unverified licence claim commercially is the risk here, not the
  * missing hyperlink. Each of these needs its source page confirmed, or the
@@ -139,7 +140,7 @@ describe("image licensing", () => {
       expect(img.author, `${img.src} missing author`).toBeTruthy();
       expect(img.licenseName, `${img.src} missing licence name`).toBeTruthy();
       expect(img.sourceUrl, `${img.src} missing source URL`).toMatch(
-        /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/,
+        /^https:\/\/(commons\.wikimedia\.org\/(wiki\/File:|w\/index\.php\?curid=)|www\.flickr\.com\/photos\/|wordpress\.org\/photos\/photo\/)/,
       );
       expect(img.licenseUrl, `${img.src} missing licence URL`).toMatch(
         /^https:\/\/creativecommons\.org\/(licenses|publicdomain)\//,

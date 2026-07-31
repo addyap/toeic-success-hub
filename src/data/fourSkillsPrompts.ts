@@ -760,10 +760,9 @@ export const writingPrompts: WritingPrompt[] = [
     prompt: "Describe what you see in the picture above.",
     image: {
       src: "/images/four-skills/picture-home-office.jpg",
-      alt: "A woman with curly hair and glasses sitting at a white kitchen table, holding a pink mug next to an open laptop, with a vase of white tulips on the table",
-      author: "Shixart1985",
-      sourceUrl:
-        "https://commons.wikimedia.org/wiki/File:Senior_woman_working_on_laptop_in_modern_kitchen_with_coffee_and_flowers.jpg",
+      alt: "A woman sitting by a window holds a white cup of coffee in one hand while typing on a laptop balanced on her lap with the other",
+      author: "homegets.com",
+      sourceUrl: "https://www.flickr.com/photos/141436406@N04/49675580438",
       licenseName: "CC BY 2.0",
       licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
     },
@@ -774,8 +773,7 @@ export const writingPrompts: WritingPrompt[] = [
       "Does 'while' actually join two simultaneous actions?",
       "Is the grammar accurate — tense, articles, subject–verb agreement?",
     ],
-    model:
-      "She is drinking her coffee while she looks at something on her laptop at the kitchen table.",
+    model: "She is holding a cup of coffee while she types on her laptop.",
   },
   {
     id: "wr-sentence-3",

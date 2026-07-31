@@ -233,6 +233,18 @@ function Page() {
               );
             })}
           </div>
+
+          <div className="mt-6 flex items-start gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-5">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">Only sitting Speaking &amp; Writing?</strong> ETS
+              also sells the Speaking and Writing Tests as their own standalone exam, separate from
+              this 4-Skills bundle and from the linear Listening &amp; Reading test. It uses the
+              exact same 11 Speaking tasks and 8 Writing tasks, with identical timings and scoring —
+              so the Speaking and Writing sections below are exactly what you need, whether you sit
+              them alone or as part of the full 4-Skills test.
+            </p>
+          </div>
         </div>
       </section>
 

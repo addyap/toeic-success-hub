@@ -1,6 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Flame, Trophy, TrendingUp, TrendingDown, Minus, Brain, ListChecks } from "lucide-react";
+import {
+  Flame,
+  Trophy,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Brain,
+  ListChecks,
+  ArrowRight,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { absoluteUrl } from "@/lib/site";
 import { getHistory, getStreak, type ProgressEntry, type StreakState } from "@/lib/progress";
@@ -232,7 +241,7 @@ function PartRow({
   label,
   entries,
 }: {
-  part: number;
+  part: (typeof PART_NUMBERS)[number];
   label: string;
   entries: ProgressEntry[];
 }) {
@@ -245,7 +254,16 @@ function PartRow({
         data-sessions={0}
       >
         <span>{label}</span>
-        <span>Not practiced yet</span>
+        <div className="flex items-center gap-3">
+          <span>Not practiced yet</span>
+          <Link
+            to="/listening-reading"
+            search={{ part }}
+            className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition hover:bg-muted"
+          >
+            Practice <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
       </div>
     );
   }
@@ -285,6 +303,14 @@ function PartRow({
           {delta < 0 && <TrendingDown className="h-4 w-4 text-destructive" />}
           {delta === 0 && <Minus className="h-4 w-4 text-muted-foreground" />}
         </div>
+        <Link
+          to="/listening-reading"
+          search={{ part }}
+          className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition hover:bg-muted"
+          aria-label={`Practice ${label}`}
+        >
+          Practice <ArrowRight className="h-3 w-3" />
+        </Link>
       </div>
     </div>
   );

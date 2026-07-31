@@ -20,7 +20,22 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 // (hero, format cards) renders and becomes interactive immediately.
 const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
 
+/** Reads `?part=N` so a specific part's practice is shareable/bookmarkable
+ *  and linkable from other pages (vocabulary, study tips, progress) — not
+ *  just reachable by clicking a filter chip after landing on this page.
+ *  `part` is optional (rather than always-present, defaulting to "all") so
+ *  every existing `<Link to="/listening-reading">` elsewhere in the app
+ *  keeps compiling without having to pass a `search` prop. */
+function parsePartSearch(search: Record<string, unknown>): { part?: ProgressScope } {
+  const n = Number(search.part);
+  if ((PART_NUMBERS as readonly number[]).includes(n)) {
+    return { part: n as ProgressScope };
+  }
+  return {};
+}
+
 export const Route = createFileRoute("/listening-reading")({
+  validateSearch: parsePartSearch,
   head: () => ({
     meta: [
       { title: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
@@ -94,7 +109,10 @@ const readingParts = [
 ];
 
 function Page() {
-  const [selectedPart, setSelectedPart] = useState<ProgressScope>("all");
+  const selectedPart = Route.useSearch().part ?? "all";
+  const navigate = Route.useNavigate();
+  const setSelectedPart = (part: ProgressScope) =>
+    navigate({ search: { part: part === "all" ? undefined : part }, replace: true });
   const [bank, setBank] = useState<{
     all: PracticeQuestionData[];
     byPart: QuestionPart[];
@@ -183,6 +201,32 @@ function Page() {
           >
             Take the mock test
           </Link>
+        </div>
+
+        <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Build the vocabulary these parts test
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              Part 5 and Part 7 lean heavily on business vocabulary — flashcards and quizzes across
+              6 categories, or read the strategy write-ups for each part.
+            </p>
+          </div>
+          <div className="flex shrink-0 gap-3">
+            <Link
+              to="/vocabulary"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              Build vocabulary
+            </Link>
+            <Link
+              to="/study-tips"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted"
+            >
+              Study tips
+            </Link>
+          </div>
         </div>
       </section>
 

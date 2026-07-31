@@ -60,8 +60,16 @@ test("complete a Part 1 practice session and see a matching final score", async 
   expect(initialScore.correct).toBe(0);
   expect(initialScore.total).toBe(start.total);
 
+  // The list paginates at 15/page — click "Load more" until every question
+  // for this part is mounted, rather than assuming the part fits on one
+  // page. Part 1 outgrew that assumption once its bank passed 15 items.
+  const loadMore = page.getByRole("button", { name: /^Load \d+ more questions/ });
+  while (await loadMore.isVisible().catch(() => false)) {
+    await loadMore.click();
+  }
+
   const count = await questions.count();
-  expect(count).toBe(start.total); // Part 1 fits in one page (< 15/page), so every question is mounted
+  expect(count).toBe(start.total);
 
   let expectedCorrect = 0;
   for (let i = 0; i < count; i++) {

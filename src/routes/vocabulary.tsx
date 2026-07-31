@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   Sparkles,
@@ -9,6 +9,8 @@ import {
   X,
   BookOpen,
   Brain,
+  Headphones,
+  ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn, shuffle } from "@/lib/utils";
@@ -228,6 +230,35 @@ function Page() {
             />
           )}
         </div>
+
+        <aside className="mt-10 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Put it to work
+          </div>
+          <h2 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
+            These terms show up most in Part 5 and Part 7.
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+            Part 5 tests whether you can pick the right word for a business context, and Part 7's
+            emails, memos and notices reuse this exact vocabulary. Practice both directly.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              to="/listening-reading"
+              search={{ part: 5 }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-95"
+            >
+              <Headphones className="h-4 w-4" /> Try Part 5 practice{" "}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/study-tips"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
+            >
+              <Sparkles className="h-4 w-4" /> Read study tips
+            </Link>
+          </div>
+        </aside>
       </section>
     </SiteLayout>
   );

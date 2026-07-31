@@ -277,6 +277,206 @@ const part1l: PracticeQuestionData = {
     "(C) matches the action actually shown — he's aiming the handheld scanner at the rack. (B) and (D) describe things being done to the pallets, but the stock is untouched; it's already wrapped and stacked. (A) puts him on equipment he isn't using. In a warehouse photo, expect several statements that sound like warehouse work but describe the wrong action.",
 };
 
+const part1m: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1m.jpg",
+    credit: "Photo by www.ralfsteinberger.com, CC BY 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/145472109@N04/38075436525",
+    author: "www.ralfsteinberger.com",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man in a white shirt pours tea from an ornate metal teapot into a glass, while holding a wooden tray with two more glasses in his other hand.",
+  options: [
+    { label: "A", text: "The man is filling the teapot with hot water." },
+    { label: "B", text: "The man is pouring tea into a glass." },
+    { label: "C", text: "The man is handing a tray of glasses to a customer." },
+    { label: "D", text: "The man is washing the teapot in a sink." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — tea is streaming from the teapot into the glass on the tray. (A) reverses the direction of the pour: he is emptying the teapot, not filling it. (C) invents a customer who isn't in the frame — he is simply holding the tray. (D) names an unrelated task; no sink is shown. Part 1 often tests whether you can tell which direction liquid is moving.",
+};
+
+const part1n: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1n.jpg",
+    credit: "Photo by jitze, CC BY 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/40648743@N00/3539498885",
+    author: "jitze",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man in a red apron holds a round piece of flattened dough in one hand while pressing a cloth-wrapped tool against the open lid of a large metal oven with the other.",
+  options: [
+    { label: "A", text: "The man is removing baked bread from the oven." },
+    { label: "B", text: "The man is shaping a ball of dough with both hands." },
+    { label: "C", text: "The man is holding dough near an open oven." },
+    { label: "D", text: "The man is sweeping the ground near the oven." },
+  ],
+  correct: "C",
+  explanation:
+    "(C) matches the scene — the dough is already flattened and held in one hand while the other holds a tool against the raised oven lid. (A) reverses the process: nothing is being taken out, the oven has only just been opened. (B) misdescribes the dough as being actively shaped, when it is simply being held. (D) reassigns the tool to sweeping, a similar-sounding but different task from tending the oven's lid.",
+};
+
+const part1o: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1o.jpg",
+    credit: "Photo by ITRE NCSU, CC BY 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/135892579@N02/20877069430",
+    author: "ITRE NCSU",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man wearing glasses works with both hands on a cable attached to a bicycle's handlebar, the bicycle mounted in a repair stand. Rows of wrenches hang on a pegboard on the wall behind him.",
+  options: [
+    { label: "A", text: "The man is pumping air into the front tire." },
+    { label: "B", text: "The man is adjusting a cable near the bicycle's handlebar." },
+    { label: "C", text: "The man is hanging a wrench on the pegboard." },
+    { label: "D", text: "The man is removing the front wheel from the bicycle." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches what his hands are actually doing — working the cable near the handlebar. (A) invents a pump that isn't in the picture. (C) reassigns his hands to the wall of wrenches behind him, which sit undisturbed. (D) is wrong in the other direction: the wheel is mounted and in place, not coming off.",
+};
+
+const part1p: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1p.jpg",
+    credit: "Photo by nenad53, CC BY 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/202780880@N02/54576923958",
+    author: "nenad53",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man wearing a harness with a gas-powered string trimmer strapped to his back walks through overgrown grass, gripping the trimmer's handle and guiding its head along the ground.",
+  options: [
+    { label: "A", text: "The man is raking fallen leaves into a pile." },
+    { label: "B", text: "The man is trimming grass with a string trimmer." },
+    { label: "C", text: "The man is refueling a lawn mower." },
+    { label: "D", text: "The man is watering plants with a hose." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — the trimmer is strapped on and its head is being guided through the grass. (A) and (D) name other yard-work tools that never appear. (C) borrows the fuel tank strapped to his back but misreads it as an act of refueling rather than the engine already in use.",
+};
+
+const part1q: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1q.jpg",
+    credit: "Photo by sunset_removals, CC BY 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/128772241@N07/15578315235",
+    author: "sunset_removals",
+    licenseName: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man in a high-visibility yellow shirt pushes a two-wheeled hand trolley loaded with three stacked cardboard boxes along a residential street. A moving truck is parked further down the road with its rear doors open.",
+  options: [
+    { label: "A", text: "The man is lifting a box out of the truck." },
+    { label: "B", text: "The man is pushing a hand trolley loaded with boxes." },
+    { label: "C", text: "The man is parking the truck at the curb." },
+    { label: "D", text: "The man is opening the truck's rear doors." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — both hands are on the trolley as he wheels the stacked boxes down the street. (A) and (D) describe things happening at the truck, which is parked well behind him and not what his hands are on. (C) invents an action for the truck itself, which is already stationary.",
+};
+
+const part1r: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1r.jpg",
+    credit: "Photo by Moses Cursor Ssebunya, CC0, via Openverse",
+    sourceUrl: "https://wordpress.org/photos/photo/98767eaa32/",
+    author: "Moses Cursor Ssebunya",
+    licenseName: "CC0 1.0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A worker in a protective face shield and heavy jacket bends over a metal beam, holding a welding rod that produces a bright spark and rising smoke.",
+  options: [
+    { label: "A", text: "The worker is sweeping metal shavings off the floor." },
+    { label: "B", text: "The worker is welding a metal beam." },
+    { label: "C", text: "The worker is lifting the welding machine onto a cart." },
+    { label: "D", text: "The worker is removing his protective gloves." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — the rod is actively striking an arc against the beam, producing the spark and smoke shown. (A) and (D) describe actions that would come after the work is finished, not during it. (C) points at the welding machine sitting idle in the background, which nobody is touching.",
+};
+
+const part1s: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1s.jpg",
+    credit: "Photo by fabola, CC BY-SA 2.0, via Flickr",
+    sourceUrl: "https://www.flickr.com/photos/44124339301@N01/15521647911",
+    author: "fabola",
+    licenseName: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A man in a blue hooded sweatshirt points at a projector screen while explaining something to two colleagues seated at a table with an open laptop.",
+  options: [
+    { label: "A", text: "The man is closing the laptop on the table." },
+    { label: "B", text: "The man is pointing at the screen while speaking to his colleagues." },
+    { label: "C", text: "The two seated men are taking notes on paper." },
+    { label: "D", text: "The man is turning off the projector." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — he is gesturing toward the screen as he speaks, with both colleagues looking on. (A) and (D) name equipment in the room but describe actions nobody is performing. (C) puts pen to paper for the seated men, when their hands are empty and resting on the table.",
+};
+
+const part1t: PracticeQuestionData = {
+  image: {
+    src: "/images/part1/part1t.jpg",
+    credit: "Photo by Shingkeevanoma, CC BY-SA 4.0, via Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=36722295",
+    author: "Shingkeevanoma",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+  },
+  prompt: "Part 1 · Listen to statements A–D and pick the one that best describes the scene.",
+  photo: true,
+  audio: { label: "Photograph statements", durationSec: 0 },
+  context:
+    "A woman in an apron reaches up to wipe a tall glass storefront window with a cloth-wrapped tool, a bucket resting on the sidewalk beside her.",
+  options: [
+    { label: "A", text: "The woman is carrying boxes into the store." },
+    { label: "B", text: "The woman is wiping the storefront window." },
+    { label: "C", text: "The woman is sweeping the sidewalk." },
+    { label: "D", text: "The woman is filling the bucket with water." },
+  ],
+  correct: "B",
+  explanation:
+    "(B) matches the visible action — both arms are raised, running the cloth-wrapped tool across the glass. (A) reassigns her to the boxes stacked inside the store, which she isn't touching. (C) and (D) invent tasks for the bucket and sidewalk that aren't happening; the bucket sits untouched beside her feet.",
+};
+
 // ── Part 2 · Question–Response ──
 const part2: PracticeQuestionData = {
   prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
@@ -3492,6 +3692,471 @@ const part3r12h3: PracticeQuestionData = {
   correct: "A",
   explanation:
     "Responding to the man's concern about rain and an outdoor line, the woman says, 'let's hand out numbered tickets at the register instead, so customers can browse indoors until their group is called.' Postponing (B) and a tent (D) are never mentioned, and the table stays near the front windows — that placement is agreed on, not reversed (C).",
+};
+
+const PART3_BADGE_ERROR = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-badge-error",
+  audio: { label: "Conversation — Conference name badge error", durationSec: 0 },
+  context:
+    "(W) Excuse me, I just picked up my badge at registration, but it lists the wrong company. It says 'Kestrel Freight' — I actually work for Kestrel Financial.\n(M) I'm sorry about that, let me check the printer station. It looks like the two entries got mixed up in the database this morning.\n(W) The keynote starts in twenty minutes, and I'd really like to have the correct badge before I head in.\n(M) No problem, I can reprint it right now — it only takes about two minutes once I pull up your registration ID.\n(W) Great, my registration ID is on the confirmation email, let me find it. Here it is: 4482.\n(M) Perfect, I've got your profile. I'll fix the company name and print a new badge immediately.\n(W) Thank you. Should I wait here, or can I pick it up at the help desk near the ballroom?\n(M) Just wait right here — I'll hand it to you in a minute so you don't miss the opening remarks.",
+};
+
+const part3z1: PracticeQuestionData = {
+  ...PART3_BADGE_ERROR,
+  question: "What problem does the woman report?",
+  options: [
+    { label: "A", text: "Her registration was never processed." },
+    { label: "B", text: "Her badge shows the wrong company name." },
+    { label: "C", text: "She lost her confirmation email." },
+    { label: "D", text: "She was given someone else's badge entirely." },
+  ],
+  correct: "B",
+  explanation:
+    "The woman says her badge 'lists the wrong company... It says Kestrel Freight — I actually work for Kestrel Financial.' Her registration was processed (A) and the confirmation email is in hand, not lost (C). (D) misstates the error — it is the wrong company name printed, not an entirely different person's badge.",
+};
+
+const part3z2: PracticeQuestionData = {
+  ...PART3_BADGE_ERROR,
+  question: "What does the man say caused the error?",
+  options: [
+    { label: "A", text: "Two database entries got mixed up." },
+    { label: "B", text: "The printer ran out of ink." },
+    { label: "C", text: "The woman registered under the wrong name." },
+    { label: "D", text: "The registration system crashed that morning." },
+  ],
+  correct: "A",
+  explanation:
+    "The man explains, 'It looks like the two entries got mixed up in the database this morning.' A printer running out of ink (B) and a system crash (D) are never mentioned, and the woman did not register under the wrong name (C) — the company field was simply wrong.",
+};
+
+const part3z3: PracticeQuestionData = {
+  ...PART3_BADGE_ERROR,
+  question: "What does the man say he will do next?",
+  options: [
+    { label: "A", text: "Send the woman to the help desk near the ballroom." },
+    { label: "B", text: "Ask the woman to come back after the keynote." },
+    { label: "C", text: "Fix the company name and print a new badge right away." },
+    { label: "D", text: "Email the woman a digital badge instead." },
+  ],
+  correct: "C",
+  explanation:
+    "He tells her, 'I've got your profile. I'll fix the company name and print a new badge immediately,' and asks her to wait right there. The help desk (A) is the alternative the woman proposed, which he turns down; coming back later (B) and a digital badge (D) are never mentioned.",
+};
+
+const PART3_FORKLIFT_TRAINING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-forklift-training",
+  audio: { label: "Conversation — Scheduling forklift certification training", durationSec: 0 },
+  context:
+    "(M) Hi Renata, the two new hires in the warehouse, Tom and Priya, still need their forklift certification before they can start their shifts on the floor.\n(W) Right, I remember. Our certified trainer, Hank, only runs the course on Tuesdays and Thursdays, so we'll need to pick one of those.\n(M) Their start date is next Monday, so Thursday would cut it close. Can we get them into this Tuesday's session instead?\n(W) I'll check with Hank, but I think there's room — the course usually caps at six people and only three are currently signed up.\n(M) That would be perfect. How long does the certification course actually take?\n(W) It runs from 8 AM to 1 PM, and it covers both the written test and the hands-on driving evaluation.\n(M) Got it. I'll let Tom and Priya know to report to the training room Tuesday morning instead of the warehouse floor.\n(W) Sounds good, I'll confirm their spots with Hank this afternoon and send you a written confirmation once it's set.",
+};
+
+const part3aa1: PracticeQuestionData = {
+  ...PART3_FORKLIFT_TRAINING,
+  question: "What are the speakers mainly discussing?",
+  options: [
+    { label: "A", text: "Scheduling forklift certification training for two new hires." },
+    { label: "B", text: "Renewing an expired safety certification." },
+    { label: "C", text: "Replacing a broken forklift in the warehouse." },
+    { label: "D", text: "Reassigning warehouse shifts for the week." },
+  ],
+  correct: "A",
+  explanation:
+    "The man opens by explaining that 'the two new hires in the warehouse, Tom and Priya, still need their forklift certification before they can start their shifts,' and the rest of the conversation is about finding them a training slot. A renewal (B), a broken forklift (C), and shift reassignment (D) are never mentioned.",
+};
+
+const part3aa2: PracticeQuestionData = {
+  ...PART3_FORKLIFT_TRAINING,
+  question: "What does the woman say about the Tuesday course session?",
+  options: [
+    { label: "A", text: "It has already reached its cap of six people." },
+    { label: "B", text: "It usually caps at six and only three are currently signed up." },
+    { label: "C", text: "It has been cancelled due to low enrollment." },
+    { label: "D", text: "It is reserved exclusively for returning staff." },
+  ],
+  correct: "B",
+  explanation:
+    "She says, 'the course usually caps at six people and only three are currently signed up,' meaning there is room for Tom and Priya. (A) contradicts this by claiming the session is full, (C) and (D) are never mentioned.",
+};
+
+const part3aa3: PracticeQuestionData = {
+  ...PART3_FORKLIFT_TRAINING,
+  question: "What does the woman say she will do next?",
+  options: [
+    { label: "A", text: "Personally train Tom and Priya herself." },
+    { label: "B", text: "Move the course to Thursday instead." },
+    { label: "C", text: "Confirm the spots with Hank and send written confirmation." },
+    { label: "D", text: "Cancel the course and reschedule for next month." },
+  ],
+  correct: "C",
+  explanation:
+    "She commits: 'I'll confirm their spots with Hank this afternoon and send you a written confirmation once it's set.' She is not the trainer — Hank is (A). Moving the session to Thursday (B) was the option they decided against, and cancelling the course (D) is never mentioned.",
+};
+
+const PART3_CATERING_HEADCOUNT = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-catering-headcount",
+  audio: {
+    label: "Conversation — Increasing catering headcount for a company dinner",
+    durationSec: 0,
+  },
+  context:
+    "(W) Hi, this is Monica calling about the company dinner catering order for Friday. I need to increase the headcount.\n(M) Sure, let me pull up your order. Right now we have you down for forty guests. How many more do you need?\n(W) We just got confirmation from twelve more people this morning, so we're now expecting fifty-two total.\n(M) Okay, I can add twelve more place settings, but I should mention our cutoff for menu changes was actually yesterday at noon.\n(W) I understand, we're fine keeping the same menu — we just need enough food and seating for the extra guests.\n(M) That makes it easier. In that case, I can accommodate the increase, but there will be a small rush fee since it's inside our forty-eight-hour window.\n(W) That's fine, just let me know the total. Can you confirm the new order by email today?\n(M) Absolutely, I'll send you the updated invoice with the rush fee itemized by the end of the day.",
+};
+
+const part3bb1: PracticeQuestionData = {
+  ...PART3_CATERING_HEADCOUNT,
+  question: "Why is the woman calling?",
+  options: [
+    { label: "A", text: "To cancel the company dinner entirely." },
+    { label: "B", text: "To change the dinner's menu selections." },
+    { label: "C", text: "To increase the guest headcount for a catering order." },
+    { label: "D", text: "To move the dinner to a different venue." },
+  ],
+  correct: "C",
+  explanation:
+    "She states directly, 'this is Monica calling about the company dinner catering order for Friday. I need to increase the headcount.' Cancelling (A), changing the menu (B), and moving venues (D) are never mentioned — she even confirms later that she wants to keep the same menu.",
+};
+
+const part3bb2: PracticeQuestionData = {
+  ...PART3_CATERING_HEADCOUNT,
+  question: "How many total guests will the catering order now need to serve?",
+  options: [
+    { label: "A", text: "Forty guests." },
+    { label: "B", text: "Twelve guests." },
+    { label: "C", text: "Forty-eight guests." },
+    { label: "D", text: "Fifty-two guests." },
+  ],
+  correct: "D",
+  explanation:
+    "The woman says, 'we're now expecting fifty-two total,' after twelve more guests confirmed on top of the original forty. Forty (A) was the original count before the increase, twelve (B) is only the number added, and forty-eight (C) is never stated — it is a distractor built from the forty-eight-hour window mentioned later.",
+};
+
+const part3bb3: PracticeQuestionData = {
+  ...PART3_CATERING_HEADCOUNT,
+  question: "What does the man say he will do next?",
+  options: [
+    { label: "A", text: "Call the woman back tomorrow morning." },
+    { label: "B", text: "Waive the rush fee as a courtesy." },
+    { label: "C", text: "Refuse the order because the deadline has passed." },
+    { label: "D", text: "Send an updated invoice with the rush fee by the end of the day." },
+  ],
+  correct: "D",
+  explanation:
+    "He confirms, 'I'll send you the updated invoice with the rush fee itemized by the end of the day.' He does not refuse the order (C) — he accommodates it despite the missed cutoff. He charges a rush fee rather than waiving it (B), and never mentions calling back tomorrow (A).",
+};
+
+const PART3_RECYCLING_SCHEDULE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-recycling-schedule",
+  audio: { label: "Conversation — Office recycling pickup schedule", durationSec: 0 },
+  context:
+    "(W) Hi Tom, I wanted to flag an issue — the recycling bins in the lobby have been overflowing by Wednesday afternoon, but pickup isn't scheduled until Friday morning.\n(M) I noticed that too. A few tenants have complained about the smell and the mess spilling into the hallway.\n(W) Right, so I'd like to ask the waste company to move pickup to twice a week instead of once.\n(M) That should be possible. I can call them today and ask about adding a Tuesday pickup in addition to Friday.\n(W) Perfect. Could you also ask if they can supply a second bin in the meantime, just to handle the overflow until the new schedule starts?\n(M) Good idea, I'll ask about that too. I'll email you their answer by end of day.\n(W) Thanks, Tom. Let's plan to notify tenants about the new schedule once it's confirmed.",
+};
+
+const part3hh1: PracticeQuestionData = {
+  ...PART3_RECYCLING_SCHEDULE,
+  question: "What problem does the woman report to Tom?",
+  options: [
+    { label: "A", text: "The waste company has stopped servicing the building." },
+    { label: "B", text: "Tenants have complained about noise from the recycling bins." },
+    { label: "C", text: "The recycling bins overflow before the scheduled pickup day." },
+    { label: "D", text: "The lobby recycling bins were removed by mistake." },
+  ],
+  correct: "C",
+  explanation:
+    "The woman states the bins 'have been overflowing by Wednesday afternoon, but pickup isn't scheduled until Friday morning.' (A) reuses 'waste company' but service hasn't stopped — she's asking to change the pickup frequency. (B) and (D) are never mentioned.",
+};
+
+const part3hh2: PracticeQuestionData = {
+  ...PART3_RECYCLING_SCHEDULE,
+  question: "What does the woman ask Tom to request from the waste company in the meantime?",
+  options: [
+    { label: "A", text: "A refund for missed pickups." },
+    { label: "B", text: "A second bin to handle the overflow." },
+    { label: "C", text: "A written apology to tenants." },
+    { label: "D", text: "A change in the bins' location." },
+  ],
+  correct: "B",
+  explanation:
+    "She asks, 'Could you also ask if they can supply a second bin in the meantime, just to handle the overflow until the new schedule starts?' A refund (A), an apology (C), and relocating the bins (D) are never mentioned.",
+};
+
+const part3hh3: PracticeQuestionData = {
+  ...PART3_RECYCLING_SCHEDULE,
+  question: "What does the man say he will do next?",
+  options: [
+    { label: "A", text: "Purchase new bins for the lobby." },
+    { label: "B", text: "Notify tenants immediately about the change." },
+    { label: "C", text: "Move the bins to a different location himself." },
+    { label: "D", text: "Contact the waste company and email her their answer." },
+  ],
+  correct: "D",
+  explanation:
+    "The man says, 'I can call them today and ask about adding a Tuesday pickup in addition to Friday... I'll email you their answer by end of day.' Notifying tenants (B) is something they agree to do only once the new schedule is confirmed, not his immediate next step. Purchasing bins (A) and moving them himself (C) are never mentioned.",
+};
+
+const PART3_INVOICE_DISPUTE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-invoice-dispute",
+  audio: { label: "Conversation — Freelance invoice hours dispute", durationSec: 0 },
+  context:
+    "(M) Hi, this is Ray Delgado, I'm following up on invoice number 2245 for the website redesign project. I noticed the payment only covered 30 hours, but I billed for 42.\n(W) Let me pull that up... I see the discrepancy. It looks like our records only show a purchase order approved for 30 hours.\n(M) That's strange — the additional 12 hours were for the revisions your marketing team requested after the initial deadline, which I confirmed by email with Priya.\n(W) I don't have that email on file, but if you can forward it to me, I can submit it to get the purchase order amended.\n(M) I'll send it over this afternoon. How long does the amendment usually take to process?\n(W) Once I have the email, it typically takes about five business days to get approval and issue payment for the difference.\n(M) Understood, I'll send it right after this call. Please let me know if you need anything else from me.",
+};
+
+const part3cc1: PracticeQuestionData = {
+  ...PART3_INVOICE_DISPUTE,
+  question: "Why does Ray contact the accounts department?",
+  options: [
+    { label: "A", text: "To dispute the number of hours paid on an invoice." },
+    { label: "B", text: "To request an extension on a project deadline." },
+    { label: "C", text: "To cancel his contract with the company." },
+    { label: "D", text: "To ask for a rate increase." },
+  ],
+  correct: "A",
+  explanation:
+    "Ray says, 'I noticed the payment only covered 30 hours, but I billed for 42.' A deadline extension (B), canceling the contract (C), and a rate increase (D) are never mentioned — they are typical distractors that reuse vocabulary ('project', 'invoice') from the conversation.",
+};
+
+const part3cc2: PracticeQuestionData = {
+  ...PART3_INVOICE_DISPUTE,
+  question: "According to Ray, what were the additional 12 hours for?",
+  options: [
+    { label: "A", text: "Fixing a billing error from a previous invoice." },
+    { label: "B", text: "Revisions requested by the marketing team after the deadline." },
+    { label: "C", text: "Training a new member of the design team." },
+    { label: "D", text: "Attending extra client meetings." },
+  ],
+  correct: "B",
+  explanation:
+    "Ray explains that 'the additional 12 hours were for the revisions your marketing team requested after the initial deadline.' A previous billing error (A), training (C), and extra meetings (D) are never mentioned.",
+};
+
+const part3cc3: PracticeQuestionData = {
+  ...PART3_INVOICE_DISPUTE,
+  question: "What does Ray say he will do next?",
+  options: [
+    { label: "A", text: "Call Priya to confirm the hours." },
+    { label: "B", text: "Submit a new invoice for the full amount." },
+    { label: "C", text: "Wait five business days before following up." },
+    { label: "D", text: "Send the woman the email confirming the extra hours." },
+  ],
+  correct: "D",
+  explanation:
+    "Ray agrees, 'I'll send it right after this call,' referring to the email confirming the extra hours that the woman asked him to forward. Calling Priya (A) isn't his next step — he already confirmed the hours with her earlier by email. Submitting a new invoice (B) and waiting five days (C) are not actions he takes; five days is how long the amendment process takes, not something he does.",
+};
+
+const PART3_LAPTOP_DELAY = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-laptop-delay",
+  audio: { label: "Conversation — New hire's laptop delay", durationSec: 0 },
+  context:
+    "(W) Hi Dev, I wanted to check on Marcus's laptop — he starts Monday and I haven't gotten a delivery confirmation yet.\n(M) I was just about to email you about that. The laptop model we ordered is backordered, and the supplier says it won't arrive until at least the following Wednesday.\n(W) That's going to be a problem for his first week. Is there any loaner equipment we could use in the meantime?\n(M) Yes, we have a few refurbished loaner laptops in the IT closet. I can have one set up with his accounts and software by Monday morning.\n(W) That would work well. Will he lose any of his files or settings when he switches to his permanent laptop later?\n(M) No, everything will sync through his cloud profile, so the transition should be seamless once the new laptop arrives.\n(W) Great, I'll let him know to expect a loaner on his first day. Can you also make sure his email and calendar are active before he arrives?\n(M) Already done — I set those up yesterday, so he'll be ready to go from hour one.",
+};
+
+const part3dd1: PracticeQuestionData = {
+  ...PART3_LAPTOP_DELAY,
+  question: "What problem does the woman raise about Marcus's start date?",
+  options: [
+    { label: "A", text: "Marcus's badge access has not been activated." },
+    { label: "B", text: "Marcus's manager account needs approval." },
+    {
+      label: "C",
+      text: "Marcus's new laptop has not been confirmed for delivery before he starts.",
+    },
+    { label: "D", text: "Marcus's start date has been postponed." },
+  ],
+  correct: "C",
+  explanation:
+    "The woman says, 'he starts Monday and I haven't gotten a delivery confirmation yet,' referring to Marcus's laptop, and Dev confirms it is delayed. Badge access (A), a manager account (B), and a postponed start date (D) are never mentioned.",
+};
+
+const part3dd2: PracticeQuestionData = {
+  ...PART3_LAPTOP_DELAY,
+  question: "According to Dev, why is the laptop delayed?",
+  options: [
+    { label: "A", text: "The laptop model is backordered with the supplier." },
+    { label: "B", text: "The IT budget for new equipment was cut." },
+    { label: "C", text: "The delivery company lost the shipment." },
+    { label: "D", text: "The wrong laptop model was ordered." },
+  ],
+  correct: "A",
+  explanation:
+    "Dev explains, 'The laptop model we ordered is backordered, and the supplier says it won't arrive until at least the following Wednesday.' A budget cut (B), a lost shipment (C), and an incorrect order (D) are never mentioned.",
+};
+
+const part3dd3: PracticeQuestionData = {
+  ...PART3_LAPTOP_DELAY,
+  question: "What does Dev say he will do to solve the problem for Marcus's first week?",
+  options: [
+    { label: "A", text: "Ask Marcus to use his personal laptop temporarily." },
+    { label: "B", text: "Order a laptop from a different supplier." },
+    { label: "C", text: "Delay Marcus's start date until the new laptop arrives." },
+    { label: "D", text: "Set up a refurbished loaner laptop for Marcus by Monday." },
+  ],
+  correct: "D",
+  explanation:
+    "Dev offers, 'we have a few refurbished loaner laptops in the IT closet. I can have one set up with his accounts and software by Monday morning.' Using a personal laptop (A), ordering from a different supplier (B), and delaying his start date (C) are never mentioned.",
+};
+
+const PART3_SLIDE_REVISION = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-slide-revision",
+  audio: { label: "Conversation — Last-minute presentation revision", durationSec: 0 },
+  context:
+    "(W) Tom, I just got an email from the client at 9 PM last night — they want us to cut the pricing slide entirely and add a case study instead before tomorrow's 10 AM meeting.\n(M) Tonight? That's going to be tight, but it's doable if we split the work. I can pull the case study data from the Meridian account.\n(W) Perfect. I'll rework the slide layout once you send me the numbers, and I still need to update the summary slide to match.\n(M) Send me the current deck now so I'm working from the latest version, not an old draft.\n(W) Sending it over in the next five minutes. Can you also double-check the client's logo is the updated one? Marketing changed it last month.\n(M) Good catch, I'll swap that out too. I should have my part done by midnight.\n(W) Great, I'll do a final read-through first thing in the morning before we head to the meeting.",
+};
+
+const part3ee1: PracticeQuestionData = {
+  ...PART3_SLIDE_REVISION,
+  question: "Why does the woman say the deck needs to change?",
+  options: [
+    { label: "A", text: "The client requested different content the night before." },
+    { label: "B", text: "The meeting has been moved to an earlier time." },
+    { label: "C", text: "The presentation software crashed and lost the file." },
+    { label: "D", text: "A colleague accidentally deleted several slides." },
+  ],
+  correct: "A",
+  explanation:
+    "The woman says she got an email from the client at 9 PM last night asking to 'cut the pricing slide entirely and add a case study instead before tomorrow's 10 AM meeting.' (B), (C), and (D) are never mentioned — they reuse the deck/meeting vocabulary from the conversation but describe events that did not happen.",
+};
+
+const part3ee2: PracticeQuestionData = {
+  ...PART3_SLIDE_REVISION,
+  question: "What does the woman ask the man to check?",
+  options: [
+    { label: "A", text: "Whether the pricing numbers are correct." },
+    { label: "B", text: "Whether the client's logo is the updated version." },
+    { label: "C", text: "Whether the case study data is confidential." },
+    { label: "D", text: "Whether the meeting room is booked." },
+  ],
+  correct: "B",
+  explanation:
+    "She asks, 'Can you also double-check the client's logo is the updated one? Marketing changed it last month.' The pricing slide (A) is being removed, not checked for accuracy; confidentiality (C) and the meeting room (D) are never mentioned.",
+};
+
+const part3ee3: PracticeQuestionData = {
+  ...PART3_SLIDE_REVISION,
+  question: "What does the woman say she will do next?",
+  options: [
+    { label: "A", text: "Contact the client to confirm the new deadline." },
+    { label: "B", text: "Send the current deck to the man immediately." },
+    { label: "C", text: "Do a final read-through in the morning before the meeting." },
+    { label: "D", text: "Ask Marketing for the updated logo file." },
+  ],
+  correct: "C",
+  explanation:
+    "Her last line is, 'Great, I'll do a final read-through first thing in the morning before we head to the meeting.' Sending the deck (B) is something she says she will do 'in the next five minutes,' not as her final next step, and contacting the client (A) and asking Marketing (D) are never mentioned.",
+};
+
+const PART3_ELEVATOR_MAINTENANCE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-elevator-maintenance",
+  audio: { label: "Conversation — Elevator maintenance coordination", durationSec: 0 },
+  context:
+    "(M) Ms. Patel, this is Daniel from building facilities. I'm calling to let you know the freight elevator will be out of service for maintenance from 1 PM to 4 PM on Thursday.\n(W) Thanks for the heads-up. Actually, that's a problem — we were planning to move a new printing press into our unit that afternoon.\n(M) I see. The technicians need the full window to replace the cables, so we can't shorten it, but we could move your slot to Wednesday instead if that works better.\n(W) Wednesday should be fine. Let me check with the delivery company and confirm by the end of today.\n(M) Sounds good. In the meantime, I'll have the passenger elevator kept clear on Thursday in case anyone needs it for smaller items.\n(W) That's helpful, thank you. I'll email you once the delivery company confirms Wednesday works.\n(M) Great, once I hear from you I'll block off the freight elevator for your move.",
+};
+
+const part3ff1: PracticeQuestionData = {
+  ...PART3_ELEVATOR_MAINTENANCE,
+  question: "Why does the man call the woman?",
+  options: [
+    { label: "A", text: "To inform her about scheduled elevator maintenance." },
+    { label: "B", text: "To request payment for a repair fee." },
+    { label: "C", text: "To ask her to vacate her unit temporarily." },
+    { label: "D", text: "To report a broken window in the building." },
+  ],
+  correct: "A",
+  explanation:
+    "The man says, 'I'm calling to let you know the freight elevator will be out of service for maintenance from 1 PM to 4 PM on Thursday.' (B), (C), and (D) are never mentioned — they are plausible-sounding but invented distractors.",
+};
+
+const part3ff2: PracticeQuestionData = {
+  ...PART3_ELEVATOR_MAINTENANCE,
+  question: "What does the woman say she was planning to do on Thursday afternoon?",
+  options: [
+    { label: "A", text: "Host a client visit at her unit." },
+    { label: "B", text: "Move a new printing press into her unit." },
+    { label: "C", text: "Replace the cables on the freight elevator." },
+    { label: "D", text: "Meet with the delivery company in person." },
+  ],
+  correct: "B",
+  explanation:
+    "The woman says, 'we were planning to move a new printing press into our unit that afternoon.' Replacing the cables (C) is the technicians' task, not hers; a client visit (A) and meeting the delivery company in person (D) are never mentioned.",
+};
+
+const part3ff3: PracticeQuestionData = {
+  ...PART3_ELEVATOR_MAINTENANCE,
+  question: "What does the woman say she will do next?",
+  options: [
+    { label: "A", text: "Check with the delivery company and confirm by end of day." },
+    { label: "B", text: "Ask the technicians to shorten the maintenance window." },
+    { label: "C", text: "Move the printing press herself using the stairs." },
+    { label: "D", text: "Cancel the printing press delivery entirely." },
+  ],
+  correct: "A",
+  explanation:
+    "She says, 'Wednesday should be fine. Let me check with the delivery company and confirm by the end of today.' Shortening the window (B) was already ruled out by the man, and moving the press herself (C) or cancelling it (D) are never mentioned.",
+};
+
+const PART3_VENUE_CHANGE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-venue-change",
+  audio: { label: "Conversation — Team-building venue fell through", durationSec: 0 },
+  context:
+    "(W) Rob, bad news — the lodge we booked for Friday's team-building day just called. Their kitchen flooded and they're closing for repairs, so we've lost the venue.\n(M) Oh no, that's only three days away. Do we have any backup options nearby?\n(W) I remember there's an adventure park about twenty minutes from the office that does group activities. Let me call them now and see if they have Friday open.\n(M) Good idea. If they're booked too, we might have to just use the large meeting room and order in some team games.\n(W) I'd rather avoid that if we can help it. I'll call the adventure park first and get back to you within the hour.\n(M) Sounds good. Once you know, send the new details to everyone so people can plan their commute.\n(W) Will do — I'll email the whole team as soon as the venue is confirmed.",
+};
+
+const part3gg1: PracticeQuestionData = {
+  ...PART3_VENUE_CHANGE,
+  question: "What is the main topic of the conversation?",
+  options: [
+    { label: "A", text: "Rescheduling Friday's team-building day to a later date." },
+    { label: "B", text: "Finding a replacement venue for a team-building event." },
+    { label: "C", text: "Reviewing the budget for an upcoming company outing." },
+    { label: "D", text: "Hiring new staff for the events team." },
+  ],
+  correct: "B",
+  explanation:
+    "The woman explains the booked lodge is closing due to a flooded kitchen, so 'we've lost the venue,' and the two discuss finding a backup option. Rescheduling the date (A), the budget (C), and hiring staff (D) are never mentioned.",
+};
+
+const part3gg2: PracticeQuestionData = {
+  ...PART3_VENUE_CHANGE,
+  question: "Why is the original venue no longer available?",
+  options: [
+    { label: "A", text: "It was double-booked with another company." },
+    { label: "B", text: "It closed permanently due to low business." },
+    { label: "C", text: "Its kitchen flooded and it is closing for repairs." },
+    { label: "D", text: "It raised its prices beyond the budget." },
+  ],
+  correct: "C",
+  explanation:
+    "The woman says the lodge called because 'their kitchen flooded and they're closing for repairs.' A double booking (A), permanent closure (B), and a price increase (D) are never mentioned.",
+};
+
+const part3gg3: PracticeQuestionData = {
+  ...PART3_VENUE_CHANGE,
+  question: "What does the woman say she will do next?",
+  options: [
+    { label: "A", text: "Book the large meeting room right away." },
+    { label: "B", text: "Call the adventure park to check availability." },
+    { label: "C", text: "Cancel Friday's team-building day." },
+    { label: "D", text: "Ask the man to contact the adventure park." },
+  ],
+  correct: "B",
+  explanation:
+    "She says, 'I'll call the adventure park first and get back to you within the hour.' The meeting room (A) is only a fallback the man mentions if the park is unavailable, cancelling the event (C) is never suggested, and she is the one calling, not the man (D).",
 };
 
 // ── Part 4 · Short Talks ──
@@ -11007,6 +11672,14 @@ export const part1Questions: PracticeQuestionData[] = [
   part1j,
   part1k,
   part1l,
+  part1m,
+  part1n,
+  part1o,
+  part1p,
+  part1q,
+  part1r,
+  part1s,
+  part1t,
 ];
 export const part2Questions: PracticeQuestionData[] = [
   part2,
@@ -11204,6 +11877,33 @@ export const part3Questions: PracticeQuestionData[] = [
   part3r12h1,
   part3r12h2,
   part3r12h3,
+  part3z1,
+  part3z2,
+  part3z3,
+  part3aa1,
+  part3aa2,
+  part3aa3,
+  part3bb1,
+  part3bb2,
+  part3bb3,
+  part3hh1,
+  part3hh2,
+  part3hh3,
+  part3cc1,
+  part3cc2,
+  part3cc3,
+  part3dd1,
+  part3dd2,
+  part3dd3,
+  part3ee1,
+  part3ee2,
+  part3ee3,
+  part3ff1,
+  part3ff2,
+  part3ff3,
+  part3gg1,
+  part3gg2,
+  part3gg3,
 ];
 export const part4Questions: PracticeQuestionData[] = [
   part4a1,

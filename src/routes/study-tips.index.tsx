@@ -12,13 +12,13 @@ export const Route = createFileRoute("/study-tips/")({
       {
         name: "description",
         content:
-          "Nine expert TOEIC study guides covering listening, reading, speaking, writing, the 4-Skills format, timing, scoring, and a four-week study plan.",
+          "Fourteen expert TOEIC study guides covering listening, reading, speaking, writing, the 4-Skills format, timing, scoring, and a four-week study plan.",
       },
       { property: "og:title", content: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
       {
         property: "og:description",
         content:
-          "Nine expert TOEIC study guides covering listening, reading, speaking, writing, the 4-Skills format, timing, scoring, and a four-week study plan.",
+          "Fourteen expert TOEIC study guides covering listening, reading, speaking, writing, the 4-Skills format, timing, scoring, and a four-week study plan.",
       },
       { property: "og:url", content: absoluteUrl("/study-tips") },
     ],
