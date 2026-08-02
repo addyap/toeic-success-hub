@@ -112,15 +112,25 @@ function Page() {
         <LegalSection title="Governing law">
           <p>
             These terms are governed by French law. If you are a consumer, you retain the protection
-            of the mandatory provisions of the law of your country of residence, and may use the
-            European Commission's{" "}
+            of the mandatory provisions of the law of your country of residence. The European
+            Commission's online dispute resolution (ODR) platform closed in 2025; for cross-border
+            consumer disputes within the EU, see the Commission's{" "}
             <a
               className="underline"
-              href="https://ec.europa.eu/consumers/odr"
+              href="https://consumer-redress.ec.europa.eu/index_en"
               target="_blank"
               rel="noopener noreferrer"
             >
-              online dispute resolution platform
+              consumer redress information
+            </a>{" "}
+            or contact your national{" "}
+            <a
+              className="underline"
+              href="https://www.eccnet.eu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              European Consumer Centre
             </a>
             .
           </p>
