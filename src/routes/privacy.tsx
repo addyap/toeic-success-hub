@@ -34,8 +34,8 @@ function Page() {
           <p>
             ToeicPath has no user accounts and no database of learners. Your practice answers,
             scores, and streak are stored <strong>only in your own browser</strong> and are never
-            transmitted to us. We use one privacy-focused analytics tool that does not use cookies
-            and does not identify you.
+            transmitted to us. We use two privacy-focused analytics tools, neither of which uses
+            cookies or identifies you.
           </p>
         </LegalSection>
 
@@ -76,9 +76,17 @@ function Page() {
             type and country.
           </p>
           <p>
-            Because no cookies are used and no personal profile is built, this processing relies on
-            our legitimate interest in understanding site usage, and does not require a consent
-            banner. Umami is operated by Umami Software, Inc.
+            We also use <strong>Vercel Web Analytics</strong>, provided by our hosting provider, for
+            the same purpose. It likewise sets <strong>no cookies</strong> and does not track you
+            across sites. It counts page views using a temporary identifier derived from your
+            request that is discarded and regenerated each day, so visits cannot be linked back to
+            you or followed from one day to the next.
+          </p>
+          <p>
+            Because neither tool uses cookies and neither builds a personal profile, this processing
+            relies on our legitimate interest in understanding site usage, and does not require a
+            consent banner. Umami is operated by Umami Software, Inc.; Vercel Web Analytics is
+            operated by Vercel Inc.
           </p>
         </LegalSection>
 

@@ -7,6 +7,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import heroImg from "../assets/hero-study.jpg";
@@ -170,6 +171,19 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  // Required: nested routes render here. Removing <Outlet /> breaks all child routes.
-  return <Outlet />;
+  return (
+    <>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Outlet />
+      {/* Vercel Web Analytics. Like Umami it is cookieless, so it adds no
+          consent-banner requirement — but it is a second processor and is
+          named as such in /privacy.
+
+          It injects its script from a mount effect, so it lives in the client
+          component tree here rather than in RootShell (the document shell).
+          Locally it reports mode "development" and loads the debug script, so
+          dev traffic does not reach production analytics. */}
+      <Analytics />
+    </>
+  );
 }
