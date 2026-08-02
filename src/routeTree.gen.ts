@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as ListeningReadingRouteImport } from './routes/listening-reading'
 import { Route as LegalRouteImport } from './routes/legal'
@@ -45,6 +46,11 @@ const ProgressRoute = ProgressRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MockTestRoute = MockTestRouteImport.update({
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/listening-reading': typeof ListeningReadingRoute
   '/mock-test': typeof MockTestRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/progress': typeof ProgressRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/listening-reading'
     | '/mock-test'
+    | '/pricing'
     | '/privacy'
     | '/progress'
     | '/sitemap.xml'
@@ -177,6 +189,7 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   ListeningReadingRoute: typeof ListeningReadingRoute
   MockTestRoute: typeof MockTestRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgressRoute: typeof ProgressRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mock-test': {
@@ -281,6 +301,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   ListeningReadingRoute: ListeningReadingRoute,
   MockTestRoute: MockTestRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ProgressRoute: ProgressRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

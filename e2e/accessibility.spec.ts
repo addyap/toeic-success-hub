@@ -22,6 +22,7 @@ const ROUTES = [
   // badges get scanned too — the index page alone never rendered them.
   "/study-tips/speaking-tasks-1-11",
   "/progress",
+  "/pricing",
   "/privacy",
   "/terms",
   "/legal",

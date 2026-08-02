@@ -11,6 +11,7 @@ const navItems = [
   { to: "/vocabulary", label: "Vocabulary" },
   { to: "/study-tips", label: "Study Tips" },
   { to: "/progress", label: "My Progress" },
+  { to: "/pricing", label: "Pricing" },
 ] as const;
 
 export function SiteLayout({ children }: { children: ReactNode }) {
@@ -127,6 +128,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <li>
                 <Link to="/mock-test" className="hover:text-foreground">
                   Full Mock Test
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="hover:text-foreground">
+                  Pricing — free
                 </Link>
               </li>
             </ul>
