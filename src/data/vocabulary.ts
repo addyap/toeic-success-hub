@@ -1283,6 +1283,97 @@ export const vocabulary: VocabTerm[] = [
     example: "The company's new slogan appeared on billboards throughout the city.",
   },
 
+  {
+    term: "market segmentation",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The process of dividing a target market into smaller groups based on shared characteristics.",
+    example: "Market segmentation helped us tailor separate campaigns for each customer group.",
+  },
+  {
+    term: "unique selling proposition",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "The distinct benefit that sets a product apart from its competitors.",
+    example: "Our unique selling proposition is same-day delivery in every major city.",
+  },
+  {
+    term: "call to action",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A prompt in an advertisement or on a webpage that urges the audience to take a specific action.",
+    example: "The email ends with a clear call to action: sign up before Friday.",
+  },
+  {
+    term: "brand equity",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The commercial value a brand holds beyond its physical assets, based on customer perception.",
+    example: "Years of consistent quality have built strong brand equity for the company.",
+  },
+  {
+    term: "lead generation",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The process of attracting and identifying potential customers for a business's products or services.",
+    example: "The sales team relies on lead generation from trade shows and webinars.",
+  },
+  {
+    term: "click-through rate",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "The percentage of people who click on a link or advertisement after viewing it.",
+    example: "We redesigned the banner ad after its click-through rate fell below target.",
+  },
+  {
+    term: "sales funnel",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "The stages a potential customer moves through, from first contact to final purchase.",
+    example: "Only a small fraction of visitors make it to the bottom of the sales funnel.",
+  },
+  {
+    term: "market saturation",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A point at which a product has already been sold to nearly all potential customers in a market.",
+    example: "With market saturation approaching at home, the company began exploring new regions.",
+  },
+  {
+    term: "customer acquisition cost",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "The average amount a company spends to gain one new customer.",
+    example: "Reducing customer acquisition cost was the main goal of the new ad strategy.",
+  },
+  {
+    term: "viral marketing",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition:
+      "A strategy that encourages people to share promotional content widely, often online.",
+    example: "The video's clever twist made it a textbook case of viral marketing.",
+  },
+  {
+    term: "soft launch",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "A limited or low-key release of a product ahead of its full public introduction.",
+    example: "The company ran a soft launch in two cities to gather feedback first.",
+  },
+  {
+    term: "market research",
+    pos: "noun",
+    category: "Marketing & Sales",
+    definition: "The systematic gathering and analysis of data about customers and competitors.",
+    example: "Market research showed strong demand for eco-friendly packaging.",
+  },
   // ── Human Resources ──
   {
     term: "candidate",
@@ -2163,6 +2254,111 @@ export const vocabulary: VocabTerm[] = [
       "The shared values, attitudes, and practices that characterize how people behave within an organization.",
     example:
       "The startup prides itself on a corporate culture that encourages open feedback between staff and management.",
+  },
+  {
+    term: "talent acquisition",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "The strategic process of identifying, attracting, and hiring skilled employees to meet an organization's needs.",
+    example:
+      "The talent acquisition team partnered with local universities to build a stronger pipeline of graduates.",
+  },
+  {
+    term: "diversity and inclusion",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "Workplace policies and practices aimed at representing a wide range of backgrounds and ensuring everyone feels valued and supported.",
+    example:
+      "The company published its first diversity and inclusion report to track progress across departments.",
+  },
+  {
+    term: "employee retention",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "The ability of an organization to keep its employees and reduce voluntary turnover.",
+    example:
+      "Offering flexible schedules significantly improved employee retention over the past year.",
+  },
+  {
+    term: "work-life balance",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "A comfortable state of equilibrium between an employee's job responsibilities and personal life.",
+    example:
+      "Many candidates now ask about work-life balance during their final round of interviews.",
+  },
+  {
+    term: "exempt employee",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "An employee who is not entitled to overtime pay under labor law because of their salary level or job duties.",
+    example:
+      "As an exempt employee, she receives a fixed salary regardless of how many hours she works each week.",
+  },
+  {
+    term: "collective bargaining",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "The process of negotiation between an employer and a group of employees, often through a union, to reach a workplace agreement.",
+    example:
+      "The new wage scale was the result of months of collective bargaining between management and the union.",
+  },
+  {
+    term: "whistleblower",
+    pos: "noun",
+    category: "Human Resources",
+    definition: "An employee who reports illegal or unethical conduct within an organization.",
+    example:
+      "The company set up an anonymous hotline to protect any whistleblower who reports misconduct.",
+  },
+  {
+    term: "maternity leave",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "A period of authorized absence granted to a mother before and after the birth of a child.",
+    example: "She plans to return to work three months after her maternity leave ends.",
+  },
+  {
+    term: "paternity leave",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "A period of authorized absence granted to a father following the birth or adoption of a child.",
+    example: "The firm recently extended paternity leave from two weeks to a full month.",
+  },
+  {
+    term: "cross-training",
+    pos: "noun",
+    category: "Human Resources",
+    definition:
+      "The practice of teaching employees to perform tasks outside their usual role so they can cover for one another.",
+    example:
+      "Cross-training allowed the department to keep operating smoothly when two staff members were out sick.",
+  },
+  {
+    term: "job rotation",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "A practice of moving employees between different positions or departments to broaden their skills and experience.",
+    example:
+      "The management trainee program relies on job rotation to expose new hires to every department.",
+  },
+  {
+    term: "gross misconduct",
+    pos: "phrase",
+    category: "Human Resources",
+    definition:
+      "Extremely serious workplace behavior, such as theft or violence, that justifies immediate dismissal.",
+    example:
+      "The employee was terminated without notice after being caught falsifying expense reports, a clear case of gross misconduct.",
   },
 ];
 
