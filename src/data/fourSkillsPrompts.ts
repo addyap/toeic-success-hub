@@ -131,7 +131,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
     directions:
       "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
     prompt:
-      "Welcome to the Ashcombe Gallery of Natural History. As you enter this hall, you'll see the skeleton of a blue whale suspended above you, measuring almost twenty-five metres from nose to tail. To your left, cabinet seven displays fossils discovered along the Dorset coast over the past two hundred years. Please feel free to walk around the whale skeleton, but do not touch the display cases. If you'd like to hear more detail about any exhibit, simply press the green button on your handset and enter the three-digit number shown on the nearby label. Our next stop, the Mineral Room, is just through the archway on your right.",
+      "Welcome to the Ashcombe Gallery of Natural History. As you enter this hall, you'll see the skeleton of a blue whale suspended above you, measuring almost twenty-five metres from nose to tail. To your left, cabinet seven displays fossils discovered along the Dorset coast. Please feel free to walk around the whale skeleton, but do not touch the display cases. To hear more about any exhibit, press the green button on your handset and enter the three-digit number on its label. Our next stop, the Mineral Room, is just through the archway on your right.",
     checklist: [
       "Did 'Ashcombe' and 'Dorset' stay clear, and did 'twenty-five metres' sound natural rather than spelled out?",
       "Did your pitch rise while listing 'cabinet seven... fossils... Dorset coast' and fall at the end of that sentence?",
@@ -148,7 +148,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
     directions:
       "You will read the text aloud. You have 45 seconds to prepare, then 45 seconds to read.",
     prompt:
-      "Good morning, everyone, and welcome to Hartley Manufacturing. Before you begin your shift on the production floor, please remember a few safety points. Safety glasses and steel-toed boots must be worn at all times in Zones A and B. The emergency assembly point is in the car park beside Gate Three; in the event of an alarm, exit through the nearest marked door, not the one you entered by. Machinery must never be left running unattended, and spills should be reported immediately to your supervisor. Fire extinguishers are located every twenty metres along the main corridor. Thank you for your attention, and have a safe shift.",
+      "Good morning, everyone, and welcome to Hartley Manufacturing. Before your shift on the production floor, please remember a few safety points. Safety glasses and steel-toed boots must be worn at all times in Zones A and B. The emergency assembly point is in the car park beside Gate Three; in the event of an alarm, exit through the nearest marked door, not the one you entered by. Machinery must never be left running unattended, and spills should be reported to your supervisor immediately. Fire extinguishers are located every twenty metres along the main corridor. Thank you, and have a safe shift.",
     checklist: [
       "Did 'Hartley Manufacturing' and 'Zones A and B' stay clear, with the letters A and B pronounced distinctly?",
       "Did your pitch fall clearly at the end of 'Gate Three' and again at 'the one you entered by'?",
@@ -879,7 +879,7 @@ export const writingPrompts: WritingPrompt[] = [
       "Does 'after' correctly order two actions?",
       "Is the grammar accurate — tense, articles, subject–verb agreement?",
     ],
-    model: "After tightening the fitting with both wrenches, he turns the water supply back on.",
+    model: "After tightening the fitting with both wrenches, he turns the gas supply back on.",
   },
   {
     id: "wr-request-1",
@@ -1013,7 +1013,7 @@ export const writingPrompts: WritingPrompt[] = [
       "Does the conclusion restate your position rather than adding a new argument?",
     ],
     model:
-      "In my view, frequent check-ins are a considerably more effective way of managing performance than a single annual review, although they place greater demands on managers.\n\nThe strongest argument for regular check-ins is that feedback arrives while it can still change something. If an employee is approaching a project in the wrong way in February, being told so in December helps nobody. In my previous team, a colleague spent several months building reports that our clients never opened; a short monthly conversation would have surfaced that in weeks rather than at the end of the year.\n\nFrequent conversations also produce a fairer assessment. Annual reviews are vulnerable to recency bias, because managers remember the last two months far better than the first ten. A manager who has recorded twelve short discussions has evidence to draw on, rather than an impression formed in the final quarter.\n\nThere is a reasonable objection: check-ins consume management time, and a poorly run one becomes a status update that helps nobody. This is a genuine risk, but it is an argument for training managers properly, not for returning to a single annual meeting.\n\nOn balance, I believe organisations should favour regular check-ins. They correct problems early, they reduce bias, and they treat performance as something developed continuously rather than judged once a year.",
+      "In my view, frequent check-ins are a considerably more effective way of managing performance than a single annual review, although they place greater demands on managers.\n\nThe strongest argument for regular check-ins is that feedback arrives while it can still change something. If an employee is approaching a project in the wrong way in February, being told so in December helps nobody. In my previous team, a colleague spent several months building reports that our clients never opened; a short monthly conversation would have surfaced that in weeks rather than at the end of the year, saving both his effort and the company's money.\n\nFrequent conversations also produce a fairer assessment. Annual reviews are vulnerable to recency bias, because managers remember the last two months far better than the first ten. A manager who has recorded twelve short discussions has evidence to draw on, rather than an impression formed in the final quarter. Regular contact also lets goals be adjusted as circumstances change: a target set in January may be irrelevant by June, and only an ongoing conversation catches that in time.\n\nThere is a reasonable objection: check-ins consume management time, and a poorly run one becomes a status update that helps nobody. A weekly meeting that merely repeats what is already in a project tracker adds little. This is a genuine risk, but it is an argument for training managers to run check-ins well — keeping them short, specific and focused on development — not for returning to a single annual meeting.\n\nOn balance, I believe organisations should favour regular check-ins. They correct problems early, they reduce bias, and they treat performance as something developed continuously rather than judged once a year.",
   },
   {
     id: "wr-essay-2",

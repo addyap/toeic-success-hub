@@ -79,14 +79,18 @@
     <tr><td class="sev refute">critical → refuted</td><td>Study guide + 4-Skills (Speaking Task 11)</td><td>A reviewer claimed the 15-second prep time was outdated and should be 45s.</td><td>Verified against EF and the site's ETS source: <strong>15s is correct.</strong> No change made.</td><td class="status drop">dropped</td></tr>
   </table>
 
-  <h2>Recommendations (not auto-applied)</h2>
+  <h2>Recommendations — follow-up</h2>
   <div class="card">
+    <p><strong>Resolved (commit <code>2nd pass</code>):</strong></p>
     <ul>
-      <li><strong>4-Skills <code>sp-info-1</code></strong> — the spoken question says "afternoon workshop<strong>s</strong>" but the schedule lists one. A one-word fix, deliberately left undone because this prompt has generated TTS audio and changing it would require you to re-run <code>generate:audio</code>. Worth doing next time you regenerate audio anyway.</li>
-      <li><strong>4-Skills <code>wr-sentence-6</code></strong> — the model says the plumber "turns the water supply back on"; a water heater has both water and gas connections, so this may or may not match the photo. Glance at <code>picture-plumber.jpg</code> and switch to "gas supply" only if that's what it shows.</li>
-      <li><strong>4-Skills <code>wr-essay-1</code></strong> — the sample essay is ~218 words against a ~300-word target; worth extending so it models the expected length.</li>
-      <li><strong>4-Skills <code>sp-read-5 / sp-read-6</code></strong> — ~105–108 words for a 45-second read-aloud; trimming to ~90 would fit a careful pace.</li>
-      <li><strong>4-Skills <code>sp-opinion-4</code></strong> — office-vs-remote overlaps with <code>wr-essay-2</code>; optionally re-theme for variety.</li>
+      <li><span class="status fixed">fixed</span> <strong><code>wr-sentence-6</code></strong> — viewed <code>picture-plumber.jpg</code>: it's a gas water heater (yellow gas control valve and gas connector visible), and the image alt text already said "gas line." Model corrected "water supply" → "gas supply."</li>
+      <li><span class="status fixed">fixed</span> <strong><code>wr-essay-1</code></strong> — sample essay expanded from ~215 to ~290 words (added a fairness example on adjusting goals mid-year and a sharper objection), so it now models the ~300-word target.</li>
+      <li><span class="status fixed">fixed</span> <strong><code>sp-read-5 / sp-read-6</code></strong> — trimmed to ~95 words each for the 45-second window, keeping every phrase the checklists reference.</li>
+    </ul>
+    <p><strong>Needs an audio regeneration (your OpenAI key) — not applied:</strong></p>
+    <ul>
+      <li><strong><code>sp-info-1</code></strong> — the spoken question says "afternoon workshop<strong>s</strong>" but the schedule lists one. The fix is one word, but it lives in a <code>spoken: true</code> prompt, so changing it re-hashes the audio and would fail the audio-coverage test until <code>bun run generate:audio</code> is run. Worth folding into your next audio run.</li>
+      <li><strong><code>sp-opinion-4</code></strong> — office-vs-remote theme overlaps <code>wr-essay-2</code>. Cosmetic only, and also a spoken prompt — not worth an audio regeneration on its own. Recommend leaving as-is.</li>
     </ul>
   </div>
 
