@@ -1,0 +1,111 @@
+<title>TOEIC Success Hub — Pedagogy Audit, 13 Aug 2026</title>
+<style>
+  :root{
+    --bg:#f7f6f3; --card:#ffffff; --ink:#1c1a17; --muted:#5c574f; --line:#e5e1d8;
+    --crit:#b4232a; --major:#b26a00; --minor:#3a6ea5; --ok:#2e7d5b; --refute:#7a7a7a;
+    --accent:#1f5c46;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+    --bg:#14130f; --card:#1e1c17; --ink:#efe9dd; --muted:#a8a297; --line:#302c24;
+    --crit:#f0868b; --major:#e0a24a; --minor:#7fb0dd; --ok:#6cc79b; --refute:#9a958c; --accent:#6cc79b;
+  }}
+  :root[data-theme=dark]{
+    --bg:#14130f; --card:#1e1c17; --ink:#efe9dd; --muted:#a8a297; --line:#302c24;
+    --crit:#f0868b; --major:#e0a24a; --minor:#7fb0dd; --ok:#6cc79b; --refute:#9a958c; --accent:#6cc79b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:2rem 1rem}
+  .wrap{max-width:920px;margin:0 auto}
+  h1{font-size:1.7rem;margin:0 0 .2rem} h2{font-size:1.2rem;margin:2.2rem 0 .8rem;border-bottom:2px solid var(--line);padding-bottom:.3rem}
+  .sub{color:var(--muted);margin:0 0 1.5rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.4rem;margin:1rem 0}
+  .grade{display:inline-flex;align-items:baseline;gap:.6rem;font-weight:700}
+  .grade .g{font-size:2.6rem;color:var(--accent);line-height:1}
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+  .pill{border-radius:999px;padding:.2rem .7rem;font-size:.85rem;font-weight:600;border:1px solid var(--line)}
+  .pill.c{color:var(--crit)} .pill.m{color:var(--major)} .pill.n{color:var(--minor)} .pill.o{color:var(--ok)}
+  table{width:100%;border-collapse:collapse;font-size:.92rem;margin:.5rem 0}
+  th,td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+  .sev{font-weight:700;white-space:nowrap}
+  .sev.crit{color:var(--crit)} .sev.major{color:var(--major)} .sev.minor{color:var(--minor)} .sev.refute{color:var(--refute)}
+  code{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:.05rem .35rem;font-size:.85em}
+  .status{font-weight:700}.status.fixed{color:var(--ok)}.status.rec{color:var(--minor)}.status.drop{color:var(--refute)}
+  .scorebar{display:flex;align-items:center;gap:.7rem;margin:.35rem 0}
+  .scorebar .lbl{flex:0 0 210px;color:var(--muted)} .scorebar .track{flex:1;height:9px;background:var(--line);border-radius:6px;overflow:hidden}
+  .scorebar .fill{height:100%;background:var(--accent)} .scorebar .num{flex:0 0 42px;text-align:right;font-weight:700}
+  .muted{color:var(--muted)} ul{margin:.4rem 0 .4rem 1.1rem} li{margin:.3rem 0}
+  .foot{color:var(--muted);font-size:.85rem;margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+
+<div class="wrap">
+  <h1>TOEIC Success Hub — Pedagogy Audit</h1>
+  <p class="sub">toeic.antonyaddy.com · 13 August 2026 · first run of the pedagogy-audit tool on this site</p>
+
+  <div class="card">
+    <div class="grade"><span class="g">A−</span><span>Strong. Fundamentally sound content.</span></div>
+    <div class="pills">
+      <span class="pill c">1 critical — refuted</span>
+      <span class="pill m">9 major → 8 fixed, 1 refuted</span>
+      <span class="pill n">5 minor</span>
+      <span class="pill o">9 fixes applied</span>
+    </div>
+    <p>Across <strong>~1,090 learning items</strong> (728 Listening &amp; Reading questions, 47 4-Skills prompts, 301 vocabulary terms, 15 study guides), the content is accurate and well-built — a direct reflection of the four prior correctness audits. This tool went after what those passes didn't: <strong>answer ambiguity, British-vs-American variety traps, explanation quality, and exam-format facts</strong>. It found <strong>8 genuine defects</strong> (one mis-keyed listening item, five items with two defensible answers, two misleading reference entries) plus one wrong grammar rule in a study guide — all now fixed. Every answer key that would have <em>taught something false</em> held up. Notably, the single "critical" a reviewer raised — that Speaking Task 11's prep time was wrong — was <strong>refuted on verification</strong>: the site's 15-second figure is correct; the reviewer was mistaken.</p>
+  </div>
+
+  <h2>Scorecard</h2>
+  <div class="card">
+    <div class="scorebar"><span class="lbl">Correctness (answer keys)</span><span class="track"><span class="fill" style="width:96%"></span></span><span class="num">96</span></div>
+    <div class="scorebar"><span class="lbl">Ambiguity (single defensible answer)</span><span class="track"><span class="fill" style="width:90%"></span></span><span class="num">90</span></div>
+    <div class="scorebar"><span class="lbl">Explanations &amp; pedagogy</span><span class="track"><span class="fill" style="width:93%"></span></span><span class="num">93</span></div>
+    <div class="scorebar"><span class="lbl">Exam-format accuracy</span><span class="track"><span class="fill" style="width:98%"></span></span><span class="num">98</span></div>
+    <div class="scorebar"><span class="lbl">Vocabulary reference quality</span><span class="track"><span class="fill" style="width:94%"></span></span><span class="num">94</span></div>
+    <div class="scorebar"><span class="lbl">Coverage &amp; balance</span><span class="track"><span class="fill" style="width:97%"></span></span><span class="num">97</span></div>
+    <p class="muted" style="margin:.6rem 0 0">Ambiguity is the lowest score because every genuine defect but two clustered there — chiefly British/American variety splits in Part 5 grammar, where a distractor is correct in one standard variety.</p>
+  </div>
+
+  <h2>Findings &amp; fixes</h2>
+  <table>
+    <tr><th>Severity</th><th>Where</th><th>What was wrong</th><th>Fix</th><th>Status</th></tr>
+    <tr><td class="sev major">major</td><td>L&amp;R Part 3 <code>part3ee3</code></td><td>"What will the woman do <em>next</em>?" was keyed to the morning read-through, but she says she'll send the deck "in the next five minutes" — the actual next action.</td><td>Re-keyed to the "send immediately" option; explanation rewritten.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>L&amp;R Part 4 <code>part4l3</code></td><td>Two options ("the following morning" and "two days from now") both correctly described the reopening day.</td><td>Reworded the trap option to "Not until the following week."</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>L&amp;R Part 5 <code>part5ap</code></td><td>"The committee ___ scheduled" — keyed "is" (US), but "are" is standard British English with a collective noun.</td><td>Subject changed to "Each member of the committee…" — singular in every variety.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>L&amp;R Part 5 <code>part5au</code></td><td>Mandative subjunctive after "insisted" — keyed base form "wear," but the indicative "wears" is standard after "insist" in British English.</td><td>Swapped the "wears" distractor for "worn" (wrong in all varieties); subjunctive point preserved.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>L&amp;R Part 5 <code>part5r10a</code></td><td>Past perfect continuous keyed, but the distractor "had investigated" (past perfect simple) is also fully correct with "for + duration."</td><td>Distractor changed to the passive "had been investigated" — unambiguously wrong.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>Study guide <code>part5-incomplete-sentences</code></td><td>Taught that a past-simple <em>if</em>-clause "pairs <strong>only</strong> with <em>could</em>" — wrongly excluding the standard second-conditional <em>would</em>.</td><td>Corrected to "would, could, or might."</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>Vocabulary <code>profit margin</code></td><td>Defined as "the percentage difference between cost and selling price" — indistinguishable from the separate term <em>markup</em>.</td><td>Redefined as "profit as a percentage of the selling price (revenue)."</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev major">major</td><td>Vocabulary <code>upsell</code></td><td>Definition ("…or additional product") and example (wine with a meal) actually described <em>cross-sell</em>, another term in the same deck.</td><td>Narrowed to "a more expensive version or upgrade"; example replaced with a genuine upsell.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev minor">minor</td><td>Study guide <code>score-bands-explained</code></td><td>Title promised "600, 785, and 900" but the body explains 550 / 785 / 945.</td><td>Title aligned to the numbers actually taught.</td><td class="status fixed">fixed</td></tr>
+    <tr><td class="sev refute">critical → refuted</td><td>Study guide + 4-Skills (Speaking Task 11)</td><td>A reviewer claimed the 15-second prep time was outdated and should be 45s.</td><td>Verified against EF and the site's ETS source: <strong>15s is correct.</strong> No change made.</td><td class="status drop">dropped</td></tr>
+  </table>
+
+  <h2>Recommendations (not auto-applied)</h2>
+  <div class="card">
+    <ul>
+      <li><strong>4-Skills <code>sp-info-1</code></strong> — the spoken question says "afternoon workshop<strong>s</strong>" but the schedule lists one. A one-word fix, deliberately left undone because this prompt has generated TTS audio and changing it would require you to re-run <code>generate:audio</code>. Worth doing next time you regenerate audio anyway.</li>
+      <li><strong>4-Skills <code>wr-sentence-6</code></strong> — the model says the plumber "turns the water supply back on"; a water heater has both water and gas connections, so this may or may not match the photo. Glance at <code>picture-plumber.jpg</code> and switch to "gas supply" only if that's what it shows.</li>
+      <li><strong>4-Skills <code>wr-essay-1</code></strong> — the sample essay is ~218 words against a ~300-word target; worth extending so it models the expected length.</li>
+      <li><strong>4-Skills <code>sp-read-5 / sp-read-6</code></strong> — ~105–108 words for a 45-second read-aloud; trimming to ~90 would fit a careful pace.</li>
+      <li><strong>4-Skills <code>sp-opinion-4</code></strong> — office-vs-remote overlaps with <code>wr-essay-2</code>; optionally re-theme for variety.</li>
+    </ul>
+  </div>
+
+  <h2>Coverage map</h2>
+  <div class="card">
+    <p><strong>Reviewed exhaustively (no sampling):</strong></p>
+    <ul>
+      <li><strong>Listening &amp; Reading — 728 questions, all 7 parts:</strong> Part 1 (20), Part 2 (84), Part 3 (132), Part 4 (102), Part 5 (99), Part 6 (60), Part 7 (231, incl. double/triple-passage sets). Clean except the 6 items above.</li>
+      <li><strong>4-Skills — 47 Speaking/Writing prompts:</strong> timings, checklists, model answers, read-aloud lengths. Timings verified against the real exam.</li>
+      <li><strong>Vocabulary — 301 terms:</strong> definitions and example sentences (English senses). 8-language glosses not in scope this pass.</li>
+      <li><strong>Study guides — 15 articles:</strong> exam-format facts (part counts, timings, 10–990 / 5–495 scales, CEFR anchors, 4-Skills adaptive format) all verified accurate; one wrong grammar rule fixed.</li>
+    </ul>
+    <p class="muted">High-value checks that came back <strong>clean</strong>: no wrong answer keys teaching false content; Part 7 numeric/date self-consistency (a past bug class) held across every passage; Part 2 "second acceptable reply" trap — none found; all exam-format facts accurate.</p>
+  </div>
+
+  <h2>Method</h2>
+  <div class="card">
+    <p>16 independent reviewers (one strong model per content chunk of ~30–60 items) each re-derived every answer from the item's own text rather than trusting stored explanations. Every critical/major finding was then <strong>independently verified against the source</strong> — which mattered: it refuted the one "critical," and corrected one proposed fix that would have entrenched the very error it flagged (<code>part3ee3</code>). Fixes were checked not to reintroduce the defect, then the repo's full gate was run: <strong>ESLint clean, 61/61 unit tests (incl. the question-bank integrity suite), production build succeeds.</strong> None of the fixes touched spoken content, so <strong>no audio regeneration is required.</strong></p>
+  </div>
+
+  <p class="foot">Generated by the pedagogy-audit tool · repair manifest: <code>audit-reports/repair-manifest-2026-08-13.md</code> · 9 fixes committed.</p>
+</div>

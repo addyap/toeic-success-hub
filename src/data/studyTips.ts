@@ -248,7 +248,7 @@ export const studyTips: StudyTip[] = [
       },
       {
         heading: "Tense and aspect questions: the time marker is the answer key",
-        body: "When the four options are all the same verb in different tenses, ignore the rest of the sentence and hunt for the one word or phrase that fixes the timeline — the test always plants one. 'Since early Monday morning' paired with 'still have not finished' can only mean an action that started in the past and is still going, which forces the present perfect continuous 'has been reviewing', ruling out the simple present, simple past, and the completed-sounding present perfect simple. 'By the time the auditors ______ their review, the finance department will have already submitted...' is the classic future-time-clause trap: 'by the time' behaves like 'when' or 'if' and takes the present simple ('complete'), never 'will complete' or 'will have completed', even though the sentence is clearly about the future. Conditional sentences work the same way: an if-clause in the past simple ('If the law firm hired additional paralegals') pairs only with 'could' + base verb in the result clause, never with 'will' or 'would have'. Once you can name the pattern — first conditional, second conditional, reported-speech backshift, future time clause — you stop guessing and start matching.",
+        body: "When the four options are all the same verb in different tenses, ignore the rest of the sentence and hunt for the one word or phrase that fixes the timeline — the test always plants one. 'Since early Monday morning' paired with 'still have not finished' can only mean an action that started in the past and is still going, which forces the present perfect continuous 'has been reviewing', ruling out the simple present, simple past, and the completed-sounding present perfect simple. 'By the time the auditors ______ their review, the finance department will have already submitted...' is the classic future-time-clause trap: 'by the time' behaves like 'when' or 'if' and takes the present simple ('complete'), never 'will complete' or 'will have completed', even though the sentence is clearly about the future. Conditional sentences work the same way: an if-clause in the past simple ('If the law firm hired additional paralegals') pairs with 'would', 'could', or 'might' + base verb in the result clause, never with 'will' or 'would have'. Once you can name the pattern — first conditional, second conditional, reported-speech backshift, future time clause — you stop guessing and start matching.",
       },
       {
         heading: "Fixed prepositions and collocations: memorize, don't reason",
@@ -423,7 +423,7 @@ export const studyTips: StudyTip[] = [
   },
   {
     slug: "score-bands-explained",
-    title: "Score bands explained: what 600, 785, and 900 actually mean",
+    title: "Score bands explained: what 550, 785, and 945 actually mean",
     category: "Strategy",
     readTime: "4 min",
     summary:

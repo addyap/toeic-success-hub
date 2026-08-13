@@ -4052,9 +4052,9 @@ const part3ee3: PracticeQuestionData = {
     { label: "C", text: "Do a final read-through in the morning before the meeting." },
     { label: "D", text: "Ask Marketing for the updated logo file." },
   ],
-  correct: "C",
+  correct: "B",
   explanation:
-    "Her last line is, 'Great, I'll do a final read-through first thing in the morning before we head to the meeting.' Sending the deck (B) is something she says she will do 'in the next five minutes,' not as her final next step, and contacting the client (A) and asking Marketing (D) are never mentioned.",
+    "The man says, 'Send me the current deck now,' and she replies, 'Sending it over in the next five minutes' — her immediate next action, so (B) is correct. (C) the final read-through happens later, 'first thing in the morning,' not next. Contacting the client (A) and asking Marketing (D) are never mentioned as her actions.",
 };
 
 const PART3_ELEVATOR_MAINTENANCE = {
@@ -4765,11 +4765,11 @@ const part4l3: PracticeQuestionData = {
     { label: "A", text: "Later the same day, after a short closure." },
     { label: "B", text: "The following morning, at its usual time." },
     { label: "C", text: "The following morning, earlier than usual." },
-    { label: "D", text: "Two days from now." },
+    { label: "D", text: "Not until the following week." },
   ],
   correct: "B",
   explanation:
-    "The store is 'closed all day tomorrow and will reopen the following morning at our regular time of ten A.M.' — the usual opening time, not an earlier one (C), and not a same-day reopening (A) or a two-day wait (D).",
+    "The store is 'closed all day tomorrow and will reopen the following morning at our regular time of ten A.M.' — the usual opening time, not an earlier one (C), not a same-day reopening (A), and not a week-long wait (D).",
 };
 
 const PART4_ROAD_CLOSURE = {
@@ -6519,7 +6519,7 @@ const part5ao: PracticeQuestionData = {
 const part5ap: PracticeQuestionData = {
   prompt: "Part 5 · Choose the word that best completes the sentence.",
   context:
-    "The maintenance committee ______ scheduled to meet every second Tuesday of the month to review facility repair requests.",
+    "Each member of the maintenance committee ______ scheduled to meet every second Tuesday of the month to review facility repair requests.",
   options: [
     { label: "A", text: "is" },
     { label: "B", text: "are" },
@@ -6528,7 +6528,7 @@ const part5ap: PracticeQuestionData = {
   ],
   correct: "A",
   explanation:
-    "A collective noun like 'committee' referring to a single unit takes a singular verb, so 'is' is correct: 'The maintenance committee is scheduled to meet...'. (B) 'are' and (D) 'have been' are plural forms that do not agree with the collective subject treated as one unit. (C) 'were' is also plural and additionally shifts the sentence into the wrong tense for this recurring, ongoing schedule.",
+    "The subject 'Each member' is grammatically singular in every variety of English, so it takes the singular 'is': 'Each member... is scheduled to meet...'. (B) 'are' and (D) 'have been' are plural and do not agree with 'each member'. (C) 'were' is plural and also wrong for this recurring, ongoing schedule.",
 };
 
 const part5aq: PracticeQuestionData = {
@@ -6595,14 +6595,14 @@ const part5au: PracticeQuestionData = {
   context:
     "The safety board insisted that every worker ______ a certified helmet before entering the site.",
   options: [
-    { label: "A", text: "wears" },
+    { label: "A", text: "worn" },
     { label: "B", text: "wear" },
     { label: "C", text: "wearing" },
     { label: "D", text: "to wear" },
   ],
   correct: "B",
   explanation:
-    "Verbs expressing demand, suggestion, or insistence (such as 'insisted') trigger the subjunctive mood in a following that-clause, which uses the base form of the verb regardless of the subject: 'insisted that every worker wear'. (A) 'wears' is the ordinary third-person present form and cannot follow this subjunctive pattern. (C) 'wearing' is a gerund/participle and cannot serve as the finite verb of the that-clause. (D) 'to wear' is a to-infinitive, which does not fit the bare subjunctive structure required after 'insisted that'.",
+    "Verbs expressing demand, suggestion, or insistence (such as 'insisted') trigger the subjunctive mood in a following that-clause, which uses the base form of the verb regardless of the subject: 'insisted that every worker wear'. (A) 'worn' is a past participle with no auxiliary and cannot serve as the finite verb of the that-clause. (C) 'wearing' is a gerund/participle and cannot serve as the finite verb of the that-clause. (D) 'to wear' is a to-infinitive, which does not fit the bare subjunctive structure required after 'insisted that'.",
 };
 
 const part5av: PracticeQuestionData = {
@@ -6957,12 +6957,12 @@ const part5r10a: PracticeQuestionData = {
   options: [
     { label: "A", text: "had been investigating" },
     { label: "B", text: "has been investigating" },
-    { label: "C", text: "had investigated" },
+    { label: "C", text: "had been investigated" },
     { label: "D", text: "were investigating" },
   ],
   correct: "A",
   explanation:
-    "The past perfect continuous shows an action that had been ongoing for a stated duration ('for nearly two weeks') before another past event ('the auditors arrived'), so 'had been investigating' is correct. (B) 'has been investigating' (present perfect continuous) cannot anchor to a past reference point like 'by the time... arrived'. (C) 'had investigated' (past perfect simple) emphasizes a completed action rather than the ongoing duration the sentence stresses. (D) 'were investigating' (past continuous) does not show that the action started before the auditors' arrival.",
+    "The past perfect continuous shows an action that had been ongoing for a stated duration ('for nearly two weeks') before another past event ('the auditors arrived'), so 'had been investigating' is correct. (B) 'has been investigating' (present perfect continuous) cannot anchor to a past reference point like 'by the time... arrived'. (C) 'had been investigated' is passive and would wrongly mean the staff were the object of an investigation, not the ones conducting it. (D) 'were investigating' (past continuous) does not show that the action started before the auditors' arrival.",
 };
 
 const part5r10b: PracticeQuestionData = {

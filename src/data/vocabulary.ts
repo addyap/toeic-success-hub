@@ -482,7 +482,7 @@ export const vocabulary: VocabTerm[] = [
     term: "profit margin",
     pos: "noun",
     category: "Finance",
-    definition: "The percentage difference between cost and selling price.",
+    definition: "Profit expressed as a percentage of the selling price (revenue).",
     example: "Higher shipping costs cut our profit margin.",
   },
   {
@@ -1188,8 +1188,9 @@ export const vocabulary: VocabTerm[] = [
     pos: "verb",
     category: "Marketing & Sales",
     definition:
-      "To persuade a customer to purchase a more expensive item, upgrade, or additional product.",
-    example: "The waiter upsold the couple on a bottle of wine to go with their meal.",
+      "To persuade a customer to buy a more expensive version or upgrade of the item they are already considering.",
+    example:
+      "The sales assistant upsold the customer to the premium laptop model with more storage.",
   },
   {
     term: "niche market",
