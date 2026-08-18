@@ -6485,12 +6485,12 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
       }
     ]
   },
-  "27b6jgl42cj": {
+  "11uja8nu68g": {
     "model": "gpt-4o-mini-tts",
     "segments": [
       {
         "voice": "alloy",
-        "file": "27b6jgl42cj-0.mp3"
+        "file": "11uja8nu68g-0.mp3"
       }
     ]
   },

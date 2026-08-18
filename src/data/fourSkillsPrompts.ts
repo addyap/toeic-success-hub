@@ -412,7 +412,7 @@ export const speakingPrompts: SpeakingPrompt[] = [
       ],
     },
     prompt:
-      "I missed the email with the details. Who is running the afternoon workshops, and what time does the day finish?",
+      "I missed the email with the details. Who is running the afternoon workshop, and what time does the day finish?",
     checklist: [
       "Did you give the correct name and the correct finishing time?",
       "Did you answer both parts of the question?",
