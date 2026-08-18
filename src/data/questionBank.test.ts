@@ -33,9 +33,10 @@ const PARTS: [string, PracticeQuestionData[]][] = [
   ["7", part7Questions],
 ];
 
-/** Generated mp3s are 125 kbps CBR, so bytes/sec is a reliable duration proxy
- *  without pulling in an audio-decoding dependency. */
-const BYTES_PER_SEC = 15974;
+/** Generated mp3s are 64 kbps CBR mono, so bytes/sec is a reliable duration
+ *  proxy without pulling in an audio-decoding dependency. (Re-encoded down from
+ *  128 kbps to halve the deploy; measured aggregate ≈ 8050 bytes/sec.) */
+const BYTES_PER_SEC = 8050;
 /** Speech runs ~15 chars/sec; anything under half its expected length was
  *  truncated mid-synthesis (the failure mode that shipped two dead clips). */
 const MIN_DURATION_RATIO = 0.55;

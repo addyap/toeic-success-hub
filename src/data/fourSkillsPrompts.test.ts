@@ -15,7 +15,8 @@ import { speakingPrompts } from "./fourSkillsPrompts";
 import { audioManifest } from "./audioManifest";
 import { audioKey } from "../lib/audioSource";
 
-const BYTES_PER_SEC = 15974;
+// 64 kbps CBR mono (re-encoded from 128 kbps to halve the deploy); ≈ 8050 bytes/sec.
+const BYTES_PER_SEC = 8050;
 const MIN_DURATION_RATIO = 0.55;
 
 function audioPath(file: string) {
