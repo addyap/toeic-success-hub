@@ -418,7 +418,7 @@ function PracticeSession({
         best score is saved on this device.
       </p>
 
-      <div className="sticky top-[5.5rem] z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
+      <div className="sticky top-[4rem] z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">

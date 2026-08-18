@@ -445,7 +445,7 @@ function PhaseView({
 
   return (
     <div data-testid="mock-test-phase" data-phase={session.phase}>
-      <div className="sticky top-[5.5rem] z-10 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
+      <div className="sticky top-[4rem] z-10 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
