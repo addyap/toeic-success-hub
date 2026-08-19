@@ -11659,6 +11659,532 @@ const part7r11o: PracticeQuestionData = {
     "The article states 'The remaining 30% of the plant's electricity needs will continue to be purchased from the regional grid', so (C) is correct.",
 };
 
+// ── Round 2026-08-13: new Part 2 items ──
+const part2new_r2_1: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "Where did you put the shipping labels?"',
+  options: [
+    { label: "A", text: "They're in the top drawer." },
+    { label: "B", text: "Around three o'clock." },
+    { label: "C", text: "No, I didn't ship it yet." },
+  ],
+  correct: "A",
+  explanation:
+    "'Where' asks for a place. 'In the top drawer' names a location. (B) answers a 'when' question, and (C) is a yes/no answer that repeats the sound of 'shipping' — a classic word-repeat trap.",
+};
+
+const part2new_r2_2: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "Have you finished reviewing the budget proposal?"',
+  options: [
+    { label: "A", text: "The finance team, I think." },
+    { label: "B", text: "Not quite, I need another hour." },
+    { label: "C", text: "It was a very productive review." },
+  ],
+  correct: "B",
+  explanation:
+    "This yes/no question asks whether the task is done. 'Not quite, I need another hour' directly answers the status. (A) answers a 'who' question, and (C) repeats 'review' but comments on a meeting rather than saying whether the work is finished.",
+};
+
+const part2new_r2_3: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "Would you like to schedule the call for Monday or Tuesday?"',
+  options: [
+    { label: "A", text: "Tuesday works better for me." },
+    { label: "B", text: "Yes, I'd like that." },
+    { label: "C", text: "In the main office." },
+  ],
+  correct: "A",
+  explanation:
+    "This is a choice question offering two options, so a good reply picks one. 'Tuesday works better' selects an option. (B) is a yes/no reply, which cannot answer an either/or question, and (C) answers 'where'.",
+};
+
+const part2new_r2_4: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "Could you send me the updated floor plan before noon?"',
+  options: [
+    { label: "A", text: "On the second floor." },
+    { label: "B", text: "Sure, I'll email it right away." },
+    { label: "C", text: "It's a beautiful plan." },
+  ],
+  correct: "B",
+  explanation:
+    "This is a polite request for action. 'Sure, I'll email it right away' agrees and states how it will be done. (A) repeats 'floor' but answers a location question, and (C) repeats 'plan' but only gives an opinion instead of agreeing to send it.",
+};
+
+const part2new_r2_5: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "The printer on the third floor is out of toner again."',
+  options: [
+    { label: "A", text: "I'll order a new cartridge today." },
+    { label: "B", text: "Yes, please print two copies." },
+    { label: "C", text: "It cost about fifty dollars." },
+  ],
+  correct: "A",
+  explanation:
+    "This is a statement reporting a problem; a natural reply offers to fix it. 'I'll order a new cartridge today' addresses the issue. (B) misreads it as a printing request, and (C) answers a 'how much' question that was never asked.",
+};
+
+const part2new_r2_6: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: "Question: \"You're joining the training session tomorrow, aren't you?\"",
+  options: [
+    { label: "A", text: "In the training room downstairs." },
+    { label: "B", text: "Yes, I signed up last week." },
+    { label: "C", text: "The trainer was excellent." },
+  ],
+  correct: "B",
+  explanation:
+    "This tag question checks an expectation and calls for confirmation. 'Yes, I signed up last week' confirms attendance. (A) repeats 'training' but answers 'where', and (C) also repeats 'train-' but comments on a past session rather than confirming tomorrow's.",
+};
+
+const part2new_r2_7: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "Why was the client meeting postponed?"',
+  options: [
+    { label: "A", text: "Because the director had a scheduling conflict." },
+    { label: "B", text: "In meeting room B." },
+    { label: "C", text: "Yes, they postponed it." },
+  ],
+  correct: "A",
+  explanation:
+    "'Why' asks for a reason. 'Because the director had a scheduling conflict' gives one. (B) answers 'where', and (C) is a yes/no answer that just repeats 'postponed' without explaining the reason.",
+};
+
+const part2new_r2_8: PracticeQuestionData = {
+  prompt: "Part 2 · Question–Response. Choose the best reply to the question.",
+  listening: true,
+  spokenOptions: true,
+  audio: { label: "Question and responses", durationSec: 0 },
+  context: 'Question: "How long will the software installation take?"',
+  options: [
+    { label: "A", text: "In the IT department." },
+    { label: "B", text: "About forty-five minutes." },
+    { label: "C", text: "Yes, it's already installed." },
+  ],
+  correct: "B",
+  explanation:
+    "'How long' asks for a duration. 'About forty-five minutes' gives a length of time. (A) answers 'where', and (C) is a yes/no answer that repeats 'install' and contradicts the question, which assumes the work has not yet been done.",
+};
+
+// ── Round 2026-08-13: new Part 3 items ──
+const PART3_NEW_OFFICE_PLANTS = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-new-office-plants",
+  audio: { label: "Conversation — office plant maintenance visit", durationSec: 0 },
+  context:
+    "(W) Hi, I'm from Verdant Care — I'm here for the monthly plant service on the fourth floor.\n(M) Oh, right. Actually, could you take a look at the large fern by the reception desk first? The leaves have been turning brown for the past two weeks.\n(W) Let me see... The soil is quite dry, and it's sitting right under an air-conditioning vent. That dry air is the problem.\n(M) We can't really move the vent. Is there anything else we can do?\n(W) I'd suggest relocating the plant a couple of metres away, near the window instead. I can move it today and set up a small humidity tray.\n(M) That sounds good. Let me just check with the office manager before you move anything.",
+};
+const part3new_r2_1: PracticeQuestionData = {
+  ...PART3_NEW_OFFICE_PLANTS,
+  question: "What is the man concerned about?",
+  options: [
+    { label: "A", text: "A plant that is losing its color" },
+    { label: "B", text: "A broken air-conditioning vent" },
+    { label: "C", text: "A missed monthly service visit" },
+    { label: "D", text: "A leak near the reception desk" },
+  ],
+  correct: "A",
+  explanation:
+    "The man asks the woman to look at the fern whose 'leaves have been turning brown,' so his concern is a plant losing its color. (B) reuses 'air-conditioning vent,' but he says it can't be moved, not that it is broken. (C) The service visit is happening now, not missed. (D) A leak is never mentioned; the soil is dry, the opposite of a leak.",
+};
+const part3new_r2_2: PracticeQuestionData = {
+  ...PART3_NEW_OFFICE_PLANTS,
+  question: "According to the woman, what is causing the problem?",
+  options: [
+    { label: "A", text: "Too much direct sunlight" },
+    { label: "B", text: "Dry air from the vent" },
+    { label: "C", text: "Overwatering by staff" },
+    { label: "D", text: "Insects in the soil" },
+  ],
+  correct: "B",
+  explanation:
+    "The woman says the plant sits 'right under an air-conditioning vent' and 'that dry air is the problem.' (A) Sunlight is not blamed; she later suggests moving it toward the window, so light is not the issue. (C) The soil is 'quite dry,' the opposite of overwatering. (D) Insects are never mentioned.",
+};
+const part3new_r2_3: PracticeQuestionData = {
+  ...PART3_NEW_OFFICE_PLANTS,
+  question: "What will the man most likely do next?",
+  options: [
+    { label: "A", text: "Move the plant himself" },
+    { label: "B", text: "Order a replacement fern" },
+    { label: "C", text: "Speak with the office manager" },
+    { label: "D", text: "Turn off the air conditioning" },
+  ],
+  correct: "C",
+  explanation:
+    "The man says he will 'check with the office manager before you move anything,' so consulting the manager comes next. (A) The woman, not the man, would move the plant, and only after approval. (B) No replacement is discussed; the plan is to relocate the existing plant. (D) He earlier said the vent can't be moved and never mentions switching off the AC.",
+};
+const PART3_NEW_COFFEE_WHOLESALE = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-new-coffee-wholesale",
+  audio: { label: "Conversation — wholesale coffee bean order", durationSec: 0 },
+  context:
+    "(M) Thanks for calling Highland Roasters. I understand you'd like to increase your standing wholesale order?\n(W) Yes. Our café has gotten much busier, so we'd like to go from ten kilos a week to eighteen.\n(M) No problem on the volume. The only thing is, our house blend is on back-order until next Monday, so this week I'd have to send you the single-origin instead.\n(W) That's fine, as long as the price stays the same.\n(M) It's actually a little higher, but I'll match your usual rate for this one delivery to make up for the switch.\n(W) Great. Could you also email me an updated invoice so I can pass it to our accountant?",
+};
+const part3new_r2_4: PracticeQuestionData = {
+  ...PART3_NEW_COFFEE_WHOLESALE,
+  question: "Why is the woman calling?",
+  options: [
+    { label: "A", text: "To complain about a late delivery" },
+    { label: "B", text: "To increase her regular order" },
+    { label: "C", text: "To cancel her account" },
+    { label: "D", text: "To ask for a new café location" },
+  ],
+  correct: "B",
+  explanation:
+    "The woman says she wants to go 'from ten kilos a week to eighteen,' which is increasing her standing order. (A) Nothing is late; the back-order is the roaster's, not a delivery complaint. (C) She is expanding, not canceling. (D) 'Café' is mentioned, but no new location is discussed.",
+};
+const part3new_r2_5: PracticeQuestionData = {
+  ...PART3_NEW_COFFEE_WHOLESALE,
+  question: "What problem does the man mention?",
+  options: [
+    { label: "A", text: "The house blend is temporarily unavailable" },
+    { label: "B", text: "The delivery truck is broken down" },
+    { label: "C", text: "The café's payment is overdue" },
+    { label: "D", text: "The order is too large to fulfill" },
+  ],
+  correct: "A",
+  explanation:
+    "The man says the house blend 'is on back-order until next Monday,' so it is temporarily unavailable. (B) No truck or transport problem is mentioned. (C) Payment is only raised later, when she asks for an invoice; nothing is overdue. (D) He says 'No problem on the volume,' so the size is not an issue.",
+};
+const part3new_r2_6: PracticeQuestionData = {
+  ...PART3_NEW_COFFEE_WHOLESALE,
+  question: "What does the woman ask the man to do?",
+  options: [
+    { label: "A", text: "Lower the standing weekly volume" },
+    { label: "B", text: "Deliver the order a day early" },
+    { label: "C", text: "Send an updated invoice by email" },
+    { label: "D", text: "Recommend a different blend" },
+  ],
+  correct: "C",
+  explanation:
+    "The woman asks him to 'email me an updated invoice so I can pass it to our accountant.' (A) She is raising the volume, not lowering it. (B) Delivery timing is not requested. (D) The man proposes the single-origin substitute; she does not ask for a recommendation.",
+};
+const PART3_NEW_WINDOW_CLEANING = {
+  prompt: "Part 3 · Conversations. Listen to the conversation and answer the three questions.",
+  listening: true as const,
+  groupId: "p3-new-window-cleaning",
+  audio: { label: "Conversation — exterior window cleaning schedule", durationSec: 0 },
+  context:
+    "(W) I'm calling to book the exterior window cleaning for our office tower, the one on Marlow Street.\n(M) Of course. For a building that height we use a suspended platform, so we'd normally need a full day. Which date were you thinking?\n(W) We were hoping for this Thursday, but I've just been told the building's power will be shut off for testing that morning.\n(M) That's actually not a problem for us — the platform runs on its own battery unit, so we don't rely on the building's supply.\n(W) Oh, good. Then Thursday works. One thing, though: the loading bay is the only place to park your equipment van.\n(M) That's fine. I'll have the crew arrive by seven so we're set up before your staff need the bay.",
+};
+const part3new_r2_7: PracticeQuestionData = {
+  ...PART3_NEW_WINDOW_CLEANING,
+  question: "What service is the woman arranging?",
+  options: [
+    { label: "A", text: "Repairs to a suspended platform" },
+    { label: "B", text: "Cleaning the outside of a building" },
+    { label: "C", text: "An electrical safety inspection" },
+    { label: "D", text: "Resurfacing a parking area" },
+  ],
+  correct: "B",
+  explanation:
+    "The woman opens by booking 'the exterior window cleaning for our office tower,' so she is arranging cleaning of the building's outside. (A) The platform is the tool used, not something being repaired. (C) The power testing is a separate event she mentions, not the service she books. (D) The loading bay is only discussed as parking, not resurfaced.",
+};
+const part3new_r2_8: PracticeQuestionData = {
+  ...PART3_NEW_WINDOW_CLEANING,
+  question: "Why is the building's power being shut off not a problem?",
+  options: [
+    { label: "A", text: "The work will finish before it is turned off" },
+    { label: "B", text: "The platform uses its own battery" },
+    { label: "C", text: "The crew will use the building's generator" },
+    { label: "D", text: "The cleaning has been moved to another day" },
+  ],
+  correct: "B",
+  explanation:
+    "The man explains 'the platform runs on its own battery unit, so we don't rely on the building's supply.' (A) The outage is in the morning while they work, not after they finish. (C) They use their own battery, not the building's generator. (D) Thursday stays the chosen day; nothing is rescheduled.",
+};
+const part3new_r2_9: PracticeQuestionData = {
+  ...PART3_NEW_WINDOW_CLEANING,
+  question: "What does the man say he will do?",
+  options: [
+    { label: "A", text: "Bring the crew early to use the loading bay first" },
+    { label: "B", text: "Reschedule the job for the following week" },
+    { label: "C", text: "Send an extra platform for the job" },
+    { label: "D", text: "Park the van on Marlow Street" },
+  ],
+  correct: "A",
+  explanation:
+    "The man says he'll have the crew 'arrive by seven so we're set up before your staff need the bay,' i.e., come early to use the loading bay first. (B) The job stays on Thursday; no reschedule. (C) One platform is mentioned; nothing about an extra one. (D) The van goes in the loading bay, not on Marlow Street.",
+};
+
+// ── Round 2026-08-13: new Part 4 items ──
+const PART4_NEW_NETWORKING = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-new-networking",
+  audio: { label: "Talk — speed-networking breakfast briefing", durationSec: 0 },
+  context:
+    "Good morning, everyone, and welcome to the speed-networking breakfast here at the regional manufacturing summit. Before we begin, please pick up a name badge and a numbered card from the table by the entrance — the number on your card tells you which table to start at. You'll have exactly five minutes at each table, and when you hear the bell, everyone moves clockwise to the next one. Coffee and pastries are at the back, but I'd ask you to help yourselves only after the first rotation, so that we can get started on time. At the end of the session, we'll collect the feedback forms, and anyone who submits one will be entered into a draw for a free pass to next year's summit.",
+};
+
+const part4new_r2_1: PracticeQuestionData = {
+  ...PART4_NEW_NETWORKING,
+  question: "What is the main purpose of the talk?",
+  options: [
+    { label: "A", text: "To explain how a networking event will work" },
+    { label: "B", text: "To announce the winner of a prize draw" },
+    { label: "C", text: "To introduce the summit's keynote speaker" },
+    { label: "D", text: "To describe a new manufacturing product" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker walks through the rules of the speed-networking breakfast — where to start, when to move, when to get refreshments — so the purpose is to explain how the event will work. (B) reuses 'draw': a draw is mentioned, but no winner is announced. (C) 'summit' is repeated, but no keynote speaker is introduced. (D) 'manufacturing' appears in the event name, but no product is described.",
+};
+
+const part4new_r2_2: PracticeQuestionData = {
+  ...PART4_NEW_NETWORKING,
+  question: "What determines which table a listener begins at?",
+  options: [
+    { label: "A", text: "The number on their card" },
+    { label: "B", text: "The color of their name badge" },
+    { label: "C", text: "The alphabetical order of their name" },
+    { label: "D", text: "How early they arrive" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker says 'the number on your card tells you which table to start at.' (B) reuses 'name badge', but no badge color is mentioned. (C) and (D) are plausible ways to assign seating but are never stated in the talk.",
+};
+
+const part4new_r2_3: PracticeQuestionData = {
+  ...PART4_NEW_NETWORKING,
+  question: "When does the speaker ask listeners to get refreshments?",
+  options: [
+    { label: "A", text: "After the first rotation" },
+    { label: "B", text: "Before the session begins" },
+    { label: "C", text: "As soon as they hear the bell" },
+    { label: "D", text: "At the registration table" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker asks listeners to 'help yourselves only after the first rotation.' (B) is the opposite of what is asked, so the session can start on time. (C) reuses 'bell', but the bell signals moving to the next table, not getting food. (D) refers to the entrance table where cards are picked up, not the refreshments.",
+};
+
+const PART4_NEW_TRAIL = {
+  prompt: "Part 4 · Short Talks. Listen to the talk and answer the three questions.",
+  listening: true as const,
+  groupId: "p4-new-trail",
+  audio: { label: "Talk — trail-cleanup volunteer orientation", durationSec: 0 },
+  context:
+    "Thanks for coming out this Saturday to help restore the Cedar Ridge nature trail. I'm one of the park rangers, and I'll be leading today's group. We've divided the trail into three sections, and each of you has been assigned to a section based on the color of the wristband you received when you signed in. Gloves and trash bags are in the shed behind me — please take a pair of gloves before you head out, because we won't have any spares once we're on the trail. If you come across anything too heavy to lift safely, don't try to move it yourself; just mark the spot with one of the orange flags, and I'll bring the cart around to collect it. We'll all meet back here at noon for a barbecue lunch.",
+};
+
+const part4new_r2_4: PracticeQuestionData = {
+  ...PART4_NEW_TRAIL,
+  question: "Who most likely are the listeners?",
+  options: [
+    { label: "A", text: "Volunteers helping to clean up a trail" },
+    { label: "B", text: "New park rangers being hired" },
+    { label: "C", text: "Customers at a barbecue restaurant" },
+    { label: "D", text: "Hikers on a guided nature walk" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker thanks the group for coming 'to help restore the Cedar Ridge nature trail' and hands out gloves and trash bags, so the listeners are cleanup volunteers. (B) reuses 'park ranger', but that is the speaker's own role, not the listeners'. (C) reuses 'barbecue', which refers only to the lunch. (D) reuses 'nature', but the group is doing cleanup work, not a guided walk.",
+};
+
+const part4new_r2_5: PracticeQuestionData = {
+  ...PART4_NEW_TRAIL,
+  question: "How were the listeners assigned to a section of the trail?",
+  options: [
+    { label: "A", text: "By the color of their wristband" },
+    { label: "B", text: "By the order in which they arrived" },
+    { label: "C", text: "By the color of their trash bag" },
+    { label: "D", text: "By their level of experience" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker says each person was 'assigned to a section based on the color of the wristband.' (C) reuses 'color' and 'trash bag', but bags are not color-coded or used for assignment. (B) and (D) are never mentioned.",
+};
+
+const part4new_r2_6: PracticeQuestionData = {
+  ...PART4_NEW_TRAIL,
+  question: "What should listeners do if they find something too heavy to lift?",
+  options: [
+    { label: "A", text: "Mark the spot with an orange flag" },
+    { label: "B", text: "Carry it back to the shed" },
+    { label: "C", text: "Place it in a trash bag" },
+    { label: "D", text: "Wait beside the cart for the ranger" },
+  ],
+  correct: "A",
+  explanation:
+    "The speaker says not to move heavy items but to 'mark the spot with one of the orange flags.' (B) contradicts the instruction not to move it yourself; the shed only holds gloves and bags. (C) reuses 'trash bag', but bags are for lighter litter. (D) reverses the plan: the ranger brings the cart to the marked spot, so there is no need to wait by it.",
+};
+
+// ── Round 2026-08-13: new Part 5 items ──
+const part5new_r2_1: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "During the review meeting, the operations manager suggested ______ the product launch until the supply issues were resolved.",
+  options: [
+    { label: "A", text: "to postpone" },
+    { label: "B", text: "postpone" },
+    { label: "C", text: "postponing" },
+    { label: "D", text: "postponed" },
+  ],
+  correct: "C",
+  explanation:
+    "The verb 'suggest' is followed by a gerund, so 'postponing' is correct. (A) 'suggest' never takes a 'to'-infinitive as its object. (B) a bare infinitive cannot follow 'suggested'. (D) the past participle 'postponed' cannot serve as the object of 'suggested' here.",
+};
+
+const part5new_r2_2: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The proposed merger ______ by the national regulators before the two firms can combine their operations.",
+  options: [
+    { label: "A", text: "must approve" },
+    { label: "B", text: "must be approved" },
+    { label: "C", text: "must approving" },
+    { label: "D", text: "approving" },
+  ],
+  correct: "B",
+  explanation:
+    "The merger receives the action, so a passive form is required after the modal: 'must be approved'. (A) 'must approve' is active and would mean the merger does the approving, which is impossible. (C) a modal must be followed by a base form, not '-ing'. (D) leaves the clause without a modal or finite verb.",
+};
+
+const part5new_r2_3: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The keynote presentation was ______ persuasive that several attendees signed contracts before leaving the hall.",
+  options: [
+    { label: "A", text: "such" },
+    { label: "B", text: "too" },
+    { label: "C", text: "so" },
+    { label: "D", text: "very" },
+  ],
+  correct: "C",
+  explanation:
+    "'So + adjective + that' expresses a result: 'so persuasive that ...'. (A) 'such' modifies a noun phrase ('such a persuasive presentation'), not a bare adjective. (B) 'too' signals an excess and does not pair with a 'that'-result clause. (D) 'very' intensifies the adjective but cannot introduce the 'that'-result clause.",
+};
+
+const part5new_r2_4: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "The assembly instructions were not detailed ______ for the new technicians to follow without assistance.",
+  options: [
+    { label: "A", text: "too" },
+    { label: "B", text: "enough" },
+    { label: "C", text: "so" },
+    { label: "D", text: "much" },
+  ],
+  correct: "B",
+  explanation:
+    "'Adjective + enough + for someone + to-infinitive' is the required pattern: 'detailed enough for ... to follow'. (A) 'too' precedes the adjective ('too detailed'), not follows it. (C) 'so' cannot stand between the adjective and the 'for ... to' phrase. (D) 'much' does not modify an adjective in this structure.",
+};
+
+const part5new_r2_5: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "All subcontractors on the site are expected to comply ______ the updated safety regulations at all times.",
+  options: [
+    { label: "A", text: "to" },
+    { label: "B", text: "for" },
+    { label: "C", text: "on" },
+    { label: "D", text: "with" },
+  ],
+  correct: "D",
+  explanation:
+    "The verb 'comply' is fixed to the preposition 'with': 'comply with the regulations'. (A), (B) and (C) — 'comply to', 'comply for' and 'comply on' — are not valid collocations with this verb.",
+};
+
+const part5new_r2_6: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "At the briefing, the finance director said that the audited figures ______ released to shareholders the following morning.",
+  options: [
+    { label: "A", text: "will be" },
+    { label: "B", text: "would be" },
+    { label: "C", text: "are" },
+    { label: "D", text: "being" },
+  ],
+  correct: "B",
+  explanation:
+    "After the past reporting verb 'said', the future 'will' backshifts to 'would': 'would be released'. (A) 'will be' fails to backshift after the past-tense 'said'. (C) 'are' is present tense and clashes with the past-time frame. (D) 'being' is non-finite and leaves the clause without a main verb.",
+};
+
+const part5new_r2_7: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "Not until the external audit was finished ______ the accounting discrepancy in the quarterly statements.",
+  options: [
+    { label: "A", text: "the team noticed" },
+    { label: "B", text: "the team did notice" },
+    { label: "C", text: "did the team notice" },
+    { label: "D", text: "noticed the team" },
+  ],
+  correct: "C",
+  explanation:
+    "A fronted negative adverbial ('Not until ...') forces subject–auxiliary inversion: 'did the team notice'. (A) keeps normal word order, which is ungrammatical after the fronted negative. (B) places the auxiliary after the subject, so no inversion occurs. (D) inverts the lexical verb and subject without the required auxiliary.",
+};
+
+const part5new_r2_8: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "______ the persistent heavy rain, the outdoor product demonstration went ahead exactly as scheduled.",
+  options: [
+    { label: "A", text: "Although" },
+    { label: "B", text: "Despite" },
+    { label: "C", text: "Because" },
+    { label: "D", text: "However" },
+  ],
+  correct: "B",
+  explanation:
+    "'Despite' is a preposition and is followed by a noun phrase ('the persistent heavy rain'). (A) 'Although' is a conjunction and needs a full clause with a verb. (C) 'Because' expresses cause, the opposite of the intended concession. (D) 'However' is a linking adverb and cannot introduce a noun phrase this way.",
+};
+
+const part5new_r2_9: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "______ employee is required to complete the online compliance course before the end of the month.",
+  options: [
+    { label: "A", text: "All" },
+    { label: "B", text: "Many" },
+    { label: "C", text: "Each" },
+    { label: "D", text: "Few" },
+  ],
+  correct: "C",
+  explanation:
+    "'Each' takes a singular noun and a singular verb: 'Each employee is required'. (A) 'All', (B) 'Many' and (D) 'Few' all require a plural noun ('employees') and a plural verb ('are'), so none fits the singular 'employee is'.",
+};
+
+const part5new_r2_10: PracticeQuestionData = {
+  prompt: "Part 5 · Choose the word that best completes the sentence.",
+  context:
+    "Because of rising material costs, the manufacturer intends to ______ its prices at the start of the next quarter.",
+  options: [
+    { label: "A", text: "rise" },
+    { label: "B", text: "raise" },
+    { label: "C", text: "arise" },
+    { label: "D", text: "arouse" },
+  ],
+  correct: "B",
+  explanation:
+    "'Raise' is the transitive verb needed before the object 'its prices': 'raise its prices'. (A) 'rise' is intransitive and cannot take a direct object. (C) 'arise' means 'to occur' and is also intransitive. (D) 'arouse' means 'to stir up (a feeling)' and does not collocate with 'prices'.",
+};
+
 export const part1Questions: PracticeQuestionData[] = [
   part1a,
   part1b,
@@ -11767,6 +12293,14 @@ export const part2Questions: PracticeQuestionData[] = [
   part2r12l,
   part2r12m,
   part2r12n,
+  part2new_r2_1,
+  part2new_r2_2,
+  part2new_r2_3,
+  part2new_r2_4,
+  part2new_r2_5,
+  part2new_r2_6,
+  part2new_r2_7,
+  part2new_r2_8,
 ];
 export const part3Questions: PracticeQuestionData[] = [
   part31,
@@ -11904,6 +12438,15 @@ export const part3Questions: PracticeQuestionData[] = [
   part3gg1,
   part3gg2,
   part3gg3,
+  part3new_r2_1,
+  part3new_r2_2,
+  part3new_r2_3,
+  part3new_r2_4,
+  part3new_r2_5,
+  part3new_r2_6,
+  part3new_r2_7,
+  part3new_r2_8,
+  part3new_r2_9,
 ];
 export const part4Questions: PracticeQuestionData[] = [
   part4a1,
@@ -12008,6 +12551,12 @@ export const part4Questions: PracticeQuestionData[] = [
   part4ah1,
   part4ah2,
   part4ah3,
+  part4new_r2_1,
+  part4new_r2_2,
+  part4new_r2_3,
+  part4new_r2_4,
+  part4new_r2_5,
+  part4new_r2_6,
 ];
 export const part5Questions: PracticeQuestionData[] = [
   part5,
@@ -12110,6 +12659,16 @@ export const part5Questions: PracticeQuestionData[] = [
   part5s13,
   part5s14,
   part5s15,
+  part5new_r2_1,
+  part5new_r2_2,
+  part5new_r2_3,
+  part5new_r2_4,
+  part5new_r2_5,
+  part5new_r2_6,
+  part5new_r2_7,
+  part5new_r2_8,
+  part5new_r2_9,
+  part5new_r2_10,
 ];
 export const part6Questions: PracticeQuestionData[] = [
   part6grp1a,
