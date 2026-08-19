@@ -442,15 +442,23 @@ function Page() {
             </div>
             <p className="mt-1 text-sm text-muted-foreground sm:text-base">
               Listening and Reading are still 90 of the 109 questions. Drill them with 700+ practice
-              questions and full explanations.
+              questions, or rehearse the two-unit adaptive format against the real clock.
             </p>
           </div>
-          <Link
-            to="/listening-reading"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-input bg-background px-5 py-2.5 text-sm font-semibold transition hover:bg-muted"
-          >
-            Practise Listening &amp; Reading
-          </Link>
+          <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+            <Link
+              to="/adaptive-practice"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              Try Adaptive Practice
+            </Link>
+            <Link
+              to="/listening-reading"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-input bg-background px-5 py-2.5 text-sm font-semibold transition hover:bg-muted"
+            >
+              Practise Listening &amp; Reading
+            </Link>
+          </div>
         </div>
       </section>
     </SiteLayout>

@@ -131,6 +131,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 </Link>
               </li>
               <li>
+                <Link to="/adaptive-practice" className="hover:text-foreground">
+                  Adaptive Practice
+                </Link>
+              </li>
+              <li>
                 <Link to="/pricing" className="hover:text-foreground">
                   Pricing — free
                 </Link>

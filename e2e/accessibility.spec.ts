@@ -16,6 +16,7 @@ const ROUTES = [
   "/four-skills",
   "/listening-reading",
   "/mock-test",
+  "/adaptive-practice",
   "/vocabulary",
   "/study-tips",
   // One representative article, so the $slug template and the category
