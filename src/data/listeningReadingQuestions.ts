@@ -11801,14 +11801,14 @@ const part3new_r2_1: PracticeQuestionData = {
   ...PART3_NEW_OFFICE_PLANTS,
   question: "What is the man concerned about?",
   options: [
-    { label: "A", text: "A plant that is losing its color" },
+    { label: "A", text: "A plant whose leaves are turning brown" },
     { label: "B", text: "A broken air-conditioning vent" },
     { label: "C", text: "A missed monthly service visit" },
     { label: "D", text: "A leak near the reception desk" },
   ],
   correct: "A",
   explanation:
-    "The man asks the woman to look at the fern whose 'leaves have been turning brown,' so his concern is a plant losing its color. (B) reuses 'air-conditioning vent,' but he says it can't be moved, not that it is broken. (C) The service visit is happening now, not missed. (D) A leak is never mentioned; the soil is dry, the opposite of a leak.",
+    "The man asks the woman to look at the fern whose 'leaves have been turning brown.' (B) reuses 'air-conditioning vent,' but he says it can't be moved, not that it is broken. (C) The service visit is happening now, not missed. (D) A leak is never mentioned; the soil is dry, the opposite of a leak.",
 };
 const part3new_r2_2: PracticeQuestionData = {
   ...PART3_NEW_OFFICE_PLANTS,
