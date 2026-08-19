@@ -8,10 +8,10 @@ const navItems = [
   { to: "/four-skills", label: "4 Skills" },
   { to: "/listening-reading", label: "Listening & Reading" },
   { to: "/mock-test", label: "Mock Test" },
+  { to: "/adaptive-practice", label: "Adaptive" },
   { to: "/vocabulary", label: "Vocabulary" },
   { to: "/study-tips", label: "Study Tips" },
   { to: "/progress", label: "My Progress" },
-  { to: "/pricing", label: "Pricing" },
 ] as const;
 
 export function SiteLayout({ children }: { children: ReactNode }) {
