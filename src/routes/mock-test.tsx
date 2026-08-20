@@ -445,38 +445,36 @@ function PhaseView({
 
   return (
     <div data-testid="mock-test-phase" data-phase={session.phase}>
-      <div className="sticky top-[4rem] z-10 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
-              {isListening ? (
-                <Headphones className="h-3.5 w-3.5" />
-              ) : (
-                <BookOpen className="h-3.5 w-3.5" />
-              )}
-              {isListening ? "Listening section" : "Reading section"}
-            </div>
-            <div className="mt-0.5 text-sm text-muted-foreground">
-              Answered {answeredCount} of {questions.length}
-            </div>
-          </div>
-          <div
-            className={cn(
-              "flex items-center gap-2 rounded-full border px-4 py-2 font-display text-xl font-semibold tabular-nums",
-              lowTime
-                ? "border-destructive/40 bg-destructive/10 text-destructive"
-                : "border-border bg-muted text-foreground",
-            )}
-          >
-            <Clock className="h-4 w-4" />
-            {formatClock(remainingMs)}
-          </div>
+      {/* Slim single-row session bar, matching the Listening & Reading practice
+          pill. The countdown stays the prominent element — it's a timed test —
+          while the section label collapses to just its icon on mobile. */}
+      <div className="sticky top-[4rem] z-10 flex items-center gap-3 rounded-full border border-border bg-card/95 py-2 pl-4 pr-2 shadow-soft backdrop-blur">
+        <div className="flex shrink-0 items-center gap-1.5 text-primary">
+          {isListening ? <Headphones className="h-4 w-4" /> : <BookOpen className="h-4 w-4" />}
+          <span className="hidden text-xs font-semibold uppercase tracking-wider sm:inline">
+            {isListening ? "Listening" : "Reading"}
+          </span>
+          <span className="font-display text-lg font-semibold leading-none tabular-nums text-foreground">
+            {answeredCount}
+            <span className="text-muted-foreground">/{questions.length}</span>
+          </span>
         </div>
-        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted">
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
           <div
             className="h-full rounded-full bg-primary transition-all"
             style={{ width: `${(answeredCount / questions.length) * 100}%` }}
           />
+        </div>
+        <div
+          className={cn(
+            "flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 font-display text-lg font-semibold leading-none tabular-nums",
+            lowTime
+              ? "border-destructive/40 bg-destructive/10 text-destructive"
+              : "border-border bg-muted text-foreground",
+          )}
+        >
+          <Clock className="h-4 w-4" />
+          {formatClock(remainingMs)}
         </div>
       </div>
 

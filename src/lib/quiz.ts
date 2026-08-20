@@ -57,16 +57,18 @@ export function groupQuestions(questions: PracticeQuestionData[]): QuestionUnit[
   return units;
 }
 
-/** Returns a copy of `data` with its options shuffled into a new random order
- *  and relabeled A/B/C/D to match, so the correct answer isn't always in the
- *  same position as authored in the source data. The explanation's letter
- *  references are remapped in step with the shuffle. */
-export function shuffleQuestionOptions(data: PracticeQuestionData): PracticeQuestionData {
-  const shuffled = shuffle(data.options);
-  const correctIndex = shuffled.findIndex((opt) => opt.label === data.correct);
-  const options = shuffled.map((opt, i) => ({ ...opt, label: OPTION_LABELS[i] }));
+/** Reorders `ordered` (the already-resolved option objects, still carrying
+ *  their authored labels) into positions A/B/C/D, and remaps the explanation's
+ *  letter references to follow. Shared by the random shuffle and by resuming a
+ *  saved session. */
+function relabelOptions(
+  data: PracticeQuestionData,
+  ordered: PracticeQuestionData["options"],
+): PracticeQuestionData {
+  const correctIndex = ordered.findIndex((opt) => opt.label === data.correct);
+  const options = ordered.map((opt, i) => ({ ...opt, label: OPTION_LABELS[i] }));
 
-  const oldToNew = new Map(shuffled.map((opt, i) => [opt.label, OPTION_LABELS[i]]));
+  const oldToNew = new Map(ordered.map((opt, i) => [opt.label, OPTION_LABELS[i]]));
 
   return {
     ...data,
@@ -76,4 +78,36 @@ export function shuffleQuestionOptions(data: PracticeQuestionData): PracticeQues
       ? remapExplanationRefs(data.explanation, oldToNew)
       : data.explanation,
   };
+}
+
+/** A random permutation of a question's options, expressed as the options'
+ *  authored labels. Persisted when a session is saved so resuming it can
+ *  reproduce the exact on-screen order — without which a saved answer letter
+ *  would point at a different option after a fresh reshuffle. */
+export function randomOptionOrder(data: PracticeQuestionData): string[] {
+  return shuffle(data.options).map((opt) => opt.label);
+}
+
+/** Rebuilds the shuffled display of `data` from a saved `order` (authored
+ *  labels in display sequence), so a resumed session looks exactly as it did
+ *  when left. Falls back to the as-authored order if `order` doesn't map 1:1 to
+ *  the options — e.g. a stale saved order after the question bank changed. */
+export function applyOptionOrder(
+  data: PracticeQuestionData,
+  order: string[],
+): PracticeQuestionData {
+  const byLabel = new Map(data.options.map((opt) => [opt.label, opt]));
+  const ordered = order.map((label) => byLabel.get(label));
+  if (ordered.length !== data.options.length || ordered.some((opt) => !opt)) {
+    return relabelOptions(data, data.options);
+  }
+  return relabelOptions(data, ordered as PracticeQuestionData["options"]);
+}
+
+/** Returns a copy of `data` with its options shuffled into a new random order
+ *  and relabeled A/B/C/D to match, so the correct answer isn't always in the
+ *  same position as authored in the source data. The explanation's letter
+ *  references are remapped in step with the shuffle. */
+export function shuffleQuestionOptions(data: PracticeQuestionData): PracticeQuestionData {
+  return applyOptionOrder(data, randomOptionOrder(data));
 }

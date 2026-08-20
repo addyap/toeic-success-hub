@@ -272,6 +272,45 @@ function CriteriaLangSelect({ label = "Criteria language" }: { label?: string })
  *  history. This is explicitly self-assessment — nothing here is machine
  *  marked — so the saved entry is kept in its own scope and never folded into
  *  the objectively-scored Listening & Reading accuracy figures. */
+/** A learner's self-assessment against a prompt's criteria, persisted so it
+ *  survives leaving and coming back — the same "resume where you left off"
+ *  promise the Writing drafts and L&R practice sets make. Keyed by scope + the
+ *  prompt id, which is what the checklist is already remounted on. `ticked`
+ *  holds criteria indices (not text, so language switches don't disturb it);
+ *  `saved` records that it was committed to progress, so a reload restores the
+ *  "Saved" state rather than offering to re-save. */
+interface SelfAssessment {
+  ticked: number[];
+  saved: boolean;
+}
+
+const selfAssessKey = (scope: string, id: string) =>
+  `toeicpath:four-skills:self-assess:${scope}:${id}`;
+
+function loadSelfAssessment(scope: string, id: string): SelfAssessment | null {
+  try {
+    const raw = localStorage.getItem(selfAssessKey(scope, id));
+    return raw ? (JSON.parse(raw) as SelfAssessment) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveSelfAssessment(scope: string, id: string, value: SelfAssessment | null) {
+  try {
+    if (value && (value.ticked.length > 0 || value.saved)) {
+      localStorage.setItem(selfAssessKey(scope, id), JSON.stringify(value));
+    } else {
+      // Nothing ticked and not saved — not worth persisting, and clearing it
+      // stops an untouched checklist leaving a stale entry behind.
+      localStorage.removeItem(selfAssessKey(scope, id));
+    }
+  } catch {
+    // localStorage unavailable (private mode / disabled) — the self-assessment
+    // just won't survive a reload, which is the pre-existing behaviour.
+  }
+}
+
 function Checklist({
   id,
   items,
@@ -288,6 +327,23 @@ function Checklist({
   const [ticked, setTicked] = useState<number[]>([]);
   const [saved, setSaved] = useState(false);
   const [lang] = useCriteriaLang();
+
+  // Restore a saved self-assessment for this prompt, then persist any change.
+  // The hydration guard stops the persist effect firing on first render (before
+  // the restore) and clearing a saved entry with the default empty state.
+  const hydratedRef = useRef(false);
+  useEffect(() => {
+    const stored = loadSelfAssessment(scope, id);
+    if (stored) {
+      setTicked(stored.ticked.filter((i) => i < items.length));
+      setSaved(stored.saved);
+    }
+    hydratedRef.current = true;
+  }, [scope, id, items.length]);
+  useEffect(() => {
+    if (!hydratedRef.current) return;
+    saveSelfAssessment(scope, id, { ticked, saved });
+  }, [ticked, saved, scope, id]);
 
   const localized = localizeCriteria(id, items, lang);
 
