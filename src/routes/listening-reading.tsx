@@ -659,6 +659,7 @@ function PracticeSession({
                 index={u.start}
                 picked={answers[u.start]}
                 resetKey={resetKey}
+                partBadge
                 onAnswer={(label) => handleAnswer(u.start, label)}
               />
             ) : (
@@ -668,6 +669,7 @@ function PracticeSession({
                 startIndex={u.start}
                 picked={u.questions.map((_, k) => answers[u.start + k])}
                 resetKey={resetKey}
+                partBadge
                 onAnswer={(offset, label) => handleAnswer(u.start + offset, label)}
               />
             ),
