@@ -266,6 +266,7 @@ function QuestionPassage({
           data={data}
           label={data.audio?.label ?? "Photograph statements"}
           resetKey={resetKey}
+          revealed={revealed}
           hint="Tap play to hear statements A–D. Pick the one that best describes the scene."
         />
       )}
@@ -275,6 +276,7 @@ function QuestionPassage({
           group={group}
           label={data.audio?.label ?? "Listening audio"}
           resetKey={resetKey}
+          revealed={revealed}
           hint={
             group
               ? "Tap play to hear the talk, then answer all the questions below."
@@ -526,6 +528,7 @@ function AudioClipPlayer({
   label,
   resetKey,
   hint,
+  revealed,
 }: {
   data: Pick<PracticeQuestionData, "photo" | "spokenOptions" | "listening" | "context" | "options">;
   /** When present, the clip covers a whole Part 3/4 set: the recording once,
@@ -534,11 +537,20 @@ function AudioClipPlayer({
   label: string;
   resetKey?: number;
   hint?: string;
+  /** Whether the question has been answered. */
+  revealed?: boolean;
 }) {
   const turns = useMemo(
     () => (group ? getGroupAudioTurns(group) : getAudioTurns(data)),
     [data, group],
   );
+
+  // Stop the clip the moment a single Part 1/2 item is answered — once you've
+  // committed a reply there's nothing left to hear, and a still-playing clip
+  // just talks over the next thing you do. Never for a Part 3/4 set (`group`):
+  // its one recording is shared across three questions, so answering the first
+  // must not cut off the audio the other two still need.
+  const stopNow = !!revealed && !group;
 
   // Part 1 (photo) and Part 2 (spokenOptions): each statement is looked up by
   // its own content hash — never a combined key — since the client shuffles
@@ -571,7 +583,13 @@ function AudioClipPlayer({
       // Missing any clip (e.g. letter cues not generated yet) → the speech
       // fallback, which already announces the letters in `fallbackText`.
       return (
-        <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />
+        <SpeechFallbackPlayer
+          label={label}
+          text={fallbackText}
+          resetKey={resetKey}
+          hint={hint}
+          stopNow={stopNow}
+        />
       );
     }
     const combinedEntry: AudioManifestEntry = {
@@ -585,7 +603,13 @@ function AudioClipPlayer({
       ],
     };
     return (
-      <GeneratedAudioPlayer entry={combinedEntry} label={label} resetKey={resetKey} hint={hint} />
+      <GeneratedAudioPlayer
+        entry={combinedEntry}
+        label={label}
+        resetKey={resetKey}
+        hint={hint}
+        stopNow={stopNow}
+      />
     );
   }
 
@@ -623,12 +647,19 @@ function AudioClipPlayer({
         label={label}
         resetKey={resetKey}
         hint={hint}
+        stopNow={stopNow}
       />
     );
   }
 
   return (
-    <GeneratedAudioPlayer entry={manifestEntry} label={label} resetKey={resetKey} hint={hint} />
+    <GeneratedAudioPlayer
+      entry={manifestEntry}
+      label={label}
+      resetKey={resetKey}
+      hint={hint}
+      stopNow={stopNow}
+    />
   );
 }
 
@@ -637,11 +668,16 @@ function GeneratedAudioPlayer({
   label,
   resetKey,
   hint,
+  stopNow,
 }: {
   entry: AudioManifestEntry;
   label: string;
   resetKey?: number;
   hint?: string;
+  /** Stop playback when this flips true (a single Part 1/2 item was answered).
+   *  Only acts on the false→true edge, so replaying the clip afterwards to
+   *  review still works. */
+  stopNow?: boolean;
 }) {
   const [playing, setPlaying] = useState(false);
   const [segIdx, setSegIdx] = useState(0);
@@ -660,6 +696,9 @@ function GeneratedAudioPlayer({
   useEffect(() => {
     stop();
   }, [resetKey, stop]);
+  useEffect(() => {
+    if (stopNow) stop();
+  }, [stopNow, stop]);
 
   useEffect(() => {
     if (!playing || !audioRef.current) return;
@@ -727,11 +766,15 @@ function SpeechFallbackPlayer({
   text,
   resetKey,
   hint,
+  stopNow,
 }: {
   label: string;
   text: string;
   resetKey?: number;
   hint?: string;
+  /** Stop playback when this flips true (a single Part 1/2 item was answered).
+   *  Only acts on the false→true edge, so replaying afterwards still works. */
+  stopNow?: boolean;
 }) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(true);
@@ -757,6 +800,9 @@ function SpeechFallbackPlayer({
   useEffect(() => {
     stop();
   }, [resetKey, stop]);
+  useEffect(() => {
+    if (stopNow) stop();
+  }, [stopNow, stop]);
 
   const toggle = () => {
     if (!supported) return;
