@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2, Flag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -13,6 +13,7 @@ import {
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 import { PUBLISHER } from "@/components/LegalPage";
 import { useSceneVisible } from "@/lib/sceneVisible";
+import { claimAudioPlayback, releaseAudioPlayback } from "@/lib/audioPlayback";
 
 export interface PracticeQuestionData {
   prompt: string;
@@ -646,16 +647,19 @@ function GeneratedAudioPlayer({
   const [segIdx, setSegIdx] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const stop = () => {
+  // Stable identity (its reference is this player's token in the shared audio
+  // coordinator), so claim/release always refer to the same player.
+  const stop = useCallback(() => {
     audioRef.current?.pause();
     setPlaying(false);
     setSegIdx(0);
-  };
+    releaseAudioPlayback(stop);
+  }, []);
 
-  useEffect(() => stop, []);
+  useEffect(() => stop, [stop]);
   useEffect(() => {
     stop();
-  }, [resetKey]);
+  }, [resetKey, stop]);
 
   useEffect(() => {
     if (!playing || !audioRef.current) return;
@@ -672,6 +676,7 @@ function GeneratedAudioPlayer({
     } else {
       setPlaying(false);
       setSegIdx(0);
+      releaseAudioPlayback(stop);
     }
   };
 
@@ -679,6 +684,8 @@ function GeneratedAudioPlayer({
     if (playing) {
       stop();
     } else {
+      // Stop whatever else is playing so two clips never overlap.
+      claimAudioPlayback(stop);
       setSegIdx(0);
       setPlaying(true);
     }
@@ -737,17 +744,19 @@ function SpeechFallbackPlayer({
     }
   }, []);
 
-  const stop = () => {
+  // Stable identity — this player's token in the shared audio coordinator.
+  const stop = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
     setSpeaking(false);
-  };
+    releaseAudioPlayback(stop);
+  }, []);
 
-  useEffect(() => () => stop(), []);
+  useEffect(() => () => stop(), [stop]);
   useEffect(() => {
     stop();
-  }, [resetKey]);
+  }, [resetKey, stop]);
 
   const toggle = () => {
     if (!supported) return;
@@ -755,6 +764,8 @@ function SpeechFallbackPlayer({
       stop();
       return;
     }
+    // Stop whatever else is playing so two clips never overlap.
+    claimAudioPlayback(stop);
     // Strip speaker labels like "(M)" / "(W)" for cleaner TTS.
     const cleaned = text
       .replace(/\((M|W|M\d|W\d)\)/g, "")
@@ -763,8 +774,8 @@ function SpeechFallbackPlayer({
     const u = new SpeechSynthesisUtterance(cleaned);
     u.rate = 0.85;
     u.pitch = 1;
-    u.onend = () => setSpeaking(false);
-    u.onerror = () => setSpeaking(false);
+    u.onend = () => stop();
+    u.onerror = () => stop();
     utterRef.current = u;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
