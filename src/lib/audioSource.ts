@@ -152,3 +152,17 @@ export function letterCueText(label: string): string {
 export function letterCueKey(label: string): string {
   return audioKey(`__toeic_option_letter_cue__${label}`);
 }
+
+/** Spoken "Question N." cue announced before each question read after a Part
+ *  3/4 passage, so the learner can track which question is being asked and
+ *  gets a beat between them (they otherwise run together a little fast). Real
+ *  TOEIC numbers each question aloud the same way. */
+export function questionCueText(n: number): string {
+  return `Question ${n}.`;
+}
+
+/** Manifest key for a "Question N." cue. Positional (the N-th question read in
+ *  a set), reused across every Part 3/4 set, and namespaced against collisions. */
+export function questionCueKey(n: number): string {
+  return audioKey(`__toeic_question_number_cue__${n}`);
+}

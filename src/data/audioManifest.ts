@@ -7081,5 +7081,50 @@ export const audioManifest: Record<string, AudioManifestEntry> = {
         "file": "n4kc5hshxn-0.mp3"
       }
     ]
+  },
+  "sqje704h04": {
+    "model": "gpt-4o-mini-tts",
+    "segments": [
+      {
+        "voice": "alloy",
+        "file": "sqje704h04-0.mp3"
+      }
+    ]
+  },
+  "sowghybpah": {
+    "model": "gpt-4o-mini-tts",
+    "segments": [
+      {
+        "voice": "alloy",
+        "file": "sowghybpah-0.mp3"
+      }
+    ]
+  },
+  "4n9yrq69ij": {
+    "model": "gpt-4o-mini-tts",
+    "segments": [
+      {
+        "voice": "alloy",
+        "file": "4n9yrq69ij-0.mp3"
+      }
+    ]
+  },
+  "1h0xe1bfq7b": {
+    "model": "gpt-4o-mini-tts",
+    "segments": [
+      {
+        "voice": "alloy",
+        "file": "1h0xe1bfq7b-0.mp3"
+      }
+    ]
+  },
+  "sqko7qtlmt": {
+    "model": "gpt-4o-mini-tts",
+    "segments": [
+      {
+        "voice": "alloy",
+        "file": "sqko7qtlmt-0.mp3"
+      }
+    ]
   }
 };

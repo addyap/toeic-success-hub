@@ -7,6 +7,8 @@ import {
   audioKeyForTurns,
   audioKey,
   letterCueKey,
+  questionCueText,
+  questionCueKey,
 } from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 import { PUBLISHER } from "@/components/LegalPage";
@@ -519,10 +521,34 @@ function AudioClipPlayer({
   const manifestEntry = audioManifest[key];
 
   if (!manifestEntry) {
+    // Fallback speech announces the question numbers too, so pacing/tracking
+    // is consistent with the generated path.
+    let qn = 0;
+    const fallbackText = turns
+      .map((t) => (t.isQuestionPrompt ? `${questionCueText(++qn)} ${t.text}` : t.text))
+      .join(" ");
     return (
-      <SpeechFallbackPlayer
+      <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />
+    );
+  }
+
+  // Part 3/4 sets: announce "Question 1", "Question 2", ... before each
+  // question read after the passage, so the learner can track which is being
+  // asked and gets a beat between them. Positional cues, interleaved from
+  // shared clips; the manifest segments align 1:1 with `turns` (the generator
+  // writes one segment per turn), so isQuestionPrompt marks where to insert.
+  if (group) {
+    let qNum = 0;
+    const segments = manifestEntry.segments.flatMap((seg, i) => {
+      if (!turns[i]?.isQuestionPrompt) return [seg];
+      qNum += 1;
+      const cue = audioManifest[questionCueKey(qNum)];
+      return cue ? [...cue.segments, seg] : [seg];
+    });
+    return (
+      <GeneratedAudioPlayer
+        entry={{ model: manifestEntry.model, segments }}
         label={label}
-        text={turns.map((t) => t.text).join(" ")}
         resetKey={resetKey}
         hint={hint}
       />
