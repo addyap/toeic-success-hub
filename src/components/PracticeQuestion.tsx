@@ -85,6 +85,55 @@ export interface PracticeQuestionProps {
    *  force the fully-revealed review state regardless of when it was
    *  answered. Omit for normal immediate-reveal practice behavior. */
   revealed?: boolean;
+  /** When true, show a "Part N · <type>" badge on the card and drop the
+   *  redundant "Part N ·" prefix from the instruction line. Off by default so
+   *  the mock test and adaptive practice are unaffected until opted in. */
+  partBadge?: boolean;
+}
+
+/** The item-type name for each TOEIC part, shown next to the part number in
+ *  the badge. Matches the labels in `questionsByPart`. */
+const PART_TYPE_NAMES: Record<number, string> = {
+  1: "Photographs",
+  2: "Question–Response",
+  3: "Conversations",
+  4: "Short Talks",
+  5: "Incomplete Sentences",
+  6: "Text Completion",
+  7: "Reading Comprehension",
+};
+
+/** Every prompt is authored as "Part N · <instruction>". This splits that into
+ *  the part number and the instruction after it, so the part can be shown as a
+ *  proper badge and the redundant prefix dropped from the instruction line.
+ *  Degrades gracefully: a prompt without the prefix yields part=null and is
+ *  shown unchanged. */
+function splitPartPrompt(prompt: string): { part: number | null; instruction: string } {
+  const m = prompt.match(/^Part (\d+) · (.*)$/s);
+  if (!m) return { part: null, instruction: prompt };
+  const part = Number(m[1]);
+  let instruction = m[2];
+  // Parts 2–4 repeat the item-type name after the prefix ("Part 3 ·
+  // Conversations. Listen …"). The badge already shows the type, so drop that
+  // leading duplicate to avoid saying it twice.
+  const name = PART_TYPE_NAMES[part];
+  if (name && instruction.startsWith(`${name}. `)) {
+    instruction = instruction.slice(name.length + 2);
+  }
+  return { part, instruction };
+}
+
+/** A small chip naming the TOEIC part an item belongs to — e.g. "Part 5 ·
+ *  Incomplete Sentences" — so item types are scannable at a glance, especially
+ *  in the interleaved "All parts" practice view. */
+function PartBadge({ part }: { part: number }) {
+  const name = PART_TYPE_NAMES[part];
+  return (
+    <span className="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[11px] font-semibold text-secondary-foreground">
+      Part {part}
+      {name ? ` · ${name}` : ""}
+    </span>
+  );
 }
 
 export function PracticeQuestion({
@@ -94,11 +143,13 @@ export function PracticeQuestion({
   onAnswer,
   resetKey,
   revealed: revealedProp,
+  partBadge,
 }: PracticeQuestionProps) {
   const [internalPicked, setInternalPicked] = useState<string | null>(null);
   const controlled = pickedProp !== undefined;
   const picked = controlled ? (pickedProp ?? null) : internalPicked;
   const revealed = revealedProp ?? picked !== null;
+  const { part, instruction } = splitPartPrompt(data.prompt);
 
   useEffect(() => {
     if (!controlled) setInternalPicked(null);
@@ -119,12 +170,19 @@ export function PracticeQuestion({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          {typeof index === "number" && (
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Question {index + 1}
+          {(typeof index === "number" || (partBadge && part !== null)) && (
+            <div className="flex flex-wrap items-center gap-2">
+              {typeof index === "number" && (
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                  Question {index + 1}
+                </span>
+              )}
+              {partBadge && part !== null && <PartBadge part={part} />}
             </div>
           )}
-          <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{data.prompt}</p>
+          <p className="mt-1 text-base font-medium text-foreground sm:text-lg">
+            {partBadge ? instruction : data.prompt}
+          </p>
           <QuestionPassage data={data} resetKey={resetKey} revealed={revealed} />
         </div>
       </div>
@@ -376,6 +434,7 @@ export function PracticeQuestionGroup({
   onAnswer,
   resetKey,
   revealed: revealedProp,
+  partBadge,
 }: {
   questions: PracticeQuestionData[];
   startIndex: number;
@@ -383,6 +442,7 @@ export function PracticeQuestionGroup({
   onAnswer?: (offset: number, label: string, correct: boolean) => void;
   resetKey?: number;
   revealed?: boolean;
+  partBadge?: boolean;
 }) {
   const [internal, setInternal] = useState<(string | null)[]>(() => questions.map(() => null));
   const controlled = picked !== undefined;
@@ -393,6 +453,7 @@ export function PracticeQuestionGroup({
   }, [resetKey, controlled, questions]);
 
   const first = questions[0];
+  const { part, instruction } = splitPartPrompt(first.prompt);
   // The transcript stays hidden until every question in the set is answered,
   // so it can't be used to answer the ones still open.
   const allAnswered = questions.every((_, i) => answers[i] != null);
@@ -413,10 +474,15 @@ export function PracticeQuestionGroup({
       data-start-index={startIndex}
     >
       <div className="min-w-0">
-        <div className="text-xs font-semibold uppercase tracking-wider text-primary">
-          Questions {startIndex + 1}–{startIndex + questions.length}
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Questions {startIndex + 1}–{startIndex + questions.length}
+          </span>
+          {partBadge && part !== null && <PartBadge part={part} />}
         </div>
-        <p className="mt-1 text-base font-medium text-foreground sm:text-lg">{first.prompt}</p>
+        <p className="mt-1 text-base font-medium text-foreground sm:text-lg">
+          {partBadge ? instruction : first.prompt}
+        </p>
         <QuestionPassage
           data={first}
           group={questions}
