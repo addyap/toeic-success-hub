@@ -2,7 +2,7 @@
  *  speakers, covering the largest TOEIC test-taker markets. Keyed by the
  *  exact English `term` string from vocabulary.ts, not by index — so
  *  additions/reordering in vocabulary.ts never silently misalign glosses. */
-export type GlossLang = "ko" | "ja" | "vi" | "fr" | "pt" | "es";
+export type GlossLang = "ko" | "ja" | "zh" | "vi" | "fr" | "pt" | "es";
 
 /** Right-to-left languages, so the UI can apply `dir="rtl"` where needed.
  *  Currently none of the supported gloss languages are RTL; kept as an empty
@@ -13,6 +13,7 @@ export const RTL_LANGS: ReadonlySet<GlossLang> = new Set<GlossLang>();
 export const GLOSS_LANGUAGES: { id: GlossLang; label: string; nativeLabel: string }[] = [
   { id: "ko", label: "Korean", nativeLabel: "한국어" },
   { id: "ja", label: "Japanese", nativeLabel: "日本語" },
+  { id: "zh", label: "Chinese (Traditional)", nativeLabel: "繁體中文" },
   { id: "vi", label: "Vietnamese", nativeLabel: "Tiếng Việt" },
   { id: "fr", label: "French", nativeLabel: "Français" },
   { id: "pt", label: "Portuguese", nativeLabel: "Português" },
@@ -21,6 +22,7 @@ export const GLOSS_LANGUAGES: { id: GlossLang; label: string; nativeLabel: strin
 
 export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>>> = {
   delegate: {
+    zh: "授權",
     ko: "위임하다",
     ja: "委任する",
     vi: "ủy quyền",
@@ -29,6 +31,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "delegar",
   },
   stakeholder: {
+    zh: "利害關係人",
     ko: "이해관계자",
     ja: "利害関係者",
     vi: "bên liên quan",
@@ -37,6 +40,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "parte interesada",
   },
   milestone: {
+    zh: "里程碑",
     ko: "이정표",
     ja: "マイルストーン",
     vi: "cột mốc quan trọng",
@@ -45,6 +49,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "hito",
   },
   appraisal: {
+    zh: "績效評估",
     ko: "인사고과",
     ja: "人事考課",
     vi: "đánh giá hiệu suất (nhân viên)",
@@ -53,6 +58,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "evaluación de desempeño",
   },
   onboarding: {
+    zh: "新人入職培訓",
     ko: "신입사원 적응 교육",
     ja: "オンボーディング",
     vi: "hội nhập nhân viên mới",
@@ -61,6 +67,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "proceso de incorporación",
   },
   oversee: {
+    zh: "監督",
     ko: "총괄 감독하다",
     ja: "監督する",
     vi: "giám sát",
@@ -69,6 +76,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "supervisar",
   },
   headcount: {
+    zh: "員工人數",
     ko: "인원수",
     ja: "人員数",
     vi: "số lượng nhân sự",
@@ -77,6 +85,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "plantilla",
   },
   agenda: {
+    zh: "議程",
     ko: "회의 안건",
     ja: "議題",
     vi: "chương trình họp",
@@ -85,6 +94,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "orden del día",
   },
   itinerary: {
+    zh: "行程表",
     ko: "여행 일정",
     ja: "旅程",
     vi: "lịch trình chuyến đi",
@@ -93,6 +103,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "itinerario",
   },
   layover: {
+    zh: "中途停留",
     ko: "경유",
     ja: "乗り継ぎ待ち時間",
     vi: "thời gian quá cảnh",
@@ -101,6 +112,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "escala",
   },
   reimbursement: {
+    zh: "費用核銷",
     ko: "경비 환급",
     ja: "払い戻し",
     vi: "hoàn trả chi phí",
@@ -109,6 +121,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reembolso",
   },
   accommodation: {
+    zh: "住宿",
     ko: "숙박",
     ja: "宿泊施設",
     vi: "chỗ ở",
@@ -117,6 +130,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "alojamiento",
   },
   "boarding pass": {
+    zh: "登機證",
     ko: "탑승권",
     ja: "搭乗券",
     vi: "thẻ lên máy bay",
@@ -125,6 +139,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tarjeta de embarque",
   },
   voucher: {
+    zh: "兌換券",
     ko: "바우처",
     ja: "引換券",
     vi: "phiếu đổi quà/dịch vụ",
@@ -133,6 +148,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "vale",
   },
   "baggage allowance": {
+    zh: "行李限額",
     ko: "수하물 허용량",
     ja: "手荷物許容量",
     vi: "hạn mức hành lý",
@@ -141,6 +157,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "franquicia de equipaje",
   },
   shuttle: {
+    zh: "接駁車",
     ko: "셔틀버스",
     ja: "シャトルバス",
     vi: "xe đưa đón",
@@ -149,6 +166,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "autobús lanzadera",
   },
   invoice: {
+    zh: "發票",
     ko: "청구서",
     ja: "請求書",
     vi: "hóa đơn",
@@ -157,6 +175,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "factura",
   },
   revenue: {
+    zh: "營收",
     ko: "매출액",
     ja: "売上高",
     vi: "doanh thu",
@@ -165,6 +184,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ingresos",
   },
   expenditure: {
+    zh: "支出",
     ko: "지출",
     ja: "支出",
     vi: "chi tiêu",
@@ -173,6 +193,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "gasto",
   },
   forecast: {
+    zh: "預測",
     ko: "예측치",
     ja: "予測",
     vi: "dự báo",
@@ -181,6 +202,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "pronóstico",
   },
   audit: {
+    zh: "審計",
     ko: "감사",
     ja: "監査",
     vi: "kiểm toán",
@@ -189,6 +211,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "auditoría",
   },
   reconcile: {
+    zh: "對帳",
     ko: "대조하다",
     ja: "(帳簿を)照合する",
     vi: "đối chiếu sổ sách",
@@ -197,6 +220,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "conciliar",
   },
   overhead: {
+    zh: "營運間接費用",
     ko: "간접비",
     ja: "諸経費",
     vi: "chi phí chung",
@@ -205,6 +229,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "gastos generales",
   },
   fiscal: {
+    zh: "財政的",
     ko: "회계의",
     ja: "会計上の",
     vi: "thuộc tài khóa",
@@ -213,6 +238,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "fiscal",
   },
   troubleshoot: {
+    zh: "排除故障",
     ko: "문제를 해결하다",
     ja: "トラブルシューティングする",
     vi: "khắc phục sự cố",
@@ -221,6 +247,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "solucionar problemas",
   },
   downtime: {
+    zh: "停機時間",
     ko: "가동 중단 시간",
     ja: "ダウンタイム",
     vi: "thời gian ngừng hoạt động",
@@ -229,6 +256,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tiempo de inactividad",
   },
   deploy: {
+    zh: "部署",
     ko: "배포하다",
     ja: "導入する",
     vi: "triển khai",
@@ -237,6 +265,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "desplegar",
   },
   bandwidth: {
+    zh: "頻寬",
     ko: "대역폭",
     ja: "帯域幅",
     vi: "băng thông",
@@ -245,6 +274,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ancho de banda",
   },
   configuration: {
+    zh: "組態設定",
     ko: "환경설정",
     ja: "設定",
     vi: "cấu hình",
@@ -253,6 +283,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "configuración",
   },
   backup: {
+    zh: "備份",
     ko: "백업",
     ja: "バックアップ",
     vi: "sao lưu",
@@ -261,6 +292,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "copia de seguridad",
   },
   latency: {
+    zh: "延遲",
     ko: "지연 시간",
     ja: "遅延",
     vi: "độ trễ",
@@ -269,6 +301,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "latencia",
   },
   specifications: {
+    zh: "規格",
     ko: "사양",
     ja: "仕様",
     vi: "thông số kỹ thuật",
@@ -277,6 +310,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "especificaciones",
   },
   deadline: {
+    zh: "截止期限",
     ko: "마감일",
     ja: "締め切り",
     vi: "hạn chót",
@@ -285,6 +319,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "fecha límite",
   },
   mentor: {
+    zh: "導師",
     ko: "멘토",
     ja: "指導者",
     vi: "người cố vấn",
@@ -293,6 +328,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "mentor",
   },
   workflow: {
+    zh: "工作流程",
     ko: "업무 흐름",
     ja: "ワークフロー",
     vi: "quy trình làm việc",
@@ -301,6 +337,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "flujo de trabajo",
   },
   quota: {
+    zh: "配額",
     ko: "할당량",
     ja: "ノルマ",
     vi: "chỉ tiêu",
@@ -309,6 +346,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cuota",
   },
   incentive: {
+    zh: "獎勵誘因",
     ko: "인센티브",
     ja: "インセンティブ",
     vi: "ưu đãi khuyến khích",
@@ -317,6 +355,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "incentivo",
   },
   restructure: {
+    zh: "重組",
     ko: "구조조정하다",
     ja: "再編する",
     vi: "tái cơ cấu",
@@ -325,6 +364,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reestructurar",
   },
   subordinate: {
+    zh: "下屬",
     ko: "부하직원",
     ja: "部下",
     vi: "cấp dưới",
@@ -333,6 +373,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "subordinado",
   },
   consensus: {
+    zh: "共識",
     ko: "합의",
     ja: "合意",
     vi: "sự đồng thuận",
@@ -341,6 +382,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "consenso",
   },
   accountable: {
+    zh: "需負責的",
     ko: "책임이 있는",
     ja: "説明責任がある",
     vi: "chịu trách nhiệm giải trình",
@@ -349,6 +391,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "responsable",
   },
   liaise: {
+    zh: "聯繫協調",
     ko: "연락을 취하다",
     ja: "連携する",
     vi: "liên hệ phối hợp",
@@ -357,6 +400,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "servir de enlace",
   },
   prioritize: {
+    zh: "排定優先順序",
     ko: "우선순위를 정하다",
     ja: "優先順位をつける",
     vi: "ưu tiên",
@@ -365,6 +409,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "priorizar",
   },
   turnover: {
+    zh: "員工流動率",
     ko: "이직률",
     ja: "離職率",
     vi: "tỷ lệ nghỉ việc",
@@ -373,6 +418,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "rotación de personal",
   },
   supervise: {
+    zh: "監督管理",
     ko: "감독하다",
     ja: "監督する",
     vi: "giám sát",
@@ -381,6 +427,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "supervisar",
   },
   mandate: {
+    zh: "授權指令",
     ko: "위임받은 권한",
     ja: "権限",
     vi: "thẩm quyền được giao",
@@ -389,6 +436,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "mandato",
   },
   competency: {
+    zh: "職能",
     ko: "역량",
     ja: "能力",
     vi: "năng lực",
@@ -397,6 +445,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "competencia",
   },
   confirmation: {
+    zh: "確認",
     ko: "예약 확인",
     ja: "予約確認",
     vi: "xác nhận",
@@ -405,6 +454,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "confirmación",
   },
   amenities: {
+    zh: "設施服務",
     ko: "편의시설",
     ja: "アメニティ",
     vi: "tiện nghi",
@@ -413,6 +463,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "comodidades",
   },
   departure: {
+    zh: "出發",
     ko: "출발",
     ja: "出発",
     vi: "khởi hành",
@@ -421,6 +472,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "salida",
   },
   "check-in": {
+    zh: "報到",
     ko: "체크인",
     ja: "チェックイン",
     vi: "làm thủ tục check-in",
@@ -429,6 +481,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "registro de entrada",
   },
   concierge: {
+    zh: "禮賓服務人員",
     ko: "컨시어지",
     ja: "コンシェルジュ",
     vi: "nhân viên hỗ trợ khách (concierge)",
@@ -437,6 +490,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "conserje",
   },
   excursion: {
+    zh: "短程旅遊",
     ko: "짧은 여행",
     ja: "小旅行",
     vi: "chuyến tham quan ngắn",
@@ -445,6 +499,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "excursión",
   },
   surcharge: {
+    zh: "附加費",
     ko: "추가 요금",
     ja: "追加料金",
     vi: "phụ phí",
@@ -453,6 +508,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "recargo",
   },
   vacancy: {
+    zh: "空缺",
     ko: "빈 객실",
     ja: "空室",
     vi: "phòng trống",
@@ -461,6 +517,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "vacante",
   },
   detour: {
+    zh: "繞道",
     ko: "우회로",
     ja: "迂回路",
     vi: "đường vòng",
@@ -469,6 +526,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "desvío",
   },
   terminal: {
+    zh: "航廈",
     ko: "터미널",
     ja: "ターミナル",
     vi: "nhà ga (sân bay)",
@@ -477,6 +535,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "terminal",
   },
   customs: {
+    zh: "海關",
     ko: "세관",
     ja: "税関",
     vi: "hải quan",
@@ -485,6 +544,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "aduana",
   },
   fare: {
+    zh: "票價",
     ko: "요금",
     ja: "運賃",
     vi: "giá vé",
@@ -493,6 +553,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tarifa",
   },
   lodging: {
+    zh: "住宿處",
     ko: "숙소",
     ja: "宿泊",
     vi: "chỗ ở",
@@ -501,6 +562,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "alojamiento",
   },
   depart: {
+    zh: "出發",
     ko: "출발하다",
     ja: "出発する",
     vi: "khởi hành",
@@ -509,6 +571,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "salir",
   },
   complimentary: {
+    zh: "免費招待的",
     ko: "무료의",
     ja: "無料の",
     vi: "miễn phí (tặng kèm)",
@@ -517,6 +580,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "gratuito",
   },
   asset: {
+    zh: "資產",
     ko: "자산",
     ja: "資産",
     vi: "tài sản",
@@ -525,6 +589,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "activo",
   },
   liability: {
+    zh: "負債",
     ko: "부채",
     ja: "負債",
     vi: "khoản nợ",
@@ -533,6 +598,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "pasivo",
   },
   budget: {
+    zh: "預算",
     ko: "예산",
     ja: "予算",
     vi: "ngân sách",
@@ -541,6 +607,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "presupuesto",
   },
   "profit margin": {
+    zh: "利潤率",
     ko: "이익률",
     ja: "利益率",
     vi: "biên lợi nhuận",
@@ -549,6 +616,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "margen de beneficio",
   },
   quarter: {
+    zh: "財季",
     ko: "분기",
     ja: "四半期",
     vi: "quý (tài chính)",
@@ -557,6 +625,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "trimestre",
   },
   dividend: {
+    zh: "股利",
     ko: "배당금",
     ja: "配当",
     vi: "cổ tức",
@@ -565,6 +634,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "dividendo",
   },
   depreciation: {
+    zh: "折舊",
     ko: "감가상각",
     ja: "減価償却",
     vi: "khấu hao",
@@ -573,6 +643,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "depreciación",
   },
   installment: {
+    zh: "分期付款",
     ko: "할부금",
     ja: "分割払い",
     vi: "kỳ trả góp",
@@ -581,6 +652,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "plazo",
   },
   solvent: {
+    zh: "有償債能力的",
     ko: "지급능력이 있는",
     ja: "支払い能力がある",
     vi: "có khả năng thanh toán",
@@ -589,6 +661,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "solvente",
   },
   remittance: {
+    zh: "匯款",
     ko: "송금",
     ja: "送金",
     vi: "khoản tiền chuyển thanh toán",
@@ -597,6 +670,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "remesa",
   },
   arrears: {
+    zh: "逾期欠款",
     ko: "연체금",
     ja: "滞納金",
     vi: "nợ quá hạn",
@@ -605,6 +679,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "atrasos",
   },
   liquidity: {
+    zh: "流動性",
     ko: "유동성",
     ja: "流動性",
     vi: "tính thanh khoản",
@@ -613,6 +688,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "liquidez",
   },
   surplus: {
+    zh: "盈餘",
     ko: "흑자",
     ja: "黒字",
     vi: "thặng dư",
@@ -621,6 +697,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "superávit",
   },
   valuation: {
+    zh: "估值",
     ko: "가치평가",
     ja: "評価額",
     vi: "định giá",
@@ -629,6 +706,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "valoración",
   },
   withholding: {
+    zh: "預扣稅款",
     ko: "원천징수",
     ja: "源泉徴収",
     vi: "khấu trừ thuế",
@@ -637,6 +715,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "retención fiscal",
   },
   interface: {
+    zh: "介面",
     ko: "인터페이스",
     ja: "インターフェース",
     vi: "giao diện",
@@ -645,6 +724,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "interfaz",
   },
   encryption: {
+    zh: "加密",
     ko: "암호화",
     ja: "暗号化",
     vi: "mã hóa",
@@ -653,6 +733,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cifrado",
   },
   server: {
+    zh: "伺服器",
     ko: "서버",
     ja: "サーバー",
     vi: "máy chủ",
@@ -661,6 +742,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "servidor",
   },
   firmware: {
+    zh: "韌體",
     ko: "펌웨어",
     ja: "ファームウェア",
     vi: "phần sụn (firmware)",
@@ -669,6 +751,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "firmware",
   },
   compatibility: {
+    zh: "相容性",
     ko: "호환성",
     ja: "互換性",
     vi: "khả năng tương thích",
@@ -677,6 +760,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "compatibilidad",
   },
   integrate: {
+    zh: "整合",
     ko: "통합하다",
     ja: "統合する",
     vi: "tích hợp",
@@ -685,6 +769,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "integrar",
   },
   malfunction: {
+    zh: "故障",
     ko: "오작동",
     ja: "故障",
     vi: "trục trặc kỹ thuật",
@@ -693,6 +778,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "avería",
   },
   upgrade: {
+    zh: "升級",
     ko: "업그레이드",
     ja: "アップグレード",
     vi: "nâng cấp",
@@ -701,6 +787,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "actualización",
   },
   database: {
+    zh: "資料庫",
     ko: "데이터베이스",
     ja: "データベース",
     vi: "cơ sở dữ liệu",
@@ -709,6 +796,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "base de datos",
   },
   protocol: {
+    zh: "通訊協定",
     ko: "프로토콜",
     ja: "プロトコル",
     vi: "giao thức",
@@ -717,6 +805,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "protocolo",
   },
   patch: {
+    zh: "修補程式",
     ko: "패치",
     ja: "パッチ",
     vi: "bản vá lỗi",
@@ -725,6 +814,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "parche",
   },
   scalable: {
+    zh: "可擴充的",
     ko: "확장 가능한",
     ja: "拡張性がある",
     vi: "có khả năng mở rộng",
@@ -733,6 +823,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "escalable",
   },
   diagnostics: {
+    zh: "診斷測試",
     ko: "진단",
     ja: "診断",
     vi: "chẩn đoán kỹ thuật",
@@ -741,6 +832,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "diagnóstico",
   },
   redundancy: {
+    zh: "備援",
     ko: "이중화",
     ja: "冗長性",
     vi: "hệ thống dự phòng",
@@ -749,6 +841,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "redundancia",
   },
   authentication: {
+    zh: "身分驗證",
     ko: "인증",
     ja: "認証",
     vi: "xác thực",
@@ -757,6 +850,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "autenticación",
   },
   hierarchy: {
+    zh: "層級架構",
     ko: "위계질서",
     ja: "階層構造",
     vi: "hệ thống cấp bậc",
@@ -765,6 +859,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "jerarquía",
   },
   compliance: {
+    zh: "法規遵循",
     ko: "준수",
     ja: "コンプライアンス",
     vi: "tuân thủ quy định",
@@ -773,6 +868,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cumplimiento normativo",
   },
   initiative: {
+    zh: "新方案",
     ko: "이니셔티브",
     ja: "取り組み",
     vi: "sáng kiến",
@@ -781,6 +877,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "iniciativa",
   },
   feedback: {
+    zh: "意見回饋",
     ko: "피드백",
     ja: "フィードバック",
     vi: "phản hồi góp ý",
@@ -789,6 +886,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "retroalimentación",
   },
   escalate: {
+    zh: "上呈處理",
     ko: "상부에 보고하다",
     ja: "エスカレーションする",
     vi: "chuyển lên cấp cao hơn xử lý",
@@ -797,6 +895,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "escalar",
   },
   streamline: {
+    zh: "精簡流程",
     ko: "간소화하다",
     ja: "効率化する",
     vi: "tinh giản quy trình",
@@ -805,6 +904,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "agilizar",
   },
   proactive: {
+    zh: "主動積極的",
     ko: "사전 대응적인",
     ja: "先を見越した",
     vi: "chủ động",
@@ -813,6 +913,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "proactivo",
   },
   benchmark: {
+    zh: "基準標竿",
     ko: "벤치마크",
     ja: "ベンチマーク",
     vi: "mốc chuẩn so sánh",
@@ -821,6 +922,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "punto de referencia",
   },
   autonomy: {
+    zh: "自主權",
     ko: "자율성",
     ja: "裁量権",
     vi: "quyền tự chủ",
@@ -829,6 +931,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "autonomía",
   },
   "conflict of interest": {
+    zh: "利益衝突",
     ko: "이해상충",
     ja: "利益相反",
     vi: "xung đột lợi ích",
@@ -837,6 +940,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "conflicto de intereses",
   },
   micromanage: {
+    zh: "事必躬親",
     ko: "사사건건 간섭하다",
     ja: "マイクロマネジメントする",
     vi: "quản lý vi mô (can thiệp quá chi tiết)",
@@ -845,6 +949,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "microgestionar",
   },
   succession: {
+    zh: "職務接班",
     ko: "승계",
     ja: "継承",
     vi: "kế nhiệm",
@@ -853,6 +958,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "sucesión",
   },
   "task force": {
+    zh: "專案小組",
     ko: "태스크포스",
     ja: "タスクフォース",
     vi: "đội đặc nhiệm",
@@ -861,6 +967,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "grupo de trabajo",
   },
   compromise: {
+    zh: "妥協",
     ko: "타협하다",
     ja: "妥協する",
     vi: "thỏa hiệp",
@@ -869,6 +976,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "llegar a un acuerdo mutuo",
   },
   veto: {
+    zh: "否決",
     ko: "거부권을 행사하다",
     ja: "拒否権を行使する",
     vi: "phủ quyết",
@@ -877,6 +985,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "vetar",
   },
   "connecting flight": {
+    zh: "轉接航班",
     ko: "연결편",
     ja: "乗り継ぎ便",
     vi: "chuyến bay nối chuyến",
@@ -885,6 +994,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "vuelo de conexión",
   },
   "per diem": {
+    zh: "每日差旅津貼",
     ko: "출장 일당",
     ja: "日当",
     vi: "phụ cấp công tác theo ngày",
@@ -893,6 +1003,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "dieta de viaje",
   },
   "expense claim": {
+    zh: "費用報銷申請",
     ko: "경비 청구",
     ja: "経費精算申請",
     vi: "đơn yêu cầu hoàn chi phí",
@@ -901,6 +1012,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "informe de gastos",
   },
   "jet lag": {
+    zh: "時差",
     ko: "시차증",
     ja: "時差ボケ",
     vi: "hội chứng lệch múi giờ",
@@ -909,6 +1021,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "desfase horario",
   },
   "carry-on": {
+    zh: "隨身行李",
     ko: "기내 휴대 수하물",
     ja: "機内持ち込み手荷物",
     vi: "hành lý xách tay",
@@ -917,6 +1030,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "equipaje de mano",
   },
   "duty-free": {
+    zh: "免稅的",
     ko: "면세의",
     ja: "免税の",
     vi: "miễn thuế",
@@ -925,6 +1039,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "libre de impuestos",
   },
   "non-refundable": {
+    zh: "不可退款的",
     ko: "환불 불가한",
     ja: "払い戻し不可の",
     vi: "không được hoàn tiền",
@@ -933,6 +1048,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "no reembolsable",
   },
   overbooked: {
+    zh: "超額訂位的",
     ko: "초과 예약된",
     ja: "オーバーブッキングの",
     vi: "đặt chỗ vượt quá số lượng",
@@ -941,6 +1057,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "con sobreventa",
   },
   reroute: {
+    zh: "改道",
     ko: "경로를 변경하다",
     ja: "別ルートに変更する",
     vi: "chuyển hướng lộ trình",
@@ -949,6 +1066,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "desviar",
   },
   itemize: {
+    zh: "逐項列出",
     ko: "항목별로 나열하다",
     ja: "項目別に明記する",
     vi: "liệt kê chi tiết từng khoản",
@@ -957,6 +1075,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "detallar",
   },
   reschedule: {
+    zh: "改期",
     ko: "일정을 변경하다",
     ja: "日程を変更する",
     vi: "dời lịch",
@@ -965,6 +1084,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reprogramar",
   },
   "visa waiver": {
+    zh: "免簽證",
     ko: "비자 면제 제도",
     ja: "ビザ免除",
     vi: "miễn thị thực",
@@ -973,6 +1093,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "exención de visado",
   },
   keynote: {
+    zh: "主題演講",
     ko: "기조연설",
     ja: "基調講演",
     vi: "bài phát biểu chính",
@@ -981,6 +1102,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ponencia principal",
   },
   "registration fee": {
+    zh: "報名費",
     ko: "등록비",
     ja: "参加登録料",
     vi: "phí đăng ký tham dự",
@@ -989,6 +1111,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cuota de inscripción",
   },
   "round-trip": {
+    zh: "來回的",
     ko: "왕복의",
     ja: "往復の",
     vi: "khứ hồi",
@@ -997,6 +1120,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "de ida y vuelta",
   },
   collateral: {
+    zh: "擔保品",
     ko: "담보",
     ja: "担保",
     vi: "tài sản thế chấp",
@@ -1005,6 +1129,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "garantía",
   },
   amortize: {
+    zh: "攤銷",
     ko: "상각하다",
     ja: "償却する",
     vi: "phân bổ dần (khấu hao dần)",
@@ -1013,6 +1138,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "amortizar",
   },
   equity: {
+    zh: "股權",
     ko: "지분",
     ja: "株式持分",
     vi: "vốn chủ sở hữu",
@@ -1021,6 +1147,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "participación accionaria",
   },
   default: {
+    zh: "違約",
     ko: "채무불이행하다",
     ja: "債務不履行になる",
     vi: "vỡ nợ",
@@ -1029,6 +1156,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "incurrir en impago",
   },
   underwrite: {
+    zh: "承銷",
     ko: "인수하다",
     ja: "引き受ける",
     vi: "bảo lãnh phát hành",
@@ -1037,6 +1165,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "suscribir",
   },
   portfolio: {
+    zh: "投資組合",
     ko: "포트폴리오",
     ja: "ポートフォリオ",
     vi: "danh mục đầu tư",
@@ -1045,6 +1174,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cartera de inversiones",
   },
   hedge: {
+    zh: "避險",
     ko: "헤지하다",
     ja: "ヘッジする",
     vi: "phòng ngừa rủi ro tài chính",
@@ -1053,6 +1183,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cubrirse",
   },
   leveraged: {
+    zh: "高槓桿的",
     ko: "차입 비율이 높은",
     ja: "レバレッジをかけた",
     vi: "sử dụng đòn bẩy tài chính",
@@ -1061,6 +1192,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "apalancado",
   },
   "capital gain": {
+    zh: "資本利得",
     ko: "양도차익",
     ja: "キャピタルゲイン",
     vi: "lãi vốn",
@@ -1069,6 +1201,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ganancia de capital",
   },
   accrue: {
+    zh: "累計孳生",
     ko: "누적되다",
     ja: "発生する",
     vi: "dồn tích (lãi/thu nhập)",
@@ -1077,6 +1210,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "devengarse",
   },
   "write-off": {
+    zh: "沖銷呆帳",
     ko: "손실 처리",
     ja: "貸倒償却",
     vi: "xóa nợ/xóa sổ tài sản",
@@ -1085,6 +1219,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cancelación contable",
   },
   appreciation: {
+    zh: "增值",
     ko: "가치 상승",
     ja: "値上がり",
     vi: "tăng giá trị tài sản",
@@ -1093,6 +1228,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "apreciación",
   },
   escrow: {
+    zh: "第三方履約保管",
     ko: "에스크로",
     ja: "エスクロー",
     vi: "tài khoản ký quỹ",
@@ -1101,6 +1237,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "depósito en garantía",
   },
   outstanding: {
+    zh: "未償付的",
     ko: "미지급의",
     ja: "未払いの",
     vi: "chưa thanh toán",
@@ -1109,6 +1246,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "pendiente de pago",
   },
   yield: {
+    zh: "收益率",
     ko: "수익률",
     ja: "利回り",
     vi: "lợi suất đầu tư",
@@ -1117,6 +1255,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "rendimiento",
   },
   firewall: {
+    zh: "防火牆",
     ko: "방화벽",
     ja: "ファイアウォール",
     vi: "tường lửa",
@@ -1125,6 +1264,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cortafuegos",
   },
   algorithm: {
+    zh: "演算法",
     ko: "알고리즘",
     ja: "アルゴリズム",
     vi: "thuật toán",
@@ -1133,6 +1273,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "algoritmo",
   },
   cybersecurity: {
+    zh: "網路安全",
     ko: "사이버 보안",
     ja: "サイバーセキュリティ",
     vi: "an ninh mạng",
@@ -1141,6 +1282,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ciberseguridad",
   },
   "cloud computing": {
+    zh: "雲端運算",
     ko: "클라우드 컴퓨팅",
     ja: "クラウドコンピューティング",
     vi: "điện toán đám mây",
@@ -1149,6 +1291,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "computación en la nube",
   },
   "plug-in": {
+    zh: "外掛程式",
     ko: "플러그인",
     ja: "プラグイン",
     vi: "phần mở rộng (plugin)",
@@ -1157,6 +1300,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "complemento",
   },
   malware: {
+    zh: "惡意軟體",
     ko: "악성코드",
     ja: "マルウェア",
     vi: "phần mềm độc hại",
@@ -1165,6 +1309,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "software malicioso",
   },
   debug: {
+    zh: "除錯",
     ko: "디버그하다",
     ja: "デバッグする",
     vi: "gỡ lỗi",
@@ -1173,6 +1318,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "depurar",
   },
   compress: {
+    zh: "壓縮",
     ko: "압축하다",
     ja: "圧縮する",
     vi: "nén tệp",
@@ -1181,6 +1327,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "comprimir",
   },
   synchronize: {
+    zh: "同步",
     ko: "동기화하다",
     ja: "同期する",
     vi: "đồng bộ hóa",
@@ -1189,6 +1336,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "sincronizar",
   },
   hardware: {
+    zh: "硬體",
     ko: "하드웨어",
     ja: "ハードウェア",
     vi: "phần cứng",
@@ -1197,6 +1345,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "hardware",
   },
   software: {
+    zh: "軟體",
     ko: "소프트웨어",
     ja: "ソフトウェア",
     vi: "phần mềm",
@@ -1205,6 +1354,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "software",
   },
   crash: {
+    zh: "當機",
     ko: "다운되다",
     ja: "クラッシュする",
     vi: "bị sập (hệ thống)",
@@ -1213,6 +1363,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "bloquearse",
   },
   wireless: {
+    zh: "無線的",
     ko: "무선의",
     ja: "無線の",
     vi: "không dây",
@@ -1221,6 +1372,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "inalámbrico",
   },
   proprietary: {
+    zh: "專有的",
     ko: "독점적인",
     ja: "独自の",
     vi: "độc quyền (sở hữu riêng)",
@@ -1229,6 +1381,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "propietario",
   },
   throughput: {
+    zh: "處理量",
     ko: "처리량",
     ja: "スループット",
     vi: "thông lượng xử lý",
@@ -1237,6 +1390,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "capacidad de procesamiento",
   },
   "target audience": {
+    zh: "目標受眾",
     ko: "목표 고객층",
     ja: "ターゲット層",
     vi: "đối tượng khách hàng mục tiêu",
@@ -1245,6 +1399,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "público objetivo",
   },
   "brand awareness": {
+    zh: "品牌知名度",
     ko: "브랜드 인지도",
     ja: "ブランド認知度",
     vi: "mức độ nhận biết thương hiệu",
@@ -1253,6 +1408,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reconocimiento de marca",
   },
   endorse: {
+    zh: "代言背書",
     ko: "홍보하다",
     ja: "推薦する",
     vi: "quảng bá/chứng thực sản phẩm",
@@ -1261,6 +1417,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "respaldar",
   },
   "market share": {
+    zh: "市場占有率",
     ko: "시장 점유율",
     ja: "市場シェア",
     vi: "thị phần",
@@ -1269,6 +1426,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cuota de mercado",
   },
   markdown: {
+    zh: "降價",
     ko: "가격 인하",
     ja: "値下げ",
     vi: "giảm giá bán",
@@ -1277,6 +1435,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "rebaja",
   },
   clientele: {
+    zh: "客戶群",
     ko: "고객층",
     ja: "顧客層",
     vi: "tập khách hàng",
@@ -1285,6 +1444,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "clientela",
   },
   "loyalty program": {
+    zh: "會員忠誠計畫",
     ko: "고객 보상 프로그램",
     ja: "ロイヤルティプログラム",
     vi: "chương trình khách hàng thân thiết",
@@ -1293,6 +1453,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "programa de fidelización",
   },
   "cold call": {
+    zh: "陌生開發電話",
     ko: "콜드콜하다",
     ja: "飛び込み営業をする",
     vi: "gọi điện chào hàng không hẹn trước",
@@ -1301,6 +1462,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "hacer una llamada en frío",
   },
   upsell: {
+    zh: "追加銷售",
     ko: "업셀링하다",
     ja: "アップセルする",
     vi: "bán thêm (sản phẩm cao cấp hơn)",
@@ -1309,6 +1471,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ofrecer una venta adicional",
   },
   "niche market": {
+    zh: "利基市場",
     ko: "틈새시장",
     ja: "ニッチ市場",
     vi: "thị trường ngách",
@@ -1317,6 +1480,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "nicho de mercado",
   },
   promotional: {
+    zh: "促銷的",
     ko: "판촉의",
     ja: "販促の",
     vi: "mang tính khuyến mãi",
@@ -1325,6 +1489,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "promocional",
   },
   demographic: {
+    zh: "人口統計族群",
     ko: "인구통계 집단",
     ja: "デモグラフィック",
     vi: "nhóm nhân khẩu học",
@@ -1333,6 +1498,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "grupo demográfico",
   },
   "word of mouth": {
+    zh: "口碑",
     ko: "입소문",
     ja: "口コミ",
     vi: "truyền miệng",
@@ -1341,6 +1507,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "boca a boca",
   },
   "bulk order": {
+    zh: "大量訂購",
     ko: "대량 주문",
     ja: "大量注文",
     vi: "đơn hàng số lượng lớn",
@@ -1349,6 +1516,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "pedido al por mayor",
   },
   wholesale: {
+    zh: "批發",
     ko: "도매의",
     ja: "卸売の",
     vi: "bán buôn/bán sỉ",
@@ -1357,6 +1525,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "al por mayor",
   },
   campaign: {
+    zh: "行銷活動",
     ko: "캠페인",
     ja: "キャンペーン",
     vi: "chiến dịch quảng cáo",
@@ -1365,6 +1534,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "campaña",
   },
   testimonial: {
+    zh: "顧客見證",
     ko: "고객 후기",
     ja: "お客様の声",
     vi: "lời chứng thực của khách hàng",
@@ -1373,6 +1543,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "testimonio",
   },
   negotiate: {
+    zh: "協商",
     ko: "협상하다",
     ja: "交渉する",
     vi: "đàm phán/thương lượng",
@@ -1381,6 +1552,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "negociar",
   },
   lucrative: {
+    zh: "獲利豐厚的",
     ko: "수익성이 좋은",
     ja: "儲かる",
     vi: "sinh lời cao",
@@ -1389,6 +1561,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "lucrativo",
   },
   slogan: {
+    zh: "標語",
     ko: "슬로건",
     ja: "スローガン",
     vi: "khẩu hiệu quảng cáo",
@@ -1397,6 +1570,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "eslogan",
   },
   candidate: {
+    zh: "應徵者",
     ko: "지원자",
     ja: "候補者",
     vi: "ứng viên",
@@ -1405,6 +1579,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "candidato",
   },
   shortlist: {
+    zh: "列入複選名單",
     ko: "최종 후보 명단에 올리다",
     ja: "候補者を絞り込む",
     vi: "lập danh sách ứng viên vào vòng trong",
@@ -1413,6 +1588,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "preseleccionar",
   },
   "background check": {
+    zh: "背景調查",
     ko: "신원조회",
     ja: "身元調査",
     vi: "xác minh lý lịch",
@@ -1421,6 +1597,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "verificación de antecedentes",
   },
   "job posting": {
+    zh: "徵才公告",
     ko: "채용 공고",
     ja: "求人広告",
     vi: "thông báo tuyển dụng",
@@ -1429,6 +1606,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "oferta de empleo",
   },
   probationary: {
+    zh: "試用期的",
     ko: "수습의",
     ja: "試用期間の",
     vi: "thuộc thời gian thử việc",
@@ -1437,6 +1615,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "de prueba",
   },
   "severance package": {
+    zh: "資遣費方案",
     ko: "퇴직 위로금",
     ja: "退職金パッケージ",
     vi: "gói trợ cấp thôi việc",
@@ -1445,6 +1624,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "indemnización por despido",
   },
   "pension plan": {
+    zh: "退休金計畫",
     ko: "연금 제도",
     ja: "年金制度",
     vi: "chương trình hưu trí",
@@ -1453,6 +1633,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "plan de pensiones",
   },
   "parental leave": {
+    zh: "育嬰假",
     ko: "육아휴직",
     ja: "育児休業",
     vi: "nghỉ phép chăm con",
@@ -1461,6 +1642,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "permiso parental",
   },
   perk: {
+    zh: "額外福利",
     ko: "특전",
     ja: "特典",
     vi: "phúc lợi đãi ngộ",
@@ -1469,6 +1651,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "beneficio adicional",
   },
   flextime: {
+    zh: "彈性工時",
     ko: "탄력근무제",
     ja: "フレックスタイム制",
     vi: "giờ làm việc linh hoạt",
@@ -1477,6 +1660,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "horario flexible",
   },
   grievance: {
+    zh: "申訴",
     ko: "고충",
     ja: "苦情",
     vi: "khiếu nại của nhân viên",
@@ -1485,6 +1669,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "queja formal",
   },
   "disciplinary action": {
+    zh: "懲處",
     ko: "징계 조치",
     ja: "懲戒処分",
     vi: "biện pháp kỷ luật",
@@ -1493,6 +1678,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "medida disciplinaria",
   },
   harassment: {
+    zh: "騷擾",
     ko: "괴롭힘",
     ja: "ハラスメント",
     vi: "quấy rối",
@@ -1501,6 +1687,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "acoso",
   },
   union: {
+    zh: "工會",
     ko: "노동조합",
     ja: "労働組合",
     vi: "công đoàn",
@@ -1509,6 +1696,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "sindicato",
   },
   seniority: {
+    zh: "年資",
     ko: "근속연수",
     ja: "勤続年数",
     vi: "thâm niên",
@@ -1517,6 +1705,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "antigüedad",
   },
   payroll: {
+    zh: "薪資發放",
     ko: "급여",
     ja: "給与",
     vi: "bảng lương",
@@ -1525,6 +1714,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "nómina",
   },
   salaried: {
+    zh: "領固定薪的",
     ko: "고정급을 받는",
     ja: "固定給の",
     vi: "hưởng lương cố định",
@@ -1533,6 +1723,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "asalariado",
   },
   underperform: {
+    zh: "表現不佳",
     ko: "저조한 성과를 내다",
     ja: "業績が振るわない",
     vi: "làm việc kém hiệu quả",
@@ -1541,6 +1732,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "rendir por debajo de lo esperado",
   },
   tenure: {
+    zh: "任職年資",
     ko: "재직 기간",
     ja: "在職期間",
     vi: "thời gian tại vị",
@@ -1549,6 +1741,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "antigüedad en el puesto",
   },
   dismissal: {
+    zh: "解僱",
     ko: "해고",
     ja: "解雇",
     vi: "sa thải",
@@ -1557,6 +1750,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "despido",
   },
   downsize: {
+    zh: "裁員縮編",
     ko: "감원하다",
     ja: "人員削減する",
     vi: "cắt giảm nhân sự",
@@ -1565,6 +1759,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reducir la plantilla",
   },
   "chain of command": {
+    zh: "指揮體系",
     ko: "지휘 체계",
     ja: "指揮系統",
     vi: "hệ thống cấp bậc chỉ huy",
@@ -1573,6 +1768,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cadena de mando",
   },
   "performance review": {
+    zh: "績效考核",
     ko: "인사 고과(성과 평가)",
     ja: "人事考課",
     vi: "đánh giá hiệu suất làm việc",
@@ -1581,6 +1777,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "evaluación de desempeño",
   },
   "cross-functional": {
+    zh: "跨部門的",
     ko: "부서 간 협업의",
     ja: "部門横断的な",
     vi: "liên phòng ban",
@@ -1589,6 +1786,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "interdepartamental",
   },
   "middle management": {
+    zh: "中階管理",
     ko: "중간 관리층",
     ja: "中間管理職",
     vi: "quản lý cấp trung",
@@ -1597,6 +1795,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "mandos intermedios",
   },
   "chair a meeting": {
+    zh: "主持會議",
     ko: "회의를 주재하다",
     ja: "会議の議長を務める",
     vi: "chủ trì cuộc họp",
@@ -1605,6 +1804,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "presidir una reunión",
   },
   "line manager": {
+    zh: "直屬主管",
     ko: "직속 상사",
     ja: "直属の上司",
     vi: "quản lý trực tiếp",
@@ -1613,6 +1813,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "jefe directo",
   },
   workload: {
+    zh: "工作量",
     ko: "업무량",
     ja: "業務量",
     vi: "khối lượng công việc",
@@ -1621,6 +1822,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "carga de trabajo",
   },
   "phase out": {
+    zh: "逐步淘汰",
     ko: "단계적으로 폐지하다",
     ja: "段階的に廃止する",
     vi: "loại bỏ dần",
@@ -1629,6 +1831,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "eliminar gradualmente",
   },
   "work ethic": {
+    zh: "職業道德",
     ko: "직업 윤리",
     ja: "労働倫理観",
     vi: "tinh thần làm việc",
@@ -1637,6 +1840,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ética laboral",
   },
   "contingency plan": {
+    zh: "應變計畫",
     ko: "비상 계획",
     ja: "緊急時対応計画",
     vi: "kế hoạch dự phòng",
@@ -1645,6 +1849,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "plan de contingencia",
   },
   "span of control": {
+    zh: "管理幅度",
     ko: "관리 범위",
     ja: "管理限界(管理範囲)",
     vi: "phạm vi quản lý",
@@ -1653,6 +1858,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "ámbito de control",
   },
   "conference badge": {
+    zh: "會議識別證",
     ko: "참가자 명찰",
     ja: "会議参加証",
     vi: "thẻ đeo hội nghị",
@@ -1661,6 +1867,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "acreditación de conferencia",
   },
   "frequent flyer program": {
+    zh: "飛行常客計畫",
     ko: "항공사 마일리지 프로그램",
     ja: "マイレージプログラム",
     vi: "chương trình khách hàng thân thiết của hãng hàng không",
@@ -1669,6 +1876,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "programa de viajero frecuente",
   },
   "visa sponsorship": {
+    zh: "簽證擔保",
     ko: "비자 스폰서십",
     ja: "ビザ保証",
     vi: "bảo lãnh visa",
@@ -1677,6 +1885,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "patrocinio de visado",
   },
   chauffeur: {
+    zh: "專屬司機",
     ko: "전용 운전기사",
     ja: "専属運転手",
     vi: "tài xế riêng",
@@ -1685,6 +1894,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "chófer",
   },
   "travel insurance": {
+    zh: "旅遊保險",
     ko: "여행자 보험",
     ja: "旅行保険",
     vi: "bảo hiểm du lịch",
@@ -1693,6 +1903,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "seguro de viaje",
   },
   "gate agent": {
+    zh: "登機門地勤人員",
     ko: "탑승구 직원",
     ja: "搭乗ゲート係員",
     vi: "nhân viên cổng ra máy bay",
@@ -1701,6 +1912,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "agente de puerta de embarque",
   },
   standby: {
+    zh: "機位候補",
     ko: "대기(스탠바이)",
     ja: "キャンセル待ちの",
     vi: "chờ vé (không có chỗ xác nhận)",
@@ -1709,6 +1921,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "en lista de espera",
   },
   "corporate rate": {
+    zh: "企業優惠價",
     ko: "기업 할인 요금",
     ja: "法人料金",
     vi: "giá ưu đãi doanh nghiệp",
@@ -1717,6 +1930,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tarifa corporativa",
   },
   "site visit": {
+    zh: "實地考察",
     ko: "현장 답사",
     ja: "現地視察",
     vi: "chuyến khảo sát thực địa",
@@ -1725,6 +1939,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "visita in situ",
   },
   "expatriate assignment": {
+    zh: "外派任務",
     ko: "해외 파견 근무",
     ja: "海外赴任",
     vi: "nhiệm kỳ công tác nước ngoài",
@@ -1733,6 +1948,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "asignación en el extranjero",
   },
   "airport transfer": {
+    zh: "機場接送",
     ko: "공항 픽업 서비스",
     ja: "空港送迎",
     vi: "dịch vụ đưa đón sân bay",
@@ -1741,6 +1957,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "traslado desde/hacia el aeropuerto",
   },
   attendee: {
+    zh: "與會者",
     ko: "참석자",
     ja: "出席者",
     vi: "người tham dự",
@@ -1749,6 +1966,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "asistente",
   },
   "accounts receivable": {
+    zh: "應收帳款",
     ko: "매출채권",
     ja: "売掛金",
     vi: "khoản phải thu",
@@ -1757,6 +1975,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cuentas por cobrar",
   },
   "cash flow": {
+    zh: "現金流",
     ko: "현금 흐름",
     ja: "キャッシュフロー",
     vi: "dòng tiền",
@@ -1765,6 +1984,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "flujo de caja",
   },
   "net worth": {
+    zh: "淨值",
     ko: "순자산",
     ja: "純資産",
     vi: "giá trị tài sản ròng",
@@ -1773,6 +1993,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "patrimonio neto",
   },
   subsidize: {
+    zh: "補貼",
     ko: "보조금을 지원하다",
     ja: "補助金を出す",
     vi: "trợ cấp",
@@ -1781,6 +2002,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "subvencionar",
   },
   shareholder: {
+    zh: "股東",
     ko: "주주",
     ja: "株主",
     vi: "cổ đông",
@@ -1789,6 +2011,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "accionista",
   },
   "loan covenant": {
+    zh: "貸款契約條款",
     ko: "대출 약정",
     ja: "融資契約条項",
     vi: "điều khoản ràng buộc khoản vay",
@@ -1797,6 +2020,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cláusula de préstamo",
   },
   bankruptcy: {
+    zh: "破產",
     ko: "파산",
     ja: "破産",
     vi: "phá sản",
@@ -1805,6 +2029,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "quiebra",
   },
   underlying: {
+    zh: "本業實質的",
     ko: "기초(근본)의",
     ja: "実質的な(基調的な)",
     vi: "cơ bản (chưa tính yếu tố bất thường)",
@@ -1813,6 +2038,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "subyacente",
   },
   float: {
+    zh: "首次公開發行",
     ko: "기업공개(주식 상장)",
     ja: "株式公開(新規株式公開)",
     vi: "phát hành cổ phiếu lần đầu ra công chúng",
@@ -1821,6 +2047,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "salida a bolsa",
   },
   "bad debt": {
+    zh: "呆帳",
     ko: "대손(부실채권)",
     ja: "貸倒金",
     vi: "nợ khó đòi",
@@ -1829,6 +2056,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "deuda incobrable",
   },
   principal: {
+    zh: "本金",
     ko: "원금",
     ja: "元金",
     vi: "vốn gốc",
@@ -1837,6 +2065,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "capital",
   },
   "line of credit": {
+    zh: "信用額度",
     ko: "신용한도",
     ja: "融資枠",
     vi: "hạn mức tín dụng",
@@ -1845,6 +2074,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "línea de crédito",
   },
   reboot: {
+    zh: "重新開機",
     ko: "재부팅하다",
     ja: "再起動する",
     vi: "khởi động lại",
@@ -1853,6 +2083,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reiniciar",
   },
   cache: {
+    zh: "快取",
     ko: "캐시",
     ja: "キャッシュ",
     vi: "bộ nhớ đệm",
@@ -1861,6 +2092,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "memoria caché",
   },
   workaround: {
+    zh: "暫行解決方法",
     ko: "임시 해결책",
     ja: "回避策",
     vi: "giải pháp tạm thời",
@@ -1869,6 +2101,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "solución provisional",
   },
   interoperability: {
+    zh: "互通性",
     ko: "상호운용성",
     ja: "相互運用性",
     vi: "khả năng tương tác",
@@ -1877,6 +2110,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "interoperabilidad",
   },
   "legacy system": {
+    zh: "舊有系統",
     ko: "레거시 시스템",
     ja: "レガシーシステム",
     vi: "hệ thống cũ",
@@ -1885,6 +2119,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "sistema heredado",
   },
   rollback: {
+    zh: "版本還原",
     ko: "롤백",
     ja: "ロールバック(切り戻し)",
     vi: "khôi phục phiên bản trước",
@@ -1893,6 +2128,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reversión",
   },
   provisioning: {
+    zh: "資源佈建",
     ko: "프로비저닝",
     ja: "プロビジョニング",
     vi: "cấp phát tài nguyên",
@@ -1901,6 +2137,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "aprovisionamiento",
   },
   sandbox: {
+    zh: "沙箱測試環境",
     ko: "샌드박스",
     ja: "サンドボックス環境",
     vi: "môi trường thử nghiệm cách ly",
@@ -1909,6 +2146,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "entorno de pruebas",
   },
   middleware: {
+    zh: "中介軟體",
     ko: "미들웨어",
     ja: "ミドルウェア",
     vi: "phần mềm trung gian",
@@ -1917,6 +2155,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "middleware",
   },
   obsolete: {
+    zh: "過時淘汰的",
     ko: "구식의",
     ja: "旧式の(時代遅れの)",
     vi: "lỗi thời",
@@ -1925,6 +2164,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "obsoleto",
   },
   glitch: {
+    zh: "小故障",
     ko: "결함(오류)",
     ja: "不具合",
     vi: "lỗi kỹ thuật nhỏ",
@@ -1933,6 +2173,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "fallo técnico",
   },
   endpoint: {
+    zh: "端點",
     ko: "엔드포인트",
     ja: "エンドポイント",
     vi: "điểm cuối kết nối",
@@ -1941,6 +2182,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "punto de conexión",
   },
   "sales pitch": {
+    zh: "推銷說詞",
     ko: "영업 홍보",
     ja: "営業トーク",
     vi: "bài chào hàng",
@@ -1949,6 +2191,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "argumento de venta",
   },
   commission: {
+    zh: "佣金",
     ko: "수수료",
     ja: "歩合給(コミッション)",
     vi: "hoa hồng",
@@ -1957,6 +2200,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "comisión",
   },
   "cross-sell": {
+    zh: "交叉銷售",
     ko: "교차 판매하다",
     ja: "クロスセルする(関連商品を併せて販売する)",
     vi: "bán chéo",
@@ -1965,6 +2209,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "hacer venta cruzada",
   },
   outsell: {
+    zh: "銷量勝過",
     ko: "~보다 더 많이 팔다",
     ja: "販売実績で上回る",
     vi: "bán chạy hơn (đối thủ)",
@@ -1973,6 +2218,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "vender más que",
   },
   advertise: {
+    zh: "打廣告宣傳",
     ko: "광고하다",
     ja: "宣伝する",
     vi: "quảng cáo",
@@ -1981,6 +2227,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "anunciar",
   },
   rebate: {
+    zh: "現金回饋",
     ko: "리베이트(환불)",
     ja: "リベート(返金)",
     vi: "hoàn tiền",
@@ -1989,6 +2236,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reembolso parcial",
   },
   markup: {
+    zh: "成本加價",
     ko: "이윤폭(마크업)",
     ja: "利益上乗せ(値入率)",
     vi: "mức chênh lệch giá (lợi nhuận cộng thêm)",
@@ -1997,6 +2245,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "margen de beneficio",
   },
   "product launch": {
+    zh: "產品上市",
     ko: "제품 출시",
     ja: "製品発売",
     vi: "ra mắt sản phẩm",
@@ -2005,6 +2254,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "lanzamiento de producto",
   },
   "market penetration": {
+    zh: "市場滲透",
     ko: "시장 침투율",
     ja: "市場浸透率",
     vi: "mức độ thâm nhập thị trường",
@@ -2013,6 +2263,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "penetración de mercado",
   },
   "focus group": {
+    zh: "焦點團體",
     ko: "포커스 그룹",
     ja: "フォーカスグループ",
     vi: "nhóm tập trung (khảo sát ý kiến)",
@@ -2021,6 +2272,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "grupo focal",
   },
   "customer retention": {
+    zh: "顧客留存",
     ko: "고객 유지",
     ja: "顧客維持(顧客定着率)",
     vi: "giữ chân khách hàng",
@@ -2029,6 +2281,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "retención de clientes",
   },
   franchise: {
+    zh: "加盟特許經營",
     ko: "프랜차이즈",
     ja: "フランチャイズ経営権",
     vi: "nhượng quyền thương mại",
@@ -2037,6 +2290,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "franquicia",
   },
   "price point": {
+    zh: "價位",
     ko: "가격대",
     ja: "価格帯",
     vi: "mức giá bán",
@@ -2045,6 +2299,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "nivel de precio",
   },
   "supply chain": {
+    zh: "供應鏈",
     ko: "공급망",
     ja: "サプライチェーン",
     vi: "chuỗi cung ứng",
@@ -2053,6 +2308,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cadena de suministro",
   },
   "competitive pricing": {
+    zh: "具競爭力的定價",
     ko: "경쟁력 있는 가격 책정",
     ja: "競争力のある価格設定",
     vi: "định giá cạnh tranh",
@@ -2061,6 +2317,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "precios competitivos",
   },
   "out of stock": {
+    zh: "缺貨",
     ko: "품절",
     ja: "在庫切れの",
     vi: "hết hàng",
@@ -2069,6 +2326,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "agotado",
   },
   "point of sale": {
+    zh: "銷售據點",
     ko: "판매 시점(POS)",
     ja: "販売時点情報管理(POS)",
     vi: "điểm bán hàng",
@@ -2077,6 +2335,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "punto de venta",
   },
   "conversion rate": {
+    zh: "轉換率",
     ko: "전환율",
     ja: "コンバージョン率(成約率)",
     vi: "tỷ lệ chuyển đổi",
@@ -2085,6 +2344,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tasa de conversión",
   },
   "exit interview": {
+    zh: "離職面談",
     ko: "퇴사 면담",
     ja: "退職面談",
     vi: "phỏng vấn thôi việc",
@@ -2093,6 +2353,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "entrevista de salida",
   },
   recruit: {
+    zh: "招募",
     ko: "채용하다",
     ja: "採用する",
     vi: "tuyển dụng",
@@ -2101,6 +2362,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "contratar",
   },
   headhunter: {
+    zh: "獵才顧問",
     ko: "헤드헌터",
     ja: "ヘッドハンター",
     vi: "chuyên gia săn đầu người",
@@ -2109,6 +2371,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cazatalentos",
   },
   "compensation package": {
+    zh: "薪酬方案",
     ko: "급여 및 복리후생 패키지",
     ja: "給与・待遇パッケージ",
     vi: "gói đãi ngộ",
@@ -2117,6 +2380,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "paquete retributivo",
   },
   termination: {
+    zh: "終止聘僱",
     ko: "고용 종료(해고)",
     ja: "雇用契約の解除",
     vi: "chấm dứt hợp đồng lao động",
@@ -2125,6 +2389,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "despido",
   },
   reinstate: {
+    zh: "復職",
     ko: "복직시키다",
     ja: "復職させる",
     vi: "phục hồi chức vụ",
@@ -2133,6 +2398,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "reincorporar",
   },
   "workplace diversity": {
+    zh: "職場多元化",
     ko: "직장 내 다양성",
     ja: "職場の多様性",
     vi: "đa dạng tại nơi làm việc",
@@ -2141,6 +2407,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "diversidad laboral",
   },
   telecommute: {
+    zh: "遠距工作",
     ko: "재택근무하다",
     ja: "在宅勤務する(リモートワークする)",
     vi: "làm việc từ xa",
@@ -2149,6 +2416,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "teletrabajar",
   },
   "sick leave": {
+    zh: "病假",
     ko: "병가",
     ja: "病気休暇",
     vi: "nghỉ ốm",
@@ -2157,6 +2425,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "baja por enfermedad",
   },
   "employee handbook": {
+    zh: "員工手冊",
     ko: "직원 안내서(사규집)",
     ja: "従業員向け就業規則(社員ハンドブック)",
     vi: "sổ tay nhân viên",
@@ -2165,6 +2434,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "manual del empleado",
   },
   "workers' compensation": {
+    zh: "職災補償",
     ko: "산재보험",
     ja: "労災保険",
     vi: "bảo hiểm tai nạn lao động",
@@ -2173,6 +2443,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "seguro de accidentes laborales",
   },
   layoff: {
+    zh: "裁員",
     ko: "정리해고",
     ja: "一時解雇(レイオフ)",
     vi: "sa thải hàng loạt",
@@ -2181,6 +2452,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "despido colectivo",
   },
   "job description": {
+    zh: "職務說明",
     ko: "직무 기술서",
     ja: "職務内容記述書",
     vi: "bản mô tả công việc",
@@ -2189,6 +2461,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "descripción del puesto",
   },
   "non-compete clause": {
+    zh: "競業禁止條款",
     ko: "경업금지 조항",
     ja: "競業避止条項",
     vi: "điều khoản không cạnh tranh",
@@ -2197,6 +2470,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cláusula de no competencia",
   },
   "staffing agency": {
+    zh: "人力仲介公司",
     ko: "인력 파견 업체",
     ja: "人材派遣会社",
     vi: "công ty cung ứng nhân sự",
@@ -2205,6 +2479,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "agencia de empleo temporal",
   },
   "work permit": {
+    zh: "工作許可證",
     ko: "취업 허가증",
     ja: "就労許可証",
     vi: "giấy phép lao động",
@@ -2213,6 +2488,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "permiso de trabajo",
   },
   "probation period": {
+    zh: "試用期",
     ko: "수습 기간",
     ja: "試用期間",
     vi: "thời gian thử việc",
@@ -2221,6 +2497,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "período de prueba",
   },
   "corporate culture": {
+    zh: "企業文化",
     ko: "기업 문화",
     ja: "企業文化",
     vi: "văn hóa doanh nghiệp",
@@ -2229,6 +2506,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "cultura empresarial",
   },
   "market segmentation": {
+    zh: "市場區隔",
     ko: "시장 세분화",
     ja: "市場セグメンテーション",
     vi: "phân khúc thị trường",
@@ -2237,6 +2515,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "segmentación de mercado",
   },
   "unique selling proposition": {
+    zh: "獨特銷售主張",
     ko: "차별화된 판매 제안",
     ja: "独自の販売提案(USP)",
     vi: "điểm bán hàng độc đáo",
@@ -2245,6 +2524,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "propuesta de venta única",
   },
   "call to action": {
+    zh: "行動呼籲",
     ko: "행동 유도 문구",
     ja: "行動喚起(CTA)",
     vi: "lời kêu gọi hành động",
@@ -2253,6 +2533,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "llamada a la acción",
   },
   "brand equity": {
+    zh: "品牌資產",
     ko: "브랜드 자산 가치",
     ja: "ブランドエクイティ",
     vi: "giá trị thương hiệu",
@@ -2261,6 +2542,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "valor de marca",
   },
   "lead generation": {
+    zh: "開發潛在客戶",
     ko: "잠재고객 발굴",
     ja: "リード獲得",
     vi: "tạo khách hàng tiềm năng",
@@ -2269,6 +2551,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "generación de leads",
   },
   "click-through rate": {
+    zh: "點擊率",
     ko: "클릭률",
     ja: "クリック率",
     vi: "tỷ lệ nhấp chuột",
@@ -2277,6 +2560,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "tasa de clics",
   },
   "sales funnel": {
+    zh: "銷售漏斗",
     ko: "영업 퍼널",
     ja: "セールスファネル",
     vi: "phễu bán hàng",
@@ -2285,6 +2569,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "embudo de ventas",
   },
   "market saturation": {
+    zh: "市場飽和",
     ko: "시장 포화",
     ja: "市場飽和",
     vi: "sự bão hòa thị trường",
@@ -2293,6 +2578,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "saturación del mercado",
   },
   "customer acquisition cost": {
+    zh: "顧客取得成本",
     ko: "고객 획득 비용",
     ja: "顧客獲得コスト",
     vi: "chi phí thu hút khách hàng",
@@ -2301,6 +2587,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "costo de adquisición de clientes",
   },
   "viral marketing": {
+    zh: "病毒式行銷",
     ko: "바이럴 마케팅",
     ja: "バイラルマーケティング",
     vi: "tiếp thị lan truyền",
@@ -2309,6 +2596,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "marketing viral",
   },
   "soft launch": {
+    zh: "試營運",
     ko: "소프트 런칭",
     ja: "ソフトローンチ",
     vi: "ra mắt thử nghiệm",
@@ -2317,6 +2605,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "lanzamiento suave (a pequeña escala)",
   },
   "market research": {
+    zh: "市場調查",
     ko: "시장 조사",
     ja: "市場調査",
     vi: "nghiên cứu thị trường",
@@ -2325,6 +2614,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "investigación de mercado",
   },
   "talent acquisition": {
+    zh: "人才招募",
     ko: "인재 채용",
     ja: "人材獲得",
     vi: "tuyển dụng nhân tài",
@@ -2333,6 +2623,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "adquisición de talento",
   },
   "diversity and inclusion": {
+    zh: "多元共融",
     ko: "다양성과 포용성",
     ja: "多様性と包摂性",
     vi: "đa dạng và hòa nhập",
@@ -2341,6 +2632,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "diversidad e inclusión",
   },
   "employee retention": {
+    zh: "員工留任",
     ko: "직원 유지",
     ja: "従業員の定着",
     vi: "giữ chân nhân viên",
@@ -2349,6 +2641,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "retención de empleados",
   },
   "work-life balance": {
+    zh: "工作與生活平衡",
     ko: "일과 삶의 균형",
     ja: "ワークライフバランス",
     vi: "cân bằng công việc và cuộc sống",
@@ -2357,6 +2650,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "equilibrio entre vida laboral y personal",
   },
   "exempt employee": {
+    zh: "免加班費員工",
     ko: "초과근무 수당 비적용 직원",
     ja: "残業代適用除外従業員",
     vi: "nhân viên miễn trừ (không hưởng lương làm thêm giờ)",
@@ -2365,6 +2659,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "empleado exento (sin derecho a horas extras)",
   },
   "collective bargaining": {
+    zh: "團體協商",
     ko: "단체 교섭",
     ja: "団体交渉",
     vi: "thương lượng tập thể",
@@ -2373,6 +2668,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "negociación colectiva",
   },
   whistleblower: {
+    zh: "吹哨者",
     ko: "내부 고발자",
     ja: "内部告発者",
     vi: "người tố giác",
@@ -2381,6 +2677,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "denunciante",
   },
   "maternity leave": {
+    zh: "產假",
     ko: "출산 휴가",
     ja: "産休",
     vi: "nghỉ thai sản",
@@ -2389,6 +2686,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "permiso de maternidad",
   },
   "paternity leave": {
+    zh: "陪產假",
     ko: "육아 휴직(부성 휴가)",
     ja: "父親の育児休暇",
     vi: "nghỉ thai sản dành cho cha",
@@ -2397,6 +2695,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "permiso de paternidad",
   },
   "cross-training": {
+    zh: "跨職能訓練",
     ko: "교차 교육(다기능 훈련)",
     ja: "クロストレーニング（多能工化）",
     vi: "đào tạo chéo",
@@ -2405,6 +2704,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "capacitación cruzada (multifuncional)",
   },
   "job rotation": {
+    zh: "工作輪調",
     ko: "직무 순환",
     ja: "ジョブローテーション",
     vi: "luân chuyển công việc",
@@ -2413,6 +2713,7 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     es: "rotación de puestos",
   },
   "gross misconduct": {
+    zh: "重大不當行為",
     ko: "중대한 비위 행위",
     ja: "重大な非違行為",
     vi: "hành vi sai trái nghiêm trọng",
