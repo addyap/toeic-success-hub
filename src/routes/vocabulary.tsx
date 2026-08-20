@@ -136,10 +136,25 @@ function Page() {
             flashcards, then test recall with a quick quiz. Your category and score are saved on
             this device.
           </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById("vocab-practice")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              Start practising <ArrowRight className="h-4 w-4" />
+            </button>
+            <span className="text-sm text-muted-foreground">Jump to the flashcards and quiz.</span>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-3xl px-5 py-10">
+      <section id="vocab-practice" className="mx-auto w-full max-w-3xl scroll-mt-20 px-5 py-10">
         {/* Category filter */}
         <div className="flex flex-wrap gap-2">
           {FILTERS.map((f) => (

@@ -116,6 +116,33 @@ function SectionHeader({
   );
 }
 
+/** The per-section shortcut on each hero card — mirrors L&R's "Practice Part N"
+ *  buttons. Speaking and Writing are practised on this page, so they scroll to
+ *  their trainer; Listening and Reading live on their own route, so they link
+ *  out to the Listening & Reading practice hub. */
+function SectionCardAction({
+  id,
+  onJump,
+}: {
+  id: (typeof examSections)[number]["id"];
+  onJump: (anchor: string) => void;
+}) {
+  const pill =
+    "mt-4 inline-flex items-center gap-1.5 self-start rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/20";
+  if (id === "speaking" || id === "writing") {
+    return (
+      <button type="button" onClick={() => onJump(`practice-${id}`)} className={pill}>
+        Practise {id === "speaking" ? "Speaking" : "Writing"} <ArrowRight className="h-4 w-4" />
+      </button>
+    );
+  }
+  return (
+    <Link to="/listening-reading" className={pill}>
+      Practise {id === "listening" ? "Listening" : "Reading"} <ArrowRight className="h-4 w-4" />
+    </Link>
+  );
+}
+
 function TaskTable({ tasks }: { tasks: SkillTask[] }) {
   return (
     <div className="mt-6 space-y-4">
@@ -184,6 +211,11 @@ function Page() {
     };
   }, []);
 
+  // No router navigation is involved here (unlike L&R's part filter), so a
+  // section jump is a plain scrollIntoView — no scroll-after-navigation dance.
+  const scrollToId = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   return (
     <SiteLayout>
       <script
@@ -208,13 +240,26 @@ function Page() {
             adaptive versions of Listening and Reading.
           </p>
 
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollToId("practice-speaking")}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              Start practising <ArrowRight className="h-4 w-4" />
+            </button>
+            <span className="text-sm text-muted-foreground">
+              Jump to the Speaking or Writing drills, or read the format first.
+            </span>
+          </div>
+
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {examSections.map((s) => {
               const Icon = sectionIcons[s.id];
               return (
                 <div
                   key={s.id}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+                  className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-soft"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2">
@@ -229,6 +274,10 @@ function Page() {
                     {s.duration} · {s.questions}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.summary}</p>
+                  {/* Speaking and Writing are practised on this page (scroll to
+                      the trainer); Listening and Reading live on their own
+                      routes, so those cards link out instead. */}
+                  <SectionCardAction id={s.id} onJump={scrollToId} />
                 </div>
               );
             })}
@@ -303,7 +352,7 @@ function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-3xl px-5 py-16">
+      <section id="practice-speaking" className="mx-auto w-full max-w-3xl scroll-mt-20 px-5 py-16">
         <h2 className="font-display text-2xl font-semibold tracking-tight">Speaking practice</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Each drill runs on the real preparation and response timings. Record yourself if you want
@@ -330,7 +379,7 @@ function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-3xl px-5 py-16">
+      <section id="practice-writing" className="mx-auto w-full max-w-3xl scroll-mt-20 px-5 py-16">
         <h2 className="font-display text-2xl font-semibold tracking-tight">Writing practice</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Timed to the real task lengths, with a live word count. Submit to compare your answer
