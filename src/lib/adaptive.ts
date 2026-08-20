@@ -10,7 +10,8 @@
  *  adaptive engine.
  */
 
-import type { PracticeQuestionData, QuestionPart } from "@/data/listeningReadingQuestions";
+import type { PracticeQuestionData } from "@/components/PracticeQuestion";
+import type { QuestionPart } from "@/data/listeningReadingQuestions";
 import { groupQuestions, shuffleQuestionOptions } from "@/lib/quiz";
 import { shuffle } from "@/lib/utils";
 
