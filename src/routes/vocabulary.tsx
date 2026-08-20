@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Sparkles,
   RefreshCw,
@@ -226,6 +226,7 @@ function Page() {
               pool={vocabulary}
               score={score}
               setScore={setScore}
+              storageKey={`toeicpath:vocab:quiz:${filter}`}
               key={`qz-${filter}`}
             />
           )}
@@ -397,25 +398,92 @@ function buildQuestion(terms: VocabTerm[], pool: VocabTerm[]): QuizQuestion {
   return { answer, options };
 }
 
+/** The on-screen quiz question, stored by term string so it survives a reload
+ *  — otherwise the current question (and any answer already picked) is lost and
+ *  a fresh one is rolled. The cumulative score already persisted; this makes
+ *  the question itself resumable too. Terms are re-resolved from the pool on
+ *  load, so a stale save from before the vocabulary bank changed is discarded. */
+interface SavedQuizQuestion {
+  answerTerm: string;
+  optionTerms: string[];
+  picked: string | null;
+}
+
+function loadQuizQuestion(
+  key: string,
+  pool: VocabTerm[],
+): { q: QuizQuestion; picked: string | null } | null {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const saved = JSON.parse(raw) as SavedQuizQuestion;
+    const byTerm = new Map(pool.map((t) => [t.term, t]));
+    const answer = byTerm.get(saved.answerTerm);
+    const options = (saved.optionTerms ?? []).map((t) => byTerm.get(t));
+    if (!answer || options.length === 0 || options.some((o) => !o)) return null;
+    return { q: { answer, options: options as VocabTerm[] }, picked: saved.picked ?? null };
+  } catch {
+    return null;
+  }
+}
+
+function saveQuizQuestion(key: string, q: QuizQuestion, picked: string | null) {
+  try {
+    const payload: SavedQuizQuestion = {
+      answerTerm: q.answer.term,
+      optionTerms: q.options.map((o) => o.term),
+      picked,
+    };
+    localStorage.setItem(key, JSON.stringify(payload));
+  } catch {
+    // localStorage unavailable — the current question just won't survive a
+    // reload, which is the pre-existing behaviour.
+  }
+}
+
 function Quiz({
   terms,
   pool,
   score,
   setScore,
+  storageKey,
 }: {
   terms: VocabTerm[];
   pool: VocabTerm[];
   score: { correct: number; total: number };
   setScore: React.Dispatch<React.SetStateAction<{ correct: number; total: number }>>;
+  storageKey: string;
 }) {
   const [q, setQ] = useState<QuizQuestion | null>(null);
   const [picked, setPicked] = useState<string | null>(null);
 
+  // Restore the in-progress question (and any answer already picked), or roll a
+  // fresh one. Runs once per category — the component is remounted, via `key`,
+  // when the filter changes, so `terms`/`storageKey` change together.
+  const hydratedRef = useRef(false);
   useEffect(() => {
-    if (terms.length >= 1) setQ(buildQuestion(terms, pool));
-    else setQ(null);
-    setPicked(null);
-  }, [terms, pool]);
+    if (terms.length < 1) {
+      setQ(null);
+      setPicked(null);
+    } else {
+      const saved = loadQuizQuestion(storageKey, pool);
+      if (saved) {
+        setQ(saved.q);
+        setPicked(saved.picked);
+      } else {
+        setQ(buildQuestion(terms, pool));
+        setPicked(null);
+      }
+    }
+    hydratedRef.current = true;
+  }, [terms, pool, storageKey]);
+
+  // Persist the current question and picked answer as they change, so a reload
+  // lands the learner back on the same question.
+  useEffect(() => {
+    if (!hydratedRef.current || !q) return;
+    saveQuizQuestion(storageKey, q, picked);
+  }, [q, picked, storageKey]);
 
   if (!q) {
     return (
