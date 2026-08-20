@@ -1,7 +1,13 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2, Flag } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getAudioTurns, getGroupAudioTurns, audioKeyForTurns, audioKey } from "@/lib/audioSource";
+import {
+  getAudioTurns,
+  getGroupAudioTurns,
+  audioKeyForTurns,
+  audioKey,
+  letterCueKey,
+} from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 import { PUBLISHER } from "@/components/LegalPage";
 
@@ -460,28 +466,49 @@ function AudioClipPlayer({
     [data, group],
   );
 
-  // Part 1 (photo) and Part 2 (spokenOptions): each currently-displayed turn
-  // is looked up by its own content hash — never a combined key — since the
-  // client shuffles option order/labels every session and a single fixed
-  // recording would drift out of sync with whatever order is currently on
-  // screen. Part 2's turns are the question followed by its three responses,
-  // in that fixed order, so shuffling the on-screen labels never touches
-  // which clip plays for which response.
+  // Part 1 (photo) and Part 2 (spokenOptions): each statement is looked up by
+  // its own content hash — never a combined key — since the client shuffles
+  // option order/labels every session and a single fixed recording would drift
+  // out of sync with whatever order is currently on screen.
+  //
+  // Each option is preceded by a spoken letter cue ("A.", "B.", ...) so the
+  // learner can map what they hear to the lettered answer buttons, as the real
+  // TOEIC does. Letter cues are POSITIONAL: the shuffle relabels options
+  // A/B/C/D by position, so options[i].label is always the i-th letter and the
+  // cue always matches the on-screen button whatever content sits there. The
+  // cues are four shared, content-independent clips, interleaved here.
   if (data.photo || data.spokenOptions) {
-    const entries = turns.map((t) => audioManifest[audioKey(t.text)]);
-    const fallbackText = data.photo
-      ? data.options.map((o) => `${o.label}. ${o.text}`).join(" ... ")
-      : [turns[0]?.text, ...data.options.map((o) => `${o.label}. ${o.text}`)]
-          .filter(Boolean)
-          .join(" ... ");
-    if (!entries.every((e): e is AudioManifestEntry => !!e)) {
+    // Any lead-in turns (Part 2's question; none for Part 1) come before the
+    // per-option turns, which we rebuild from data.options to interleave cues.
+    const leadTurns = turns.slice(0, turns.length - data.options.length);
+    const leadEntries = leadTurns.map((t) => audioManifest[audioKey(t.text)]);
+    const letterEntries = data.options.map((o) => audioManifest[letterCueKey(o.label)]);
+    const optionEntries = data.options.map((o) => audioManifest[audioKey(o.text)]);
+
+    const fallbackText = [
+      ...leadTurns.map((t) => t.text),
+      ...data.options.map((o) => `${o.label}. ${o.text}`),
+    ]
+      .filter(Boolean)
+      .join(" ... ");
+
+    const allEntries = [...leadEntries, ...letterEntries, ...optionEntries];
+    if (!allEntries.every((e): e is AudioManifestEntry => !!e)) {
+      // Missing any clip (e.g. letter cues not generated yet) → the speech
+      // fallback, which already announces the letters in `fallbackText`.
       return (
         <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />
       );
     }
     const combinedEntry: AudioManifestEntry = {
-      model: entries[0].model,
-      segments: entries.flatMap((e) => e.segments),
+      model: optionEntries[0].model,
+      segments: [
+        ...leadEntries.flatMap((e) => e.segments),
+        ...data.options.flatMap((_, i) => [
+          ...letterEntries[i].segments,
+          ...optionEntries[i].segments,
+        ]),
+      ],
     };
     return (
       <GeneratedAudioPlayer entry={combinedEntry} label={label} resetKey={resetKey} hint={hint} />

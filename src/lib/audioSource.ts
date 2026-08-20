@@ -132,3 +132,23 @@ export function audioKeyForTurns(turns: AudioTurn[]): string {
     .join("");
   return audioKey(combined);
 }
+
+/** The four answer positions, in order. Part 2 uses only the first three.
+ *  Kept here (not imported from quiz.ts) so the audio generator can pull it
+ *  without dragging in the client-only shuffle code. */
+export const OPTION_LETTERS = ["A", "B", "C", "D"] as const;
+
+/** Spoken letter cue announced before each option in Part 1/2 audio, so the
+ *  learner can map what they hear to the lettered answer buttons — as the real
+ *  TOEIC test does. The trailing period gives a slight beat and nudges TTS to
+ *  read the letter's name rather than the article "a". */
+export function letterCueText(label: string): string {
+  return `${label}.`;
+}
+
+/** Manifest key for a letter cue. Positional and content-independent, so the
+ *  same four clips are reused across every Part 1/2 question. Namespaced so it
+ *  can never collide with a statement whose text happens to be "A." etc. */
+export function letterCueKey(label: string): string {
+  return audioKey(`__toeic_option_letter_cue__${label}`);
+}
