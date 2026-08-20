@@ -1,6 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Headphones, BookOpen, Clock, ListChecks, RotateCcw, Trophy } from "lucide-react";
+import {
+  Headphones,
+  BookOpen,
+  Clock,
+  ListChecks,
+  RotateCcw,
+  Trophy,
+  ArrowRight,
+} from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import {
   PracticeQuestion,
@@ -112,7 +120,14 @@ function Page() {
   const selectedPart = Route.useSearch().part ?? "all";
   const navigate = Route.useNavigate();
   const setSelectedPart = (part: ProgressScope) =>
-    navigate({ search: { part: part === "all" ? undefined : part }, replace: true });
+    // resetScroll:false keeps the viewport where it is on a filter change — the
+    // filter chips live inside the practice section, so a default scroll-to-top
+    // would yank the user away from the questions they're filtering.
+    navigate({
+      search: { part: part === "all" ? undefined : part },
+      replace: true,
+      resetScroll: false,
+    });
   const [bank, setBank] = useState<{
     all: PracticeQuestionData[];
     byPart: QuestionPart[];
@@ -137,6 +152,29 @@ function Page() {
       ? "toeicpath:lr-practice:best"
       : `toeicpath:lr-practice:best:part${selectedPart}`;
 
+  const scrollToPractice = () => {
+    document.getElementById("practice")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  // A part button changes the `?part=` search param, which triggers a router
+  // navigation that resets scroll to the top. So we can't scroll in the click
+  // handler — we flag the intent and scroll in an effect that runs after the
+  // navigation (and its scroll reset) has committed.
+  const pendingScrollRef = useRef(false);
+  const practicePart = (n: number) => {
+    if (n === selectedPart) {
+      scrollToPractice();
+      return;
+    }
+    setSelectedPart(n as ProgressScope);
+    pendingScrollRef.current = true;
+  };
+  useEffect(() => {
+    if (!pendingScrollRef.current) return;
+    pendingScrollRef.current = false;
+    const id = requestAnimationFrame(scrollToPractice);
+    return () => cancelAnimationFrame(id);
+  }, [selectedPart]);
+
   return (
     <SiteLayout>
       <section className="bg-gradient-soft">
@@ -157,6 +195,19 @@ function Page() {
             <Stat icon={<Clock className="h-4 w-4" />} label="Reading" value="75 minutes" />
             <Stat icon={<ListChecks className="h-4 w-4" />} label="Total time" value="2h 0min" />
           </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={scrollToPractice}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              Start practising <ArrowRight className="h-4 w-4" />
+            </button>
+            <span className="text-sm text-muted-foreground">
+              Jump straight to the questions, or read the format below first.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -168,7 +219,7 @@ function Page() {
         />
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {listeningParts.map((p) => (
-            <PartCard key={p.n} {...p} />
+            <PartCard key={p.n} {...p} onPractice={practicePart} />
           ))}
         </div>
 
@@ -180,7 +231,7 @@ function Page() {
           />
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {readingParts.map((p) => (
-              <PartCard key={p.n} {...p} />
+              <PartCard key={p.n} {...p} onPractice={practicePart} />
             ))}
           </div>
         </div>
@@ -230,7 +281,7 @@ function Page() {
         </div>
       </section>
 
-      <section className="bg-secondary/40">
+      <section id="practice" className="scroll-mt-20 bg-secondary/40">
         <div className="mx-auto w-full max-w-3xl px-5 py-14">
           <PartFilter selectedPart={selectedPart} onSelect={setSelectedPart} />
           {activeQuestions ? (
@@ -418,38 +469,35 @@ function PracticeSession({
         best score is saved on this device.
       </p>
 
-      <div className="sticky top-[4rem] z-10 mt-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Your session
-            </div>
-            <div className="mt-0.5 font-display text-2xl font-semibold">
-              {score} <span className="text-muted-foreground">/ {total} correct</span>
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Answered {answeredCount} of {total}
-              {best !== null && (
-                <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary">
-                  <Trophy className="h-3 w-3" /> Best {best}/{total}
-                </span>
-              )}
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={reset}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary"
-          >
-            <RotateCcw className="h-4 w-4" /> Reset
-          </button>
+      <div className="sticky top-[4rem] z-10 mt-6 flex items-center gap-3 rounded-full border border-border bg-card/95 py-2 pl-4 pr-2 shadow-soft backdrop-blur">
+        <div className="flex shrink-0 items-baseline gap-1.5">
+          <span className="hidden text-xs font-semibold uppercase tracking-wider text-primary sm:inline">
+            Session
+          </span>
+          <span className="font-display text-lg font-semibold leading-none">
+            {score}
+            <span className="text-muted-foreground">/{total}</span>
+          </span>
         </div>
-        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted">
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
           <div
             className="h-full rounded-full bg-primary transition-all"
             style={{ width: `${pct}%` }}
           />
         </div>
+        {best !== null && (
+          <span className="hidden shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary sm:inline-flex">
+            <Trophy className="h-3 w-3" /> Best {best}/{total}
+          </span>
+        )}
+        <button
+          type="button"
+          onClick={reset}
+          aria-label="Reset session"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary"
+        >
+          <RotateCcw className="h-4 w-4" /> <span className="hidden sm:inline">Reset</span>
+        </button>
       </div>
 
       <div className="mt-6 space-y-5">
@@ -548,14 +596,16 @@ function PartCard({
   name,
   count,
   what,
+  onPractice,
 }: {
   n: number;
   name: string;
   count: string;
   what: string;
+  onPractice: (n: number) => void;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5">
+    <div className="flex flex-col rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center gap-3">
         <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-hero font-display text-base font-semibold text-primary-foreground">
           {n}
@@ -568,6 +618,13 @@ function PartCard({
         </div>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{what}</p>
+      <button
+        type="button"
+        onClick={() => onPractice(n)}
+        className="mt-4 inline-flex items-center gap-1.5 self-start rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/20"
+      >
+        Practice Part {n} <ArrowRight className="h-4 w-4" />
+      </button>
     </div>
   );
 }
