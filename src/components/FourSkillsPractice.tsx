@@ -25,6 +25,8 @@ import { recordActivity, recordSession } from "@/lib/progress";
 import { audioManifest } from "@/data/audioManifest";
 import { audioKey } from "@/lib/audioSource";
 import type { SpeakingPrompt, WritingPrompt } from "@/data/fourSkillsPrompts";
+import { CRITERIA_LANGS, localizeCriteria } from "@/data/criteriaI18n";
+import { useCriteriaLang } from "@/lib/criteriaLang";
 
 function formatTime(totalSeconds: number) {
   const m = Math.floor(totalSeconds / 60);
@@ -241,24 +243,58 @@ function PromptAudio({ text }: { text: string }) {
   );
 }
 
+/** The shared control for the self-assessment language. Every instance reads
+ *  and writes the same device-wide preference (see `useCriteriaLang`), so the
+ *  copy in a task's intro and the copies on its checklists always agree.
+ *  `label` lets the intro spell the purpose out ("Self-assessment language")
+ *  while the checklists use the terse in-card variant. */
+function CriteriaLangSelect({ label = "Criteria language" }: { label?: string }) {
+  const [lang, setLang] = useCriteriaLang();
+  return (
+    <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
+      <span className="sr-only sm:not-sr-only">{label}</span>
+      <select
+        value={lang}
+        onChange={(e) => setLang(e.target.value as (typeof CRITERIA_LANGS)[number]["code"])}
+        className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition hover:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/40"
+      >
+        {CRITERIA_LANGS.map((l) => (
+          <option key={l.code} value={l.code}>
+            {l.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 /** The criteria checklist, as tickable items that can be saved to progress
  *  history. This is explicitly self-assessment — nothing here is machine
  *  marked — so the saved entry is kept in its own scope and never folded into
  *  the objectively-scored Listening & Reading accuracy figures. */
 function Checklist({
+  id,
   items,
   title,
   scope,
 }: {
+  id: string;
   items: string[];
   title: string;
   scope: "speaking" | "writing";
 }) {
-  const [ticked, setTicked] = useState<string[]>([]);
+  // Track ticks by index, not by text: the same criterion keeps its state when
+  // the learner switches language mid-review (translations align by index).
+  const [ticked, setTicked] = useState<number[]>([]);
   const [saved, setSaved] = useState(false);
+  const [lang] = useCriteriaLang();
 
-  const toggle = (item: string) =>
-    setTicked((prev) => (prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]));
+  const localized = localizeCriteria(id, items, lang);
+
+  const toggle = (index: number) =>
+    setTicked((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+    );
 
   const save = () => {
     recordSession({ source: "four-skills", scope, correct: ticked.length, total: items.length });
@@ -267,15 +303,18 @@ function Checklist({
 
   return (
     <div className="mt-6 rounded-2xl border border-border bg-card p-5">
-      <h4 className="flex items-center gap-2 text-sm font-semibold">
-        <CheckCircle2 className="h-4 w-4 text-primary" />
-        {title}
-      </h4>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="flex items-center gap-2 text-sm font-semibold">
+          <CheckCircle2 className="h-4 w-4 text-primary" />
+          {title}
+        </h4>
+        <CriteriaLangSelect />
+      </div>
       <ul className="mt-3 space-y-1">
-        {items.map((item) => {
-          const checked = ticked.includes(item);
+        {localized.map((item, index) => {
+          const checked = ticked.includes(index);
           return (
-            <li key={item}>
+            <li key={index}>
               <label
                 className={cn(
                   "flex cursor-pointer gap-3 rounded-lg p-2 text-sm transition",
@@ -287,7 +326,7 @@ function Checklist({
                   type="checkbox"
                   checked={checked}
                   disabled={saved}
-                  onChange={() => toggle(item)}
+                  onChange={() => toggle(index)}
                   className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-primary)]"
                 />
                 {item}
@@ -461,7 +500,10 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
 
   return (
     <div>
-      <TaskPicker groups={speakingGroups} activeRange={taskRange} onSelect={selectTask} />
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <TaskPicker groups={speakingGroups} activeRange={taskRange} onSelect={selectTask} />
+        <CriteriaLangSelect label="Self-assessment language" />
+      </div>
       <PromptRotator
         index={group.items.indexOf(prompt)}
         total={group.items.length}
@@ -597,6 +639,7 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
       {phase === "done" && (
         <Checklist
           key={prompt.id}
+          id={prompt.id}
           title="Score yourself against the criteria"
           items={prompt.checklist}
           scope="speaking"
@@ -617,7 +660,10 @@ export function WritingTrainer({ prompts }: { prompts: WritingPrompt[] }) {
 
   return (
     <div>
-      <TaskPicker groups={writingGroups} activeRange={taskRange} onSelect={selectTask} />
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <TaskPicker groups={writingGroups} activeRange={taskRange} onSelect={selectTask} />
+        <CriteriaLangSelect label="Self-assessment language" />
+      </div>
       {/* A different component per timing model, not a branch inside one —
        *  the pooled and per-prompt trainers manage entirely different state
        *  shapes (one shared clock vs. one clock per prompt), and switching
@@ -819,6 +865,7 @@ function SingleWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
         <>
           <Checklist
             key={prompt.id}
+            id={prompt.id}
             title="Check your response against the criteria"
             items={prompt.checklist}
             scope="writing"
@@ -1104,6 +1151,7 @@ function PooledWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
               </p>
               <Checklist
                 key={item.id}
+                id={item.id}
                 title="Check your sentence against the criteria"
                 items={item.checklist}
                 scope="writing"
