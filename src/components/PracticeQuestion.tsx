@@ -124,15 +124,17 @@ function splitPartPrompt(prompt: string): { part: number | null; instruction: st
   return { part, instruction };
 }
 
-/** A small chip naming the TOEIC part an item belongs to — e.g. "Part 5 ·
- *  Incomplete Sentences" — so item types are scannable at a glance, especially
- *  in the interleaved "All parts" practice view. */
+/** A chip naming the TOEIC part an item belongs to — e.g. "Part 5 · Incomplete
+ *  Sentences" — so item types are scannable at a glance, especially in the
+ *  interleaved "All parts" practice view. A filled primary pill (not a muted
+ *  chip) so the part is unmistakable: "Part N" reads boldest, the type name
+ *  sits alongside it slightly lighter. */
 function PartBadge({ part }: { part: number }) {
   const name = PART_TYPE_NAMES[part];
   return (
-    <span className="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[11px] font-semibold text-secondary-foreground">
-      Part {part}
-      {name ? ` · ${name}` : ""}
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-soft">
+      <span className="font-bold uppercase tracking-wide">Part {part}</span>
+      {name && <span className="text-primary-foreground/90">{name}</span>}
     </span>
   );
 }
