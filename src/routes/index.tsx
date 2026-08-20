@@ -12,6 +12,7 @@ import {
   Mic,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { FrontIntro } from "@/components/FrontIntro";
 import heroImg from "@/assets/hero-study.jpg";
 import heroImgWebp from "@/assets/hero-study.webp";
 import { VOCAB_COUNT } from "@/data/vocabulary";
@@ -111,6 +112,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Short, native-language orientation for first-time visitors */}
+      <FrontIntro />
 
       {/* Track */}
       <section className="mx-auto w-full max-w-6xl px-5 py-16">

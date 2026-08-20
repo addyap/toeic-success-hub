@@ -2,10 +2,13 @@
  *  speakers, covering the largest TOEIC test-taker markets. Keyed by the
  *  exact English `term` string from vocabulary.ts, not by index — so
  *  additions/reordering in vocabulary.ts never silently misalign glosses. */
-export type GlossLang = "ko" | "ja" | "vi" | "fr" | "pt" | "es" | "ru" | "ar";
+export type GlossLang = "ko" | "ja" | "vi" | "fr" | "pt" | "es";
 
-/** Right-to-left languages, so the UI can apply `dir="rtl"` where needed. */
-export const RTL_LANGS: ReadonlySet<GlossLang> = new Set(["ar"]);
+/** Right-to-left languages, so the UI can apply `dir="rtl"` where needed.
+ *  Currently none of the supported gloss languages are RTL; kept as an empty
+ *  set so the vocabulary page's `dir` logic keeps working if an RTL language
+ *  is added back later. */
+export const RTL_LANGS: ReadonlySet<GlossLang> = new Set<GlossLang>();
 
 export const GLOSS_LANGUAGES: { id: GlossLang; label: string; nativeLabel: string }[] = [
   { id: "ko", label: "Korean", nativeLabel: "한국어" },
@@ -14,8 +17,6 @@ export const GLOSS_LANGUAGES: { id: GlossLang; label: string; nativeLabel: strin
   { id: "fr", label: "French", nativeLabel: "Français" },
   { id: "pt", label: "Portuguese", nativeLabel: "Português" },
   { id: "es", label: "Spanish", nativeLabel: "Español" },
-  { id: "ru", label: "Russian", nativeLabel: "Русский" },
-  { id: "ar", label: "Arabic", nativeLabel: "العربية" },
 ];
 
 export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>>> = {
@@ -26,8 +27,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "déléguer",
     pt: "delegar",
     es: "delegar",
-    ru: "делегировать",
-    ar: "يفوض",
   },
   stakeholder: {
     ko: "이해관계자",
@@ -36,8 +35,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "partie prenante",
     pt: "parte interessada",
     es: "parte interesada",
-    ru: "заинтересованная сторона",
-    ar: "صاحب مصلحة",
   },
   milestone: {
     ko: "이정표",
@@ -46,8 +43,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "jalon",
     pt: "marco (etapa importante)",
     es: "hito",
-    ru: "веха (ключевой этап проекта)",
-    ar: "مرحلة رئيسية",
   },
   appraisal: {
     ko: "인사고과",
@@ -56,8 +51,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "évaluation de performance",
     pt: "avaliação de desempenho",
     es: "evaluación de desempeño",
-    ru: "аттестация сотрудника",
-    ar: "تقييم الأداء",
   },
   onboarding: {
     ko: "신입사원 적응 교육",
@@ -66,8 +59,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "intégration",
     pt: "integração de novos funcionários",
     es: "proceso de incorporación",
-    ru: "онбординг (адаптация нового сотрудника)",
-    ar: "تهيئة الموظفين الجدد",
   },
   oversee: {
     ko: "총괄 감독하다",
@@ -76,8 +67,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "superviser",
     pt: "supervisionar",
     es: "supervisar",
-    ru: "курировать",
-    ar: "يشرف على",
   },
   headcount: {
     ko: "인원수",
@@ -86,8 +75,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "effectif",
     pt: "quadro de funcionários",
     es: "plantilla",
-    ru: "численность персонала",
-    ar: "عدد الموظفين",
   },
   agenda: {
     ko: "회의 안건",
@@ -96,8 +83,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "ordre du jour",
     pt: "pauta",
     es: "orden del día",
-    ru: "повестка дня",
-    ar: "جدول الأعمال",
   },
   itinerary: {
     ko: "여행 일정",
@@ -106,8 +91,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "itinéraire",
     pt: "itinerário",
     es: "itinerario",
-    ru: "маршрут поездки",
-    ar: "خط سير الرحلة",
   },
   layover: {
     ko: "경유",
@@ -116,8 +99,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "escale",
     pt: "escala",
     es: "escala",
-    ru: "пересадка",
-    ar: "توقف بين رحلتين",
   },
   reimbursement: {
     ko: "경비 환급",
@@ -126,8 +107,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "remboursement",
     pt: "reembolso",
     es: "reembolso",
-    ru: "возмещение расходов",
-    ar: "استرداد المصاريف",
   },
   accommodation: {
     ko: "숙박",
@@ -136,8 +115,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "hébergement",
     pt: "hospedagem",
     es: "alojamiento",
-    ru: "проживание",
-    ar: "مكان الإقامة",
   },
   "boarding pass": {
     ko: "탑승권",
@@ -146,8 +123,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "carte d'embarquement",
     pt: "cartão de embarque",
     es: "tarjeta de embarque",
-    ru: "посадочный талон",
-    ar: "بطاقة صعود الطائرة",
   },
   voucher: {
     ko: "바우처",
@@ -156,8 +131,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "bon d'échange",
     pt: "voucher (vale)",
     es: "vale",
-    ru: "ваучер",
-    ar: "قسيمة",
   },
   "baggage allowance": {
     ko: "수하물 허용량",
@@ -166,8 +139,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "franchise de bagages",
     pt: "franquia de bagagem",
     es: "franquicia de equipaje",
-    ru: "норма провоза багажа",
-    ar: "الحد المسموح به للأمتعة",
   },
   shuttle: {
     ko: "셔틀버스",
@@ -176,8 +147,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "navette",
     pt: "van de transporte (shuttle)",
     es: "autobús lanzadera",
-    ru: "шаттл",
-    ar: "حافلة مكوكية",
   },
   invoice: {
     ko: "청구서",
@@ -186,8 +155,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "facture",
     pt: "fatura",
     es: "factura",
-    ru: "инвойс (счёт на оплату)",
-    ar: "فاتورة",
   },
   revenue: {
     ko: "매출액",
@@ -196,8 +163,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chiffre d'affaires",
     pt: "receita",
     es: "ingresos",
-    ru: "выручка",
-    ar: "الإيرادات",
   },
   expenditure: {
     ko: "지출",
@@ -206,8 +171,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dépenses",
     pt: "despesa",
     es: "gasto",
-    ru: "расходы",
-    ar: "النفقات",
   },
   forecast: {
     ko: "예측치",
@@ -216,8 +179,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "prévision",
     pt: "previsão",
     es: "pronóstico",
-    ru: "прогноз",
-    ar: "توقع",
   },
   audit: {
     ko: "감사",
@@ -226,8 +187,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "audit",
     pt: "auditoria",
     es: "auditoría",
-    ru: "аудит",
-    ar: "تدقيق",
   },
   reconcile: {
     ko: "대조하다",
@@ -236,8 +195,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "rapprocher les comptes",
     pt: "conciliar (contas)",
     es: "conciliar",
-    ru: "сверять счета",
-    ar: "يطابق الحسابات",
   },
   overhead: {
     ko: "간접비",
@@ -246,8 +203,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "frais généraux",
     pt: "despesas gerais",
     es: "gastos generales",
-    ru: "накладные расходы",
-    ar: "المصاريف العامة",
   },
   fiscal: {
     ko: "회계의",
@@ -256,8 +211,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "fiscal",
     pt: "fiscal",
     es: "fiscal",
-    ru: "финансовый (фискальный)",
-    ar: "مالي",
   },
   troubleshoot: {
     ko: "문제를 해결하다",
@@ -266,8 +219,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dépanner",
     pt: "solucionar problemas",
     es: "solucionar problemas",
-    ru: "устранять неполадки",
-    ar: "يستكشف الأعطال ويصلحها",
   },
   downtime: {
     ko: "가동 중단 시간",
@@ -276,8 +227,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "temps d'arrêt",
     pt: "tempo de inatividade",
     es: "tiempo de inactividad",
-    ru: "простой (время неработы системы)",
-    ar: "فترة التعطل",
   },
   deploy: {
     ko: "배포하다",
@@ -286,8 +235,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "déployer",
     pt: "implantar",
     es: "desplegar",
-    ru: "развернуть (внедрить систему)",
-    ar: "ينشر",
   },
   bandwidth: {
     ko: "대역폭",
@@ -296,8 +243,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "bande passante",
     pt: "largura de banda",
     es: "ancho de banda",
-    ru: "пропускная способность канала",
-    ar: "عرض النطاق الترددي",
   },
   configuration: {
     ko: "환경설정",
@@ -306,8 +251,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "configuration",
     pt: "configuração",
     es: "configuración",
-    ru: "конфигурация",
-    ar: "الإعدادات",
   },
   backup: {
     ko: "백업",
@@ -316,8 +259,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "sauvegarde",
     pt: "cópia de segurança (backup)",
     es: "copia de seguridad",
-    ru: "резервная копия",
-    ar: "نسخة احتياطية",
   },
   latency: {
     ko: "지연 시간",
@@ -326,8 +267,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "latence",
     pt: "latência",
     es: "latencia",
-    ru: "задержка",
-    ar: "زمن الاستجابة",
   },
   specifications: {
     ko: "사양",
@@ -336,8 +275,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "spécifications techniques",
     pt: "especificações",
     es: "especificaciones",
-    ru: "технические характеристики",
-    ar: "المواصفات",
   },
   deadline: {
     ko: "마감일",
@@ -346,8 +283,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "date limite",
     pt: "prazo",
     es: "fecha límite",
-    ru: "дедлайн (крайний срок)",
-    ar: "الموعد النهائي",
   },
   mentor: {
     ko: "멘토",
@@ -356,8 +291,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mentor",
     pt: "mentorar (orientar)",
     es: "mentor",
-    ru: "наставник",
-    ar: "موجه",
   },
   workflow: {
     ko: "업무 흐름",
@@ -366,8 +299,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "flux de travail",
     pt: "fluxo de trabalho",
     es: "flujo de trabajo",
-    ru: "рабочий процесс",
-    ar: "سير العمل",
   },
   quota: {
     ko: "할당량",
@@ -376,8 +307,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "quota",
     pt: "cota (meta)",
     es: "cuota",
-    ru: "квота (норма)",
-    ar: "حصة محددة",
   },
   incentive: {
     ko: "인센티브",
@@ -386,8 +315,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "prime d'incitation",
     pt: "incentivo",
     es: "incentivo",
-    ru: "стимул (поощрение)",
-    ar: "حافز",
   },
   restructure: {
     ko: "구조조정하다",
@@ -396,8 +323,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "restructurer",
     pt: "reestruturar",
     es: "reestructurar",
-    ru: "реструктурировать",
-    ar: "يعيد الهيكلة",
   },
   subordinate: {
     ko: "부하직원",
@@ -406,8 +331,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "subordonné",
     pt: "subordinado",
     es: "subordinado",
-    ru: "подчинённый",
-    ar: "مرؤوس",
   },
   consensus: {
     ko: "합의",
@@ -416,8 +339,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "consensus",
     pt: "consenso",
     es: "consenso",
-    ru: "консенсус",
-    ar: "إجماع",
   },
   accountable: {
     ko: "책임이 있는",
@@ -426,8 +347,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "responsable devant rendre des comptes",
     pt: "responsável (que presta contas)",
     es: "responsable",
-    ru: "ответственный (подотчётный)",
-    ar: "خاضع للمساءلة",
   },
   liaise: {
     ko: "연락을 취하다",
@@ -436,8 +355,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "assurer la liaison",
     pt: "manter contato (fazer a interface)",
     es: "servir de enlace",
-    ru: "поддерживать связь и взаимодействовать",
-    ar: "ينسق ويتواصل",
   },
   prioritize: {
     ko: "우선순위를 정하다",
@@ -446,8 +363,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "hiérarchiser les priorités",
     pt: "priorizar",
     es: "priorizar",
-    ru: "расставлять приоритеты",
-    ar: "يعطي الأولوية",
   },
   turnover: {
     ko: "이직률",
@@ -456,8 +371,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "taux de rotation du personnel",
     pt: "rotatividade de funcionários",
     es: "rotación de personal",
-    ru: "текучесть кадров",
-    ar: "معدل دوران الموظفين",
   },
   supervise: {
     ko: "감독하다",
@@ -466,8 +379,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "superviser",
     pt: "supervisionar",
     es: "supervisar",
-    ru: "контролировать (руководить работой)",
-    ar: "يشرف على",
   },
   mandate: {
     ko: "위임받은 권한",
@@ -476,8 +387,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mandat",
     pt: "mandato",
     es: "mandato",
-    ru: "полномочия",
-    ar: "تفويض",
   },
   competency: {
     ko: "역량",
@@ -486,8 +395,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "compétence",
     pt: "competência",
     es: "competencia",
-    ru: "компетенция",
-    ar: "كفاءة",
   },
   confirmation: {
     ko: "예약 확인",
@@ -496,8 +403,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "confirmation",
     pt: "confirmação",
     es: "confirmación",
-    ru: "подтверждение",
-    ar: "تأكيد الحجز",
   },
   amenities: {
     ko: "편의시설",
@@ -506,8 +411,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "prestations",
     pt: "comodidades",
     es: "comodidades",
-    ru: "удобства",
-    ar: "المرافق",
   },
   departure: {
     ko: "출발",
@@ -516,8 +419,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "départ",
     pt: "partida",
     es: "salida",
-    ru: "отправление (вылет)",
-    ar: "مغادرة",
   },
   "check-in": {
     ko: "체크인",
@@ -526,8 +427,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "enregistrement",
     pt: "check-in",
     es: "registro de entrada",
-    ru: "регистрация (заезд)",
-    ar: "تسجيل الوصول",
   },
   concierge: {
     ko: "컨시어지",
@@ -536,8 +435,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "concierge",
     pt: "concierge",
     es: "conserje",
-    ru: "консьерж",
-    ar: "الكونسيرج",
   },
   excursion: {
     ko: "짧은 여행",
@@ -546,8 +443,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "excursion",
     pt: "excursão",
     es: "excursión",
-    ru: "экскурсия",
-    ar: "جولة سياحية قصيرة",
   },
   surcharge: {
     ko: "추가 요금",
@@ -556,8 +451,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "supplément",
     pt: "sobretaxa",
     es: "recargo",
-    ru: "доплата",
-    ar: "رسم إضافي",
   },
   vacancy: {
     ko: "빈 객실",
@@ -566,8 +459,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chambre disponible",
     pt: "vaga (quarto disponível)",
     es: "vacante",
-    ru: "свободный номер",
-    ar: "شاغر",
   },
   detour: {
     ko: "우회로",
@@ -576,8 +467,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "détour",
     pt: "desvio",
     es: "desvío",
-    ru: "объезд",
-    ar: "طريق تحويلي",
   },
   terminal: {
     ko: "터미널",
@@ -586,8 +475,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "terminal",
     pt: "terminal",
     es: "terminal",
-    ru: "терминал",
-    ar: "صالة المطار",
   },
   customs: {
     ko: "세관",
@@ -596,8 +483,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "douane",
     pt: "alfândega",
     es: "aduana",
-    ru: "таможня",
-    ar: "الجمارك",
   },
   fare: {
     ko: "요금",
@@ -606,8 +491,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "tarif",
     pt: "tarifa (passagem)",
     es: "tarifa",
-    ru: "тариф (стоимость проезда)",
-    ar: "أجرة السفر",
   },
   lodging: {
     ko: "숙소",
@@ -616,8 +499,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "hébergement",
     pt: "hospedagem",
     es: "alojamiento",
-    ru: "жильё (проживание)",
-    ar: "مسكن مؤقت",
   },
   depart: {
     ko: "출발하다",
@@ -626,8 +507,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "partir",
     pt: "partir",
     es: "salir",
-    ru: "отправляться",
-    ar: "يغادر",
   },
   complimentary: {
     ko: "무료의",
@@ -636,8 +515,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "offert",
     pt: "cortesia (gratuito)",
     es: "gratuito",
-    ru: "бесплатный (предоставляемый в подарок)",
-    ar: "مجاني",
   },
   asset: {
     ko: "자산",
@@ -646,8 +523,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "actif",
     pt: "ativo",
     es: "activo",
-    ru: "актив",
-    ar: "أصل",
   },
   liability: {
     ko: "부채",
@@ -656,8 +531,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "passif",
     pt: "passivo",
     es: "pasivo",
-    ru: "обязательство",
-    ar: "التزام مالي",
   },
   budget: {
     ko: "예산",
@@ -666,8 +539,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "budget",
     pt: "orçamento",
     es: "presupuesto",
-    ru: "бюджет",
-    ar: "ميزانية",
   },
   "profit margin": {
     ko: "이익률",
@@ -676,8 +547,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "marge bénéficiaire",
     pt: "margem de lucro",
     es: "margen de beneficio",
-    ru: "маржа прибыли",
-    ar: "هامش الربح",
   },
   quarter: {
     ko: "분기",
@@ -686,8 +555,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "trimestre",
     pt: "trimestre",
     es: "trimestre",
-    ru: "квартал",
-    ar: "الربع السنوي",
   },
   dividend: {
     ko: "배당금",
@@ -696,8 +563,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dividende",
     pt: "dividendo",
     es: "dividendo",
-    ru: "дивиденд",
-    ar: "توزيعات الأرباح",
   },
   depreciation: {
     ko: "감가상각",
@@ -706,8 +571,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "amortissement",
     pt: "depreciação",
     es: "depreciación",
-    ru: "амортизация",
-    ar: "إهلاك",
   },
   installment: {
     ko: "할부금",
@@ -716,8 +579,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "versement échelonné",
     pt: "parcela",
     es: "plazo",
-    ru: "взнос (платёж в рассрочку)",
-    ar: "قسط",
   },
   solvent: {
     ko: "지급능력이 있는",
@@ -726,8 +587,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "solvable",
     pt: "solvente",
     es: "solvente",
-    ru: "платёжеспособный",
-    ar: "قادر على سداد ديونه",
   },
   remittance: {
     ko: "송금",
@@ -736,8 +595,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "versement",
     pt: "remessa (de pagamento)",
     es: "remesa",
-    ru: "денежный перевод",
-    ar: "حوالة مالية",
   },
   arrears: {
     ko: "연체금",
@@ -746,8 +603,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "arriérés",
     pt: "atraso no pagamento",
     es: "atrasos",
-    ru: "просроченная задолженность",
-    ar: "متأخرات مستحقة",
   },
   liquidity: {
     ko: "유동성",
@@ -756,8 +611,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "liquidités",
     pt: "liquidez",
     es: "liquidez",
-    ru: "ликвидность",
-    ar: "سيولة",
   },
   surplus: {
     ko: "흑자",
@@ -766,8 +619,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "excédent",
     pt: "superávit",
     es: "superávit",
-    ru: "профицит",
-    ar: "فائض",
   },
   valuation: {
     ko: "가치평가",
@@ -776,8 +627,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "valorisation",
     pt: "avaliação (de valor)",
     es: "valoración",
-    ru: "оценка стоимости",
-    ar: "تقييم القيمة",
   },
   withholding: {
     ko: "원천징수",
@@ -786,8 +635,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "retenue à la source",
     pt: "retenção na fonte",
     es: "retención fiscal",
-    ru: "удержание (например, налога)",
-    ar: "استقطاع ضريبي",
   },
   interface: {
     ko: "인터페이스",
@@ -796,8 +643,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "interface",
     pt: "interface",
     es: "interfaz",
-    ru: "интерфейс",
-    ar: "واجهة",
   },
   encryption: {
     ko: "암호화",
@@ -806,8 +651,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chiffrement",
     pt: "criptografia",
     es: "cifrado",
-    ru: "шифрование",
-    ar: "تشفير",
   },
   server: {
     ko: "서버",
@@ -816,8 +659,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "serveur",
     pt: "servidor",
     es: "servidor",
-    ru: "сервер",
-    ar: "خادم",
   },
   firmware: {
     ko: "펌웨어",
@@ -826,8 +667,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "micrologiciel",
     pt: "firmware",
     es: "firmware",
-    ru: "прошивка",
-    ar: "البرمجيات الثابتة",
   },
   compatibility: {
     ko: "호환성",
@@ -836,8 +675,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "compatibilité",
     pt: "compatibilidade",
     es: "compatibilidad",
-    ru: "совместимость",
-    ar: "التوافق",
   },
   integrate: {
     ko: "통합하다",
@@ -846,8 +683,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "intégrer",
     pt: "integrar",
     es: "integrar",
-    ru: "интегрировать",
-    ar: "يدمج",
   },
   malfunction: {
     ko: "오작동",
@@ -856,8 +691,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dysfonctionnement",
     pt: "mau funcionamento",
     es: "avería",
-    ru: "неисправность (сбой)",
-    ar: "عطل",
   },
   upgrade: {
     ko: "업그레이드",
@@ -866,8 +699,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mise à niveau",
     pt: "upgrade (atualização)",
     es: "actualización",
-    ru: "обновление (модернизация)",
-    ar: "ترقية",
   },
   database: {
     ko: "데이터베이스",
@@ -876,8 +707,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "base de données",
     pt: "banco de dados",
     es: "base de datos",
-    ru: "база данных",
-    ar: "قاعدة بيانات",
   },
   protocol: {
     ko: "프로토콜",
@@ -886,8 +715,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "protocole",
     pt: "protocolo",
     es: "protocolo",
-    ru: "протокол",
-    ar: "بروتوكول",
   },
   patch: {
     ko: "패치",
@@ -896,8 +723,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "correctif",
     pt: "patch (correção)",
     es: "parche",
-    ru: "патч (исправление)",
-    ar: "تصحيح برمجي",
   },
   scalable: {
     ko: "확장 가능한",
@@ -906,8 +731,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "évolutif",
     pt: "escalável",
     es: "escalable",
-    ru: "масштабируемый",
-    ar: "قابل للتوسع",
   },
   diagnostics: {
     ko: "진단",
@@ -916,8 +739,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "diagnostic",
     pt: "diagnóstico",
     es: "diagnóstico",
-    ru: "диагностика",
-    ar: "تشخيص الأعطال",
   },
   redundancy: {
     ko: "이중화",
@@ -926,8 +747,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "redondance",
     pt: "redundância",
     es: "redundancia",
-    ru: "резервирование (избыточность)",
-    ar: "نظام احتياطي",
   },
   authentication: {
     ko: "인증",
@@ -936,8 +755,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "authentification",
     pt: "autenticação",
     es: "autenticación",
-    ru: "аутентификация",
-    ar: "المصادقة",
   },
   hierarchy: {
     ko: "위계질서",
@@ -946,8 +763,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "hiérarchie",
     pt: "hierarquia",
     es: "jerarquía",
-    ru: "иерархия",
-    ar: "التسلسل الهرمي",
   },
   compliance: {
     ko: "준수",
@@ -956,8 +771,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "conformité",
     pt: "conformidade",
     es: "cumplimiento normativo",
-    ru: "соблюдение требований",
-    ar: "الامتثال",
   },
   initiative: {
     ko: "이니셔티브",
@@ -966,8 +779,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "initiative",
     pt: "iniciativa",
     es: "iniciativa",
-    ru: "инициатива",
-    ar: "مبادرة",
   },
   feedback: {
     ko: "피드백",
@@ -976,8 +787,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "retour d'information",
     pt: "feedback (retorno)",
     es: "retroalimentación",
-    ru: "обратная связь",
-    ar: "تغذية راجعة",
   },
   escalate: {
     ko: "상부에 보고하다",
@@ -986,8 +795,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire remonter",
     pt: "escalar (levar a uma instância superior)",
     es: "escalar",
-    ru: "эскалировать (передать на более высокий уровень)",
-    ar: "يصعّد المشكلة",
   },
   streamline: {
     ko: "간소화하다",
@@ -996,8 +803,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "rationaliser",
     pt: "simplificar (agilizar processo)",
     es: "agilizar",
-    ru: "оптимизировать процесс",
-    ar: "يبسّط العملية",
   },
   proactive: {
     ko: "사전 대응적인",
@@ -1006,8 +811,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "proactif",
     pt: "proativo",
     es: "proactivo",
-    ru: "проактивный",
-    ar: "استباقي",
   },
   benchmark: {
     ko: "벤치마크",
@@ -1016,8 +819,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "référence",
     pt: "referência (parâmetro de comparação)",
     es: "punto de referencia",
-    ru: "эталон для сравнения",
-    ar: "معيار مرجعي",
   },
   autonomy: {
     ko: "자율성",
@@ -1026,8 +827,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "autonomie",
     pt: "autonomia",
     es: "autonomía",
-    ru: "автономия (самостоятельность)",
-    ar: "استقلالية",
   },
   "conflict of interest": {
     ko: "이해상충",
@@ -1036,8 +835,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "conflit d'intérêts",
     pt: "conflito de interesses",
     es: "conflicto de intereses",
-    ru: "конфликт интересов",
-    ar: "تضارب المصالح",
   },
   micromanage: {
     ko: "사사건건 간섭하다",
@@ -1046,8 +843,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "microgérer",
     pt: "microgerenciar",
     es: "microgestionar",
-    ru: "заниматься микроменеджментом",
-    ar: "يفرط في الإدارة التفصيلية",
   },
   succession: {
     ko: "승계",
@@ -1056,8 +851,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "succession",
     pt: "sucessão",
     es: "sucesión",
-    ru: "преемственность",
-    ar: "التعاقب الوظيفي",
   },
   "task force": {
     ko: "태스크포스",
@@ -1066,8 +859,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "groupe de travail",
     pt: "força-tarefa",
     es: "grupo de trabajo",
-    ru: "рабочая группа",
-    ar: "فرقة عمل",
   },
   compromise: {
     ko: "타협하다",
@@ -1076,8 +867,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire un compromis",
     pt: "ceder (chegar a um meio-termo)",
     es: "llegar a un acuerdo mutuo",
-    ru: "идти на компромисс",
-    ar: "يتوصل إلى حل وسط",
   },
   veto: {
     ko: "거부권을 행사하다",
@@ -1086,8 +875,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "opposer son veto",
     pt: "vetar",
     es: "vetar",
-    ru: "накладывать вето",
-    ar: "يستخدم حق النقض",
   },
   "connecting flight": {
     ko: "연결편",
@@ -1096,8 +883,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "vol de correspondance",
     pt: "voo de conexão",
     es: "vuelo de conexión",
-    ru: "стыковочный рейс",
-    ar: "رحلة ربط",
   },
   "per diem": {
     ko: "출장 일당",
@@ -1106,8 +891,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "indemnité journalière",
     pt: "diária (ajuda de custo)",
     es: "dieta de viaje",
-    ru: "суточные",
-    ar: "بدل يومي",
   },
   "expense claim": {
     ko: "경비 청구",
@@ -1116,8 +899,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "note de frais",
     pt: "reembolso de despesas",
     es: "informe de gastos",
-    ru: "заявка на возмещение расходов",
-    ar: "طلب استرداد المصاريف",
   },
   "jet lag": {
     ko: "시차증",
@@ -1126,8 +907,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "décalage horaire",
     pt: "jet lag (fadiga de fuso horário)",
     es: "desfase horario",
-    ru: "джетлаг",
-    ar: "اضطراب فرق التوقيت",
   },
   "carry-on": {
     ko: "기내 휴대 수하물",
@@ -1136,8 +915,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "bagage à main",
     pt: "bagagem de mão",
     es: "equipaje de mano",
-    ru: "ручная кладь",
-    ar: "حقيبة يد",
   },
   "duty-free": {
     ko: "면세의",
@@ -1146,8 +923,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "hors taxes",
     pt: "livre de impostos (duty-free)",
     es: "libre de impuestos",
-    ru: "беспошлинный",
-    ar: "معفى من الرسوم الجمركية",
   },
   "non-refundable": {
     ko: "환불 불가한",
@@ -1156,8 +931,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "non remboursable",
     pt: "não reembolsável",
     es: "no reembolsable",
-    ru: "невозвратный",
-    ar: "غير قابل للاسترداد",
   },
   overbooked: {
     ko: "초과 예약된",
@@ -1166,8 +939,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "en surréservation",
     pt: "com overbooking (reservas excedentes)",
     es: "con sobreventa",
-    ru: "с овербукингом",
-    ar: "محجوز بأكثر من الطاقة الاستيعابية",
   },
   reroute: {
     ko: "경로를 변경하다",
@@ -1176,8 +947,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dérouter",
     pt: "redirecionar (mudar a rota)",
     es: "desviar",
-    ru: "перенаправлять (менять маршрут)",
-    ar: "يعيد توجيه المسار",
   },
   itemize: {
     ko: "항목별로 나열하다",
@@ -1186,8 +955,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "détailler poste par poste",
     pt: "detalhar item por item",
     es: "detallar",
-    ru: "детализировать по пунктам",
-    ar: "يفصل البنود",
   },
   reschedule: {
     ko: "일정을 변경하다",
@@ -1196,8 +963,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "replanifier",
     pt: "remarcar",
     es: "reprogramar",
-    ru: "перенести на другое время",
-    ar: "يعيد الجدولة",
   },
   "visa waiver": {
     ko: "비자 면제 제도",
@@ -1206,8 +971,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "dispense de visa",
     pt: "isenção de visto",
     es: "exención de visado",
-    ru: "безвизовый режим",
-    ar: "إعفاء من تأشيرة الدخول",
   },
   keynote: {
     ko: "기조연설",
@@ -1216,8 +979,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "discours d'ouverture",
     pt: "palestra principal",
     es: "ponencia principal",
-    ru: "основной доклад конференции",
-    ar: "الكلمة الرئيسية",
   },
   "registration fee": {
     ko: "등록비",
@@ -1226,8 +987,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "frais d'inscription",
     pt: "taxa de inscrição",
     es: "cuota de inscripción",
-    ru: "регистрационный взнос",
-    ar: "رسوم التسجيل",
   },
   "round-trip": {
     ko: "왕복의",
@@ -1236,8 +995,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "aller-retour",
     pt: "ida e volta",
     es: "de ida y vuelta",
-    ru: "туда и обратно",
-    ar: "ذهاب وإياب",
   },
   collateral: {
     ko: "담보",
@@ -1246,8 +1003,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "garantie",
     pt: "garantia (colateral)",
     es: "garantía",
-    ru: "залог",
-    ar: "ضمان",
   },
   amortize: {
     ko: "상각하다",
@@ -1256,8 +1011,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "amortir",
     pt: "amortizar",
     es: "amortizar",
-    ru: "амортизировать",
-    ar: "يطفئ الدين تدريجياً",
   },
   equity: {
     ko: "지분",
@@ -1266,8 +1019,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "capitaux propres",
     pt: "participação acionária",
     es: "participación accionaria",
-    ru: "акционерный капитал",
-    ar: "حقوق ملكية",
   },
   default: {
     ko: "채무불이행하다",
@@ -1276,8 +1027,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire défaut",
     pt: "inadimplir (não pagar a dívida)",
     es: "incurrir en impago",
-    ru: "объявить дефолт",
-    ar: "يتخلف عن السداد",
   },
   underwrite: {
     ko: "인수하다",
@@ -1286,8 +1035,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "souscrire une émission",
     pt: "subscrever (garantir financeiramente)",
     es: "suscribir",
-    ru: "гарантировать размещение (андеррайтинг)",
-    ar: "يكتتب بضمان",
   },
   portfolio: {
     ko: "포트폴리오",
@@ -1296,8 +1043,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "portefeuille",
     pt: "carteira (de investimentos)",
     es: "cartera de inversiones",
-    ru: "инвестиционный портфель",
-    ar: "محفظة استثمارية",
   },
   hedge: {
     ko: "헤지하다",
@@ -1306,8 +1051,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "se couvrir",
     pt: "proteger-se (fazer hedge)",
     es: "cubrirse",
-    ru: "хеджировать",
-    ar: "يتحوط ضد المخاطر",
   },
   leveraged: {
     ko: "차입 비율이 높은",
@@ -1316,8 +1059,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "à effet de levier",
     pt: "alavancado",
     es: "apalancado",
-    ru: "с высокой долговой нагрузкой",
-    ar: "ذو رافعة مالية عالية",
   },
   "capital gain": {
     ko: "양도차익",
@@ -1326,8 +1067,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "plus-value",
     pt: "ganho de capital",
     es: "ganancia de capital",
-    ru: "прирост капитала",
-    ar: "مكاسب رأسمالية",
   },
   accrue: {
     ko: "누적되다",
@@ -1336,8 +1075,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "courir",
     pt: "acumular (juros)",
     es: "devengarse",
-    ru: "накапливаться (начисляться)",
-    ar: "يتراكم",
   },
   "write-off": {
     ko: "손실 처리",
@@ -1346,8 +1083,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "passation en pertes",
     pt: "baixa contábil",
     es: "cancelación contable",
-    ru: "списание",
-    ar: "شطب ديون",
   },
   appreciation: {
     ko: "가치 상승",
@@ -1356,8 +1091,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "plus-value",
     pt: "valorização",
     es: "apreciación",
-    ru: "рост стоимости актива",
-    ar: "ارتفاع القيمة",
   },
   escrow: {
     ko: "에스크로",
@@ -1366,8 +1099,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "séquestre",
     pt: "conta-garantia (escrow)",
     es: "depósito en garantía",
-    ru: "счёт эскроу",
-    ar: "حساب ضمان",
   },
   outstanding: {
     ko: "미지급의",
@@ -1376,8 +1107,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "impayé",
     pt: "pendente (em aberto)",
     es: "pendiente de pago",
-    ru: "непогашенный (неоплаченный)",
-    ar: "مستحق السداد",
   },
   yield: {
     ko: "수익률",
@@ -1386,8 +1115,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "rendement",
     pt: "rendimento",
     es: "rendimiento",
-    ru: "доходность",
-    ar: "العائد",
   },
   firewall: {
     ko: "방화벽",
@@ -1396,8 +1123,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "pare-feu",
     pt: "firewall",
     es: "cortafuegos",
-    ru: "файрвол (межсетевой экран)",
-    ar: "جدار الحماية",
   },
   algorithm: {
     ko: "알고리즘",
@@ -1406,8 +1131,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "algorithme",
     pt: "algoritmo",
     es: "algoritmo",
-    ru: "алгоритм",
-    ar: "خوارزمية",
   },
   cybersecurity: {
     ko: "사이버 보안",
@@ -1416,8 +1139,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "cybersécurité",
     pt: "cibersegurança",
     es: "ciberseguridad",
-    ru: "кибербезопасность",
-    ar: "الأمن السيبراني",
   },
   "cloud computing": {
     ko: "클라우드 컴퓨팅",
@@ -1426,8 +1147,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "informatique en nuage",
     pt: "computação em nuvem",
     es: "computación en la nube",
-    ru: "облачные вычисления",
-    ar: "الحوسبة السحابية",
   },
   "plug-in": {
     ko: "플러그인",
@@ -1436,8 +1155,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "module complémentaire",
     pt: "plugin (extensão)",
     es: "complemento",
-    ru: "плагин",
-    ar: "إضافة برمجية",
   },
   malware: {
     ko: "악성코드",
@@ -1446,8 +1163,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "logiciel malveillant",
     pt: "malware",
     es: "software malicioso",
-    ru: "вредоносное ПО",
-    ar: "برمجيات خبيثة",
   },
   debug: {
     ko: "디버그하다",
@@ -1456,8 +1171,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "déboguer",
     pt: "depurar",
     es: "depurar",
-    ru: "отлаживать",
-    ar: "يصحح الأخطاء البرمجية",
   },
   compress: {
     ko: "압축하다",
@@ -1466,8 +1179,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "compresser",
     pt: "compactar",
     es: "comprimir",
-    ru: "сжимать",
-    ar: "يضغط الملفات",
   },
   synchronize: {
     ko: "동기화하다",
@@ -1476,8 +1187,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "synchroniser",
     pt: "sincronizar",
     es: "sincronizar",
-    ru: "синхронизировать",
-    ar: "يزامن",
   },
   hardware: {
     ko: "하드웨어",
@@ -1486,8 +1195,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "matériel informatique",
     pt: "hardware",
     es: "hardware",
-    ru: "аппаратное обеспечение",
-    ar: "العتاد الصلب",
   },
   software: {
     ko: "소프트웨어",
@@ -1496,8 +1203,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "logiciel",
     pt: "software",
     es: "software",
-    ru: "программное обеспечение",
-    ar: "البرمجيات",
   },
   crash: {
     ko: "다운되다",
@@ -1506,8 +1211,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "planter",
     pt: "travar (falhar)",
     es: "bloquearse",
-    ru: "аварийно завершать работу",
-    ar: "يتعطل فجأة",
   },
   wireless: {
     ko: "무선의",
@@ -1516,8 +1219,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "sans fil",
     pt: "sem fio",
     es: "inalámbrico",
-    ru: "беспроводной",
-    ar: "لاسلكي",
   },
   proprietary: {
     ko: "독점적인",
@@ -1526,8 +1227,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "propriétaire",
     pt: "proprietário (de uso exclusivo)",
     es: "propietario",
-    ru: "проприетарный (собственной разработки)",
-    ar: "مملوك حصرياً",
   },
   throughput: {
     ko: "처리량",
@@ -1536,8 +1235,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "débit",
     pt: "taxa de transferência (vazão)",
     es: "capacidad de procesamiento",
-    ru: "производительность (скорость обработки данных)",
-    ar: "معدل الإنتاجية",
   },
   "target audience": {
     ko: "목표 고객층",
@@ -1546,8 +1243,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "public cible",
     pt: "público-alvo",
     es: "público objetivo",
-    ru: "целевая аудитория",
-    ar: "الجمهور المستهدف",
   },
   "brand awareness": {
     ko: "브랜드 인지도",
@@ -1556,8 +1251,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "notoriété de la marque",
     pt: "reconhecimento de marca",
     es: "reconocimiento de marca",
-    ru: "узнаваемость бренда",
-    ar: "الوعي بالعلامة التجارية",
   },
   endorse: {
     ko: "홍보하다",
@@ -1566,8 +1259,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "recommander une marque",
     pt: "endossar",
     es: "respaldar",
-    ru: "рекламировать (поддерживать бренд)",
-    ar: "يروّج علنًا لمنتج",
   },
   "market share": {
     ko: "시장 점유율",
@@ -1576,8 +1267,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "part de marché",
     pt: "participação de mercado",
     es: "cuota de mercado",
-    ru: "доля рынка",
-    ar: "الحصة السوقية",
   },
   markdown: {
     ko: "가격 인하",
@@ -1586,8 +1275,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "démarque",
     pt: "desconto (redução de preço)",
     es: "rebaja",
-    ru: "уценка",
-    ar: "تخفيض السعر",
   },
   clientele: {
     ko: "고객층",
@@ -1596,8 +1283,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "clientèle",
     pt: "clientela",
     es: "clientela",
-    ru: "клиентура",
-    ar: "قاعدة العملاء",
   },
   "loyalty program": {
     ko: "고객 보상 프로그램",
@@ -1606,8 +1291,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "programme de fidélité",
     pt: "programa de fidelidade",
     es: "programa de fidelización",
-    ru: "программа лояльности",
-    ar: "برنامج الولاء",
   },
   "cold call": {
     ko: "콜드콜하다",
@@ -1616,8 +1299,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "démarcher à froid",
     pt: "fazer uma ligação fria (prospecção)",
     es: "hacer una llamada en frío",
-    ru: "делать холодные звонки",
-    ar: "يجري اتصالاً تسويقياً مفاجئاً",
   },
   upsell: {
     ko: "업셀링하다",
@@ -1626,8 +1307,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire de la vente incitative",
     pt: "fazer upsell (vender algo superior)",
     es: "ofrecer una venta adicional",
-    ru: "предлагать более дорогой товар",
-    ar: "يقنع الزبون بشراء الأعلى سعرًا",
   },
   "niche market": {
     ko: "틈새시장",
@@ -1636,8 +1315,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "marché de niche",
     pt: "nicho de mercado",
     es: "nicho de mercado",
-    ru: "нишевый рынок",
-    ar: "سوق متخصصة",
   },
   promotional: {
     ko: "판촉의",
@@ -1646,8 +1323,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "promotionnel",
     pt: "promocional",
     es: "promocional",
-    ru: "рекламный (промо)",
-    ar: "ترويجي",
   },
   demographic: {
     ko: "인구통계 집단",
@@ -1656,8 +1331,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "segment démographique",
     pt: "grupo demográfico",
     es: "grupo demográfico",
-    ru: "демографическая группа",
-    ar: "الفئة السكانية المستهدفة",
   },
   "word of mouth": {
     ko: "입소문",
@@ -1666,8 +1339,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "bouche-à-oreille",
     pt: "boca a boca",
     es: "boca a boca",
-    ru: "сарафанное радио",
-    ar: "التسويق الشفهي",
   },
   "bulk order": {
     ko: "대량 주문",
@@ -1676,8 +1347,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "commande en gros",
     pt: "pedido em grande volume (atacado)",
     es: "pedido al por mayor",
-    ru: "оптовый заказ",
-    ar: "طلبية بالجملة",
   },
   wholesale: {
     ko: "도매의",
@@ -1686,8 +1355,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "de gros",
     pt: "por atacado",
     es: "al por mayor",
-    ru: "оптовый",
-    ar: "بالجملة",
   },
   campaign: {
     ko: "캠페인",
@@ -1696,8 +1363,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "campagne",
     pt: "campanha",
     es: "campaña",
-    ru: "рекламная кампания",
-    ar: "حملة تسويقية",
   },
   testimonial: {
     ko: "고객 후기",
@@ -1706,8 +1371,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "témoignage client",
     pt: "depoimento",
     es: "testimonio",
-    ru: "отзыв клиента",
-    ar: "شهادة عميل",
   },
   negotiate: {
     ko: "협상하다",
@@ -1716,8 +1379,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "négocier",
     pt: "negociar",
     es: "negociar",
-    ru: "вести переговоры",
-    ar: "يتفاوض",
   },
   lucrative: {
     ko: "수익성이 좋은",
@@ -1726,8 +1387,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "lucratif",
     pt: "lucrativo",
     es: "lucrativo",
-    ru: "прибыльный (выгодный)",
-    ar: "مربح جدًا",
   },
   slogan: {
     ko: "슬로건",
@@ -1736,8 +1395,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "slogan",
     pt: "slogan (lema publicitário)",
     es: "eslogan",
-    ru: "слоган",
-    ar: "شعار إعلاني",
   },
   candidate: {
     ko: "지원자",
@@ -1746,8 +1403,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "candidat",
     pt: "candidato",
     es: "candidato",
-    ru: "кандидат",
-    ar: "مرشح لوظيفة",
   },
   shortlist: {
     ko: "최종 후보 명단에 올리다",
@@ -1756,8 +1411,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "présélectionner",
     pt: "pré-selecionar",
     es: "preseleccionar",
-    ru: "включать в шорт-лист",
-    ar: "يدرج في القائمة المختصرة",
   },
   "background check": {
     ko: "신원조회",
@@ -1766,8 +1419,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "vérification des antécédents",
     pt: "verificação de antecedentes",
     es: "verificación de antecedentes",
-    ru: "проверка биографических данных",
-    ar: "فحص الخلفية",
   },
   "job posting": {
     ko: "채용 공고",
@@ -1776,8 +1427,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "offre d'emploi",
     pt: "vaga de emprego (anúncio)",
     es: "oferta de empleo",
-    ru: "объявление о вакансии",
-    ar: "إعلان وظيفي",
   },
   probationary: {
     ko: "수습의",
@@ -1786,8 +1435,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "d'essai",
     pt: "probatório (período de experiência)",
     es: "de prueba",
-    ru: "испытательный",
-    ar: "خاضع لفترة الاختبار",
   },
   "severance package": {
     ko: "퇴직 위로금",
@@ -1796,8 +1443,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "indemnité de licenciement",
     pt: "pacote de rescisão (indenização)",
     es: "indemnización por despido",
-    ru: "выходное пособие",
-    ar: "مكافأة نهاية الخدمة",
   },
   "pension plan": {
     ko: "연금 제도",
@@ -1806,8 +1451,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "régime de retraite",
     pt: "plano de previdência",
     es: "plan de pensiones",
-    ru: "пенсионная программа",
-    ar: "خطة التقاعد",
   },
   "parental leave": {
     ko: "육아휴직",
@@ -1816,8 +1459,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "congé parental",
     pt: "licença parental",
     es: "permiso parental",
-    ru: "отпуск по уходу за ребёнком",
-    ar: "إجازة والدية",
   },
   perk: {
     ko: "특전",
@@ -1826,8 +1467,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "avantage en nature",
     pt: "benefício (regalia)",
     es: "beneficio adicional",
-    ru: "льгота (бонус)",
-    ar: "ميزة إضافية",
   },
   flextime: {
     ko: "탄력근무제",
@@ -1836,8 +1475,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "horaires flexibles",
     pt: "horário flexível",
     es: "horario flexible",
-    ru: "гибкий график",
-    ar: "نظام الدوام المرن",
   },
   grievance: {
     ko: "고충",
@@ -1846,8 +1483,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "réclamation",
     pt: "reclamação formal (queixa)",
     es: "queja formal",
-    ru: "жалоба (трудовой спор)",
-    ar: "شكوى رسمية",
   },
   "disciplinary action": {
     ko: "징계 조치",
@@ -1856,8 +1491,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mesure disciplinaire",
     pt: "medida disciplinar",
     es: "medida disciplinaria",
-    ru: "дисциплинарное взыскание",
-    ar: "إجراء تأديبي",
   },
   harassment: {
     ko: "괴롭힘",
@@ -1866,8 +1499,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "harcèlement",
     pt: "assédio",
     es: "acoso",
-    ru: "домогательства (притеснение на рабочем месте)",
-    ar: "التحرش",
   },
   union: {
     ko: "노동조합",
@@ -1876,8 +1507,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "syndicat",
     pt: "sindicato",
     es: "sindicato",
-    ru: "профсоюз",
-    ar: "نقابة عمالية",
   },
   seniority: {
     ko: "근속연수",
@@ -1886,8 +1515,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "ancienneté",
     pt: "antiguidade (tempo de casa)",
     es: "antigüedad",
-    ru: "стаж работы",
-    ar: "الأقدمية",
   },
   payroll: {
     ko: "급여",
@@ -1896,8 +1523,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "paie",
     pt: "folha de pagamento",
     es: "nómina",
-    ru: "расчёт заработной платы",
-    ar: "كشف الرواتب",
   },
   salaried: {
     ko: "고정급을 받는",
@@ -1906,8 +1531,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "salarié",
     pt: "assalariado (com salário fixo)",
     es: "asalariado",
-    ru: "получающий фиксированный оклад",
-    ar: "ذو راتب ثابت",
   },
   underperform: {
     ko: "저조한 성과를 내다",
@@ -1916,8 +1539,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "être en sous-performance",
     pt: "ter desempenho abaixo do esperado",
     es: "rendir por debajo de lo esperado",
-    ru: "показывать результаты ниже ожидаемых",
-    ar: "يقصر في الأداء",
   },
   tenure: {
     ko: "재직 기간",
@@ -1926,8 +1547,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "ancienneté dans le poste",
     pt: "tempo de serviço (tempo de casa)",
     es: "antigüedad en el puesto",
-    ru: "срок пребывания в должности",
-    ar: "مدة الخدمة",
   },
   dismissal: {
     ko: "해고",
@@ -1936,8 +1555,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "licenciement",
     pt: "demissão",
     es: "despido",
-    ru: "увольнение",
-    ar: "فصل من العمل",
   },
   downsize: {
     ko: "감원하다",
@@ -1946,8 +1563,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "réduire les effectifs",
     pt: "reduzir o quadro de funcionários",
     es: "reducir la plantilla",
-    ru: "сокращать штат",
-    ar: "تقليص عدد الموظفين",
   },
   "chain of command": {
     ko: "지휘 체계",
@@ -1956,8 +1571,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chaîne hiérarchique",
     pt: "cadeia de comando",
     es: "cadena de mando",
-    ru: "иерархия подчинения",
-    ar: "سلسلة القيادة (التسلسل الهرمي للسلطة)",
   },
   "performance review": {
     ko: "인사 고과(성과 평가)",
@@ -1966,8 +1579,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "entretien d'évaluation",
     pt: "avaliação de desempenho",
     es: "evaluación de desempeño",
-    ru: "аттестация сотрудника",
-    ar: "تقييم الأداء",
   },
   "cross-functional": {
     ko: "부서 간 협업의",
@@ -1976,8 +1587,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "transversal",
     pt: "multifuncional",
     es: "interdepartamental",
-    ru: "межфункциональный",
-    ar: "متعدد الوظائف (مشترك بين الأقسام)",
   },
   "middle management": {
     ko: "중간 관리층",
@@ -1986,8 +1595,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "cadres intermédiaires",
     pt: "média gerência",
     es: "mandos intermedios",
-    ru: "менеджмент среднего звена",
-    ar: "الإدارة الوسطى",
   },
   "chair a meeting": {
     ko: "회의를 주재하다",
@@ -1996,8 +1603,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "présider une réunion",
     pt: "presidir uma reunião",
     es: "presidir una reunión",
-    ru: "председательствовать на совещании",
-    ar: "ترؤس اجتماع",
   },
   "line manager": {
     ko: "직속 상사",
@@ -2006,8 +1611,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "responsable hiérarchique direct",
     pt: "gerente direto",
     es: "jefe directo",
-    ru: "непосредственный руководитель",
-    ar: "المدير المباشر",
   },
   workload: {
     ko: "업무량",
@@ -2016,8 +1619,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "charge de travail",
     pt: "carga de trabalho",
     es: "carga de trabajo",
-    ru: "объём работы",
-    ar: "عبء العمل",
   },
   "phase out": {
     ko: "단계적으로 폐지하다",
@@ -2026,8 +1627,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "supprimer progressivement",
     pt: "eliminar gradualmente",
     es: "eliminar gradualmente",
-    ru: "постепенно выводить из использования",
-    ar: "الإلغاء التدريجي",
   },
   "work ethic": {
     ko: "직업 윤리",
@@ -2036,8 +1635,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "éthique de travail",
     pt: "ética de trabalho",
     es: "ética laboral",
-    ru: "трудовая этика",
-    ar: "أخلاقيات العمل",
   },
   "contingency plan": {
     ko: "비상 계획",
@@ -2046,8 +1643,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "plan de secours",
     pt: "plano de contingência",
     es: "plan de contingencia",
-    ru: "план действий на случай непредвиденных обстоятельств",
-    ar: "خطة طوارئ",
   },
   "span of control": {
     ko: "관리 범위",
@@ -2056,8 +1651,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "éventail de subordination",
     pt: "amplitude de controle",
     es: "ámbito de control",
-    ru: "норма управляемости",
-    ar: "نطاق الإشراف",
   },
   "conference badge": {
     ko: "참가자 명찰",
@@ -2066,8 +1659,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "badge de conférence",
     pt: "crachá de conferência",
     es: "acreditación de conferencia",
-    ru: "бейдж участника конференции",
-    ar: "شارة المؤتمر",
   },
   "frequent flyer program": {
     ko: "항공사 마일리지 프로그램",
@@ -2076,8 +1667,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "programme de fidélité aérien",
     pt: "programa de milhagem",
     es: "programa de viajero frecuente",
-    ru: "программа лояльности для часто летающих пассажиров",
-    ar: "برنامج المسافر الدائم",
   },
   "visa sponsorship": {
     ko: "비자 스폰서십",
@@ -2086,8 +1675,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "parrainage de visa",
     pt: "patrocínio de visto",
     es: "patrocinio de visado",
-    ru: "визовая поддержка",
-    ar: "كفالة التأشيرة",
   },
   chauffeur: {
     ko: "전용 운전기사",
@@ -2096,8 +1683,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chauffeur",
     pt: "motorista particular",
     es: "chófer",
-    ru: "личный водитель",
-    ar: "سائق خاص",
   },
   "travel insurance": {
     ko: "여행자 보험",
@@ -2106,8 +1691,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "assurance voyage",
     pt: "seguro viagem",
     es: "seguro de viaje",
-    ru: "туристическая страховка",
-    ar: "تأمين السفر",
   },
   "gate agent": {
     ko: "탑승구 직원",
@@ -2116,8 +1699,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "agent d'embarquement",
     pt: "agente de embarque",
     es: "agente de puerta de embarque",
-    ru: "сотрудник у выхода на посадку",
-    ar: "موظف بوابة الصعود",
   },
   standby: {
     ko: "대기(스탠바이)",
@@ -2126,8 +1707,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "en liste d'attente",
     pt: "em lista de espera",
     es: "en lista de espera",
-    ru: "без подтверждённого места (в режиме ожидания)",
-    ar: "على قائمة الانتظار",
   },
   "corporate rate": {
     ko: "기업 할인 요금",
@@ -2136,8 +1715,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "tarif entreprise",
     pt: "tarifa corporativa",
     es: "tarifa corporativa",
-    ru: "корпоративный тариф",
-    ar: "سعر خاص بالشركات",
   },
   "site visit": {
     ko: "현장 답사",
@@ -2146,8 +1723,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "visite de site",
     pt: "visita técnica",
     es: "visita in situ",
-    ru: "выездная инспекция объекта",
-    ar: "زيارة ميدانية",
   },
   "expatriate assignment": {
     ko: "해외 파견 근무",
@@ -2156,8 +1731,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mission d'expatriation",
     pt: "missão de expatriado",
     es: "asignación en el extranjero",
-    ru: "командировка за рубеж (экспатриация)",
-    ar: "مهمة عمل بالخارج (انتداب)",
   },
   "airport transfer": {
     ko: "공항 픽업 서비스",
@@ -2166,8 +1739,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "transfert aéroport",
     pt: "traslado aeroportuário",
     es: "traslado desde/hacia el aeropuerto",
-    ru: "трансфер из аэропорта",
-    ar: "خدمة النقل من وإلى المطار",
   },
   attendee: {
     ko: "참석자",
@@ -2176,8 +1747,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "participant",
     pt: "participante",
     es: "asistente",
-    ru: "участник (мероприятия)",
-    ar: "مشارك في الحدث",
   },
   "accounts receivable": {
     ko: "매출채권",
@@ -2186,8 +1755,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "créances clients",
     pt: "contas a receber",
     es: "cuentas por cobrar",
-    ru: "дебиторская задолженность",
-    ar: "الذمم المدينة",
   },
   "cash flow": {
     ko: "현금 흐름",
@@ -2196,8 +1763,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "flux de trésorerie",
     pt: "fluxo de caixa",
     es: "flujo de caja",
-    ru: "денежный поток",
-    ar: "التدفق النقدي",
   },
   "net worth": {
     ko: "순자산",
@@ -2206,8 +1771,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "valeur nette",
     pt: "patrimônio líquido",
     es: "patrimonio neto",
-    ru: "чистая стоимость активов (собственный капитал)",
-    ar: "صافي الثروة",
   },
   subsidize: {
     ko: "보조금을 지원하다",
@@ -2216,8 +1779,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "subventionner",
     pt: "subsidiar",
     es: "subvencionar",
-    ru: "субсидировать",
-    ar: "دعم مالياً",
   },
   shareholder: {
     ko: "주주",
@@ -2226,8 +1787,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "actionnaire",
     pt: "acionista",
     es: "accionista",
-    ru: "акционер",
-    ar: "مساهم",
   },
   "loan covenant": {
     ko: "대출 약정",
@@ -2236,8 +1795,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "clause restrictive de prêt",
     pt: "cláusula contratual do empréstimo",
     es: "cláusula de préstamo",
-    ru: "кредитное ковенант (условие кредитного договора)",
-    ar: "شرط تعاقدي للقرض",
   },
   bankruptcy: {
     ko: "파산",
@@ -2246,8 +1803,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faillite",
     pt: "falência",
     es: "quiebra",
-    ru: "банкротство",
-    ar: "الإفلاس",
   },
   underlying: {
     ko: "기초(근본)의",
@@ -2256,8 +1811,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "sous-jacent",
     pt: "subjacente",
     es: "subyacente",
-    ru: "базовый (скорректированный)",
-    ar: "أساسي (يستثني البنود الاستثنائية)",
   },
   float: {
     ko: "기업공개(주식 상장)",
@@ -2266,8 +1819,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "introduction en bourse",
     pt: "abertura de capital",
     es: "salida a bolsa",
-    ru: "первичное публичное размещение акций (IPO)",
-    ar: "الطرح العام الأولي للأسهم",
   },
   "bad debt": {
     ko: "대손(부실채권)",
@@ -2276,8 +1827,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "créance irrécouvrable",
     pt: "dívida incobrável",
     es: "deuda incobrable",
-    ru: "безнадёжный долг",
-    ar: "ديون معدومة",
   },
   principal: {
     ko: "원금",
@@ -2286,8 +1835,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "capital emprunté",
     pt: "valor principal",
     es: "capital",
-    ru: "основная сумма долга",
-    ar: "أصل الدين",
   },
   "line of credit": {
     ko: "신용한도",
@@ -2296,8 +1843,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "ligne de crédit",
     pt: "linha de crédito",
     es: "línea de crédito",
-    ru: "кредитная линия",
-    ar: "خط ائتمان",
   },
   reboot: {
     ko: "재부팅하다",
@@ -2306,8 +1851,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "redémarrer",
     pt: "reiniciar",
     es: "reiniciar",
-    ru: "перезагрузить",
-    ar: "إعادة تشغيل الجهاز",
   },
   cache: {
     ko: "캐시",
@@ -2316,8 +1859,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "mémoire cache",
     pt: "cache",
     es: "memoria caché",
-    ru: "кэш",
-    ar: "ذاكرة التخزين المؤقت",
   },
   workaround: {
     ko: "임시 해결책",
@@ -2326,8 +1867,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "solution de contournement",
     pt: "solução alternativa",
     es: "solución provisional",
-    ru: "обходное решение",
-    ar: "حل بديل مؤقت",
   },
   interoperability: {
     ko: "상호운용성",
@@ -2336,8 +1875,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "interopérabilité",
     pt: "interoperabilidade",
     es: "interoperabilidad",
-    ru: "совместимость (взаимодействие систем)",
-    ar: "قابلية التشغيل البيني",
   },
   "legacy system": {
     ko: "레거시 시스템",
@@ -2346,8 +1883,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "système existant",
     pt: "sistema legado",
     es: "sistema heredado",
-    ru: "устаревшая (унаследованная) система",
-    ar: "نظام قديم موروث",
   },
   rollback: {
     ko: "롤백",
@@ -2356,8 +1891,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "retour en arrière",
     pt: "reversão",
     es: "reversión",
-    ru: "откат (к предыдущей версии)",
-    ar: "التراجع إلى نسخة سابقة",
   },
   provisioning: {
     ko: "프로비저닝",
@@ -2366,8 +1899,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "provisionnement",
     pt: "provisionamento",
     es: "aprovisionamiento",
-    ru: "настройка и развёртывание ресурсов (провижининг)",
-    ar: "تجهيز الموارد التقنية وتهيئتها",
   },
   sandbox: {
     ko: "샌드박스",
@@ -2376,8 +1907,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "environnement de test",
     pt: "ambiente de testes isolado",
     es: "entorno de pruebas",
-    ru: "тестовая (изолированная) среда",
-    ar: "بيئة اختبار معزولة",
   },
   middleware: {
     ko: "미들웨어",
@@ -2386,8 +1915,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "intergiciel",
     pt: "middleware",
     es: "middleware",
-    ru: "промежуточное программное обеспечение",
-    ar: "البرمجيات الوسيطة",
   },
   obsolete: {
     ko: "구식의",
@@ -2396,8 +1923,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "obsolète",
     pt: "obsoleto",
     es: "obsoleto",
-    ru: "устаревший",
-    ar: "متقادم",
   },
   glitch: {
     ko: "결함(오류)",
@@ -2406,8 +1931,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "bug",
     pt: "falha técnica",
     es: "fallo técnico",
-    ru: "техническая неполадка (сбой)",
-    ar: "عطل تقني بسيط",
   },
   endpoint: {
     ko: "엔드포인트",
@@ -2416,8 +1939,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "point de terminaison",
     pt: "ponto de extremidade",
     es: "punto de conexión",
-    ru: "конечная точка (подключения)",
-    ar: "نقطة نهاية",
   },
   "sales pitch": {
     ko: "영업 홍보",
@@ -2426,8 +1947,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "argumentaire de vente",
     pt: "discurso de vendas",
     es: "argumento de venta",
-    ru: "рекламная презентация продажи",
-    ar: "عرض بيعي مقنع",
   },
   commission: {
     ko: "수수료",
@@ -2436,8 +1955,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "commission",
     pt: "comissão",
     es: "comisión",
-    ru: "комиссионное вознаграждение",
-    ar: "عمولة",
   },
   "cross-sell": {
     ko: "교차 판매하다",
@@ -2446,8 +1963,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire de la vente croisée",
     pt: "fazer venda cruzada",
     es: "hacer venta cruzada",
-    ru: "предлагать сопутствующий товар (кросс-продажа)",
-    ar: "البيع المتقاطع",
   },
   outsell: {
     ko: "~보다 더 많이 팔다",
@@ -2456,8 +1971,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "vendre plus que",
     pt: "superar em vendas",
     es: "vender más que",
-    ru: "превзойти по объёму продаж",
-    ar: "التفوق في المبيعات على المنافس",
   },
   advertise: {
     ko: "광고하다",
@@ -2466,8 +1979,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faire de la publicité",
     pt: "anunciar",
     es: "anunciar",
-    ru: "рекламировать",
-    ar: "الإعلان عن منتج",
   },
   rebate: {
     ko: "리베이트(환불)",
@@ -2476,8 +1987,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "remise",
     pt: "reembolso parcial",
     es: "reembolso parcial",
-    ru: "частичный возврат средств (скидка после покупки)",
-    ar: "استرداد جزئي (خصم ترويجي)",
   },
   markup: {
     ko: "이윤폭(마크업)",
@@ -2486,8 +1995,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "marge commerciale",
     pt: "margem de lucro",
     es: "margen de beneficio",
-    ru: "торговая наценка",
-    ar: "هامش الربح",
   },
   "product launch": {
     ko: "제품 출시",
@@ -2496,8 +2003,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "lancement de produit",
     pt: "lançamento de produto",
     es: "lanzamiento de producto",
-    ru: "запуск продукта",
-    ar: "إطلاق المنتج",
   },
   "market penetration": {
     ko: "시장 침투율",
@@ -2506,8 +2011,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "pénétration du marché",
     pt: "penetração de mercado",
     es: "penetración de mercado",
-    ru: "проникновение на рынок",
-    ar: "اختراق السوق",
   },
   "focus group": {
     ko: "포커스 그룹",
@@ -2516,8 +2019,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "groupe de discussion",
     pt: "grupo focal",
     es: "grupo focal",
-    ru: "фокус-группа",
-    ar: "مجموعة تركيز",
   },
   "customer retention": {
     ko: "고객 유지",
@@ -2526,8 +2027,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "fidélisation de la clientèle",
     pt: "retenção de clientes",
     es: "retención de clientes",
-    ru: "удержание клиентов",
-    ar: "الاحتفاظ بالعملاء",
   },
   franchise: {
     ko: "프랜차이즈",
@@ -2536,8 +2035,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "franchise",
     pt: "franquia",
     es: "franquicia",
-    ru: "франшиза",
-    ar: "امتياز تجاري",
   },
   "price point": {
     ko: "가격대",
@@ -2546,8 +2043,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "niveau de prix",
     pt: "faixa de preço",
     es: "nivel de precio",
-    ru: "ценовая позиция",
-    ar: "مستوى السعر",
   },
   "supply chain": {
     ko: "공급망",
@@ -2556,8 +2051,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chaîne d'approvisionnement",
     pt: "cadeia de suprimentos",
     es: "cadena de suministro",
-    ru: "цепочка поставок",
-    ar: "سلسلة التوريد",
   },
   "competitive pricing": {
     ko: "경쟁력 있는 가격 책정",
@@ -2566,8 +2059,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "tarification concurrentielle",
     pt: "precificação competitiva",
     es: "precios competitivos",
-    ru: "конкурентное ценообразование",
-    ar: "التسعير التنافسي",
   },
   "out of stock": {
     ko: "품절",
@@ -2576,8 +2067,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "en rupture de stock",
     pt: "fora de estoque",
     es: "agotado",
-    ru: "нет в наличии",
-    ar: "نفاد المخزون",
   },
   "point of sale": {
     ko: "판매 시점(POS)",
@@ -2586,8 +2075,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "point de vente",
     pt: "ponto de venda",
     es: "punto de venta",
-    ru: "точка продаж",
-    ar: "نقطة البيع",
   },
   "conversion rate": {
     ko: "전환율",
@@ -2596,8 +2083,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "taux de conversion",
     pt: "taxa de conversão",
     es: "tasa de conversión",
-    ru: "коэффициент конверсии",
-    ar: "معدل التحويل",
   },
   "exit interview": {
     ko: "퇴사 면담",
@@ -2606,8 +2091,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "entretien de départ",
     pt: "entrevista de desligamento",
     es: "entrevista de salida",
-    ru: "собеседование при увольнении",
-    ar: "مقابلة نهاية الخدمة",
   },
   recruit: {
     ko: "채용하다",
@@ -2616,8 +2099,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "recruter",
     pt: "recrutar",
     es: "contratar",
-    ru: "нанимать (сотрудников)",
-    ar: "توظيف واستقطاب الموظفين",
   },
   headhunter: {
     ko: "헤드헌터",
@@ -2626,8 +2107,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "chasseur de têtes",
     pt: "caçador de talentos",
     es: "cazatalentos",
-    ru: "хедхантер (кадровый агент)",
-    ar: "صائد الرؤوس (صائد الكفاءات)",
   },
   "compensation package": {
     ko: "급여 및 복리후생 패키지",
@@ -2636,8 +2115,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "package de rémunération",
     pt: "pacote de remuneração",
     es: "paquete retributivo",
-    ru: "компенсационный пакет",
-    ar: "حزمة التعويضات (الراتب والمزايا)",
   },
   termination: {
     ko: "고용 종료(해고)",
@@ -2646,8 +2123,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "licenciement",
     pt: "rescisão de contrato",
     es: "despido",
-    ru: "увольнение (расторжение трудового договора)",
-    ar: "إنهاء عقد العمل",
   },
   reinstate: {
     ko: "복직시키다",
@@ -2656,8 +2131,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "réintégrer",
     pt: "reintegrar ao cargo",
     es: "reincorporar",
-    ru: "восстановить в должности",
-    ar: "إعادة الموظف إلى منصبه",
   },
   "workplace diversity": {
     ko: "직장 내 다양성",
@@ -2666,8 +2139,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "diversité en entreprise",
     pt: "diversidade no ambiente de trabalho",
     es: "diversidad laboral",
-    ru: "разнообразие на рабочем месте",
-    ar: "التنوع في مكان العمل",
   },
   telecommute: {
     ko: "재택근무하다",
@@ -2676,8 +2147,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "télétravailler",
     pt: "trabalhar remotamente",
     es: "teletrabajar",
-    ru: "работать удалённо",
-    ar: "العمل عن بُعد",
   },
   "sick leave": {
     ko: "병가",
@@ -2686,8 +2155,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "congé maladie",
     pt: "licença médica",
     es: "baja por enfermedad",
-    ru: "больничный отпуск",
-    ar: "إجازة مرضية",
   },
   "employee handbook": {
     ko: "직원 안내서(사규집)",
@@ -2696,8 +2163,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "livret d'accueil du salarié",
     pt: "manual do funcionário",
     es: "manual del empleado",
-    ru: "справочник сотрудника",
-    ar: "دليل الموظف",
   },
   "workers' compensation": {
     ko: "산재보험",
@@ -2706,8 +2171,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "assurance accident du travail",
     pt: "seguro de acidentes de trabalho",
     es: "seguro de accidentes laborales",
-    ru: "страхование от несчастных случаев на производстве",
-    ar: "تعويض إصابات العمل",
   },
   layoff: {
     ko: "정리해고",
@@ -2716,8 +2179,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "licenciement économique",
     pt: "demissão em massa",
     es: "despido colectivo",
-    ru: "увольнение (сокращение штата)",
-    ar: "تسريح العمال",
   },
   "job description": {
     ko: "직무 기술서",
@@ -2726,8 +2187,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "fiche de poste",
     pt: "descrição de cargo",
     es: "descripción del puesto",
-    ru: "должностная инструкция",
-    ar: "الوصف الوظيفي",
   },
   "non-compete clause": {
     ko: "경업금지 조항",
@@ -2736,8 +2195,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "clause de non-concurrence",
     pt: "cláusula de não concorrência",
     es: "cláusula de no competencia",
-    ru: "пункт о неконкуренции",
-    ar: "بند عدم المنافسة",
   },
   "staffing agency": {
     ko: "인력 파견 업체",
@@ -2746,8 +2203,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "agence de travail temporaire",
     pt: "agência de recrutamento",
     es: "agencia de empleo temporal",
-    ru: "кадровое агентство",
-    ar: "وكالة توظيف",
   },
   "work permit": {
     ko: "취업 허가증",
@@ -2756,8 +2211,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "permis de travail",
     pt: "autorização de trabalho",
     es: "permiso de trabajo",
-    ru: "разрешение на работу",
-    ar: "تصريح عمل",
   },
   "probation period": {
     ko: "수습 기간",
@@ -2766,8 +2219,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "période d'essai",
     pt: "período de experiência",
     es: "período de prueba",
-    ru: "испытательный срок",
-    ar: "فترة التجربة",
   },
   "corporate culture": {
     ko: "기업 문화",
@@ -2776,8 +2227,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "culture d'entreprise",
     pt: "cultura organizacional",
     es: "cultura empresarial",
-    ru: "корпоративная культура",
-    ar: "ثقافة الشركة المؤسسية",
   },
   "market segmentation": {
     ko: "시장 세분화",
@@ -2786,8 +2235,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "segmentation du marché",
     pt: "segmentação de mercado",
     es: "segmentación de mercado",
-    ru: "сегментация рынка",
-    ar: "تجزئة السوق",
   },
   "unique selling proposition": {
     ko: "차별화된 판매 제안",
@@ -2796,8 +2243,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "argument de vente unique",
     pt: "proposta de venda única",
     es: "propuesta de venta única",
-    ru: "уникальное торговое предложение",
-    ar: "عرض البيع الفريد",
   },
   "call to action": {
     ko: "행동 유도 문구",
@@ -2806,8 +2251,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "appel à l'action",
     pt: "chamada para ação",
     es: "llamada a la acción",
-    ru: "призыв к действию",
-    ar: "دعوة لاتخاذ إجراء",
   },
   "brand equity": {
     ko: "브랜드 자산 가치",
@@ -2816,8 +2259,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "capital de marque",
     pt: "valor da marca",
     es: "valor de marca",
-    ru: "капитал бренда",
-    ar: "القيمة العادلة للعلامة التجارية",
   },
   "lead generation": {
     ko: "잠재고객 발굴",
@@ -2826,8 +2267,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "génération de prospects",
     pt: "geração de leads",
     es: "generación de leads",
-    ru: "генерация лидов",
-    ar: "توليد العملاء المحتملين",
   },
   "click-through rate": {
     ko: "클릭률",
@@ -2836,8 +2275,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "taux de clics",
     pt: "taxa de cliques",
     es: "tasa de clics",
-    ru: "показатель кликабельности",
-    ar: "معدل النقر إلى الظهور",
   },
   "sales funnel": {
     ko: "영업 퍼널",
@@ -2846,8 +2283,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "entonnoir de vente",
     pt: "funil de vendas",
     es: "embudo de ventas",
-    ru: "воронка продаж",
-    ar: "قمع المبيعات",
   },
   "market saturation": {
     ko: "시장 포화",
@@ -2856,8 +2291,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "saturation du marché",
     pt: "saturação do mercado",
     es: "saturación del mercado",
-    ru: "насыщение рынка",
-    ar: "تشبع السوق",
   },
   "customer acquisition cost": {
     ko: "고객 획득 비용",
@@ -2866,8 +2299,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "coût d'acquisition client",
     pt: "custo de aquisição de clientes",
     es: "costo de adquisición de clientes",
-    ru: "стоимость привлечения клиента",
-    ar: "تكلفة اكتساب العميل",
   },
   "viral marketing": {
     ko: "바이럴 마케팅",
@@ -2876,8 +2307,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "marketing viral",
     pt: "marketing viral",
     es: "marketing viral",
-    ru: "вирусный маркетинг",
-    ar: "التسويق الفيروسي",
   },
   "soft launch": {
     ko: "소프트 런칭",
@@ -2886,8 +2315,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "lancement discret",
     pt: "lançamento soft (teste limitado)",
     es: "lanzamiento suave (a pequeña escala)",
-    ru: "мягкий запуск",
-    ar: "إطلاق تجريبي محدود",
   },
   "market research": {
     ko: "시장 조사",
@@ -2896,8 +2323,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "étude de marché",
     pt: "pesquisa de mercado",
     es: "investigación de mercado",
-    ru: "маркетинговое исследование",
-    ar: "أبحاث السوق",
   },
   "talent acquisition": {
     ko: "인재 채용",
@@ -2906,8 +2331,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "acquisition de talents",
     pt: "aquisição de talentos",
     es: "adquisición de talento",
-    ru: "привлечение талантов",
-    ar: "استقطاب المواهب",
   },
   "diversity and inclusion": {
     ko: "다양성과 포용성",
@@ -2916,8 +2339,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "diversité et inclusion",
     pt: "diversidade e inclusão",
     es: "diversidad e inclusión",
-    ru: "разнообразие и инклюзивность",
-    ar: "التنوع والشمول",
   },
   "employee retention": {
     ko: "직원 유지",
@@ -2926,8 +2347,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "fidélisation des employés",
     pt: "retenção de funcionários",
     es: "retención de empleados",
-    ru: "удержание сотрудников",
-    ar: "الاحتفاظ بالموظفين",
   },
   "work-life balance": {
     ko: "일과 삶의 균형",
@@ -2936,8 +2355,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "équilibre vie professionnelle-vie privée",
     pt: "equilíbrio entre vida profissional e pessoal",
     es: "equilibrio entre vida laboral y personal",
-    ru: "баланс между работой и личной жизнью",
-    ar: "التوازن بين العمل والحياة",
   },
   "exempt employee": {
     ko: "초과근무 수당 비적용 직원",
@@ -2946,8 +2363,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "salarié exempté (non soumis aux heures supplémentaires)",
     pt: "funcionário isento (sem direito a horas extras)",
     es: "empleado exento (sin derecho a horas extras)",
-    ru: "сотрудник, не имеющий права на оплату сверхурочных",
-    ar: "موظف معفى (غير مستحق لأجر العمل الإضافي)",
   },
   "collective bargaining": {
     ko: "단체 교섭",
@@ -2956,8 +2371,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "négociation collective",
     pt: "negociação coletiva",
     es: "negociación colectiva",
-    ru: "коллективные переговоры",
-    ar: "التفاوض الجماعي",
   },
   whistleblower: {
     ko: "내부 고발자",
@@ -2966,8 +2379,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "lanceur d'alerte",
     pt: "denunciante",
     es: "denunciante",
-    ru: "информатор (о нарушениях)",
-    ar: "المُبلّغ عن المخالفات",
   },
   "maternity leave": {
     ko: "출산 휴가",
@@ -2976,8 +2387,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "congé de maternité",
     pt: "licença-maternidade",
     es: "permiso de maternidad",
-    ru: "декретный отпуск",
-    ar: "إجازة الأمومة",
   },
   "paternity leave": {
     ko: "육아 휴직(부성 휴가)",
@@ -2986,8 +2395,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "congé de paternité",
     pt: "licença-paternidade",
     es: "permiso de paternidad",
-    ru: "отпуск по уходу за ребенком для отца",
-    ar: "إجازة الأبوة",
   },
   "cross-training": {
     ko: "교차 교육(다기능 훈련)",
@@ -2996,8 +2403,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "polyvalence (formation croisée)",
     pt: "treinamento cruzado (multifuncional)",
     es: "capacitación cruzada (multifuncional)",
-    ru: "перекрёстное обучение",
-    ar: "التدريب المتعدد المهام",
   },
   "job rotation": {
     ko: "직무 순환",
@@ -3006,8 +2411,6 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "rotation des postes",
     pt: "rotação de funções",
     es: "rotación de puestos",
-    ru: "ротация должностей",
-    ar: "تناوب الوظائف",
   },
   "gross misconduct": {
     ko: "중대한 비위 행위",
@@ -3016,7 +2419,5 @@ export const vocabularyGlosses: Record<string, Partial<Record<GlossLang, string>
     fr: "faute grave",
     pt: "falta grave",
     es: "falta grave",
-    ru: "грубое нарушение (дисциплины)",
-    ar: "سوء سلوك جسيم",
   },
 };
