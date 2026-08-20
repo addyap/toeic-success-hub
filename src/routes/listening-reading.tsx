@@ -19,6 +19,7 @@ import { absoluteUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { applyOptionOrder, randomOptionOrder, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
+import { useSceneVisible } from "@/lib/sceneVisible";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
 // The question bank (500+ items, growing every content round) is loaded via
@@ -413,6 +414,43 @@ function PartFilter({
   );
 }
 
+/** Lets the learner add back Part 1's text "Scene" description, which the real
+ *  test never shows — off by default (exam-realistic), on as a scaffold. The
+ *  preference is global (persisted), so it also applies in the mock test and
+ *  adaptive practice; this is just where it's surfaced. */
+function SceneToggle() {
+  const [visible, setVisible] = useSceneVisible();
+  return (
+    <div className="mt-4 flex items-start gap-3 rounded-xl border border-border bg-card p-3">
+      <button
+        type="button"
+        role="switch"
+        aria-checked={visible}
+        aria-label="Show Part 1 scene descriptions"
+        onClick={() => setVisible(!visible)}
+        className={cn(
+          "relative mt-0.5 h-5 w-9 shrink-0 rounded-full transition-colors",
+          visible ? "bg-primary" : "bg-muted",
+        )}
+      >
+        <span
+          className={cn(
+            "absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all",
+            visible ? "left-[1.125rem]" : "left-0.5",
+          )}
+        />
+      </button>
+      <div className="text-sm leading-relaxed">
+        <div className="font-medium text-foreground">Show scene descriptions (Part 1)</div>
+        <p className="text-muted-foreground">
+          The real test shows only the photo. Turn this on to also read a written description of
+          each Part 1 scene.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // Practice lists can run to several hundred questions (the "All parts" view
 // currently spans 365). Mounting every PracticeQuestion card up front — each
 // with its own hooks, audio element, and option-shuffle state — bloats the
@@ -574,6 +612,10 @@ function PracticeSession({
         best score — and where you leave off — is saved on this device, so you can pause and pick up
         right where you were.
       </p>
+
+      {/* The Scene toggle only concerns Part 1 (photo) items, so surface it just
+          when Part 1 is in the active set. */}
+      {(scope === 1 || scope === "all") && <SceneToggle />}
 
       <div className="sticky top-[4rem] z-10 mt-6 flex items-center gap-3 rounded-full border border-border bg-card/95 py-2 pl-4 pr-2 shadow-soft backdrop-blur">
         <div className="flex shrink-0 items-baseline gap-1.5">
