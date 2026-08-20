@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Clock,
   Layers,
+  Gauge,
   Mic,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
@@ -199,6 +200,30 @@ function Index() {
         </div>
       </section>
 
+      {/* Adaptive practice teaser */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-4">
+        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+              <Gauge className="h-3.5 w-3.5" /> Adaptive practice
+            </div>
+            <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
+              The 4-Skills adaptive L&amp;R format, one section at a time.
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              45 questions in two units against the real clock — how you do on Unit 1 sets Unit 2's
+              difficulty, exactly like the adaptive test.
+            </p>
+          </div>
+          <Link
+            to="/adaptive-practice"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+          >
+            Try Adaptive Practice <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
       {/* Study smarter teaser */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-4">
         <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft sm:flex-row sm:items-center sm:p-8">
@@ -233,6 +258,7 @@ function Index() {
           </p>
           <Link
             to="/listening-reading"
+            search={{ part: 1 }}
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground hover:bg-background/90"
           >
             Try Part 1 practice <ArrowRight className="h-4 w-4" />
