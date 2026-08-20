@@ -138,4 +138,24 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     ],
     note: "기계 번역의 도움을 받은 번역입니다.",
   },
+  zh: {
+    eyebrow: "第一次來嗎？",
+    heading: "ToeicPath 使用說明",
+    intro: "免費、完整的 TOEIC 備考——用你的語言掌握重點。",
+    points: [
+      {
+        title: "免註冊，全部免費",
+        body: "完整的 TOEIC 備考，免費且無需註冊。",
+      },
+      {
+        title: "每個題型都能練習",
+        body: "聽力與閱讀全部七個部分，外加計時的口說與寫作練習。",
+      },
+      {
+        title: "自我評分",
+        body: "依官方評分標準為你的口說與寫作評分，標準以你的語言說明。",
+      },
+    ],
+    note: "本翻譯為機器輔助翻譯。",
+  },
 };
