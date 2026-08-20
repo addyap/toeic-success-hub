@@ -12,6 +12,7 @@ import {
 } from "@/lib/audioSource";
 import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
 import { PUBLISHER } from "@/components/LegalPage";
+import { useSceneVisible } from "@/lib/sceneVisible";
 
 export interface PracticeQuestionData {
   prompt: string;
@@ -146,6 +147,10 @@ function QuestionPassage({
   resetKey?: number;
   revealed: boolean;
 }) {
+  // Part 1's text "Scene" is a stand-in for the photo, absent from the real
+  // test — so when there's an actual image it's shown only if the learner opts
+  // in. A Part 1 item with no image keeps its Scene text (it's the stimulus).
+  const [sceneVisible] = useSceneVisible();
   return (
     <>
       {data.photo && data.image && (
@@ -187,7 +192,7 @@ function QuestionPassage({
           </p>
         </div>
       )}
-      {data.photo && data.context && (
+      {data.photo && data.context && (!data.image || sceneVisible) && (
         <div className="mt-3">
           <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Scene
