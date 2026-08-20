@@ -478,6 +478,7 @@ function SessionView({
                 index={u.start}
                 picked={answers[u.start]}
                 revealed={false}
+                partBadge
                 onAnswer={(label) => onAnswer(u.start, label)}
               />
             ) : (
@@ -487,6 +488,7 @@ function SessionView({
                 startIndex={u.start}
                 picked={u.questions.map((_, k) => answers[u.start + k])}
                 revealed={false}
+                partBadge
                 onAnswer={(offset, label) => onAnswer(u.start + offset, label)}
               />
             ),
@@ -635,6 +637,7 @@ function ResultsView({
                     index={u.start}
                     picked={allAnswers[u.start]}
                     revealed
+                    partBadge
                   />
                 ) : (
                   <PracticeQuestionGroup
@@ -643,6 +646,7 @@ function ResultsView({
                     startIndex={u.start}
                     picked={u.questions.map((_, k) => allAnswers[u.start + k])}
                     revealed
+                    partBadge
                   />
                 ),
               )}
