@@ -17,7 +17,7 @@ import {
 } from "@/components/PracticeQuestion";
 import { absoluteUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
+import { applyOptionOrder, randomOptionOrder, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import type { QuestionPart } from "@/data/listeningReadingQuestions";
 
@@ -27,6 +27,59 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 // chunk right after mount instead, while the page above the practice section
 // (hero, format cards) renders and becomes interactive immediately.
 const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
+
+/** A paused practice session, saved so a learner can leave a set part-way —
+ *  switch Listening↔Reading, close the tab — and come back to exactly where
+ *  they were. `answers` holds each question's picked label (or null); `orders`
+ *  holds each question's shuffled option order (as authored labels) so the
+ *  saved letters still line up with the same options on resume. Both are
+ *  indexed by the flat question position, like the live session state. This
+ *  mirrors the Writing trainer's draft persistence, which is the only other
+ *  place a learner can resume an in-progress exercise. */
+interface LrProgress {
+  answers: (string | null)[];
+  orders: string[][];
+}
+
+function loadProgress(key: string, expectedLength: number): LrProgress | null {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as LrProgress;
+    // Guard against a stale save from before the bank grew/shrank: a
+    // length mismatch means the indices no longer address the same questions,
+    // so discard it and start fresh rather than restore a scrambled session.
+    if (
+      !parsed ||
+      !Array.isArray(parsed.answers) ||
+      !Array.isArray(parsed.orders) ||
+      parsed.answers.length !== expectedLength ||
+      parsed.orders.length !== expectedLength
+    ) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function saveProgress(key: string, progress: LrProgress) {
+  try {
+    localStorage.setItem(key, JSON.stringify(progress));
+  } catch {
+    // localStorage unavailable (private mode / disabled) — progress just
+    // won't survive a reload, which is the pre-existing behaviour.
+  }
+}
+
+function clearProgress(key: string) {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // localStorage unavailable — nothing to clear.
+  }
+}
 
 /** Reads `?part=N` so a specific part's practice is shareable/bookmarkable
  *  and linkable from other pages (vocabulary, study tips, progress) — not
@@ -151,6 +204,10 @@ function Page() {
     selectedPart === "all"
       ? "toeicpath:lr-practice:best"
       : `toeicpath:lr-practice:best:part${selectedPart}`;
+  const progressKey =
+    selectedPart === "all"
+      ? "toeicpath:lr-practice:progress"
+      : `toeicpath:lr-practice:progress:part${selectedPart}`;
 
   const scrollToPractice = () => {
     document.getElementById("practice")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -289,6 +346,7 @@ function Page() {
               key={storageKey}
               questions={activeQuestions}
               storageKey={storageKey}
+              progressKey={progressKey}
               scope={selectedPart}
             />
           ) : (
@@ -365,23 +423,54 @@ const PAGE_SIZE = 15;
 function PracticeSession({
   questions,
   storageKey,
+  progressKey,
   scope,
 }: {
   questions: PracticeQuestionData[];
   storageKey: string;
+  progressKey: string;
   scope: ProgressScope;
 }) {
   const [answers, setAnswers] = useState<(string | null)[]>(() => questions.map(() => null));
   const [resetKey, setResetKey] = useState(0);
   const [visibleCount, setVisibleCount] = useState(() => Math.min(PAGE_SIZE, questions.length));
-  // SSR renders `questions` as-authored so client hydration matches the server
-  // markup, then this fires client-side before paint to randomize each
-  // question's option order — avoids both a hydration mismatch and a visible
-  // flash of the unshuffled order.
-  const [displayQuestions, setDisplayQuestions] = useState<PracticeQuestionData[]>(questions);
+  // `orders` is each question's option order, as authored labels. null means
+  // "as authored" — the SSR state, so client hydration matches the server
+  // markup. A layout effect then sets it (before paint) to either a fresh
+  // random shuffle or the order saved from a paused session, avoiding both a
+  // hydration mismatch and a visible flash of the unshuffled order.
+  const [orders, setOrders] = useState<string[][] | null>(null);
+  const displayQuestions = useMemo(
+    () => (orders ? questions.map((q, i) => applyOptionOrder(q, orders[i])) : questions),
+    [questions, orders],
+  );
+  // Guards the persist effect from firing on the initial render (before the
+  // restore effect has run), which would clear a saved session with the
+  // default empty state.
+  const hydratedRef = useRef(false);
+
+  // Restore a paused session, or shuffle fresh. Runs before paint, once per
+  // question set (the component is remounted, via `key`, when the part
+  // changes — so `questions`/`progressKey` change together on a remount).
   useLayoutEffect(() => {
-    setDisplayQuestions(questions.map(shuffleQuestionOptions));
-  }, [questions]);
+    const saved = loadProgress(progressKey, questions.length);
+    if (saved) {
+      setOrders(saved.orders);
+      setAnswers(saved.answers);
+      // Reveal enough pages to bring the furthest already-answered question
+      // back into view, so a resumed learner sees their progress instead of a
+      // page-one reset with the later answers hidden.
+      const lastAnswered = saved.answers.reduce((m, a, i) => (a !== null ? i : m), -1);
+      if (lastAnswered >= 0) {
+        setVisibleCount(
+          Math.min(questions.length, Math.ceil((lastAnswered + 1) / PAGE_SIZE) * PAGE_SIZE),
+        );
+      }
+    } else {
+      setOrders(questions.map(randomOptionOrder));
+    }
+    hydratedRef.current = true;
+  }, [questions, progressKey]);
   // Part 3/4 sets render as one card, so the list is walked in units rather
   // than per question. Indices still address the flat answers array.
   const units = useMemo(() => groupQuestions(displayQuestions), [displayQuestions]);
@@ -409,6 +498,19 @@ function PracticeSession({
   const total = questions.length;
   const complete = answeredCount === total;
   const pct = (answeredCount / total) * 100;
+
+  // Persist the session while it's genuinely in progress (something answered,
+  // not yet finished). An untouched set isn't worth saving, and a completed one
+  // is cleared — its best score is already recorded, and resuming a finished
+  // set would just re-show the answered state instead of offering a fresh run.
+  useEffect(() => {
+    if (!hydratedRef.current || !orders) return;
+    if (answeredCount > 0 && !complete) {
+      saveProgress(progressKey, { answers, orders });
+    } else {
+      clearProgress(progressKey);
+    }
+  }, [answers, orders, answeredCount, complete, progressKey]);
 
   useEffect(() => {
     bestRef.current = best;
@@ -453,9 +555,12 @@ function PracticeSession({
 
   const reset = () => {
     setAnswers(questions.map(() => null));
-    setDisplayQuestions(questions.map(shuffleQuestionOptions));
+    setOrders(questions.map(randomOptionOrder));
     setResetKey((k) => k + 1);
     setJustImprovedBest(false);
+    // The persist effect clears the saved session once answers go empty, but do
+    // it eagerly too so a reset can't leave a stale save behind on any path.
+    clearProgress(progressKey);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: window.scrollY, behavior: "auto" });
     }
@@ -466,7 +571,8 @@ function PracticeSession({
       <h2 className="font-display text-3xl font-semibold sm:text-4xl">Practice area</h2>
       <p className="mt-2 text-muted-foreground">
         Lock in an answer to each question to build your {questions.length}-question score. Your
-        best score is saved on this device.
+        best score — and where you leave off — is saved on this device, so you can pause and pick up
+        right where you were.
       </p>
 
       <div className="sticky top-[4rem] z-10 mt-6 flex items-center gap-3 rounded-full border border-border bg-card/95 py-2 pl-4 pr-2 shadow-soft backdrop-blur">
