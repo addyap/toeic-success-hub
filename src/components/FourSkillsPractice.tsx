@@ -25,7 +25,14 @@ import { recordActivity, recordSession } from "@/lib/progress";
 import { audioManifest } from "@/data/audioManifest";
 import { audioKey } from "@/lib/audioSource";
 import type { SpeakingPrompt, WritingPrompt } from "@/data/fourSkillsPrompts";
-import { CRITERIA_LANGS, localizeCriteria } from "@/data/criteriaI18n";
+import {
+  CRITERIA_LANGS,
+  localizeCriteria,
+  loadCriteriaLang,
+  getCachedCriteriaLang,
+  type CriteriaMap,
+  type TranslatableLang,
+} from "@/data/criteriaI18n";
 import { useCriteriaLang } from "@/lib/criteriaLang";
 
 function formatTime(totalSeconds: number) {
@@ -345,7 +352,34 @@ function Checklist({
     saveSelfAssessment(scope, id, { ticked, saved });
   }, [ticked, saved, scope, id]);
 
-  const localized = localizeCriteria(id, items, lang);
+  // Each language's criteria is a separate lazy-loaded chunk (see
+  // criteriaI18n.ts) — a learner who stays on English never fetches any of
+  // them. Seed from the cache (instant if this language was already loaded
+  // elsewhere on the page this session) and kick off a fetch on a cache miss;
+  // localizeCriteria falls back to English while `map` is still undefined.
+  const [map, setMap] = useState<CriteriaMap | undefined>(() =>
+    lang === "en" ? undefined : getCachedCriteriaLang(lang as TranslatableLang),
+  );
+  useEffect(() => {
+    if (lang === "en") {
+      setMap(undefined);
+      return;
+    }
+    const cached = getCachedCriteriaLang(lang as TranslatableLang);
+    if (cached) {
+      setMap(cached);
+      return;
+    }
+    let cancelled = false;
+    loadCriteriaLang(lang as TranslatableLang).then((loaded) => {
+      if (!cancelled) setMap(loaded);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [lang]);
+
+  const localized = localizeCriteria(id, items, lang, map);
 
   const toggle = (index: number) =>
     setTicked((prev) =>
