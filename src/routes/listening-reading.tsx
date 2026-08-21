@@ -20,13 +20,18 @@ import { cn, scrollIntoViewRespectingMotion } from "@/lib/utils";
 import { applyOptionOrder, randomOptionOrder, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import { useSceneVisible } from "@/lib/sceneVisible";
-import type { QuestionPart } from "@/data/listeningReadingQuestions";
+import { partLoaders } from "@/lib/listeningReadingParts";
 
 // The question bank (500+ items, growing every content round) is loaded via
-// a dynamic import instead of a static one so its ~170KB (gzipped) doesn't
-// block this route's initial JS parse/execute — it's fetched as a separate
-// chunk right after mount instead, while the page above the practice section
-// (hero, format cards) renders and becomes interactive immediately.
+// a dynamic import instead of a static one so it doesn't block this route's
+// initial JS parse/execute — it's fetched as a separate chunk right after
+// mount instead, while the page above the practice section (hero, format
+// cards) renders and becomes interactive immediately.
+//
+// It's also split per part (src/data/listeningReading/part<N>.ts): filtering
+// to one part fetches only that ~1/7th slice via partLoaders, rather than
+// the whole ~180KB (gzipped) bank — the common case, since a learner usually
+// drills one part at a time rather than "All parts".
 const PART_NUMBERS = [1, 2, 3, 4, 5, 6, 7] as const;
 
 /** A paused practice session, saved so a learner can leave a set part-way —
@@ -182,25 +187,30 @@ function Page() {
       replace: true,
       resetScroll: false,
     });
-  const [bank, setBank] = useState<{
-    all: PracticeQuestionData[];
-    byPart: QuestionPart[];
-  } | null>(null);
+  const [activeQuestions, setActiveQuestions] = useState<PracticeQuestionData[] | null>(null);
 
+  // Fetches only what the current filter needs: one part's ~1/7th slice when
+  // a specific part is selected, or the full barrel (all 7 parts combined)
+  // for "All parts" — re-runs whenever selectedPart changes, so switching
+  // parts fetches that part's small chunk rather than the whole bank.
   useEffect(() => {
     let cancelled = false;
-    import("@/data/listeningReadingQuestions").then((mod) => {
-      if (cancelled) return;
-      setBank({ all: mod.listeningReadingQuestions, byPart: mod.questionsByPart });
+    setActiveQuestions(null);
+    const load =
+      selectedPart === "all"
+        ? import("@/data/listeningReadingQuestions").then((mod) => mod.listeningReadingQuestions)
+        : // parsePartSearch only ever produces 1-7 here (never "speaking"/
+          // "writing", which ProgressScope also allows for other routes'
+          // reuse of that shared type) — this cast reflects that guarantee.
+          partLoaders[selectedPart as 1 | 2 | 3 | 4 | 5 | 6 | 7]().then((mod) => mod.default);
+    load.then((questions) => {
+      if (!cancelled) setActiveQuestions(questions);
     });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [selectedPart]);
 
-  const activePart =
-    selectedPart === "all" || !bank ? null : bank.byPart.find((p) => p.part === selectedPart);
-  const activeQuestions = activePart ? activePart.questions : (bank?.all ?? null);
   const storageKey =
     selectedPart === "all"
       ? "toeicpath:lr-practice:best"
