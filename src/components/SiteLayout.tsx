@@ -167,7 +167,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               </li>
               <li>
                 <Link to="/pricing" className="hover:text-foreground">
-                  Pricing — free
+                  Pricing — free for now
                 </Link>
               </li>
             </ul>

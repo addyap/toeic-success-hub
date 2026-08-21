@@ -7,30 +7,25 @@ import { VOCAB_COUNT } from "@/data/vocabulary";
 /**
  * Pricing as a statement of intent only.
  *
- * There is deliberately NO payment system behind this page — no Stripe, no
- * licence check, and above all no gating anywhere in the app. A previous
- * paywall was built and then removed wholesale (commit 23aeb1a) precisely so
- * that "free" could not drift by accident, and an env-var kill switch was
- * judged a footgun after a concurrent change hard-disabled it. So this page is
- * static copy: nothing here can lock a feature, because there is no mechanism
- * to do so.
- *
- * No price is quoted. Announcing a number before one has been decided is a
- * commitment to visitors, and "coming soon" is the honest state.
- *
- * e2e/pricing.spec.ts pins the promises made here: no checkout control, and
- * every practice route still reachable without payment.
+ * There is deliberately NO payment system behind this page yet — no Stripe,
+ * no licence check, no gating anywhere in the app. Everything listed as free
+ * really is fully open today. But unlike an earlier version of this page,
+ * that is not framed as permanent: ToeicPath is free during this launch
+ * period, and pricing is coming in the months ahead. No date and no number
+ * is quoted here — announcing either before it is decided would itself be a
+ * false promise — but the direction (this will not stay free indefinitely)
+ * is stated plainly rather than left implicit.
  */
 
 const DESCRIPTION =
-  "ToeicPath is free to use — every practice question, the full mock test, and progress tracking, at no cost. A paid tier is planned but not available yet.";
+  "ToeicPath is free to use during its launch period — every practice question, the full mock test, and progress tracking, at no cost today. Pricing is coming in the months ahead.";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing | ToeicPath — Free to use, paid tier coming soon" },
+      { title: "Pricing | ToeicPath — Free for now, pricing coming soon" },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Pricing | ToeicPath — Free to use" },
+      { property: "og:title", content: "Pricing | ToeicPath — Free for now" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: absoluteUrl("/pricing") },
     ],
@@ -63,26 +58,28 @@ function Page() {
             <Sparkles className="h-3.5 w-3.5" /> Pricing
           </span>
           <h1 className="mt-5 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            Everything is free right now.
+            Free during launch. Pricing is coming.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Nothing on ToeicPath is locked, limited or behind a trial. There is no account to
-            create, no card to enter, and nothing to cancel. A paid tier is planned for the future —
-            but it does not exist yet, and this page will say so plainly until it does.
+            Right now, nothing on ToeicPath is locked, limited or behind a trial — there's no
+            account to create, no card to enter, and nothing to cancel. That's the launch period,
+            not the long-term plan: ToeicPath will introduce pricing in the coming months. No date
+            or price is set yet, so none is promised here — but the site will not stay free
+            indefinitely.
           </p>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-3xl px-5 py-14">
         <div
-          className="rounded-2xl border border-success/30 bg-success/10 p-5"
+          className="rounded-2xl border border-primary/30 bg-primary/5 p-5"
           data-testid="free-banner"
         >
           <p className="flex items-start gap-3 text-sm font-semibold sm:text-base">
-            <Heart className="mt-0.5 h-5 w-5 shrink-0 text-success" />
+            <Heart className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
             <span>
               You will not be charged for anything on this site today. Every feature listed below is
-              free, with no sign-up.
+              free, with no sign-up — for now, during ToeicPath's launch period.
             </span>
           </p>
         </div>
@@ -96,10 +93,11 @@ function Page() {
               </span>
             </div>
             <p className="mt-1 font-display text-3xl font-semibold">
-              £0<span className="text-base font-normal text-muted-foreground"> / forever</span>
+              £0
+              <span className="text-base font-normal text-muted-foreground"> / during launch</span>
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              The whole site, exactly as it is today.
+              The whole site, exactly as it is today — for a limited time.
             </p>
             <ul className="mt-5 space-y-3">
               {FREE_TODAY.map((item) => (
@@ -129,8 +127,8 @@ function Page() {
               Not yet priced
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Ideas being considered for a future paid tier. None of this is available to buy, and
-              nothing currently free will be moved behind it.
+              Ideas being considered for a future paid tier. None of this is available to buy yet,
+              and the current free features are expected to move under it once it launches.
             </p>
             <ul className="mt-5 space-y-3">
               {PLANNED.map((item) => (
@@ -158,14 +156,17 @@ function Page() {
               <dt className="font-semibold">Is anything limited today?</dt>
               <dd className="mt-1 text-muted-foreground">
                 No. Every question, the mock test, the 4-Skills trainers and progress tracking are
-                fully available. There is no trial period and no usage cap.
+                fully available right now. There is no trial period and no usage cap — but "right
+                now" is the operative phrase; see below.
               </dd>
             </div>
             <div>
               <dt className="font-semibold">Will the free features become paid later?</dt>
               <dd className="mt-1 text-muted-foreground">
-                The intention is that what is free today stays free. A paid tier, if it arrives,
-                would be about new material on top rather than taking away what is already here.
+                Yes. This free period is how ToeicPath launches, not how it stays — pricing is
+                coming in the months ahead, and the features listed as free today are expected to
+                move under it. No date or price has been decided, so none is quoted here; when they
+                are, this page will be updated first and there will be no surprise charge.
               </dd>
             </div>
             <div>
