@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme";
+import emblem from "@/assets/toeicpath-emblem.png";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -56,10 +57,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       </a>
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4">
-          <Link to="/" className="flex items-center gap-2 group">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-hero text-primary-foreground shadow-soft">
-              <GraduationCap className="h-5 w-5" />
-            </span>
+          <Link to="/" className="group flex items-center gap-2">
+            {/* Emblem is a self-contained teal circle (its own background) with
+                transparent corners, so it reads on both themes without a
+                wrapper. alt="" — the adjacent wordmark already names the link,
+                so the image is decorative and shouldn't be announced twice. */}
+            <img src={emblem} alt="" className="h-9 w-9" width={242} height={242} />
             <span className="font-display text-xl font-semibold tracking-tight">ToeicPath</span>
           </Link>
 
@@ -132,9 +135,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto grid w-full max-w-6xl gap-6 px-5 py-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-hero text-primary-foreground">
-                <GraduationCap className="h-4 w-4" />
-              </span>
+              <img src={emblem} alt="" className="h-8 w-8" width={242} height={242} />
               <span className="font-display text-lg font-semibold">ToeicPath</span>
             </div>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
