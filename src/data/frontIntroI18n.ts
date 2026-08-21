@@ -158,4 +158,24 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     ],
     note: "本翻譯為機器輔助翻譯。",
   },
+  vi: {
+    eyebrow: "Bạn mới đến?",
+    heading: "ToeicPath hoạt động thế nào",
+    intro: "Luyện thi TOEIC đầy đủ, miễn phí — đọc những điều cốt lõi bằng ngôn ngữ của bạn.",
+    points: [
+      {
+        title: "Tất cả, không cần tài khoản",
+        body: "Luyện thi đầy đủ cho toàn bộ TOEIC — miễn phí và không phải đăng ký.",
+      },
+      {
+        title: "Luyện mọi phần thi",
+        body: "Cả bảy phần Nghe & Đọc, cùng các bài Nói và Viết có tính giờ.",
+      },
+      {
+        title: "Tự chấm bài của bạn",
+        body: "Chấm phần Nói và Viết của bạn theo tiêu chí chính thức, được giải thích bằng ngôn ngữ của bạn.",
+      },
+    ],
+    note: "Bản dịch có hỗ trợ của máy.",
+  },
 };
