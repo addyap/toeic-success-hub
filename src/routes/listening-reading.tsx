@@ -15,8 +15,8 @@ import {
   PracticeQuestionGroup,
   type PracticeQuestionData,
 } from "@/components/PracticeQuestion";
-import { absoluteUrl } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, pageTitle } from "@/lib/site";
+import { cn, scrollIntoViewRespectingMotion } from "@/lib/utils";
 import { applyOptionOrder, randomOptionOrder, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
 import { useSceneVisible } from "@/lib/sceneVisible";
@@ -100,7 +100,7 @@ export const Route = createFileRoute("/listening-reading")({
   validateSearch: parsePartSearch,
   head: () => ({
     meta: [
-      { title: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Listening & Reading") },
       {
         name: "description",
         content:
@@ -108,7 +108,7 @@ export const Route = createFileRoute("/listening-reading")({
       },
       {
         property: "og:title",
-        content: "Listening & Reading | ToeicPath - Official TOEIC Prep Guide",
+        content: pageTitle("Listening & Reading"),
       },
       {
         property: "og:description",
@@ -211,7 +211,7 @@ function Page() {
       : `toeicpath:lr-practice:progress:part${selectedPart}`;
 
   const scrollToPractice = () => {
-    document.getElementById("practice")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollIntoViewRespectingMotion(document.getElementById("practice"));
   };
   // A part button changes the `?part=` search param, which triggers a router
   // navigation that resets scroll to the top. So we can't scroll in the click

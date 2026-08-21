@@ -16,17 +16,17 @@ import { FrontIntro } from "@/components/FrontIntro";
 import heroImg from "@/assets/hero-study.jpg";
 import heroImgWebp from "@/assets/hero-study.webp";
 import { VOCAB_COUNT } from "@/data/vocabulary";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Home | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Home") },
       {
         name: "description",
         content: `Free TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. No account required.`,
       },
-      { property: "og:title", content: "Home | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:title", content: pageTitle("Home") },
       {
         property: "og:description",
         content: `Free TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. No account required.`,

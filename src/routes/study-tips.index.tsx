@@ -3,18 +3,18 @@ import type { ReactNode } from "react";
 import { Lightbulb, Clock, ArrowRight, Headphones, BookOpen, Target, Mic } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory } from "@/data/studyTips";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 
 export const Route = createFileRoute("/study-tips/")({
   head: () => ({
     meta: [
-      { title: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Study Tips") },
       {
         name: "description",
         content:
           "Fourteen expert TOEIC study guides covering listening, reading, speaking, writing, the 4-Skills format, timing, scoring, and a four-week study plan.",
       },
-      { property: "og:title", content: "Study Tips | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:title", content: pageTitle("Study Tips") },
       {
         property: "og:description",
         content:

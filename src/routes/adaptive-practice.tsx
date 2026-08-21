@@ -15,7 +15,7 @@ import {
   PracticeQuestionGroup,
   type PracticeQuestionData,
 } from "@/components/PracticeQuestion";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { groupQuestions } from "@/lib/quiz";
 import {
@@ -34,7 +34,7 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 export const Route = createFileRoute("/adaptive-practice")({
   head: () => ({
     meta: [
-      { title: "Adaptive Practice | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Adaptive Practice") },
       {
         name: "description",
         content:

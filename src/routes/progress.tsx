@@ -11,14 +11,14 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 import { getHistory, getStreak, type ProgressEntry, type StreakState } from "@/lib/progress";
 import { countWeakTerms } from "@/lib/vocabStats";
 
 export const Route = createFileRoute("/progress")({
   head: () => ({
     meta: [
-      { title: "My Progress | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("My Progress") },
       {
         name: "description",
         content:
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/progress")({
       // nothing for a search result to usefully index. Deliberately left out
       // of sitemap.xml for the same reason.
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "My Progress | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:title", content: pageTitle("My Progress") },
       {
         property: "og:description",
         content:

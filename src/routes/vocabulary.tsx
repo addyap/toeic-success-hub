@@ -13,7 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { cn, shuffle } from "@/lib/utils";
+import { cn, shuffle, scrollIntoViewRespectingMotion } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
 import { recordVocabAnswer, weightedPickTerm } from "@/lib/vocabStats";
 import { recordActivity } from "@/lib/progress";
@@ -23,17 +23,17 @@ import {
   RTL_LANGS,
   type GlossLang,
 } from "@/data/vocabularyGlosses";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 
 export const Route = createFileRoute("/vocabulary")({
   head: () => ({
     meta: [
-      { title: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Business Lexicon") },
       {
         name: "description",
         content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
       },
-      { property: "og:title", content: "Business Lexicon | ToeicPath - Official TOEIC Prep Guide" },
+      { property: "og:title", content: pageTitle("Business Lexicon") },
       {
         property: "og:description",
         content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
@@ -141,9 +141,7 @@ function Page() {
             <button
               type="button"
               onClick={() =>
-                document
-                  .getElementById("vocab-practice")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                scrollIntoViewRespectingMotion(document.getElementById("vocab-practice"))
               }
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
             >

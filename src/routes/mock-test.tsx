@@ -7,7 +7,7 @@ import {
   PracticeQuestionGroup,
   type PracticeQuestionData,
 } from "@/components/PracticeQuestion";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pageTitle } from "@/lib/site";
 import { cn, shuffle } from "@/lib/utils";
 import { shuffleQuestionOptions, groupQuestions } from "@/lib/quiz";
 import { recordSession, recordActivity, type ProgressScope } from "@/lib/progress";
@@ -16,7 +16,7 @@ import type { QuestionPart } from "@/data/listeningReadingQuestions";
 export const Route = createFileRoute("/mock-test")({
   head: () => ({
     meta: [
-      { title: "Full Mock Test | ToeicPath - Official TOEIC Prep Guide" },
+      { title: pageTitle("Full Mock Test") },
       {
         name: "description",
         content:
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/mock-test")({
       },
       {
         property: "og:title",
-        content: "Full Mock Test | ToeicPath - Official TOEIC Prep Guide",
+        content: pageTitle("Full Mock Test"),
       },
       {
         property: "og:description",

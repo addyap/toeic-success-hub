@@ -12,7 +12,7 @@ import {
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
-import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import { absoluteUrl, pageTitle, SITE_NAME } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
@@ -28,9 +28,7 @@ export const Route = createFileRoute("/study-tips/$slug")({
   },
   head: ({ loaderData }) => {
     const tip = loaderData?.tip;
-    const title = tip
-      ? `${tip.title} | ToeicPath - Official TOEIC Prep Guide`
-      : "Study Tips | ToeicPath - Official TOEIC Prep Guide";
+    const title = pageTitle(tip ? tip.title : "Study Tips");
     const description =
       tip?.summary ??
       "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score.";
