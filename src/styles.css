@@ -246,4 +246,24 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+
+  :where(a, button, [role="button"], input, select, textarea):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* Respect the OS-level motion preference: kill animation/transition duration
+ * and force instant (not smooth) scrolling site-wide, rather than requiring
+ * every animated component to check the media query itself. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

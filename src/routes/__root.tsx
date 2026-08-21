@@ -146,11 +146,27 @@ export const Route = createRootRoute({
   errorComponent: ErrorComponent,
 });
 
+// Sets the `dark` class before first paint so there is no flash of the wrong
+// theme: this runs synchronously in <head>, ahead of body paint, reading the
+// same localStorage key ("toeicpath:theme") and system-preference fallback
+// that useTheme() (src/lib/theme.ts) reads after hydration. Kept as a plain
+// string (not a module import) because it must execute standalone, before any
+// bundled JS has loaded.
+const THEME_INIT_SCRIPT = `(function(){try{
+  var t=localStorage.getItem("toeicpath:theme");
+  var dark=t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme:dark)").matches);
+  if(dark)document.documentElement.classList.add("dark");
+}catch(e){}})();`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          // Static, hand-written string with no user input — not an XSS vector.
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
         <script
           type="application/ld+json"
           // Static, hardcoded JSON — no user input, so this is not an XSS vector.

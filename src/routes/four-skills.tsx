@@ -13,6 +13,7 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import { scrollIntoViewRespectingMotion } from "@/lib/utils";
 import ogImage from "@/assets/og-four-skills.jpg";
 import {
   examSections,
@@ -213,8 +214,7 @@ function Page() {
 
   // No router navigation is involved here (unlike L&R's part filter), so a
   // section jump is a plain scrollIntoView — no scroll-after-navigation dance.
-  const scrollToId = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollToId = (id: string) => scrollIntoViewRespectingMotion(document.getElementById(id));
 
   return (
     <SiteLayout>

@@ -1,7 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/lib/theme";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -13,6 +14,24 @@ const navItems = [
   { to: "/study-tips", label: "Study Tips" },
   { to: "/progress", label: "My Progress" },
 ] as const;
+
+/** Icon-only light/dark toggle. Rendered once in the header, visible at every
+ *  viewport width — small enough to sit beside the nav rather than needing
+ *  its own row in the mobile menu. */
+function ThemeToggle() {
+  const [theme, setTheme] = useTheme();
+  const isDark = theme === "dark";
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border text-muted-foreground transition hover:border-primary/60 hover:text-foreground"
+    >
+      {isDark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+    </button>
+  );
+}
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -29,6 +48,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground font-sans">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-soft"
+      >
+        Skip to content
+      </a>
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4">
           <Link to="/" className="flex items-center gap-2 group">
@@ -59,14 +84,17 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             })}
           </nav>
 
-          <button
-            onClick={() => setOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border lg:hidden"
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen((o) => !o)}
+              className="grid h-10 w-10 place-items-center rounded-xl border border-border lg:hidden"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {open && (
@@ -96,7 +124,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         )}
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main id="main" tabIndex={-1} className="flex-1 outline-none">
+        {children}
+      </main>
 
       <footer className="border-t border-border/60 bg-secondary/40">
         <div className="mx-auto grid w-full max-w-6xl gap-6 px-5 py-10 sm:grid-cols-2 md:grid-cols-4">
