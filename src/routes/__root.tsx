@@ -86,6 +86,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // Matches site.webmanifest's theme_color (the resolved hex for
+      // --primary) — colors the mobile browser chrome/status bar and the
+      // PWA splash screen so both agree with the in-app palette.
+      { name: "theme-color", content: "#006363" },
       { title: "ToeicPath — Modern TOEIC Test Preparation" },
       {
         name: "description",
@@ -109,8 +113,16 @@ export const Route = createRootRoute({
       { name: "twitter:image", content: ogImage },
     ],
     links: [
+      // SVG first (what modern browsers actually use for the tab), then a
+      // rasterized .ico fallback for anything that doesn't do SVG favicons —
+      // some crawlers, older browsers, and address-bar/bookmark UI.
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "apple-touch-icon", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      // iOS/iPadOS home-screen icon: Apple has never supported SVG here, so
+      // the previous `/favicon.svg` link silently did nothing on iOS —
+      // this needs a real raster PNG.
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       // Preload the latin subset of each self-hosted font — the one that
       // actually renders for the vast majority of visitors — so the browser
       // starts fetching it immediately instead of waiting to parse the CSS
