@@ -22,6 +22,8 @@ export const CRITERIA_LANGS = [
   { code: "pt", label: "Português" },
   { code: "ja", label: "日本語" },
   { code: "ko", label: "한국어" },
+  { code: "zh", label: "繁體中文" },
+  { code: "vi", label: "Tiếng Việt" },
 ] as const;
 
 export type CriteriaLangCode = (typeof CRITERIA_LANGS)[number]["code"];
@@ -31,6 +33,18 @@ type Translations = Record<string, Partial<Record<TranslatableLang, string[]>>>;
 
 export const criteriaTranslations: Translations = {
   "sp-read-1": {
+    vi: [
+      "Từng từ có rõ ràng không, kể cả 'renew', 'available' và 'self-service'?",
+      "Giọng bạn có lên cao ở danh sách giờ và hạ xuống ở cuối mỗi câu không?",
+      "Bạn có ngừng ở dấu phẩy thay vì đọc dính các mệnh đề vào nhau không?",
+      "Bạn có đọc hết toàn bộ đoạn trong thời gian quy định không?",
+    ],
+    zh: [
+      "每個字都清楚易懂嗎，包括 'renew'、'available' 和 'self-service'？",
+      "唸到時間清單時語調有上揚、每句結尾有下降嗎？",
+      "你有在逗號處停頓，而不是把子句連在一起唸嗎？",
+      "你有在時間內唸完整段文字嗎？",
+    ],
     fr: [
       "Chaque mot est-il resté intelligible, y compris « renew », « available » et « self-service » ?",
       "Votre intonation est-elle montée sur l'énumération des horaires et descendue à la fin de chaque phrase ?",
@@ -63,6 +77,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-read-2": {
+    vi: [
+      "Các địa danh có rõ không — Piccadilly, Banbury, Birmingham?",
+      "Bạn có đọc giờ một cách tự nhiên thay vì đọc từng chữ không?",
+      "Giọng bạn có lên cao qua danh sách các điểm dừng và hạ xuống ở cuối không?",
+      "Bạn có giữ nhịp độ đều thay vì tăng tốc về cuối không?",
+    ],
+    zh: [
+      "地名都清楚嗎——Piccadilly、Banbury、Birmingham？",
+      "你有自然地唸出時間，而不是一個字一個字唸嗎？",
+      "唸到各站清單時語調有上揚、結尾有下降嗎？",
+      "你有保持平穩的速度，而不是越唸越快嗎？",
+    ],
     fr: [
       "Les noms de lieux sont-ils restés clairs — Piccadilly, Banbury, Birmingham ?",
       "Avez-vous lu les horaires de façon naturelle plutôt que mot à mot ?",
@@ -95,6 +121,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-read-3": {
+    vi: [
+      "Bạn nghe có thuyết phục thay vì đều đều không — đây là một quảng cáo?",
+      "Bạn có nhấn mạnh các điểm bán hàng: 'less than a day', 'completely free' không?",
+      "Câu dài ở giữa có rõ ràng từ đầu đến cuối không?",
+      "Bạn có ngừng ở dấu phẩy thay vì đọc dính các mệnh đề vào nhau không?",
+    ],
+    zh: [
+      "你聽起來有說服力而非平淡嗎——這是一則廣告？",
+      "你有強調賣點嗎：'less than a day'、'completely free'？",
+      "中間較長的句子從頭到尾都清楚嗎？",
+      "你有在逗號處停頓，而不是把子句連在一起唸嗎？",
+    ],
     fr: [
       "Aviez-vous un ton persuasif plutôt que monotone — c'est une publicité ?",
       "Avez-vous accentué les arguments de vente : « less than a day », « completely free » ?",
@@ -127,6 +165,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-read-4": {
+    vi: [
+      "Số hiệu chuyến bay 'BA two-seven-four' và 'Edinburgh' có rõ và nhấn đúng không?",
+      "Giọng bạn có hạ dứt khoát ở 'gate fourteen' và 'nine forty-five' để các con số nổi bật như thông tin chính không?",
+      "Bạn có ngừng sau 'gentlemen' và trước 'Please have your boarding pass' thay vì đọc gộp các hướng dẫn không?",
+      "'passengers requiring special assistance' có thành một cụm rõ ràng, không bị nhòe vào mệnh đề sau không?",
+    ],
+    zh: [
+      "航班編號 'BA two-seven-four' 和 'Edinburgh' 有清楚且重音正確嗎？",
+      "你的語調有明確落在 'gate fourteen' 和 'nine forty-five' 上，讓這些數字凸顯為關鍵資訊嗎？",
+      "你有在 'gentlemen' 之後、'Please have your boarding pass' 之前停頓，而不是把指示急著連在一起嗎？",
+      "'passengers requiring special assistance' 有獨立成清楚的片語，而沒有和下一子句糊在一起嗎？",
+    ],
     fr: [
       "Le numéro de vol « BA two-seven-four » et « Edinburgh » sont-ils restés clairs et correctement accentués ?",
       "Votre intonation est-elle descendue nettement sur « gate fourteen » et « nine forty-five » pour faire ressortir ces informations clés ?",
@@ -159,6 +209,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-read-5": {
+    vi: [
+      "'Ashcombe' và 'Dorset' có rõ không, và 'twenty-five metres' nghe tự nhiên thay vì đánh vần từng chữ không?",
+      "Giọng bạn có lên cao khi liệt kê 'cabinet seven... fossils... Dorset coast' và hạ ở cuối câu đó không?",
+      "Bạn có ngừng nhẹ trước 'but do not touch the display cases' để đánh dấu lời cảnh báo không?",
+      "'three-digit number' và 'Mineral Room' có rõ ràng thay vì dính vào các từ xung quanh không?",
+    ],
+    zh: [
+      "'Ashcombe' 和 'Dorset' 都清楚嗎？'twenty-five metres' 聽起來自然而非逐字唸出嗎？",
+      "你在列舉 'cabinet seven... fossils... Dorset coast' 時語調有上揚、句尾有下降嗎？",
+      "你有在 'but do not touch the display cases' 之前稍作停頓以標示警告嗎？",
+      "'three-digit number' 和 'Mineral Room' 都清晰，而沒有和周圍的字連在一起嗎？",
+    ],
     fr: [
       "« Ashcombe » et « Dorset » sont-ils restés clairs, et « twenty-five metres » a-t-il sonné naturellement plutôt qu'épelé ?",
       "Votre intonation est-elle montée en énumérant « cabinet seven... fossils... Dorset coast » et descendue à la fin de cette phrase ?",
@@ -191,6 +253,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-read-6": {
+    vi: [
+      "'Hartley Manufacturing' và 'Zones A and B' có rõ không, với chữ A và B phát âm tách bạch?",
+      "Giọng bạn có hạ rõ ở cuối 'Gate Three' và lại ở 'the one you entered by' không?",
+      "Bạn có ngừng ở dấu chấm phẩy trước 'in the event of an alarm' thay vì đọc vội vào hướng dẫn không?",
+      "'unattended' và 'extinguishers' có hoàn toàn rõ dù là từ dài, ít gặp hơn không?",
+    ],
+    zh: [
+      "'Hartley Manufacturing' 和 'Zones A and B' 都清楚，且字母 A 和 B 發音分明嗎？",
+      "你的語調在 'Gate Three' 結尾及 'the one you entered by' 都有清楚下降嗎？",
+      "你有在 'in the event of an alarm' 之前的分號處停頓，而不是急著唸出指示嗎？",
+      "'unattended' 和 'extinguishers' 雖然較長、較不常見，仍完全清楚易懂嗎？",
+    ],
     fr: [
       "« Hartley Manufacturing » et « Zones A and B » sont-ils restés clairs, avec les lettres A et B prononcées distinctement ?",
       "Votre intonation est-elle descendue nettement à la fin de « Gate Three » puis de « the one you entered by » ?",
@@ -223,6 +297,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-picture-1": {
+    vi: [
+      "Bạn có nói địa điểm của cảnh này trong câu đầu tiên không?",
+      "Bạn có dùng thì hiện tại tiếp diễn cho các hành động chính ('he is explaining', 'she is holding a pen') không?",
+      "Bạn có mô tả nhiều hơn một người và điểm khác biệt giữa họ không?",
+      "Bạn có nhắc đến những gì trên bàn — laptop, cốc, sổ tay không?",
+      "Bạn còn đang nói khi hết giờ không?",
+    ],
+    zh: [
+      "你在第一句就說出這個場景發生的地點了嗎？",
+      "你有用現在進行式描述主要動作嗎（'he is explaining'、'she is holding a pen'）？",
+      "你有描述不只一個人，以及他們的不同之處嗎？",
+      "你有提到桌上有什麼嗎——筆電、馬克杯、記事本？",
+      "時間到時你還在說話嗎？",
+    ],
     fr: [
       "Avez-vous dit où se déroule la scène dans votre première phrase ?",
       "Avez-vous employé le présent continu pour les actions principales (« he is explaining », « she is holding a pen ») ?",
@@ -260,6 +348,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-picture-2": {
+    vi: [
+      "Bạn có xác lập bối cảnh — một quầy chợ — trước khi mô tả chi tiết không?",
+      "Bạn có mô tả người bán đang làm gì, không chỉ cô ấy mặc gì không?",
+      "Bạn có nêu tên nông sản và vật cụ thể (cân, giỏ, thùng gỗ) thay vì nói 'things' không?",
+      "Bạn có nhắc đến ánh sáng, cho thấy đây là chợ buổi tối không?",
+      "Bạn có mô tả từ tiền cảnh ra hậu cảnh thay vì nhảy lung tung không?",
+    ],
+    zh: [
+      "你有先確立場景——一個市集攤位——再描述細節嗎？",
+      "你有描述攤販正在做什麼，而不只是她穿什麼嗎？",
+      "你有說出具體的農產品和物品（磅秤、籃子、板條箱），而不是只說 'things' 嗎？",
+      "你有提到燈光，藉此看出這是夜市嗎？",
+      "你有從前景描述到背景，而不是跳來跳去嗎？",
+    ],
     fr: [
       "Avez-vous planté le décor — un étal de marché — avant de décrire les détails ?",
       "Avez-vous décrit ce que fait la vendeuse, et pas seulement ce qu'elle porte ?",
@@ -297,6 +399,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-picture-3": {
+    vi: [
+      "Bạn có nói đây là nơi nào và có khoảng bao nhiêu người không?",
+      "Bạn có mô tả nhân viên đang làm gì, không chỉ họ mặc gì không?",
+      "Bạn có nhắc đến người bên phải không? Người đó đang quan sát chứ không nấu ăn.",
+      "Bạn có dùng thì hiện tại tiếp diễn xuyên suốt cho các hành động đang diễn ra không?",
+      "Bạn có nói đủ trọn 30 giây không?",
+    ],
+    zh: [
+      "你有說出這是什麼樣的地方，以及大約有多少人在場嗎？",
+      "你有描述員工正在做什麼，而不只是他們穿什麼嗎？",
+      "你有提到右邊那個人嗎？他是在旁觀而非烹飪。",
+      "你全程都用現在進行式描述進行中的動作嗎？",
+      "你有把整整 30 秒都說滿嗎？",
+    ],
     fr: [
       "Avez-vous précisé de quel type de lieu il s'agit et environ combien de personnes sont présentes ?",
       "Avez-vous décrit ce que fait le personnel, et pas seulement ce qu'il porte ?",
@@ -334,6 +450,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-picture-4": {
+    vi: [
+      "Bạn có nói địa điểm của cảnh — một công trường, trên cao của một kết cấu không?",
+      "Bạn có mô tả từng công nhân đang làm gì, không chỉ họ mặc gì không?",
+      "Bạn có nhắc đến móc cẩu và kết cấu cốt thép/ván khuôn họ đang đứng trên không?",
+      "Bạn có dùng thì hiện tại tiếp diễn xuyên suốt cho các hành động đang diễn ra không?",
+      "Bạn còn đang nói khi hết giờ không?",
+    ],
+    zh: [
+      "你有說出場景地點嗎——一個工地，位於結構物的高處？",
+      "你有描述每位工人正在做什麼，而不只是他們穿什麼嗎？",
+      "你有提到起重機吊鉤，以及他們站著的鋼筋／模板結構嗎？",
+      "你全程都用現在進行式描述進行中的動作嗎？",
+      "時間到時你還在說話嗎？",
+    ],
     fr: [
       "Avez-vous dit où se déroule la scène — un chantier, en hauteur sur une structure ?",
       "Avez-vous décrit ce que fait chaque ouvrier, et pas seulement ce qu'il porte ?",
@@ -371,6 +501,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-picture-5": {
+    vi: [
+      "Bạn có nói đây là nơi nào và có khoảng bao nhiêu người không?",
+      "Bạn có mô tả các kỹ thuật viên đang ngồi làm gì với kính hiển vi không?",
+      "Bạn có nhắc đến người đàn ông đang đứng không? Người đó dường như đang nói chứ không thao tác kính hiển vi.",
+      "Bạn có dùng thì hiện tại tiếp diễn xuyên suốt cho các hành động đang diễn ra không?",
+      "Bạn có nói đủ trọn 30 giây không?",
+    ],
+    zh: [
+      "你有說出這是什麼樣的地方，以及大約有多少人在場嗎？",
+      "你有描述坐著的技術人員正用顯微鏡做什麼嗎？",
+      "你有提到那位站著的男士嗎？他似乎在說話，而非在操作顯微鏡。",
+      "你全程都用現在進行式描述進行中的動作嗎？",
+      "你有把整整 30 秒都說滿嗎？",
+    ],
     fr: [
       "Avez-vous précisé de quel type de lieu il s'agit et environ combien de personnes sont présentes ?",
       "Avez-vous décrit ce que font les techniciens assis avec les microscopes ?",
@@ -408,6 +552,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-1": {
+    vi: [
+      "Bạn có bắt đầu nói gần như ngay lập tức không?",
+      "Bạn có trả lời cả hai phần của câu hỏi — làm thế nào và tại sao không?",
+      "Bạn có thêm lý do hoặc ví dụ thay vì dừng sau một câu không?",
+      "Bạn có nói trọn một ý trong 15 giây mà không vội không?",
+    ],
+    zh: [
+      "你幾乎立刻就開始說話了嗎？",
+      "你有回答問題的兩個部分嗎——如何做以及為什麼？",
+      "你有補充理由或例子，而不是說完一句就停嗎？",
+      "你有在 15 秒內完整表達一個想法，且沒有趕嗎？",
+    ],
     fr: [
       "Avez-vous commencé à parler presque immédiatement ?",
       "Avez-vous répondu aux deux parties de la question — le comment et le pourquoi ?",
@@ -440,6 +596,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-2": {
+    vi: [
+      "Bạn có bắt đầu nói trong một hai giây không?",
+      "Bạn có trả lời cả hai phần — khi nào và làm gì không?",
+      "Bạn có nói trọn một ý trong 15 giây mà không vội không?",
+      "Bạn có tránh những từ đệm như 'ummm, let me think' làm tốn thời gian không?",
+    ],
+    zh: [
+      "你有在一兩秒內開始說話嗎？",
+      "你有回答兩個部分嗎——何時以及做什麼？",
+      "你有在 15 秒內完整表達一個想法，且沒有趕嗎？",
+      "你有避免像 'ummm, let me think' 這類會吃掉時間的贅語嗎？",
+    ],
     fr: [
       "Avez-vous commencé à parler en une ou deux secondes ?",
       "Avez-vous répondu aux deux parties — le quand et le quoi ?",
@@ -472,6 +640,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-3": {
+    vi: [
+      "Bạn có nêu rõ một sở thích thay vì nói nước đôi không?",
+      "Bạn có trả lời phần 'has that changed' của câu hỏi không?",
+      "Bạn có hỗ trợ sở thích của mình bằng một lý do hoặc ví dụ không?",
+      "Bạn có nói liên tục đủ trọn 30 giây không?",
+    ],
+    zh: [
+      "你有明確表達偏好，而不是兩邊都含糊帶過嗎？",
+      "你有回答問題中 'has that changed' 的部分嗎？",
+      "你有用理由或例子支持你的偏好嗎？",
+      "你有持續說滿整整 30 秒嗎？",
+    ],
     fr: [
       "Avez-vous exprimé une préférence claire au lieu de ménager les deux options ?",
       "Avez-vous traité la partie « has that changed » de la question ?",
@@ -504,6 +684,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-4": {
+    vi: [
+      "Bạn có bắt đầu nói trong một hai giây không?",
+      "Bạn có nêu rõ sở thích giữa họp trực tiếp và họp video không?",
+      "Bạn có đưa ra lý do cụ thể thay vì chỉ nêu sở thích không?",
+      "Bạn có nói trọn một ý trong 15 giây mà không vội không?",
+    ],
+    zh: [
+      "你有在一兩秒內開始說話嗎？",
+      "你有在面對面和視訊會議之間明確表達偏好嗎？",
+      "你有給出具體理由，而不只是說出偏好嗎？",
+      "你有在 15 秒內完整表達一個想法，且沒有趕嗎？",
+    ],
     fr: [
       "Avez-vous commencé à parler en une ou deux secondes ?",
       "Avez-vous exprimé une préférence claire entre les réunions en présentiel et en visioconférence ?",
@@ -536,6 +728,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-5": {
+    vi: [
+      "Bạn có bắt đầu nói gần như ngay lập tức không?",
+      "Bạn có nêu tên một ứng dụng hoặc công cụ cụ thể thay vì nói mơ hồ không?",
+      "Bạn có giải thích bạn thực sự dùng nó để làm gì không?",
+      "Bạn có tránh những từ đệm như 'ummm, let me think' làm tốn thời gian không?",
+    ],
+    zh: [
+      "你幾乎立刻就開始說話了嗎？",
+      "你有說出具體的應用程式或工具，而不是含糊帶過嗎？",
+      "你有說明你實際用它來做什麼嗎？",
+      "你有避免像 'ummm, let me think' 這類會吃掉時間的贅語嗎？",
+    ],
     fr: [
       "Avez-vous commencé à parler presque immédiatement ?",
       "Avez-vous nommé une application ou un outil précis au lieu de rester vague ?",
@@ -568,6 +772,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-questions-6": {
+    vi: [
+      "Bạn có mô tả bạn thường dành cuối tuần thế nào không?",
+      "Bạn có nói điều đó có thay đổi so với năm ngoái hay không?",
+      "Bạn có hỗ trợ câu trả lời bằng một ví dụ hoặc chi tiết cụ thể không?",
+      "Bạn có nói liên tục đủ trọn 30 giây không?",
+    ],
+    zh: [
+      "你有描述你通常怎麼度過週末嗎？",
+      "你有說明這和去年相比是否有改變嗎？",
+      "你有用具體的例子或細節支持你的回答嗎？",
+      "你有持續說滿整整 30 秒嗎？",
+    ],
     fr: [
       "Avez-vous décrit comment vous passez généralement vos week-ends ?",
       "Avez-vous indiqué si cela a changé depuis l'an dernier ?",
@@ -600,6 +816,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-1": {
+    vi: [
+      "Bạn có nêu đúng tên và đúng giờ kết thúc không?",
+      "Bạn có trả lời cả hai phần của câu hỏi không?",
+      "Bạn có trả lời bằng câu hoàn chỉnh thay vì đọc lịch một cách đều đều không?",
+      "Bạn có tránh những khoảng ngừng dài khi tìm trong văn bản không?",
+    ],
+    zh: [
+      "你有說出正確的名稱和正確的結束時間嗎？",
+      "你有回答問題的兩個部分嗎？",
+      "你有用完整的句子回答，而不是平淡地把時間表唸出來嗎？",
+      "你有避免在搜尋文字時出現長時間停頓嗎？",
+    ],
     fr: [
       "Avez-vous donné le nom exact et l'heure de fin exacte ?",
       "Avez-vous répondu aux deux parties de la question ?",
@@ -632,6 +860,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-2": {
+    vi: [
+      "Bạn có nêu đúng giờ và đúng khách sạn không?",
+      "Bạn có tránh nhầm lẫn mục thứ Ba và thứ Tư không?",
+      "Bạn có trả lời bằng câu hoàn chỉnh thay vì đọc to các dòng đó không?",
+      "Bạn nghe có tự tin thay vì ngập ngừng khi tìm chi tiết không?",
+    ],
+    zh: [
+      "你有說出正確的時間和正確的飯店嗎？",
+      "你有避免把週二和週三的項目搞混嗎？",
+      "你有用完整的句子回答，而不是把那幾行唸出來嗎？",
+      "你在找出細節時聽起來有自信，而非猶豫嗎？",
+    ],
     fr: [
       "Avez-vous donné à la fois l'heure exacte et l'hôtel exact ?",
       "Avez-vous évité de confondre les entrées du mardi et du mercredi ?",
@@ -664,6 +904,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-3": {
+    vi: [
+      "Bạn có nhận diện đúng phiên bắt buộc buổi sáng không?",
+      "Bạn có nhắc rằng một trong các phiên 11:30 là lựa chọn giữa hai không?",
+      "Bạn có ghi nhận đúng rằng việc đăng ký trước áp dụng cho phiên sơ cứu buổi chiều không?",
+      "Bạn có sắp xếp câu trả lời thay vì liệt kê chương trình theo thứ tự không?",
+    ],
+    zh: [
+      "你有正確指出必修的上午場次嗎？",
+      "你有提到其中一個 11:30 的場次是兩選一嗎？",
+      "你有正確指出需事先報名的是下午的急救場次嗎？",
+      "你有把答案加以組織，而不是照順序把議程列出來嗎？",
+    ],
     fr: [
       "Avez-vous identifié correctement la session obligatoire du matin ?",
       "Avez-vous mentionné que l'une des sessions de 11 h 30 est un choix entre deux ?",
@@ -696,6 +948,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-4": {
+    vi: [
+      "Bạn có nhận diện đúng rằng chỉ phòng tiêm chủng 10:30 là ghé trực tiếp, không cần hẹn không?",
+      "Bạn có nêu đúng rằng phiên 14:30 ở Phòng 3 (chấn thương nhẹ) không được ghi là ghé trực tiếp không?",
+      "Bạn có đề nghị đặt trước, hoặc đến vào buổi sáng thay thế không?",
+      "Bạn có trả lời bằng câu hoàn chỉnh thay vì đọc to danh sách không?",
+    ],
+    zh: [
+      "你有正確指出只有 10:30 的疫苗接種診間是免預約、可直接前往嗎？",
+      "你有正確說明 3 號診間 14:30 的場次（輕傷）並未列為可直接前往嗎？",
+      "你有建議事先預約，或改成上午前來嗎？",
+      "你有用完整的句子回答，而不是把清單唸出來嗎？",
+    ],
     fr: [
       "Avez-vous correctement identifié que seule la clinique de vaccination de 10 h 30 se fait sans rendez-vous ?",
       "Avez-vous correctement indiqué que la session de 14 h 30 en salle 3 (petites blessures) n'est pas indiquée comme étant sans rendez-vous ?",
@@ -728,6 +992,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-5": {
+    vi: [
+      "Bạn có nêu đúng xe đưa đón 17:45 là chuyến đi Riverside Hotel không?",
+      "Bạn có xác nhận nó khởi hành sau giờ hạ cánh 17:20, nên kịp đón không?",
+      "Bạn có nhận diện đúng nó là chuyến trực tiếp chứ không dừng nhiều điểm không?",
+      "Bạn có tránh nhắc đến các xe đưa đón đi Downtown, vốn không liên quan ở đây không?",
+    ],
+    zh: [
+      "你有正確指出 17:45 的接駁車是前往 Riverside Hotel 的那一班嗎？",
+      "你有確認它在 17:20 降落時間之後發車，因此趕得上嗎？",
+      "你有正確指出它是直達車，而非停靠多站的班次嗎？",
+      "你有避免提到前往市中心的接駁車嗎？那些在此並不相關。",
+    ],
     fr: [
       "Avez-vous correctement désigné la navette de 17 h 45 comme celle qui se rend au Riverside Hotel ?",
       "Avez-vous confirmé qu'elle part après l'atterrissage de 17 h 20, et qu'on peut donc l'attraper ?",
@@ -760,6 +1036,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-info-6": {
+    vi: [
+      "Bạn có nhận diện đúng khung 13:00–14:00 phỏng vấn báo chí là cơ hội một-đối-một không?",
+      "Bạn có nhắc rằng phỏng vấn cần đăng ký trước tại quầy tiếp đón không?",
+      "Bạn có phân biệt nó với phiên hỏi đáp báo chí 11:30 không? Phiên đó là buổi nhóm chứ không phải một-đối-một.",
+      "Bạn có sắp xếp câu trả lời rõ ràng thay vì liệt kê toàn bộ lịch theo thứ tự không?",
+    ],
+    zh: [
+      "你有正確指出 13:00–14:00 的媒體採訪時段是一對一的機會嗎？",
+      "你有提到採訪需事先在報到櫃檯報名嗎？",
+      "你有把它和 11:30 的媒體問答區分開來嗎？後者是團體場次而非一對一。",
+      "你有把答案清楚組織，而不是照順序把整個議程列出來嗎？",
+    ],
     fr: [
       "Avez-vous correctement identifié le créneau d'interview média de 13 h à 14 h comme l'occasion en tête-à-tête ?",
       "Avez-vous mentionné que les interviews nécessitent une inscription préalable au comptoir d'accueil ?",
@@ -792,6 +1080,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-1": {
+    vi: [
+      "Bạn có nêu rõ lập trường trong câu đầu tiên không?",
+      "Bạn có đưa ra ít nhất hai lý do khác nhau không?",
+      "Bạn có hỗ trợ mỗi lý do bằng một ví dụ cụ thể không?",
+      "Bạn có đưa ra kết luận thay vì bỏ lửng khi hết giờ không?",
+    ],
+    zh: [
+      "你在第一句就清楚表明立場了嗎？",
+      "你有給出至少兩個不同的理由嗎？",
+      "你有用具體的例子支持每個理由嗎？",
+      "你有做出結論，而不是在時間到時草草收尾嗎？",
+    ],
     fr: [
       "Avez-vous énoncé clairement votre position dès la première phrase ?",
       "Avez-vous donné au moins deux raisons distinctes ?",
@@ -824,6 +1124,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-2": {
+    vi: [
+      "Bạn có cam kết 'help' hay 'harm' trong câu mở đầu không?",
+      "Bạn có đưa ra hai lý do riêng biệt thay vì nhắc lại một lý do không?",
+      "Bạn có nêu một ví dụ cụ thể từ công việc hoặc học tập không?",
+      "Bạn có thừa nhận và phản hồi quan điểm đối lập thay vì phớt lờ nó không?",
+      "Bạn có kết thúc bằng một kết luận trong vòng 60 giây không?",
+    ],
+    zh: [
+      "你在開頭句就明確選擇 'help' 或 'harm' 了嗎？",
+      "你有給出兩個不同的理由，而非把同一個重述一遍嗎？",
+      "你有納入一個來自工作或學習的具體例子嗎？",
+      "你有正視並回應反方觀點，而不是忽略它嗎？",
+      "你有在 60 秒內以結論收尾嗎？",
+    ],
     fr: [
       "Vous êtes-vous engagé pour « help » ou « harm » dès votre phrase d'ouverture ?",
       "Avez-vous donné deux raisons distinctes au lieu d'en reformuler une seule ?",
@@ -861,6 +1175,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-3": {
+    vi: [
+      "Bạn có chọn rõ một phương án thay vì nói cả hai đều có giá trị không?",
+      "Bạn có giải thích vì sao lựa chọn của bạn hơn phương án kia, không chỉ vì sao nó tốt không?",
+      "Bạn có dùng một ví dụ cụ thể để làm rõ một lý do không?",
+      "Câu trả lời của bạn có mở đầu, thân và kết dễ nhận ra không?",
+    ],
+    zh: [
+      "你有明確選擇一個選項，而不是說兩者都有價值嗎？",
+      "你有說明你的選擇為何勝過另一個，而不只是它為何好嗎？",
+      "你有用具體例子讓其中一個理由變得具體嗎？",
+      "你的回答有可辨識的開頭、中段和結尾嗎？",
+    ],
     fr: [
       "Avez-vous choisi clairement une option au lieu de dire que les deux ont de la valeur ?",
       "Avez-vous expliqué pourquoi votre choix l'emporte sur l'autre, et pas seulement pourquoi il est bon ?",
@@ -893,6 +1219,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-4": {
+    vi: [
+      "Bạn có nói rõ bạn ủng hộ đến văn phòng toàn thời gian hay làm việc từ xa không?",
+      "Bạn có đưa ra một lý do tập trung vào góc nhìn của nhân viên và một tập trung vào góc nhìn của doanh nghiệp không?",
+      "Bạn có dùng ví dụ cụ thể (một nhiệm vụ, một tình huống nhóm, một trải nghiệm cá nhân) thay vì một khẳng định chung chung không?",
+      "Bạn có thừa nhận ngắn gọn phía bên kia trước khi khẳng định lại lập trường không?",
+      "Bạn có kết bằng một câu kết luận rõ ràng thay vì dừng giữa chừng không?",
+    ],
+    zh: [
+      "你有明確表示支持全職進辦公室或遠距工作嗎？",
+      "你有給出一個著重員工角度、一個著重企業角度的理由嗎？",
+      "你有用具體例子（某項任務、某個團隊情境、某段個人經驗），而非籠統的說法嗎？",
+      "你有先簡短認可對方觀點，再重申自己的立場嗎？",
+      "你有以清楚的結論句收尾，而不是講到一半就停嗎？",
+    ],
     fr: [
       "Avez-vous dit clairement si vous préférez la présence à temps plein au bureau ou le télétravail ?",
       "Avez-vous donné une raison du point de vue du salarié et une du point de vue de l'entreprise ?",
@@ -930,6 +1270,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-5": {
+    vi: [
+      "Bạn có nêu ngay từ đầu bạn thích lương cố định hay lương theo hiệu suất không?",
+      "Bạn có giải thích một lý do liên quan đến sự công bằng và một liên quan đến động lực hoặc kết quả không?",
+      "Bạn có minh họa luận điểm bằng một tình huống hoặc ví dụ nơi làm việc cụ thể không?",
+      "Bạn có đề cập một nhược điểm có thể có của hệ thống bạn chọn để thể hiện tư duy cân bằng không?",
+      "Bạn có kết bằng một phát biểu cuối rõ ràng thay vì hết giờ không?",
+    ],
+    zh: [
+      "你一開始就表明偏好固定薪資或績效導向薪酬了嗎？",
+      "你有說明一個與公平相關、一個與激勵或成果相關的理由嗎？",
+      "你有用具體的職場情境或例子來闡述論點嗎？",
+      "你有談到所選制度可能的缺點，以展現平衡的思考嗎？",
+      "你有以清楚的結語收尾，而不是時間用完就停嗎？",
+    ],
     fr: [
       "Avez-vous indiqué d'emblée si vous préférez les salaires fixes ou la rémunération à la performance ?",
       "Avez-vous expliqué une raison liée à l'équité et une liée à la motivation ou aux résultats ?",
@@ -967,6 +1321,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "sp-opinion-6": {
+    vi: [
+      "Bạn có nêu rõ bạn ủng hộ sự gắn bó lâu dài hay đổi việc thường xuyên không?",
+      "Bạn có đưa ra một lý do về kỹ năng hoặc phát triển sự nghiệp và một về quan hệ hoặc sự ổn định không?",
+      "Bạn có hỗ trợ mỗi lý do bằng một ví dụ cụ thể, chẳng hạn một lộ trình sự nghiệp hoặc tình huống bạn biết không?",
+      "Bạn có giữ hai lý do tách biệt thay vì lặp lại cùng một ý hai lần không?",
+      "Bạn có kết bằng một kết luận ngắn gọn tái khẳng định lập trường không?",
+    ],
+    zh: [
+      "你有明確表示支持長期忠誠或頻繁換工作嗎？",
+      "你有給出一個關於技能或職涯發展、一個關於人際關係或穩定性的理由嗎？",
+      "你有用具體例子支持每個理由，例如你所知的某條職涯路徑或情境嗎？",
+      "你有讓兩個理由各自分明，而非把同一個想法重複兩次嗎？",
+      "你有以簡潔、重申立場的結論收尾嗎？",
+    ],
     fr: [
       "Avez-vous clairement indiqué si vous privilégiez la fidélité à long terme ou les changements fréquents d'emploi ?",
       "Avez-vous donné une raison portant sur le développement des compétences ou de carrière et une portant sur les relations ou la stabilité ?",
@@ -1004,6 +1372,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-1": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "Câu đó có liên quan rõ ràng đến bức tranh không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "這個句子和圖片有明確關聯嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1036,6 +1416,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-2": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "'while' có thực sự nối hai hành động diễn ra đồng thời không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "'while' 確實連接了兩個同時發生的動作嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1068,6 +1460,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-3": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "'although' có giới thiệu một sự tương phản thực sự thay vì chỉ được chèn vào không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "'although' 有引出真正的對比，而不只是硬插進去嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1100,6 +1504,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-4": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "'while' có thực sự nối hai hành động diễn ra đồng thời không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "'while' 確實連接了兩個同時發生的動作嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1132,6 +1548,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-5": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "'before' có sắp đúng thứ tự của hai hành động không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "'before' 有正確排出兩個動作的先後順序嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1164,6 +1592,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-sentence-6": {
+    vi: [
+      "Bạn có dùng cả hai từ, ở bất kỳ dạng nào không?",
+      "Nó có đúng là một câu không?",
+      "'after' có sắp đúng thứ tự của hai hành động không?",
+      "Ngữ pháp có chính xác không — thì, mạo từ, hòa hợp chủ ngữ–động từ?",
+    ],
+    zh: [
+      "你有使用這兩個字（任何形式皆可）嗎？",
+      "這剛好是一個句子嗎？",
+      "'after' 有正確排出兩個動作的先後順序嗎？",
+      "文法正確嗎——時態、冠詞、主詞與動詞一致？",
+    ],
     fr: [
       "Avez-vous utilisé les deux mots, sous n'importe quelle forme ?",
       "S'agit-il d'exactement une seule phrase ?",
@@ -1196,6 +1636,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-1": {
+    vi: [
+      "Bạn có đưa đủ ba yếu tố bắt buộc không — một câu hỏi, một yêu cầu và một vấn đề?",
+      "Bạn có mở đầu và kết thúc email một cách phù hợp không?",
+      "Bạn có đa dạng cấu trúc câu thay vì lặp lại một kiểu không?",
+      "Văn phong có lịch sự và chuyên nghiệp xuyên suốt không?",
+    ],
+    zh: [
+      "你有包含全部三個必要元素嗎——一個問題、一個請求和一個狀況？",
+      "你有適當地為這封電子郵件開頭和結尾嗎？",
+      "你有變化句型，而不是重複同一種結構嗎？",
+      "整體語氣是否禮貌且專業？",
+    ],
     fr: [
       "Avez-vous inclus les trois éléments requis — une question, une demande et un problème ?",
       "Avez-vous ouvert et clôturé l'e-mail de façon appropriée ?",
@@ -1228,6 +1680,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-2": {
+    vi: [
+      "Bạn có đưa đủ ba yếu tố bắt buộc không — một câu hỏi, một yêu cầu và một hệ quả?",
+      "Bạn có giữ rõ hai mặt hàng hết hàng tách biệt trong thư trả lời không?",
+      "Bạn có mở đầu và kết thúc email một cách phù hợp không?",
+      "Giọng điệu có cứng rắn nhưng vẫn lịch sự không?",
+    ],
+    zh: [
+      "你有包含全部三個必要元素嗎——一個問題、一個請求和一個後果？",
+      "你在回覆中有把兩項缺貨商品區分清楚嗎？",
+      "你有適當地為這封電子郵件開頭和結尾嗎？",
+      "語氣是否堅定但仍禮貌？",
+    ],
     fr: [
       "Avez-vous inclus les trois éléments requis — une question, une demande et une conséquence ?",
       "Avez-vous bien distingué les deux articles en rupture de stock dans votre réponse ?",
@@ -1260,6 +1724,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-3": {
+    vi: [
+      "Bạn có chấp nhận rõ ràng, thay vì chỉ bày tỏ sự quan tâm không?",
+      "Bạn có nêu hai điều khác nhau bạn mong nhận được, không phải một điều nhắc lại không?",
+      "Bạn có hỏi một câu thực sự thiết thực không — đi lại, giờ giấc, tài liệu?",
+      "Bạn có đa dạng cấu trúc câu xuyên suốt thư trả lời không?",
+    ],
+    zh: [
+      "你有明確接受，而不只是表達興趣嗎？",
+      "你有給出兩件你希望獲得的不同事物，而非把同一件重述嗎？",
+      "你有問一個真正實際的問題嗎——交通、時間、資料？",
+      "你在整封回覆中有變化句型嗎？",
+    ],
     fr: [
       "Avez-vous clairement accepté, au lieu de simplement manifester de l'intérêt ?",
       "Avez-vous indiqué deux choses distinctes que vous espérez en retirer, et non une seule reformulée ?",
@@ -1292,6 +1768,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-4": {
+    vi: [
+      "Bạn có đưa đủ ba yếu tố bắt buộc không — một vấn đề, một yêu cầu và một câu hỏi?",
+      "Bạn có mở đầu và kết thúc email một cách phù hợp không?",
+      "Bạn có đa dạng cấu trúc câu thay vì lặp lại một kiểu không?",
+      "Văn phong có lịch sự và chuyên nghiệp xuyên suốt không?",
+    ],
+    zh: [
+      "你有包含全部三個必要元素嗎——一個狀況、一個請求和一個問題？",
+      "你有適當地為這封電子郵件開頭和結尾嗎？",
+      "你有變化句型，而不是重複同一種結構嗎？",
+      "整體語氣是否禮貌且專業？",
+    ],
     fr: [
       "Avez-vous inclus les trois éléments requis — un problème, une demande et une question ?",
       "Avez-vous ouvert et clôturé l'e-mail de façon appropriée ?",
@@ -1324,6 +1812,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-5": {
+    vi: [
+      "Bạn có đưa đủ ba yếu tố bắt buộc không — một nội dung bàn giao, một sắp xếp liên hệ khẩn cấp, và một câu hỏi?",
+      "Bạn có mở đầu và kết thúc email một cách phù hợp không?",
+      "Bạn có đa dạng cấu trúc câu thay vì lặp lại một kiểu không?",
+      "Văn phong có lịch sự và chuyên nghiệp xuyên suốt không?",
+    ],
+    zh: [
+      "你有包含全部三個必要元素嗎——一項交接事項、一個緊急聯絡的安排，以及一個問題？",
+      "你有適當地為這封電子郵件開頭和結尾嗎？",
+      "你有變化句型，而不是重複同一種結構嗎？",
+      "整體語氣是否禮貌且專業？",
+    ],
     fr: [
       "Avez-vous inclus les trois éléments requis — un sujet de passation, une modalité de contact en cas d'urgence et une question ?",
       "Avez-vous ouvert et clôturé l'e-mail de façon appropriée ?",
@@ -1356,6 +1856,18 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-request-6": {
+    vi: [
+      "Bạn có đưa đủ ba yếu tố bắt buộc không — một việc đã làm xong, một câu hỏi và một vấn đề?",
+      "Bạn có mở đầu và kết thúc email một cách phù hợp không?",
+      "Bạn có đa dạng cấu trúc câu thay vì lặp lại một kiểu không?",
+      "Văn phong có lịch sự và chuyên nghiệp xuyên suốt không?",
+    ],
+    zh: [
+      "你有包含全部三個必要元素嗎——一件已完成的事、一個問題和一個狀況？",
+      "你有適當地為這封電子郵件開頭和結尾嗎？",
+      "你有變化句型，而不是重複同一種結構嗎？",
+      "整體語氣是否禮貌且專業？",
+    ],
     fr: [
       "Avez-vous inclus les trois éléments requis — quelque chose de déjà fait, une question et un problème ?",
       "Avez-vous ouvert et clôturé l'e-mail de façon appropriée ?",
@@ -1388,6 +1900,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-1": {
+    vi: [
+      "Phần mở bài có nêu rõ lập trường của bạn không?",
+      "Mỗi đoạn thân bài có mang một lý do, được hỗ trợ bằng ví dụ không?",
+      "Bạn có dùng từ nối để liên kết các ý không?",
+      "Bạn có chừa thời gian kiểm tra thì, mạo từ và số nhiều không?",
+      "Kết luận có tái khẳng định lập trường thay vì thêm luận điểm mới không?",
+    ],
+    zh: [
+      "你的引言有明確表明立場嗎？",
+      "每個正文段落都只承載一個理由，並有例子支持嗎？",
+      "你有使用連接詞來串連你的想法嗎？",
+      "你有留時間檢查時態、冠詞和複數嗎？",
+      "結論是重申立場，而非加入新論點嗎？",
+    ],
     fr: [
       "Votre introduction énonce-t-elle votre position sans ambiguïté ?",
       "Chaque paragraphe de développement porte-t-il une seule raison, appuyée par un exemple ?",
@@ -1425,6 +1951,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-2": {
+    vi: [
+      "Phần mở bài có nêu rõ lập trường của bạn không?",
+      "Mỗi đoạn thân bài có mang một lý do, được hỗ trợ bằng ví dụ không?",
+      "Bạn có phản biện lập luận mạnh nhất chống lại lập trường của bạn không?",
+      "Bạn có dùng từ nối để liên kết các ý không?",
+      "Bạn có chừa thời gian kiểm tra thì, mạo từ và số nhiều không?",
+    ],
+    zh: [
+      "你的引言有明確表明立場嗎？",
+      "每個正文段落都只承載一個理由，並有例子支持嗎？",
+      "你有正視反對你立場的最強論點嗎？",
+      "你有使用連接詞來串連你的想法嗎？",
+      "你有留時間檢查時態、冠詞和複數嗎？",
+    ],
     fr: [
       "Votre introduction énonce-t-elle votre position sans ambiguïté ?",
       "Chaque paragraphe de développement porte-t-il une seule raison, appuyée par un exemple ?",
@@ -1462,6 +2002,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-3": {
+    vi: [
+      "Bạn có chọn một phía thay vì mô tả cả hai quan điểm một cách trung lập không?",
+      "Mỗi đoạn thân bài có phát triển một lý do duy nhất không?",
+      "Các ví dụ của bạn có cụ thể thay vì những khẳng định chung chung không?",
+      "Kết luận có tái khẳng định lập trường mà không thêm luận điểm mới không?",
+      "Bạn có kiểm tra những từ lặp lại có thể thay đổi không?",
+    ],
+    zh: [
+      "你有選定一方，而非中立地描述兩種觀點嗎？",
+      "每個正文段落都只發展單一理由嗎？",
+      "你的例子是具體的，而非籠統的說法嗎？",
+      "結論是重申立場，而未加入新論點嗎？",
+      "你有檢查是否有可以替換的重複用字嗎？",
+    ],
     fr: [
       "Avez-vous choisi un camp au lieu de décrire les deux points de vue de façon neutre ?",
       "Chaque paragraphe de développement développe-t-il une seule raison ?",
@@ -1499,6 +2053,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-4": {
+    vi: [
+      "Phần mở bài có nêu rõ lập trường của bạn không?",
+      "Mỗi đoạn thân bài có mang một lý do, được hỗ trợ bằng ví dụ không?",
+      "Bạn có dùng từ nối để liên kết các ý không?",
+      "Bạn có chừa thời gian kiểm tra thì, mạo từ và số nhiều không?",
+      "Kết luận có tái khẳng định lập trường thay vì thêm luận điểm mới không?",
+    ],
+    zh: [
+      "你的引言有明確表明立場嗎？",
+      "每個正文段落都只承載一個理由，並有例子支持嗎？",
+      "你有使用連接詞來串連你的想法嗎？",
+      "你有留時間檢查時態、冠詞和複數嗎？",
+      "結論是重申立場，而非加入新論點嗎？",
+    ],
     fr: [
       "Votre introduction énonce-t-elle votre position sans ambiguïté ?",
       "Chaque paragraphe de développement porte-t-il une seule raison, appuyée par un exemple ?",
@@ -1536,6 +2104,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-5": {
+    vi: [
+      "Phần mở bài có nêu rõ lập trường của bạn không?",
+      "Mỗi đoạn thân bài có mang một lý do, được hỗ trợ bằng ví dụ không?",
+      "Bạn có dùng từ nối để liên kết các ý không?",
+      "Bạn có chừa thời gian kiểm tra thì, mạo từ và số nhiều không?",
+      "Kết luận có tái khẳng định lập trường thay vì thêm luận điểm mới không?",
+    ],
+    zh: [
+      "你的引言有明確表明立場嗎？",
+      "每個正文段落都只承載一個理由，並有例子支持嗎？",
+      "你有使用連接詞來串連你的想法嗎？",
+      "你有留時間檢查時態、冠詞和複數嗎？",
+      "結論是重申立場，而非加入新論點嗎？",
+    ],
     fr: [
       "Votre introduction énonce-t-elle votre position sans ambiguïté ?",
       "Chaque paragraphe de développement porte-t-il une seule raison, appuyée par un exemple ?",
@@ -1573,6 +2155,20 @@ export const criteriaTranslations: Translations = {
     ],
   },
   "wr-essay-6": {
+    vi: [
+      "Phần mở bài có nêu rõ lập trường của bạn không?",
+      "Mỗi đoạn thân bài có mang một lý do, được hỗ trợ bằng ví dụ không?",
+      "Bạn có dùng từ nối để liên kết các ý không?",
+      "Bạn có chừa thời gian kiểm tra thì, mạo từ và số nhiều không?",
+      "Kết luận có tái khẳng định lập trường thay vì thêm luận điểm mới không?",
+    ],
+    zh: [
+      "你的引言有明確表明立場嗎？",
+      "每個正文段落都只承載一個理由，並有例子支持嗎？",
+      "你有使用連接詞來串連你的想法嗎？",
+      "你有留時間檢查時態、冠詞和複數嗎？",
+      "結論是重申立場，而非加入新論點嗎？",
+    ],
     fr: [
       "Votre introduction énonce-t-elle votre position sans ambiguïté ?",
       "Chaque paragraphe de développement porte-t-il une seule raison, appuyée par un exemple ?",
