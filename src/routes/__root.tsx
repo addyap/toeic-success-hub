@@ -113,14 +113,14 @@ export const Route = createRootRoute({
       { name: "twitter:image", content: ogImage },
     ],
     links: [
-      // SVG first (what modern browsers actually use for the tab), then a
-      // rasterized .ico fallback for anything that doesn't do SVG favicons —
-      // some crawlers, older browsers, and address-bar/bookmark UI.
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      // The brand mark is a raster emblem (see src/assets/toeicpath-emblem.png),
+      // so the tab icon is a rasterized .ico (16 + 32) rather than an SVG —
+      // there's no vector source to serve, and a stale SVG here would win over
+      // the .ico in modern browsers and show the old mark.
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      // iOS/iPadOS home-screen icon: Apple has never supported SVG here, so
-      // the previous `/favicon.svg` link silently did nothing on iOS —
-      // this needs a real raster PNG.
+      // iOS/iPadOS home-screen icon — an opaque, padded PNG of the emblem
+      // (Apple composites over black, so a transparent-cornered icon looks
+      // broken; this one has a cream background matching the manifest).
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
       // Preload the latin subset of each self-hosted font — the one that
