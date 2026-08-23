@@ -222,7 +222,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             >
               Fluentory by Antony Addy
             </a>{' '}
-            — free English-learning tools by a certified trainer.
+            — free tools for grammar, listening, speaking and exam prep, built by a certified trainer.
           </div>
         </div>
       </footer>
