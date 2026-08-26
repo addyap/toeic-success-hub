@@ -396,7 +396,7 @@ export function HeroAscent() {
         </span>
       </div>
 
-      <div className="relative mx-auto flex min-h-[86svh] w-full max-w-6xl flex-col justify-center px-5 py-16">
+      <div className="relative mx-auto flex min-h-[74svh] w-full max-w-6xl flex-col justify-center px-5 py-16">
         <div className="max-w-2xl">
           <span
             className="ascent-in inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary"
