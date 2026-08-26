@@ -215,14 +215,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           © {new Date().getFullYear()} ToeicPath. TOEIC is a registered trademark of ETS. This site
           is not affiliated with ETS.
           <div className="mt-3">
-            Part of{' '}
+            Part of{" "}
             <a
               href="https://www.antonyaddy.com/ressources-en-ligne"
               className="font-medium text-foreground hover:text-primary"
             >
               Fluentory by Antony Addy
-            </a>{' '}
-            — free tools for grammar, listening, speaking and exam prep, built by a certified trainer.
+            </a>{" "}
+            — free tools for grammar, listening, speaking and exam prep, built by a certified
+            trainer.
           </div>
         </div>
       </footer>
