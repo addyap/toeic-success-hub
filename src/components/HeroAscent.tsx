@@ -9,9 +9,18 @@ import { VOCAB_COUNT } from "@/data/vocabulary";
  * A field of A–B–C–D bubbles recedes on a tilted plane. Most sit quiet in
  * faint teal; a single amber path of *filled* bubbles rises diagonally to a
  * glowing terminus beside the "Target 990" dial — the learner's guided ascent
- * to their target score. The path draws itself on load, follows the cursor
- * with a soft spotlight, and flattens away on the first scroll, handing off to
- * the page.
+ * to their target score.
+ *
+ * Impact is carried by one orchestrated crescendo and one living element:
+ *  - Entrance: the path draws itself bottom-to-top, the dial counts to 990,
+ *    and the copy rises in a staggered sequence; the headline "990" ignites as
+ *    the path lands.
+ *  - At rest: a comet of light travels continuously *up* the path, and each
+ *    time it reaches the summit a ripple fires from the terminus — the hero
+ *    keeps saying "keep climbing" without the user touching anything.
+ *  - Cursor: a soft spotlight brightens/lifts nearby bubbles; the plane
+ *    parallax-shifts for depth.
+ *  - First scroll: the sheet flattens, lifts and fades, handing off to the page.
  *
  * The teal→amber identity is defined here for both themes on purpose: the
  * site's dark tokens are a neutral slate (`--accent` isn't amber in dark), so
@@ -19,7 +28,8 @@ import { VOCAB_COUNT } from "@/data/vocabulary";
  * site tokens (foreground / muted-foreground) so it matches everything else.
  *
  * Canvas is decorative (aria-hidden); every word lives in real DOM for SSR,
- * SEO and screen readers. Honours prefers-reduced-motion.
+ * SEO and screen readers. The wave, parallax, ignite and hand-off all honour
+ * prefers-reduced-motion.
  */
 
 const PALETTE = {
@@ -27,13 +37,13 @@ const PALETTE = {
     teal: "oklch(0.45 0.09 195)",
     glow: "oklch(0.62 0.11 190)",
     amber: "oklch(0.78 0.14 65)",
-    amberHi: "oklch(0.84 0.15 72)",
+    amberHi: "oklch(0.9 0.16 78)",
   },
   dark: {
     teal: "oklch(0.72 0.06 200)",
     glow: "oklch(0.78 0.09 195)",
     amber: "oklch(0.8 0.15 68)",
-    amberHi: "oklch(0.87 0.15 74)",
+    amberHi: "oklch(0.92 0.16 82)",
   },
 } as const;
 
@@ -47,6 +57,23 @@ type Bubble = {
   onPath: boolean;
   order: number;
 };
+
+const STYLE = `
+.ascent-in { animation: ascent-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes ascent-rise {
+  from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.ascent-990 { animation: ascent-ignite 1.7s ease-out 1.35s both; }
+@keyframes ascent-ignite {
+  0% { text-shadow: none; }
+  45% { text-shadow: 0 0 34px oklch(0.82 0.16 72 / 0.85), 0 0 8px oklch(0.85 0.16 74 / 0.6); }
+  100% { text-shadow: 0 0 16px oklch(0.8 0.15 70 / 0.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ascent-in, .ascent-990 { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; text-shadow: none !important; }
+}
+`;
 
 export function HeroAscent() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -147,15 +174,21 @@ export function HeroAscent() {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const withAlpha = (c: string, a: number) => c.replace(")", ` / ${a.toFixed(3)})`);
+    const projY = (by: number, flat: number) => H / 2 + (by - H / 2) * flat;
 
     const ARC = 119.4; // 2πr, r = 19
     let intro = reduce ? 1 : 0;
     const start = performance.now();
+    let doneAt = 0; // when the entrance finishes; the ascending wave runs after
     let raf = 0;
 
     const draw = (now: number) => {
       if (!reduce) intro = Math.min(1, (now - start) / 1700);
       const ease = 1 - Math.pow(1 - intro, 3);
+      if (!doneAt && ease > 0.999) doneAt = now;
+
+      // continuous comet climbing the path (0→1 loop), only once settled
+      const wave = doneAt && !reduce ? ((now - doneAt) / 3200) % 1 : -1;
 
       mx += (mouse.x - mx) * 0.12;
       my += (mouse.y - my) * 0.12;
@@ -175,6 +208,18 @@ export function HeroAscent() {
       ctx.save();
       ctx.translate(parX, parY - lift);
 
+      // atmospheric bloom behind the summit
+      if (pathTop && ease > 0.4) {
+        const k = Math.min(1, (ease - 0.4) / 0.4);
+        const ty = projY(pathTop.y, flat);
+        const R = Math.max(W, H) * 0.28;
+        const g = ctx.createRadialGradient(pathTop.x, ty, 0, pathTop.x, ty, R);
+        g.addColorStop(0, withAlpha(pal.amber, 0.16 * k));
+        g.addColorStop(1, withAlpha(pal.amber, 0));
+        ctx.fillStyle = g;
+        ctx.fillRect(pathTop.x - R, ty - R, R * 2, R * 2);
+      }
+
       const spot = 150;
 
       // quiet bubbles
@@ -182,8 +227,8 @@ export function HeroAscent() {
         if (b.onPath) continue;
         const appear = Math.min(1, Math.max(0, (ease - b.t * 0.35) / 0.5));
         if (appear <= 0.02) continue;
-        const y = H / 2 + (b.y - H / 2) * flat;
-        let a = (0.1 + 0.16 * (1 - b.t)) * appear;
+        const y = projY(b.y, flat);
+        let a = (0.11 + 0.17 * (1 - b.t)) * appear;
         let rr = b.r;
         if (mouse.active) {
           const d = Math.hypot(b.x - mx, y - my);
@@ -206,7 +251,7 @@ export function HeroAscent() {
       for (const b of bubbles) {
         if (!b.onPath) continue;
         if (ease * 1.12 - b.order <= 0) continue;
-        const y = H / 2 + (b.y - H / 2) * flat;
+        const y = projY(b.y, flat);
         if (!started) {
           ctx.moveTo(b.x, y);
           started = true;
@@ -220,14 +265,22 @@ export function HeroAscent() {
         ctx.stroke();
       }
 
-      // path bubbles: filled amber with glow
+      // path bubbles: filled amber, with a comet of light riding up the path
       for (const b of bubbles) {
         if (!b.onPath) continue;
         const reveal = Math.min(1, Math.max(0, (ease * 1.12 - b.order) / 0.12));
         if (reveal <= 0) continue;
-        const y = H / 2 + (b.y - H / 2) * flat;
+        const y = projY(b.y, flat);
         let rr = (b.r + 1.2) * (0.6 + 0.4 * reveal);
         let glow = 10 + 10 * (1 - b.t);
+        let hot = 0;
+        if (wave >= 0) {
+          const dd = b.order - wave; // ahead of the comet if > 0
+          const sigma = dd >= 0 ? 0.05 : 0.13; // short leading edge, longer trail
+          hot = Math.exp(-(dd * dd) / (2 * sigma * sigma));
+          rr += hot * 2.6;
+          glow += hot * 24;
+        }
         if (mouse.active) {
           const d = Math.hypot(b.x - mx, y - my);
           if (d < spot) {
@@ -237,12 +290,12 @@ export function HeroAscent() {
           }
         }
         ctx.save();
-        ctx.shadowColor = pal.amber;
+        ctx.shadowColor = hot > 0.5 ? pal.amberHi : pal.amber;
         ctx.shadowBlur = glow * reveal;
         ctx.globalAlpha = reveal;
         ctx.beginPath();
         ctx.arc(b.x, y, rr, 0, Math.PI * 2);
-        ctx.fillStyle = pal.amber;
+        ctx.fillStyle = hot > 0.45 ? pal.amberHi : pal.amber;
         ctx.fill();
         ctx.restore();
       }
@@ -250,7 +303,7 @@ export function HeroAscent() {
       // bright terminus node
       if (pathTop && ease > 0.72) {
         const k = Math.min(1, (ease - 0.72) / 0.28);
-        const y = H / 2 + (pathTop.y - H / 2) * flat;
+        const y = projY(pathTop.y, flat);
         const puls = reduce ? 1 : 1 + 0.12 * Math.sin(now / 420);
         ctx.save();
         ctx.globalAlpha = k;
@@ -266,6 +319,15 @@ export function HeroAscent() {
         ctx.strokeStyle = withAlpha(pal.amber, 0.5 * k);
         ctx.lineWidth = 1.4;
         ctx.stroke();
+        // arrival ripple: fires as the comet reaches the summit each loop
+        if (wave >= 0.88) {
+          const rt = (wave - 0.88) / 0.12; // 0→1
+          ctx.beginPath();
+          ctx.arc(pathTop.x, y, pathTop.r + 4 + rt * 30, 0, Math.PI * 2);
+          ctx.strokeStyle = withAlpha(pal.amberHi, 0.4 * (1 - rt));
+          ctx.lineWidth = 2 * (1 - rt) + 0.4;
+          ctx.stroke();
+        }
         ctx.restore();
       }
 
@@ -288,7 +350,8 @@ export function HeroAscent() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden">
+    <section ref={sectionRef} className="group relative isolate overflow-hidden">
+      <style>{STYLE}</style>
       <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full" />
       <div
         aria-hidden="true"
@@ -300,7 +363,10 @@ export function HeroAscent() {
       />
 
       {/* Target dial, floating over the sheet */}
-      <div className="absolute right-4 top-6 z-10 flex items-center gap-3 rounded-2xl border border-border/70 bg-card/60 p-2.5 pr-4 shadow-soft backdrop-blur-md sm:right-8 md:top-12">
+      <div
+        className="ascent-in absolute right-4 top-6 z-10 flex items-center gap-3 rounded-2xl border border-border/70 bg-card/60 p-2.5 pr-4 shadow-soft backdrop-blur-md sm:right-8 md:top-12"
+        style={{ animationDelay: "0.3s" }}
+      >
         <span className="relative grid h-11 w-11 place-items-center">
           <svg viewBox="0 0 46 46" className="h-11 w-11" aria-hidden="true">
             <circle cx="23" cy="23" r="19" fill="none" stroke="var(--border)" strokeWidth="4" />
@@ -331,29 +397,38 @@ export function HeroAscent() {
       </div>
 
       <div className="relative mx-auto flex min-h-[86svh] w-full max-w-6xl flex-col justify-center px-5 py-16">
-        <div className="max-w-xl">
-          <span className="inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+        <div className="max-w-2xl">
+          <span
+            className="ascent-in inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary"
+            style={{ animationDelay: "0.05s" }}
+          >
             <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.14_65)] shadow-[0_0_0_4px_oklch(0.78_0.14_65/0.18)]" />
             The Business English Standard · TOEIC®
           </span>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[0.98] text-foreground sm:text-5xl md:text-[4rem]">
+          <h1
+            className="ascent-in mt-5 font-display text-5xl font-semibold leading-[0.92] text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]"
+            style={{ animationDelay: "0.15s" }}
+          >
             Every answer is a step toward{" "}
-            <span className="tabular-nums text-[oklch(0.68_0.15_64)] dark:text-[oklch(0.82_0.15_72)]">
+            <span className="ascent-990 tabular-nums text-[oklch(0.68_0.15_64)] dark:text-[oklch(0.82_0.15_72)]">
               990
             </span>
             .
           </h1>
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p
+            className="ascent-in mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
+            style={{ animationDelay: "0.35s" }}
+          >
             Listening, Reading, Speaking and Writing — the complete, guided path to your target
             score, built to mirror the real test.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="ascent-in mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.5s" }}>
             <Link
               to="/four-skills"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-hero px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:-translate-y-0.5 hover:opacity-95"
+              className="group/cta inline-flex items-center gap-2 rounded-full bg-gradient-hero px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:-translate-y-0.5 hover:opacity-95"
             >
               Start preparing{" "}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-1" />
             </Link>
             <Link
               to="/four-skills"
@@ -362,7 +437,10 @@ export function HeroAscent() {
               See the four skills
             </Link>
           </div>
-          <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+          <div
+            className="ascent-in mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
+            style={{ animationDelay: "0.65s" }}
+          >
             <span>
               <b className="font-semibold text-foreground">All 7</b> L&amp;R parts
             </span>
