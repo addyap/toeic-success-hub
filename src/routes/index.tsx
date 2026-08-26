@@ -5,16 +5,14 @@ import {
   BookOpen,
   Sparkles,
   ArrowRight,
-  CheckCircle2,
   Clock,
   Layers,
   Gauge,
   Mic,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { HeroAscent } from "@/components/HeroAscent";
 import { FrontIntro } from "@/components/FrontIntro";
-import heroImg from "@/assets/hero-study.jpg";
-import heroImgWebp from "@/assets/hero-study.webp";
 import { VOCAB_COUNT } from "@/data/vocabulary";
 import { absoluteUrl, pageTitle } from "@/lib/site";
 
@@ -41,77 +39,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <SiteLayout>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-soft" />
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.05fr_1fr] md:py-20 lg:gap-16">
-          <div className="flex flex-col justify-center">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> Master the Business English Standard
-            </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-              Master the{" "}
-              <span className="bg-gradient-hero bg-clip-text text-transparent">
-                Business English
-              </span>{" "}
-              Standard.
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Your complete guide to the TOEIC® — Listening, Reading, Speaking and Writing. Aligned
-              with the official test format to help you achieve your career goals.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                to="/four-skills"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-hero px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:opacity-95"
-              >
-                Start preparing <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/study-tips"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
-              >
-                Read study tips
-              </Link>
-            </div>
-            <ul className="mt-7 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-              {[
-                "All four skills covered",
-                "All 7 L&R parts explained",
-                `${VOCAB_COUNT} business vocabulary terms`,
-                "No account required",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-success" /> {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-hero opacity-20 blur-2xl" />
-            <picture>
-              <source srcSet={heroImgWebp} type="image/webp" />
-              <img
-                src={heroImg}
-                alt="A learner studying for the TOEIC at her desk"
-                width={1280}
-                height={960}
-                fetchPriority="high"
-                className="aspect-[4/3] w-full rounded-3xl object-cover shadow-elegant"
-              />
-            </picture>
-            <div className="absolute -bottom-5 -left-3 hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:block">
-              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Target score
-              </div>
-              <div className="mt-1 font-display text-2xl font-semibold">
-                900<span className="text-muted-foreground">/990</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero — the "Ascent" answer-sheet (see HeroAscent.tsx) */}
+      <HeroAscent />
 
       {/* Short, native-language orientation for first-time visitors */}
       <FrontIntro />
