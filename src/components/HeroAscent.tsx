@@ -396,7 +396,7 @@ export function HeroAscent() {
         </span>
       </div>
 
-      <div className="relative mx-auto flex min-h-[86svh] w-full max-w-6xl flex-col justify-center px-5 py-16">
+      <div className="relative mx-auto flex min-h-[50svh] w-full max-w-6xl flex-col justify-center px-5 py-12">
         <div className="max-w-2xl">
           <span
             className="ascent-in inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary"
@@ -406,7 +406,7 @@ export function HeroAscent() {
             The Business English Standard · TOEIC®
           </span>
           <h1
-            className="ascent-in mt-5 font-display text-5xl font-semibold leading-[0.92] text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]"
+            className="ascent-in mt-4 font-display text-3xl font-semibold leading-[0.98] text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ animationDelay: "0.15s" }}
           >
             Every answer is a step toward{" "}
@@ -416,13 +416,13 @@ export function HeroAscent() {
             .
           </h1>
           <p
-            className="ascent-in mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
+            className="ascent-in mt-4 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
             style={{ animationDelay: "0.35s" }}
           >
             Listening, Reading, Speaking and Writing — the complete, guided path to your target
             score, built to mirror the real test.
           </p>
-          <div className="ascent-in mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.5s" }}>
+          <div className="ascent-in mt-6 flex flex-wrap gap-3" style={{ animationDelay: "0.5s" }}>
             <Link
               to="/four-skills"
               className="group/cta inline-flex items-center gap-2 rounded-full bg-gradient-hero px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:-translate-y-0.5 hover:opacity-95"
@@ -438,7 +438,7 @@ export function HeroAscent() {
             </Link>
           </div>
           <div
-            className="ascent-in mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
+            className="ascent-in mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
             style={{ animationDelay: "0.65s" }}
           >
             <span>
