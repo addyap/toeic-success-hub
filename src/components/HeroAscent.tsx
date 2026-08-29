@@ -396,7 +396,7 @@ export function HeroAscent() {
         </span>
       </div>
 
-      <div className="relative mx-auto flex min-h-[60svh] w-full max-w-6xl flex-col justify-center px-5 py-14">
+      <div className="relative mx-auto flex min-h-[50svh] w-full max-w-6xl flex-col justify-center px-5 py-12">
         <div className="max-w-2xl">
           <span
             className="ascent-in inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary"
@@ -406,7 +406,7 @@ export function HeroAscent() {
             The Business English Standard · TOEIC®
           </span>
           <h1
-            className="ascent-in mt-4 font-display text-4xl font-semibold leading-[0.95] text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+            className="ascent-in mt-4 font-display text-3xl font-semibold leading-[0.98] text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ animationDelay: "0.15s" }}
           >
             Every answer is a step toward{" "}
