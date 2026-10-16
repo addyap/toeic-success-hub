@@ -2,7 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
-import { BASE_PATH } from "./lib/site";
+import { BASE_PATH, SITE_URL } from "./lib/site";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -48,13 +48,14 @@ function withBasePath(request: Request): Request {
   return new Request(url, request);
 }
 
-// Old unprefixed URLs on toeic.antonyaddy.com move to their BASE_PATH
-// address. Temporary (302) until the subdomain redirects to www instead.
+// toeic.antonyaddy.com's old unprefixed URLs move permanently to their
+// www.antonyaddy.com/toeic address. Paths under BASE_PATH are what www
+// forwards here, so they're served as usual.
 function legacyRedirect(request: Request): Response | null {
   const url = new URL(request.url);
   if (url.pathname === BASE_PATH || url.pathname.startsWith(`${BASE_PATH}/`)) return null;
-  url.pathname = url.pathname === "/" ? BASE_PATH : `${BASE_PATH}${url.pathname}`;
-  return Response.redirect(url.toString(), 302);
+  const path = url.pathname === "/" ? "" : url.pathname;
+  return Response.redirect(`${SITE_URL}${path}${url.search}`, 301);
 }
 
 export default {
