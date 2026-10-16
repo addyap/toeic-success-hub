@@ -45,7 +45,9 @@ export default defineConfig(async ({ command }) => {
         baseURL: "/toeic/",
         // Nitro's own immutable-cache rule targets /assets/, not the base path.
         routeRules: {
-          "/toeic/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
+          "/toeic/assets/**": {
+            headers: { "cache-control": "public, max-age=31536000, immutable" },
+          },
         },
         // On Vercel, target the Vercel preset so Nitro emits Vercel Functions
         // instead of the Cloudflare default.
