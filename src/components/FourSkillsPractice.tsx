@@ -21,6 +21,7 @@ import {
   Volume2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { publicUrl } from "@/lib/site";
 import { recordActivity, recordSession } from "@/lib/progress";
 import { audioManifest } from "@/data/audioManifest";
 import { audioKey } from "@/lib/audioSource";
@@ -240,7 +241,7 @@ function PromptAudio({ text }: { text: string }) {
       </p>
       <audio
         ref={audioRef}
-        src={`/audio/${entry.segments[0].file}`}
+        src={publicUrl(`/audio/${entry.segments[0].file}`)}
         onEnded={() => setPlaying(false)}
         preload="none"
       >
@@ -622,7 +623,7 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
         {prompt.image && (
           <figure className="mt-5">
             <img
-              src={prompt.image.src}
+              src={publicUrl(prompt.image.src)}
               alt={prompt.image.alt}
               loading="lazy"
               className="w-full rounded-xl border border-border object-cover"
@@ -1117,7 +1118,7 @@ function PooledWritingTrainer({ group }: { group: TaskGroup<WritingPrompt> }) {
         {prompt.image && (
           <figure className="mt-5">
             <img
-              src={prompt.image.src}
+              src={publicUrl(prompt.image.src)}
               alt={prompt.image.alt}
               loading="lazy"
               className="w-full rounded-xl border border-border object-cover"

@@ -33,7 +33,7 @@ test.describe("flashcards", () => {
   test("flip reveals the definition, and Prev/Next/Shuffle all change the card", async ({
     page,
   }) => {
-    await page.goto("/vocabulary");
+    await page.goto("/toeic/vocabulary");
 
     const card = page.getByTestId("flashcard");
     await expect(card).toBeVisible();
@@ -70,7 +70,7 @@ test.describe("flashcards", () => {
   test("a selected gloss language shows translated text, and None hides it again", async ({
     page,
   }) => {
-    await page.goto("/vocabulary");
+    await page.goto("/toeic/vocabulary");
     await expect(page.getByTestId("flashcard")).toBeVisible();
     await expect(page.getByTestId("flashcard-gloss")).toHaveCount(0);
 
@@ -89,7 +89,7 @@ test.describe("flashcards", () => {
   });
 
   test("switching category filters the flashcard deck", async ({ page }) => {
-    await page.goto("/vocabulary");
+    await page.goto("/toeic/vocabulary");
     await expect(page.getByTestId("flashcard")).toBeVisible();
 
     const cardCounter = page.getByText(/^Card 1 of \d+$/);
@@ -112,7 +112,7 @@ test.describe("quiz", () => {
   test("answering reveals exactly one correct option and updates the running score", async ({
     page,
   }) => {
-    await page.goto("/vocabulary");
+    await page.goto("/toeic/vocabulary");
 
     const scoreEl = page.getByTestId("vocab-quiz-score");
     const quizTab = page.getByRole("button", { name: "Quiz" });

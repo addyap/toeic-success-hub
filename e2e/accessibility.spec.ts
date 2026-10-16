@@ -12,21 +12,21 @@ import AxeBuilder from "@axe-core/playwright";
  */
 
 const ROUTES = [
-  "/",
-  "/four-skills",
-  "/listening-reading",
-  "/mock-test",
-  "/adaptive-practice",
-  "/vocabulary",
-  "/study-tips",
+  "/toeic/",
+  "/toeic/four-skills",
+  "/toeic/listening-reading",
+  "/toeic/mock-test",
+  "/toeic/adaptive-practice",
+  "/toeic/vocabulary",
+  "/toeic/study-tips",
   // One representative article, so the $slug template and the category
   // badges get scanned too — the index page alone never rendered them.
-  "/study-tips/speaking-tasks-1-11",
-  "/progress",
-  "/pricing",
-  "/privacy",
-  "/terms",
-  "/legal",
+  "/toeic/study-tips/speaking-tasks-1-11",
+  "/toeic/progress",
+  "/toeic/pricing",
+  "/toeic/privacy",
+  "/toeic/terms",
+  "/toeic/legal",
 ];
 
 for (const route of ROUTES) {
@@ -55,7 +55,7 @@ for (const route of ROUTES) {
 test("a mid-session practice state (answered question, revealed explanation) stays clean", async ({
   page,
 }) => {
-  await page.goto("/listening-reading");
+  await page.goto("/toeic/listening-reading");
   await page.getByRole("button", { name: "Part 1", exact: true }).click();
   const question = page.locator('[data-testid="practice-question"]').first();
   await expect(question).toBeVisible();

@@ -41,6 +41,14 @@ export default defineConfig(async ({ command }) => {
     plugins.push(
       nitro({
         defaultPreset: "cloudflare-module",
+        // Serve public/ files and server routes under the same base as Vite.
+        baseURL: "/toeic/",
+        // Nitro's own immutable-cache rule targets /assets/, not the base path.
+        routeRules: {
+          "/toeic/assets/**": {
+            headers: { "cache-control": "public, max-age=31536000, immutable" },
+          },
+        },
         // On Vercel, target the Vercel preset so Nitro emits Vercel Functions
         // instead of the Cloudflare default.
         ...(process.env.VERCEL ? { preset: "vercel" } : {}),
@@ -49,6 +57,10 @@ export default defineConfig(async ({ command }) => {
   }
 
   return {
+    // Served at www.antonyaddy.com/toeic (the main site forwards /toeic/* here),
+    // so built assets and public files live under /toeic/. Keep in sync with
+    // BASE_PATH in src/lib/site.ts and the router's basepath.
+    base: "/toeic/",
     // Vite uses PostCSS in dev and Lightning CSS at build by default; forcing
     // Lightning CSS in both keeps dev and build CSS output consistent.
     css: {

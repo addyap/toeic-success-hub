@@ -6,12 +6,13 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import heroImg from "../assets/hero-study.jpg";
-import { absoluteUrl, SITE_NAME, SITE_URL } from "../lib/site";
+import { absoluteUrl, publicUrl, SITE_NAME, SITE_URL } from "../lib/site";
 
 const ogImage = absoluteUrl(heroImg);
 
@@ -46,7 +47,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
 
@@ -70,7 +71,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href={SITE_URL}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -117,12 +118,12 @@ export const Route = createRootRoute({
       // so the tab icon is a rasterized .ico (16 + 32) rather than an SVG —
       // there's no vector source to serve, and a stale SVG here would win over
       // the .ico in modern browsers and show the old mark.
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: publicUrl("/favicon.ico") },
       // iOS/iPadOS home-screen icon — an opaque, padded PNG of the emblem
       // (Apple composites over black, so a transparent-cornered icon looks
       // broken; this one has a cream background matching the manifest).
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "apple-touch-icon", href: publicUrl("/apple-touch-icon.png") },
+      { rel: "manifest", href: publicUrl("/site.webmanifest") },
       // Preload the latin subset of each self-hosted font — the one that
       // actually renders for the vast majority of visitors — so the browser
       // starts fetching it immediately instead of waiting to parse the CSS
@@ -130,14 +131,14 @@ export const Route = createRootRoute({
       // Jakarta Sans), so both are on the critical rendering path.
       {
         rel: "preload",
-        href: "/fonts/fraunces-latin.woff2",
+        href: publicUrl("/fonts/fraunces-latin.woff2"),
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",
       },
       {
         rel: "preload",
-        href: "/fonts/plus-jakarta-sans-latin.woff2",
+        href: publicUrl("/fonts/plus-jakarta-sans-latin.woff2"),
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",

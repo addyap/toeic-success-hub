@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { BASE_PATH } from "./lib/site";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -37,10 +38,32 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+// The app lives under BASE_PATH (www.antonyaddy.com/toeic forwards here).
+// BASE_PATH itself is the home page: answer it directly, because the router
+// would redirect it to BASE_PATH + "/" and www strips that slash (a loop).
+function withBasePath(request: Request): Request {
+  const url = new URL(request.url);
+  if (url.pathname !== BASE_PATH) return request;
+  url.pathname = `${BASE_PATH}/`;
+  return new Request(url, request);
+}
+
+// Old unprefixed URLs on toeic.antonyaddy.com move to their BASE_PATH
+// address. Temporary (302) until the subdomain redirects to www instead.
+function legacyRedirect(request: Request): Response | null {
+  const url = new URL(request.url);
+  if (url.pathname === BASE_PATH || url.pathname.startsWith(`${BASE_PATH}/`)) return null;
+  url.pathname = url.pathname === "/" ? BASE_PATH : `${BASE_PATH}${url.pathname}`;
+  return Response.redirect(url.toString(), 302);
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = legacyRedirect(request);
+      if (redirect) return redirect;
       const handler = await getServerEntry();
+      request = withBasePath(request);
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {

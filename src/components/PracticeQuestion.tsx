@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2, Flag } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { publicUrl } from "@/lib/site";
 import {
   getAudioTurns,
   getGroupAudioTurns,
@@ -217,7 +218,7 @@ function QuestionPassage({
       {data.photo && data.image && (
         <div className="mt-3">
           <img
-            src={data.image.src}
+            src={publicUrl(data.image.src)}
             alt={data.context ?? "Scene"}
             loading="lazy"
             className="aspect-[3/2] w-full rounded-lg border border-border object-cover"
@@ -704,7 +705,7 @@ function GeneratedAudioPlayer({
 
   useEffect(() => {
     if (!playing || !audioRef.current) return;
-    const src = `/audio/${entry.segments[segIdx].file}`;
+    const src = publicUrl(`/audio/${entry.segments[segIdx].file}`);
     if (!audioRef.current.src.endsWith(src)) {
       audioRef.current.src = src;
     }

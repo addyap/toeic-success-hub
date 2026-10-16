@@ -57,7 +57,7 @@ test("complete a full mock test and get an internally-consistent score", async (
   // suite back-to-back) that occasionally outran the default timeout even
   // though the logic itself is correct (10/10 clean in isolated repeats).
   test.slow();
-  await page.goto("/mock-test");
+  await page.goto("/toeic/mock-test");
 
   await page.getByRole("button", { name: "Start the mock test" }).click();
 

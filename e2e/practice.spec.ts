@@ -38,7 +38,7 @@ async function answerFirstOption(question: Locator): Promise<boolean> {
 }
 
 test("complete a Part 1 practice session and see a matching final score", async ({ page }) => {
-  await page.goto("/listening-reading");
+  await page.goto("/toeic/listening-reading");
 
   const questions = page.locator('[data-testid="practice-question"]');
   // Wait for the default "All parts" view to actually be interactive before
@@ -110,7 +110,7 @@ test("complete a Part 1 practice session and see a matching final score", async 
 });
 
 test("switching the part filter loads that part's own question count", async ({ page }) => {
-  await page.goto("/listening-reading");
+  await page.goto("/toeic/listening-reading");
 
   // "All parts" is the default selection; wait for its bank to actually load
   // before reading a baseline, or a filter click below could be checked

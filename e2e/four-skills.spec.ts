@@ -56,7 +56,7 @@ function writingSection(page: Page) {
 test.describe("speaking trainer", () => {
   test("a drill runs prep -> speaking and reveals the criteria checklist", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = speakingSection(page);
     // Task 1–2: 45s to prepare, then 45s to read aloud.
@@ -87,7 +87,7 @@ test.describe("speaking trainer", () => {
 
   test("the response phase ends on its own when the clock runs out", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = speakingSection(page);
     const start = section.getByRole("button", { name: /Start · 45s prep, 45s speak/ });
@@ -107,7 +107,7 @@ test.describe("speaking trainer", () => {
 
   test("rotating cycles through that task's prompts and wraps around", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = speakingSection(page);
     const rotate = section.getByRole("button", { name: "Try another prompt" });
@@ -145,7 +145,7 @@ test.describe("speaking trainer", () => {
     page,
   }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = speakingSection(page);
     const counter = section.getByText(/^Prompt \d+ of \d+$/);
@@ -174,7 +174,7 @@ test.describe("speaking trainer", () => {
     page,
   }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = speakingSection(page);
     const start = section.getByRole("button", { name: /Start · 45s prep, 45s speak/ });
@@ -220,7 +220,7 @@ test.describe("writing trainer", () => {
 
   test("submitting reveals the criteria and a sample response", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
     const section = await selectIndependentTask(page);
 
     const start = section.getByRole("button", { name: /Start · 10 min/ });
@@ -254,7 +254,7 @@ test.describe("writing trainer", () => {
 
   test("running out of time submits the response automatically", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
     const section = await selectIndependentTask(page);
 
     const start = section.getByRole("button", { name: /Start · 10 min/ });
@@ -277,7 +277,7 @@ test.describe("writing trainer", () => {
 
   test("an in-progress answer survives a reload, with its remaining time", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
     const section = await selectIndependentTask(page);
 
     const response = page.locator("#writing-response");
@@ -309,7 +309,7 @@ test.describe("writing trainer", () => {
 
   test("resetting clears the saved draft rather than leaving it behind", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
     const section = await selectIndependentTask(page);
 
     const response = page.locator("#writing-response");
@@ -339,7 +339,7 @@ test.describe("writing trainer", () => {
     page,
   }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
     const section = await selectIndependentTask(page);
 
     const submit = section.getByRole("button", { name: "Submit" });
@@ -364,7 +364,7 @@ test.describe("writing trainer", () => {
     // Locked after saving so a rating can't be silently double-counted.
     await expect(boxes.nth(0)).toBeDisabled();
 
-    await page.goto("/progress");
+    await page.goto("/toeic/progress");
     const row = page.locator('[data-testid="self-assessment-row"][data-skill="writing"]');
     await expect(row).toHaveAttribute("data-sessions", "1");
     await expect(row).toContainText(`2 of ${total} criteria met`);
@@ -378,7 +378,7 @@ test.describe("writing trainer", () => {
 
   test("each writing task loads its own duration", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = writingSection(page);
     const essayTask = section.getByRole("button", { name: /Q8 · Write an opinion essay/ });
@@ -404,7 +404,7 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
   // timers was a real, shipped bug: see the fix that introduced this file.
   test("switching sentences does not reset the shared clock", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = writingSection(page);
     const start = section.getByRole("button", { name: /Start · 8 min for all \d+/ });
@@ -444,7 +444,7 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
     page,
   }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = writingSection(page);
     // Not hardcoded: the pooled sentence count grows with each content
@@ -481,7 +481,7 @@ test.describe("pooled writing trainer (tasks 1–5)", () => {
 
   test("running out of the shared clock submits all three at once", async ({ page }) => {
     await setUpClock(page);
-    await page.goto("/four-skills");
+    await page.goto("/toeic/four-skills");
 
     const section = writingSection(page);
     await clickUntil(

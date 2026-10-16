@@ -50,7 +50,9 @@ export const Route = createFileRoute("/study-tips/$slug")({
     <SiteLayout>
       <div className="mx-auto w-full max-w-3xl px-5 py-20 text-center">
         <h1 className="font-display text-3xl font-semibold">Something went wrong</h1>
-        <p className="mt-2 text-muted-foreground">{error.message}</p>
+        <p className="mt-2 text-muted-foreground">
+          {error instanceof Error ? error.message : String(error)}
+        </p>
         <button
           onClick={reset}
           className="mt-6 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
