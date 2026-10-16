@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Landmark } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { absoluteUrl } from "@/lib/site";
@@ -104,9 +104,9 @@ function Page() {
         <LegalSection title="Données personnelles">
           <p>
             Le traitement des données est décrit dans notre{" "}
-            <a className="underline" href="/privacy">
+            <Link className="underline" to="/privacy">
               politique de confidentialité
-            </a>
+            </Link>
             . Le site ne crée pas de compte utilisateur : votre progression est enregistrée
             uniquement dans votre navigateur.
           </p>

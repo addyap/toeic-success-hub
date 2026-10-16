@@ -67,7 +67,7 @@ test("mock-test entries don't double-count sessions or questions", async ({ page
     } satisfies ProgressEntry,
   ];
   await seed(page, history, { current: 3, longest: 5, lastActiveDate: "2026-01-01" });
-  await page.goto("/progress");
+  await page.goto("/toeic/progress");
 
   const sessionsCard = page.locator('[data-testid="stat-card"][data-label="Sessions completed"]');
   await expect(sessionsCard).toBeVisible();
@@ -96,7 +96,7 @@ test("a part's trend arrow reflects latest session vs. the average of everything
     { completedAt: 3000, source: "practice", scope: 5, correct: 27, total: 30 }, // 90% (improved)
   ];
   await seed(page, history);
-  await page.goto("/progress");
+  await page.goto("/toeic/progress");
 
   const row = page.locator('[data-testid="part-row"][data-part="5"]');
   await expect(row).toBeVisible();
@@ -113,7 +113,7 @@ test("a part's trend arrow reflects latest session vs. the average of everything
 
 test("empty history shows the zero-state instead of a broken 0/0", async ({ page }) => {
   await seed(page, []);
-  await page.goto("/progress");
+  await page.goto("/toeic/progress");
   await expect(page.getByText(/complete a practice session/i)).toBeVisible();
   await expect(page.getByTestId("stat-card")).toHaveCount(0);
 });

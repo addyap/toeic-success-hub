@@ -23,7 +23,7 @@ async function answerByIndex(page: Page, index: number) {
 test("complete an adaptive Reading section with an internally-consistent score", async ({
   page,
 }) => {
-  await page.goto("/adaptive-practice");
+  await page.goto("/toeic/adaptive-practice");
 
   // The start cards only render once the question bank has loaded (async gate),
   // so waiting for the button to be actionable is safe here.

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { studyTips } from "@/data/studyTips";
-import { SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
           ...entries.map(
             (e) =>
-              `  <url><loc>${SITE_URL}${e.path}</loc><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
+              `  <url><loc>${absoluteUrl(e.path)}</loc><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
           ),
           `</urlset>`,
         ].join("\n");

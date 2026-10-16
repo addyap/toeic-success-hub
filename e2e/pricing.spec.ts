@@ -20,7 +20,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("pricing page", () => {
   test("states the site is free and marks the paid tier as coming soon", async ({ page }) => {
-    await page.goto("/pricing");
+    await page.goto("/toeic/pricing");
 
     await expect(
       page.getByRole("heading", { name: "Everything is free right now." }),
@@ -33,7 +33,7 @@ test.describe("pricing page", () => {
   });
 
   test("offers no way to pay", async ({ page }) => {
-    await page.goto("/pricing");
+    await page.goto("/toeic/pricing");
 
     // No checkout affordance of any kind.
     for (const label of [/checkout/i, /buy/i, /subscribe/i, /upgrade/i, /unlock/i, /pay/i]) {
@@ -47,17 +47,17 @@ test.describe("pricing page", () => {
   test("every practice surface is reachable without paying", async ({ page }) => {
     // The mock test is the feature the old paywall gated most aggressively,
     // so it is the sharpest check that nothing has crept back.
-    await page.goto("/mock-test");
+    await page.goto("/toeic/mock-test");
     await expect(page.getByRole("button", { name: /start/i }).first()).toBeVisible();
 
-    await page.goto("/listening-reading");
+    await page.goto("/toeic/listening-reading");
     await expect(page.locator('[data-testid="practice-question"]').first()).toBeVisible();
 
-    await page.goto("/progress");
+    await page.goto("/toeic/progress");
     await expect(page.getByRole("heading", { name: /See where you're improving/ })).toBeVisible();
 
     // And no page anywhere renders a lock/upgrade prompt.
-    for (const path of ["/four-skills", "/vocabulary", "/mock-test"]) {
+    for (const path of ["/toeic/four-skills", "/toeic/vocabulary", "/toeic/mock-test"]) {
       await page.goto(path);
       await expect(
         page.getByText(/unlock full access|upgrade to pro|purchase required/i),
