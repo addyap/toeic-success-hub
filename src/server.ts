@@ -39,21 +39,29 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 }
 
 // The app lives under BASE_PATH (www.antonyaddy.com/toeic forwards here).
-// - BASE_PATH itself is the home page. Answer it directly: the router would
-//   redirect it to BASE_PATH + "/", and www strips that slash again (a loop).
-// - Until toeic.antonyaddy.com redirects to www, its old unprefixed URLs are
-//   mapped onto BASE_PATH.
+// BASE_PATH itself is the home page: answer it directly, because the router
+// would redirect it to BASE_PATH + "/" and www strips that slash (a loop).
 function withBasePath(request: Request): Request {
   const url = new URL(request.url);
-  if (url.pathname.startsWith(`${BASE_PATH}/`)) return request;
-  url.pathname =
-    url.pathname === BASE_PATH || url.pathname === "/" ? `${BASE_PATH}/` : `${BASE_PATH}${url.pathname}`;
+  if (url.pathname !== BASE_PATH) return request;
+  url.pathname = `${BASE_PATH}/`;
   return new Request(url, request);
+}
+
+// Old unprefixed URLs on toeic.antonyaddy.com move to their BASE_PATH
+// address. Temporary (302) until the subdomain redirects to www instead.
+function legacyRedirect(request: Request): Response | null {
+  const url = new URL(request.url);
+  if (url.pathname === BASE_PATH || url.pathname.startsWith(`${BASE_PATH}/`)) return null;
+  url.pathname = url.pathname === "/" ? BASE_PATH : `${BASE_PATH}${url.pathname}`;
+  return Response.redirect(url.toString(), 302);
 }
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = legacyRedirect(request);
+      if (redirect) return redirect;
       const handler = await getServerEntry();
       request = withBasePath(request);
       const response = await handler.fetch(request, env, ctx);
