@@ -454,9 +454,16 @@ function PhaseView({
           <span className="hidden text-xs font-semibold uppercase tracking-wider sm:inline">
             {isListening ? "Listening" : "Reading"}
           </span>
-          <span className="font-display text-lg font-semibold leading-none tabular-nums text-foreground">
+          <span
+            aria-hidden="true"
+            className="font-display text-lg font-semibold leading-none tabular-nums text-foreground"
+          >
             {answeredCount}
             <span className="text-muted-foreground">/{questions.length}</span>
+          </span>
+          {/* The pill shows a bare "3/100"; screen readers get what it counts. */}
+          <span className="sr-only">
+            Answered {answeredCount} of {questions.length}
           </span>
         </div>
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">

@@ -134,6 +134,26 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       </main>
 
       <footer className="border-t border-border/60 bg-secondary/40">
+        {/* A human trainer, for learners who want more than self-study */}
+        <div className="mx-auto w-full max-w-6xl px-5 pt-10">
+          <div className="flex flex-col gap-4 rounded-2xl border border-border/70 bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="font-display text-lg font-semibold">
+                Prefer to prepare with a real trainer?
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Antony Addy, the certified trainer behind ToeicPath, coaches professionals for the
+                TOEIC and for English at work: one-to-one or for teams, remotely or in person.
+              </p>
+            </div>
+            <a
+              href="https://www.antonyaddy.com/contact?sujet=anglais"
+              className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Talk to Antony →
+            </a>
+          </div>
+        </div>
         <div className="mx-auto grid w-full max-w-6xl gap-6 px-5 py-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-2">
@@ -146,7 +166,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </p>
           </div>
           <div>
-            <h4 className="text-sm font-semibold">Test prep</h4>
+            <h2 className="text-sm font-semibold">Test prep</h2>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link to="/four-skills" className="hover:text-foreground">
@@ -176,7 +196,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold">Resources</h4>
+            <h2 className="text-sm font-semibold">Resources</h2>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link to="/vocabulary" className="hover:text-foreground">

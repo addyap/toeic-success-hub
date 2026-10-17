@@ -11,10 +11,10 @@ import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
-import heroImg from "../assets/hero-study.jpg";
+import ogCard from "../assets/og-toeicpath.jpg";
 import { absoluteUrl, publicUrl, SITE_NAME, SITE_URL } from "../lib/site";
 
-const ogImage = absoluteUrl(heroImg);
+const ogImage = absoluteUrl(ogCard);
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
@@ -107,9 +107,9 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:image", content: ogImage },
-      { property: "og:image:width", content: "1280" },
-      { property: "og:image:height", content: "960" },
-      { property: "og:image:alt", content: "A learner studying for the TOEIC at her desk" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "ToeicPath: every answer is a step toward 990" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: ogImage },
     ],
@@ -143,6 +143,9 @@ export const Route = createRootRoute({
         type: "font/woff2",
         crossOrigin: "anonymous",
       },
+      // Umami's beacon endpoint; warming the connection saves ~270 ms on the
+      // first pageview event on mobile.
+      { rel: "preconnect", href: "https://gateway.umami.is" },
       // Fonts are self-hosted (see the @font-face rules in styles.css) rather
       // than loaded from fonts.googleapis.com/fonts.gstatic.com, so no
       // preconnect or external stylesheet is needed here — that avoided a

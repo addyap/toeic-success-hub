@@ -632,9 +632,16 @@ function PracticeSession({
           <span className="hidden text-xs font-semibold uppercase tracking-wider text-primary sm:inline">
             Session
           </span>
-          <span className="font-display text-lg font-semibold leading-none">
+          <span aria-hidden="true" className="font-display text-lg font-semibold leading-none">
             {score}
             <span className="text-muted-foreground">/{total}</span>
+          </span>
+          {/* The pill shows a bare "3/25"; screen readers get what it counts. */}
+          <span className="sr-only">
+            Answered {answeredCount} of {total}
+          </span>
+          <span className="sr-only">
+            {score} / {total} correct
           </span>
         </div>
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">

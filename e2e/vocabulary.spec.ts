@@ -74,15 +74,15 @@ test.describe("flashcards", () => {
     await expect(page.getByTestId("flashcard")).toBeVisible();
     await expect(page.getByTestId("flashcard-gloss")).toHaveCount(0);
 
-    // Arabic is the one RTL gloss language — verify both that the gloss
-    // appears and that it's actually rendered right-to-left.
-    const arabicBtn = page.getByRole("button", { name: "العربية" });
+    // Arabic (the one RTL gloss) was dropped when the languages were trimmed
+    // (a82c40e); French checks that a gloss appears, rendered left-to-right.
+    const frenchBtn = page.getByRole("button", { name: "Français" });
     await clickUntil(
-      arabicBtn,
+      frenchBtn,
       () => page.getByTestId("flashcard-gloss").count(),
       (c) => c > 0,
     );
-    await expect(page.getByTestId("flashcard-gloss")).toHaveAttribute("dir", "rtl");
+    await expect(page.getByTestId("flashcard-gloss")).toHaveAttribute("dir", "ltr");
 
     await page.getByRole("button", { name: "None", exact: true }).click();
     await expect(page.getByTestId("flashcard-gloss")).toHaveCount(0);
