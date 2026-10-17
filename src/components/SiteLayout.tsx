@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme";
+import AntonyAddyBar from "./AntonyAddyBar";
 import emblem from "@/assets/toeicpath-emblem.png";
 
 const navItems = [
@@ -55,6 +56,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
+      <AntonyAddyBar />
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4">
           <Link to="/" className="group flex items-center gap-2">
