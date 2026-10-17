@@ -23,7 +23,7 @@ test.describe("pricing page", () => {
     await page.goto("/toeic/pricing");
 
     await expect(
-      page.getByRole("heading", { name: "Everything is free right now." }),
+      page.getByRole("heading", { name: "Free during launch. Pricing is coming." }),
     ).toBeVisible();
     await expect(page.getByTestId("free-banner")).toContainText("will not be charged");
 

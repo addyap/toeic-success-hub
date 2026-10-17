@@ -52,7 +52,7 @@ export function LegalPage({
             {title}
           </h1>
           <p className="mt-4 text-base text-muted-foreground sm:text-lg">{intro}</p>
-          <p className="mt-3 text-sm text-muted-foreground/80">Last updated {LAST_UPDATED}.</p>
+          <p className="mt-3 text-sm text-muted-foreground">Last updated {LAST_UPDATED}.</p>
         </div>
       </section>
 

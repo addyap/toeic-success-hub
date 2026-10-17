@@ -64,6 +64,9 @@ const STYLE = `
   from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
   to { opacity: 1; transform: none; filter: none; }
 }
+/* The headline is the LCP element: it slides in but is never transparent. */
+.ascent-slide { animation: ascent-slide 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes ascent-slide { from { transform: translateY(16px); } to { transform: none; } }
 .ascent-990 { animation: ascent-ignite 1.7s ease-out 1.35s both; }
 @keyframes ascent-ignite {
   0% { text-shadow: none; }
@@ -71,7 +74,7 @@ const STYLE = `
   100% { text-shadow: 0 0 16px oklch(0.8 0.15 70 / 0.35); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ascent-in, .ascent-990 { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; text-shadow: none !important; }
+  .ascent-in, .ascent-slide, .ascent-990 { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; text-shadow: none !important; }
 }
 `;
 
@@ -396,7 +399,8 @@ export function HeroAscent() {
         </span>
       </div>
 
-      <div className="relative mx-auto flex min-h-[50svh] w-full max-w-6xl flex-col justify-center px-5 py-12">
+      {/* Extra top padding on phones keeps the eyebrow clear of the target dial. */}
+      <div className="relative mx-auto flex min-h-[50svh] w-full max-w-6xl flex-col justify-center px-5 pb-12 pt-28 sm:py-12">
         <div className="max-w-2xl">
           <span
             className="ascent-in inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary"
@@ -406,7 +410,7 @@ export function HeroAscent() {
             The Business English Standard · TOEIC®
           </span>
           <h1
-            className="ascent-in mt-4 font-display text-3xl font-semibold leading-[0.98] text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
+            className="ascent-slide mt-4 font-display text-3xl font-semibold leading-[0.98] text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ animationDelay: "0.15s" }}
           >
             Every answer is a step toward{" "}

@@ -14,17 +14,20 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { HeroAscent } from "@/components/HeroAscent";
 import { FrontIntro } from "@/components/FrontIntro";
 import { VOCAB_COUNT } from "@/data/vocabulary";
-import { absoluteUrl, pageTitle } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
+
+// Search results show the start of the title, so it leads with what the page is.
+const HOME_TITLE = "TOEIC Practice & Prep for All Four Skills · ToeicPath";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: pageTitle("Home") },
+      { title: HOME_TITLE },
       {
         name: "description",
         content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during its launch period, no account required.`,
       },
-      { property: "og:title", content: pageTitle("Home") },
+      { property: "og:title", content: HOME_TITLE },
       {
         property: "og:description",
         content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during its launch period, no account required.`,

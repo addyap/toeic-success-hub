@@ -56,7 +56,7 @@ export function FrontIntro() {
           ))}
         </div>
 
-        <p className="mt-4 text-xs text-muted-foreground/80">{copy.note}</p>
+        <p className="mt-4 text-xs text-muted-foreground">{copy.note}</p>
       </div>
     </section>
   );
