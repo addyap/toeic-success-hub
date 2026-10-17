@@ -8,8 +8,7 @@ import { test, expect, type Locator, type Page } from "@playwright/test";
  */
 
 async function answeredCount(page: Page) {
-  // Not anchored at the end: once a session completes, a "Best X/Y" badge
-  // gets appended into the same text node right after "Answered X of Y".
+  // Reads the session bar's screen-reader label ("Answered X of Y").
   const text = await page.getByText(/^Answered \d+ of \d+/).innerText();
   const [, answered, total] = text.match(/^Answered (\d+) of (\d+)/)!;
   return { answered: Number(answered), total: Number(total) };
@@ -18,7 +17,6 @@ async function answeredCount(page: Page) {
 async function sessionScore(page: Page) {
   const text = await page
     .locator(".sticky")
-    .filter({ hasText: "Your session" })
     .getByText(/^\d+ \/ \d+ correct$/)
     .innerText();
   const [, correct, total] = text.match(/^(\d+) \/ (\d+) correct$/)!;
