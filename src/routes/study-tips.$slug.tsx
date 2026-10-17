@@ -12,7 +12,7 @@ import {
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
-import { absoluteUrl, pageTitle, SITE_NAME } from "@/lib/site";
+import { absoluteUrl, pageTitle, PERSON_REF, BUSINESS_REF } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
   "Listening & Reading": <Headphones className="h-4 w-4" />,
@@ -75,8 +75,8 @@ function ArticlePage() {
     "@type": "Article",
     headline: tip.title,
     description: tip.summary,
-    author: { "@type": "Organization", name: SITE_NAME },
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    author: PERSON_REF,
+    publisher: BUSINESS_REF,
     mainEntityOfPage: absoluteUrl(`/study-tips/${tip.slug}`),
   };
   return (

@@ -12,7 +12,15 @@ import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import ogCard from "../assets/og-toeicpath.jpg";
-import { absoluteUrl, publicUrl, SITE_NAME, SITE_URL } from "../lib/site";
+import {
+  absoluteUrl,
+  publicUrl,
+  BUSINESS_REF,
+  PERSON_REF,
+  SITE_NAME,
+  SITE_ORIGIN,
+  SITE_URL,
+} from "../lib/site";
 
 const ogImage = absoluteUrl(ogCard);
 
@@ -23,6 +31,9 @@ const websiteJsonLd = {
   url: SITE_URL,
   description:
     "Prepare for every TOEIC skill — Listening, Reading, Speaking and Writing — with structured guides, interactive practice, timed drills, and a smart vocabulary builder.",
+  isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+  author: PERSON_REF,
+  publisher: BUSINESS_REF,
 };
 
 function NotFoundComponent() {

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { SpeakingTrainer, WritingTrainer } from "@/components/FourSkillsPractice";
-import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import { absoluteUrl, PERSON_REF, BUSINESS_REF } from "@/lib/site";
 import { scrollIntoViewRespectingMotion } from "@/lib/utils";
 import ogImage from "@/assets/og-four-skills.jpg";
 import {
@@ -181,8 +181,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "The TOEIC 4-Skills test",
   description: DESCRIPTION,
-  author: { "@type": "Organization", name: SITE_NAME },
-  publisher: { "@type": "Organization", name: SITE_NAME },
+  author: PERSON_REF,
+  publisher: BUSINESS_REF,
   mainEntityOfPage: absoluteUrl("/four-skills"),
 };
 

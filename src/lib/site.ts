@@ -24,3 +24,18 @@ export function publicUrl(path: string) {
 export function pageTitle(section?: string): string {
   return section ? `${section} · ${SITE_NAME} — ${SITE_TAGLINE}` : `${SITE_NAME} — ${SITE_TAGLINE}`;
 }
+
+/** The one Antony Addy identity, defined in full by the main site's JSON-LD.
+ *  Reference it by @id; name/url stay for parsers that don't follow @id. */
+export const PERSON_REF = {
+  "@type": "Person",
+  "@id": `${SITE_ORIGIN}/#antony-addy`,
+  name: "Antony Addy",
+  url: SITE_ORIGIN,
+};
+export const BUSINESS_REF = {
+  "@type": "ProfessionalService",
+  "@id": `${SITE_ORIGIN}/#business`,
+  name: "Antony Addy",
+  url: SITE_ORIGIN,
+};
