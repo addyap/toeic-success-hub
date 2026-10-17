@@ -21,6 +21,9 @@ const lightningcssTargets = {
   edge: browserVersion(90),
 };
 
+const TOEIC_CSP =
+  "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.antonyaddy.com; font-src 'self'; connect-src 'self' https://gateway.umami.is https://cloud.umami.is; media-src 'self' blob:; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests";
+
 export default defineConfig(async ({ command }) => {
   const plugins = [
     tailwindcss(),
@@ -45,15 +48,12 @@ export default defineConfig(async ({ command }) => {
         baseURL: "/toeic/",
         // Nitro's own immutable-cache rule targets /assets/, not the base path.
         routeRules: {
-          // CSP for every page. script-src keeps 'unsafe-inline' because
+          // CSP for every page. "/toeic/**" does not match the bare "/toeic"
+          // home URL, so that path gets its own rule. script-src keeps 'unsafe-inline' because
           // TanStack Start streams per-request inline hydration scripts and
           // there is no nonce plumbing yet; everything else is locked down.
-          "/toeic/**": {
-            headers: {
-              "content-security-policy":
-                "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.antonyaddy.com; font-src 'self'; connect-src 'self' https://gateway.umami.is https://cloud.umami.is; media-src 'self' blob:; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
-            },
-          },
+          "/toeic": { headers: { "content-security-policy": TOEIC_CSP } },
+          "/toeic/**": { headers: { "content-security-policy": TOEIC_CSP } },
           "/toeic/assets/**": {
             headers: { "cache-control": "public, max-age=31536000, immutable" },
           },
