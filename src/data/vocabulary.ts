@@ -2365,4 +2365,4 @@ export const vocabulary: VocabTerm[] = [
 
 // Static count for pages (e.g. the homepage) that only need the number of
 // terms and shouldn't import the full ~19KB terms array just for `.length`.
-export const VOCAB_COUNT = vocabulary.length;
+export { VOCAB_COUNT } from "./vocabularyCount";

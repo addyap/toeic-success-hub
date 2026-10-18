@@ -13,7 +13,7 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { HeroAscent } from "@/components/HeroAscent";
 import { FrontIntro } from "@/components/FrontIntro";
-import { VOCAB_COUNT } from "@/data/vocabulary";
+import { VOCAB_COUNT } from "@/data/vocabularyCount";
 import { absoluteUrl } from "@/lib/site";
 
 // Search results show the start of the title, so it leads with what the page is.

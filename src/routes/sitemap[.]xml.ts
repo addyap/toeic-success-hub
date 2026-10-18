@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { studyTips } from "@/data/studyTips";
 import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const { studyTips } = await import("@/data/studyTips");
         const entries = [
           { path: "/", priority: "1.0", changefreq: "weekly" },
           { path: "/four-skills", priority: "0.9", changefreq: "weekly" },

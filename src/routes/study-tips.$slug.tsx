@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { studyTips, type TipCategory, type StudyTip } from "@/data/studyTips";
+import type { TipCategory, StudyTip } from "@/data/studyTips";
 import { absoluteUrl, pageTitle, PERSON_REF, BUSINESS_REF } from "@/lib/site";
 
 const categoryIcon: Record<TipCategory, ReactNode> = {
@@ -21,7 +21,10 @@ const categoryIcon: Record<TipCategory, ReactNode> = {
 };
 
 export const Route = createFileRoute("/study-tips/$slug")({
-  loader: ({ params }): { tip: StudyTip } => {
+  // Dynamic import: a static one would put all the tips in the entry bundle,
+  // because TanStack keeps loader code (and its imports) out of the split chunk.
+  loader: async ({ params }): Promise<{ tip: StudyTip }> => {
+    const { studyTips } = await import("@/data/studyTips");
     const tip = studyTips.find((t) => t.slug === params.slug);
     if (!tip) throw notFound();
     return { tip };
