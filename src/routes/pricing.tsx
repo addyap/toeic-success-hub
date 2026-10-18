@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Sparkles, Clock, Heart } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { absoluteUrl } from "@/lib/site";
-import { VOCAB_COUNT } from "@/data/vocabulary";
+import { VOCAB_COUNT } from "@/data/vocabularyCount";
 
 /**
  * Pricing as a statement of intent only.

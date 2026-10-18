@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { VOCAB_COUNT } from "@/data/vocabulary";
+import { VOCAB_COUNT } from "@/data/vocabularyCount";
 
 /**
  * Signature hero: the TOEIC answer sheet, alive.
@@ -181,11 +181,13 @@ export function HeroAscent() {
 
     const ARC = 119.4; // 2πr, r = 19
     let intro = reduce ? 1 : 0;
-    const start = performance.now();
+    // Set on the first frame, so the intro plays from when drawing starts.
+    let start = 0;
     let doneAt = 0; // when the entrance finishes; the ascending wave runs after
     let raf = 0;
 
     const draw = (now: number) => {
+      if (!start) start = now;
       if (!reduce) intro = Math.min(1, (now - start) / 1700);
       const ease = 1 - Math.pow(1 - intro, 3);
       if (!doneAt && ease > 0.999) doneAt = now;
@@ -335,15 +337,57 @@ export function HeroAscent() {
       }
 
       ctx.restore();
-      raf = requestAnimationFrame(draw);
+      raf = running ? requestAnimationFrame(draw) : 0;
     };
 
     resize();
     window.addEventListener("resize", resize);
-    raf = requestAnimationFrame(draw);
+
+    // Only draw while the hero is on screen and the tab is visible, and wait
+    // until the page has loaded so the canvas doesn't compete with first paint
+    // and hydration (it was the main source of main-thread work on load).
+    let running = false;
+    let onScreen = true;
+    let ready = false;
+    const update = () => {
+      const should = ready && onScreen && !document.hidden;
+      if (should && !running) {
+        running = true;
+        raf = requestAnimationFrame(draw);
+      } else if (!should && running) {
+        running = false;
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      update();
+    });
+    io.observe(section);
+    document.addEventListener("visibilitychange", update);
+    const begin = () => {
+      ready = true;
+      update();
+    };
+    let idle = 0;
+    const scheduleBegin = () => {
+      idle =
+        typeof window.requestIdleCallback === "function"
+          ? window.requestIdleCallback(begin, { timeout: 1500 })
+          : window.setTimeout(begin, 300);
+    };
+    if (document.readyState === "complete") scheduleBegin();
+    else window.addEventListener("load", scheduleBegin, { once: true });
 
     return () => {
+      running = false;
       cancelAnimationFrame(raf);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", update);
+      window.removeEventListener("load", scheduleBegin);
+      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
+      window.clearTimeout(idle);
       themeObs.disconnect();
       section.removeEventListener("pointermove", onMove);
       section.removeEventListener("pointerleave", onLeave);

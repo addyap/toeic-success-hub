@@ -15,6 +15,7 @@ import {
 import { SiteLayout } from "@/components/SiteLayout";
 import { cn, shuffle, scrollIntoViewRespectingMotion } from "@/lib/utils";
 import { vocabulary, type VocabCategory, type VocabTerm } from "@/data/vocabulary";
+import { VOCAB_COUNT } from "@/data/vocabularyCount";
 import { recordVocabAnswer, weightedPickTerm } from "@/lib/vocabStats";
 import { recordActivity } from "@/lib/progress";
 import {
@@ -31,12 +32,12 @@ export const Route = createFileRoute("/vocabulary")({
       { title: pageTitle("Business Lexicon") },
       {
         name: "description",
-        content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
+        content: `Learn ${VOCAB_COUNT} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
       },
       { property: "og:title", content: pageTitle("Business Lexicon") },
       {
         property: "og:description",
-        content: `Learn ${vocabulary.length} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
+        content: `Learn ${VOCAB_COUNT} high-frequency TOEIC business vocabulary terms with flashcards and quizzes across management, travel, finance, technical, marketing & sales, and HR categories.`,
       },
       { property: "og:url", content: absoluteUrl("/vocabulary") },
     ],
