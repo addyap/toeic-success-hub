@@ -5,13 +5,15 @@ import { test, expect } from "@playwright/test";
  *
  * This site had a full Stripe/licence paywall built and then deliberately
  * removed (commit 23aeb1a) so that "free" could not drift by accident, after
- * an env-var kill switch was judged a footgun. /pricing now advertises a
- * future paid tier, which is exactly the situation where gating tends to creep
- * back in — so these tests assert the two things that must stay true:
+ * an env-var kill switch was judged a footgun. /pricing says the site is free
+ * during launch and makes no commitment either way: it neither promises the
+ * site stays free nor announces a paid tier, a date or a price. These tests
+ * assert what must stay true:
  *
- *   1. There is no way to pay: no checkout control, no card entry, no form
+ *   1. The page says free during launch, and announces no paid tier.
+ *   2. There is no way to pay: no checkout control, no card entry, no form
  *      posting to a payment endpoint.
- *   2. Nothing is locked: every practice surface is reachable and usable
+ *   3. Nothing is locked: every practice surface is reachable and usable
  *      without any licence, account or purchase.
  *
  * If a real paid tier is ever launched, these tests should be rewritten
@@ -19,17 +21,14 @@ import { test, expect } from "@playwright/test";
  */
 
 test.describe("pricing page", () => {
-  test("states the site is free and marks the paid tier as coming soon", async ({ page }) => {
+  test("states the site is free during launch and promises no pricing", async ({ page }) => {
     await page.goto("/toeic/pricing");
 
-    await expect(
-      page.getByRole("heading", { name: "Free during launch. Pricing is coming." }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Free during launch." })).toBeVisible();
     await expect(page.getByTestId("free-banner")).toContainText("will not be charged");
 
-    await expect(page.getByText("Coming soon")).toBeVisible();
-    await expect(page.getByText("Not yet priced")).toBeVisible();
-    await expect(page.getByText("Nothing to buy yet.")).toBeVisible();
+    // No paid tier, date or price is announced.
+    await expect(page.getByText(/coming soon|not yet priced|pricing is coming/i)).toHaveCount(0);
   });
 
   test("offers no way to pay", async ({ page }) => {

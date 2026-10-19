@@ -34,7 +34,7 @@ export const Route = createFileRoute("/study-tips/$slug")({
     const title = pageTitle(tip ? tip.title : "Study Tips");
     const description =
       tip?.summary ??
-      "Free TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score.";
+      "TOEIC practice tests, business English vocabulary, and expert study strategies to boost your score — free during launch.";
     const url = absoluteUrl(tip ? `/study-tips/${tip.slug}` : "/study-tips");
     return {
       meta: [
