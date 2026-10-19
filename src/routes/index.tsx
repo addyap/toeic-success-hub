@@ -25,12 +25,12 @@ export const Route = createFileRoute("/")({
       { title: HOME_TITLE },
       {
         name: "description",
-        content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during its launch period, no account required.`,
+        content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during launch, no account required.`,
       },
       { property: "og:title", content: HOME_TITLE },
       {
         property: "og:description",
-        content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during its launch period, no account required.`,
+        content: `TOEIC prep platform covering all four skills: the 4-Skills exam format, realistic Listening & Reading practice, timed Speaking and Writing drills, and a ${VOCAB_COUNT}-term vocabulary builder. Free during launch, no account required.`,
       },
       { property: "og:url", content: absoluteUrl("/") },
     ],
@@ -190,7 +190,7 @@ function Index() {
             Ready when you are.
           </h2>
           <p className="mt-3 max-w-xl text-primary-foreground/85">
-            Jump into a practice question right now — no sign-up, free while it's in launch.
+            Jump into a practice question right now — no sign-up, free during launch.
           </p>
           <Link
             to="/listening-reading"

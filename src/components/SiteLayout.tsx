@@ -190,7 +190,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               </li>
               <li>
                 <Link to="/pricing" className="hover:text-foreground">
-                  Pricing — free for now
+                  Pricing — free during launch
                 </Link>
               </li>
             </ul>
@@ -244,8 +244,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             >
               Fluentory by Antony Addy
             </a>{" "}
-            — free tools for grammar, listening, speaking and exam prep, built by a certified
-            trainer.
+            — tools for grammar, listening, speaking and exam prep, built by a certified trainer.
           </div>
         </div>
       </footer>

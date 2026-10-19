@@ -25,7 +25,7 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     points: [
       {
         title: "Everything, no account",
-        body: "Complete preparation for the whole TOEIC — free for now, with nothing to sign up for.",
+        body: "Complete preparation for the whole TOEIC — free during launch, with nothing to sign up for.",
       },
       {
         title: "Practise every part",
@@ -46,7 +46,7 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     points: [
       {
         title: "Tout, sans compte",
-        body: "Une préparation complète à tout le TOEIC — gratuite pour l'instant et sans inscription.",
+        body: "Une préparation complète à tout le TOEIC — gratuite pendant le lancement et sans inscription.",
       },
       {
         title: "Entraînez-vous à chaque partie",
@@ -67,7 +67,7 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     points: [
       {
         title: "Todo, sin cuenta",
-        body: "Preparación completa para todo el TOEIC: gratis por ahora y sin registrarte.",
+        body: "Preparación completa para todo el TOEIC: gratis durante el lanzamiento y sin registrarte.",
       },
       {
         title: "Practica cada parte",
@@ -88,7 +88,7 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     points: [
       {
         title: "Tudo, sem conta",
-        body: "Preparação completa para todo o TOEIC — grátis por enquanto e sem cadastro.",
+        body: "Preparação completa para todo o TOEIC — grátis durante o lançamento e sem cadastro.",
       },
       {
         title: "Pratique todas as partes",
@@ -104,11 +104,11 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
   ja: {
     eyebrow: "はじめての方へ",
     heading: "ToeicPath の使い方",
-    intro: "本格的な TOEIC 対策が今なら無料 — 要点をあなたの言語で読めます。",
+    intro: "本格的な TOEIC 対策がローンチ期間中は無料 — 要点をあなたの言語で読めます。",
     points: [
       {
-        title: "登録不要、今なら無料",
-        body: "TOEIC 全体の対策を、登録なしで今なら無料でご利用いただけます。",
+        title: "すべて、アカウント不要",
+        body: "TOEIC 全体の対策を、登録なしでローンチ期間中は無料でご利用いただけます。",
       },
       {
         title: "すべてのパートを練習",
@@ -124,11 +124,11 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
   ko: {
     eyebrow: "처음 오셨나요?",
     heading: "ToeicPath 이용 방법",
-    intro: "지금은 무료로 즐기는 완벽한 TOEIC 대비 — 핵심 내용을 모국어로 확인하세요.",
+    intro: "출시 기간 동안 무료로 즐기는 완벽한 TOEIC 대비 — 핵심 내용을 모국어로 확인하세요.",
     points: [
       {
-        title: "가입 없이 지금은 무료",
-        body: "TOEIC 전체를 위한 완벽한 대비를 가입 없이 지금은 무료로 이용하세요.",
+        title: "모든 기능, 계정 없이",
+        body: "TOEIC 전체를 위한 완벽한 대비를 가입 없이 출시 기간 동안 무료로 이용하세요.",
       },
       {
         title: "모든 파트 연습",
@@ -144,11 +144,11 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
   zh: {
     eyebrow: "第一次來嗎？",
     heading: "ToeicPath 使用說明",
-    intro: "完整的 TOEIC 備考，目前免費——用你的語言掌握重點。",
+    intro: "完整的 TOEIC 備考，推出期間免費——用你的語言掌握重點。",
     points: [
       {
-        title: "免註冊，目前免費",
-        body: "完整的 TOEIC 備考，目前免費且無需註冊。",
+        title: "全部功能，無需帳號",
+        body: "完整的 TOEIC 備考，推出期間免費且無需註冊。",
       },
       {
         title: "每個題型都能練習",
@@ -169,7 +169,7 @@ export const frontIntroI18n: Record<CriteriaLangCode, FrontIntroCopy> = {
     points: [
       {
         title: "Tất cả, không cần tài khoản",
-        body: "Luyện thi đầy đủ cho toàn bộ TOEIC — hiện miễn phí và không phải đăng ký.",
+        body: "Luyện thi đầy đủ cho toàn bộ TOEIC — miễn phí trong giai đoạn ra mắt và không phải đăng ký.",
       },
       {
         title: "Luyện mọi phần thi",
