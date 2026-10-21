@@ -80,7 +80,12 @@ export function LegalSection({ title, children }: { title: string; children: Rea
 export function PublisherPhone() {
   const [phone, setPhone] = useState<{ display: string; tel: string } | null>(null);
   const [failed, setFailed] = useState(false);
-  if (phone) return <a className="underline" href={`tel:${phone.tel}`}>{phone.display}</a>;
+  if (phone)
+    return (
+      <a className="underline" href={`tel:${phone.tel}`}>
+        {phone.display}
+      </a>
+    );
   return (
     <button
       type="button"
