@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 /**
  * Shared chrome for the legal pages so privacy, terms, and the French
@@ -14,7 +14,6 @@ import type { ReactNode } from "react";
 export const PUBLISHER = {
   name: "Antony Addy",
   email: "antony@antonyaddy.com",
-  phone: "+33 6 49 82 98 26",
   site: "toeic.antonyaddy.com",
   address: "135 rue Henri Vadon, Résidence des Arènes, 83600 Fréjus, France",
   siret: "483 178 893 00028",
@@ -69,5 +68,31 @@ export function LegalSection({ title, children }: { title: string; children: Rea
         {children}
       </div>
     </div>
+  );
+}
+
+/**
+ * The publisher's phone number, required on the legal notice but kept out of
+ * the page (anti-spam): a click fetches it from the protected hand-off on
+ * www.antonyaddy.com (/whatsapp?phone=1 — same-origin only, rate-limited).
+ * ToeicPath is served under www.antonyaddy.com/toeic, so the fetch is same-origin.
+ */
+export function PublisherPhone() {
+  const [phone, setPhone] = useState<{ display: string; tel: string } | null>(null);
+  const [failed, setFailed] = useState(false);
+  if (phone) return <a className="underline" href={`tel:${phone.tel}`}>{phone.display}</a>;
+  return (
+    <button
+      type="button"
+      className="underline"
+      onClick={() =>
+        fetch("/whatsapp?phone=1", { cache: "no-store" })
+          .then((r) => (r.ok ? r.json() : Promise.reject(r)))
+          .then(setPhone)
+          .catch(() => setFailed(true))
+      }
+    >
+      {failed ? "numéro sur demande par e-mail" : "afficher le numéro"}
+    </button>
   );
 }
