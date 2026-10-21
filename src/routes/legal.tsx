@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Landmark } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { absoluteUrl } from "@/lib/site";
-import { LegalPage, LegalSection, PUBLISHER } from "@/components/LegalPage";
+import { LegalPage, LegalSection, PUBLISHER, PublisherPhone } from "@/components/LegalPage";
 
 export const Route = createFileRoute("/legal")({
   head: () => ({
@@ -40,7 +40,7 @@ function Page() {
               <a className="underline" href={`mailto:${PUBLISHER.email}`}>
                 {PUBLISHER.email}
               </a>{" "}
-              — {PUBLISHER.phone}
+              — <PublisherPhone />
             </li>
             <li>
               <strong>Directeur de la publication :</strong> {PUBLISHER.name}
