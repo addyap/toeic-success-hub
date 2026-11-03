@@ -521,7 +521,7 @@ export function PracticeQuestionGroup({
   );
 }
 
-/** Plays a question's spoken audio: real OpenAI-generated speech when the
+/** Plays a question's spoken audio: real recorded (Kokoro) speech when the
  *  audio manifest has an entry for this question's content, falling back to
  *  the browser's built-in speech synthesis otherwise (e.g. brand-new content
  *  from a round the audio generator hasn't been re-run for yet). */

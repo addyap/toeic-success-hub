@@ -35,3 +35,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Kokoro voice model (bun run audio:setup)
+.venv-kokoro
