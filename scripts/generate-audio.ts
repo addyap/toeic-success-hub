@@ -1,22 +1,26 @@
 #!/usr/bin/env bun
 /**
- * Generates OpenAI TTS audio for every Part 1-4 practice question (the ones
- * with `photo` or `listening` set) and writes public/audio/*.mp3 plus
- * src/data/audioManifest.ts, which the app reads at runtime to play real
- * speech instead of falling back to the browser's built-in speechSynthesis.
+ * Records audio for every Part 1-4 practice question (the ones with `photo`
+ * or `listening` set) with Kokoro (https://huggingface.co/hexgrad/Kokoro-82M),
+ * a free voice model that runs on this computer, and writes
+ * public/audio/*.mp3 plus src/data/audioManifest.ts, which the app reads at
+ * runtime to play real speech instead of falling back to the browser's
+ * built-in speechSynthesis.
  *
- * Usage:
- *   OPENAI_API_KEY=sk-... bun run generate:audio
- * or put OPENAI_API_KEY in .env.local (Bun loads it automatically; it's
- * already gitignored via the *.local rule).
+ * One-off setup (needs `brew install uv ffmpeg espeak-ng`):
+ *   bun run audio:setup
+ * Then:
+ *   bun run generate:audio
  *
  * Safe to re-run after adding new content: existing audio files are skipped
  * unless --force is passed. Only questions new since the last run get
- * synthesized.
+ * recorded.
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { mkdir, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import OpenAI from "openai";
+import { createInterface } from "node:readline";
+import { fileURLToPath } from "node:url";
 import { listeningReadingQuestions } from "../src/data/listeningReadingQuestions";
 import { speakingPrompts } from "../src/data/fourSkillsPrompts";
 import {
@@ -34,15 +38,17 @@ import {
 import { groupQuestions } from "../src/lib/quiz";
 import type { PracticeQuestionData } from "../src/components/PracticeQuestion";
 
-const MODEL = "gpt-4o-mini-tts";
+const MODEL = "kokoro-82m";
+// Kokoro voice names start with their accent: "a" American, "b" British. The
+// real TOEIC mixes accents, so the voices below mix both.
 // Fixed voice for the printed "Question: ...?" prompt read after a Part 3/4
 // passage, kept consistent site-wide — matches the real TOEIC test, where a
 // single narrator reads every question regardless of who's in the recording.
-const NARRATOR_VOICE = "alloy";
-const ALL_VOICES = ["alloy", "nova", "onyx", "shimmer"];
+const NARRATOR_VOICE = "am_michael";
+const ALL_VOICES = ["af_heart", "bm_george", "bf_emma", "am_fenrir", "af_bella"];
 const SPEAKER_VOICE_PAIRS: { M: string; W: string }[] = [
-  { M: "onyx", W: "nova" },
-  { M: "alloy", W: "shimmer" },
+  { M: "bm_george", W: "af_heart" },
+  { M: "am_fenrir", W: "bf_emma" },
 ];
 
 const FORCE = process.argv.includes("--force");
@@ -50,12 +56,26 @@ const FORCE = process.argv.includes("--force");
 const AUDIO_DIR = new URL("../public/audio/", import.meta.url);
 const MANIFEST_PATH = new URL("../src/data/audioManifest.ts", import.meta.url);
 
-if (!process.env.OPENAI_API_KEY) {
-  console.error("OPENAI_API_KEY is not set. Put it in .env.local or export it in your shell.");
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const KOKORO_PYTHON = `${ROOT}.venv-kokoro/bin/python`;
+if (!existsSync(KOKORO_PYTHON)) {
+  console.error(
+    "Kokoro isn't set up yet: run `bun run audio:setup` first (needs `brew install uv ffmpeg espeak-ng`).",
+  );
   process.exit(1);
 }
 
-const client = new OpenAI();
+/** scripts/kokoro-speak.py, kept running so the model loads only once. */
+const kokoro = spawn(KOKORO_PYTHON, [`${ROOT}scripts/kokoro-speak.py`], {
+  stdio: ["pipe", "pipe", "inherit"],
+});
+const kokoroReplies = createInterface({ input: kokoro.stdout! })[Symbol.asyncIterator]();
+
+async function kokoroRecord(text: string, voice: string, out: string) {
+  kokoro.stdin!.write(JSON.stringify({ lines: [{ text, voice }], out }) + "\n");
+  const reply = await kokoroReplies.next();
+  if (reply.done) throw new Error("Kokoro stopped unexpectedly (its error is above).");
+}
 
 interface ManifestSegment {
   voice: string;
@@ -70,13 +90,14 @@ const manifest: Record<string, ManifestEntry> = {};
 let conversationIndex = 0;
 let singleVoiceIndex = 0;
 
-/** Generated mp3s are 125 kbps CBR, so bytes/sec is a reliable duration proxy.
- *  Speech runs ~15 chars/sec; a clip under half its expected length was
- *  truncated mid-synthesis. This has actually happened in production — two
- *  clips shipped as sub-second blips, one of them a question's correct answer,
- *  which is undetectable at runtime because the file and manifest entry both
- *  exist. Retry, then fail loudly rather than write a dead clip. */
-const BYTES_PER_SEC = 15974;
+/** Recorded mp3s are 64 kbps mono, so bytes/sec is a reliable duration proxy
+ *  (the same figure the tests use). Speech runs ~15 chars/sec; a clip under
+ *  half its expected length was cut short. This has actually happened in
+ *  production with the earlier cloud voices — two clips shipped as sub-second
+ *  blips, one of them a question's correct answer, which is undetectable at
+ *  runtime because the file and manifest entry both exist. Fail loudly rather
+ *  than keep a dead clip. */
+const BYTES_PER_SEC = 8050;
 const MIN_DURATION_RATIO = 0.55;
 
 function isTruncated(text: string, bytes: number) {
@@ -89,25 +110,13 @@ async function synth(text: string, voice: string, file: string) {
   const dest = new URL(file, AUDIO_DIR);
   if (!FORCE && existsSync(dest)) return;
 
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    const res = await client.audio.speech.create({
-      model: MODEL,
-      voice,
-      input: text,
-      response_format: "mp3",
-    });
-    const buf = Buffer.from(await res.arrayBuffer());
-    if (!isTruncated(text, buf.length)) {
-      await writeFile(dest, buf);
-      return;
-    }
-    console.warn(
-      `  ⚠ truncated clip (attempt ${attempt}/3, ${(buf.length / BYTES_PER_SEC).toFixed(2)}s): "${text.slice(0, 60)}"`,
+  await kokoroRecord(text, voice, fileURLToPath(dest));
+  const { size } = await stat(dest);
+  if (isTruncated(text, size)) {
+    throw new Error(
+      `Kokoro produced a clip that is too short (${(size / BYTES_PER_SEC).toFixed(2)}s) for: "${text}" (${file}).`,
     );
   }
-  throw new Error(
-    `TTS kept returning a truncated clip for: "${text}". Nothing was written for ${file}.`,
-  );
 }
 
 function voiceFor(turn: AudioTurn, pair: { M: string; W: string } | null): string {
@@ -230,7 +239,7 @@ async function main() {
   await processQuestionCues(maxSetSize);
 
   const body = `// Generated by scripts/generate-audio.ts — do not edit by hand.
-// Run \`bun run generate:audio\` (with OPENAI_API_KEY set) to regenerate.
+// Run \`bun run generate:audio\` (after a one-off \`bun run audio:setup\`) to regenerate.
 
 export interface AudioManifestSegment {
   voice: string;
@@ -245,6 +254,7 @@ export interface AudioManifestEntry {
 export const audioManifest: Record<string, AudioManifestEntry> = ${JSON.stringify(manifest, null, 2)};
 `;
   await writeFile(MANIFEST_PATH, body);
+  kokoro.stdin!.end();
   console.log(
     `Wrote ${Object.keys(manifest).length} manifest entries to ${MANIFEST_PATH.pathname}`,
   );
