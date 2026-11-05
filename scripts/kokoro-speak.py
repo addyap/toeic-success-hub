@@ -10,7 +10,7 @@ it starts in the recording and the time each word was spoken:
 
   {"lines": [{"offset": 0.0, "tokens": [["Hello", 0.25, 0.6], ...]}, ...]}
 
-Set up with `bun run audio:setup` (see README).
+Set up with `bun run audio:setup` (see docs/audio.md).
 """
 import json
 import os
@@ -69,12 +69,16 @@ def record(job):
             offset += len(audio) / SAMPLE_RATE
         lines.append({"offset": round(start, 3), "tokens": tokens})
 
+    if not parts or not any(len(part) for part in parts):
+        raise ValueError("Kokoro produced no audio")
+
     with tempfile.NamedTemporaryFile(suffix=".wav") as wav:
         sf.write(wav.name, np.concatenate(parts), SAMPLE_RATE)
         # 64 kbps mono: clear speech at about 0.5 MB a minute.
         subprocess.run(
             ["ffmpeg", "-y", "-loglevel", "error", "-i", wav.name, "-ac", "1", "-b:a", "64k", job["out"]],
             check=True,
+            timeout=60,
         )
     return {"lines": lines}
 

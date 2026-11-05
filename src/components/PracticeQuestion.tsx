@@ -1,20 +1,11 @@
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
-import { Check, X, Play, Pause, RotateCcw, Headphones, Volume2, Flag } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, X, Play, Pause, RotateCcw, Headphones, Flag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { publicUrl } from "@/lib/site";
-import {
-  getAudioTurns,
-  getGroupAudioTurns,
-  audioKeyForTurns,
-  audioKey,
-  letterCueKey,
-  questionCueText,
-  questionCueKey,
-} from "@/lib/audioSource";
-import { audioManifest, type AudioManifestEntry } from "@/data/audioManifest";
+import { questionAudioPlan } from "@/lib/audioPlan";
+import { KokoroAudioPlayer } from "@/components/KokoroAudioPlayer";
 import { PUBLISHER } from "@/components/LegalPage";
 import { useSceneVisible } from "@/lib/sceneVisible";
-import { claimAudioPlayback, releaseAudioPlayback } from "@/lib/audioPlayback";
 
 export interface PracticeQuestionData {
   prompt: string;
@@ -521,10 +512,7 @@ export function PracticeQuestionGroup({
   );
 }
 
-/** Plays a question's spoken audio: real recorded (Kokoro) speech when the
- *  audio manifest has an entry for this question's content, falling back to
- *  the browser's built-in speech synthesis otherwise (e.g. brand-new content
- *  from a round the audio generator hasn't been re-run for yet). */
+/** Uses the same Kokoro playback and fallback as spoken Speaking prompts. */
 function AudioClipPlayer({
   data,
   group,
@@ -533,335 +521,21 @@ function AudioClipPlayer({
   hint,
   revealed,
 }: {
-  data: Pick<PracticeQuestionData, "photo" | "spokenOptions" | "listening" | "context" | "options">;
-  /** When present, the clip covers a whole Part 3/4 set: the recording once,
-   *  then each of the set's questions read aloud. */
+  data: PracticeQuestionData;
   group?: PracticeQuestionData[];
   label: string;
   resetKey?: number;
   hint?: string;
-  /** Whether the question has been answered. */
   revealed?: boolean;
 }) {
-  const turns = useMemo(
-    () => (group ? getGroupAudioTurns(group) : getAudioTurns(data)),
-    [data, group],
-  );
-
-  // Stop the clip the moment a single Part 1/2 item is answered — once you've
-  // committed a reply there's nothing left to hear, and a still-playing clip
-  // just talks over the next thing you do. Never for a Part 3/4 set (`group`):
-  // its one recording is shared across three questions, so answering the first
-  // must not cut off the audio the other two still need.
-  const stopNow = !!revealed && !group;
-
-  // Part 1 (photo) and Part 2 (spokenOptions): each statement is looked up by
-  // its own content hash — never a combined key — since the client shuffles
-  // option order/labels every session and a single fixed recording would drift
-  // out of sync with whatever order is currently on screen.
-  //
-  // Each option is preceded by a spoken letter cue ("A.", "B.", ...) so the
-  // learner can map what they hear to the lettered answer buttons, as the real
-  // TOEIC does. Letter cues are POSITIONAL: the shuffle relabels options
-  // A/B/C/D by position, so options[i].label is always the i-th letter and the
-  // cue always matches the on-screen button whatever content sits there. The
-  // cues are four shared, content-independent clips, interleaved here.
-  if (data.photo || data.spokenOptions) {
-    // Any lead-in turns (Part 2's question; none for Part 1) come before the
-    // per-option turns, which we rebuild from data.options to interleave cues.
-    const leadTurns = turns.slice(0, turns.length - data.options.length);
-    const leadEntries = leadTurns.map((t) => audioManifest[audioKey(t.text)]);
-    const letterEntries = data.options.map((o) => audioManifest[letterCueKey(o.label)]);
-    const optionEntries = data.options.map((o) => audioManifest[audioKey(o.text)]);
-
-    const fallbackText = [
-      ...leadTurns.map((t) => t.text),
-      ...data.options.map((o) => `${o.label}. ${o.text}`),
-    ]
-      .filter(Boolean)
-      .join(" ... ");
-
-    const allEntries = [...leadEntries, ...letterEntries, ...optionEntries];
-    if (!allEntries.every((e): e is AudioManifestEntry => !!e)) {
-      // Missing any clip (e.g. letter cues not generated yet) → the speech
-      // fallback, which already announces the letters in `fallbackText`.
-      return (
-        <SpeechFallbackPlayer
-          label={label}
-          text={fallbackText}
-          resetKey={resetKey}
-          hint={hint}
-          stopNow={stopNow}
-        />
-      );
-    }
-    const combinedEntry: AudioManifestEntry = {
-      model: optionEntries[0].model,
-      segments: [
-        ...leadEntries.flatMap((e) => e.segments),
-        ...data.options.flatMap((_, i) => [
-          ...letterEntries[i].segments,
-          ...optionEntries[i].segments,
-        ]),
-      ],
-    };
-    return (
-      <GeneratedAudioPlayer
-        entry={combinedEntry}
-        label={label}
-        resetKey={resetKey}
-        hint={hint}
-        stopNow={stopNow}
-      />
-    );
-  }
-
-  const key = audioKeyForTurns(turns);
-  const manifestEntry = audioManifest[key];
-
-  if (!manifestEntry) {
-    // Fallback speech announces the question numbers too, so pacing/tracking
-    // is consistent with the generated path.
-    let qn = 0;
-    const fallbackText = turns
-      .map((t) => (t.isQuestionPrompt ? `${questionCueText(++qn)} ${t.text}` : t.text))
-      .join(" ");
-    return (
-      <SpeechFallbackPlayer label={label} text={fallbackText} resetKey={resetKey} hint={hint} />
-    );
-  }
-
-  // Part 3/4 sets: announce "Question 1", "Question 2", ... before each
-  // question read after the passage, so the learner can track which is being
-  // asked and gets a beat between them. Positional cues, interleaved from
-  // shared clips; the manifest segments align 1:1 with `turns` (the generator
-  // writes one segment per turn), so isQuestionPrompt marks where to insert.
-  if (group) {
-    let qNum = 0;
-    const segments = manifestEntry.segments.flatMap((seg, i) => {
-      if (!turns[i]?.isQuestionPrompt) return [seg];
-      qNum += 1;
-      const cue = audioManifest[questionCueKey(qNum)];
-      return cue ? [...cue.segments, seg] : [seg];
-    });
-    return (
-      <GeneratedAudioPlayer
-        entry={{ model: manifestEntry.model, segments }}
-        label={label}
-        resetKey={resetKey}
-        hint={hint}
-        stopNow={stopNow}
-      />
-    );
-  }
-
   return (
-    <GeneratedAudioPlayer
-      entry={manifestEntry}
+    <KokoroAudioPlayer
+      plan={questionAudioPlan(data, group)}
       label={label}
       resetKey={resetKey}
       hint={hint}
-      stopNow={stopNow}
+      stopNow={!!revealed && !group}
     />
-  );
-}
-
-function GeneratedAudioPlayer({
-  entry,
-  label,
-  resetKey,
-  hint,
-  stopNow,
-}: {
-  entry: AudioManifestEntry;
-  label: string;
-  resetKey?: number;
-  hint?: string;
-  /** Stop playback when this flips true (a single Part 1/2 item was answered).
-   *  Only acts on the false→true edge, so replaying the clip afterwards to
-   *  review still works. */
-  stopNow?: boolean;
-}) {
-  const [playing, setPlaying] = useState(false);
-  const [segIdx, setSegIdx] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Stable identity (its reference is this player's token in the shared audio
-  // coordinator), so claim/release always refer to the same player.
-  const stop = useCallback(() => {
-    audioRef.current?.pause();
-    setPlaying(false);
-    setSegIdx(0);
-    releaseAudioPlayback(stop);
-  }, []);
-
-  useEffect(() => stop, [stop]);
-  useEffect(() => {
-    stop();
-  }, [resetKey, stop]);
-  useEffect(() => {
-    if (stopNow) stop();
-  }, [stopNow, stop]);
-
-  useEffect(() => {
-    if (!playing || !audioRef.current) return;
-    const src = publicUrl(`/audio/${entry.segments[segIdx].file}`);
-    if (!audioRef.current.src.endsWith(src)) {
-      audioRef.current.src = src;
-    }
-    audioRef.current.play().catch(() => setPlaying(false));
-  }, [playing, segIdx, entry]);
-
-  const handleEnded = () => {
-    if (segIdx < entry.segments.length - 1) {
-      setSegIdx((i) => i + 1);
-    } else {
-      setPlaying(false);
-      setSegIdx(0);
-      releaseAudioPlayback(stop);
-    }
-  };
-
-  const toggle = () => {
-    if (playing) {
-      stop();
-    } else {
-      // Stop whatever else is playing so two clips never overlap.
-      claimAudioPlayback(stop);
-      setSegIdx(0);
-      setPlaying(true);
-    }
-  };
-
-  return (
-    <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-3">
-      <audio
-        ref={audioRef}
-        onEnded={handleEnded}
-        onError={() => setPlaying(false)}
-        className="hidden"
-      />
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={playing ? "Stop audio" : "Play audio"}
-        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition hover:opacity-90 active:scale-95"
-      >
-        {playing ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
-      </button>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2 text-xs font-semibold text-primary">
-          <Volume2 className="h-3.5 w-3.5" />
-          <span className="truncate">{label}</span>
-        </div>
-        <p className="mt-1 text-xs text-muted-foreground">
-          {playing
-            ? "Playing… listen carefully, then answer below."
-            : (hint ?? "Tap play to hear the audio. Transcript appears after you answer.")}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function SpeechFallbackPlayer({
-  label,
-  text,
-  resetKey,
-  hint,
-  stopNow,
-}: {
-  label: string;
-  text: string;
-  resetKey?: number;
-  hint?: string;
-  /** Stop playback when this flips true (a single Part 1/2 item was answered).
-   *  Only acts on the false→true edge, so replaying afterwards still works. */
-  stopNow?: boolean;
-}) {
-  const [speaking, setSpeaking] = useState(false);
-  const [supported, setSupported] = useState(true);
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
-  const warningId = useId();
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setSupported(false);
-    }
-  }, []);
-
-  // Stable identity — this player's token in the shared audio coordinator.
-  const stop = useCallback(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    setSpeaking(false);
-    releaseAudioPlayback(stop);
-  }, []);
-
-  useEffect(() => () => stop(), [stop]);
-  useEffect(() => {
-    stop();
-  }, [resetKey, stop]);
-  useEffect(() => {
-    if (stopNow) stop();
-  }, [stopNow, stop]);
-
-  const toggle = () => {
-    if (!supported) return;
-    if (speaking) {
-      stop();
-      return;
-    }
-    // Stop whatever else is playing so two clips never overlap.
-    claimAudioPlayback(stop);
-    // Strip speaker labels like "(M)" / "(W)" for cleaner TTS.
-    const cleaned = text
-      .replace(/\((M|W|M\d|W\d)\)/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
-    const u = new SpeechSynthesisUtterance(cleaned);
-    u.rate = 0.85;
-    u.pitch = 1;
-    u.onend = () => stop();
-    u.onerror = () => stop();
-    utterRef.current = u;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(u);
-    setSpeaking(true);
-  };
-
-  return (
-    <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-3">
-      <button
-        type="button"
-        onClick={toggle}
-        disabled={!supported}
-        aria-label={speaking ? "Stop audio" : "Play audio"}
-        aria-describedby={warningId}
-        className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition hover:opacity-90 active:scale-95 disabled:opacity-50"
-      >
-        {speaking ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
-      </button>
-      <span id={warningId} className="sr-only">
-        Uses your device's built-in text-to-speech, which may interrupt a screen reader's own voice
-        while playing.
-      </span>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2 text-xs font-semibold text-primary">
-          <Volume2 className="h-3.5 w-3.5" />
-          <span className="truncate">{label}</span>
-        </div>
-        <p className="mt-1 text-xs text-muted-foreground">
-          {supported
-            ? speaking
-              ? "Playing… listen carefully, then answer below."
-              : (hint ??
-                "Tap play to hear the audio (read aloud, slower pace). Transcript appears after you answer.")
-            : "Your browser does not support speech playback. Answer to reveal the transcript."}
-        </p>
-      </div>
-    </div>
   );
 }
 

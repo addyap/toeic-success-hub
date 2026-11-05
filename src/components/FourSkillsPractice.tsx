@@ -9,22 +9,13 @@
  *  uploaded or persisted; it is revoked when you reset or leave the page.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  Mic,
-  Square,
-  RotateCcw,
-  Play,
-  Clock,
-  PenLine,
-  CheckCircle2,
-  Shuffle,
-  Volume2,
-} from "lucide-react";
+import { Mic, Square, RotateCcw, Play, Clock, PenLine, CheckCircle2, Shuffle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { publicUrl } from "@/lib/site";
 import { recordActivity, recordSession } from "@/lib/progress";
-import { audioManifest } from "@/data/audioManifest";
-import { audioKey } from "@/lib/audioSource";
+import { promptAudioPlan } from "@/lib/audioPlan";
+import { KokoroAudioPlayer } from "@/components/KokoroAudioPlayer";
+import { claimAudioPlayback, releaseAudioPlayback } from "@/lib/audioPlayback";
 import type { SpeakingPrompt, WritingPrompt } from "@/data/fourSkillsPrompts";
 import {
   CRITERIA_LANGS,
@@ -200,54 +191,14 @@ function PromptRotator({
   );
 }
 
-/** Plays the generated TTS clip for a prompt the real test speaks aloud.
- *
- *  Renders nothing when no clip exists for this text — audio is produced by
- *  `bun run generate:audio`, so a newly written prompt simply has no player
- *  until that has been run, and the printed prompt stands in meanwhile.
- *  Clips are content-addressed, so editing a prompt's wording orphans its
- *  audio and the generator must be re-run. */
+/** Only prompts explicitly marked spoken use this player. */
 function PromptAudio({ text }: { text: string }) {
-  const entry = audioManifest[audioKey(text)];
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(false);
-  if (!entry) return null;
-
-  const toggle = () => {
-    const el = audioRef.current;
-    if (!el) return;
-    if (playing) {
-      el.pause();
-      el.currentTime = 0;
-      setPlaying(false);
-    } else {
-      void el.play();
-      setPlaying(true);
-    }
-  };
-
   return (
-    <div className="mt-4">
-      <button
-        type="button"
-        onClick={toggle}
-        className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition hover:bg-muted"
-      >
-        {playing ? <Square className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-        {playing ? "Stop" : "Play the question"}
-      </button>
-      <p className="mt-1.5 text-xs text-muted-foreground">
-        In the real test you only hear this — it is printed here as a fallback.
-      </p>
-      <audio
-        ref={audioRef}
-        src={publicUrl(`/audio/${entry.segments[0].file}`)}
-        onEnded={() => setPlaying(false)}
-        preload="none"
-      >
-        <track kind="captions" />
-      </audio>
-    </div>
+    <KokoroAudioPlayer
+      plan={promptAudioPlan(text)}
+      label="Spoken question"
+      hint="In the real test you only hear this — it is printed here as a fallback."
+    />
   );
 }
 
@@ -467,6 +418,13 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
   const [recordUrl, setRecordUrl] = useState<string | null>(null);
   const [recordError, setRecordError] = useState<string | null>(null);
 
+  const playbackRef = useRef<HTMLAudioElement | null>(null);
+  const stopPlayback = useCallback(() => {
+    playbackRef.current?.pause();
+    releaseAudioPlayback(stopPlayback);
+  }, []);
+  useEffect(() => stopPlayback, [stopPlayback]);
+
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
   // Mirrors recordUrl so cleanup effects can revoke the current URL without
@@ -512,12 +470,13 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
         // Drop the mic indicator as soon as the take is finished.
         stream.getTracks().forEach((t) => t.stop());
       };
+      claimAudioPlayback(stopPlayback);
       recorderRef.current = rec;
       rec.start();
     } catch {
       setRecordError("Microphone access was blocked. You can still practise with the timer only.");
     }
-  }, []);
+  }, [stopPlayback]);
 
   const finish = useCallback(() => {
     stopRecording();
@@ -716,7 +675,15 @@ export function SpeakingTrainer({ prompts }: { prompts: SpeakingPrompt[] }) {
               <Play className="h-4 w-4 text-primary" />
               Your recording
             </p>
-            <audio controls src={recordUrl} className="mt-2 w-full">
+            <audio
+              ref={playbackRef}
+              controls
+              src={recordUrl}
+              className="mt-2 w-full"
+              onPlay={() => claimAudioPlayback(stopPlayback)}
+              onPause={() => releaseAudioPlayback(stopPlayback)}
+              onEnded={() => releaseAudioPlayback(stopPlayback)}
+            >
               <track kind="captions" />
             </audio>
             <p className="mt-2 text-xs text-muted-foreground">

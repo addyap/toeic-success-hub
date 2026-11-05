@@ -27,6 +27,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Validate Kokoro cache and manifest
+        run: bun run audio:check
+
       - name: Question bank integrity
         run: npm test
 

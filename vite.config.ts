@@ -54,6 +54,9 @@ export default defineConfig(async ({ command }) => {
           // there is no nonce plumbing yet; everything else is locked down.
           "/toeic": { headers: { "content-security-policy": TOEIC_CSP } },
           "/toeic/**": { headers: { "content-security-policy": TOEIC_CSP } },
+          "/audio/**": {
+            headers: { "cache-control": "public, max-age=3600" },
+          },
           "/toeic/assets/**": {
             headers: { "cache-control": "public, max-age=31536000, immutable" },
           },

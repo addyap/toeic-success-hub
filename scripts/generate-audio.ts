@@ -12,14 +12,12 @@
  * Then:
  *   bun run generate:audio
  *
- * Safe to re-run after adding new content: existing audio files are skipped
- * unless --force is passed. Only questions new since the last run get
- * recorded.
+ * Safe to re-run: validated matching recordings are reused. Use --check to
+ * validate without synthesis, --voice / --narrator-voice to select allowlisted
+ * voices, or --force to record again under fresh URLs. See docs/audio.md.
  */
-import { spawn } from "node:child_process";
-import { mkdir, stat, writeFile } from "node:fs/promises";
+import { mkdir, rename, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { createInterface } from "node:readline";
 import { fileURLToPath } from "node:url";
 import { listeningReadingQuestions } from "../src/data/listeningReadingQuestions";
 import { speakingPrompts } from "../src/data/fourSkillsPrompts";
@@ -38,14 +36,43 @@ import {
 import { groupQuestions } from "../src/lib/quiz";
 import type { PracticeQuestionData } from "../src/components/PracticeQuestion";
 
-const MODEL = "kokoro-82m";
+import { audioManifest as previousManifest } from "../src/data/audioManifest";
+import {
+  MODEL,
+  SYNTHESIS_VERSION,
+  LEGACY_SYNTHESIS_VERSION,
+  parseVoice,
+  synthesisFile,
+  validClip,
+} from "./kokoro/cache";
+import { KokoroWorker } from "./kokoro/worker";
+
+const args = process.argv.slice(2);
+for (let i = 0; i < args.length; i++) {
+  if (["--voice", "--narrator-voice"].includes(args[i])) {
+    parseVoice(args[++i] ?? "");
+    continue;
+  }
+  if (!["--check", "--force"].includes(args[i])) throw new Error(`Unknown option: ${args[i]}`);
+}
+if (args.includes("--check") && args.includes("--force"))
+  throw new Error("--check and --force cannot be combined");
+const CHECK = args.includes("--check");
+function voiceOption(flag: string): string | undefined {
+  const index = process.argv.indexOf(flag);
+  if (index < 0) return undefined;
+  return parseVoice(process.argv[index + 1] ?? "");
+}
+const selectedVoice = voiceOption("--voice");
 // Kokoro voice names start with their accent: "a" American, "b" British. The
 // real TOEIC mixes accents, so the voices below mix both.
 // Fixed voice for the printed "Question: ...?" prompt read after a Part 3/4
 // passage, kept consistent site-wide — matches the real TOEIC test, where a
 // single narrator reads every question regardless of who's in the recording.
-const NARRATOR_VOICE = "am_michael";
-const ALL_VOICES = ["af_heart", "bm_george", "bf_emma", "am_fenrir", "af_bella"];
+const NARRATOR_VOICE = voiceOption("--narrator-voice") ?? "am_michael";
+const ALL_VOICES = selectedVoice
+  ? [selectedVoice]
+  : ["af_heart", "bm_george", "bf_emma", "am_fenrir", "af_bella"];
 const SPEAKER_VOICE_PAIRS: { M: string; W: string }[] = [
   { M: "bm_george", W: "af_heart" },
   { M: "am_fenrir", W: "bf_emma" },
@@ -58,23 +85,14 @@ const MANIFEST_PATH = new URL("../src/data/audioManifest.ts", import.meta.url);
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const KOKORO_PYTHON = `${ROOT}.venv-kokoro/bin/python`;
-if (!existsSync(KOKORO_PYTHON)) {
-  console.error(
-    "Kokoro isn't set up yet: run `bun run audio:setup` first (needs `brew install uv ffmpeg espeak-ng`).",
-  );
-  process.exit(1);
-}
-
-/** scripts/kokoro-speak.py, kept running so the model loads only once. */
-const kokoro = spawn(KOKORO_PYTHON, [`${ROOT}scripts/kokoro-speak.py`], {
-  stdio: ["pipe", "pipe", "inherit"],
-});
-const kokoroReplies = createInterface({ input: kokoro.stdout! })[Symbol.asyncIterator]();
-
-async function kokoroRecord(text: string, voice: string, out: string) {
-  kokoro.stdin!.write(JSON.stringify({ lines: [{ text, voice }], out }) + "\n");
-  const reply = await kokoroReplies.next();
-  if (reply.done) throw new Error("Kokoro stopped unexpectedly (its error is above).");
+let kokoro: KokoroWorker | undefined;
+function worker() {
+  if (!kokoro) {
+    if (!existsSync(KOKORO_PYTHON))
+      throw new Error("Run `bun run audio:setup` before generating missing audio.");
+    kokoro = new KokoroWorker(KOKORO_PYTHON, [`${ROOT}scripts/kokoro-speak.py`]);
+  }
+  return kokoro;
 }
 
 interface ManifestSegment {
@@ -90,32 +108,38 @@ const manifest: Record<string, ManifestEntry> = {};
 let conversationIndex = 0;
 let singleVoiceIndex = 0;
 
-/** Recorded mp3s are 64 kbps mono, so bytes/sec is a reliable duration proxy
- *  (the same figure the tests use). Speech runs ~15 chars/sec; a clip under
- *  half its expected length was cut short. This has actually happened in
- *  production with the earlier cloud voices — two clips shipped as sub-second
- *  blips, one of them a question's correct answer, which is undetectable at
- *  runtime because the file and manifest entry both exist. Fail loudly rather
- *  than keep a dead clip. */
-const BYTES_PER_SEC = 8050;
-const MIN_DURATION_RATIO = 0.55;
+/** Reuse only validated recordings with matching model and voice. Existing
+ * shipped recordings retain their URLs; all new synthesis uses a config hash.
+ * Never overwrite a published clip (even --force) or publish a partial file. */
+async function synth(text: string, voice: string, legacyFile: string) {
+  const file = synthesisFile(text, voice);
+  const match = legacyFile.match(/^([a-z0-9]+)-(\d+)\.mp3$/);
+  const prior = match ? previousManifest[match[1]] : undefined;
+  const priorSegment = match ? prior?.segments[Number(match[2])] : undefined;
+  if (
+    !FORCE &&
+    prior?.model === MODEL &&
+    priorSegment?.voice === voice &&
+    ((priorSegment.file === legacyFile && SYNTHESIS_VERSION === LEGACY_SYNTHESIS_VERSION) ||
+      new RegExp(`^${file.slice(0, -4)}(?:-[0-9]+)?\\.mp3$`).test(priorSegment.file)) &&
+    (await validClip(new URL(priorSegment.file, AUDIO_DIR), text))
+  )
+    return priorSegment.file;
+  if (!FORCE && !CHECK && (await validClip(new URL(file, AUDIO_DIR), text))) return file;
+  if (CHECK) throw new Error(`Missing, stale, or invalid audio: ${legacyFile} (${voice})`);
 
-function isTruncated(text: string, bytes: number) {
-  if (text.length <= 15) return false;
-  const seconds = bytes / BYTES_PER_SEC;
-  return seconds / (text.length / 15) < MIN_DURATION_RATIO;
-}
-
-async function synth(text: string, voice: string, file: string) {
-  const dest = new URL(file, AUDIO_DIR);
-  if (!FORCE && existsSync(dest)) return;
-
-  await kokoroRecord(text, voice, fileURLToPath(dest));
-  const { size } = await stat(dest);
-  if (isTruncated(text, size)) {
-    throw new Error(
-      `Kokoro produced a clip that is too short (${(size / BYTES_PER_SEC).toFixed(2)}s) for: "${text}" (${file}).`,
-    );
+  // A forced rerender gets a fresh URL, even if configuration is unchanged.
+  const output = FORCE ? file.replace(".mp3", `-${Date.now()}.mp3`) : file;
+  const dest = new URL(output, AUDIO_DIR);
+  const temporary = new URL(`${output}.tmp.mp3`, AUDIO_DIR);
+  try {
+    await worker().record(text, voice, fileURLToPath(temporary));
+    if (!(await validClip(temporary, text)))
+      throw new Error(`Kokoro produced invalid or truncated audio: ${output}`);
+    await rename(temporary, dest);
+    return output;
+  } finally {
+    await rm(temporary, { force: true });
   }
 }
 
@@ -143,8 +167,7 @@ async function processItem(data: PracticeQuestionData, group?: PracticeQuestionD
       const key = audioKey(turn.text);
       if (manifest[key]) continue;
       const voice = ALL_VOICES[singleVoiceIndex++ % ALL_VOICES.length];
-      const file = `${key}-0.mp3`;
-      await synth(turn.text, voice, file);
+      const file = await synth(turn.text, voice, `${key}-0.mp3`);
       manifest[key] = { model: MODEL, segments: [{ voice, file }] };
     }
     return;
@@ -162,8 +185,7 @@ async function processItem(data: PracticeQuestionData, group?: PracticeQuestionD
   for (let i = 0; i < turns.length; i++) {
     const turn = turns[i];
     const voice = voiceFor(turn, pair);
-    const file = `${key}-${i}.mp3`;
-    await synth(turn.text, voice, file);
+    const file = await synth(turn.text, voice, `${key}-${i}.mp3`);
     manifestSegments.push({ voice, file });
   }
   manifest[key] = { model: MODEL, segments: manifestSegments };
@@ -178,8 +200,7 @@ async function processSpeakingPrompts() {
   for (const prompt of spoken) {
     const key = audioKey(prompt.prompt);
     if (manifest[key]) continue;
-    const file = `${key}-0.mp3`;
-    await synth(prompt.prompt, NARRATOR_VOICE, file);
+    const file = await synth(prompt.prompt, NARRATOR_VOICE, `${key}-0.mp3`);
     manifest[key] = { model: MODEL, segments: [{ voice: NARRATOR_VOICE, file }] };
   }
   console.log(`Processed ${spoken.length} spoken 4-Skills prompts...`);
@@ -194,8 +215,7 @@ async function processLetterCues() {
   for (const label of OPTION_LETTERS) {
     const key = letterCueKey(label);
     if (manifest[key]) continue;
-    const file = `${key}-0.mp3`;
-    await synth(letterCueText(label), NARRATOR_VOICE, file);
+    const file = await synth(letterCueText(label), NARRATOR_VOICE, `${key}-0.mp3`);
     manifest[key] = { model: MODEL, segments: [{ voice: NARRATOR_VOICE, file }] };
   }
   console.log(`Processed ${OPTION_LETTERS.length} option letter cues...`);
@@ -209,15 +229,14 @@ async function processQuestionCues(count: number) {
   for (let n = 1; n <= count; n++) {
     const key = questionCueKey(n);
     if (manifest[key]) continue;
-    const file = `${key}-0.mp3`;
-    await synth(questionCueText(n), NARRATOR_VOICE, file);
+    const file = await synth(questionCueText(n), NARRATOR_VOICE, `${key}-0.mp3`);
     manifest[key] = { model: MODEL, segments: [{ voice: NARRATOR_VOICE, file }] };
   }
   console.log(`Processed ${count} question-number cues...`);
 }
 
 async function main() {
-  await mkdir(AUDIO_DIR, { recursive: true });
+  if (!CHECK) await mkdir(AUDIO_DIR, { recursive: true });
   let done = 0;
   let maxSetSize = 0;
   // Walk in units so a Part 3/4 set is synthesized once, as a single clip.
@@ -238,6 +257,17 @@ async function main() {
   await processLetterCues();
   await processQuestionCues(maxSetSize);
 
+  if (CHECK) {
+    if (JSON.stringify(manifest) !== JSON.stringify(previousManifest)) {
+      throw new Error(
+        "The manifest is stale; run `bun run generate:audio` and commit it with its recordings.",
+      );
+    }
+    console.log(
+      `Validated ${Object.keys(manifest).length} Kokoro manifest entries; no synthesis or writes.`,
+    );
+    return;
+  }
   const body = `// Generated by scripts/generate-audio.ts — do not edit by hand.
 // Run \`bun run generate:audio\` (after a one-off \`bun run audio:setup\`) to regenerate.
 
@@ -253,14 +283,21 @@ export interface AudioManifestEntry {
 
 export const audioManifest: Record<string, AudioManifestEntry> = ${JSON.stringify(manifest, null, 2)};
 `;
-  await writeFile(MANIFEST_PATH, body);
-  kokoro.stdin!.end();
+  const temporaryManifest = new URL(`${MANIFEST_PATH.href}.tmp`);
+  try {
+    await writeFile(temporaryManifest, body);
+    await rename(temporaryManifest, MANIFEST_PATH);
+  } finally {
+    await rm(temporaryManifest, { force: true });
+  }
   console.log(
     `Wrote ${Object.keys(manifest).length} manifest entries to ${MANIFEST_PATH.pathname}`,
   );
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main()
+  .catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  })
+  .finally(() => kokoro?.close());
