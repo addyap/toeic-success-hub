@@ -246,6 +246,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </a>{" "}
             — tools for grammar, listening, speaking and exam prep, built by a certified trainer.
           </div>
+          <div className="mt-2">
+            Website by <a href="https://thevitrine.fr/en/" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-foreground">The Vitrine</a>
+          </div>
         </div>
       </footer>
     </div>
